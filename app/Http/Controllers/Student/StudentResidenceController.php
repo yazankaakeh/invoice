@@ -12,7 +12,6 @@ use App\Http\Controllers\Controller;
 class StudentResidenceController extends Controller
 {
 
-
     public function storestudent(Request $request){
             $this->validate($request,[
             'student_id'=>'required',
@@ -45,22 +44,59 @@ class StudentResidenceController extends Controller
 
     public function index()
     {
-        //
+        $res['res'] = Student_Residence::select('id','student_id','updated_at','stud_type_housing','stud_rent_housing',
+       'stud_Place_housing','stud_expen','stud_valu_expen')
+       ->orderBy('id', 'DESC')
+       ->get();
+       return view('student.student_res.student_res')->with($res);
     }
 
 
-    public function show(Student_Residence $student_Residence)
+    public function show($id)
     {
-        //
+      $res = Student_Residence::where('student_id', $id)->get();
+      return view('Student.student_res.student_res',compact('res'));
     }
 
     public function update(Request $request, Student_Residence $student_Residence)
     {
-        //
+              $this->validate($request,[
+            'student_id'=>'required',
+            'stud_type_housing' => 'required',
+            'stud_rent_housing' => 'required',
+            'stud_Place_housing' => 'required',
+            'stud_expen' => 'required',
+            'stud_valu_expen' => 'required',
+         ]);
+         //create new object of the model student and make mapping to the data
+         $students =  Student::find($request->student_id);
+         $student_name = $students->student_name;
+         $StudentResidences = Student_Residence::find($request->id);
+         $StudentResidences -> student_id = $request->student_id;
+         $StudentResidences -> stud_type_housing = $request->stud_type_housing;
+         $StudentResidences -> stud_rent_housing = $request->stud_rent_housing;
+         $StudentResidences -> stud_Place_housing = $request->stud_Place_housing;
+         $StudentResidences -> stud_expen = $request->stud_expen;
+         $StudentResidences -> stud_valu_expen = $request->stud_valu_expen;
+         //write to the data base
+         $StudentResidences ->save();
+         session()->flash('Edit',  'تم تعديل سكن  للطالب  '. $student_name .' بنجاح ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('Student_Residence.show'));
     }
 
-    public function destroy(Student_Residence $student_Residence)
+    public function destroy(Request $request)
     {
-        //
+        /* here we have sued the table students and searched about the id using the find and then delete the
+        id using the id note: we have passed the id from the show using the route */
+        $students =  Student::find($request->student_id);
+        $x=0;
+        $students->residance_statu = $x;
+        $student_name = $students->student_name;
+        Student_Residence::find($request->id)->delete();
+        /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
+        session()->flash('Delete','تم حذف معلومات السكن الخاصة بالطالب  '. $student_name .' بنجاح ');
+        $students->save();
+        return redirect(route('Student_Residence.show'));
     }
 }

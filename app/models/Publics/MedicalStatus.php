@@ -8,7 +8,9 @@ class MedicalStatus extends Model
 {
      protected $guarded =['id'];
 
-     public function Student_Medical()
+           protected $fillable = ['disease_type', 'disease_name', 'dr_name', 'treat_cost', 'treat_type', 'treat_Duratio', 'date_accept', 'date_end', 'Trans_to_doctor'];
+
+     public function Student()
      {
         return $this->belongsTo('App\models\Student\Student');
      }

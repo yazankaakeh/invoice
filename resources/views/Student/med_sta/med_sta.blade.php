@@ -44,37 +44,44 @@
                                                     <th class="border-bottom-0">رقم الطالب</th>
                                                     <th class="border-bottom-0">اسم الطالب</th>
                                                     <th class="border-bottom-0">رقم</th>
-                                                    <th class="border-bottom-0">هل تحفظ قرأن</th>
-                                                    <th class="border-bottom-0"> عدد أجزاء</th>
-                                                    <th class="border-bottom-0">اسم  مدرسك</th>
-                                                    <th class="border-bottom-0">يوجد شهادة</th>
-                                                    <th class="border-bottom-0">مصدر الشهادة</th>
-                                                    <th class="border-bottom-0">هل هي معك</th>
+                                                    <th class="border-bottom-0"> نوع المرض</th>
+                                                    <th class="border-bottom-0"> اسم المرض</th>
+                                                    <th class="border-bottom-0"> اسم الدكتور</th>
+                                                    <th class="border-bottom-0"> تكلفة العلاج</th>
+                                                    <th class="border-bottom-0"> نوع العلاج</th>
+                                                    <th class="border-bottom-0"> مدة العلاج</th>
+                                                    <th class="border-bottom-0"> تاريخ البدء</th>
+                                                    <th class="border-bottom-0"> تاريخ الانتهاء </th>
+                                                    <th class="border-bottom-0"> طبيب آخر </th>
                                                     <th class="border-bottom-0">تاريخ الإضافة</th>
                                                     <th class="border-bottom-0">عمليات</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($qurans as $x)
+                                                @foreach($med as $x)
                                                 <tr>
                                                     <td>{{$x->student_id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
                                                     <td>{{$x->id}}</td>
-                                                    <td>{{$x->quran_memorize}}</td>
-                                                    <td>{{$x->quran_parts}}</td>
-                                                    <td>{{$x->quran_teacher}}</td>
-                                                    <td>{{$x->quran_have_certif}}</td>
-                                                    <td>{{$x->quran_Certif_essuer}}</td>
-                                                    <td>{{$x->quran_with_Certif}}</td>
+                                                    <td>{{$x->disease_type}}</td>
+                                                    <td>{{$x->disease_name}}</td>
+                                                    <td>{{$x->dr_name}}</td>
+                                                    <td>{{$x->treat_cost}}</td>
+                                                    <td>{{$x->treat_type}}</td>
+                                                    <td>{{$x->treat_Duratio}}</td>
+                                                    <td>{{$x->date_accept}}</td>
+                                                    <td>{{$x->date_end}}</td>
+                                                    <td>{{$x->Trans_to_doctor}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                                data-id="{{$x->id}}" data-quran_parts="{{$x->quran_parts}}"
-                                                                data-name="{{$x->name }}" data-quran_memorize="{{$x->quran_memorize}}"
-                                                                data-quran_have_certif="{{$x->quran_have_certif}}" data-quran_teacher="{{$x->quran_teacher}}"
-                                                                data-quran_certif_essuer="{{$x->quran_Certif_essuer}}"
-                                                                data-quran_with_certif="{{$x->quran_with_Certif}}" data-student_name="{{$x->student->student_name}}"
+                                                                data-id="{{$x->id}}" data-disease_type="{{$x->disease_type}}"
+                                                                data-treat_duratio="{{$x->treat_Duratio }}" data-disease_name="{{$x->disease_name}}"
+                                                                data-treat_type="{{$x->treat_type}}" data-dr_name="{{$x->dr_name}}"
+                                                                data-trans_to_doctor="{{$x->Trans_to_doctor}}" data-student_name="{{$x->student->student_name}}"
+                                                                data-date_accept="{{$x->date_accept}}" data-date_end="{{$x->date_end}}"
+                                                                data-treat_cost="{{$x->treat_cost}}"
                                                                 data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
@@ -82,7 +89,7 @@
                                                             </a>
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                                data-id="{{ $x->id }}"  data-name="{{$x->name }}" data-student_id="{{$x->student_id}}"
+                                                                data-id="{{ $x->id }}"  data-name="{{$x->student->student_name}}" data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
@@ -139,7 +146,7 @@
                                     <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
-                                <form action="{{ Route('Quran.destroy') }}" method="post">
+                                <form action="{{ Route('Medical_Statu.destroy') }}" method="post">
                                     {{ method_field('delete') }}
                                     {{ csrf_field() }}
                                     <div class="modal-body">
@@ -173,56 +180,62 @@
                                 </div>
                                 <div class="modal-body">
 
-                                 <form action="{{ route('Quran.update') }}" method="post">
+                                 <form action="{{ route('Medical_Statu.update') }}" method="post">
                                 {{ method_field('patch') }}
                                 {{ csrf_field() }}
-                                <div class="modal-body">
+                              <div class="modal-body">
+                                <div class="form-group">                                       
+                                <input type="hidden" name="id" id="id"  readonly>
                                 <input type="hidden" name="student_id" id="student_id" readonly>
-                                <input type="hidden" name="id" id="id" readonly>
-                                    <div class="form-group">
-                                    <p class="mg-b-10">هل تحفظ القرآن</p>
-                                    <select class="form-control select2" name="quran_memorize" id="quran_memorize">
-                                    <option value="نعم" >
-                                        نعم
+                                </div>
+                                 <div class="form-group">{{-- it must be select options  --}}
+                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <select class="form-control select2" name="disease_type" id="disease_type">
+                                    <option value="لايوجد" >
+                                        لايوجد
                                     </option>
-                                    <option value="لا" >
-                                        لا
+                                    <option value="اصابة حرب" >
+                                        اصابة حرب
+                                    </option>
+                                    <option value="وباء" >
+                                        وباء
+                                    </option>
+                                    <option value="مرض مزمن" >
+                                        مرض مزمن
                                     </option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">عدد الأجزاء التي أتممت حفظها </label>
-                                <input type="text" class="form-control" id="quran_parts" name="quran_parts" placeholder="    أكنب عدد الأجزاءالمحفوظة ">
+                                <label for="exampleInputEmail">اسم المرض</label>
+                                <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض">
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">أسم الشيخ الذي درسك</label>
-                                <input type="text" class="form-control" id="quran_teacher" name="quran_teacher" placeholder="أكنب أسم الشيخ ">
+                                <label for="exampleInputEmail">اسم الدكتور</label>
+                                <input type="text" class="form-control" id="dr_name" name="dr_name" placeholder=" أكتب أسم الطبيب">
                                 </div>
                                 <div class="form-group">
-                                <p class="mg-b-10">هل لديك شهادة حفظ قرآن</p>
-                                <select class="form-control select2" name="quran_have_certif" id="quran_have_certif">
-                                <option value="نعم" >
-                                    نعم
-                                </option>
-                                <option value="لا" >
-                                    لا
-                                </option>
-                                </select>
+                                <label for="exampleInputEmail">تكلفة العلاج</label>
+                                <input type="text" class="form-control" id="treat_cost" name="treat_cost" placeholder="أكتب تكلفة العلاج ">
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">مصدر الشهادة</label>
-                                <input type="text" class="form-control" id="quran_Certif_essuer" name="quran_Certif_essuer" placeholder="   أكنب مصدر الشهادة ">
+                                <label for="exampleInputEmail">نوع العلاج</label>
+                                <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج ">
+                                </div>
+                               <div class="form-group">
+                                <label for="exampleInputEmail">مدة العلاج</label>
+                                <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج">
                                 </div>
                                 <div class="form-group">
-                                <p class="mg-b-10">هل الشهادة معك؟</p>
-                                <select class="form-control select2" name="quran_with_Certif" id="quran_with_Certif" >
-                                <option value="نعم" >
-                                    نعم
-                                </option>
-                                <option value="لا" >
-                                    لا
-                                </option>
-                                </select>
+                                <label for="exampleInputEmail">تاريخ بدء العلاج</label>
+                                <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">تاريخ الانتهاء من العلاج</label>
+                                <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">هل تم تحويلك لطبيب آخر؟ مع ذكر الأسم إن وجد</label>
+                                <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر أسم الطبيب ان وجد">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -270,22 +283,28 @@
     $('#exampleModal2').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
-        var quran_teacher = button.data('quran_teacher')
-        var quran_memorize = button.data('quran_memorize')
-        var quran_parts = button.data('quran_parts')
+        var disease_name = button.data('disease_name')
+        var disease_type = button.data('disease_type')
+        var treat_duratio = button.data('treat_duratio')
         var student_id = button.data('student_id')
-        var quran_have_certif = button.data('quran_have_certif')
-        var quran_certif_essuer = button.data('quran_certif_essuer')
-        var quran_with_certif = button.data('quran_with_certif')
+        var treat_type = button.data('treat_type')
+        var treat_cost = button.data('treat_cost')
+        var dr_name = button.data('dr_name')
+        var trans_to_doctor = button.data('trans_to_doctor')
+        var date_end = button.data('date_end')
+        var date_accept = button.data('date_accept')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #quran_memorize').val(quran_memorize);
+        modal.find('.modal-body #disease_name').val(disease_name);
+        modal.find('.modal-body #disease_type').val(disease_type);
         modal.find('.modal-body #student_id').val(student_id);
-        modal.find('.modal-body #quran_teacher').val(quran_teacher);
-        modal.find('.modal-body #quran_parts').val(quran_parts);
-        modal.find('.modal-body #quran_have_certif').val(quran_have_certif);
-        modal.find('.modal-body #quran_certif_essuer').val(quran_certif_essuer);
-        modal.find('.modal-body #quran_with_certif').val(quran_with_certif);
+        modal.find('.modal-body #treat_duratio').val(treat_duratio);
+        modal.find('.modal-body #treat_type').val(treat_type);
+        modal.find('.modal-body #treat_cost').val(treat_cost);
+        modal.find('.modal-body #dr_name').val(dr_name);
+        modal.find('.modal-body #trans_to_doctor').val(trans_to_doctor);
+        modal.find('.modal-body #date_end').val(date_end);
+        modal.find('.modal-body #date_accept').val(date_accept);
     })
 </script>
 

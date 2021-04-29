@@ -90,8 +90,8 @@ class JobController extends Controller
 
 
     public function show($id){
-      $Jobs = Job::where('student_id', $id)->get();
-      return view('Student.job.job_show',compact('Jobs'));
+      $job = Job::where('student_id', $id)->get();
+      return view('Student.job.job',compact('job'));
     }
 
 

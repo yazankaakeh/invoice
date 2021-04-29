@@ -94,8 +94,11 @@
                                                         href="#exampleModal3" title="دفع">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                    @if($x->pay_statu != 0)
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    <a class="modal-effect btn btn-sm btn-info" href="/pay/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    <a class="modal-effect btn btn-sm btn-info" href="/pay/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @endif
+
                                                     </td>
 
                                                     {{-- wife and husband  --}}
@@ -153,6 +156,9 @@
                                                     </td>
                                                     <td>
                                                     {{-- add children  --}}
+                                                    @if($x->child_statu != 0)
+                                                        <a class="modal-effect btn btn-sm btn-info" href="/children/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endif
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal4" title="إضافة طفل">
@@ -194,7 +200,6 @@
                                                     @if($x->quran_statu == 1)
                                                     <td>
                                                     <a class="modal-effect btn btn-sm btn-info" href="/Quran/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-
                                                     </td>
                                                     @elseif($x->quran_statu == 0)
                                                     <td>
@@ -252,20 +257,23 @@
                                                     @endif
 
                                                     {{-- Sister and Brother  --}}
-                                                    <td>
+
+                                                    <td>                                                    
+                                                    @if($x->sis_statu != 0)
+                                                    <a class="modal-effect btn btn-sm btn-info" href="/Sister_and_Brother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endif
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal16" title="اضافة اخوة">
                                                             <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                         </a>
-                                                        <a class="modal-effect btn btn-sm btn-info" href="/Sister_and_Brother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
                                                 @endforeach
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-
+                            <div> </div>
                             @if (session()->has('Add'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>

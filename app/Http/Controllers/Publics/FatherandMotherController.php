@@ -70,6 +70,11 @@ class FatherandMotherController extends Controller
          return redirect(route('student.show'));
 
     }
+
+    public function show($id){
+      $fath = FatherandMother::where('student_id', $id)->get();
+      return view('Student.father_mother.father_mother',compact('fath')); 
+    }
     public function index()
     {
        $fath['fath'] = FatherandMother::select('id','mother_name','student_id','updated_at','mother_origin','mother_birth',
@@ -148,9 +153,6 @@ class FatherandMotherController extends Controller
         $x=0;
         $students->father_mother_statu = $x;
         $student_name = $students->student_name;
-
-
-
         FatherandMother::find($request->id)->delete();
         /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
         session()->flash('Delete','تم حذف معلومات الأم و الأب الخاصة بالطالب  '. $student_name .' بنجاح ');

@@ -12,10 +12,12 @@ class Children extends Model
         {
         return $this->hasOne('App\models\Publics\MedicalStatus');
         }
+
      public function School()
         {
         return $this->hasOne('App\models\Publics\School');
         }
+        
      public function Student()
     {
         return $this->belongsTo('App\models\Student\Student');

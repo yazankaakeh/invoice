@@ -12,7 +12,7 @@
 <!--- Select2 css -->
 
 @section('title')
-عرض بيانات الزوج و الزوجة
+عرض بيانات الأم و الأب
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
@@ -44,75 +44,67 @@
                                                     <th class="border-bottom-0">رقم الطالب</th>
                                                     <th class="border-bottom-0">اسم الطالب</th>
                                                     <th class="border-bottom-0">رقم </th>
-                                                    <th class="border-bottom-0">اسم الزوجة</th>
+                                                    <th class="border-bottom-0">اسم الأم</th>
                                                     <th class="border-bottom-0">المواليد</th>
                                                     <th class="border-bottom-0">المدينة</th>
                                                     <th class="border-bottom-0">الحي</th>
-                                                    {{-- <th class="border-bottom-0">الحالة الإجتماعية</th> --}}
                                                     <th class="border-bottom-0">المستوى الدراسي</th>
                                                     <th class="border-bottom-0">الأختصاص</th>
                                                     <th class="border-bottom-0">حالة العمل</th>
                                                     <th class="border-bottom-0">العمل</th>
-                                                    <th class="border-bottom-0">العمل القديم</th>
-                                                    <th class="border-bottom-0">اسم الزوج</th>
+                                                    <th class="border-bottom-0">الراتب الشهري</th>
+                                                    <th class="border-bottom-0">اسم الاب</th>
                                                     <th class="border-bottom-0">المواليد</th>
                                                     <th class="border-bottom-0">المدينة</th>
                                                     <th class="border-bottom-0">الحي</th>
-                                                    {{-- <th class="border-bottom-0">الحالة الإجتماعية</th> --}}
                                                     <th class="border-bottom-0">المستوى الدراسي</th>
                                                     <th class="border-bottom-0">الأختصاص</th>
                                                     <th class="border-bottom-0">حالة العمل</th>
                                                     <th class="border-bottom-0">العمل</th>
-                                                    <th class="border-bottom-0">العمل القديم</th>
+                                                    <th class="border-bottom-0">الراتب الشهري</th>
                                                     <th class="border-bottom-0">تاريخ التعديل</th>
                                                     <th class="border-bottom-0">العمليات</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($husb as $x)
+                                                @foreach($fath as $x)
                                                 <tr>
                                                     <td>{{$x->student_id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
                                                     <td>{{$x->id}}</td>
-                                                    <td>{{$x->wife_name}}</td>
-                                                    <td>{{$x->wife_birth}}</td>
-                                                    <td>{{$x->wife_city}}</td>
-                                                    <td>{{$x->wife_district}}</td>
-                                                    {{-- <td>{{$x->wife_mar_stat}}</td> --}}
-                                                    <td>{{$x->wife_academicel}}</td>
-                                                    <td>{{$x->wife_special}}</td>
-                                                    <td>{{$x->wife_is_work}}</td>
-                                                    <td>{{$x->wife_now_work}}</td>
-                                                    <td>{{$x->wife_Pre_work}}</td>
-                                                    <td>{{$x->husb_name}}</td>
-                                                    <td>{{$x->husb_birth}}</td>
-                                                    <td>{{$x->husb_Orig_city}}</td>
-                                                    <td>{{$x->husb_district}}</td>
-                                                    {{-- <td>{{$x->husb_mar_stat}}</td> --}}
-                                                    <td>{{$x->husb_academicel}}</td>
-                                                    <td>{{$x->husb_special}}</td>
-                                                    <td>{{$x->husb_is_work}}</td>
-                                                    <td>{{$x->husb_now_work}}</td>
-                                                    <td>{{$x->husb_Pre_work}}</td>
+                                                    <td>{{$x->mother_name}}</td>
+                                                    <td>{{$x->mother_birth}}</td>
+                                                    <td>{{$x->mother_origin}}</td>
+                                                    <td>{{$x->mother_origin_city}}</td>
+                                                    <td>{{$x->mother_academicel}}</td>
+                                                    <td>{{$x->mother_special}}</td>
+                                                    <td>{{$x->mother_is_work}}</td>
+                                                    <td>{{$x->mother_now_work}}</td>
+                                                    <td>{{$x->mother_salary}}</td>
+                                                    <td>{{$x->father_name}}</td>
+                                                    <td>{{$x->father_birth}}</td>
+                                                    <td>{{$x->father_origin}}</td>
+                                                    <td>{{$x->father_origin_city}}</td>
+                                                    <td>{{$x->father_academicel}}</td>
+                                                    <td>{{$x->father_special}}</td>
+                                                    <td>{{$x->father_is_work}}</td>
+                                                    <td>{{$x->father_now_work}}</td>
+                                                    <td>{{$x->father_salary}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                                data-id="{{$x->id}}" data-wife_name="{{$x->wife_name}}"
-                                                                data-wife_birth="{{$x->wife_birth }}" data-wife_city="{{$x->wife_city}}"
-                                                                data-wife_district="{{$x->wife_district}}"
-                                                                 {{-- data-wife_mar_stat="{{$x->wife_mar_stat}}" --}}
-                                                                data-wife_academicel="{{$x->wife_academicel }}" data-wife_special="{{$x->wife_special}}"
-                                                                data-wife_is_work="{{$x->wife_is_work}}" data-wife_now_work="{{$x->wife_now_work }}"
-                                                                data-wife_pre_work="{{$x->wife_Pre_work}}"
-                                                                {{-- data-husb_mar_stat="{{$x->husb_mar_stat }}" --}}
-                                                                data-husb_orig_city="{{$x->husb_Orig_city}}"
-                                                                data-husb_birth="{{$x->husb_birth}}" data-husb_district="{{$x->husb_district}}"
-                                                                data-husb_name="{{$x->husb_name}}" data-husb_special="{{$x->husb_special}}"
-                                                                data-husb_academicel="{{$x->husb_academicel}}"
-                                                                data-husb_is_work="{{$x->husb_is_work}}" data-husb_now_work="{{$x->husb_now_work}}"
-                                                                data-husb_pre_work="{{$x->husb_Pre_work}}"
-                                                                data-student_name="{{$x->student->student_name}}"   data-student_id="{{$x->student_id}}"
+                                                                data-id="{{$x->id}}" data-mother_name="{{$x->mother_name}}"
+                                                                data-mother_birth="{{$x->mother_birth }}" data-mother_origin="{{$x->mother_origin}}"
+                                                                data-mother_origin_city="{{$x->mother_origin_city}}" data-mother_academicel="{{$x->mother_academicel}}"
+                                                                data-mother_now_work="{{$x->mother_now_work }}" data-mother_is_work="{{$x->mother_is_work}}"
+                                                                data-mother_salary="{{$x->mother_salary}}" data-mother_special="{{$x->mother_special }}"
+                                                                data-father_name="{{$x->father_name}}"
+                                                                data-father_birth="{{$x->father_birth}}" data-father_origin="{{$x->father_origin}}"
+                                                                data-father_origin_city="{{$x->father_origin_city}}" data-father_academicel="{{$x->father_academicel}}"
+                                                                data-father_special="{{$x->father_special}}"
+                                                                data-father_is_work="{{$x->father_is_work}}" data-father_now_work="{{$x->father_now_work}}" data-father_salary="{{$x->father_salary}}"
+                                                                 data-student_name="{{$x->student->student_name}}"   data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
@@ -176,7 +168,7 @@
                                     <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
-                                <form action="{{ Route('husband_Wife.destroy') }}" method="post">
+                                <form action="{{ Route('FatherandMother.destroy') }}" method="post">
                                     {{ method_field('delete') }}
                                     {{ csrf_field() }}
                                     <div class="modal-body">
@@ -209,60 +201,43 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                 <form action="{{ route('husband_Wife.update') }}" method="post">
+                                 <form action="{{ route('FatherandMother.update') }}" method="post">
                                 {{ method_field('patch') }}
                                 {{ csrf_field() }}
-                               <div class="modal-body">
+                                <div class="modal-body">
                                 <div class="form-group">
-                                <input type="hidden" name="student_id" id="student_id"  readonly>
-                                <input type="hidden" name="id" id="id"  readonly>
-                                <label for="exampleInputEmail">اسم الزوجة</label>
-                                <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم الزوجة ">
+                                <input type="HIDDEN" name="student_id" id="student_id"  readonly>
+                                <input type="HIDDEN" name="id" id="id"  readonly>
+
+                                <label for="exampleInputEmail">اسم الأم</label>
+                                <input type="text" class="form-control" id="mother_name" name="mother_name" placeholder=" أكتب أسم الأم  ">
                                 </div>
 
                                  <div class="form-group">
-                                <label for="exampleInputEmail">تاريخ ميلاد الزوجة</label>
-                                <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد">
+                                <label for="exampleInputEmail">تاريخ ميلاد الأم</label>
+                                <input type="date" class="form-control" id="mother_birth" name="mother_birth" placeholder=" أكتب تاريخ الميلاد ">
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <input type="text" class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب أسم المحافظة ">
+                                <input type="text" class="form-control" id="mother_origin" name="mother_origin" placeholder=" أكتب أسم المحافظة ">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة ">
+                                    <input type="text" class="form-control" id="mother_origin_city" name="mother_origin_city" placeholder=" أكتب أسم المدينة">
                                 </div>
-
-                                {{-- <div class="form-group">
-                                    <p class="mg-b-10">الحالة الاجتماعية للزوجة</p>
-                                    <select class="form-control select2" name="wife_mar_stat" id="wife_mar_stat" placeholder=" أكتب الحالة الأجتماعية ">
-                                    <option value="متزوجة" >
-                                        متزوجة
-                                    </option>
-                                    <option value="متوفية" >
-                                        متوفية
-                                    </option>
-                                    <option value="ارملة" >
-                                        ارملة
-                                    </option>
-                                    <option value="مطلقة" >
-                                        مطلقة
-                                    </option>
-                                    </select>
-                                </div> --}}
                                  <div class="form-group">
-                                <label for="exampleInputEmail">المستوى التعليمي للزوجة</label>
-                                <input type="text" class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى التعليمي  ">
+                                <label for="exampleInputEmail">المستوى التعليمي للأم</label>
+                                <input type="text" class="form-control" id="mother_academicel" name="mother_academicel" placeholder=" أكتب المستوى النعليمي ">
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">اختصاص دراسة الزوجة</label>
-                                <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder="أكتب أسم الأختصاص">
+                                <label for="exampleInputEmail">اختصاص دراسة الأم</label>
+                                <input type="text" class="form-control" id="mother_special" name="mother_special" placeholder=" أكتب أسم الأختصاص">
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">هل تعمل الزوجة؟</label>
-                                <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder=" هل الزوجة تعمل ام لاتعمل ">
+                                <label for="exampleInputEmail">هل تعمل الأم</label>
+                                <select class="form-control select2" name="mother_is_work" id="mother_is_work" placeholder="هل الأم تعمل ام لا تعمل">
                                 <option value="تعمل" >
                                     تعمل
                                 </option>
@@ -272,62 +247,45 @@
 								</select>
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">العمل الحالي للزوجة</label>
-                                <input type="text" class="form-control" id="wife_now_work" name="wife_now_work" placeholder=" أكتب العمل الحالي ">
+                                <label for="exampleInputEmail">العمل الحالي للأم</label>
+                                <input type="text" class="form-control" id="mother_now_work" name="mother_now_work" placeholder=" أكتب العمل الحالي للأم">
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">العمل السابق للزوجة</label>
-                                <input type="text" class="form-control" id="wife_pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  ">
+                                <label for="exampleInputEmail">الراتب الشهري للأم</label>
+                                <input type="text" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم ">
                                 </div>
 
-                                {{--  Husband Part  --}}
+                                {{--  Father Part  --}}
                                 <hr>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">اسم الزوج</label>
-                                <input type="text" class="form-control" id="husb_name" name="husb_name" placeholder=" أكتب اسم الزوج ">
+                                <label for="exampleInputEmail">اسم الأب</label>
+                                <input type="text" class="form-control" id="father_name" name="father_name" placeholder=" أكتب أسم الأب ">
                                 </div>
                                  <div class="form-group">
-                                <label for="exampleInputEmail">تاريخ ميلاد الزوج</label>
-                                <input type="date" class="form-control" id="husb_birth" name="husb_birth" placeholder=" أكتب تاريخ الميلاد">
+                                <label for="exampleInputEmail">تاريخ ميلاد الأب</label>
+                                <input type="date" class="form-control" id="father_birth" name="father_birth" placeholder=" أكتب تاريخ ميلاد الأب">
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <input type="text" class="form-control" id="husb_orig_city" name="husb_Orig_city" placeholder=" أكتب اسم محافظة ">
+                                <input type="text" class="form-control" id="father_origin" name="father_origin" placeholder=" أكتب أسم المحافظة ">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="husb_district" name="husb_district" placeholder=" أكتب اسم المدينة ">
+                                    <input type="text" class="form-control" id="father_origin_city" name="father_origin_city" placeholder=" أكتب أسم المدينة">
                                 </div>
-                                {{-- <div class="form-group">
-                                    <p class="mg-b-10">الحالة الاجتماعية للزوج</p>
-                                    <select class="form-control select2" name="husb_mar_stat" id="husb_mar_stat" placeholder=" أكتب الحالة الاجتماعية ">
-                                    <option value="معتقل" >
-                                        معتقل
-                                    </option>
-                                    <option value="متوفي" >
-                                        متوفي
-                                    </option>
-                                    <option value="مفقود" >
-                                        مفقود
-                                    </option>
-                                    <option value="متزوج" >
-                                        متزوج
-                                    </option>
-                                    </select>
-                                </div> --}}
                                 <div class="form-group">
-                                <label for="exampleInputEmail">المستوى التعليمي للزوج</label>
-                                <input type="text" class="form-control" id="husb_academicel" name="husb_academicel" placeholder=" أكتب المستوى التعليمي ">
+                                <label for="exampleInputEmail">المستوى التعليمي للأب</label>
+                                <input type="text" class="form-control" id="father_academicel" name="father_academicel" placeholder=" أكتب المستوى التعليمي ">
                                 </div>
 
                                 <div class="form-group">
-                                <label for="exampleInputEmail">اختصاص دراسة الزوج</label>
-                                <input type="text" class="form-control" id="husb_special" name="husb_special" placeholder=" أكتب اسم اختصاص ">
+                                <label for="exampleInputEmail">اختصاص دراسة الأب</label>
+                                <input type="text" class="form-control" id="father_special" name="father_special" placeholder=" أكتب أسم الأختصاص">
                                 </div>
 
                                 <div class="form-group">
-                                <label for="exampleInputEmail">هل تعمل الزوج؟</label>
-                                <select class="form-control select2" name="husb_is_work" id="husb_is_work" placeholder=" هل الزوج يعمل ام لايعمل">
+                                <label for="exampleInputEmail">هل يعمل للأب</label>
+                                <select class="form-control select2" name="father_is_work" id="father_is_work" placeholder="هل الأم تعمل ام لا تعمل">
                                 <option value="يعمل" >
                                     يعمل
                                 </option>
@@ -336,15 +294,14 @@
                                 </option>
 								</select>
                                 </div>
-
                                 <div class="form-group">
-                                <label for="exampleInputEmail">العمل الحالي للزوج</label>
-                                <input type="text" class="form-control" id="husb_now_work" name="husb_now_work" placeholder=" أكتب العمل الحالي ">
+                                <label for="exampleInputEmail">العمل الحالي للأب</label>
+                                <input type="text" class="form-control" id="father_now_work" name="father_now_work" placeholder=" أكتب العمل الحالي للأب ">
                                 </div>
 
                                 <div class="form-group">
-                                <label for="exampleInputEmail">العمل السابق للزوج</label>
-                                <input type="text" class="form-control" id="husb_pre_work" name="husb_Pre_work" placeholder=" أكتب العمل السابق ">
+                                <label for="exampleInputEmail">الراتب الشهري للأب</label>
+                                <input type="text" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري ">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -393,49 +350,45 @@
         var button = $(event.relatedTarget)
         var student_id = button.data('student_id')
         var id = button.data('id')
-        var wife_name = button.data('wife_name')
-        var wife_birth = button.data('wife_birth')
-        var wife_city = button.data('wife_city')
-        var wife_district = button.data('wife_district')
-        var wife_mar_stat = button.data('wife_mar_stat')
-        var wife_academicel = button.data('wife_academicel')
-        var wife_special = button.data('wife_special')
-        var wife_is_work = button.data('wife_is_work')
-        var wife_now_work = button.data('wife_now_work')
-        var wife_pre_work = button.data('wife_pre_work')
-        var husb_mar_stat = button.data('husb_mar_stat')
-        var husb_birth = button.data('husb_birth')
-        var husb_orig_city = button.data('husb_orig_city')
-        var husb_district = button.data('husb_district')
-        var husb_name = button.data('husb_name')
-        var husb_academicel = button.data('husb_academicel')
-        var husb_special = button.data('husb_special')
-        var husb_is_work = button.data('husb_is_work')
-        var husb_now_work = button.data('husb_now_work')
-        var husb_pre_work = button.data('husb_pre_work')
+        var mother_name = button.data('mother_name')
+        var mother_birth = button.data('mother_birth')
+        var mother_origin = button.data('mother_origin')
+        var mother_origin_city = button.data('mother_origin_city')
+        var mother_academicel = button.data('mother_academicel')
+        var mother_now_work = button.data('mother_now_work')
+        var mother_is_work = button.data('mother_is_work')
+        var mother_salary = button.data('mother_salary')
+        var father_name = button.data('father_name')
+        var father_birth = button.data('father_birth')
+        var father_origin = button.data('father_origin')
+        var father_origin_city = button.data('father_origin_city')
+        var father_academicel = button.data('father_academicel')
+        var father_special = button.data('father_special')
+        var father_is_work = button.data('father_is_work')
+        var father_now_work = button.data('father_now_work')
+        var father_salary = button.data('father_salary')
+        var mother_special = button.data('mother_special')
         var modal = $(this)
         modal.find('.modal-body #student_id').val(student_id);
         modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #wife_name').val(wife_name);
-        modal.find('.modal-body #wife_birth').val(wife_birth);
-        modal.find('.modal-body #wife_city').val(wife_city);
-        modal.find('.modal-body #wife_district').val(wife_district);
-        modal.find('.modal-body #wife_mar_stat').val(wife_mar_stat);
-        modal.find('.modal-body #wife_academicel').val(wife_academicel);
-        modal.find('.modal-body #wife_special').val(wife_special);
-        modal.find('.modal-body #wife_is_work').val(wife_is_work);
-        modal.find('.modal-body #wife_now_work').val(wife_now_work);
-        modal.find('.modal-body #wife_pre_work').val(wife_pre_work);
-        modal.find('.modal-body #husb_mar_stat').val(husb_mar_stat);
-        modal.find('.modal-body #husb_birth').val(husb_birth);
-        modal.find('.modal-body #husb_orig_city').val(husb_orig_city);
-        modal.find('.modal-body #husb_district').val(husb_district);
-        modal.find('.modal-body #husb_academicel').val(husb_academicel);
-        modal.find('.modal-body #husb_name').val(husb_name);
-        modal.find('.modal-body #husb_special').val(husb_special);
-        modal.find('.modal-body #husb_is_work').val(husb_is_work);
-        modal.find('.modal-body #husb_now_work').val(husb_now_work);
-        modal.find('.modal-body #husb_pre_work').val(husb_pre_work);
+        modal.find('.modal-body #mother_name').val(mother_name);
+        modal.find('.modal-body #mother_birth').val(mother_birth);
+        modal.find('.modal-body #mother_origin').val(mother_origin);
+        modal.find('.modal-body #mother_origin_city').val(mother_origin_city);
+        modal.find('.modal-body #mother_academicel').val(mother_academicel);
+        modal.find('.modal-body #mother_now_work').val(mother_now_work);
+        modal.find('.modal-body #mother_is_work').val(mother_is_work);
+        modal.find('.modal-body #mother_salary').val(mother_salary);
+        modal.find('.modal-body #father_name').val(father_name);
+        modal.find('.modal-body #father_birth').val(father_birth);
+        modal.find('.modal-body #father_origin').val(father_origin);
+        modal.find('.modal-body #father_origin_city').val(father_origin_city);
+        modal.find('.modal-body #father_academicel').val(father_academicel);
+        modal.find('.modal-body #father_special').val(father_special);
+        modal.find('.modal-body #father_is_work').val(father_is_work);
+        modal.find('.modal-body #father_now_work').val(father_now_work);
+        modal.find('.modal-body #father_salary').val(father_salary);
+        modal.find('.modal-body #mother_special').val(mother_special);
     })
 </script>
 

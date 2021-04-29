@@ -20,9 +20,9 @@ class CreateStudentResidencesTable extends Migration
 
 ########################### student residences info Begin ########################
 
-            $table->string('stud_type_housing')->nullable();
-            $table->string('stud_rent_housing')->nullable();
-            $table->string('stud_Place_housing')->nullable();
+            $table->string('stud_type_housing')->nullable();// نوع السكن
+            $table->string('stud_rent_housing')->nullable(); // اجار المنزل
+            $table->string('stud_Place_housing')->nullable(); // مكان اللإقامة
             $table->string('stud_expen')->nullable();/// مصاريف جامعية
             $table->string('stud_valu_expen')->nullable();// قيمة المصاريف
 

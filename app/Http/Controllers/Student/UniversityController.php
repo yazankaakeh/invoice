@@ -12,7 +12,10 @@ use App\Http\Controllers\Controller;
 
 class UniversityController extends Controller
 {
-
+    public function show($id){
+      $univ = University::where('student_id', $id)->get();
+      return view('Student.university.university',compact('univ')); 
+    }
     public function storestudent(Request $request)
     {
            $this->validate($request,[

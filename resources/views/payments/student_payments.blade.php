@@ -128,7 +128,7 @@
                                     {{ csrf_field() }}
                                     <div class="modal-body">
                                         <p>هل انت متاكد من عملية الحذف ؟</p><br>
-                                        <input type="" name="student_id" id="student_id" value="" readonly>
+                                        <input type="hidden" name="student_id" id="student_id" value="" readonly>
                                         <input type="hidden" name="id" id="id" value="">
                                         <label for="recipient-name" class="col-form-label">اسم الطالب:</label>
                                         <input class="form-control" name="student_name" id="student_name" type="text" readonly>

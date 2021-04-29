@@ -65,7 +65,6 @@
                                                     <td>{{$x->childre_age}}</td>
                                                     <td>{{$x->childre_gender}}</td>
                                                     <td>{{$x->childre_educa_leve}}</td>
-                                                    {{-- <td>{{$x->wife_mar_stat}}</td> --}}
                                                     <td>{{$x->childre_class_number}}</td>
                                                     <td>{{$x->childre_id_extr}}</td>
                                                     <td>{{$x->childre_live_with}}</td>
@@ -75,7 +74,7 @@
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
                                                                 data-childre_age="{{$x->childre_age }}" data-childre_gender="{{$x->childre_gender}}"
-                                                                data-wife_district="{{$x->childre_educa_leve}}"
+                                                                data-childre_educa_leve="{{$x->childre_educa_leve}}"
                                                                 data-childre_class_number="{{$x->childre_class_number }}" data-childre_id_extr="{{$x->childre_id_extr}}"
                                                                 data-childre_live_with="{{$x->childre_live_with}}"
                                                                 data-student_name="{{$x->student->student_name}}"   data-student_id="{{$x->student_id}}"
@@ -182,6 +181,7 @@
                               <div class="modal-body">
                                 <div class="form-group">
                                 <input type="hidden" name="id" id="id" readonly>
+                                <input type="hidden" name="student_id" id="student_id" readonly>
                                 <label for="exampleInputEmail">اسم الطفل</label>
                                 <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب أسم الطفل ">
                                 </div>

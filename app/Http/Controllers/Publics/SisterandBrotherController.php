@@ -27,7 +27,9 @@ class SisterandBrotherController extends Controller
          //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
-
+         $x = $students->sis_statu;
+         ++$x;
+         $students->sis_statu = $x;         
          $SisterandBrothers = new SisterandBrother;
          $SisterandBrothers -> student_id = $request->student_id;
          $SisterandBrothers -> name = $request->name;
@@ -39,6 +41,7 @@ class SisterandBrotherController extends Controller
          $SisterandBrothers -> salary = $request->salary;
          //write to the data base
          $SisterandBrothers ->save();
+         $students ->save();
          session()->flash('Add_sister',  'تم اضافة أخوة للطالب  '. $student_name .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('student.show'));
@@ -55,26 +58,13 @@ class SisterandBrotherController extends Controller
        return view('Student.bros.bros')->with($bros);
     }
 
-
-    public function create()
+    public function show($id)
     {
-
+      $bros = SisterandBrother::where('student_id', $id)->get();
+       return view('Student.bros.bros', compact('bros'));
+       //->with($bros);
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(SisterandBrother $sisterandBrother)
-    {
-        //
-    }
-
-    public function edit(SisterandBrother $sisterandBrother)
-    {
-        //
-    }
 
     public function update(Request $request, SisterandBrother $sisterandBrother)
     {
@@ -112,7 +102,11 @@ class SisterandBrotherController extends Controller
         id using the id note: we have passed the id from the show using the route */
         $students =  Student::find($request->student_id);
         $student_name = $students->student_name;
+        $x = $students->sis_statu;
+        --$x;
+        $students->sis_statu = $x;
         SisterandBrother::find($request->id)->delete();
+        $students->save();
         /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
         session()->flash('Delete','تم حذف معلومات الأخوة للطالب  '. $student_name .' بنجاح ');
         return redirect(route('Sister_and_Brother.show'));

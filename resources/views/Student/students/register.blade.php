@@ -1,6 +1,6 @@
 <?php
 
-$enable = 5985;
+$enable = 0;
 ?>
 
 @extends('layouts.master')
@@ -11,7 +11,7 @@ $enable = 5985;
 @section('title')
 تسجيل الطلاب
 @endsection
-@if($enable == 1)
+@if($enable == 0)
 
 
 @section('page-header')

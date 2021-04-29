@@ -177,8 +177,8 @@
                                 {{ method_field('patch') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
-                                <input type="" name="id" id="id" readonly>
-                                <input type="" name="student_id" id="student_id" readonly>
+                                <input type="hidden" name="id" id="id" readonly>
+                                <input type="hidden" name="student_id" id="student_id" readonly>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الاسم </label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder=" العمر">

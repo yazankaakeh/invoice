@@ -36,6 +36,9 @@ class CreateStudentsTable extends Migration
             $table->integer('job_statu')->default('0');
             $table->integer('scholarship_statu')->default('0');
             $table->integer('university_statu')->default('0');
+            $table->integer('pay_statu')->default('0');
+            $table->integer('child_statu')->default('0');
+            $table->integer('sis_statu')->default('0');
             $table->enum('gender', ['ذكر', 'انثى'])->default('ذكر');
             $table->timestamps();
         });

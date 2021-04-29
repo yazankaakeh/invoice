@@ -69,6 +69,7 @@
 							<li><a class="slide-item" href="{{ route('Student_Residence.show') }}">سكن الطلاب</a></li>
 							<li><a class="slide-item" href="{{ route('Quran.show') }}">القرآن</a></li>
 							<li><a class="slide-item" href="{{ route('job.show') }}">العمل</a></li>
+							<li><a class="slide-item" href="{{ route('children.show') }}">الأطفال</a></li>
 						</ul>
 					</li>
 					{{--  <li class="slide">

@@ -80,28 +80,15 @@ class HusbandandWifeController extends Controller
        'husb_academicel','husb_special','husb_is_work','husb_now_work','husb_Pre_work')
        ->orderBy('id', 'DESC')
        ->get();
-       return view('husb.husb')->with($husb);
+       return view('Student.husb.husb')->with($husb);
     }
 
-    public function create()
+    public function show( $id)
     {
-        //
+      $husb = HusbandandWife::where('student_id', $id)->get();
+      return view('Student.husb.husb',compact('husb'));
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(HusbandandWife $husbandandWife)
-    {
-        //
-    }
-
-    public function edit(HusbandandWife $husbandandWife)
-    {
-        //
-    }
 
     public function update(Request $request)
     {

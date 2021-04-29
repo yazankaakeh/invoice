@@ -268,10 +268,10 @@
                                 <option value="العربية" >
                                    العربية
                                 </option>
-                                <option value=" التركية" >
+                                <option value="التركية">
                                     التركية
                                 </option>
-                                <option value="الأنكليزية " >
+                                <option value="الأنكليزية" >
                                      الأنكليزية
                                 </option>
 								</select>
@@ -409,7 +409,6 @@
         var number_years = button.data('number_years')
         var schoo_year = button.data('schoo_year')
         var current_rate = button.data('current_rate')
-        var language_name = button.data('language_name')
         var cumulative_rate = button.data('cumulative_rate')
         var current_level = button.data('current_level')
         var curr_level_rate = button.data('curr_level_rate')
@@ -419,6 +418,7 @@
         var are_you_univer = button.data('are_you_univer')
         var ano_univer_special = button.data('ano_univer_special')
         var ano_univer_accept = button.data('ano_univer_accept')
+        var language_name = button.data('language_name')
         var ano_accept_rate = button.data('ano_accept_rate')
         var ano_univer_name = button.data('ano_univer_name')
         var ano_schoo_year = button.data('ano_schoo_year')
@@ -433,10 +433,10 @@
         modal.find('.modal-body #univer_location').val(univer_location);
         modal.find('.modal-body #univer_special').val(univer_special);
         modal.find('.modal-body #number_years').val(number_years);
+        modal.find('.modal-body #language_name').val(language_name);
         modal.find('.modal-body #schoo_year').val(schoo_year);
         modal.find('.modal-body #current_rate').val(current_rate);
         modal.find('.modal-body #cumulative_rate').val(cumulative_rate);
-        modal.find('.modal-body #language_name').val(language_name);
         modal.find('.modal-body #Current_level').val(current_level);
         modal.find('.modal-body #curr_level_rate').val(curr_level_rate);
         modal.find('.modal-body #previ_level_rate').val(previ_level_rate);

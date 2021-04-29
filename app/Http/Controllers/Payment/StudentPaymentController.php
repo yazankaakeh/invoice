@@ -13,11 +13,17 @@ use App\Http\Controllers\Controller;
 
 class StudentPaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
+    public function show($id){
+      $payments = Student_Payment::where('student_id', $id)->get();
+     // $child = DB::table('childrens')->where('student_id', $id)->get();
+       return view('payments.student_payments',compact('payments'));
+       // using compant with where 
+       //->with($child);
+
+    }
+
     public function index()
     {
        $payments['payments'] = Student_Payment::select('id','value','student_id','updated_at','note')
@@ -25,7 +31,7 @@ class StudentPaymentController extends Controller
        ->get();
 
        //dd($payments['payments']);
-       return view('payments_students.payments')->with($payments);//
+       return view('payments.student_payments')->with($payments);//
     }
 
 
@@ -35,8 +41,12 @@ class StudentPaymentController extends Controller
             'value' => 'required',
             'id'=> 'required'
          ]);
+
          //create new object of the model student and make mapping to the data
          $students =  Student::find($request->id);
+         $x = $students->pay_statu;
+         ++$x;
+         $students->pay_statu = $x;
          $student_name = $students->student_name;
          $payments = new Student_Payment;
          $payments -> value = $request->value;
@@ -46,6 +56,7 @@ class StudentPaymentController extends Controller
 
          //write to the data base
          $payments ->save();
+         $students ->save();
          session()->flash('Add Money','تم اضافة مبلغ مالي للطالب  '. $student_name .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('student.show'));
@@ -77,8 +88,13 @@ class StudentPaymentController extends Controller
         /* here we have sued the table students and searched about the id using the find and then delete the
         id using the id note: we have passed the id from the show using the route */
         $students =  Student::find($request->student_id);
+        $x = $students->pay_statu;
+        --$x;
+        $students->pay_statu = $x;
         $student_name = $students->student_name;
         Student_Payment::find($request->id)->delete();
+        $students->save();
+
         /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
         session()->flash('Delete','تم حذف المبلغ المالي للطالب  '. $student_name .' بنجاح ');
         return redirect(route('pay.show'));

@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-عرض بيانات الأخوة
+قسم المنح
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/معلومات الأخوة و الأخوات</span>
+							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/قسم المنح</span>
 						</div>
 					</div>
 
@@ -43,46 +43,41 @@
                                                 <tr>
                                                     <th class="border-bottom-0">رقم الطالب</th>
                                                     <th class="border-bottom-0">اسم الطالب</th>
-                                                    <th class="border-bottom-0">رقم</th>
-                                                    <th class="border-bottom-0">هل تحفظ قرأن</th>
-                                                    <th class="border-bottom-0"> عدد أجزاء</th>
-                                                    <th class="border-bottom-0">اسم  مدرسك</th>
-                                                    <th class="border-bottom-0">يوجد شهادة</th>
-                                                    <th class="border-bottom-0">مصدر الشهادة</th>
-                                                    <th class="border-bottom-0">هل هي معك</th>
-                                                    <th class="border-bottom-0">تاريخ الإضافة</th>
-                                                    <th class="border-bottom-0">عمليات</th>
+                                                    <th class="border-bottom-0">رقم </th>
+                                                    <th class="border-bottom-0">اسم المنحة</th>
+                                                    <th class="border-bottom-0">نوع المنحة</th>
+                                                    <th class="border-bottom-0">قيمة المنحة</th>
+                                                    <th class="border-bottom-0">الجهة المانحة</th>
+                                                    <th class="border-bottom-0">تاريخ التعديل</th>
+                                                    <th class="border-bottom-0">العمليات</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($qurans as $x)
+                                                @foreach($schol as $x)
                                                 <tr>
                                                     <td>{{$x->student_id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
                                                     <td>{{$x->id}}</td>
-                                                    <td>{{$x->quran_memorize}}</td>
-                                                    <td>{{$x->quran_parts}}</td>
-                                                    <td>{{$x->quran_teacher}}</td>
-                                                    <td>{{$x->quran_have_certif}}</td>
-                                                    <td>{{$x->quran_Certif_essuer}}</td>
-                                                    <td>{{$x->quran_with_Certif}}</td>
+                                                    <td>{{$x->scholar_name}}</td>
+                                                    <td>{{$x->scholar_type}}</td>
+                                                    <td>{{$x->scholar_value}}</td>
+                                                    <td>{{$x->scholar_source}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                                data-id="{{$x->id}}" data-quran_parts="{{$x->quran_parts}}"
-                                                                data-name="{{$x->name }}" data-quran_memorize="{{$x->quran_memorize}}"
-                                                                data-quran_have_certif="{{$x->quran_have_certif}}" data-quran_teacher="{{$x->quran_teacher}}"
-                                                                data-quran_certif_essuer="{{$x->quran_Certif_essuer}}"
-                                                                data-quran_with_certif="{{$x->quran_with_Certif}}" data-student_name="{{$x->student->student_name}}"
-                                                                data-student_id="{{$x->student_id}}"
-                                                                data-toggle="modal"
-                                                                href="#exampleModal2" title="تعديل">
+                                                                data-id="{{$x->id}}"
+                                                                data-scholar_name="{{$x->scholar_name }}"  data-scholar_type="{{$x->scholar_type}}"
+                                                                 data-scholar_value="{{$x->scholar_value}}"
+                                                                data-scholar_source="{{$x->scholar_source}}"  data-student_name="{{$x->student->student_name}}"   
+                                                                data-student_id="{{$x->student_id}}"   
+                                                                 data-id="{{ $x->id }}" data-student_name="{{$x->student->student_name}}" 
+                                                                data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                                data-id="{{ $x->id }}"  data-name="{{$x->name }}" data-student_id="{{$x->student_id}}"
+                                                                data-id="{{ $x->id }}" data-student_name="{{$x->student->student_name}}"  data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
@@ -115,7 +110,7 @@
                             @endif
 
                             @if ($errors->any())
-                            <div class="alert alert-danger mg-b-0" role="alert">
+                         <div class="alert alert-danger mg-b-0" role="alert">
                             <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -124,9 +119,9 @@
                                     <strong>Oh snap!</strong> {{ $error }}
                             @endforeach
                             </ul>
-                            </div>
+                         </div>
                             @endif
-                        </div>
+                         </div>
 
                     </div>
 				</div>
@@ -139,7 +134,7 @@
                                     <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
-                                <form action="{{ Route('Quran.destroy') }}" method="post">
+                                <form action="{{ Route('Scholarship.destroy') }}" method="post">
                                     {{ method_field('delete') }}
                                     {{ csrf_field() }}
                                     <div class="modal-body">
@@ -147,8 +142,8 @@
                                         <div class="form-group">
                                         <input type="hidden" name="student_id" id="student_id" readonly>
                                         <input type="hidden" name="id" id="id"  readonly>
-                                        <label for="exampleInputEmail">الاسم</label>
-                                        <input class="form-control" name="name" id="name" type="text" readonly>
+                                        <label for="exampleInputEmail">البيانات المتعلقة بهذا الطالب </label>
+                                        <input class="form-control" name="student_name" id="student_name" type="text" readonly>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -172,57 +167,27 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-
-                                 <form action="{{ route('Quran.update') }}" method="post">
+                                 <form action="{{ route('Scholarship.update') }}" method="post">
                                 {{ method_field('patch') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 <input type="hidden" name="id" id="id" readonly>
-                                    <div class="form-group">
-                                    <p class="mg-b-10">هل تحفظ القرآن</p>
-                                    <select class="form-control select2" name="quran_memorize" id="quran_memorize">
-                                    <option value="نعم" >
-                                        نعم
-                                    </option>
-                                    <option value="لا" >
-                                        لا
-                                    </option>
-                                    </select>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">اسم المنحة </label>
+                                <input type="text" class="form-control" id="scholar_name" name="scholar_name" placeholder=" أكتب أسم المنحة">
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">عدد الأجزاء التي أتممت حفظها </label>
-                                <input type="text" class="form-control" id="quran_parts" name="quran_parts" placeholder="    أكنب عدد الأجزاءالمحفوظة ">
+                                <label for="exampleInputEmail">نوع المنحة</label>
+                                <input type="text" class="form-control" id="scholar_type" name="scholar_type" placeholder="   أكنب نوع المنحة">
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">أسم الشيخ الذي درسك</label>
-                                <input type="text" class="form-control" id="quran_teacher" name="quran_teacher" placeholder="أكنب أسم الشيخ ">
+                                <label for="exampleInputEmail">قيمة المنحة</label>
+                                <input type="text" class="form-control" id="scholar_value" name="scholar_value" placeholder="   كم قيمة المنحة المالية">
                                 </div>
                                 <div class="form-group">
-                                <p class="mg-b-10">هل لديك شهادة حفظ قرآن</p>
-                                <select class="form-control select2" name="quran_have_certif" id="quran_have_certif">
-                                <option value="نعم" >
-                                    نعم
-                                </option>
-                                <option value="لا" >
-                                    لا
-                                </option>
-                                </select>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">مصدر الشهادة</label>
-                                <input type="text" class="form-control" id="quran_Certif_essuer" name="quran_Certif_essuer" placeholder="   أكنب مصدر الشهادة ">
-                                </div>
-                                <div class="form-group">
-                                <p class="mg-b-10">هل الشهادة معك؟</p>
-                                <select class="form-control select2" name="quran_with_Certif" id="quran_with_Certif" >
-                                <option value="نعم" >
-                                    نعم
-                                </option>
-                                <option value="لا" >
-                                    لا
-                                </option>
-                                </select>
+                                <label for="exampleInputEmail">مصدر المنحة أو الجهة المانحة </label>
+                                <input type="text" class="form-control" id="scholar_source" name="scholar_source" placeholder=" أكتب مصدر المنحة او أسم الجهة المانحة">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -269,36 +234,34 @@
 <script>
     $('#exampleModal2').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var quran_teacher = button.data('quran_teacher')
-        var quran_memorize = button.data('quran_memorize')
-        var quran_parts = button.data('quran_parts')
         var student_id = button.data('student_id')
-        var quran_have_certif = button.data('quran_have_certif')
-        var quran_certif_essuer = button.data('quran_certif_essuer')
-        var quran_with_certif = button.data('quran_with_certif')
+        var id = button.data('id')
+        var scholar_name = button.data('scholar_name')
+        var scholar_type = button.data('scholar_type')
+        var scholar_value = button.data('scholar_value')
+        var scholar_source = button.data('scholar_source')
+        var schoo_year = button.data('schoo_year')
         var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #quran_memorize').val(quran_memorize);
         modal.find('.modal-body #student_id').val(student_id);
-        modal.find('.modal-body #quran_teacher').val(quran_teacher);
-        modal.find('.modal-body #quran_parts').val(quran_parts);
-        modal.find('.modal-body #quran_have_certif').val(quran_have_certif);
-        modal.find('.modal-body #quran_certif_essuer').val(quran_certif_essuer);
-        modal.find('.modal-body #quran_with_certif').val(quran_with_certif);
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #scholar_name').val(scholar_name);
+        modal.find('.modal-body #scholar_type').val(scholar_type);
+        modal.find('.modal-body #scholar_value').val(scholar_value);
+        modal.find('.modal-body #scholar_source').val(scholar_source);
     })
 </script>
 
+{{-- Delete --}}
 <script>
     $('#modaldemo9').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
         var student_id = button.data('student_id')
-        var name = button.data('name')
+        var student_name = button.data('student_name')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #student_id').val(student_id);
-        modal.find('.modal-body #name').val(name);
+        modal.find('.modal-body #student_name').val(student_name);
     })
 </script>
 @endsection
