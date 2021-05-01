@@ -32,7 +32,7 @@ Route::prefix('pay')->group(function () {
     Route::get('show', "Payment\StudentPaymentController@index")->name('pay.show')->middleware('auth');
     Route::post('store', "Payment\StudentPaymentController@storestudent")->name('pay.student.store')->middleware('auth');
     Route::patch('update', "Payment\StudentPaymentController@update")->name('pay.update')->middleware('auth');
-    Route::get('/show/{id}', "Payment\StudentPaymentController@show")->middleware('auth');
+    Route::get('/show/{id}', "Payment\StudentPaymentController@show")->middleware('auth')->name('pay.shows');
     Route::delete('update', "Payment\StudentPaymentController@destroy")->name('pay.destroy')->middleware('auth');
 });
 
