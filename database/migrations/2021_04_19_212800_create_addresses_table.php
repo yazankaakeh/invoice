@@ -24,8 +24,6 @@ class CreateAddressesTable extends Migration
             $table->string('address_country');// المحافظة
             $table->string('address_city');// المدينة
             $table->string('address_like_bill');// موقع كما في الفاتورة
-            $table->string('address_fir_numb');// الرقم الأول
-            $table->string('address_sec_numb');// الرقم الثاني
             $table->string('address_last');//السكن السابق
             ########################## address info End ############################
             $table->timestamps();

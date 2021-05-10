@@ -45,6 +45,9 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+        $this->mapStudentRoutes();
+        $this->mapFamilyRoutes();
+        $this->mapMedicalRoutes();
 
         //
     }
@@ -63,6 +66,27 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web.php'));
     }
 
+    protected function mapStudentRoutes()
+    {
+       Route::middleware('web')
+         ->namespace($this->namespace)
+            ->group(base_path('routes/student.php'));
+    }
+
+
+    protected function mapMedicalRoutes()
+    {
+             Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/medical.php'));
+    }
+
+    protected function mapFamilyRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/family.php'));
+    }
     /**
      * Define the "api" routes for the application.
      *

@@ -33,10 +33,11 @@
                             <div class="card mg-b-20">
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
-                                        <div class="col-sm-6 col-md-4 col-xl-3">
+                                        <div class="col-sm-3 col-md-4 col-xl-2">
+                                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo1">نعديل فورم التسجيل</a>
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة طالب</a>
-                                    </div>
-                                </div>
+                                        </div>
+                                     </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
@@ -96,7 +97,10 @@
                                                     </a>
                                                     @if($x->pay_statu != 0)
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    <a href="/pay/show/{{$x->id}}" class="modal-effect btn btn-sm btn-info" ><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+
+
+                                                    <a class=" btn btn-sm btn-info" href="/pay/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+
                                                     @endif
 
                                                     </td>
@@ -104,7 +108,7 @@
                                                     {{-- wife and husband  --}}
                                                     @if($x->husband_wife_statu == 1)
                                                     <td>
-                                                        <a class="modal-effect btn btn-sm btn-info" href="/husband_Wife/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class="btn btn-sm btn-info" href="/husband_Wife/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
                                                     @elseif($x->husband_wife_statu == 0)
                                                     <td>
@@ -119,7 +123,7 @@
                                                     {{-- father and mother  --}}
                                                     @if($x->father_mother_statu == 1)
                                                     <td>
-                                                        <a class="modal-effect btn btn-sm btn-info" href="/father_and_mother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class="btn btn-sm btn-info" href="/father_and_mother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
                                                     @elseif($x->father_mother_statu == 0)
                                                     <td>
@@ -157,7 +161,7 @@
                                                     <td>
                                                     {{-- add children  --}}
                                                     @if($x->child_statu != 0)
-                                                        <a class="modal-effect btn btn-sm btn-info" href="/children/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/children/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endif
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
@@ -168,7 +172,7 @@
                                                     {{-- Medical_Status  --}}
                                                     @if($x->medical_statu == 1)
                                                     <td>
-                                                        <a class="modal-effect btn btn-sm btn-info" href="/Medical_Statu/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/Medical_Statu/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
                                                     @elseif($x->medical_statu == 0)
                                                     <td>
@@ -182,7 +186,7 @@
 
                                                     @if($x->residance_statu == 1)
                                                     <td>
-                                                        <a class="modal-effect btn btn-sm btn-info" href="/Student_Residance/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/Student_Residance/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
 
                                                     </td>
                                                     @elseif($x->residance_statu == 0)
@@ -199,7 +203,7 @@
                                                     {{-- Quran  --}}
                                                     @if($x->quran_statu == 1)
                                                     <td>
-                                                    <a class="modal-effect btn btn-sm btn-info" href="/Quran/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    <a class=" btn btn-sm btn-info" href="/Quran/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
                                                     @elseif($x->quran_statu == 0)
                                                     <td>
@@ -214,7 +218,7 @@
                                                     {{-- Job  --}}
                                                     @if($x->job_statu == 1)
                                                     <td>
-                                                        <a class="modal-effect btn btn-sm btn-info" href="/job/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/job/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
                                                     @elseif($x->job_statu == 0)
                                                     <td>
@@ -229,7 +233,7 @@
                                                     {{-- Scholarship  --}}
                                                     @if($x->scholarship_statu == 1)
                                                     <td>
-                                                        <a class="modal-effect btn btn-sm btn-info" href="/Scholarship/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/Scholarship/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
                                                     @elseif($x->scholarship_statu == 0)
                                                     <td>
@@ -244,7 +248,7 @@
                                                     {{-- University  --}}
                                                     @if($x->university_statu == 1)
                                                     <td>
-                                                    <a class="modal-effect btn btn-sm btn-info" href="/University/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    <a class=" btn btn-sm btn-info" href="/University/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
                                                     @elseif($x->university_statu == 0)
                                                     <td>
@@ -255,12 +259,12 @@
                                                         </a>
                                                     </td>
                                                     @endif
-
+    
                                                     {{-- Sister and Brother  --}}
 
                                                     <td>
                                                     @if($x->sis_statu != 0)
-                                                    <a class="modal-effect btn btn-sm btn-info" href="/Sister_and_Brother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    <a class="btn btn-sm btn-info" href="/Sister_and_Brother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endif
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
@@ -273,10 +277,20 @@
                                             </tbody>
                                         </table>
                                     </div>
-                            <div> </div>
+
+                           <div> 
                             @if (session()->has('Add'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+                                                        
+                            @if (session()->has('Form'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Form') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -411,10 +425,11 @@
                                 <strong>ملاحظة!</strong> {{ $error }}
                                 @endforeach
                                 </ul>
-
                             </div>
                             @endif
-
+                        </div>
+                        
+                        
                         {{-- Sister and Brother --}}
                         <div class="modal fade" id="exampleModal16" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -768,13 +783,13 @@
                                 <input type="text" class="form-control" id="Accept_rate" name="Accept_rate" placeholder="   أكنب معدل القبول الجامعي ">
                                 </div>
                                 <div class="form-group">
-                                    <p class="mg-b-10"> هل يوجد جامعة ثانية</p><select class="form-control select2" name="form_select" id="secend_un" onchange="showDiv(this)">
+                                    <p class="mg-b-10"> هل يوجد جامعة ثانية</p><select class="form-control select2" name="are_you_univer" id="are_you_univer" onchange="showDiv(this)">
                                         <option label="test">
                                         </option>
-                                        <option value="1" >
+                                        <option value="يوجد" >
                                             يوجد
                                         </option>
-                                        <option value="0" >
+                                        <option value="لايوجد" >
                                             لايوجد
                                         </option>
                                     </select>
@@ -1717,12 +1732,47 @@
                         </div>
 
 
+                        {{--  enable  --}}
+                        <div class="modal" id="modaldemo1">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content modal-content-demo">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title">اضافة قسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+
+                                <form action="{{ route('student.enable') }}" method="GET">
+                                {{ method_field('GET') }}
+                                {{ csrf_field() }}     
+                                 <div class="modal-body">         
+                                  <div class="form-group">{{-- it must be select options  --}}
+                                    <p class="mg-b-10">تفعيل فورم التسجيل للطلاب؟</p>
+                                    <select class="form-control select2" name="enable" id="enable" placeholder=" أكتب الجنس الطفل ">
+                                    <option value="1" >
+                                        تغعيل
+                                    </option>
+                                    <option value="2" >
+                                        إبطال
+                                    </option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                            
+                            </div>
+                            </div>
+                        </div>
+
+
                         {{-- Husband and Wife --}}
                         <div class="modal fade" id="exampleModal111" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">اضافة زوج و زوجة</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">اضافة زوج أو زوجة</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -1732,20 +1782,21 @@
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
-                                    <div class="form-group">
-										<p class="mg-b-10">الجنس</p><select class="form-control select2" name="form_select" id="wife_has" onchange="showDiv(this)">
-											<option label="test">
-											أختر الجنس </option>
-											<option value="1" >
-												الزوجة
-											</option>
-											<option value="0" >
-												الزوج
-											</option>
-										</select>
-									</div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">الجنس </label>
+                                <select type="text" class="form-control" id="gender" name="gender" >
+                                    <option label="test">
+                                        اختر نوع الجنس </option>
+                                    <option value="ذكر" >
+                                   ذكر
+                                </option>
+                                <option value="انثى" >
+                                    انثى
+                                </option>
+								</select>
+                                </div>
                                 <hr>
-                                <div  class="row row-sm"id="hidden_div" style="display:none;"> {{-- display:flex  --}}
+                                <div  class="row row-sm"id="hidden_div" style="display:flex;"> {{-- display:flex  --}}
                                 
                                 <div class="form-group">
                                 <input type="hidden" name="student_id" id="student_id"  readonly>
@@ -1797,25 +1848,6 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
                                     <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة ">
-                                </div>
-                               <div class="form-group">{{-- it must be select options  --}}
-                                    <p class="mg-b-10">الحالة الاجتماعية للزوجة</p>
-                                    <select class="form-control select2" name="wife_mar_stat" id="wife_mar_stat" placeholder=" أكتب الحالة الأجتماعية ">
-                                        <option label="test">
-											اختر الحالة الأجتماعية </option>
-                                        <option value="متزوجة" >
-                                        متزوجة
-                                    </option>
-                                    <option value="متوفية" >
-                                        متوفية
-                                    </option>
-                                    <option value="ارملة" >
-                                        ارملة
-                                    </option>
-                                    <option value="مطلقة" >
-                                        مطلقة
-                                    </option>
-                                    </select>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للزوجة</label>
@@ -1869,134 +1901,6 @@
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمل السابق للزوجة</label>
                                 <input type="text" class="form-control" id="wife_Pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  ">
-                                </div>
-                               </div>
-
-                                {{--  Husband Part  --}}
-                                <hr>
-                                <div  class="row row-sm"id="hidden1_div" style="display:none;"> {{-- display:flex  --}}
-                                <div class="form-group">
-                                <label for="exampleInputEmail">اسم الزوج</label>
-                                <input type="text" class="form-control" id="husb_name" name="husb_name" placeholder=" أكتب اسم الزوج ">
-                                </div>
-                                 <div class="form-group">
-                                <label for="exampleInputEmail">تاريخ ميلاد الزوج</label>
-                                <input type="date" class="form-control" id="husb_birth" name="husb_birth" placeholder=" أكتب تاريخ الميلاد">
-                                </div>
-                                 <div class="form-group">
-                                <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <select class="form-control" id="husb_Orig_city" name="husb_Orig_city" placeholder=" أكتب اسم محافظة ">
-                                    <option label="test">
-                                        اختر اسم المحافظة </option>
-                                    <option value="	دمشق">
-                                        دمشق</option>
-                                    <option value="ريف دمشق">
-                                        ريف دمشق</option>
-                                    <option value="	حلب ">
-                                        حلب</option>
-                                    <option value="حمص">
-                                        حمص</option>
-                                    <option value="حماه">
-                                        حماه</option>
-                                    <option value="	درعا">
-                                        درعا</option>
-                                    <option value="	ادالب">
-                                        ادلب</option>
-                                    <option value="	سويداء">
-                                        سويداء</option>
-                                    <option value="	ديرالزور">
-                                        دير الزور</option>
-                                    <option value="	الرقة">
-                                        الرقة</option>
-                                    <option value="الحسكة">
-                                        الحسكة</option>
-                                    <option value="	اللاذقية">
-                                        اللاذقية</option>
-                                    <option value="	طرطوس">
-                                        طرطوس</option>
-                                    <option value="	القنيطرة">
-                                        القنيطرة</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="husb_district" name="husb_district" placeholder=" أكتب اسم المدينة ">
-                                </div>
-                                <div class="form-group">{{-- it must be select options  --}}
-                                    <p class="mg-b-10">الحالة الاجتماعية للزوج</p>
-                                    <select class="form-control select2" name="husb_mar_stat" id="husb_mar_stat" placeholder=" أكتب الحالة الاجتماعية ">
-                                        <option label="test">
-											اختر الحالة الأجتماعية </option>
-                                        <option value="معتقل" >
-                                        معتقل
-                                    </option>
-                                    <option value="متوفي" >
-                                        متوفي
-                                    </option>
-                                    <option value="مفقود" >
-                                        مفقود
-                                    </option>
-                                    <option value="متزوج" >
-                                        متزوج
-                                    </option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">المستوى التعليمي للزوج</label>
-                                <select class="form-control" id="husb_academicel" name="husb_academicel" placeholder=" أكتب المستوى التعليمي ">
-                                   <option label="test">
-											اختر المستوى التعليمي </option>
-                                    <option value=" الأمِّيِّ">
-                                        الأمِّيِّ </option>
-                                 <option value="حضانة">
-                                    حضانة </option>
-                                 <option value="روضة">
-                                    روضة </option>
-                                 <option value="ابتدائي">
-                                    ابتدائي </option>
-                                <option value="اعدادي">
-                                    اعدادي </option>
-                                <option value="ثانوي">
-                                    ثانوي </option>
-                                 <option value="دبلوم ">
-                                    دبلوم </option>
-                                 <option value="جامعي">
-                                    جامعي </option>
-                                <option value="مايجستير">
-                                    مايجستير </option>
-                                 <option value="ديكتورا">
-                                    ديكتورا </option>
-                                </select>
-                                </div>
-
-                                <div class="form-group">
-                                <label for="exampleInputEmail">اختصاص دراسة الزوج</label>
-                                <input type="text" class="form-control" id="husb_special" name="husb_special" placeholder=" أكتب اسم اختصاص ">
-                                </div>
-
-                                <div class="form-group">
-                                <label for="exampleInputEmail">هل تعمل الزوج؟</label>
-                                <select class="form-control select2" name="husb_is_work" id="husb_is_work" placeholder=" هل الزوج يعمل ام لايعمل">
-                              <option label="test">
-											اختر يعمل أو لايعمل </option>
-                                    <option value="يعمل" >
-                                    يعمل
-                                </option>
-                                <option value="لايعمل" >
-                                    لايعمل
-                                </option>
-								</select>
-                                </div>
-
-                                <div class="form-group">
-                                <label for="exampleInputEmail">العمل الحالي للزوج</label>
-                                <input type="text" class="form-control" id="husb_now_work" name="husb_now_work" placeholder=" أكتب العمل الحالي ">
-                                </div>
-
-                                <div class="form-group">
-                                <label for="exampleInputEmail">العمل السابق للزوج</label>
-                                <input type="text" class="form-control" id="husb_Pre_work" name="husb_Pre_work" placeholder=" أكتب العمل السابق ">
-                                </div>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -2985,8 +2889,6 @@
                         </div>
 
 
-
-
                 </div>
 				<!-- row closed -->
 			</div>
@@ -3062,7 +2964,7 @@
     })
 </script>
 
-{{--  payment   --}}
+{{--  father and Mother   --}}
 <script>
     $('#exampleModal0').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
@@ -3170,7 +3072,7 @@
 </script>
 
 <script type="text/javascript">
-    function showDiv(select){
+    function showDiv1(select){
        if(select.value==1){
         document.getElementById('hidden_div').style.display = "flex";
         document.getElementById('hidden1_div').style.display = "none";
@@ -3184,7 +3086,7 @@
     
     <script type="text/javascript">
         function showDiv(select){
-           if(select.value==1){
+           if(select.value=='يوجد'){
             document.getElementById('hidden3_div').style.display = "flex";
            } else{
             document.getElementById('hidden3_div').style.display = "none";    

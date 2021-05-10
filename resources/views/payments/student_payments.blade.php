@@ -47,7 +47,10 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($payments as $x)
+                                                @if($x->student_id != null)
+
                                                 <tr>
+                                                    
                                                     <td>{{$x->id}}</td>
                                                     <td>{{$x->value}}</td>
                                                     <td>{{$x->student_id}}</td>
@@ -72,6 +75,7 @@
                                                             </a>
                                                     </td>
                                                 </tr>
+                                                @endif
                                                 @endforeach
                                             </tbody>
                                         </table>

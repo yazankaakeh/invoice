@@ -22,7 +22,17 @@ class CreateMedicalsTable extends Migration
             $table->string('medical_have_id');// هل يوجد هوية
             $table->string('medical_id_extr');// مدينة أستخراج هوية
             $table->string('medical_number');//رقم الهاتف
+            $table->string('note');// 
             ########################## medical info End ############################
+            $table->integer('husband_wife_statu')->default('0');
+            $table->integer('residance_statu')->default('0');
+            $table->integer('job_statu')->default('0');
+            $table->integer('pay_statu')->default('0');
+            $table->integer('child_statu')->default('0');
+            $table->integer('father_mother_statu')->default('0');
+            $table->integer('enable')->default('0');
+            $table->integer('student_statu')->default('0');
+            $table->integer('medical_statu')->default('0');
             $table->timestamps();
         });
     }

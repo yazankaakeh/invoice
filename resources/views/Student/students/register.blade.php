@@ -1,6 +1,4 @@
 <?php
-
-$enable = 0;
 ?>
 
 @extends('layouts.master')
@@ -11,7 +9,7 @@ $enable = 0;
 @section('title')
 تسجيل الطلاب
 @endsection
-@if($enable == 0)
+@if($enable->student_form != 2)  
 
 
 @section('page-header')
@@ -1691,7 +1689,7 @@ $enable = 0;
            }
         }
         </script>
-                    {{--  if for  Scholarship --}}
+        {{--  if for  Scholarship --}}
         <script type="text/javascript">
             function showDivv3(select){
                if(select.value==1){
@@ -1723,4 +1721,4 @@ $enable = 0;
 @endsection
 @else
 
-@endif
+@endif  

@@ -24,6 +24,7 @@ class CreateHusbandandWivesTable extends Migration
             $table->unsignedBigInteger('family_id')->nullable();
             $table->foreign('family_id')->references('id')->on('families');
 ########################## wife info Begin ############################
+            $table->string('gender')->nullable();
             $table->string('wife_name')->nullable();
             $table->date('wife_birth')->nullable();
             $table->string('wife_city')->nullable();// الأصل و المدينة

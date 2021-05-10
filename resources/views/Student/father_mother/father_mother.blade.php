@@ -68,6 +68,7 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($fath as $x)
+                                                @if($x->student_id != null)
                                                 <tr>
                                                     <td>{{$x->student_id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
@@ -117,6 +118,7 @@
                                                             </a>
                                                     </td>
                                                 </tr>
+                                                @endif
                                                 @endforeach
                                             </tbody>
                                         </table>

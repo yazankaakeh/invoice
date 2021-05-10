@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Publics;
 use App\Http\Controllers\Student\StudentController;
 use App\models\Student\Student;
 use App\models\Publics\FatherandMother;
+use App\models\Medical\Medical;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 
 class FatherandMotherController extends Controller
 {
+
+    ////////////////////////////////////// Student Start /////////////////////////////////
 
     public function storestudent(Request $request)
     {
@@ -87,7 +90,6 @@ class FatherandMotherController extends Controller
        return view('Student.father_mother.father_mother')->with($fath);
     }
 
-
     public function update(Request $request)
     {
           $this->validate($request,[
@@ -159,4 +161,163 @@ class FatherandMotherController extends Controller
         $students->save();
         return redirect(route('FatherandMother.show'));
     }
+
+    ////////////////////////////////////// Student End /////////////////////////////////
+
+
+        ////////////////////////////////////// Medical Start /////////////////////////////////
+
+    public function store_medical(Request $request)
+    {
+            $this->validate($request,[
+            'medical_id'=> 'required',
+            'mother_name' => 'required',
+            'mother_birth' => 'required',
+            'mother_origin' => 'required',
+            'mother_origin_city' => 'required',
+            'mother_academicel' => 'required',
+            'mother_special' => 'required',
+            'mother_is_work' => 'required',
+            'mother_now_work' => 'required',
+            'mother_salary' => 'required',
+            // ////////////////////////////////////////////////
+            'father_name' => 'required',
+            'father_birth' => 'required',
+            'father_origin' => 'required',
+            'father_origin_city' => 'required',
+            'father_academicel' => 'required',
+            'father_special' => 'required',
+            'father_is_work' => 'required',
+            'father_now_work' => 'required',
+            'father_salary' => 'required'
+         ]);
+         //create new object of the model student and make mapping to the data
+         $Medicals =  Medical::find($request->medical_id);
+         $Medical_name = $Medicals->Medical_name;
+         $x=1;
+         $Medicals->father_mother_statu = $x;
+         $FatherandMothers = new FatherandMother;
+         $FatherandMothers -> medical_id = $request->medical_id;
+         $FatherandMothers -> mother_name = $request->mother_name;
+         $FatherandMothers -> mother_birth = $request->mother_birth;
+         $FatherandMothers -> mother_origin = $request->mother_origin;
+         $FatherandMothers -> mother_origin_city = $request->mother_origin_city;
+         $FatherandMothers -> mother_academicel = $request->mother_academicel;
+         $FatherandMothers -> mother_special = $request->mother_special;
+         $FatherandMothers -> mother_is_work = $request->mother_is_work;
+         $FatherandMothers -> mother_now_work = $request->mother_now_work;
+         $FatherandMothers -> mother_salary = $request->mother_salary;
+         ///////////////////////////////////////////
+         $FatherandMothers -> father_name = $request->father_name;
+         $FatherandMothers -> father_birth = $request->father_birth;
+         $FatherandMothers -> father_origin = $request->father_origin;
+         $FatherandMothers -> father_origin_city = $request->father_origin_city;
+         $FatherandMothers -> father_academicel = $request->father_academicel;
+         $FatherandMothers -> father_special = $request->father_special;
+         $FatherandMothers -> father_is_work = $request->father_is_work;
+         $FatherandMothers -> father_now_work = $request->father_now_work;
+         $FatherandMothers -> father_salary = $request->father_salary;
+         //write to the data base
+         $Medicals->save();
+         $FatherandMothers ->save();
+         session()->flash('Add_fatherandmother',  'تم اضافة معلومات الأب و الأم للطالب  '. $Medical_name .' بنجاح ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Medical Successfully')
+         return redirect(route('medical.show'));
+
+    }
+
+    public function show_medical($id){
+    
+      $fath = FatherandMother::where('medical_id', $id)->get();
+    
+      return view('Medical.father_mother.father_medical',compact('fath')); 
+    }
+
+    public function index_medical()
+    {
+       $fath['fath'] = FatherandMother::select('id','mother_name','medical_id','updated_at','mother_origin','mother_birth',
+       'mother_origin_city','mother_academicel','mother_special','mother_is_work',
+       'mother_now_work','mother_salary','father_name','father_birth',
+       'father_origin','father_origin_city','father_academicel','father_special',
+       'father_is_work','father_now_work','father_salary')
+       ->orderBy('id', 'DESC')
+       ->get();
+       return view('Medical.father_mother.father_medical')->with($fath);
+    }
+
+    public function medical_edit(Request $request)
+    {
+          $this->validate($request,[
+            'id'=> 'required',
+            'medical_id'=> 'required',
+            'mother_name' => 'required',
+            'mother_birth' => 'required',
+            'mother_origin' => 'required',
+            'mother_origin_city' => 'required',
+            'mother_academicel' => 'required',
+            'mother_special' => 'required',
+            'mother_is_work' => 'required',
+            'mother_now_work' => 'required',
+            'mother_salary' => 'required',
+            // ////////////////////////////////////////////////
+            'father_name' => 'required',
+            'father_birth' => 'required',
+            'father_origin' => 'required',
+            'father_origin_city' => 'required',
+            'father_academicel' => 'required',
+            'father_special' => 'required',
+            'father_is_work' => 'required',
+            'father_now_work' => 'required',
+            'father_salary' => 'required'
+         ]);
+         //create new object of the model Medical and make mapping to the data
+         $Medicals =  Medical::find($request->medical_id);
+         $Medical_name = $Medicals->Medical_name;
+         $FatherandMothers =  FatherandMother::find($request->id);
+         $FatherandMothers -> medical_id = $request->medical_id;
+         $FatherandMothers -> mother_name = $request->mother_name;
+         $FatherandMothers -> mother_birth = $request->mother_birth;
+         $FatherandMothers -> mother_origin = $request->mother_origin;
+         $FatherandMothers -> mother_origin_city = $request->mother_origin_city;
+         $FatherandMothers -> mother_academicel = $request->mother_academicel;
+         $FatherandMothers -> mother_special = $request->mother_special;
+         $FatherandMothers -> mother_is_work = $request->mother_is_work;
+         $FatherandMothers -> mother_now_work = $request->mother_now_work;
+         $FatherandMothers -> mother_salary = $request->mother_salary;
+         ///////////////////////////////////////////
+         $FatherandMothers -> father_name = $request->father_name;
+         $FatherandMothers -> father_birth = $request->father_birth;
+         $FatherandMothers -> father_origin = $request->father_origin;
+         $FatherandMothers -> father_origin_city = $request->father_origin_city;
+         $FatherandMothers -> father_academicel = $request->father_academicel;
+         $FatherandMothers -> father_special = $request->father_special;
+         $FatherandMothers -> father_is_work = $request->father_is_work;
+         $FatherandMothers -> father_now_work = $request->father_now_work;
+         $FatherandMothers -> father_salary = $request->father_salary;
+         //write to the data base
+         $FatherandMothers ->save();
+         session()->flash('Edit', 'تم تعديل تفاصيل الأب و الأم للمريض  '. $Medical_name .' بنجاح ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Medical Successfully')
+         return redirect(route('FatherandMother.show.medical'));
+
+    }
+
+    public function destroy_medical(Request $request)
+    {
+        /* here we have sued the table Medicals and searched about the id using the find and then delete the
+        id using the id note: we have passed the id from the show using the route */
+        $Medicals =  Medical::find($request->medical_id);
+        $x=0;
+        $Medicals->father_mother_statu = $x;
+        $Medical_name = $Medicals->Medical_name;
+        FatherandMother::find($request->id)->delete();
+        /*after delete the Medical by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Medical Successfully')*/
+        session()->flash('Delete','تم حذف معلومات الأم و الأب الخاصة بالطالب  '. $Medical_name .' بنجاح ');
+        $Medicals->save();
+        return redirect(route('FatherandMother.show'));
+    }
+
+    ////////////////////////////////////// Medical End /////////////////////////////////
+
+
 }

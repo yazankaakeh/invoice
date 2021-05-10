@@ -41,24 +41,14 @@
                                         <table id="example" class="table key-buttons text-md-nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th class="border-bottom-0">رقم الطالب</th>
-                                                    <th class="border-bottom-0">اسم الطالب</th>
+                                                    <th dir="rtl" class="border-bottom-0">رقم الطالب/ة</th>
+                                                    <th class="border-bottom-0">اسم الطالب/ة</th>
                                                     <th class="border-bottom-0">رقم </th>
-                                                    <th class="border-bottom-0">اسم الزوجة</th>
+                                                    <th class="border-bottom-0">الجنس</th>
+                                                    <th class="border-bottom-0">اسم الزوج/ة</th>
                                                     <th class="border-bottom-0">المواليد</th>
                                                     <th class="border-bottom-0">المدينة</th>
                                                     <th class="border-bottom-0">الحي</th>
-                                                    {{-- <th class="border-bottom-0">الحالة الإجتماعية</th> --}}
-                                                    <th class="border-bottom-0">المستوى الدراسي</th>
-                                                    <th class="border-bottom-0">الأختصاص</th>
-                                                    <th class="border-bottom-0">حالة العمل</th>
-                                                    <th class="border-bottom-0">العمل</th>
-                                                    <th class="border-bottom-0">العمل القديم</th>
-                                                    <th class="border-bottom-0">اسم الزوج</th>
-                                                    <th class="border-bottom-0">المواليد</th>
-                                                    <th class="border-bottom-0">المدينة</th>
-                                                    <th class="border-bottom-0">الحي</th>
-                                                    {{-- <th class="border-bottom-0">الحالة الإجتماعية</th> --}}
                                                     <th class="border-bottom-0">المستوى الدراسي</th>
                                                     <th class="border-bottom-0">الأختصاص</th>
                                                     <th class="border-bottom-0">حالة العمل</th>
@@ -74,6 +64,7 @@
                                                     <td>{{$x->student_id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
                                                     <td>{{$x->id}}</td>
+                                                    <td>{{$x->gender}}</td>
                                                     <td>{{$x->wife_name}}</td>
                                                     <td>{{$x->wife_birth}}</td>
                                                     <td>{{$x->wife_city}}</td>
@@ -84,16 +75,6 @@
                                                     <td>{{$x->wife_is_work}}</td>
                                                     <td>{{$x->wife_now_work}}</td>
                                                     <td>{{$x->wife_Pre_work}}</td>
-                                                    <td>{{$x->husb_name}}</td>
-                                                    <td>{{$x->husb_birth}}</td>
-                                                    <td>{{$x->husb_Orig_city}}</td>
-                                                    <td>{{$x->husb_district}}</td>
-                                                    {{-- <td>{{$x->husb_mar_stat}}</td> --}}
-                                                    <td>{{$x->husb_academicel}}</td>
-                                                    <td>{{$x->husb_special}}</td>
-                                                    <td>{{$x->husb_is_work}}</td>
-                                                    <td>{{$x->husb_now_work}}</td>
-                                                    <td>{{$x->husb_Pre_work}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                             {{-- Edite --}}
@@ -105,13 +86,7 @@
                                                                 data-wife_academicel="{{$x->wife_academicel }}" data-wife_special="{{$x->wife_special}}"
                                                                 data-wife_is_work="{{$x->wife_is_work}}" data-wife_now_work="{{$x->wife_now_work }}"
                                                                 data-wife_pre_work="{{$x->wife_Pre_work}}"
-                                                                {{-- data-husb_mar_stat="{{$x->husb_mar_stat }}" --}}
-                                                                data-husb_orig_city="{{$x->husb_Orig_city}}"
-                                                                data-husb_birth="{{$x->husb_birth}}" data-husb_district="{{$x->husb_district}}"
-                                                                data-husb_name="{{$x->husb_name}}" data-husb_special="{{$x->husb_special}}"
-                                                                data-husb_academicel="{{$x->husb_academicel}}"
-                                                                data-husb_is_work="{{$x->husb_is_work}}" data-husb_now_work="{{$x->husb_now_work}}"
-                                                                data-husb_pre_work="{{$x->husb_Pre_work}}"
+                                                                data-gender="{{$x->gender}}"
                                                                 data-student_name="{{$x->student->student_name}}"   data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
@@ -214,6 +189,19 @@
                                 {{ csrf_field() }}
                                <div class="modal-body">
                                 <div class="form-group">
+                                <label for="exampleInputEmail">الجنس </label>
+                                <select type="text" class="form-control" id="gender" name="gender" >
+                                    <option label="test">
+                                        اختر نوع الجنس </option>
+                                    <option value="ذكر" >
+                                   ذكر
+                                </option>
+                                <option value="انثى" >
+                                    انثى
+                                </option>
+								</select>
+                                </div>
+                                <div class="form-group">
                                 <input type="hidden" name="student_id" id="student_id"  readonly>
                                 <input type="hidden" name="id" id="id"  readonly>
                                 <label for="exampleInputEmail">اسم الزوجة</label>
@@ -235,23 +223,6 @@
                                     <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة ">
                                 </div>
 
-                                {{-- <div class="form-group">
-                                    <p class="mg-b-10">الحالة الاجتماعية للزوجة</p>
-                                    <select class="form-control select2" name="wife_mar_stat" id="wife_mar_stat" placeholder=" أكتب الحالة الأجتماعية ">
-                                    <option value="متزوجة" >
-                                        متزوجة
-                                    </option>
-                                    <option value="متوفية" >
-                                        متوفية
-                                    </option>
-                                    <option value="ارملة" >
-                                        ارملة
-                                    </option>
-                                    <option value="مطلقة" >
-                                        مطلقة
-                                    </option>
-                                    </select>
-                                </div> --}}
                                  <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للزوجة</label>
                                 <input type="text" class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى التعليمي  ">
@@ -278,73 +249,6 @@
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمل السابق للزوجة</label>
                                 <input type="text" class="form-control" id="wife_pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  ">
-                                </div>
-
-                                {{--  Husband Part  --}}
-                                <hr>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">اسم الزوج</label>
-                                <input type="text" class="form-control" id="husb_name" name="husb_name" placeholder=" أكتب اسم الزوج ">
-                                </div>
-                                 <div class="form-group">
-                                <label for="exampleInputEmail">تاريخ ميلاد الزوج</label>
-                                <input type="date" class="form-control" id="husb_birth" name="husb_birth" placeholder=" أكتب تاريخ الميلاد">
-                                </div>
-                                 <div class="form-group">
-                                <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <input type="text" class="form-control" id="husb_orig_city" name="husb_Orig_city" placeholder=" أكتب اسم محافظة ">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="husb_district" name="husb_district" placeholder=" أكتب اسم المدينة ">
-                                </div>
-                                {{-- <div class="form-group">
-                                    <p class="mg-b-10">الحالة الاجتماعية للزوج</p>
-                                    <select class="form-control select2" name="husb_mar_stat" id="husb_mar_stat" placeholder=" أكتب الحالة الاجتماعية ">
-                                    <option value="معتقل" >
-                                        معتقل
-                                    </option>
-                                    <option value="متوفي" >
-                                        متوفي
-                                    </option>
-                                    <option value="مفقود" >
-                                        مفقود
-                                    </option>
-                                    <option value="متزوج" >
-                                        متزوج
-                                    </option>
-                                    </select>
-                                </div> --}}
-                                <div class="form-group">
-                                <label for="exampleInputEmail">المستوى التعليمي للزوج</label>
-                                <input type="text" class="form-control" id="husb_academicel" name="husb_academicel" placeholder=" أكتب المستوى التعليمي ">
-                                </div>
-
-                                <div class="form-group">
-                                <label for="exampleInputEmail">اختصاص دراسة الزوج</label>
-                                <input type="text" class="form-control" id="husb_special" name="husb_special" placeholder=" أكتب اسم اختصاص ">
-                                </div>
-
-                                <div class="form-group">
-                                <label for="exampleInputEmail">هل تعمل الزوج؟</label>
-                                <select class="form-control select2" name="husb_is_work" id="husb_is_work" placeholder=" هل الزوج يعمل ام لايعمل">
-                                <option value="يعمل" >
-                                    يعمل
-                                </option>
-                                <option value="لايعمل" >
-                                    لايعمل
-                                </option>
-								</select>
-                                </div>
-
-                                <div class="form-group">
-                                <label for="exampleInputEmail">العمل الحالي للزوج</label>
-                                <input type="text" class="form-control" id="husb_now_work" name="husb_now_work" placeholder=" أكتب العمل الحالي ">
-                                </div>
-
-                                <div class="form-group">
-                                <label for="exampleInputEmail">العمل السابق للزوج</label>
-                                <input type="text" class="form-control" id="husb_pre_work" name="husb_Pre_work" placeholder=" أكتب العمل السابق ">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -403,16 +307,7 @@
         var wife_is_work = button.data('wife_is_work')
         var wife_now_work = button.data('wife_now_work')
         var wife_pre_work = button.data('wife_pre_work')
-        var husb_mar_stat = button.data('husb_mar_stat')
-        var husb_birth = button.data('husb_birth')
-        var husb_orig_city = button.data('husb_orig_city')
-        var husb_district = button.data('husb_district')
-        var husb_name = button.data('husb_name')
-        var husb_academicel = button.data('husb_academicel')
-        var husb_special = button.data('husb_special')
-        var husb_is_work = button.data('husb_is_work')
-        var husb_now_work = button.data('husb_now_work')
-        var husb_pre_work = button.data('husb_pre_work')
+        var gender = button.data('gender')
         var modal = $(this)
         modal.find('.modal-body #student_id').val(student_id);
         modal.find('.modal-body #id').val(id);
@@ -426,16 +321,7 @@
         modal.find('.modal-body #wife_is_work').val(wife_is_work);
         modal.find('.modal-body #wife_now_work').val(wife_now_work);
         modal.find('.modal-body #wife_pre_work').val(wife_pre_work);
-        modal.find('.modal-body #husb_mar_stat').val(husb_mar_stat);
-        modal.find('.modal-body #husb_birth').val(husb_birth);
-        modal.find('.modal-body #husb_orig_city').val(husb_orig_city);
-        modal.find('.modal-body #husb_district').val(husb_district);
-        modal.find('.modal-body #husb_academicel').val(husb_academicel);
-        modal.find('.modal-body #husb_name').val(husb_name);
-        modal.find('.modal-body #husb_special').val(husb_special);
-        modal.find('.modal-body #husb_is_work').val(husb_is_work);
-        modal.find('.modal-body #husb_now_work').val(husb_now_work);
-        modal.find('.modal-body #husb_pre_work').val(husb_pre_work);
+        modal.find('.modal-body #gender').val(gender);
     })
 </script>
 

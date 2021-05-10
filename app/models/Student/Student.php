@@ -51,6 +51,11 @@ class Student extends Model
         return $this->hasOne('App\models\Publics\job');
         }
 
+        public function medical()
+        {
+        return $this->hasOne('App\models\Medical\Medical');
+        }
+
         public function Quran()
         {
         return $this->hasOne('App\models\Student\Quran');

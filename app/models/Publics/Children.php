@@ -25,7 +25,7 @@ class Children extends Model
 
      public function Family()
     {
-        return $this->belongsTo('App\models\Family\Family');
+        return $this->belongsTo('App\models\Family\Family', "family_id");
     }
 
      public function Medical()

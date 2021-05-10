@@ -21,7 +21,12 @@ class CreateStudentPaymentsTable extends Migration
             $table->foreign('family_id')->references('id')->on('families');
             $table->unsignedBigInteger('medical_id')->nullable();
             $table->foreign('medical_id')->references('id')->on('medicals');
-            $table->integer('value');
+            $table->integer('value')->nullable();
+            $table->integer('value_usd')->nullable();
+            $table->integer('family_value')->nullable();
+            $table->integer('family_value_usd')->nullable();
+            $table->integer('medical_value')->nullable();
+            $table->integer('medical_value_usd')->nullable();
             $table->string('Note')->nullable();
             $table->timestamps();
         });

@@ -45,6 +45,7 @@
                                                     <th class="border-bottom-0">اسم الطالب</th>
                                                     <th class="border-bottom-0">رقم الاخ</th>
                                                     <th class="border-bottom-0">اسم الأخ</th>
+                                                    <th class="border-bottom-0">العمر</th>
                                                     <th class="border-bottom-0">الجنس</th>
                                                     <th class="border-bottom-0">المرحلة الدراسية</th>
                                                     <th class="border-bottom-0">الاختصاص الدراسي</th>
@@ -61,6 +62,7 @@
                                                     <td>{{$x->student->student_name}}</td>
                                                     <td>{{$x->id}}</td>
                                                     <td>{{$x->name}}</td>
+                                                    <td>{{$x->age}}</td>
                                                     <td>{{$x->gender}}</td>
                                                     <td>{{$x->academicel}}</td>
                                                     <td>{{$x->special}}</td>
