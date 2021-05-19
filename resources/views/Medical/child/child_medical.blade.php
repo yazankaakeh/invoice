@@ -53,6 +53,7 @@
                                                     <th class="border-bottom-0">هل يعيشون معكم</th>
                                                     <th class="border-bottom-0">تاريخ التعديل</th>
                                                     <th class="border-bottom-0">العمليات</th>
+                                                    <th class="border-bottom-0">إضافة مدرسة</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -88,8 +89,23 @@
                                                                 data-id="{{ $x->id }}" data-medical_name="{{$x->medical->medical_name}}"  data-medical_id="{{$x->medical_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
-                                                            </a>
+                                                            </a>   
                                                     </td>
+                                                    <td>    
+                                                            {{-- Add_School --}}
+                                                            <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                                data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
+                                                                data-toggle="modal"
+                                                                href="#exampleModal" title="إضافة مدرسة">
+                                                                <i class="las la-pen"></i>
+                                                            </a> 
+                                                            @if($x->medical_statu != 0)
+                                                            <td>
+                                                            <a class=" btn btn-sm btn-info" href="/school/show/medical/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                            </td>
+                                                            @endif
+                                                    </td>
+                                                        
                                                 </tr>
                                                    @endif
                                                 @endforeach
@@ -149,7 +165,6 @@
                                     <div class="modal-body">
                                         <p>هل انت متاكد من عملية الحذف ؟</p><br>
                                         <div class="form-group">
-                                        <input type="hidden" name="medical_id" id="medical_id" readonly>
                                         <input type="hidden" name="id" id="id"  readonly>
                                         <label for="exampleInputEmail">البيانات المتعلقة بهذا الطالب </label>
                                         <input class="form-control" name="medical_name" id="medical_name" type="text" readonly>
@@ -163,6 +178,57 @@
                             </form>
                         </div>
                     </div>
+
+
+                   {{-- Add_School --}}
+                    <div class="modal" id="exampleModal">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content modal-content-demo">
+                                <div class="modal-header">
+                                    <h6 class="modal-title">إضافة مدرسة</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                        type="button"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <form action="{{ Route('school.medical.store') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                    <div class="modal-body">
+                                    <div class="form-group">
+                                    <input type="hidden" name="id" id="id"  readonly>
+                                    <label for="exampleInputEmail">اسم المدرسة </label>
+                                    <input class="form-control" name="School_name" id="School_name" type="text">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail">نوع المدرسة </label>
+                                    <input class="form-control" name="School_type" id="School_type" type="text">
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail">موقع المدرسة </label>
+                                    <input class="form-control" name="School_location" id="School_location" type="text">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail">تكاليف الدراسة</label>
+                                    <input class="form-control" name="School_cost" id="School_cost" type="text">
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail">نكاليف عامة</label>
+                                    <input class="form-control" name="School_fees" id="School_fees" type="text">
+                                    </div>  
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                                        <button type="submit" class="btn btn-danger">تاكيد</button>
+                                    </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+
 
                     {{-- edit --}}
                     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -325,6 +391,18 @@
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #medical_id').val(medical_id);
         modal.find('.modal-body #medical_name').val(medical_name);
+    })
+</script>
+
+{{--  Add_School  --}}
+<script>
+    $('#exampleModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var childre_name = button.data('childre_name')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #childre_name').val(childre_name);
     })
 </script>
 @endsection

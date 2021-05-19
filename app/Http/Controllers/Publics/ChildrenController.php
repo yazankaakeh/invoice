@@ -27,11 +27,12 @@ class ChildrenController extends Controller
        //->with($child);
 
     }
+    
     public function index()
     {
         $child['child'] = Children::select('id','student_id','updated_at','childre_name','childre_age',
        'childre_gender','childre_educa_leve','childre_class_number','childre_id_extr',
-       'childre_live_with')
+       'childre_live_with','student_statu','family_statu','medical_statu')
        ->orderBy('id', 'DESC')
        ->get();
        return view('Student.child.child')->with($child);
@@ -151,6 +152,7 @@ class ChildrenController extends Controller
             'childre_gender' => 'required',
             'childre_educa_leve' => 'required',
             'childre_class_number' => 'required',
+            'medical_stat' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
          ]);
@@ -167,6 +169,7 @@ class ChildrenController extends Controller
          $Childrens -> childre_gender = $request->childre_gender;
          $Childrens -> childre_educa_leve = $request->childre_educa_leve;
          $Childrens -> childre_class_number = $request->childre_class_number;
+         $Childrens -> medical_stat = $request->medical_stat;
          $Childrens -> childre_id_extr = $request->childre_id_extr;
          $Childrens -> childre_live_with = $request->childre_live_with;
          //write to the data base
@@ -186,6 +189,7 @@ class ChildrenController extends Controller
             'childre_name' => 'required',
             'childre_age' => 'required',
             'childre_gender' => 'required',
+            'medical_stat' => 'required',
             'childre_educa_leve' => 'required',
             'childre_class_number' => 'required',
             'childre_id_extr' => 'required',
@@ -198,6 +202,7 @@ class ChildrenController extends Controller
          $Childrens -> family_id = $request->family_id;
          $Childrens -> childre_name = $request->childre_name;
          $Childrens -> childre_age = $request->childre_age;
+         $Childrens -> medical_stat = $request->medical_stat;
          $Childrens -> childre_gender = $request->childre_gender;
          $Childrens -> childre_educa_leve = $request->childre_educa_leve;
          $Childrens -> childre_class_number = $request->childre_class_number;

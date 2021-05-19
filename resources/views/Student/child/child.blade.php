@@ -56,11 +56,19 @@
                                                     <th class="border-bottom-0">هل يعيشون معكم</th>
                                                     <th class="border-bottom-0">تاريخ التعديل</th>
                                                     <th class="border-bottom-0">العمليات</th>
+                                                    <th class="border-bottom-0">إضافة مدرسة</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($child as $x)
+<<<<<<< Updated upstream
                                                 @if($x->student_id != null)
+=======
+
+                                               
+                                                @if($x->student_id != null)
+                                                
+>>>>>>> Stashed changes
                                                 <tr>
                                                     <td>{{$x->student_id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
@@ -74,6 +82,8 @@
                                                     <td>{{$x->childre_live_with}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
+
+
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
@@ -93,6 +103,20 @@
                                                                 <i class="las la-trash"> </i>
                                                             </a>
                                                     </td>
+                                                    <td>    
+                                                            {{-- Add_School --}}
+
+                                                            @if($x->student_statu != 0)
+                                                            <a class=" btn btn-sm btn-info" href="/school_student/show/school/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                            @else
+                                                            <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                                data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
+                                                                data-toggle="modal"
+                                                                href="#exampleModal" title="إضافة مدرسة">
+                                                                <i class="las la-pen"></i>
+                                                            </a> 
+                                                            @endif
+                                                    </td>                                                
                                                 </tr>
                                                 @endif
                                                 @endforeach
@@ -106,6 +130,24 @@
                             @if (session()->has('Edit'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Edit') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+
+                            @if (session()->has('Edit_School'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Edit_School') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+
+                            @if (session()->has('Add_School'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_School') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -137,7 +179,55 @@
 
                     </div>
 				</div>
+                  
+                   {{-- Edit_School --}}
+                    <div class="modal" id="exampleModal">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content modal-content-demo">
+                                <div class="modal-header">
+                                    <h6 class="modal-title">إضافة مدرسة</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                        type="button"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <form action="{{ Route('school.student.store') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                    <div class="modal-body">
+                                    <div class="form-group">
+                                    <input type="hidden" name="id" id="id"  readonly>
+                                    <label for="exampleInputEmail">اسم المدرسة </label>
+                                    <input class="form-control" name="School_name" id="School_name" type="text">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail">نوع المدرسة </label>
+                                    <input class="form-control" name="School_type" id="School_type" type="text">
+                                    </div>
 
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail">موقع المدرسة </label>
+                                    <input class="form-control" name="School_location" id="School_location" type="text">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail">تكاليف الدراسة</label>
+                                    <input class="form-control" name="School_cost" id="School_cost" type="text">
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail">نكاليف عامة</label>
+                                    <input class="form-control" name="School_fees" id="School_fees" type="text">
+                                    </div>  
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                                        <button type="submit" class="btn btn-danger">تاكيد</button>
+                                    </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                    
                     {{-- delete --}}
                     <div class="modal" id="modaldemo9">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -260,6 +350,7 @@
                         </div>
                     </div>
 
+
                 </div>
 				<!-- row closed -->
 			</div>
@@ -314,6 +405,18 @@
         modal.find('.modal-body #childre_class_number').val(childre_class_number);
         modal.find('.modal-body #childre_id_extr').val(childre_id_extr);
         modal.find('.modal-body #childre_live_with').val(childre_live_with);
+    })
+</script>
+
+{{--  Add_School  --}}
+<script>
+    $('#exampleModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var childre_name = button.data('childre_name')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #childre_name').val(childre_name);
     })
 </script>
 

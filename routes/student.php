@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\SchoolController;
 use App\Http\Controllers\Medical\MediaclController;
 use App\Http\Controllers\Payment\Student_Payment;
 
@@ -92,13 +93,6 @@ Route::prefix('University')->group(function () {
     Route::delete('delete', "Student\UniversityController@destroy")->name('University.destroy')->middleware('auth');
 });
 
-Route::prefix('school')->group(function () {
-    Route::get('show', "Student\SchoolController@index")->name('School.student.show')->middleware('auth');
-    Route::post('store', "Student\SchoolController@storestudent")->name('School.student.store')->middleware('auth');
-    Route::patch('update', "Student\SchoolController@update")->name('School.update')->middleware('auth');
-    Route::get('/show/{id}', "Student\SchoolController@show")->middleware('auth');
-    Route::delete('delete', "Student\SchoolController@destroy")->name('School.destroy')->middleware('auth');
-});
 
 Route::prefix('Sister_and_Brother')->group(function () {
     Route::get('show', "Publics\SisterandBrotherController@index")->name('Sister_and_Brother.show')->middleware('auth');
@@ -114,4 +108,12 @@ Route::prefix('husband_Wife')->group(function () {
     Route::patch('update', "Publics\HusbandandWifeController@update")->name('husband_Wife.update')->middleware('auth');
     Route::get('/show/{id}', "Publics\HusbandandWifeController@show")->middleware('auth');
     Route::delete('delete', "Publics\HusbandandWifeController@destroy")->name('husband_Wife.destroy')->middleware('auth');
+});
+
+Route::prefix('school_student')->group(function () {
+    Route::get('/show/school/', "Student\SchoolController@index_student")->name('school.show.student')->middleware('auth');
+    Route::post('/store/school/', "Student\SchoolController@store_student")->name('school.student.store')->middleware('auth');
+    Route::patch('/update/school/', "Student\SchoolController@update_student")->name('school.update.student')->middleware('auth');
+    Route::get('/show/school/{id}', "Student\SchoolController@show_student")->middleware('auth');
+    Route::delete('/delete/school/', "Student\SchoolController@destroy_student")->name('school.destroy.student')->middleware('auth');
 });

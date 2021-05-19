@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\SchoolController;
+use App\Http\Controllers\medical\medicalController;
 use App\Http\Controllers\Medical\MediaclController;
-use App\Http\Controllers\Payment\Student_Payment;
+use App\Http\Controllers\Payment\medical_Payment;
 
 
 
@@ -15,10 +16,10 @@ Route::prefix('medical')->group(function () {
     Route::delete('update', "medical\medicalController@destroy")->name('medical.destroy')->middleware('auth');
     Route::get('register', "medical\medicalController@register")->name('medical.register')->middleware('auth');
     Route::get('enable', "medical\medicalController@enable")->name('medical.enable')->middleware('auth');
-    Route::get('/add/student', "medical\medicalController@add_student")->name('medical.student.add')->middleware('auth');
+    Route::get('/add/medical', "medical\medicalController@add_medical")->name('medical.medical.add')->middleware('auth');
     Route::get('disable', "medical\medicalController@disable")->name('medical.disable')->middleware('auth');
-    Route::get('/show/student/{id}/', "medical\medicalController@show_student")->name('medical.student.show')->middleware('auth');
-    Route::delete('/destroy/student/', "medical\medicalController@detroy_student")->name('student.medical.destroy')->middleware('auth');
+    Route::get('/show/medical/{id}/', "medical\medicalController@show_medical")->name('medical.medical.show')->middleware('auth');
+    Route::delete('/destroy/medical/', "medical\medicalController@detroy_medical")->name('medical.medical.destroy')->middleware('auth');
 });
 
 Route::prefix('address_medical')->group(function () {
@@ -29,14 +30,7 @@ Route::prefix('address_medical')->group(function () {
     Route::delete('/delete', "Publics\AddressController@destroy_medical")->name('address.medical.destroy')->middleware('auth');
 });
 
-Route::prefix('medical_pay')->group(function () {
-    ////// medical 
-    Route::get('/show/medical', "Payment\StudentPaymentController@medical_ind")->middleware('auth')->name('show.medical.pay');
-    Route::post('/store/medical', "Payment\StudentPaymentController@store_medical")->name('pay.store.medical')->middleware('auth');
-    Route::patch('/update/medical', "Payment\StudentPaymentController@update_medical")->name('pay.update.medical')->middleware('auth');
-    Route::get('/show/medical/{id}', "Payment\StudentPaymentController@show_medical")->middleware('auth')->name('pay.shows.medical');
-    Route::delete('/destroy/medical', "Payment\StudentPaymentController@destroy_medical")->name('pay.destroy.medical')->middleware('auth');
-});
+
 
 Route::prefix('job_medical')->group(function () {
     Route::get('/show/medical/', "Publics\JobController@index_medical")->name('job.show.medical')->middleware('auth');
@@ -77,4 +71,12 @@ Route::prefix('Medical_Statu_Medical')->group(function () {
     Route::patch('/update', "Publics\MedicalStatusController@update_medical")->name('Medical_Statu.update.medical')->middleware('auth');
     Route::get('/show/{id}', "Publics\MedicalStatusController@show_medical")->middleware('auth');
     Route::delete('/delete', "Publics\MedicalStatusController@destroy_medical")->name('Medical_Statu.destroy.medical')->middleware('auth');
+});
+
+Route::prefix('school')->group(function () {
+    Route::get('/show/medical/', "App\Http\Controllers\Student\SchoolController@index_medical")->name('school.show.medical')->middleware('auth');
+    Route::post('/store/medical/', "App\Http\Controllers\Student\SchoolController@store_medical")->name('school.medical.store')->middleware('auth');
+    Route::patch('/update/medical/', "App\Http\Controllers\Student\SchoolController@update_medical")->name('school.update.medical')->middleware('auth');
+    Route::get('/show/medical/{id}', "App\Http\Controllers\Student\SchoolController@show_medical")->middleware('auth');
+    Route::delete('/delete/medical/', "App\Http\Controllers\Student\SchoolController@destroy_medical")->name('school.destroy.medical')->middleware('auth');
 });

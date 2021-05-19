@@ -51,18 +51,28 @@
                                                     <th class="border-bottom-0"> اسم المعيل الثاني</th>
                                                     <th class="border-bottom-0">عمل المعيل الثاني</th>
                                                     <th class="border-bottom-0"> الراتب الشهري</th>
-                                                    <th class="border-bottom-0">هل يوجد مساعدات</th>
-                                                    <th class="border-bottom-0"> ماهي المساعدات أو قيمتها</th>
+
+
+                                                    <th class="border-bottom-0">مساعدات</th>
+                                                    <th class="border-bottom-0">نوع المساعدات</th>
+                                                    <th class="border-bottom-0">قيمة المساعدات</th>
+
                                                     <th class="border-bottom-0">رقم هاتف</th>
                                                     <th class="border-bottom-0">رقم هاتف ثاني</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
-                                                    <th class="border-bottom-0">اضافة دفعة</th>
+                                                    <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
+                                                    <th class="border-bottom-0">اضافة دفعة تركي</th>
+                                                    <th class="border-bottom-0">اضافة دفعة يورو</th>
+                                                    <th class="border-bottom-0">اضافة كروت بيم</th>
                                                     <th class="border-bottom-0">اضافة زوج وزوجة</th>
                                                     <th class="border-bottom-0">حذف عائلة</th>
                                                     <th class="border-bottom-0">تعديل عائلة</th>
                                                     <th class="border-bottom-0">اضافة اطفال</th>
+
                                                     <th class="border-bottom-0">إضافة السكن</th>
-                                                    <th class="border-bottom-0">إضافة العمل</th>
+
+
+
                                                     <th class="border-bottom-0">إضافة طالب</th>
                                                     <th class="border-bottom-0">إضافة مريض</th>
 
@@ -71,6 +81,7 @@
                                             <tbody>
                                                 @foreach($family as $x)
                                                 <tr>
+                                                {{--  @dd($family)  --}}
                                                     <td>{{$x->id}}</td>
                                                     <td>{{$x->family_Constraint}}</td>
                                                     <td>{{$x->family_number_member}}</td>
@@ -81,23 +92,69 @@
                                                     <td>{{$x->family_monthly_salary}}</td>
                                                     <td>{{$x->family_has_aid}}</td>
                                                     <td>{{$x->family_what_aid}}</td>
+                                                    <td>{{$x->aid_value}}</td>
                                                     <td>{{$x->phone}}</td>
                                                     <td>{{$x->sec_phone}}</td>
                                                     <td>{{$x->note}}</td>
+
+
                                                 <td>
-                                                    {{-- Pay Family--}}
+                                                    {{-- Add_Dollar--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-family_constraint="{{$x->family_Constraint}}"  data-id="{{ $x->id }}"
                                                         data-description="" data-toggle="modal"
-                                                        href="#exampleModal3" title="دفع">
+                                                        href="#exampleModa23" title="دفع بالدولار">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
-                                                    @if($x->pay_statu != 0)
+                                                    @if($x->usd_statu != 0)
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    <a class=" btn btn-sm btn-info" href="/Family_pay/show/family/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
-                                                    @endif
-                                                </td>
 
+                                                    <a class=" btn btn-sm btn-info" href="/Family_pay/show/family/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+
+                                                    <a class=" btn btn-sm btn-info" href="/Family_usd/show/family/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @endif
+                                                </td>                                                
+
+                                                <td>
+                                                    {{-- Add_Tr--}}
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                        data-family_constraint="{{$x->family_Constraint}}"  data-id="{{ $x->id }}"
+                                                        data-description="" data-toggle="modal"
+                                                        href="#exampleModa24" title="دفع بالتركي">
+                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
+                                                    </a>
+                                                    @if($x->tr_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Family_tr/show/family/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+
+                                                    @endif
+                                                </td>  
+
+                                                <td>
+                                                    {{-- Add_Euro--}}
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                        data-family_constraint="{{$x->family_Constraint}}"  data-id="{{ $x->id }}"
+                                                        data-description="" data-toggle="modal"
+                                                        href="#exampleModa25" title="دفع باليورو">
+                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
+                                                    </a>
+                                                    @if($x->euro_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Family_euro/show/family/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @endif
+                                                </td>    
+
+                                                <td>
+                                                    {{-- Add_Bim--}}
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                        data-family_constraint="{{$x->family_Constraint}}"  data-id="{{ $x->id }}"
+                                                        data-description="" data-toggle="modal"
+                                                        href="#exampleModa26" title="دفع كروت">
+                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
+                                                    </a>
+                                                    @if($x->bim_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Family_bim/show/family/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @endif
+                                                </td>  
+                                                                                                                                              
                                                     {{-- wife and husband  --}}
                                                     @if($x->husband_wife_statu == 1)
                                                     <td>
@@ -133,6 +190,7 @@
                                                             data-stu_cur_housing="{{$x->stu_Cur_housing}}" data-family_monthly_salary="{{$x->family_monthly_salary}}"
                                                             data-county_are_from="{{$x->county_are_from}}" data-family_aid="{{$x->family_has_aid}}"
                                                             data-phone="{{$x->phone}}"
+                                                            data-aid_value="{{$x->aid_value}}"
                                                             data-sec_phone="{{$x->sec_phone}}"
                                                             data-work_an_breadwinner="{{$x->work_an_breadwinner}}"
                                                             data-work_breadwinner="{{$x->work_breadwinner}}"
@@ -173,21 +231,6 @@
                                                     </td>
                                                     @endif
 
-                                                    {{-- Job  --}}
-                                                    @if($x->job_statu == 1)
-                                                    <td>
-                                                        <a class=" btn btn-sm btn-info" href="/job_family/show/family/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    </td>
-                                                    @elseif($x->job_statu == 0)
-                                                    <td>
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-family_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal13" title="إضافة معلومات العمل">
-                                                            <i class="fas fa-briefcase"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    </td>
-                                                    @endif
-
                                                      {{-- Student  --}}
 
                                                     <td>
@@ -202,16 +245,16 @@
                                                         </a>
                                                     </td>
 
-                                                    {{--  Medical  --}}
-                                                    @if($x->medical_statu == 1)
+                                                    {{--  Add_Patient_id  --}}
+                                                    @if($x->patient_statu == 1)
                                                     <td>
-                                                        <a class=" btn btn-sm btn-info" href="/job/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/family/show/medical/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
-                                                    @elseif($x->medical_statu == 0)
+                                                    @elseif($x->patient_statu == 0)
                                                     <td>
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-family_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal13" title="إضافة معلومات العمل">
+                                                            href="#exampleModal92" title="إضافة مريض">
                                                             <i class="fas fa-briefcase"  style="font-size: 20px;"></i>
                                                         </a>
                                                     </td>
@@ -240,6 +283,15 @@
                             </div>
                             @endif
 
+                            @if (session()->has('Warning'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Warning') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+                            
                             @if (session()->has('Edit'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Edit') }}</strong>
@@ -261,6 +313,24 @@
                             @if (session()->has('Add_student_error'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add_student_error') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+
+                            @if (session()->has('Add_medical'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_medical') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+
+                            @if (session()->has('Add_medical_error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_medical_error') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -345,7 +415,11 @@
                             @endif
                         </div>
 
+
                         {{-- Job --}}
+
+                                 
+                        {{--  Job
                         <div class="modal fade" id="exampleModal13" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -405,6 +479,185 @@
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم راتبك السابق بعملك السابق؟</label>
                                 <input type="text" class="form-control" id="job_last_salary" name="job_last_salary" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>  --}}
+
+                        {{-- Add_Dollar --}}
+                        <div class="modal fade" id="exampleModa23" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('usd.store.family') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <input type="hidden" name="family_id" id="id" readonly>
+                                <label for="exampleInputEmail">اسم صاحب القيد</label>
+                                <input type="text" class="form-control" id="family_constraint" name="family_constraint" readonly>
+                                </div>                                
+                                <div class="form-group">
+                                <label for="exampleInputEmail">المبلغ المدفوع بالدولار</label>
+                                <input type="text" class="form-control" id="family_value_usd" name="family_value_usd" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
+                        {{-- Add_Tr --}}
+                        <div class="modal fade" id="exampleModa24" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('tr.store.family') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <input type="hidden" name="family_id" id="id" readonly>
+                                <label for="exampleInputEmail">اسم صاحب القيد</label>
+                                <input type="text" class="form-control" id="family_constraint" name="family_constraint" readonly>
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">المبلغ المدفوع بالتركي</label>
+                                <input type="text" class="form-control" id="family_value" name="family_value_tr" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
+                        {{-- Add_Euro --}}
+                        <div class="modal fade" id="exampleModa25" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('euro.store.family') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <input type="hidden" name="family_id" id="id" readonly>
+                                <label for="exampleInputEmail">اسم صاحب القيد</label>
+                                <input type="text" class="form-control" id="family_constraint" name="family_constraint" readonly>
+                                </div>                                
+                                <div class="form-group">
+                                <label for="exampleInputEmail">المبلغ المدفوع باليورو</label>
+                                <input type="text" class="form-control" id="family_value_euro" name="family_value_euro" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
+                        {{-- Add_Bim --}}
+                        <div class="modal fade" id="exampleModa26" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('bim.store.family') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <input type="hidden" name="id" id="id" readonly>
+                                <label for="exampleInputEmail">اسم صاحب القيد</label>
+                                <input type="text" class="form-control" id="family_constraint" name="family_constraint" readonly>
+                                </div>                                
+                                <div class="form-group">
+                                <label for="exampleInputEmail">عدد كروت البيم</label>
+                                <input type="hidden" name="family_id" id="id" readonly>
+                                <input type="text" class="form-control" id="number_bim_family" name="number_bim_family" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="modal-body">
+                                    <p class="mg-b-10">قيمة الكروت</p>
+                                    <select class="form-control select2" name="value_bim_family" id="value_bim_family" >
+                                            @foreach($payments as $a)
+                                                <option value="{{$a->value_bim}}" >
+                                                    {{$a->value_bim}}
+                                                </option>                                                   
+                                            @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -703,6 +956,25 @@
                                 </select>
                                 </div>
                                  <div class="form-group">
+                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <select class="form-control select2" name="medical_stat" id="medical_stat">
+                                        <option label="test">
+											  </option>
+                                        <option value="لايوجد" >
+                                        لايوجد
+                                    </option>
+                                    <option value="اصابة حرب" >
+                                        اصابة حرب
+                                    </option>
+                                    <option value="وباء" >
+                                        وباء
+                                    </option>
+                                    <option value="مرض مزمن" >
+                                        مرض مزمن
+                                    </option>
+                                    </select>
+                                </div>
+                                 <div class="form-group">
                                 <label for="exampleInputEmail"> رقم الصف الدراسي </label>
                                 <input type="text" class="form-control" id="childre_class_number" name="childre_class_number" placeholder="  أكتب رقم الصف الدراسي ">
                                 </div>
@@ -966,6 +1238,34 @@
                             </div>
                         </div>
 
+                        {{--  Add_Patient_id   --}}
+                        <div class="modal" id="exampleModal92">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content modal-content-demo">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title">اضافة قسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+
+                                <form action="{{ route('family.medical.add') }}" method="GET">
+                                {{ method_field('GET') }}
+                                {{ csrf_field() }}     
+                                 <div class="modal-body">         
+                                <div class="form-group">
+                                <input type="hidden" name="family_id" id="family_id"  readonly>
+                                <label for="exampleInputEmail">رقم المريض</label>
+                                <input type="text" class="form-control" id="medical_id" name="medical_id" placeholder=" أكتب رقم ">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+
+
                         {{-- Husband and Wife --}}
                         <div class="modal fade" id="exampleModal111" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -1030,7 +1330,25 @@
                                         القنيطرة</option>
                                     </select>
                                 </div>
-
+                                <div class="form-group">
+                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <select class="form-control select2" name="medical_mom" id="medical_mom">
+                                        <option label="test">
+											  </option>
+                                        <option value="لايوجد" >
+                                        لايوجد
+                                    </option>
+                                    <option value="اصابة حرب" >
+                                        اصابة حرب
+                                    </option>
+                                    <option value="وباء" >
+                                        وباء
+                                    </option>
+                                    <option value="مرض مزمن" >
+                                        مرض مزمن
+                                    </option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
                                     <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب اسم المدينة ">
@@ -1205,7 +1523,25 @@
                                     ديكتورا </option>
                                 </select>
                                 </div>
-
+                                <div class="form-group">
+                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <select class="form-control select2" name="medical_dad" id="medical_dad">
+                                        <option label="test">
+											  </option>
+                                        <option value="لايوجد" >
+                                        لايوجد
+                                    </option>
+                                    <option value="اصابة حرب" >
+                                        اصابة حرب
+                                    </option>
+                                    <option value="وباء" >
+                                        وباء
+                                    </option>
+                                    <option value="مرض مزمن" >
+                                        مرض مزمن
+                                    </option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اختصاص دراسة الزوج</label>
                                 <input type="text" class="form-control" id="husb_special" name="husb_special" placeholder=" أكتب اسم  اختصاص ">
@@ -1251,7 +1587,7 @@
                         </div>
 
                         {{-- Pay --}}
-                        <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        {{--  <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -1275,6 +1611,31 @@
                                 <input type="text" class="form-control" id="family_value" name="family_value"  placeholder=" أكتب قيمة البملغ المدفوع ">
                                 </div>
                                 <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">المبلغ بالدولار</label>
+                                <input class="form-control" name="family_value_usd" id="family_value_usd" type="text" >
+                                </div>
+                                <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">المبلغ باليورو</label>
+                                <input class="form-control" name="family_value_euro" id="family_value_euro" type="text" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">عدد الكروت</label>
+                                    <input class="form-control" name="number_bim_family" id="number_bim_family" type="text" >
+                                </div>
+
+                                <div class="modal-body">
+                                    <p class="mg-b-10">قيمة الكروت</p>
+                                    <select class="form-control select2" name="value_bim_family" id="value_bim_family" >
+                                            @foreach($payments as $a)
+                                                <option value="{{$a->value_bim}}" >
+                                                    {{$a->value_bim}}
+                                                </option>                                                   
+                                            @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
                                 <label for="exampleInputEmail">ملاحظات</label>
                                 <input type="text" class="form-control" id="note" name="note"  placeholder=" أكتب ملاخظات ان وجد ">
                                 </div>
@@ -1291,7 +1652,7 @@
                             </div>
                          </div>
 				        </div>
-                        </div>
+                        </div>  --}}
 
                         {{-- add --}}
                         <div class="modal" id="modaldemo8">
@@ -1347,8 +1708,16 @@
                                         <input type="text" class="form-control" id="family_what_aid" name="family_what_aid"  placeholder=" أكتب ما هي المساعدات أو قيمتها    ">
                                         </div>
                                         <div class="form-group">
+
                                         <label for="exampleInputEmail"> رقم هاتف الأول </label>
                                         <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكتب رقم الهاتف بدءً من 05 ">
+
+                                        <label for="exampleInputEmail"> ماهي قيمة المساعدات</label>
+                                        <input type="text" class="form-control" id="aid_value" name="aid_value"  placeholder=" أكنب أسم المدينة  ">
+                                        </div>                                        
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail">هاتف</label>
+                                        <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكنب تاريخ الدخول الى تركيا ">
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> رقم هاتف ثاني</label>
@@ -1449,10 +1818,15 @@
                                         <label for="exampleInputEmail">هل يوجد مساعدات</label>
                                         <select class="form-control" id="family_aid" name="family_has_aid"  placeholder=" أكتب اسم  المحافظة الأصل ">
                                             <option label="test">
+
                                                 حدد من فضلك اسم المحافظة </option>
                                             <option value="	يوجد">
+
+                                                اختر أسم المحافظة </option>
+                                            <option value="يوجد">
+
                                                 يوجد</option>
-                                            <option value="	لا يوجد">
+                                            <option value="لا يوجد">
                                                 لا يوجد</option>
                                             </select>
                                         </div>
@@ -1461,7 +1835,10 @@
                                         <label for="exampleInputEmail"> ماهي المساعدات</label>
                                         <input type="text" class="form-control" id="family_what_aid" name="family_what_aid"  placeholder=" أكتب اسم المدينة  ">
                                         </div>
-
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail"> ماهي قيمة المساعدات</label>
+                                        <input type="text" class="form-control" id="aid_value" name="aid_value"  placeholder=" أكنب أسم المدينة  ">
+                                        </div>      
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هاتف</label>
                                         <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكتب تاريخ الدخول الى تركيا ">
@@ -1531,6 +1908,7 @@
         var family_what_aid = button.data('family_what_aid')
         var work_breadwinner = button.data('work_breadwinner')
         var work_an_breadwinner = button.data('work_an_breadwinner')
+        var aid_value = button.data('aid_value')
         var phone = button.data('phone')
         var sec_phone = button.data('sec_phone')
         var note = button.data('note')
@@ -1542,6 +1920,7 @@
         modal.find('.modal-body #family_an_breadwinner').val(family_an_breadwinner);
         modal.find('.modal-body #family_monthly_salary').val(family_monthly_salary);
         modal.find('.modal-body #family_aid').val(family_aid);
+        modal.find('.modal-body #aid_value').val(aid_value);
         modal.find('.modal-body #family_what_aid').val(family_what_aid);
         modal.find('.modal-body #sec_phone').val(sec_phone);
         modal.find('.modal-body #work_breadwinner').val(work_breadwinner);
@@ -1566,6 +1945,17 @@
 {{--  Add Student ID   --}}
 <script>
     $('#exampleModa20').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var family_id = button.data('family_id')
+        var modal = $(this)
+        modal.find('.modal-body #family_id').val(family_id);
+
+})
+</script>
+
+{{--  Add_Patient_id   --}}
+<script>
+    $('#exampleModal92').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var family_id = button.data('family_id')
         var modal = $(this)
@@ -1605,9 +1995,46 @@
     })
 </script>
 
-{{--  Pay  --}}
+{{--  Add_dollar  --}}
 <script>
-    $('#exampleModal3').on('show.bs.modal', function(event) {
+    $('#exampleModa23').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var family_constraint = button.data('family_constraint')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #family_constraint').val(family_constraint);
+})
+</script>
+
+{{--  Add_tr  --}}
+<script>
+    $('#exampleModa24').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var family_constraint = button.data('family_constraint')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #family_constraint').val(family_constraint);
+})
+</script>
+
+
+{{--  Add_euro  --}}
+<script>
+    $('#exampleModa25').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var family_constraint = button.data('family_constraint')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #family_constraint').val(family_constraint);
+})
+</script>
+
+{{--  Add_bim  --}}
+<script>
+    $('#exampleModa26').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
         var family_constraint = button.data('family_constraint')
@@ -1628,14 +2055,14 @@
 </script>
 
 
-{{--  Job  --}}
+{{--  Job
 <script>
     $('#exampleModal13').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var family_id = button.data('family_id')
         var modal = $(this)
         modal.find('.modal-body #family_id').val(family_id);})
-</script>
+</script>  --}}
 
 @endsection
 

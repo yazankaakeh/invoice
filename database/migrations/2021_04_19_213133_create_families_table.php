@@ -45,6 +45,11 @@ class CreateFamiliesTable extends Migration
             $table->integer('enable')->default('0');
             $table->integer('student_statu')->default('0');
             $table->integer('medical_statu')->default('0');
+            $table->integer('patient_statu')->default('0');
+            $table->integer('bim_statu')->default('0');
+            $table->integer('euro_statu')->default('0');
+            $table->integer('usd_statu')->default('0');
+            $table->integer('tr_statu')->default('0');
             $table->timestamps();
         });
     }

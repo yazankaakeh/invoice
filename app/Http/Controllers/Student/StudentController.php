@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student ;
 use App\models\Student\Student;
 use App\models\Family\Family;
 use Illuminate\Http\Request;
+use App\models\Payment\Income;
 use App\models\Publics\From;
 use Illuminate\Support\Facades\DB;
 
@@ -15,9 +16,10 @@ class StudentController extends Controller
 
     public function index()
     {
+        $payments = Income::select('value_bim')->distinct()->get();
         $students = Student::all();
         //dd($students);
-        return view('Student.students.students',compact('students'));
+        return view('Student.students.students',compact('students','payments'));
     }
 
     public function store(Request $request)

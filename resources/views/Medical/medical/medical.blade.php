@@ -52,17 +52,20 @@
                                                     <th class="border-bottom-0"> الهاتف</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
                                                     <th class="border-bottom-0">تاريخ الإضافة</th>
-                                                    <th class="border-bottom-0">اضافة دفعة</th>
-                                                    <th class="border-bottom-0">اضافة زوج وزوجة</th>
+                                                    <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
+                                                    <th class="border-bottom-0">اضافة دفعة تركي</th>
+                                                    <th class="border-bottom-0">اضافة دفعة يورو</th>
+                                                    <th class="border-bottom-0">اضافة كروت بيم</th>
+                                                    {{--  <th class="border-bottom-0">اضافة زوج وزوجة</th>  --}}
                                                     <th class="border-bottom-0">اضافة اب وام</th>
                                                     <th class="border-bottom-0">حذف المريض</th>
                                                     <th class="border-bottom-0">تعديل المريض</th>
-                                                    <th class="border-bottom-0">اضافة اطفال</th>
+                                                    {{--  <th class="border-bottom-0">اضافة اطفال</th>  --}}
                                                     <th class="border-bottom-0">السكن </th>
                                                     <th class="border-bottom-0">الحالة الطبية</th>
                                                     <th class="border-bottom-0">العمل</th>
-                                                    <th class="border-bottom-0">إضافة طالب</th>
-                                                    <th class="border-bottom-0">إضافة مريض</th>
+                                                    {{--  <th class="border-bottom-0">إضافة طالب</th>  --}}
+                                                    {{--  <th class="border-bottom-0">إضافة مريض</th>  --}}
 
                                                 </tr>
                                             </thead>
@@ -79,21 +82,61 @@
                                                     <td>{{$x->note}}</td>
                                                     <td>{{$x->created_at}}</td>
                                                 <td>
-                                                    {{-- Pay medical--}}
+                                                    {{-- Add_Dollar--}}
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                        data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
+                                                        data-description="" data-toggle="modal" data-medical_id="{{ $x->medical_id }}"
+                                                        href="#exampleModa23" title="دفع بالدولار">
+                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
+                                                    </a>
+                                                    @if($x->usd_statu != 0)
+                                                    <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_usd/show/medical/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @endif
+                                                </td>                                                
+
+                                                <td>
+                                                    {{-- Add_Tr--}}
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                        data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
+                                                        data-medical_id="{{ $x->medical_id }}"
+                                                        data-description="" data-toggle="modal"
+                                                        href="#exampleModa24" title="دفع بالتركي">
+                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
+                                                    </a>
+                                                    @if($x->tr_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_tr/show/medical/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @endif
+                                                </td>  
+
+                                                <td>
+                                                    {{-- Add_Euro--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
                                                         data-description="" data-toggle="modal"
-                                                        href="#exampleModal3" title="دفع">
+                                                        href="#exampleModa25" title="دفع باليورو">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
-                                                    @if($x->pay_statu != 0)
-                                                    <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    <a class=" btn btn-sm btn-info" href="/medical_pay/show/medical/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @if($x->euro_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_euro/show/medical/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
-                                                </td>
+                                                </td>    
+
+                                                <td>
+                                                    {{-- Add_Bim--}}
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                        data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
+                                                        data-description="" data-toggle="modal"
+                                                        href="#exampleModa26" title="دفع كروت">
+                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
+                                                    </a>
+                                                    @if($x->bim_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_bim/show/medical/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @endif
+                                                </td>                                                
 
                                                     {{-- wife and husband  --}}
-                                                    @if($x->husband_wife_statu == 1)
+                                                    {{--  @if($x->husband_wife_statu == 1)
                                                     <td>
                                                         <a class="btn btn-sm btn-info" href="/husband_Wife_medical_medical/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
@@ -106,7 +149,7 @@
                                                             <i class="mdi mdi-account-multiple-plus" style="font-size: 18px;"></i>
                                                         </a>
                                                     </td>
-                                                    @endif
+                                                    @endif  --}}
                                                    
                                                     
                                                     {{-- father and mother  --}}
@@ -149,7 +192,7 @@
                                                    
                                                    
                                                     {{-- add children  --}}
-                                                    <td>
+                                                    {{--  <td>
                                                     @if($x->child_statu != 0)
                                                         <a class=" btn btn-sm btn-info" href="/children_medical/show/child/medical/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
@@ -159,7 +202,7 @@
                                                             href="#exampleModal4" title="إضافة طفل">
                                                             <i class="las la-child"  style="font-size: 20px;"></i>
                                                         </a>
-                                                    </td>
+                                                    </td>  --}}
 
 
                                                     @if($x->residance_statu == 1)
@@ -208,7 +251,7 @@
                                                     </td>
                                                     @endif
 
-                                                     {{-- Student  --}}
+                                                     {{--  Student
 
                                                     <td>  
                                                     @if($x->student_statu  !=  0)
@@ -222,7 +265,7 @@
                                                         </a>
                                                     </td>
 
-                                                    {{--  Medical  --}}
+                                                     Medical
                                                     @if($x->medical_statu == 1)
                                                     <td>
                                                         <a class=" btn btn-sm btn-info" href="/job/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
@@ -235,7 +278,7 @@
                                                             <i class="fas fa-briefcase"  style="font-size: 20px;"></i>
                                                         </a>
                                                     </td>
-                                                    @endif
+                                                    @endif  --}}
                                                 @endforeach
                                                 </tr>
                                             </tbody>
@@ -259,7 +302,16 @@
                                 </button>
                             </div>
                             @endif
-                                                        
+
+                            @if (session()->has('Warning'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Warning') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+                                                 
                             @if (session()->has('Form'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Form') }}</strong>
@@ -332,6 +384,15 @@
                             </div>
                             @endif
 
+                            @if (session()->has('Add_fatherandmother'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_fatherandmother') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+
                             @if (session()->has('Add_StudentResidences'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add_StudentResidences') }}</strong>
@@ -373,7 +434,185 @@
                             </div>
                             @endif
                         </div>
-                                 
+
+                        {{-- Add_Dollar --}}
+                        <div class="modal fade" id="exampleModa23" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('usd.store.medical') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <input type="hidden" name="medical_id" id="id" readonly>
+                                <label for="exampleInputEmail">اسم صاحب القيد</label>
+                                <input type="text" class="form-control" id="medical_name" name="medical_name" readonly>
+                                </div>                                
+                                <div class="form-group">
+                                <label for="exampleInputEmail">المبلغ المدفوع بالدولار</label>
+                                <input type="text" class="form-control" id="medical_value_usd" name="medical_value_usd" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
+                        {{-- Add_Tr --}}
+                        <div class="modal fade" id="exampleModa24" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('tr.store.medical') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <input type="hidden" name="medical_id" id="id" readonly>
+                                <label for="exampleInputEmail">اسم صاحب القيد</label>
+                                <input type="text" class="form-control" id="medical_name" name="medical_name" readonly>
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">المبلغ المدفوع بالتركي</label>
+                                <input type="text" class="form-control" id="medical_value" name="medical_value_tr" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
+                        {{-- Add_Euro --}}
+                        <div class="modal fade" id="exampleModa25" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('euro.store.medical') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <input type="hidden" name="medical_id" id="id" readonly>
+                                <label for="exampleInputEmail">اسم صاحب القيد</label>
+                                <input type="text" class="form-control" id="medical_name" name="medical_name" readonly>
+                                </div>                                
+                                <div class="form-group">
+                                <label for="exampleInputEmail">المبلغ المدفوع باليورو</label>
+                                <input type="text" class="form-control" id="medical_value_euro" name="medical_value_euro" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
+                        {{-- Add_Bim --}}
+                        <div class="modal fade" id="exampleModa26" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('bim.store.medical') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <input type="hidden" name="medical_id" id="id" readonly>
+                                <label for="exampleInputEmail">اسم صاحب القيد</label>
+                                <input type="text" class="form-control" id="medical_name" name="medical_name" readonly>
+                                </div>                                
+                                <div class="form-group">
+                                <label for="exampleInputEmail">عدد كروت البيم</label>
+                                <input type="text" class="form-control" id="number_bim_medical" name="number_bim_medical" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="modal-body">
+                                    <p class="mg-b-10">قيمة الكروت</p>
+                                    <select class="form-control select2" name="value_bim_medical" id="value_bim_medical" >
+                                            @foreach($payments as $a)
+                                                <option value="{{$a->value_bim}}" >
+                                                    {{$a->value_bim}}
+                                                </option>                                                   
+                                            @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
                         {{-- Job --}}
                         <div class="modal fade" id="exampleModal13" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -1055,7 +1294,7 @@
                             </div>
                         </div>
 
-                        {{--  Add Student Id  --}}
+                        {{--  Add Student Id
                         <div class="modal" id="exampleModa20">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content modal-content-demo">
@@ -1080,10 +1319,10 @@
                                 </form>
                             </div>
                             </div>
-                        </div>
+                        </div>  --}}
 
                         {{-- Husband and Wife --}}
-                        <div class="modal fade" id="exampleModal111" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        {{--  <div class="modal fade" id="exampleModal111" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -1098,7 +1337,7 @@
                                 {{ csrf_field() }}
                                 <div class="modal-body">
                                 <div class="form-group">
-                                        <input type="hidden" name="medical_id" id="medical_id" readonly>
+                                <input type="hidden" name="medical_id" id="medical_id" readonly>
                                 <label for="exampleInputEmail">الجنس </label>
                                 <select type="text" class="form-control" id="gender" name="gender" >
                                     <option label="test">
@@ -1112,7 +1351,7 @@
 								</select>
                                 </div>
                                 <hr>
-                                <div  class="row row-sm"id="hidden_div" style="display:flex;"> {{-- display:flex  --}}
+                                <div  class="row row-sm"id="hidden_div" style="display:flex;"> 
                                 
                                 <div class="form-group">
                                 <input type="hidden" name="medical_id" id="medical_id"  readonly>
@@ -1231,7 +1470,7 @@
                             </div>
                             </div>
 				        </div>
-                        </div>
+                        </div>  --}}
                         
                         {{-- Father and Mother --}}
                         <div class="modal fade" id="exampleModal0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1299,6 +1538,25 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
                                     <input type="text" class="form-control" id="mother_origin_city" name="mother_origin_city" placeholder=" أكتب اسم المدينة">
+                                </div>
+                                <div class="form-group">
+                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <select class="form-control select2" name="medical_mom" id="medical_mom">
+                                        <option label="test">
+											  </option>
+                                        <option value="لايوجد" >
+                                        لايوجد
+                                    </option>
+                                    <option value="اصابة حرب" >
+                                        اصابة حرب
+                                    </option>
+                                    <option value="وباء" >
+                                        وباء
+                                    </option>
+                                    <option value="مرض مزمن" >
+                                        مرض مزمن
+                                    </option>
+                                    </select>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للأم</label>
@@ -1429,7 +1687,25 @@
                                     ديكتورا </option>
                                 </select>
                                 </div>
-
+                                <div class="form-group">
+                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <select class="form-control select2" name="medical_dad" id="medical_dad">
+                                        <option label="test">
+											  </option>
+                                        <option value="لايوجد" >
+                                        لايوجد
+                                    </option>
+                                    <option value="اصابة حرب" >
+                                        اصابة حرب
+                                    </option>
+                                    <option value="وباء" >
+                                        وباء
+                                    </option>
+                                    <option value="مرض مزمن" >
+                                        مرض مزمن
+                                    </option>
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اختصاص دراسة الأب</label>
                                 <input type="text" class="form-control" id="father_special" name="father_special" placeholder=" أكتب اسم الأختصاص">
@@ -1469,49 +1745,6 @@
                                 </div>
                             </div>
                             </div>
-				        </div>
-                        </div>
-
-                        {{-- Pay --}}
-                        <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة مالية للمريض</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                <form action="{{ route('pay.store.medical') }}" method="post">
-                                {{ method_field('POST') }}
-                                {{ csrf_field() }}
-                                <div class="modal-body">
-                                <div class="form-group">
-                                <input type="hidden" name="id" id="id" readonly>
-                                <label for="exampleInputEmail">اسم صاحب القيد</label>
-                                <input type="text" class="form-control" id="medical_name" name="medical_name" readonly >
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">المبلغ المدفوع</label>
-                                <input type="text" class="form-control" id="medical_value" name="medical_value"  placeholder=" أكنب قيمة البملغ المدفوع ">
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="text" class="form-control" id="note" name="note"  placeholder=" أكنب الملاحظات ان وجد">
-                                </div>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">تاكيد</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                </div>
-                                </form>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                            </div>
-                         </div>
 				        </div>
                         </div>
 
@@ -1913,6 +2146,58 @@
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #medical_name').val(medical_name);
     })
+</script>
+
+
+{{--  Add_dollar  --}}
+<script>
+    $('#exampleModa23').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var medical_id = button.data('medical_id')
+        var id = button.data('id')
+        var medical_name = button.data('medical_name')
+        var modal = $(this)
+        modal.find('.modal-body #medical_id').val(medical_id);
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #medical_name').val(medical_name);
+})
+</script>
+
+{{--  Add_tr  --}}
+<script>
+    $('#exampleModa24').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var medical_name = button.data('medical_name')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #medical_name').val(medical_name);
+})
+</script>
+
+
+{{--  Add_euro  --}}
+<script>
+    $('#exampleModa25').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var medical_name = button.data('medical_name')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #medical_name').val(medical_name);
+})
+</script>
+
+{{--  Add_bim  --}}
+<script>
+    $('#exampleModa26').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var medical_name = button.data('medical_name')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #medical_name').val(medical_name);
+})
 </script>
 
 {{--  Add Student ID   --}}

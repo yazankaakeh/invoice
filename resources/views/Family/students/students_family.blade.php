@@ -384,12 +384,6 @@
                             @endif
                         </div>
                         
-                        
-
-
-
-
-
                         {{-- delete --}}
                         <div class="modal" id="modaldemo9">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -429,7 +423,7 @@
                                     </div>
                                     <div class="modal-body">
 
-                                    <form action="{{ route('student.family.update') }}" method="post" autocomplete="off">
+                                    <form action="" method="post" autocomplete="off">
                                         {{ method_field('patch') }}
                                         {{ csrf_field() }}
 
@@ -949,136 +943,6 @@
         modal.find('.modal-body #family_id').val(family_id);
     })
 </script>
-
-{{--  payment   --}}
-<script>
-    $('#exampleModal0').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);
-
-})
-</script>
-
-{{--  Husband and Wife    --}}
-<script>
-    $('#exampleModal111').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);
-    })
-</script>
-
-{{--  children    --}}
-<script>
-    $('#exampleModal4').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);
-    })
-</script>
-
-{{--  Pay  --}}
-<script>
-    $('#exampleModal3').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var student_name = button.data('student_name')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #student_name').val(student_name);
-})
-</script>
-
-{{--  Medical_Status  --}}
-<script>
-    $('#exampleModal5').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);
-})
-</script>
-
-{{--  Student_Residance  --}}
-<script>
-    $('#exampleModal6').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-{{--  Quran  --}}
-<script>
-    $('#exampleModal7').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-{{--  Job  --}}
-<script>
-    $('#exampleModal13').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-{{--  Scholarship  --}}
-<script>
-    $('#exampleModal14').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-{{--  universities  --}}
-<script>
-    $('#exampleModal15').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-{{-- Sister and Brother --}}
-<script>
-    $('#exampleModal16').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-<script type="text/javascript">
-    function showDiv1(select){
-       if(select.value==1){
-        document.getElementById('hidden_div').style.display = "flex";
-        document.getElementById('hidden1_div').style.display = "none";
-       } else{
-        document.getElementById('hidden_div').style.display = "none";
-        document.getElementById('hidden1_div').style.display = "flex";
-
-       }
-    }
-    </script>
-    
-    <script type="text/javascript">
-        function showDiv(select){
-           if(select.value=='يوجد'){
-            document.getElementById('hidden3_div').style.display = "flex";
-           } else{
-            document.getElementById('hidden3_div').style.display = "none";    
-           }
-        }
-        </script>
 @endsection
 
 

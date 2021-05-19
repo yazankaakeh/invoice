@@ -51,6 +51,7 @@
                                                     <th class="border-bottom-0">المواليد</th>
                                                     <th class="border-bottom-0">المدينة</th>
                                                     <th class="border-bottom-0">الحي</th>
+                                                    <th class="border-bottom-0">الحالة الصحية</th>
                                                     {{-- <th class="border-bottom-0">الحالة الإجتماعية</th> --}}
                                                     <th class="border-bottom-0">المستوى الدراسي</th>
                                                     <th class="border-bottom-0">الأختصاص</th>
@@ -61,6 +62,7 @@
                                                     <th class="border-bottom-0">المواليد</th>
                                                     <th class="border-bottom-0">المدينة</th>
                                                     <th class="border-bottom-0">الحي</th>
+                                                    <th class="border-bottom-0">الحالة الصحية</th>
                                                     {{-- <th class="border-bottom-0">الحالة الإجتماعية</th> --}}
                                                     <th class="border-bottom-0">المستوى الدراسي</th>
                                                     <th class="border-bottom-0">الأختصاص</th>
@@ -83,6 +85,7 @@
                                                     <td>{{$x->wife_birth}}</td>
                                                     <td>{{$x->wife_city}}</td>
                                                     <td>{{$x->wife_district}}</td>
+                                                    <td>{{$x->medical_mom}}</td>
                                                     {{-- <td>{{$x->wife_mar_stat}}</td> --}}
                                                     <td>{{$x->wife_academicel}}</td>
                                                     <td>{{$x->wife_special}}</td>
@@ -93,6 +96,7 @@
                                                     <td>{{$x->husb_birth}}</td>
                                                     <td>{{$x->husb_Orig_city}}</td>
                                                     <td>{{$x->husb_district}}</td>
+                                                    <td>{{$x->medical_dad}}</td>
                                                     {{-- <td>{{$x->husb_mar_stat}}</td> --}}
                                                     <td>{{$x->husb_academicel}}</td>
                                                     <td>{{$x->husb_special}}</td>
@@ -105,6 +109,8 @@
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-wife_name="{{$x->wife_name}}"
                                                                 data-wife_birth="{{$x->wife_birth }}" data-wife_city="{{$x->wife_city}}"
+                                                                data-medical_dad="{{$x->medical_dad}}"
+                                                                data-medical_mom="{{$x->medical_mom}}"
                                                                 data-wife_district="{{$x->wife_district}}"
                                                                 data-wife_mar_stat="{{$x->wife_mar_stat}}"
                                                                 data-wife_academicel="{{$x->wife_academicel }}" data-wife_special="{{$x->wife_special}}"
@@ -258,6 +264,25 @@
                                     </option>
                                     </select>
                                 </div> 
+                                <div class="form-group">
+                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <select class="form-control select2" name="medical_mom" id="medical_mom">
+                                        <option label="test">
+											  </option>
+                                        <option value="لايوجد" >
+                                        لايوجد
+                                    </option>
+                                    <option value="اصابة حرب" >
+                                        اصابة حرب
+                                    </option>
+                                    <option value="وباء" >
+                                        وباء
+                                    </option>
+                                    <option value="مرض مزمن" >
+                                        مرض مزمن
+                                    </option>
+                                    </select>
+                                </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للزوجة</label>
                                 <input type="text" class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى التعليمي  ">
@@ -321,6 +346,25 @@
                                     </option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <select class="form-control select2" name="medical_dad" id="medical_dad">
+                                        <option label="test">
+											  </option>
+                                        <option value="لايوجد" >
+                                        لايوجد
+                                    </option>
+                                    <option value="اصابة حرب" >
+                                        اصابة حرب
+                                    </option>
+                                    <option value="وباء" >
+                                        وباء
+                                    </option>
+                                    <option value="مرض مزمن" >
+                                        مرض مزمن
+                                    </option>
+                                    </select>
+                                </div>                                
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للزوج</label>
                                 <input type="text" class="form-control" id="husb_academicel" name="husb_academicel" placeholder=" أكتب المستوى التعليمي ">
@@ -415,6 +459,8 @@
         var husb_orig_city = button.data('husb_orig_city')
         var husb_district = button.data('husb_district')
         var husb_name = button.data('husb_name')
+        var medical_mom = button.data('medical_mom')
+        var medical_dad = button.data('medical_dad')
         var husb_academicel = button.data('husb_academicel')
         var husb_special = button.data('husb_special')
         var husb_is_work = button.data('husb_is_work')
@@ -431,6 +477,8 @@
         modal.find('.modal-body #wife_academicel').val(wife_academicel);
         modal.find('.modal-body #wife_special').val(wife_special);
         modal.find('.modal-body #wife_is_work').val(wife_is_work);
+        modal.find('.modal-body #medical_mom').val(medical_mom);
+        modal.find('.modal-body #medical_dad').val(medical_dad);
         modal.find('.modal-body #wife_now_work').val(wife_now_work);
         modal.find('.modal-body #wife_pre_work').val(wife_pre_work);
         modal.find('.modal-body #husb_mar_stat').val(husb_mar_stat);

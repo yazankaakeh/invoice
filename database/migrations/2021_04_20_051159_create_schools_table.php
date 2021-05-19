@@ -24,7 +24,9 @@ class CreateSchoolsTable extends Migration
             $table->string('School_type')->nullable();
             $table->string('School_location')->nullable();
             $table->string('School_cost')->nullable();///   أقساط مدرسية
-            $table->string('School_fees_')->nullable();/// مصاريف مدرسية
+            $table->string('School_fees')->nullable();/// مصاريف مدرسية
+
+
 
             ########################## school info End ############################
             $table->timestamps();

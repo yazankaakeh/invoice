@@ -37,9 +37,13 @@
                                             <thead>
                                                 <tr>
                                                     <th class="border-bottom-0">Id</th>
-                                                    <th class="border-bottom-0">المبلغ المدفوع</th>
+                                                    <th class="border-bottom-0">المبلغ المدفوع بالتركي</th>
+                                                    <th class="border-bottom-0">المبلغ المدفوع بالدولار</th>
+                                                    <th class="border-bottom-0">المبلغ المدفوع باليورو</th>
                                                     <th class="border-bottom-0">رقم الطالب</th>
                                                     <th class="border-bottom-0">اسم العائلة</th>
+                                                    <th class="border-bottom-0">قيمة الكروت</th>
+                                                    <th class="border-bottom-0">عدد الكروت</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
                                                     <th class="border-bottom-0">تاريخ الدفع</th>
                                                     <th class="border-bottom-0">عمليات</th>
@@ -51,15 +55,21 @@
                                                 <tr>
                                                     <td>{{$x->id}}</td>
                                                     <td>{{$x->medical_value}}</td>
+                                                    <td>{{$x->medical_value_usd}}</td>
+                                                    <td>{{$x->medical_value_euro}}</td>
                                                     <td>{{$x->medical_id}}</td>
                                                     <td>{{$x->medical->medical_name}}</td>
+                                                    <td>{{$x->value_bim_medical}}</td>
+                                                    <td>{{$x->number_bim_medical}}</td>
                                                     <td>{{$x->Note}}</td>
                                                     <td>{{$x->updated_at}}</td>
-                                                    <td>
+                                                    <td> 
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}"
                                                                 data-medical_value="{{$x->medical_value }}" data-medical_id="{{$x->medical_id}}"
-                                                                data-medical_name="{{$x->medical->medical_name}}" data-note="{{$x->note }}"
+                                                                data-medical_name="{{$x->medical->medical_name}}" data-note="{{$x->Note }}"
+                                                                data-medical_value_usd="{{$x->medical_value_usd}}" data-medical_value_euro="{{$x->medical_value_euro }}"
+                                                                data-number_bim_medical="{{$x->number_bim_medical}}" data-value_bim_medical="{{$x->value_bim_medical }}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
@@ -67,6 +77,7 @@
 
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-medical_value="{{$x->medical_value }}"
+                                                                data-number_bim_medical="{{ $x->number_bim_medical }}"  data-value_bim_medical="{{$x->value_bim_medical }}"
                                                                 data-medical_id="{{$x->medical_id}}" data-medical_name="{{$x->medical->medical_name}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
@@ -115,8 +126,6 @@
                         </div>
 
                     </div>
-				</div>
-
                     {{-- delete --}}
                     <div class="modal" id="modaldemo9">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -125,7 +134,7 @@
                                     <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
-                                <form action="{{ Route('pay.destroy.medical') }}" method="post">
+                                <form action="{{ Route('bim.destroy.medical') }}" method="post">
                                     {{ method_field('delete') }}
                                     {{ csrf_field() }}
                                     <div class="modal-body">
@@ -133,10 +142,23 @@
                                         <input type="hidden" name="medical_id" id="medical_id" value="" readonly>
                                         <input type="hidden" name="id" id="id" value="">
                                         <label for="recipient-name" class="col-form-label">اسم الطالب:</label>
-                                        <input class="form-control" name="medical_name" id="medical_name" type="text" readonly>
+                                        <input class="form-control" name="medical_Constraint" id="medical_constraint" type="text" readonly>
+                                        <div class="modal-body">
+                                            <p class="mg-b-10">قيمة الكروت</p>
+                                            <select class="form-control select2" name="value_bim_medical" id="value_bim_medical" >
+                                                    @foreach($payments_income as $a)
+                                                        <option value="{{$a->value_bim}}" >
+                                                            {{$a->value_bim}}
+                                                        </option>                                                        
+                                                    @endforeach
+                                            </select>
+                                        </div>
 
-                                        <label for="recipient-name" class="col-form-label">المبلغ</label>
-                                        <input class="form-control" name="medical_value" id="medical_value" type="text" readonly>
+                                        <div class="modal-body">
+                                            <label for="recipient-name" class="col-form-label">عدد الكروت</label>
+                                            <input class="form-control" name="number_bim_medical" id="number_bim_medical" type="text" >
+                                        </div>
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
@@ -160,20 +182,34 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ Route('pay.update.medical') }}" method="post" autocomplete="off">
+                                    <form action="{{ Route('bim.update.medical') }}" method="post" autocomplete="off">
                                         {{ method_field('patch') }}
                                         {{ csrf_field() }}
-                                        <div class="form-group">
-                                            <input type="text" name="id" id="id" value="" readonly>
-                                            <input type="text" name="medical_id" id="medical_id" value="" readonly>
+                                        <div class="modal-body">
+                                            <input type="hidden" name="id" id="id" value="" readonly>
+                                            <input type="hidden" name="medical_id" id="medical_id" value="" readonly>
                                             <label for="recipient-name" class="col-form-label">اسم الطالب:</label>
-                                            <input class="form-control" name="medical_name" id="medical_name" type="text">
+                                            <input class="form-control" name="medical_Constraint" id="medical_constraint" type="text" readonly>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="col-form-label">المبلغ</label>
-                                            <input class="form-control" name="medical_value" id="medical_value" type="text">
+                                        
+                                        <div class="modal-body">
+                                            <p class="mg-b-10">قيمة الكروت</p>
+                                            <select class="form-control select2" name="value_bim_medical" id="value_bim_medical" >
+                                                    @foreach($payments_income as $a)
+                                                        <option value="{{$a->value_bim}}" >
+                                                            {{$a->value_bim}}
+                                                        </option>                                                        
+                                                    @endforeach
+                                            </select>
                                         </div>
-                                        <div class="form-group">
+
+                                        <div class="modal-body">
+                                            <label for="recipient-name" class="col-form-label">عدد الكروت</label>
+                                            <input class="form-control" name="number_bim_medical" id="number_bim_medical" type="text" >
+                                            <input class="form-control" name="number_bim_medical1" id="number_bim_medical" type="hidden" >
+                                        </div>
+
+                                        <div class="modal-body">
                                             <label for="message-text" class="col-form-label">ملاحظات:</label>
                                             <textarea class="form-control" id="note" name="note"></textarea>
                                         </div>
@@ -187,6 +223,12 @@
                             </div>
                         </div>
                     </div>
+				</div>
+
+
+
+
+                
                 </div>
 				<!-- row closed -->
 			</div>
@@ -225,7 +267,11 @@
         var id = button.data('id')
         var medical_id = button.data('medical_id')
         var medical_value = button.data('medical_value')
-        var medical_name = button.data('medical_name')
+        var medical_name = button.data('medical_name')        
+        var medical_value_euro = button.data('medical_value_euro')
+        var medical_value_usd = button.data('medical_value_usd')
+        var value_bim_medical = button.data('value_bim_medical')
+        var number_bim_medical = button.data('number_bim_medical')
         var note = button.data('note')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
@@ -233,21 +279,35 @@
         modal.find('.modal-body #medical_value').val(medical_value);
         modal.find('.modal-body #medical_name').val(medical_name);
         modal.find('.modal-body #note').val(note);
+        modal.find('.modal-body #medical_value_euro').val(medical_value_euro);
+        modal.find('.modal-body #medical_value_usd').val(medical_value_usd);
+        modal.find('.modal-body #value_bim_medical').val(value_bim_medical);
+        modal.find('.modal-body #number_bim_medical').val(number_bim_medical);
     })
 </script>
 
 <script>
     $('#modaldemo9').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
+        var medical_name = button.data('medical_name')
+        var number_bim_medical = button.data('number_bim_medical')
+        var value_bim_medical = button.data('value_bim_medical')
         var medical_id = button.data('medical_id')
         var id = button.data('id')
+        var medical_value_euro = button.data('medical_value_euro')
+        var medical_value_usd = button.data('medical_value_usd')
         var medical_value = button.data('medical_value')
-        var medical_name = button.data('medical_name')
+        var note = button.data('note')
         var modal = $(this)
+        modal.find('.modal-body #number_bim_medical').val(number_bim_medical);
+        modal.find('.modal-body #value_bim_medical').val(value_bim_medical);
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #medical_value').val(medical_value);
         modal.find('.modal-body #medical_id').val(medical_id);
+        modal.find('.modal-body #medical_value_euro').val(medical_value_euro);
+        modal.find('.modal-body #medical_value_usd').val(medical_value_usd);
         modal.find('.modal-body #medical_name').val(medical_name);
+        modal.find('.modal-body #note').val(note);
     })
 </script>
 @endsection

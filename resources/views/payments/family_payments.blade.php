@@ -37,9 +37,13 @@
                                             <thead>
                                                 <tr>
                                                     <th class="border-bottom-0">Id</th>
-                                                    <th class="border-bottom-0">المبلغ المدفوع</th>
+                                                    <th class="border-bottom-0">المبلغ المدفوع بالتركي</th>
+                                                    <th class="border-bottom-0">المبلغ المدفوع بالدولار</th>
+                                                    <th class="border-bottom-0">المبلغ المدفوع باليورو</th>
                                                     <th class="border-bottom-0">رقم الطالب</th>
                                                     <th class="border-bottom-0">اسم العائلة</th>
+                                                    <th class="border-bottom-0">قيمة الكروت</th>
+                                                    <th class="border-bottom-0">عدد الكروت</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
                                                     <th class="border-bottom-0">تاريخ الدفع</th>
                                                     <th class="border-bottom-0">عمليات</th>
@@ -51,15 +55,21 @@
                                                 <tr>
                                                     <td>{{$x->id}}</td>
                                                     <td>{{$x->family_value}}</td>
+                                                    <td>{{$x->family_value_usd}}</td>
+                                                    <td>{{$x->family_value_euro}}</td>
                                                     <td>{{$x->family_id}}</td>
                                                     <td>{{$x->family->family_Constraint}}</td>
-                                                    <td>{{$x->note}}</td>
+                                                    <td>{{$x->value_bim_family}}</td>
+                                                    <td>{{$x->number_bim_family}}</td>
+                                                    <td>{{$x->Note}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}"
+                                                                data-number_bim_family="{{$x->number_bim_family }}" data-value_bim_family="{{$x->value_bim_family}}"
                                                                 data-family_value="{{$x->family_value }}" data-family_id="{{$x->family_id}}"
-                                                                data-family_constraint="{{$x->family->family_Constraint}}" data-note="{{$x->note }}"
+                                                                data-family_constraint="{{$x->family->family_Constraint}}" data-note="{{$x->Note }}"
+                                                                data-family_value_euro="{{$x->family_value_euro}}" data-family_value_usd="{{$x->family_value_usd }}"                                                                
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
@@ -67,6 +77,8 @@
 
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-family_value="{{$x->family_value }}"
+                                                                data-value_bim_family="{{$x->value_bim_family}}"
+                                                                data-number_bim_family="{{$x->number_bim_family}}"
                                                                 data-family_id="{{$x->family_id}}" data-family_constraint="{{$x->family->family_Constraint}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
@@ -94,6 +106,15 @@
                             @if (session()->has('Delete'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Delete') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif                            
+                            
+                            @if (session()->has('Warning'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Warning') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -134,7 +155,21 @@
                                         <input type="hidden" name="id" id="id" value="">
                                         <label for="recipient-name" class="col-form-label">اسم الطالب:</label>
                                         <input class="form-control" name="family_Constraint" id="family_constraint" type="text" readonly>
+                                        <div class="modal-body">
+                                            <p class="mg-b-10">قيمة الكروت</p>
+                                            <select class="form-control select2" name="value_bim_family" id="value_bim_family" >
+                                                    @foreach($payments_income as $a)
+                                                        <option value="{{$a->value_bim}}" >
+                                                            {{$a->value_bim}}
+                                                        </option>                                                        
+                                                    @endforeach
+                                            </select>
+                                        </div>
 
+                                        <div class="modal-body">
+                                            <label for="recipient-name" class="col-form-label">عدد الكروت</label>
+                                            <input class="form-control" name="number_bim_family" id="number_bim_family" type="text" >
+                                        </div>
                                         <label for="recipient-name" class="col-form-label">المبلغ</label>
                                         <input class="form-control" name="family_value" id="family_value" type="text" readonly>
                                     </div>
@@ -163,17 +198,43 @@
                                     <form action="{{ Route('pay.update.family') }}" method="post" autocomplete="off">
                                         {{ method_field('patch') }}
                                         {{ csrf_field() }}
-                                        <div class="form-group">
-                                            <input type="text" name="id" id="id" value="" readonly>
-                                            <input type="text" name="family_id" id="family_id" value="" readonly>
+                                        <div class="modal-body">
+                                            <input type="hidden" name="id" id="id" value="" readonly>
+                                            <input type="hidden" name="family_id" id="family_id" value="" readonly>
                                             <label for="recipient-name" class="col-form-label">اسم الطالب:</label>
-                                            <input class="form-control" name="family_Constraint" id="family_constraint" type="text">
+                                            <input class="form-control" name="family_Constraint" id="family_constraint" type="text" readonly>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="modal-body">
                                             <label for="recipient-name" class="col-form-label">المبلغ</label>
                                             <input class="form-control" name="family_value" id="family_value" type="text">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="modal-body">
+                                        <label for="recipient-name" class="col-form-label">المبلغ بالدولار</label>
+                                        <input class="form-control" name="family_value_usd" id="family_value_usd" type="text" >
+                                        </div>
+                                        <div class="modal-body">
+                                        <label for="recipient-name" class="col-form-label">المبلغ باليورو</label>
+                                        <input class="form-control" name="family_value_euro" id="family_value_euro" type="text" >
+                                        </div>
+                                        
+                                        <div class="modal-body">
+                                            <p class="mg-b-10">قيمة الكروت</p>
+                                            <select class="form-control select2" name="value_bim_family" id="value_bim_family" >
+                                                    @foreach($payments_income as $a)
+                                                        <option value="{{$a->value_bim}}" >
+                                                            {{$a->value_bim}}
+                                                        </option>                                                        
+                                                    @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <label for="recipient-name" class="col-form-label">عدد الكروت</label>
+                                            <input class="form-control" name="number_bim_family" id="number_bim_family" type="text" >
+                                            <input class="form-control" name="number_bim_family1" id="number_bim_family" type="hidden" >
+                                        </div>
+
+                                        <div class="modal-body">
                                             <label for="message-text" class="col-form-label">ملاحظات:</label>
                                             <textarea class="form-control" id="note" name="note"></textarea>
                                         </div>
@@ -227,12 +288,20 @@
         var family_value = button.data('family_value')
         var family_constraint = button.data('family_constraint')
         var note = button.data('note')
+        var family_value_usd = button.data('family_value_usd')
+        var family_value_euro = button.data('family_value_euro')
+        var value_bim_family = button.data('value_bim_family')
+        var number_bim_family = button.data('number_bim_family')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #family_id').val(family_id);
         modal.find('.modal-body #family_value').val(family_value);
         modal.find('.modal-body #family_constraint').val(family_constraint);
         modal.find('.modal-body #note').val(note);
+        modal.find('.modal-body #family_value_usd').val(family_value_usd);
+        modal.find('.modal-body #family_value_euro').val(family_value_euro);
+        modal.find('.modal-body #value_bim_family').val(value_bim_family);
+        modal.find('.modal-body #number_bim_family').val(number_bim_family);
     })
 </script>
 
@@ -243,11 +312,15 @@
         var id = button.data('id')
         var family_value = button.data('family_value')
         var family_constraint = button.data('family_constraint')
+        var value_bim_family = button.data('value_bim_family')
+        var number_bim_family = button.data('number_bim_family')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #value_bim_family').val(value_bim_family);
         modal.find('.modal-body #family_value').val(family_value);
         modal.find('.modal-body #family_id').val(family_id);
         modal.find('.modal-body #family_constraint').val(family_constraint);
+        modal.find('.modal-body #number_bim_family').val(number_bim_family);
     })
 </script>
 @endsection

@@ -32,6 +32,7 @@ class CreateHusbandandWivesTable extends Migration
             $table->string('wife_mar_stat')->nullable();// Social status for (family)
             $table->string('wife_academicel')->nullable();
             $table->string('wife_special')->nullable();
+            $table->string('medical_mom')->nullable();
             $table->string('wife_is_work')->nullable();// هل يعمل
             $table->string('wife_now_work')->nullable();
             $table->string('wife_Pre_work')->nullable(); // العمل السابق
@@ -46,6 +47,7 @@ class CreateHusbandandWivesTable extends Migration
             $table->string('husb_special')->nullable();
             $table->string('husb_is_work')->nullable();
             $table->string('husb_now_work')->nullable();
+            $table->string('medical_dad')->nullable();
             $table->string('husb_Pre_work')->nullable();
 ########################## husband info End ############################
             $table->timestamps();

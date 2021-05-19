@@ -2,6 +2,10 @@
 
 namespace App\models\Student;
 use App\models\Payment\Student_Payment;
+use App\models\Payment\Usd;
+use App\models\Payment\Bim;
+use App\models\Payment\Tr;
+use App\models\Payment\Euro;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -22,9 +26,22 @@ class Student extends Model
         return $this->hasMany('App\models\Publics\Children');
         }
 
-        public function StudentPaymnet(){
-        return $this->hasMany('Student_Payment');
+        public function Usd(){
+        return $this->hasMany('Usd');
         }
+
+        public function Tr(){
+        return $this->hasMany('Tr');
+        }
+        
+        public function Euro(){
+        return $this->hasMany('Euro');
+        }
+
+        public function Bim(){
+        return $this->hasMany('Bim');
+        }
+
         public function Husband_Wife()
         {
             return $this->hasMany('App\models\Publics\HusbandandWife');

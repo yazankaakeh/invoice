@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Medical;
 
 use App\Http\Controllers\Student\StudentController;
 use App\models\Student\Student;
+use App\models\Payment\Income;
 use App\models\Medical\Medical;
 use App\models\Publics\From;
 use Illuminate\Http\Request;
@@ -15,9 +16,11 @@ class MedicalController extends Controller
 
     public function index()
     {       
-         $medical = Medical::all();
+        $payments = Income::select('value_bim')->distinct()->get();
+        $medical = Medical::all();
+        //dd($medical);
         //dd($students);
-        return view('Medical.medical.medical',compact('medical'));
+        return view('Medical.medical.medical',compact('medical','payments'));
 
     }
 

@@ -146,6 +146,7 @@ class HusbandandWifeController extends Controller
             'husb_mar_stat' => 'required',
             'wife_now_work' => 'required',
             'wife_Pre_work' => 'required',
+            'medical_mom' => 'required',
             // ////////////////////////////////////////////////
             'husb_name' => 'required',
             'husb_birth' => 'required',
@@ -156,6 +157,7 @@ class HusbandandWifeController extends Controller
             'husb_is_work' => 'required',
             'wife_mar_stat' => 'required',
             'husb_now_work' => 'required',
+            'medical_dad' => 'required',
             'husb_Pre_work' => 'required'
          ]);
          //create new object of the model student and make mapping to the data
@@ -172,6 +174,7 @@ class HusbandandWifeController extends Controller
          $husbandandWife -> wife_academicel = $request->wife_academicel;
          $husbandandWife -> wife_special = $request->wife_special;
          $husbandandWife -> wife_is_work = $request->wife_is_work;
+         $husbandandWife -> medical_mom = $request->medical_mom;
          $husbandandWife -> wife_mar_stat = $request->wife_mar_stat;
          $husbandandWife -> wife_now_work = $request->wife_now_work;
          $husbandandWife -> wife_Pre_work = $request->wife_Pre_work;
@@ -185,6 +188,7 @@ class HusbandandWifeController extends Controller
          $husbandandWife -> husb_is_work = $request->husb_is_work;
          $husbandandWife -> husb_now_work = $request->husb_now_work;
          $husbandandWife -> husb_mar_stat = $request->husb_mar_stat;
+         $husbandandWife -> medical_dad = $request->medical_dad;
          $husbandandWife -> husb_Pre_work = $request->husb_Pre_work;
          //write to the data base
          $familys->save();
@@ -212,6 +216,7 @@ class HusbandandWifeController extends Controller
             'wife_special' => 'required',
             'wife_is_work' => 'required',
             'wife_now_work' => 'required',
+            'medical_mom' => 'required',
             'husb_mar_stat' => 'required',
             'wife_Pre_work' => 'required',
             // ////////////////////////////////////////////////
@@ -223,6 +228,7 @@ class HusbandandWifeController extends Controller
             'husb_special' => 'required',
             'husb_is_work' => 'required',
             'husb_now_work' => 'required',
+            'medical_dad' => 'required',
             'wife_mar_stat' => 'required',
             'husb_Pre_work' => 'required'
          ]);
@@ -236,6 +242,7 @@ class HusbandandWifeController extends Controller
          $husbandandWife -> wife_birth = $request->wife_birth;
          $husbandandWife -> wife_city = $request->wife_city;
          $husbandandWife -> wife_district = $request->wife_district;
+         $husbandandWife -> medical_mom = $request->medical_mom;
          $husbandandWife -> wife_academicel = $request->wife_academicel;
          $husbandandWife -> wife_special = $request->wife_special;
          $husbandandWife -> wife_is_work = $request->wife_is_work;
@@ -247,6 +254,7 @@ class HusbandandWifeController extends Controller
          $husbandandWife -> husb_birth = $request->husb_birth;
          $husbandandWife -> husb_Orig_city = $request->husb_Orig_city;
          $husbandandWife -> husb_district = $request->husb_district;
+         $husbandandWife -> medical_dad = $request->medical_dad;
          $husbandandWife -> husb_academicel = $request->husb_academicel;
          $husbandandWife -> husb_special = $request->husb_special;
          $husbandandWife -> husb_is_work = $request->husb_is_work;
@@ -266,7 +274,7 @@ class HusbandandWifeController extends Controller
        'wife_district','wife_mar_stat','wife_academicel','wife_special',
        'wife_is_work','wife_now_work','wife_Pre_work','husb_mar_stat',
        'husb_birth','husb_Orig_city','husb_district','husb_name',
-       'husb_academicel','husb_special','husb_is_work','husb_now_work','husb_Pre_work')
+       'husb_academicel','husb_special','husb_is_work','husb_now_work','husb_Pre_work','medical_dad','medical_mom')
        ->orderBy('id', 'DESC')
        ->get();
        //dd($husb);

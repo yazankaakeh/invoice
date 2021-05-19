@@ -20,7 +20,7 @@ class CreateSisterandBrothersTable extends Migration
             ########################## sister info Begin ############################
             $table->string('name');// الأسم
             $table->string('age');// العمر
-            $table->enum('gender',['ذكر','انثى'])->default('ذكر');// الجنس
+            $table->string('gender');// الجنس
             $table->string('academicel');// مستوى الدراسي
             $table->string('special');// الأختصاص
             $table->string('work');// العمل الحالي

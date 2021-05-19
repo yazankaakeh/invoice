@@ -51,6 +51,7 @@
                                                     <th class="border-bottom-0">المواليد</th>
                                                     <th class="border-bottom-0">المدينة</th>
                                                     <th class="border-bottom-0">الحي</th>
+                                                    <th class="border-bottom-0">الحالة الصحية</th>
                                                     <th class="border-bottom-0">المستوى الدراسي</th>
                                                     <th class="border-bottom-0">الأختصاص</th>
                                                     <th class="border-bottom-0">حالة العمل</th>
@@ -60,6 +61,7 @@
                                                     <th class="border-bottom-0">المواليد</th>
                                                     <th class="border-bottom-0">المدينة</th>
                                                     <th class="border-bottom-0">الحي</th>
+                                                    <th class="border-bottom-0">الحالة الصحية</th>
                                                     <th class="border-bottom-0">المستوى الدراسي</th>
                                                     <th class="border-bottom-0">الأختصاص</th>
                                                     <th class="border-bottom-0">حالة العمل</th>
@@ -80,6 +82,7 @@
                                                     <td>{{$x->mother_birth}}</td>
                                                     <td>{{$x->mother_origin}}</td>
                                                     <td>{{$x->mother_origin_city}}</td>
+                                                    <td>{{$x->medical_mom}}</td>
                                                     <td>{{$x->mother_academicel}}</td>
                                                     <td>{{$x->mother_special}}</td>
                                                     <td>{{$x->mother_is_work}}</td>
@@ -89,6 +92,7 @@
                                                     <td>{{$x->father_birth}}</td>
                                                     <td>{{$x->father_origin}}</td>
                                                     <td>{{$x->father_origin_city}}</td>
+                                                    <td>{{$x->medical_dad}}</td>
                                                     <td>{{$x->father_academicel}}</td>
                                                     <td>{{$x->father_special}}</td>
                                                     <td>{{$x->father_is_work}}</td>
@@ -107,6 +111,8 @@
                                                                 data-father_birth="{{$x->father_birth}}" data-father_origin="{{$x->father_origin}}"
                                                                 data-father_origin_city="{{$x->father_origin_city}}" data-father_academicel="{{$x->father_academicel}}"
                                                                 data-father_special="{{$x->father_special}}"
+                                                                data-medical_mom="{{$x->medical_mom}}"
+                                                                data-medical_dad="{{$x->medical_dad}}"
                                                                 data-father_is_work="{{$x->father_is_work}}" data-father_now_work="{{$x->father_now_work}}" data-father_salary="{{$x->father_salary}}"
                                                                  data-medical_name="{{$x->medical->medical_name}}"   data-medical_id="{{$x->medical_id}}"
                                                                 data-toggle="modal"
@@ -232,6 +238,25 @@
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
                                     <input type="text" class="form-control" id="mother_origin_city" name="mother_origin_city" placeholder=" أكتب أسم المدينة">
                                 </div>
+                                <div class="form-group">
+                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <select class="form-control select2" name="medical_mom" id="medical_mom">
+                                        <option label="test">
+											  </option>
+                                        <option value="لايوجد" >
+                                        لايوجد
+                                    </option>
+                                    <option value="اصابة حرب" >
+                                        اصابة حرب
+                                    </option>
+                                    <option value="وباء" >
+                                        وباء
+                                    </option>
+                                    <option value="مرض مزمن" >
+                                        مرض مزمن
+                                    </option>
+                                    </select>
+                                </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للأم</label>
                                 <input type="text" class="form-control" id="mother_academicel" name="mother_academicel" placeholder=" أكتب المستوى النعليمي ">
@@ -278,6 +303,25 @@
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
                                     <input type="text" class="form-control" id="father_origin_city" name="father_origin_city" placeholder=" أكتب أسم المدينة">
                                 </div>
+                                <div class="form-group">
+                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <select class="form-control select2" name="medical_dad" id="medical_dad">
+                                        <option label="test">
+											  </option>
+                                        <option value="لايوجد" >
+                                        لايوجد
+                                    </option>
+                                    <option value="اصابة حرب" >
+                                        اصابة حرب
+                                    </option>
+                                    <option value="وباء" >
+                                        وباء
+                                    </option>
+                                    <option value="مرض مزمن" >
+                                        مرض مزمن
+                                    </option>
+                                    </select>
+                                </div>                                
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للأب</label>
                                 <input type="text" class="form-control" id="father_academicel" name="father_academicel" placeholder=" أكتب المستوى التعليمي ">
@@ -373,9 +417,13 @@
         var father_now_work = button.data('father_now_work')
         var father_salary = button.data('father_salary')
         var mother_special = button.data('mother_special')
+        var medical_dad = button.data('medical_dad')
+        var medical_mom = button.data('medical_mom')
         var modal = $(this)
         modal.find('.modal-body #medical_id').val(medical_id);
         modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #medical_dad').val(medical_dad);
+        modal.find('.modal-body #medical_mom').val(medical_mom);
         modal.find('.modal-body #mother_name').val(mother_name);
         modal.find('.modal-body #mother_birth').val(mother_birth);
         modal.find('.modal-body #mother_origin').val(mother_origin);

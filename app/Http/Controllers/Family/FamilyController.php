@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Family;
 
 use App\models\Family\Family;
 use App\models\Student\Student;
+use App\models\Payment\Income;
 use Illuminate\Http\Request;
 use App\models\Publics\From;
+use App\models\Medical\Medical;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -16,9 +18,9 @@ class FamilyController extends Controller
 
     public function index(Request $request)
     {
+        $payments = Income::select('value_bim')->distinct()->get();
         $family = Family::all();
-        //dd($students);
-        return view('Family.family.family',compact('family'));
+        return view('Family.family.family',compact('family','payments'));
     }
   
 
@@ -32,6 +34,7 @@ class FamilyController extends Controller
             'family_monthly_salary' => 'required',
             'family_monthly_salary' => 'required',
             'family_what_aid' => 'required',
+            'aid_value' => 'required',
             'note' => 'required',
             'sec_phone' => 'required',
             'phone' => 'required',
@@ -46,6 +49,7 @@ class FamilyController extends Controller
          $families -> family_number_member = $request->family_number_member;
          $families -> family_breadwinner = $request->family_breadwinner;
          $families -> family_an_breadwinner = $request->family_an_breadwinner;
+         $families -> aid_value = $request->aid_value;
          $families -> work_breadwinner = $request->work_breadwinner;
          $families -> work_an_breadwinner = $request->work_an_breadwinner;
          $families -> family_monthly_salary = $request->family_monthly_salary;
@@ -73,6 +77,7 @@ class FamilyController extends Controller
             'family_monthly_salary' => 'required',
             'family_what_aid' => 'required',
             'sec_phone' => 'required',
+            'aid_value' => 'required',
             'phone' => 'required',
             'work_an_breadwinner' => 'required',
             'work_breadwinner' => 'required',
@@ -84,6 +89,7 @@ class FamilyController extends Controller
          $families -> sec_phone = $request->sec_phone;
          $families -> family_Constraint = $request->family_Constraint;
          $families -> family_number_member = $request->family_number_member;
+         $families -> aid_value = $request->aid_value;
          $families -> family_breadwinner = $request->family_breadwinner;
          $families -> family_an_breadwinner = $request->family_an_breadwinner;
          $families -> family_monthly_salary = $request->family_monthly_salary;
@@ -180,7 +186,8 @@ class FamilyController extends Controller
          ]);
          $last = DB::table('students')->latest()->first();
         //  dd($last);
-         if ($request->student_id <= $last->id ) {
+        if ($last != null) {
+        if ($request->student_id <= $last->id ) {
         
          //create new object of the model student and make mapping to the data
          $students = Student::find($request->student_id);
@@ -213,6 +220,14 @@ class FamilyController extends Controller
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('family.show'));
          }
+         }
+         else {
+         $familys =  Family::find($request->family_id);
+         $family_Constraint = $familys->family_Constraint;
+         session()->flash('Add_student_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح يامسخم ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('family.show'));
+         }
 
     }
 
@@ -238,4 +253,86 @@ class FamilyController extends Controller
         return  redirect()->route('family.student.show', [$request->family_id]);
 
     }
+
+///////////////////////////////////////////    Medical   ///////////////////////////////////
+
+    public function add_medical(Request $request)
+    {
+        $this->validate($request,[
+         'family_id' => 'required',
+         'medical_id' => 'required',  
+         ]);
+         $last = DB::table('medicals')->latest()->first();
+        //  dd($last)c;
+        if ($last != null) {
+        
+         if (  $request->medical_id <= $last->id ) {
+        
+         //create new object of the model student and make mapping to the data
+         $medicals = Medical::find($request->medical_id);
+         if ($medicals ->family_id  == null) {
+         $familys =  Family::find($request->family_id);
+         $family_Constraint = $familys->family_Constraint;
+         $x = $familys->patient_statu;
+         ++$x;
+         $familys->patient_statu = $x;
+         $medicals ->family_id = $request->family_id;
+         //write to the data base
+         $familys ->save();
+         $medicals -> save();
+         session()->flash('Add_medical', 'تم اضافة طالب للعائلة '. $family_Constraint .' بنجاح ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added medical Successfully')
+         return redirect(route('family.show'));
+         }
+
+         else {
+         $familys =  Family::find($request->family_id);
+         $family_Constraint = $familys->family_Constraint;
+         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added medical Successfully')
+         return redirect(route('family.show'));
+         }
+
+         }
+         else {
+         $familys =  Family::find($request->family_id);
+         $family_Constraint = $familys->family_Constraint;
+         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح يامسخم ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added medical Successfully')
+         return redirect(route('family.show'));
+         }
+         }
+        else {
+         $familys =  Family::find($request->family_id);
+         $family_Constraint = $familys->family_Constraint;
+         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح يامسخم ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added medical Successfully')
+         return redirect(route('family.show'));
+         }
+
+    }
+
+    public function show_medical($id)
+    {
+        $medicals = medical::where('family_id', $id)->get();
+        return view('family.medical.medical_family',compact('medicals'));
+    }
+
+    public function detroy_medical(Request $request)
+    {
+        $families = Family::find($request->family_id);
+        $x=0;
+        $x = $families->patient_statu ;
+        -- $x ;
+        $families->patient_statu = $x;
+        $families->save();
+        $medicals = Medical::find($request->id);
+        $medicals->family_id = null;
+        $medicals->save();
+        /*after delete the medical by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the medical Successfully')*/
+        session()->flash('Delete', 'تم حذف القسم بنجاح ');
+        return  redirect()->route('family.medical.show', [$request->family_id]);
+
+    }
+
     }

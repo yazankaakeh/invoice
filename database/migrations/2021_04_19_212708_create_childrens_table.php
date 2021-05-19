@@ -31,7 +31,11 @@ class CreateChildrensTable extends Migration
             $table->string('childre_class_number')->nullable(); // رقم الصف الدراسي
             $table->string('childre_id_extr')->nullable();// مدينة أصدار الهوية
             $table->string('childre_live_with')->nullable();//هل يعيشون معكم
+            $table->string('medical_stat')->nullable();//هل يعيشون معكم
 
+            $table->string('student_statu')->nullable()->deafult(0);
+            $table->string('family_statu')->nullable()->deafult(0);
+            $table->string('medical_statu')->nullable()->deafult(0);
            ########################## childre info End ############################
 
             $table->timestamps();

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\SchoolController;
 use App\Http\Controllers\Medical\MediaclController;
 use App\Http\Controllers\Payment\Student_Payment;
 use App\Http\Controllers\Family\FamilyController;
@@ -25,10 +26,14 @@ Route::prefix('family')->group(function () {
     Route::delete('update', "Family\FamilyController@destroy")->name('family.destroy')->middleware('auth');
     Route::get('register', "Family\FamilyController@register")->name('family.register')->middleware('auth');
     Route::get('enable', "Family\FamilyController@enable")->name('family.enable')->middleware('auth');
-    Route::get('/add/student', "Family\FamilyController@add_student")->name('family.student.add')->middleware('auth');
     Route::get('disable', "Family\FamilyController@disable")->name('family.disable')->middleware('auth');
+    Route::get('/add/student', "Family\FamilyController@add_student")->name('family.student.add')->middleware('auth');
     Route::get('/show/student/{id}/', "Family\FamilyController@show_student")->name('family.student.show')->middleware('auth');
+   // Route::patch('/update/student/{id}/', "Family\FamilyController@show_student")->name('family.student.show')->middleware('auth');
     Route::delete('/destroy/student/', "Family\FamilyController@detroy_student")->name('student.family.destroy')->middleware('auth');
+    Route::get('/add/medical', "Family\FamilyController@add_medical")->name('family.medical.add')->middleware('auth');
+    Route::get('/show/medical/{id}/', "Family\FamilyController@show_medical")->name('family.medical.show')->middleware('auth');
+    Route::delete('/destroy/medical/', "Family\FamilyController@detroy_medical")->name('medical.family.destroy')->middleware('auth');
 });
 
 Route::prefix('husband_Wife_family')->group(function () {
@@ -56,19 +61,19 @@ Route::prefix('address_family')->group(function () {
     Route::delete('/delete', "Publics\AddressController@destroy")->name('address.destroy')->middleware('auth');
 });
 
-Route::prefix('Family_pay')->group(function () {
-    ////// Family 
-    Route::get('/show/family', "Payment\StudentPaymentController@family_ind")->middleware('auth')->name('show.family.pay');
-    Route::post('/store/family', "Payment\StudentPaymentController@store_family")->name('pay.store.family')->middleware('auth');
-    Route::patch('/update/family', "Payment\StudentPaymentController@update_family")->name('pay.update.family')->middleware('auth');
-    Route::get('/show/family/{id}', "Payment\StudentPaymentController@show_family")->middleware('auth')->name('pay.shows.family');
-    Route::delete('/destroy/family', "Payment\StudentPaymentController@destroy_familys")->name('pay.destroy.family')->middleware('auth');
-});
-
 Route::prefix('job_family')->group(function () {
     Route::get('/show/family/', "Publics\JobController@index_family")->name('job.show.family')->middleware('auth');
     Route::post('/store/family/', "Publics\JobController@store_family")->name('job.family.store')->middleware('auth');
     Route::patch('/update/family/', "Publics\JobController@update_family")->name('job.update.family')->middleware('auth');
     Route::get('/show/family/{id}', "Publics\JobController@show_family")->middleware('auth');
     Route::delete('/delete/family/', "Publics\JobController@destroy_family")->name('job.destroy.family')->middleware('auth');
+});
+
+
+Route::prefix('school_family')->group(function () {
+    Route::get('/show/school/', "Student\SchoolController@index_family")->name('school.show.family')->middleware('auth');
+    Route::post('/store/school/', "Student\SchoolController@store_family")->name('school.family.store')->middleware('auth');
+    Route::patch('/update/school/', "Student\SchoolController@update_family")->name('school.update.family')->middleware('auth');
+    Route::get('/show/school/{id}', "Student\SchoolController@show_family")->middleware('auth');
+    Route::delete('/delete/school/', "Student\SchoolController@destroy_family")->name('school.destroy.family')->middleware('auth');
 });

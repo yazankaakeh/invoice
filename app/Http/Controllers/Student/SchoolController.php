@@ -1,87 +1,290 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
-use App\School;
+use App\models\Student\School;
+use App\models\Publics\Children;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
 class SchoolController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+####################################### Student Start #############################
+    public function index_student()
+    {
+        $school['school'] = School::select('id','School_name','children_id','updated_at','School_type','School_location',
+       'School_fees','School_cost')
+       ->orderBy('id', 'DESC')
+       ->get();
+       //dd($husb);
+       return view('Student.school.school_student')->with($school);
+
+      // $school = School::with('Children')->get();
+      // dd($school);
+      // return view('Student.school.school_student',compact("school"));
+    }
+
+    public function show_student($id)
+    {
+      $school = School::where('children_id', $id)->get();
+      return view('Student.school.school_student',compact('school'));
+    }
+
+
+    public function store_student(Request $request)
+    {
+         $this->validate($request,[
+            'id' => 'required',
+            'School_name' => 'required',
+            'School_type' => 'required',
+            'School_location' => 'required',
+            'School_cost' => 'required',
+            'School_fees' => 'required',
+         ]);
+         //create new object of the model student and make mapping to the data
+         $childrens =  Children::find($request->id);
+         $childrens_name = $childrens->childrens_name;
+         $x = $childrens->student_statu;
+         ++$x;
+         $childrens->student_statu = $x;
+
+         $schools = new School;
+         $schools -> children_id = $request->id;
+         $schools -> School_name = $request->School_name;
+         $schools -> School_type = $request->School_type;
+         $schools -> School_location = $request->School_location;
+         $schools -> School_cost = $request->School_cost;
+         $schools -> School_fees = $request->School_fees;
+         //write to the data base
+         $childrens->save();
+         $schools ->save();
+         session()->flash('Add_School', 'تم اضافة مدرسة للطفل  '. $childrens_name .' بنجاح ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('children.show'));
+    }
+
+    public function update_student(Request $request)
+    {
+         $this->validate($request,[
+            'children_id' => 'required',
+            'id' => 'required',
+            'School_name' => 'required',
+            'School_type' => 'required',
+            'School_location' => 'required',
+            'School_cost' => 'required',
+            'School_fees' => 'required',
+         ]);
+         //create new object of the model student and make mapping to the data
+         $childrens =  Children::find($request->children_id);
+         $childrens_name = $childrens->childre_name;
+
+         $schools =  School::find($request->id);
+         $schools -> School_name = $request->School_name;
+         $schools -> School_type = $request->School_type;
+         $schools -> School_location = $request->School_location;
+         $schools -> School_cost = $request->School_cost;
+         $schools -> School_fees = $request->School_fees;
+         //write to the data base
+         $childrens->save();
+         $schools ->save();
+         session()->flash('Edit_School', 'تم تعديل معلومات المدرسة للطفل  '. $childrens_name .' بنجاح ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('children.show'));
+    }
+
+
+    public function destroy_student(Request $request)
+    {
+        /* here we have sued the table students and searched about the id using the find and then delete the
+        id using the id note: we have passed the id from the show using the route */
+        $childrens =  Children::find($request->children_id);
+        $x = $childrens->student_statu;
+        --$x;
+        $childrens->student_statu = $x;
+        $children_name = $childrens->childre_name;
+
+        School::find($request->id)->delete();
+        /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
+        session()->flash('Delete',' تم حذف معلومات المدرسة للطفل '. $children_name .' بنجاح ');
+        $childrens->save();
+        return redirect(route('children.show'));
+    }
+####################################### Student End #############################
+#################################################
+######################
+#######################
+#################################################
+####################################### Medical Start #############################
+    
+    public function index_medical()
+    {
+       $school = School::with('Children')->get();
+       dd($school);
+       return view('Medical.school.school_student',compact("school"));
+    }
+
+    public function show_medical($id)
+    {      
+        $school = Children::where('medical_id', $id)->get();
+        dd($school);
+        return view('Medical.school.school_student',compact('school'));
+    }
+
+    public function store_medical(Request $request)
+    {
+         $this->validate($request,[
+            'id' => 'required',
+            'School_name' => 'required',
+            'School_type' => 'required',
+            'School_location' => 'required',
+            'School_cost' => 'required',
+            'School_fees' => 'required',
+         ]);
+         //create new object of the model student and make mapping to the data
+         $childrens =  Children::find($request->id);
+         $childrens_name = $childrens->childrens_name;
+         $x = $childrens->medical_statu;
+         ++$x;
+         $childrens->child_statu = $x;
+
+         $schools = new School;
+         $schools -> children_id = $request->id;
+         $schools -> School_name = $request->School_name;
+         $schools -> School_type = $request->School_type;
+         $schools -> School_location = $request->School_location;
+         $schools -> School_cost = $request->School_cost;
+         $schools -> School_fees = $request->School_fees;
+         //write to the data base
+         $childrens->save();
+         $schools ->save();
+         session()->flash('Add_School', 'تم اضافة مدرسة للطفل  '. $childrens_name .' بنجاح ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('Student.child.child'));
+
+    }
+
+    public function update_medical(Request $request)
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+
+    public function destroy_medical(School $school)
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+####################################### Medical End #############################
+#################################################
+###################
+###################
+#################################################
+####################################### Family Start #############################
+   
+    public function index_family()
     {
-        //
+        $school['school'] = School::select('id','School_name','children_id','updated_at','School_type','School_location',
+       'School_fees','School_cost')
+       ->orderBy('id', 'DESC')
+       ->get();
+       //dd($husb);
+       return view('Family.school.school_family')->with($school);
+      // $school = School::with('Children')->get();
+      // return view('Family.school.school_family')->with($school);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\School  $school
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show_family($id)
+    {        
+        $school = School::where('children_id', $id)->get();
+        //dd($school);
+        return view('Family.school.school_family',compact('school'));
+    }
+    
+    public function store_family(Request $request)
     {
+         $this->validate($request,[
+            'id' => 'required',
+            'School_name' => 'required',
+            'School_type' => 'required',
+            'School_location' => 'required',
+            'School_cost' => 'required',
+            'School_fees' => 'required',
+         ]);
+         //create new object of the model student and make mapping to the data
+         $childrens =  Children::find($request->id);
+         $childrens_name = $childrens->childrens_name;
+         $x = $childrens->family_statu;
+         ++$x;
+         $childrens->family_statu = $x;
 
+         $schools = new School;
+         $schools -> children_id = $request->id;
+         $schools -> School_name = $request->School_name;
+         $schools -> School_type = $request->School_type;
+         $schools -> School_location = $request->School_location;
+         $schools -> School_cost = $request->School_cost;
+         $schools -> School_fees = $request->School_fees;
+         //write to the data base
+         $childrens->save();
+         $schools ->save();
+         session()->flash('Add_School', 'تم اضافة مدرسة للطفل  '. $childrens_name .' بنجاح ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('children.show.family'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\School  $school
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(School $school)
+    public function update_family(Request $request)
     {
-        //
+         $this->validate($request,[
+            'children_id' => 'required',
+            'id' => 'required',
+            'School_name' => 'required',
+            'School_type' => 'required',
+            'School_location' => 'required',
+            'School_cost' => 'required',
+            'School_fees' => 'required',
+         ]);
+         //create new object of the model student and make mapping to the data
+         $childrens =  Children::find($request->children_id);
+        // dd($childrens);
+         $childrens_name = $childrens->childre_name;
+         $x = $childrens->family_statu;
+         ++$x;
+         $childrens->family_statu = $x;
+
+         $schools = School::find($request->id);
+         $schools -> School_name = $request->School_name;
+         $schools -> School_type = $request->School_type;
+         $schools -> School_location = $request->School_location;
+         $schools -> School_cost = $request->School_cost;
+         $schools -> School_fees = $request->School_fees;
+         //write to the data base
+         $childrens->save();
+         $schools ->save();
+         session()->flash('Edit_School', 'تم تعديل معلومات المدرسة للطفل  '. $childrens_name .' بنجاح ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('children.show.family'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\School  $school
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, School $school)
+    public function destroy_family(Request $request)
     {
-        //
+        /* here we have sued the table students and searched about the id using the find and then delete the
+        id using the id note: we have passed the id from the show using the route */
+        $childrens =  Children::find($request->children_id);
+        $x = $childrens->family_statu;
+        --$x;
+        $childrens->family_statu = $x;
+        $children_name = $childrens->childre_name;
+
+        School::find($request->id)->delete();
+        /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
+        session()->flash('Delete',' تم حذف معلومات المدرسة للطفل'. $children_name .' بنجاح ');
+        $childrens->save();
+        return redirect(route('children.show.family'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\School  $school
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(School $school)
-    {
-        //
-    }
+####################################### Family End #############################
+
+
 }

@@ -28,6 +28,7 @@ class CreateFatherandMothersTable extends Migration
             $table->string('mother_special')->nullable();// الأختصاص
             $table->string('mother_is_work')->nullable();//هل تعمل
             $table->string('mother_now_work')->nullable();// العمل الحالي
+            $table->string('medical_mom')->nullable();// العمل الحالي
             $table->string('mother_salary')->nullable();//الراتب الشهري
             ########################## mother info End ############################
             ########################## father info Begin ############################
@@ -39,6 +40,7 @@ class CreateFatherandMothersTable extends Migration
             $table->string('father_special')->nullable();// الأختصاص
             $table->string('father_is_work')->nullable();//هل تعمل
             $table->string('father_now_work')->nullable();// العمل الحالي
+            $table->string('medical_dad')->nullable();//الراتب الشهري
             $table->string('father_salary')->nullable();//الراتب الشهري
             ########################## father info End ############################
             $table->timestamps();

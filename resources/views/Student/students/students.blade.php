@@ -55,7 +55,10 @@
                                                     <th class="border-bottom-0">سنة الدخول</th>
                                                     <th class="border-bottom-0">نوع الإقامة</th>
                                                     <th class="border-bottom-0">الولاية</th>
-                                                    <th class="border-bottom-0">اضافة دفعة</th>
+                                                    <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
+                                                    <th class="border-bottom-0">اضافة دفعة تركي</th>
+                                                    <th class="border-bottom-0">اضافة دفعة يورو</th>
+                                                    <th class="border-bottom-0">اضافة كروت بيم</th>
                                                     <th class="border-bottom-0">اضافة زوج وزوجة</th>
                                                     <th class="border-bottom-0">اضافة اب وام</th>
                                                     <th class="border-bottom-0">حذف طالب</th>
@@ -87,23 +90,64 @@
                                                     <td>{{$x->Identity_type}}</td>
                                                     <td>{{$x->Id_stud_source}}</td>
 
-                                                    <td>
-                                                    {{-- Pay Student--}}
+                                                <td>
+                                                    {{-- Add_Dollar--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
                                                         data-description="" data-toggle="modal"
-                                                        href="#exampleModal3" title="دفع">
+                                                        href="#exampleModa23" title="دفع بالدولار">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
-                                                    @if($x->pay_statu != 0)
+                                                    @if($x->usd_statu != 0)
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
+                                                    <a class=" btn btn-sm btn-info" href="/Student_euro/show/student/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @endif
+                                                </td>                                                
 
+                                                <td>
+                                                    {{-- Add_Tr--}}
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                        data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
+                                                         data-student_id="{{ $x->id }}"
+                                                        data-description="" data-toggle="modal"
+                                                        href="#exampleModa24" title="دفع بالتركي">
+                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
+                                                    </a>
+                                                    @if($x->tr_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Student_tr/show/student/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @endif
+                                                </td>  
 
+<<<<<<< Updated upstream
                                                     <a class=" btn btn-sm btn-info" href="/pay/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
 
+=======
+                                                <td>
+                                                    {{-- Add_Euro--}}
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                        data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
+                                                        data-description="" data-toggle="modal"
+                                                        href="#exampleModa25" title="دفع باليورو">
+                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
+                                                    </a>
+                                                    @if($x->euro_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Student_euro/show/student/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+>>>>>>> Stashed changes
                                                     @endif
+                                                </td>    
 
-                                                    </td>
+                                                <td>
+                                                    {{-- Add_Bim--}}
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                        data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
+                                                        data-description="" data-toggle="modal"
+                                                        href="#exampleModa26" title="دفع كروت">
+                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
+                                                    </a>
+                                                    @if($x->bim_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Student_bim/show/student/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    @endif
+                                                </td>  
 
                                                     {{-- wife and husband  --}}
                                                     @if($x->husband_wife_statu == 1)
@@ -334,6 +378,15 @@
                             </div>
                             @endif
 
+                            @if (session()->has('Warning'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Warning') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+
                             @if (session()->has('Add_Child'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add_Child') }}</strong>
@@ -428,8 +481,190 @@
                             </div>
                             @endif
                         </div>
+<<<<<<< Updated upstream
 
 
+=======
+                        
+                        {{-- Add_Dollar --}}
+                        <div class="modal fade" id="exampleModa23" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('usd.store.student') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <label for="exampleInputEmail">اسم الطالب</label>
+                                <input type="hidden" name="student_id" id="id" readonly>
+                                <input type="text" class="form-control" id="student_name" name="student_name" placeholder="   أكنب ماهو العملك السابق " readonly>
+                                </div>                                
+                                <div class="form-group">
+                                <label for="exampleInputEmail">المبلغ المدفوع بالدولار</label>
+                                <input type="text" class="form-control" id="student_value_usd" name="student_value_usd" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
+                        {{-- Add_Tr --}}
+                        <div class="modal fade" id="exampleModa24" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('tr.store.student') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <label for="exampleInputEmail">اسم الطالب</label>
+                                <input type="text" class="form-control" id="student_name" name="student_name" placeholder="   أكنب ماهو العملك السابق " readonly>
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">المبلغ المدفوع بالتركي</label>
+                                <input type="hidden" name="student_id" id="student_id" readonly>
+                                <input type="text" class="form-control" id="student_value" name="student_value" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
+                        {{-- Add_Euro --}}
+                        <div class="modal fade" id="exampleModa25" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('euro.store.student') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <label for="exampleInputEmail">اسم الطالب</label>
+                                <input type="text" class="form-control" id="student_name" name="student_name" placeholder="   أكنب ماهو العملك السابق " readonly>
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">المبلغ المدفوع باليورو</label>
+                                <input type="hidden" name="student_id" id="id" readonly>
+                                <input type="text" class="form-control" id="student_value" name="student_value" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
+                        {{-- Add_Bim --}}
+                        <div class="modal fade" id="exampleModa26" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('bim.store.student') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                <label for="exampleInputEmail">اسم الطالب</label>
+                                <input type="text" class="form-control" id="student_name" name="student_name" placeholder="   أكنب ماهو العملك السابق " readonly>
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">عدد كروت البيم</label>
+                                <input type="hidden" name="student_id" id="id" readonly>
+                                <input type="text" class="form-control" id="number_bim_student" name="number_bim_student" placeholder="   أكنب ماهو العملك السابق ">
+                                </div>
+                                <div class="modal-body">
+                                    <p class="mg-b-10">قيمة الكروت</p>
+                                    <select class="form-control select2" name="value_bim_student" id="value_bim_student" >
+                                            @foreach($payments as $a)
+                                                <option value="{{$a->value_bim}}" >
+                                                    {{$a->value_bim}}
+                                                </option>                                                   
+                                            @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">ملاحظات</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>    
+                    
+>>>>>>> Stashed changes
                         {{-- Sister and Brother --}}
                         <div class="modal fade" id="exampleModal16" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -1936,15 +2171,44 @@
                                 <input type="text" class="form-control" id="student_name" name="student_name" readonly>
                                 </div>
                                 <div class="form-group">
+<<<<<<< Updated upstream
                                 <label for="exampleInputEmail">المبلغ المدفوع</label>
                                 <input type="text" class="form-control" id="value" name="value"  placeholder=" أكتب قيمة البملغ المدفوع ">
+=======
+                                <label for="exampleInputEmail">المبلغ بالتركي</label>
+                                <input type="text" class="form-control" id="value" name="value"  placeholder=" أكنب قيمة البملغ المدفوع ">
+>>>>>>> Stashed changes
+                                </div>
+                                <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">المبلغ بالدولار</label>
+                                <input class="form-control" name="value_euro" id="value_euro" type="text" >
+                                </div>
+                                <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">المبلغ باليورو</label>
+                                <input class="form-control" name="value_euro" id="value_euro" type="text" >
+                                </div>
+
+                                <div class="modal-body">
+                                    <p class="mg-b-10">قيمة الكروت</p>
+                                    <select class="form-control select2" name="value_bim_student" id="value_bim_student" >
+                                            @foreach($payments as $a)
+                                                <option value="{{$a->value_bim}}" >
+                                                    {{$a->value_bim}}
+                                                </option>                                                   
+                                            @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">عدد الكروت</label>
+                                    <input class="form-control" name="number_bim_student" id="number_bim_student" type="text" >
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ملاحظات</label>
                                 <input type="text" class="form-control" id="note" name="note"  placeholder=" أكتب قيمة البملغ المدفوع ">
                                 </div>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footwer">
                                 <button type="submit" class="btn btn-primary">تاكيد</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
                                 </div>
@@ -3091,6 +3355,57 @@
            }
         }
         </script>
+
+{{--  Add_dollar  --}}
+<script>
+    $('#exampleModa23').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var student_name = button.data('student_name')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #student_name').val(student_name);
+})
+</script>
+
+{{--  Add_tr  --}}
+<script>
+    $('#exampleModa24').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var student_id = button.data('student_id')
+        var student_name = button.data('student_name')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #student_id').val(student_id);
+        modal.find('.modal-body #student_name').val(student_name);
+})
+</script>
+
+
+{{--  Add_euro  --}}
+<script>
+    $('#exampleModa25').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var student_name = button.data('student_name')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #student_name').val(student_name);
+})
+</script>
+
+{{--  Add_bim  --}}
+<script>
+    $('#exampleModa26').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var student_name = button.data('student_name')
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #student_name').val(student_name);
+})
+</script>
 @endsection
 
 

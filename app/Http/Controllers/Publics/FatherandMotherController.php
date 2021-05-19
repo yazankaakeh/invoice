@@ -179,6 +179,7 @@ class FatherandMotherController extends Controller
             'mother_special' => 'required',
             'mother_is_work' => 'required',
             'mother_now_work' => 'required',
+            'medical_mom' => 'required',
             'mother_salary' => 'required',
             // ////////////////////////////////////////////////
             'father_name' => 'required',
@@ -188,6 +189,7 @@ class FatherandMotherController extends Controller
             'father_academicel' => 'required',
             'father_special' => 'required',
             'father_is_work' => 'required',
+            'medical_dad' => 'required',
             'father_now_work' => 'required',
             'father_salary' => 'required'
          ]);
@@ -206,6 +208,7 @@ class FatherandMotherController extends Controller
          $FatherandMothers -> mother_special = $request->mother_special;
          $FatherandMothers -> mother_is_work = $request->mother_is_work;
          $FatherandMothers -> mother_now_work = $request->mother_now_work;
+         $FatherandMothers -> medical_mom = $request->medical_mom;
          $FatherandMothers -> mother_salary = $request->mother_salary;
          ///////////////////////////////////////////
          $FatherandMothers -> father_name = $request->father_name;
@@ -217,6 +220,7 @@ class FatherandMotherController extends Controller
          $FatherandMothers -> father_is_work = $request->father_is_work;
          $FatherandMothers -> father_now_work = $request->father_now_work;
          $FatherandMothers -> father_salary = $request->father_salary;
+         $FatherandMothers -> medical_dad = $request->medical_dad;
          //write to the data base
          $Medicals->save();
          $FatherandMothers ->save();
@@ -239,7 +243,7 @@ class FatherandMotherController extends Controller
        'mother_origin_city','mother_academicel','mother_special','mother_is_work',
        'mother_now_work','mother_salary','father_name','father_birth',
        'father_origin','father_origin_city','father_academicel','father_special',
-       'father_is_work','father_now_work','father_salary')
+       'father_is_work','father_now_work','father_salary','medical_dad','medical_mom')
        ->orderBy('id', 'DESC')
        ->get();
        return view('Medical.father_mother.father_medical')->with($fath);

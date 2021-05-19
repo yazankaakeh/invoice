@@ -14,16 +14,20 @@ class CreateMedicalsTable extends Migration
     public function up()
     {
         Schema::create('medicals', function (Blueprint $table) {
+            $table->unsignedBigInteger('family_id')->nullable();
+            $table->foreign('family_id')->references('id')->on('families');  
+            
+
             $table->id();
-            ########################## medical info Begin ############################
+            ########################## medical info Begin ##############################
             $table->string('medical_name');// اسم المريض
             $table->string('medical_age');// عمر المريض
-            $table->enum('gender', ['male', 'female'])->default('male');
+            $table->string('gender');
             $table->string('medical_have_id');// هل يوجد هوية
             $table->string('medical_id_extr');// مدينة أستخراج هوية
             $table->string('medical_number');//رقم الهاتف
             $table->string('note');// 
-            ########################## medical info End ############################
+            ########################## medical info End ################################
             $table->integer('husband_wife_statu')->default('0');
             $table->integer('residance_statu')->default('0');
             $table->integer('job_statu')->default('0');
@@ -33,6 +37,10 @@ class CreateMedicalsTable extends Migration
             $table->integer('enable')->default('0');
             $table->integer('student_statu')->default('0');
             $table->integer('medical_statu')->default('0');
+            $table->integer('bim_statu')->default('0');
+            $table->integer('euro_statu')->default('0');
+            $table->integer('usd_statu')->default('0');
+            $table->integer('tr_statu')->default('0');
             $table->timestamps();
         });
     }
