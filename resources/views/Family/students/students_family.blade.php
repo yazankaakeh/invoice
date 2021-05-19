@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-الطلاب
+قسم الطلاب للعائلة
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">الاعدادات</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/الاقسام</span>
+							<h4 class="my-auto mb-0 content-title">أقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم بيانات الطلاب مرتبطين مع العائلة</span>
 						</div>
 					</div>
 
@@ -43,7 +43,7 @@
                                                     <th class="border-bottom-0">Id</th>
                                                     <th class="border-bottom-0">اسم الطالب</th>
                                                     <th class="border-bottom-0">رقم العائلة</th>
-                                                    <th class="border-bottom-0">اسم العائلة</th>
+                                                    <th class="border-bottom-0">اسم صاحب القيد</th>
                                                     <th class="border-bottom-0">تاريخ الميلاد</th>
                                                     <th class="border-bottom-0">العمر</th>
                                                     <th class="border-bottom-0">البريد الإلكتروني</th>
@@ -395,7 +395,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content modal-content-demo">
                                     <div class="modal-header">
-                                        <h6 class="modal-title">حذف القسم</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                        <h6 class="modal-title">حذف الطالب من العائلة</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                             type="button"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <form action="{{ route('student.family.destroy') }}" method="post">
@@ -422,7 +422,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

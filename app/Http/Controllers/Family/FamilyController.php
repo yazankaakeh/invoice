@@ -209,7 +209,7 @@ class FamilyController extends Controller
          else {
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
-         session()->flash('Add_student_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح يامسخم ');
+         session()->flash('Add_student_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح  ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('family.show'));
          }

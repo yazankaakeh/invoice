@@ -41,8 +41,8 @@
                                         <table id="example" class="table key-buttons text-md-nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th class="border-bottom-0">رقم الطالب</th>
-                                                    <th class="border-bottom-0">اسم الطالب</th>
+                                                    <th class="border-bottom-0">رقم المريض</th>
+                                                    <th class="border-bottom-0">اسم المريض</th>
                                                     <th class="border-bottom-0">رقم </th>
                                                     <th class="border-bottom-0">اسم الطفل</th>
                                                     <th class="border-bottom-0">عمره</th>
@@ -139,7 +139,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                    <h6 class="modal-title">حذف بيانات  طفل ابن المريض </h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <form action="{{ Route('children.destroy') }}" method="post">
@@ -150,7 +150,7 @@
                                         <div class="form-group">
                                         <input type="hidden" name="student_id" id="student_id" readonly>
                                         <input type="hidden" name="id" id="id"  readonly>
-                                        <label for="exampleInputEmail">البيانات المتعلقة بهذا الطالب </label>
+                                        <label for="exampleInputEmail"> اسم المريض.</label>
                                         <input class="form-control" name="student_name" id="student_name" type="text" readonly>
                                         </div>
                                     </div>
@@ -169,7 +169,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات الطفل</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

@@ -7,7 +7,7 @@
 <link href="{{URL::asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
 @endsection
 @section('title')
-تسجيل العائلات
+تسجيل المرضى
 @endsection
 @if($enable->medical_form != 2)  
 
@@ -17,7 +17,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">قسم التسجيل  </h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ معلومات الطالب</span>
+							<h4 class="my-auto mb-0 content-title">قسم التسجيل  </h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ معلومات المرضى</span>
 						</div>
 					</div>
 				</div>
@@ -30,25 +30,24 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="main-content-label mg-b-5">
-									قائمة تسجيل الطلاب.
+									قائمة تسجيل المريض.
 								</div>
-								<p class="mg-b-20">يرجى ملئ الحقول بالمعلومات المطلوبة لقسم تسجيل الطلاب.</p>
+								<p class="mg-b-20">يرجى ملئ الحقول بالمعلومات المطلوبة لقسم تسجيل الطبي.</p>
 								<div id="wizard3">
 									<h3> المعلومات الشخصية.</h3>
 									<section>
-										<p class="mg-b-20">المعلومات الشخصية حول الطالب !</p>
+										<p class="mg-b-20">المعلومات الشخصية حول المريض !</p>
 										<div class="row row-sm">
 											<div class="col-md-5 col-lg-4">
-												<label class="form-control-label">الاسم الطالب بالكامل: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="student_name" name="student_name" placeholder="أكتب أسم الطالب" required="" type="text">
+												<label class="form-control-label">اسم المريض: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_name" name="medical_name" placeholder="أكتب أسم المريض بالكامل" required="" type="text">
 											</div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
-                                                <label for="exampleInputEmail">الميلاد: <span class="tx-danger">*</span> </label>
-                                                <input type="date" class="form-control" id="birthday" name="birthday" placeholder="">
-                                                </div>
+                                            <div class="col-md-5 col-lg-4">
+												<label class="form-control-label">عمر المريض: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_age" name="medical_age" placeholder="أكتب عمر المريض بأرقام" required="" type="text">
+											</div>
                                             <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
                                                 <p class="form-control-label">  الجنس: <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender">
                                                 <option label="test">
-                                                    اختر نوع الجنس </option>
+                                                    حدد من فضلك </option>
                                                 <option value="ذكر" >
                                                 ذكر
                                             </option>
@@ -57,56 +56,24 @@
                                               </option>
                                             </select>
 											</div>
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
-												<label class="form-control-label"> العمر : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="age" name="age" placeholder="أكتب العمر بأرقام" required="" type="text">
-											</div>
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
-												<label class="form-control-label"> البريد الإلكتروني : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="email" name="email" placeholder="أكتب البريد الألكتروني" required="" type="text">
-											</div>
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
-												<label class="form-control-label"> رقم الهاتف  : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="phone" name="phone" placeholder="أكتب رقم الهاتف بدءً من 05" required="" type="text">
-											</div>
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
-                                                <p class="form-control-label"> من اي محافظة الأصل :<span class="tx-danger">*</span></p><select class="form-control select2" name="county_are_from" id="county_are_from">
+                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+                                                <p class="form-control-label">  هل يوجد كملك: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_have_id" id="medical_have_id">
                                                 <option label="test">
-                                                    اختر أسم المحافظة </option>
-                                                <option value="	دمشق">
-                                                    دمشق</option>
-                                                <option value="ريف دمشق">
-                                                    ريف دمشق</option>
-                                                <option value="	حلب ">
-                                                    حلب</option>
-                                                <option value="حمص">
-                                                    حمص</option>
-                                                <option value="حماه">
-                                                    حماه</option>
-                                                <option value="	درعا">
-                                                    درعا</option>
-                                                <option value="	ادالب">
-                                                    ادلب</option>
-                                                <option value="	سويداء">
-                                                    سويداء</option>
-                                                <option value="	ديرالزور">
-                                                    دير الزور</option>
-                                                <option value="	الرقة">
-                                                    الرقة</option>
-                                                <option value="الحسكة">
-                                                    الحسكة</option>
-                                                <option value="	اللاذقية">
-                                                    اللاذقية</option>
-                                                <option value="	طرطوس">
-                                                    طرطوس</option>
-                                                <option value="	القنيطرة">
-                                                    القنيطرة</option>
-                                                </select>
-                                            </div>
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
-												<label class="form-control-label">من اي مدينة: <span class="tx-danger">*</span></label> <input class="form-control" value="asd" id="city_name" name="city_name" placeholder="Enter lastname" required="" type="text">
+                                                    حدد من فضلك </option>
+                                                <option value="يوجد" >
+                                                    يوجد
+                                            </option>
+                                            <option value="لا يوجد" >
+                                                لا يوجد
+                                              </option>
+                                            </select>
 											</div>
                                             <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
-                                                <p class="form-control-label"> السكن الحال في اي الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="stu_Cur_housing" id="stu_Cur_housing">
-                                                <option label="test">
-                                                    اختر أسم الولاية </option>
+                                                <p class="form-control-label"> الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_id_extr" id="medical_id_extr">
+                                                    <option label="test">
+                                                        حدد من فضلك  اسم ولاية </option>
+                                                    <option value="لايوجد كملك" >
+                                                     لايوجد كملك
                                                     <option value="أضنة">
                                                         أضنة</option>
                                                     <option value="	أدي‌يمن">
@@ -270,201 +237,25 @@
                                                     <option value="	دوزجه">
                                                         دوزجه</option>
                                                 </select>
-                                            </div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
-                                                <p class="form-control-label">هل يوجد لديك كملك <span class="tx-danger">*</span></p><select class="form-control select2" name="Identity_type" id="Identity_type">
-											    <option label="test">
-                                                    اختر نوع الهوية  </option>
-                                                   <option value="كملك" >
-                                                   كملك
-                                               </option>
-                                               <option value="اقامة سياحية" >
-                                                   اقامة سياحية
-                                               </option>
-                                               <option value="اقامة دراسية" >
-                                                   اقامة دراسية
-                                               </option>
-                                               <option value="لايوجد" >
-                                                   لايوجد
-                                               </option>
-                                               </select>
-                                            </div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
-                                                <p class="form-control-label">اسم الولاية <span class="tx-danger">*</span></p><select class="form-control select2" name="Id_stud_source" id="Id_stud_source">
-                                                <option label="test">
-                                                    اختر أسم الولاية </option>
-                                                    <option value="أضنة">
-                                                        أضنة</option>
-                                                    <option value="	أدي‌يمن">
-                                                        أدي‌يمن</option>
-                                                    <option value="	أفيون ‌قرةحصار">
-                                                        أفيون ‌قرةحصار</option>
-                                                    <option value="	أغري">
-                                                        أغري</option>
-                                                    <option value="	أماسيا">
-                                                        أماسيا</option>
-                                                    <option value="	أنقرة">
-                                                        أنقرة</option>
-                                                    <option value="	أنطاليا">
-                                                        أنطاليا</option>
-                                                    <option value="	أرتڤين">
-                                                        أرتڤين</option>
-                                                    <option value="	أيدين">
-                                                        أيدين</option>
-                                                    <option value="	بالكسير">
-                                                        بالكسير</option>
-                                                    <option value="	بيلجيك">
-                                                        بيلجيك</option>
-                                                    <option value="	بينگول">
-                                                        بينگول</option>
-                                                    <option value="	بيطليس">
-                                                        بيطليس</option>
-                                                    <option value="بولو">
-                                                        بولو</option>
-                                                    <option value="	بوردور">
-                                                        بوردور</option>
-                                                    <option value="	بورصة">
-                                                        بورصة</option>
-                                                    <option value="	چنق‌قلعه">
-                                                        چنق‌قلعه</option>
-                                                    <option value="	شانكيري">
-                                                        شانكيري</option>
-                                                    <option value="	چوروم">
-                                                        چوروم</option>
-                                                    <option value="	دنيزلي">
-                                                        دنيزلي</option>
-                                                    <option value="	ديار بكر">
-                                                        ديار بكر</option>
-                                                    <option value="	إدرنه">
-                                                        إدرنه</option>
-                                                    <option value="	الازيغ">
-                                                        الازيغ</option>
-                                                    <option value="إرزنجان">
-                                                        إرزنجان</option>
-                                                    <option value="	أرض‌ روم">
-                                                        أرض‌ روم</option>
-                                                    <option value="	إسكي‌ شهر">
-                                                        إسكي‌ شهير</option>
-                                                    <option value="	غازي‌عنتاپ">
-                                                        غازي‌عنتاپ</option>
-                                                    <option value="	گره‌سون">
-                                                        گره‌سون</option>
-                                                    <option value="	گوموش‌خانه">
-                                                        گوموش‌خانه</option>
-                                                    <option value="حكاري">
-                                                        حكاري</option>
-                                                    <option value="	هاتاي">
-                                                        هاتاي</option>
-                                                    <option value="	إسبرطة">
-                                                        إسبرطة</option>
-                                                    <option value="	مرسين">
-                                                        مرسين</option>
-                                                    <option value="	إسطنبول">
-                                                        إسطنبول</option>
-                                                    <option value="	إزمير">
-                                                        إزمير</option>
-                                                    <option value="	قارص">
-                                                        قارص</option>
-                                                    <option value="	كاستامونو">
-                                                        كاستامونو</option>
-                                                    <option value="	قيصري">
-                                                        قيصري</option>
-                                                    <option value="	كريك‌قلعه">
-                                                        كريك‌قلعه</option>
-                                                    <option value="	كيرشهر">
-                                                        كيرشهر</option>
-                                                    <option value="	خوجةإلي">
-                                                        خوجةإلي</option>
-                                                    <option value="قونيا">
-                                                        قونيا</option>
-                                                    <option value="	كوتاهيا">
-                                                        كوتاهيا</option>
-                                                    <option value="	ملاطيا">
-                                                        ملاطيا</option>
-                                                    <option value="	مانيسا">
-                                                        مانيسا</option>
-                                                    <option value="	كهرمان‌مرعش">
-                                                        كهرمان‌مرعش</option>
-                                                    <option value="	ماردين">
-                                                        ماردين</option>
-                                                    <option value="	موغلا">
-                                                        موغلا</option>
-                                                    <option value="	موش">
-                                                        موش</option>
-                                                    <option value="	نڤشهر">
-                                                        نڤشهر</option>
-                                                    <option value="	نيغدة">
-                                                        نيغدة</option>
-                                                    <option value="	أردو">
-                                                        أردو</option>
-                                                    <option value="	ريزه">
-                                                        ريزه</option>
-                                                    <option value="	ساكاريا">
-                                                        ساكاريا</option>
-                                                    <option value="سامسون">
-                                                        سامسون</option>
-                                                    <option value="سيرت">
-                                                        سيرت</option>
-                                                    <option value="سينوپ">
-                                                        سينوپ</option>
-                                                    <option value="	سيڤاس">
-                                                        سيڤاس</option>
-                                                    <option value="	تكيرداغ">
-                                                        تكيرداغ</option>
-                                                    <option value="توقاد">
-                                                        توقاد</option>
-                                                    <option value="	طرابزون">
-                                                        طرابزون</option>
-                                                    <option value="تونج‌ايلي">
-                                                        تونج‌ايلي</option>
-                                                    <option value="شانلي‌اورفا">
-                                                        شانلي‌اورفا</option>
-                                                    <option value="	عشاق">
-                                                        عشاق</option>
-                                                    <option value="	ڤان">
-                                                        ڤان</option>
-                                                    <option value="	يوزگات">
-                                                        يوزگات</option>
-                                                    <option value="	زونگولداك">
-                                                        زونگولداك</option>
-                                                    <option value="	أكساراي">
-                                                        أكساراي</option>
-                                                    <option value="بايبورت">
-                                                        بايبورت</option>
-                                                    <option value="	قرةمان">
-                                                        قرةمان</option>
-                                                    <option value="	قريق‌قلعه">
-                                                        قريق‌قلعه</option>
-                                                    <option value="	بطمان">
-                                                        بطمان</option>
-                                                    <option value="	شرناق">
-                                                        شرناق</option>
-                                                    <option value="	بارتين">
-                                                        بارتين</option>
-                                                    <option value="	أرض‌خان">
-                                                        أرض‌خان</option>
-                                                    <option value="	إغدير">
-                                                        إغدير</option>
-                                                    <option value="	يالوڤا">
-                                                        يالوڤا</option>
-                                                    <option value="	قرةبوك">
-                                                        قرةبوك</option>
-                                                    <option value="	كلس">
-                                                        كلس</option>
-                                                    <option value="	عثمانية">
-                                                        عثمانية</option>
-                                                    <option value="	دوزجه">
-                                                        دوزجه</option>
-                                                </select>
-                                            </div>
+                                            </div>  
+											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+												<label class="form-control-label"> رقم هاتف المريض : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف بدءً من 05  " required="" type="text">
+											</div>
 									</section>
-                                                      
-                                    {{--  معلومات حول عائلة الطالب  --}}
+                                                                                               
+                                    
+
+                                                        {{--  ملاحظة هامة لم يتم تعديل القسم الذي في الأسفل فقط تم أخفاءه      --}}
+
+                                              {{--  Important note that the section in the down has not been modified, only it has been hidden  --}}
+                                                                           
+
+                                    {{--  معلومات حول عائلة الطالب  
                                     
 									<h3>معلومات عائلية</h3>
 									<section>
                                         <p>المعلومات حول العائلة للطالب.</p>
-                                        {{--  Mother  part Begin --}}
+                                        {{--  Mother  part Begin 
                                         <div class="row row-sm">
 										<div class="col-md-5 col-lg-4">            
 											<label class="form-control-label"> أسم الأم: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="mother_name" name="mother_name" placeholder="أكتب أسم الأم بالكامل" required="" type="text">
@@ -567,7 +358,7 @@
                                                 
                                                {{--  Mother  part End --}}
                                                
-                                               {{--  Father Part Begin  --}}
+                                               {{--  Father Part Begin  
                                                
                                                 <div class="col-md-5 col-lg-4">
                                                <label for="exampleInputEmail">اسم الأب: <span class="tx-danger">*</span></label>
@@ -674,7 +465,7 @@
                                        <hr>
                                  {{--  Father part End  --}}
                                  
-                                 {{--  sister and brother part Begin  --}}
+                                 {{--  sister and brother part Begin  
                                  <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
                                     <p class="mg-b-10">هل لديك أخوة وأخوات؟ <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="sist_broth" onchange="show2Div(this)">
                                         <option label="test">
@@ -687,7 +478,7 @@
                                         </option>
                                     </select>
                                 </div>
-                                <div  class="row row-sm"id="hidde_div" style="display:none;"> {{-- display:flex  --}}
+                                <div  class="row row-sm"id="hidde_div" style="display:none;"> {{-- display:flex 
                                  <div class="col-md-5 col-lg-4">
                                     <label for="exampleInputEmail">الأسم بالكامل </label>
                                     <input type="text" class="form-control" id="name" name="name" placeholder=" أكتب الأسم كامل">
@@ -752,7 +543,7 @@
                                 <hr>
                                      {{--    sister and brother End --}}
                                      
-                                     {{--    wife and has part Begin --}}
+                                     {{--    wife and has part Begin 
                                      
                                         <div class="col-md-5 col-lg-4">
                                             <p class="mg-b-10">هل انت متزوج/ة  </p><select class="form-control select2" name="form_select" id="wife_has" onchange="showDive22(this)">
@@ -766,9 +557,9 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        {{--  wife Part  --}}
+                                        {{--  wife Part  
                                     <hr>
-                                    <div  class="row row-sm"id="hidden_div" style="display:none;"> {{-- display:flex  --}}
+                                    <div  class="row row-sm"id="hidden_div" style="display:none;"> {{-- display:flex  
                                     <div class="col-md-5 col-lg-4">
                                     <input type="hidden" name="student_id" id="student_id"  readonly>
                                     <label for="exampleInputEmail">اسم الزوجة: <span class="tx-danger">*</span></label>
@@ -820,7 +611,7 @@
                                         <label for="exampleInputEmail">من اي مدينة؟ <span class="tx-danger">*</span></label>
                                         <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة ">
                                     </div>
-                                   <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
+                                   <div class="col-md-5 col-lg-4">{{-- it must be select options  
                                         <p class="mg-b-10">الحالة الاجتماعية للزوجة</p>
                                         <select class="form-control select2" name="wife_mar_stat" id="wife_mar_stat" placeholder=" أكتب الحالة الأجتماعية ">
                                             <option label="test">
@@ -893,10 +684,10 @@
                                     <input type="text" class="form-control" id="wife_Pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  ">
                                     </div>
                                    </div>
-    
-                                    {{--  Husband Part  --}}
+
+                                    {{--  Husband Part  
                                     
-                                    <div  class="row row-sm"id="hidden1_div" style="display:none;"> {{-- display:flex  --}}
+                                    <div  class="row row-sm"id="hidden1_div" style="display:none;"> {{-- display:flex  
                                     <div class="col-md-5 col-lg-4">
                                     <label for="exampleInputEmail">اسم الزوج: <span class="tx-danger">*</span></label>
                                     <input type="text" class="form-control" id="husb_name" name="husb_name" placeholder=" أكتب اسم الزوج ">
@@ -944,7 +735,7 @@
                                         <label for="exampleInputEmail">من اي مدينة؟ <span class="tx-danger">*</span></label>
                                         <input type="text" class="form-control" id="husb_district" name="husb_district" placeholder=" أكتب اسم المدينة ">
                                     </div>
-                                    <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
+                                    <div class="col-md-5 col-lg-4">{{-- it must be select options  
                                         <p class="mg-b-10">الحالة الاجتماعية للزوج: <span class="tx-danger">*</span></p>
                                         <select class="form-control select2" name="husb_mar_stat" id="husb_mar_stat" placeholder=" أكتب الحالة الاجتماعية ">
                                             <option label="test">
@@ -1023,7 +814,7 @@
                                     
                                            {{--  wife and has part End  --}}
                                            
-                                           {{--  children  part Begin  --}}
+                                           {{--  children  part Begin  
                                             
                                            <div class="col-md-5 col-lg-4">
                                             <p class="mg-b-10">هل يوجد أطفال؟ <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="child" onchange="show22Div(this)">
@@ -1038,7 +829,7 @@
                                             </select>
                                         </div>
                                         
-                                        <div  class="row row-sm"id="hidde33_div" style="display:none;"> {{-- display:flex  --}}
+                                        <div  class="row row-sm"id="hidde33_div" style="display:none;"> {{-- display:flex 
                                            <div class="col-md-5 col-lg-4">
                                             <input type="hidden" name="student_id" id="student_id" readonly>
                                             <label for="exampleInputEmail">اسم الطفل: <span class="tx-danger">*</span></label>
@@ -1048,7 +839,7 @@
                                             <label for="exampleInputEmail">العمر: <span class="tx-danger">*</span></label>
                                             <input type="number" class="form-control" id="childre_age" name="childre_age" placeholder=" أكتب  العمر بالرقم ">
                                             </div>
-                                            <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
+                                            <div class="col-md-5 col-lg-4">{{-- it must be select options  
                                                 <p class="mg-b-10">الجنس:<span class="tx-danger">*</span></p>
                                                 <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" أكتب الجنس الطفل ">
                                                     <option label="test">
@@ -1094,7 +885,7 @@
                                             <label for="exampleInputEmail"> رقم الصف الدراسي: <span class="tx-danger">*</span> </label>
                                             <input type="text" class="form-control" id="childre_class_number" name="childre_class_number" placeholder="  أكتب رقم الصف الدراسي ">
                                             </div>
-                                            <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
+                                            <div class="col-md-5 col-lg-4">{{-- it must be select options  
                                                 <p class="mg-b-10">الهوية الشخصية من اي ولاية: <span class="tx-danger">*</span></p>
                                                 <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك ">
                                                     <option label="test">
@@ -1265,7 +1056,7 @@
                                                         دوزجه</option>
                                                 </select>
                                             </div>
-                                             <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
+                                             <div class="col-md-5 col-lg-4">{{-- it must be select options  
                                                 <p class="mg-b-10">هل يعيشون معكم؟ <span class="tx-danger">*</span></p>
                                                 <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم ">
                                                <option label="test">
@@ -1283,7 +1074,8 @@
                                          {{--  children  part End  --}}
 
                                  
-                                                {{--  المعلومات الدراسية للطالب في الجامعة  --}}
+                                                {{--  المعلومات الدراسية للطالب في الجامعة  
+
 									<h3>المعلومات الدراسية</h3>
 									<section>
                                         <p>المعلومات الدراسية للطالب في الجامعة.</p>
@@ -1363,7 +1155,7 @@
 										</div>
                                         </div>
                                         <hr>
-                                    {{--  قسم الجامعة الثانية  --}}
+                                    {{--  قسم الجامعة الثانية 
                                         <div class="col-md-5 col-lg-4">
                                             <p class="mg-b-10"> هل يوجد جامعة ثانية؟ <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="secend_un" onchange="showDiv(this)">
                                                       <option label="test">
@@ -1376,7 +1168,7 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <div  class="row row-sm"id="hidden3_div" style="display:none;"> {{-- display:flex  --}}
+                                        <div  class="row row-sm"id="hidden3_div" style="display:none;"> {{-- display:flex  
                                         <div class="col-md-5 col-lg-4">
 											<label class="form-control-label">اسم الجامعة الثانية: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="Ano_univer_name" name="Ano_univer_name" placeholder="أكتب أسم الجامعة الثانية" required="" type="text">
 										</div>
@@ -1413,7 +1205,8 @@
 										</div>
                                         </div>
 									    <hr>
-                                        {{--  قسم المنحة الدراسية   --}}
+                                        {{--  قسم المنحة الدراسية  
+
                                         <div class="col-md-5 col-lg-4">
                                             <p class="mg-b-10"> هل يوجد منحة  دراسية؟ <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="secend_un" onchange="showDivv3(this)">
                                                <option label="test">
@@ -1426,7 +1219,7 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <div  class="row row-sm"id="hidden3_div3" style="display:none;"> {{-- display:flex  --}}
+                                        <div  class="row row-sm"id="hidden3_div3" style="display:none;"> {{-- display:flex  
                                         <div class="col-md-5 col-lg-4">
 											<label class="form-control-label">اسم المنحة  : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="scholar_name" name="scholar_name" placeholder="أكتب أسم المنحة" required="" type="text">
 										</div>
@@ -1442,7 +1235,7 @@
                                         </div>
                                         <hr>
                                         
-                                        {{--  قسم القرأن الكريم  --}}
+                                        {{--  قسم القرأن الكريم  
                                         <div class="col-md-5 col-lg-4">
                                             <p class="mg-b-10"> هل تحفظ القرأن الكريم:: <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="secend_un" onchange="showDivv33(this)">
                                                <option label="test">
@@ -1455,7 +1248,7 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <div  class="row row-sm"id="hidden3_div33" style="display:none;"> {{-- display:flex  --}}
+                                        <div  class="row row-sm"id="hidden3_div33" style="display:none;"> {{-- display:flex  
                                         <div class="col-md-5 col-lg-4">
 											<label class="form-control-label"> عدد الأجزاء التي أتممت حفظها  : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="quran_parts" name="quran_parts" placeholder="أكتب عدد الأجزاء المحفوظة" required="" type="text">
 										</div>
@@ -1495,7 +1288,7 @@
                                         </div>
                                         <hr>
 									</section>
-                                    {{--  university part End --}}
+                                    {{--  university part End 
                                     
 									<h3>معلومات السكن</h3>
 									<section>
@@ -1537,7 +1330,7 @@
                                         </div>
 									</section>
                                 
-                                    {{--  معلومات حول العمل للطالب  --}}
+                                    {{--  معلومات حول العمل للطالب  
                                     
 									<h3>معلومات العمل</h3>
 									<section>
@@ -1582,12 +1375,12 @@
 										</div>
 									</section>
 
-                                      {{--  معلومات حول الحالة  الصحية للطالب  --}}
+                                      {{--  معلومات حول الحالة  الصحية للطالب  
                                     <h3>معلومات الحالة الصحية</h3>
 									<section>
 										<p class="mg-b-20">المعلومات حول الحالة الصحية للطالب! <span class="tx-danger">*</span></p>
                                         <div class="row row-sm">
-                                        <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
+                                        <div class="col-md-5 col-lg-4">{{-- it must be select options  
                                             <p class="mg-b-10">هل يوجد لديك اي أمراض: <span class="tx-danger">*</span></p>
                                             <select class="form-control select2" name="disease_type" id="disease_type">
                                                 <option label="test">
@@ -1633,7 +1426,7 @@
 												<label class="form-control-label">هل تم تحويلك لطبيب آخر؟ مع ذكر الأسم إن وجد: <span class="tx-danger">*</span></label> <input class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder="" required="" type="text">
 											</div>
 										</div>
-									</section>
+									      </section>  --}}
 								</div>
 							</div>
 						</div>

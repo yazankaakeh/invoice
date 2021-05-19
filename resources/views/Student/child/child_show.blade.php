@@ -19,7 +19,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/معلومات الأطفال</span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/معلومات الأطفال</span>
 						</div>
 					</div>
 
@@ -31,7 +31,7 @@
 				<div class="row">
                         <div class="col-xl-12">
                             <div class="card mg-b-20">
-                                <div class="card-header pb-0">
+                                <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                                     </div>
@@ -46,7 +46,7 @@
                                                     <th class="border-bottom-0">رقم </th>
                                                     <th class="border-bottom-0">اسم الطفل</th>
                                                     <th class="border-bottom-0">عمره</th>
-                                                    <th class="border-bottom-0">جنسه</th>
+                                                    <th class="border-bottom-0">الجنس</th>
                                                     <th class="border-bottom-0">المرحلة الدراسية</th>
                                                     <th class="border-bottom-0">الصف الدراسي</th>
                                                     <th class="border-bottom-0">مدينة أصدار الهوية</th>

@@ -23,12 +23,16 @@
 @endsection
 @section('content')
 				<!-- row -->
+                <div class="main-content-label mg-b-5">
+                   قسم مدفوعات الطلاب .
+                </div>
+                <p class="mg-b-20">الدفعات و عمليات الدفع التي أعطيت للطالب . </p>
 				<div class="row">
                         <div class="col-xl-12">
                             <div class="card mg-b-20">
-                                <div class="card-header pb-0">
+                                <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
-                                        <i class="mdi mdi-dots-horizontal text-gray"></i>
+                                        <p class="mg-b-20">عمليات الدفع الخاصة بالطلاب.</p>
                                     </div>
                                 </div>
                                 <div class="card-body">

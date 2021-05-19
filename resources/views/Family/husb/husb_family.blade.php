@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-عرض بيانات الزوج و الزوجة
+قسم معلومات الزوج والزوجة للعائلة
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/معلومات الأم و الأب</span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/معلومات الزوج و الزوجة</span>
 						</div>
 					</div>
 
@@ -31,18 +31,21 @@
 				<div class="row">
                         <div class="col-xl-12">
                             <div class="card mg-b-20">
-                                <div class="card-header pb-0">
+                                <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
-                                        <i class="mdi mdi-dots-horizontal text-gray"></i>
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    <div class="main-content-label mg-b-5">
+                                        قائمة معلومات الزوج و الزوجة  .
+                                    </div>
+                                    <p class="mg-b-20">معلومات الزوج و الزوجة للعائلة.</p>
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons text-md-nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th class="border-bottom-0">رقم الطالب</th>
-                                                    <th class="border-bottom-0">اسم الطالب</th>
+                                                    <th class="border-bottom-0">رقم العائلة</th>
+                                                    <th class="border-bottom-0">اسم صاحب القيد</th>
                                                     <th class="border-bottom-0">رقم </th>
                                                     <th class="border-bottom-0">اسم الزوجة</th>
                                                     <th class="border-bottom-0">المواليد</th>
@@ -176,7 +179,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                    <h6 class="modal-title">حذف بيانات  الزوج  و الزوجة</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <form action="{{ Route('husband_Wife.destroy.family') }}" method="post">
@@ -187,7 +190,7 @@
                                         <div class="form-group">
                                         <input type="hidden" name="family_id" id="family_id" readonly>
                                         <input type="hidden" name="id" id="id"  readonly>
-                                        <label for="exampleInputEmail">البيانات المتعلقة بهذا الطالب </label>
+                                        <label for="exampleInputEmail">اسم صاحب القيد</label>
                                         <input class="form-control" name="family_Constraint" id="family_Constraint" type="text" readonly>
                                         </div>
                                     </div>
@@ -206,7 +209,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات الزوج والزوجة</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

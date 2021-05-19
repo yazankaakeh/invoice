@@ -9,7 +9,7 @@
 @section('title')
 تسجيل الطلاب
 @endsection
-@if($enable->student_form != 2)  
+@if($enable->student_form != 2)
 
 
 @section('page-header')
@@ -17,7 +17,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">قسم التسجيل  </h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ معلومات الطالب</span>
+							<h4 class="my-auto mb-0 content-title">قسم التسجيل  </h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ معلومات الطالب.</span>
 						</div>
 					</div>
 				</div>
@@ -39,16 +39,16 @@
 										<p class="mg-b-20">المعلومات الشخصية حول الطالب !</p>
 										<div class="row row-sm">
 											<div class="col-md-5 col-lg-4">
-												<label class="form-control-label">الاسم الطالب بالكامل: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="student_name" name="student_name" placeholder="أكتب أسم الطالب" required="" type="text">
+												<label class="form-control-label">الاسم الطالب بالكامل: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="student_name" name="student_name" placeholder="أكتب اسم الطالب" required="" type="text">
 											</div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+                                            <div class="col-md-5 col-lg-4">
                                                 <label for="exampleInputEmail">الميلاد: <span class="tx-danger">*</span> </label>
                                                 <input type="date" class="form-control" id="birthday" name="birthday" placeholder="">
                                                 </div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+                                            <div class="col-md-5 col-lg-4">
                                                 <p class="form-control-label">  الجنس: <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender">
                                                 <option label="test">
-                                                    اختر نوع الجنس </option>
+                                                    حدد من فضلك نوع الجنس </option>
                                                 <option value="ذكر" >
                                                 ذكر
                                             </option>
@@ -57,19 +57,19 @@
                                               </option>
                                             </select>
 											</div>
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+											<div class="col-md-5 col-lg-4">
 												<label class="form-control-label"> العمر : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="age" name="age" placeholder="أكتب العمر بأرقام" required="" type="text">
 											</div>
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+											<div class="col-md-5 col-lg-4">
 												<label class="form-control-label"> البريد الإلكتروني : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="email" name="email" placeholder="أكتب البريد الألكتروني" required="" type="text">
 											</div>
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+											<div class="col-md-5 col-lg-4">
 												<label class="form-control-label"> رقم الهاتف  : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="phone" name="phone" placeholder="أكتب رقم الهاتف بدءً من 05" required="" type="text">
 											</div>
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+											<div class="col-md-5 col-lg-4">
                                                 <p class="form-control-label"> من اي محافظة الأصل :<span class="tx-danger">*</span></p><select class="form-control select2" name="county_are_from" id="county_are_from">
                                                 <option label="test">
-                                                    اختر أسم المحافظة </option>
+                                                    حدد من فضلك اسم المحافظة </option>
                                                 <option value="	دمشق">
                                                     دمشق</option>
                                                 <option value="ريف دمشق">
@@ -100,13 +100,13 @@
                                                     القنيطرة</option>
                                                 </select>
                                             </div>
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
-												<label class="form-control-label">من اي مدينة: <span class="tx-danger">*</span></label> <input class="form-control" value="asd" id="city_name" name="city_name" placeholder="Enter lastname" required="" type="text">
+											<div class="col-md-5 col-lg-4">
+												<label class="form-control-label">من اي مدينة: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="city_name" name="city_name" placeholder="أكتب اسم المدينة" required="" type="text">
 											</div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+                                            <div class="col-md-5 col-lg-4">
                                                 <p class="form-control-label"> السكن الحال في اي الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="stu_Cur_housing" id="stu_Cur_housing">
                                                 <option label="test">
-                                                    اختر أسم الولاية </option>
+                                                    حدد من فضلك اسم الولاية </option>
                                                     <option value="أضنة">
                                                         أضنة</option>
                                                     <option value="	أدي‌يمن">
@@ -271,10 +271,10 @@
                                                         دوزجه</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+                                            <div class="col-md-5 col-lg-4">
                                                 <p class="form-control-label">هل يوجد لديك كملك <span class="tx-danger">*</span></p><select class="form-control select2" name="Identity_type" id="Identity_type">
 											    <option label="test">
-                                                    اختر نوع الهوية  </option>
+                                                    حدد من فضلك نوع الهوية  </option>
                                                    <option value="كملك" >
                                                    كملك
                                                </option>
@@ -289,10 +289,10 @@
                                                </option>
                                                </select>
                                             </div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+                                            <div class="col-md-5 col-lg-4">
                                                 <p class="form-control-label">اسم الولاية <span class="tx-danger">*</span></p><select class="form-control select2" name="Id_stud_source" id="Id_stud_source">
                                                 <option label="test">
-                                                    اختر أسم الولاية </option>
+                                                    حدد من فضلك اسم الولاية </option>
                                                     <option value="أضنة">
                                                         أضنة</option>
                                                     <option value="	أدي‌يمن">
@@ -458,16 +458,18 @@
                                                 </select>
                                             </div>
 									</section>
-                                                      
+
                                     {{--  معلومات حول عائلة الطالب  --}}
-                                    
-									<h3>معلومات عائلية</h3>
+
+									 {{--  <h3>المعلومات العائلية.</h3>    
 									<section>
                                         <p>المعلومات حول العائلة للطالب.</p>
-                                        {{--  Mother  part Begin --}}
+
+                                        {{--  Mother  part Begin 
+                                        
                                         <div class="row row-sm">
-										<div class="col-md-5 col-lg-4">            
-											<label class="form-control-label"> أسم الأم: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="mother_name" name="mother_name" placeholder="أكتب أسم الأم بالكامل" required="" type="text">
+										<div class="col-md-5 col-lg-4">
+											<label class="form-control-label"> اسم الأم: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="mother_name" name="mother_name" placeholder="أكتب اسم الأم بالكامل" required="" type="text">
 										</div>
                                         <div class="col-md-5 col-lg-4">
                                             <label for="exampleInputEmail">تاريخ ميلاد الأم <span class="tx-danger">*</span></label>
@@ -477,7 +479,7 @@
                                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟ <span class="tx-danger">*</span></label>
                                                 <select class="form-control" id="mother_origin" name="mother_origin" placeholder="">
                                                     <option label="test">
-                                                        اختر المحافظة </option>
+                                                        حدد من فضلك المحافظة </option>
                                                     <option value="	دمشق">
                                                     دمشق</option>
                                                 <option value="ريف دمشق">
@@ -510,13 +512,13 @@
                                                 </div>
                                                 <div class="col-md-5 col-lg-4">
                                                     <label for="exampleInputEmail">من اي مدينة؟ <span class="tx-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="mother_origin_city" name="mother_origin_city" placeholder=" أكتب أسم المدينة">
+                                                    <input type="text" class="form-control" id="mother_origin_city" name="mother_origin_city" placeholder=" أكتب اسم المدينة">
                                                 </div>
                                                  <div class="col-md-5 col-lg-4">
                                                 <label for="exampleInputEmail">المستوى التعليمي للأم: <span class="tx-danger">*</span></label>
                                                 <select class="form-control" id="mother_academicel" name="mother_academicel" placeholder=" أكتب المستوى النعليمي للأم  ">
                                                   <option label="test">
-                                                            اختر المستوى التعليمي </option>
+                                                            حدد من فضلك المستوى التعليمي </option>
                                                     <option value=" الأمِّيِّ">
                                                         الأمِّيِّ </option>
                                                  <option value="حضانة">
@@ -529,8 +531,8 @@
                                                     اعدادي </option>
                                                 <option value="ثانوي">
                                                     ثانوي </option>
-                                                 <option value="دبلوم ">
-                                                    دبلوم </option>
+                                                 <option value="دبلوم عالي ">
+                                                    دبلوم عالي </option>
                                                  <option value="جامعي">
                                                     جامعي </option>
                                                 <option value="مايجستير">
@@ -541,13 +543,13 @@
                                                 </div>
                                                 <div class="col-md-5 col-lg-4">
                                                 <label for="exampleInputEmail">اختصاص دراسة الأم: <span class="tx-danger">*</span></label>
-                                                <input type="text" class="form-control" id="mother_special" name="mother_special" placeholder=" أكتب أسم الأختصاص">
+                                                <input type="text" class="form-control" id="mother_special" name="mother_special" placeholder=" أكتب اسم الأختصاص">
                                                 </div>
                                                 <div class="col-md-5 col-lg-4">
                                                 <label for="exampleInputEmail">هل تعمل الأم؟ <span class="tx-danger">*</span></label>
                                                 <select class="form-control select2" name="mother_is_work" id="mother_is_work" placeholder="هل الأم تعمل ام لا تعمل">
                                                     <option label="test">
-                                                        أختر تعمل أو لاتعمل  </option>
+                                                        حدد من فضلك تعمل أو لاتعمل  </option>
                                                     <option value="تعمل" >
                                                     تعمل
                                                 </option>
@@ -564,14 +566,14 @@
                                                 <label for="exampleInputEmail">الراتب الشهري للأم: <span class="tx-danger">*</span></label>
                                                 <input type="text" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم ">
                                                 </div>
-                                                
-                                               {{--  Mother  part End --}}
-                                               
-                                               {{--  Father Part Begin  --}}
-                                               
+
+                                               {{--  Mother  part End 
+
+                                               {{--  Father Part Begin  
+
                                                 <div class="col-md-5 col-lg-4">
                                                <label for="exampleInputEmail">اسم الأب: <span class="tx-danger">*</span></label>
-                                               <input type="text" class="form-control" id="father_name" name="father_name" placeholder=" أكتب أسم الأب ">
+                                               <input type="text" class="form-control" id="father_name" name="father_name" placeholder=" أكتب اسم الأب ">
                                                </div>
                                                <div class="col-md-5 col-lg-4">
                                                <label for="exampleInputEmail">تاريخ ميلاد الأب: <span class="tx-danger">*</span></label>
@@ -579,9 +581,9 @@
                                               </div>
                                               <div class="col-md-5 col-lg-4">
                                              <label for="exampleInputEmail">من اي محافظة من سوريا؟ <span class="tx-danger">*</span></label>
-                                             <select class="form-control" id="father_origin" name="father_origin" placeholder=" أكتب أسم المحافظة ">
+                                             <select class="form-control" id="father_origin" name="father_origin" placeholder=" أكتب اسم المحافظة ">
                                              <option label="test">
-                                            اختر أسم المحافظة </option>
+                                            حدد من فضلك اسم المحافظة </option>
                                             <option value="	دمشق">
                                                 دمشق</option>
                                             <option value="ريف دمشق">
@@ -614,13 +616,13 @@
                                         </div>
                                         <div class="col-md-5 col-lg-4">
                                             <label for="exampleInputEmail">من اي مدينة؟ <span class="tx-danger">*</span></label>
-                                            <input type="text" class="form-control" id="father_origin_city" name="father_origin_city" placeholder=" أكتب أسم المدينة">
+                                            <input type="text" class="form-control" id="father_origin_city" name="father_origin_city" placeholder=" أكتب اسم المدينة">
                                         </div>
                                         <div class="col-md-5 col-lg-4">
                                         <label for="exampleInputEmail">المستوى التعليمي للأب :<span class="tx-danger">*</span></label>
                                         <select class="form-control" id="father_academicel" name="father_academicel" placeholder=" أكتب المستوى التعليمي ">
                                             <option label="test">
-                                                اختر المستورى التعليمي </option>
+                                                حدد من فضلك المستورى التعليمي </option>
                                             <option value=" الأمِّيِّ">
                                                 الأمِّيِّ </option>
                                          <option value="حضانة">
@@ -633,8 +635,8 @@
                                             اعدادي </option>
                                         <option value="ثانوي">
                                             ثانوي </option>
-                                         <option value="دبلوم ">
-                                            دبلوم </option>
+                                         <option value="دبلوم عالي ">
+                                            دبلوم عالي </option>
                                          <option value="جامعي">
                                             جامعي </option>
                                         <option value="مايجستير">
@@ -643,17 +645,17 @@
                                             ديكتورا </option>
                                         </select>
                                         </div>
-        
+
                                         <div class="col-md-5 col-lg-4">
                                         <label for="exampleInputEmail">اختصاص دراسة الأب: <span class="tx-danger">*</span></label>
-                                        <input type="text" class="form-control" id="father_special" name="father_special" placeholder=" أكتب أسم الأختصاص">
+                                        <input type="text" class="form-control" id="father_special" name="father_special" placeholder=" أكتب اسم الأختصاص">
                                         </div>
-        
+
                                         <div class="col-md-5 col-lg-4">
                                         <label for="exampleInputEmail">هل يعمل للأب؟ <span class="tx-danger">*</span></label>
                                         <select class="form-control select2" name="father_is_work" id="father_is_work" placeholder=" هل الأب يعمل ام لا يعمل  ">
                                             <option label="test">
-                                              أختر يعمل أو لايعمل</option>
+                                              حدد من فضلك يعمل أو لايعمل</option>
                                             <option value="يعمل" >
                                             يعمل
                                         </option>
@@ -672,13 +674,15 @@
                                         </div>
                                         </div>
                                        <hr>
-                                 {{--  Father part End  --}}
-                                 
-                                 {{--  sister and brother part Begin  --}}
-                                 <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+
+                                 {{--  Father part End 
+
+                                 {{--  sister and brother part Begin 
+
+                                 <div class="col-md-5 col-lg-4">
                                     <p class="mg-b-10">هل لديك أخوة وأخوات؟ <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="sist_broth" onchange="show2Div(this)">
                                         <option label="test">
-                                        أختر يوجد او لايوجد</option>
+                                        حدد من فضلك يوجد او لايوجد</option>
                                         <option value="1" >
                                             يوجد
                                         </option>
@@ -687,10 +691,12 @@
                                         </option>
                                     </select>
                                 </div>
-                                <div  class="row row-sm"id="hidde_div" style="display:none;"> {{-- display:flex  --}}
+
+                                <div  class="row row-sm"id="hidde_div" style="display:none;"> {{-- display:flex  
+
                                  <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">الأسم بالكامل </label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder=" أكتب الأسم كامل">
+                                    <label for="exampleInputEmail">الاسم بالكامل </label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder=" أكتب الاسم كامل">
                                     </div>
                                     <div class="col-md-5 col-lg-4">
                                     <label for="exampleInputEmail">العمر</label>
@@ -700,7 +706,7 @@
                                     <label for="exampleInputEmail">الجنس </label>
                                     <select type="text" class="form-control" id="gender" name="gender" >
                                         <option label="test">
-                                            اختر نوع الجنس </option>
+                                            حدد من فضلك نوع الجنس </option>
                                         <option value="ذكر" >
                                        ذكر
                                     </option>
@@ -713,7 +719,7 @@
                                     <label for="exampleInputEmail">المستوى الدراسي</label>
                                     <select class="form-control" id="academicel" name="academicel" placeholder="">
                                         <option label="test">
-                                            اختر المستوى التعليمي  </option>
+                                            حدد من فضلك المستوى التعليمي  </option>
                                         <option value=" الأمِّيِّ">
                                             الأمِّيِّ </option>
                                      <option value="حضانة">
@@ -726,8 +732,8 @@
                                         اعدادي </option>
                                     <option value="ثانوي">
                                         ثانوي </option>
-                                     <option value="دبلوم ">
-                                        دبلوم </option>
+                                     <option value="دبلوم عالي ">
+                                        دبلوم عالي </option>
                                      <option value="جامعي">
                                         جامعي </option>
                                     <option value="مايجستير">
@@ -742,7 +748,7 @@
                                     </div>
                                     <div class="col-md-5 col-lg-4">
                                     <label for="exampleInputEmail">ما هو نوع العمل </label>
-                                    <input type="text" class="form-control" id="work" name="work" placeholder="أكتب أسم العمل">
+                                    <input type="text" class="form-control" id="work" name="work" placeholder="أكتب اسم العمل">
                                     </div>
                                     <div class="col-md-5 col-lg-4">
                                     <label for="exampleInputEmail">كم الراتب </label>
@@ -750,281 +756,148 @@
                                     </div>
                                 </div>
                                 <hr>
-                                     {{--    sister and brother End --}}
-                                     
-                                     {{--    wife and has part Begin --}}
-                                     
+                                     {{--    sister and brother End 
+
+                                     {{--    wife and has part Begin
+
+                                     <div class="col-md-5 col-lg-4">
+                                        <p class="mg-b-10">هل انت متزوج/ة؟ <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="" onchange="show99Div(this)">
+                                            <option label="test">
+                                                 حدد من فضلك بنعم أم لا</option>
+                                            <option value="1" >
+                                                نعم
+                                            </option>
+                                            <option value="0" >
+                                                لا
+                                            </option>
+                                        </select>
+                                        </div>
+                                         <hr>
+                                        <div  class="row row-sm"id="hidde99_div" style="display:none;"> {{-- display:flex  
+
+                                            <div class="col-md-5 col-lg-4">
+                                                <label for="exampleInputEmail">الجنس <span class="tx-danger">*</span> </label>
+                                                <select type="text" class="form-control" id="gender" name="gender" >
+                                                    <option label="test">
+                                                        حدد من فضلك نوع الجنس </option>
+                                                    <option value="ذكر" >
+                                                   ذكر
+                                                </option>
+                                                <option value="انثى" >
+                                                    انثى
+                                                </option>
+                                                </select>
+                                                </div>
                                         <div class="col-md-5 col-lg-4">
-                                            <p class="mg-b-10">هل انت متزوج/ة  </p><select class="form-control select2" name="form_select" id="wife_has" onchange="showDive22(this)">
-                                                <option label="test">
-                                                  بيانات الزوج او الزوجة</option>
-                                                <option value="1" >
-                                                    الزوجة
-                                                </option>
-                                                <option value="0" >
-                                                    الزوج
-                                                </option>
+                                        <input type="hidden" name="student_id" id="student_id"  readonly>
+                                        <label for="exampleInputEmail">اسم الزوج/ة <span class="tx-danger">*</span></label>
+                                        <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم الزوجة ">
+                                        </div>
+
+                                         <div class="col-md-5 col-lg-4">
+                                        <label for="exampleInputEmail">تاريخ ميلاد الزوج/ة <span class="tx-danger">*</span></label>
+                                        <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد">
+                                        </div>
+
+                                         <div class="col-md-5 col-lg-4">
+                                        <label for="exampleInputEmail">من اي محافظة من سوريا؟ <span class="tx-danger">*</span></label>
+                                        <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب اسم المحافظة ">
+                                          <option label="test">
+                                                    حدد من فضلك اسم المحافظة </option>
+                                            <option value="	دمشق">
+                                                دمشق</option>
+                                            <option value="ريف دمشق">
+                                                ريف دمشق</option>
+                                            <option value="	حلب ">
+                                                حلب</option>
+                                            <option value="حمص">
+                                                حمص</option>
+                                            <option value="حماه">
+                                                حماه</option>
+                                            <option value="	درعا">
+                                                درعا</option>
+                                            <option value="	ادالب">
+                                                ادلب</option>
+                                            <option value="	سويداء">
+                                                سويداء</option>
+                                            <option value="	ديرالزور">
+                                                دير الزور</option>
+                                            <option value="	الرقة">
+                                                الرقة</option>
+                                            <option value="الحسكة">
+                                                الحسكة</option>
+                                            <option value="	اللاذقية">
+                                                اللاذقية</option>
+                                            <option value="	طرطوس">
+                                                طرطوس</option>
+                                            <option value="	القنيطرة">
+                                                القنيطرة</option>
                                             </select>
                                         </div>
-                                        {{--  wife Part  --}}
-                                    <hr>
-                                    <div  class="row row-sm"id="hidden_div" style="display:none;"> {{-- display:flex  --}}
-                                    <div class="col-md-5 col-lg-4">
-                                    <input type="hidden" name="student_id" id="student_id"  readonly>
-                                    <label for="exampleInputEmail">اسم الزوجة: <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم الزوجة ">
-                                    </div>
-                                    
-                                     <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">تاريخ ميلاد الزوجة: <span class="tx-danger">*</span></label>
-                                    <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد">
-                                    </div>
-    
-                                     <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">من اي محافظة من سوريا؟ <span class="tx-danger">*</span></label>
-                                    <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب أسم المحافظة ">
-                                      <option label="test">
-                                                اختر اسم المحافظة </option>
-                                        <option value="	دمشق">
-                                            دمشق</option>
-                                        <option value="ريف دمشق">
-                                            ريف دمشق</option>
-                                        <option value="	حلب ">
-                                            حلب</option>
-                                        <option value="حمص">
-                                            حمص</option>
-                                        <option value="حماه">
-                                            حماه</option>
-                                        <option value="	درعا">
-                                            درعا</option>
-                                        <option value="	ادالب">
-                                            ادلب</option>
-                                        <option value="	سويداء">
-                                            سويداء</option>
-                                        <option value="	ديرالزور">
-                                            دير الزور</option>
-                                        <option value="	الرقة">
-                                            الرقة</option>
-                                        <option value="الحسكة">
-                                            الحسكة</option>
-                                        <option value="	اللاذقية">
-                                            اللاذقية</option>
-                                        <option value="	طرطوس">
-                                            طرطوس</option>
-                                        <option value="	القنيطرة">
-                                            القنيطرة</option>
-                                        </select>
-                                    </div>
-    
-                                    <div class="col-md-5 col-lg-4">
-                                        <label for="exampleInputEmail">من اي مدينة؟ <span class="tx-danger">*</span></label>
-                                        <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة ">
-                                    </div>
-                                   <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
-                                        <p class="mg-b-10">الحالة الاجتماعية للزوجة</p>
-                                        <select class="form-control select2" name="wife_mar_stat" id="wife_mar_stat" placeholder=" أكتب الحالة الأجتماعية ">
+
+                                        <div class="col-md-5 col-lg-4">
+                                            <label for="exampleInputEmail">من اي مدينة؟ <span class="tx-danger">*</span></label>
+                                            <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب اسم المدينة ">
+                                        </div>
+                                         <div class="col-md-5 col-lg-4">
+                                        <label for="exampleInputEmail">المستوى التعليمي للزوج/ة <span class="tx-danger">*</span></label>
+                                        <select class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى التعليمي  ">
                                             <option label="test">
-                                                اختر الحالة الأجتماعية </option>
-                                            <option value="متزوجة" >
-                                            متزوجة
-                                        </option>
-                                        <option value="متوفية" >
-                                            متوفية
-                                        </option>
-                                        <option value="ارملة" >
-                                            ارملة
-                                        </option>
-                                        <option value="مطلقة" >
-                                            مطلقة
-                                        </option>
+                                                حدد من فضلك المستوى التعليمي </option>
+                                            <option value=" الأمِّيِّ">
+                                                الأمِّيِّ </option>
+                                         <option value="حضانة">
+                                            حضانة </option>
+                                         <option value="روضة">
+                                            روضة </option>
+                                         <option value="ابتدائي">
+                                            ابتدائي </option>
+                                        <option value="اعدادي">
+                                            اعدادي </option>
+                                        <option value="ثانوي">
+                                            ثانوي </option>
+                                         <option value="دبلوم عالي ">
+                                            دبلوم عالي </option>
+                                         <option value="جامعي">
+                                            جامعي </option>
+                                        <option value="مايجستير">
+                                            مايجستير </option>
+                                         <option value="ديكتورا">
+                                            ديكتورا </option>
                                         </select>
-                                    </div>
-                                     <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">المستوى التعليمي للزوجة</label>
-                                    <select class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى التعليمي  ">
-                                        <option label="test">
-                                            اختر المستوى التعليمي </option>
-                                        <option value=" الأمِّيِّ">
-                                            الأمِّيِّ </option>
-                                     <option value="حضانة">
-                                        حضانة </option>
-                                     <option value="روضة">
-                                        روضة </option>
-                                     <option value="ابتدائي">
-                                        ابتدائي </option>
-                                    <option value="اعدادي">
-                                        اعدادي </option>
-                                    <option value="ثانوي">
-                                        ثانوي </option>
-                                     <option value="دبلوم ">
-                                        دبلوم </option>
-                                     <option value="جامعي">
-                                        جامعي </option>
-                                    <option value="مايجستير">
-                                        مايجستير </option>
-                                     <option value="ديكتورا">
-                                        ديكتورا </option>
-                                    </select>
-                                    </div>
-    
-                                    <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">اختصاص دراسة الزوجة</label>
-                                    <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder="أكتب أسم الأختصاص">
-                                    </div>
-                                    <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">هل تعمل الزوجة؟</label>
-                                    <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder=" هل الزوجة تعمل ام لاتعمل ">
-                                   <option label="test">
-                                                اختر تعمل او لاتعمل </option>
-                                        <option value="تعمل" >
-                                        تعمل
-                                    </option>
-                                    <option value="لاتعمل" >
-                                        لاتعمل
-                                    </option>
-                                    </select>
-                                    </div>
-                                    <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">العمل الحالي للزوجة: <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" id="wife_now_work" name="wife_now_work" placeholder=" أكتب العمل الحالي ">
-                                    </div>
-                                    <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">العمل السابق للزوجة: <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" id="wife_Pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  ">
-                                    </div>
-                                   </div>
-    
-                                    {{--  Husband Part  --}}
-                                    
-                                    <div  class="row row-sm"id="hidden1_div" style="display:none;"> {{-- display:flex  --}}
-                                    <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">اسم الزوج: <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" id="husb_name" name="husb_name" placeholder=" أكتب اسم الزوج ">
-                                    </div>
-                                     <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">تاريخ ميلاد الزوج:<span class="tx-danger">*</span></label>
-                                    <input type="date" class="form-control" id="husb_birth" name="husb_birth" placeholder=" أكتب تاريخ الميلاد">
-                                    </div>
-                                     <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">من اي محافظة من سوريا؟ <span class="tx-danger">*</span></label>
-                                    <select class="form-control" id="husb_Orig_city" name="husb_Orig_city" placeholder=" أكتب اسم محافظة ">
-                                        <option label="test">
-                                            اختر اسم المحافظة </option>
-                                        <option value="	دمشق">
-                                            دمشق</option>
-                                        <option value="ريف دمشق">
-                                            ريف دمشق</option>
-                                        <option value="	حلب ">
-                                            حلب</option>
-                                        <option value="حمص">
-                                            حمص</option>
-                                        <option value="حماه">
-                                            حماه</option>
-                                        <option value="	درعا">
-                                            درعا</option>
-                                        <option value="	ادالب">
-                                            ادلب</option>
-                                        <option value="	سويداء">
-                                            سويداء</option>
-                                        <option value="	ديرالزور">
-                                            دير الزور</option>
-                                        <option value="	الرقة">
-                                            الرقة</option>
-                                        <option value="الحسكة">
-                                            الحسكة</option>
-                                        <option value="	اللاذقية">
-                                            اللاذقية</option>
-                                        <option value="	طرطوس">
-                                            طرطوس</option>
-                                        <option value="	القنيطرة">
-                                            القنيطرة</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-5 col-lg-4">
-                                        <label for="exampleInputEmail">من اي مدينة؟ <span class="tx-danger">*</span></label>
-                                        <input type="text" class="form-control" id="husb_district" name="husb_district" placeholder=" أكتب اسم المدينة ">
-                                    </div>
-                                    <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
-                                        <p class="mg-b-10">الحالة الاجتماعية للزوج: <span class="tx-danger">*</span></p>
-                                        <select class="form-control select2" name="husb_mar_stat" id="husb_mar_stat" placeholder=" أكتب الحالة الاجتماعية ">
-                                            <option label="test">
-                                                اختر الحالة الأجتماعية </option>
-                                            <option value="معتقل" >
-                                            معتقل
-                                        </option>
-                                        <option value="متوفي" >
-                                            متوفي
-                                        </option>
-                                        <option value="مفقود" >
-                                            مفقود
-                                        </option>
-                                        <option value="متزوج" >
-                                            متزوج
-                                        </option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">المستوى التعليمي للزوج: <span class="tx-danger">*</span></label>
-                                    <select class="form-control" id="husb_academicel" name="husb_academicel" placeholder=" أكتب المستوى التعليمي ">
+                                        </div>
+
+                                        <div class="col-md-5 col-lg-4">
+                                        <label for="exampleInputEmail">اختصاص دراسة الزوج/ة <span class="tx-danger">*</span></label>
+                                        <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder="أكتب اسم الأختصاص">
+                                        </div>
+                                        <div class="col-md-5 col-lg-4">
+                                        <label for="exampleInputEmail">هل تعمل الزوج/ة؟ <span class="tx-danger">*</span></label>
+                                        <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder=" هل الزوجة تعمل ام لاتعمل ">
                                        <option label="test">
-                                                اختر المستوى التعليمي </option>
-                                        <option value=" الأمِّيِّ">
-                                            الأمِّيِّ </option>
-                                     <option value="حضانة">
-                                        حضانة </option>
-                                     <option value="روضة">
-                                        روضة </option>
-                                     <option value="ابتدائي">
-                                        ابتدائي </option>
-                                    <option value="اعدادي">
-                                        اعدادي </option>
-                                    <option value="ثانوي">
-                                        ثانوي </option>
-                                     <option value="دبلوم ">
-                                        دبلوم </option>
-                                     <option value="جامعي">
-                                        جامعي </option>
-                                    <option value="مايجستير">
-                                        مايجستير </option>
-                                     <option value="ديكتورا">
-                                        ديكتورا </option>
-                                    </select>
-                                    </div>
-    
-                                    <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">اختصاص دراسة الزوج :<span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" id="husb_special" name="husb_special" placeholder=" أكتب اسم اختصاص ">
-                                    </div>
-    
-                                    <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">هل تعمل الزوج؟ <span class="tx-danger">*</span></label>
-                                    <select class="form-control select2" name="husb_is_work" id="husb_is_work" placeholder=" هل الزوج يعمل ام لايعمل">
-                                    <option label="test">
-                                  اختر يعمل أو لايعمل </option>
-                                        <option value="يعمل" >
-                                        يعمل
-                                    </option>
-                                    <option value="لايعمل" >
-                                        لايعمل
-                                    </option>
-                                    </select>
-                                    </div>
-    
-                                    <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">العمل الحالي للزوج: <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" id="husb_now_work" name="husb_now_work" placeholder=" أكتب العمل الحالي ">
-                                    </div>
-    
-                                    <div class="col-md-5 col-lg-4">
-                                    <label for="exampleInputEmail">العمل السابق للزوج: <span class="tx-danger">*</span></label>
-                                    <input type="text" class="form-control" id="husb_Pre_work" name="husb_Pre_work" placeholder=" أكتب العمل السابق ">
-                                    </div>
-                                    </div> 
-                                    
-                                           {{--  wife and has part End  --}}
-                                           
-                                           {{--  children  part Begin  --}}
-                                            
+                                                    حدد من فضلك تعمل او لاتعمل </option>
+                                            <option value="تعمل" >
+                                            تعمل
+                                        </option>
+                                        <option value="لاتعمل" >
+                                            لاتعمل
+                                        </option>
+                                        </select>
+                                        </div>
+                                        <div class="col-md-5 col-lg-4">
+                                        <label for="exampleInputEmail">العمل الحالي للزوج/ة <span class="tx-danger">*</span></label>
+                                        <input type="text" class="form-control" id="wife_now_work" name="wife_now_work" placeholder=" أكتب العمل الحالي ">
+                                        </div>
+                                        <div class="col-md-5 col-lg-4">
+                                        <label for="exampleInputEmail">العمل السابق للزوج/ة</label>
+                                        <input type="text" class="form-control" id="wife_Pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  ">
+                                        </div>
+                                        </div>
+                                        <hr>
+                                           {{--  wife and has part End  
+
+                                           {{--  children  part Begin  
+
                                            <div class="col-md-5 col-lg-4">
                                             <p class="mg-b-10">هل يوجد أطفال؟ <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="child" onchange="show22Div(this)">
                                                 <option label="test">
@@ -1037,22 +910,23 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        
-                                        <div  class="row row-sm"id="hidde33_div" style="display:none;"> {{-- display:flex  --}}
+
+                                        <div  class="row row-sm"id="hidde33_div" style="display:none;"> {{-- display:flex  
+
                                            <div class="col-md-5 col-lg-4">
                                             <input type="hidden" name="student_id" id="student_id" readonly>
                                             <label for="exampleInputEmail">اسم الطفل: <span class="tx-danger">*</span></label>
-                                            <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب أسم الطفل ">
+                                            <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب اسم الطفل ">
                                             </div>
                                             <div class="col-md-5 col-lg-4">
                                             <label for="exampleInputEmail">العمر: <span class="tx-danger">*</span></label>
                                             <input type="number" class="form-control" id="childre_age" name="childre_age" placeholder=" أكتب  العمر بالرقم ">
                                             </div>
-                                            <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
+                                            <div class="col-md-5 col-lg-4">{{-- it must be select options  
                                                 <p class="mg-b-10">الجنس:<span class="tx-danger">*</span></p>
                                                 <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" أكتب الجنس الطفل ">
                                                     <option label="test">
-                                                        اختر نوع الجنس </option>
+                                                        حدد من فضلك نوع الجنس </option>
                                                     <option value="ذكر" >
                                                     ذكر
                                                 </option>
@@ -1065,9 +939,7 @@
                                             <label for="exampleInputEmail">المرحلة الدراسية: <span class="tx-danger">*</span></label>
                                             <select type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" placeholder=" أكتب المرحلة الدراسية ">
                                                 <option label="test">
-                                                    اختر المرحلة الدراسية </option>
-                                                <option value=" الأمِّيِّ">
-                                                    الأمِّيِّ </option>
+                                                    حدد من فضلك المرحلة الدراسية </option>
                                                 <option value=" الأمِّيِّ">
                                                     الأمِّيِّ </option>
                                              <option value="حضانة">
@@ -1080,8 +952,8 @@
                                                 اعدادي </option>
                                             <option value="ثانوي">
                                                 ثانوي </option>
-                                             <option> value="دبلوم ">
-                                                دبلوم </option>
+                                             <option> value="دبلوم عالي ">
+                                                دبلوم عالي </option>
                                              <option value="جامعي">
                                                 جامعي </option>
                                             <option value="مايجستير">
@@ -1094,11 +966,11 @@
                                             <label for="exampleInputEmail"> رقم الصف الدراسي: <span class="tx-danger">*</span> </label>
                                             <input type="text" class="form-control" id="childre_class_number" name="childre_class_number" placeholder="  أكتب رقم الصف الدراسي ">
                                             </div>
-                                            <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
+                                            <div class="col-md-5 col-lg-4">{{-- it must be select options  
                                                 <p class="mg-b-10">الهوية الشخصية من اي ولاية: <span class="tx-danger">*</span></p>
-                                                <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك ">
+                                                <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" حدد من فضلك من اسم الولاية الصادرة منها الكملك ">
                                                     <option label="test">
-                                                        اختر اسم ولاية </option>
+                                                        حدد من فضلك اسم ولاية </option>
                                                     <option value="لايوجد كملك" >
                                                      لايوجد كملك
                                                     <option value="أضنة">
@@ -1265,11 +1137,11 @@
                                                         دوزجه</option>
                                                 </select>
                                             </div>
-                                             <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
+                                             <div class="col-md-5 col-lg-4">{{-- it must be select options  
                                                 <p class="mg-b-10">هل يعيشون معكم؟ <span class="tx-danger">*</span></p>
                                                 <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم ">
                                                <option label="test">
-                                                        أختر نعم او لا  </option>
+                                                        حدد من فضلك نعم او لا  </option>
                                                     <option value="لا" >
                                                     لا
                                                 </option>
@@ -1280,16 +1152,16 @@
                                             </div>
                                             </div>
                                         </section>
-                                         {{--  children  part End  --}}
+                                         {{--  children  part End  
 
-                                 
-                                                {{--  المعلومات الدراسية للطالب في الجامعة  --}}
-									<h3>المعلومات الدراسية</h3>
+
+                                                {{--  المعلومات الدراسية للطالب في الجامعة  
+									<h3>المعلومات الدراسية.</h3>
 									<section>
                                         <p>المعلومات الدراسية للطالب في الجامعة.</p>
                                         <div class="row row-sm">
 										<div class="col-md-5 col-lg-4">
-											<label class="form-control-label"> أسم الجامعة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="univer_location" name="univer_location" placeholder="أكتب أسم الجامعة " required="" type="text">
+											<label class="form-control-label"> اسم الجامعة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="univer_location" name="univer_location" placeholder="أكتب اسم الجامعة " required="" type="text">
 										</div>
                                         <div class="col-md-5 col-lg-4">
 											<label class="form-control-label">مكان الجامعة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="Univer_loca" name="Univer_loca" placeholder="أكتب موقع الجامعة في أي ولاية " required="" type="text">
@@ -1301,7 +1173,7 @@
                                             <label for="exampleInputEmail">السنة الدراسية الحالية: <span class="tx-danger">*</span> </label>
                                             <select type="text" class="form-control" id="Schoo_year" name="Schoo_year" >
                                                 <option label="test">
-                                                    اختر نوع السنة الدراسية </option>
+                                                    حدد من فضلك نوع السنة الدراسية </option>
                                                 <option value="تحضيري" >
                                                تحضيري
                                             </option>
@@ -1326,7 +1198,7 @@
                                             <label for="exampleInputEmail">اللغة الدراسية:  <span class="tx-danger">*</span></label>
                                             <select type="text" class="form-control" id="language_name" name="language_name">
                                                 <option label="test">
-                                                    اختر اللغة الدراسية </option>
+                                                    حدد من فضلك اللغة الدراسية </option>
                                                 <option value="العربية" >
                                                العربية
                                             </option>
@@ -1363,11 +1235,11 @@
 										</div>
                                         </div>
                                         <hr>
-                                    {{--  قسم الجامعة الثانية  --}}
+                                    {{--  قسم الجامعة الثانية  
                                         <div class="col-md-5 col-lg-4">
                                             <p class="mg-b-10"> هل يوجد جامعة ثانية؟ <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="secend_un" onchange="showDiv(this)">
                                                       <option label="test">
-                                                أختر  يوجد او لايوجد  </option>
+                                                حدد من فضلك  يوجد او لايوجد  </option>
                                                 <option value="1" >
                                                     يوجد
                                                 </option>
@@ -1376,12 +1248,12 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <div  class="row row-sm"id="hidden3_div" style="display:none;"> {{-- display:flex  --}}
+                                        <div  class="row row-sm"id="hidden3_div" style="display:none;"> {{-- display:flex  
                                         <div class="col-md-5 col-lg-4">
-											<label class="form-control-label">اسم الجامعة الثانية: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="Ano_univer_name" name="Ano_univer_name" placeholder="أكتب أسم الجامعة الثانية" required="" type="text">
+											<label class="form-control-label">اسم الجامعة الثانية: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="Ano_univer_name" name="Ano_univer_name" placeholder="أكتب اسم الجامعة الثانية" required="" type="text">
 										</div>
                                         <div class="col-md-5 col-lg-4">
-											<label class="form-control-label">الأختصاص الثاني: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="Ano_univer_special" name="Ano_univer_special" placeholder="أكتب أسم الأختصتاص الثاني" required="" type="text">
+											<label class="form-control-label">الأختصاص الثاني: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="Ano_univer_special" name="Ano_univer_special" placeholder="أكتب اسم الأختصتاص الثاني" required="" type="text">
 										</div>
                                         <div class="col-md-5 col-lg-4">
 											<label class="form-control-label">طريقة القبول بالجامعة الثانية: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="Ano_univer_Accept" name="Ano_univer_Accept" placeholder="أكتب طريقة القبول الجامعة الثانية" required="" type="text">
@@ -1393,7 +1265,7 @@
                                             <label for="exampleInputEmail">  السنة الدراسية بالجامعة الثانية: <span class="tx-danger">*</span>  </label>
                                             <select type="text" class="form-control" id="Ano_Schoo_year" name="Ano_Schoo_year">
                                                 <option label="test">
-                                                    اختر السنة الدراسية </option>
+                                                    حدد من فضلك السنة الدراسية </option>
                                                 <option value="تحضيري" >
                                                تحضيري
                                             </option>
@@ -1413,11 +1285,13 @@
 										</div>
                                         </div>
 									    <hr>
-                                        {{--  قسم المنحة الدراسية   --}}
+
+                                        {{--  قسم المنحة الدراسية  
+
                                         <div class="col-md-5 col-lg-4">
                                             <p class="mg-b-10"> هل يوجد منحة  دراسية؟ <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="secend_un" onchange="showDivv3(this)">
                                                <option label="test">
-                                                أختر  يوجد او لايوجد  </option>
+                                                حدد من فضلك  يوجد او لايوجد  </option>
                                                 <option value="1" >
                                                     يوجد
                                                 </option>
@@ -1426,9 +1300,9 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <div  class="row row-sm"id="hidden3_div3" style="display:none;"> {{-- display:flex  --}}
+                                        <div  class="row row-sm"id="hidden3_div3" style="display:none;"> {{-- display:flex  
                                         <div class="col-md-5 col-lg-4">
-											<label class="form-control-label">اسم المنحة  : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="scholar_name" name="scholar_name" placeholder="أكتب أسم المنحة" required="" type="text">
+											<label class="form-control-label">اسم المنحة  : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="scholar_name" name="scholar_name" placeholder="أكتب اسم المنحة" required="" type="text">
 										</div>
                                         <div class="col-md-5 col-lg-4">
 											<label class="form-control-label"> نوع المنحة: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="scholar_type" name="scholar_type" placeholder="أكتب نوع المنحة" required="" type="text">
@@ -1437,16 +1311,16 @@
 											<label class="form-control-label"> قيمة المنحة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="scholar_value" name="scholar_value" placeholder="أكتب قيمة المنحة" required="" type="text">
 										</div>
                                         <div class="col-md-5 col-lg-4">
-											<label class="form-control-label">مصدر المنحة أو الجهة المانحة: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="scholar_source" name="scholar_source" placeholder="أكتب أسم مصدر المنحة او الجهة المانحة" required="" type="text">
+											<label class="form-control-label">مصدر المنحة أو الجهة المانحة: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="scholar_source" name="scholar_source" placeholder="أكتب اسم مصدر المنحة او الجهة المانحة" required="" type="text">
 										</div>
                                         </div>
                                         <hr>
-                                        
-                                        {{--  قسم القرأن الكريم  --}}
+
+                                        {{--  قسم القرأن الكريم  
                                         <div class="col-md-5 col-lg-4">
                                             <p class="mg-b-10"> هل تحفظ القرأن الكريم:: <span class="tx-danger">*</span></p><select class="form-control select2" name="form_select" id="secend_un" onchange="showDivv33(this)">
                                                <option label="test">
-                                                أختر  يوجد او لايوجد  </option>
+                                                حدد من فضلك  يوجد او لايوجد  </option>
                                                 <option value="1" >
                                                     يوجد
                                                 </option>
@@ -1455,12 +1329,12 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <div  class="row row-sm"id="hidden3_div33" style="display:none;"> {{-- display:flex  --}}
+                                        <div  class="row row-sm"id="hidden3_div33" style="display:none;"> {{-- display:flex 
                                         <div class="col-md-5 col-lg-4">
 											<label class="form-control-label"> عدد الأجزاء التي أتممت حفظها  : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="quran_parts" name="quran_parts" placeholder="أكتب عدد الأجزاء المحفوظة" required="" type="text">
 										</div>
                                         <div class="col-md-5 col-lg-4">
-											<label class="form-control-label">  أسم الشيخ الذي درسك: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="quran_teacher" name="quran_teacher" placeholder="أكتب أسم الشيخ " required="" type="text">
+											<label class="form-control-label">  اسم الشيخ الذي درسك: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="quran_teacher" name="quran_teacher" placeholder="أكتب اسم الشيخ " required="" type="text">
 										</div>
                                         <div class="col-md-5 col-lg-4">
                                             <p class="mg-b-10">هل لديك شهادة حفظ قرآن</p>
@@ -1491,13 +1365,13 @@
                                             </option>
                                             </select>
                                             </div>
-                                            
+
                                         </div>
                                         <hr>
 									</section>
-                                    {{--  university part End --}}
-                                    
-									<h3>معلومات السكن</h3>
+                                    {{--  university part End 
+
+									<h3>معلومات السكن.</h3>
 									<section>
 									<p>المعلومات حول مكان سكن الطالب .</p>
                                         <div class="row row-sm">
@@ -1505,7 +1379,7 @@
                                                 <p class="mg-b-10">نوع السكن: <span class="tx-danger">*</span></p>
                                                 <select class="form-control select2" name="stud_type_housing" id="stud_type_housing">
                                                     <option label="test">
-                                                        اختر نوع السكن  </option>
+                                                        حدد من فضلك نوع السكن  </option>
                                                     <option value="يورت" >
                                                     يورت
                                                 </option> <option value="وقف" >
@@ -1536,10 +1410,10 @@
 										</div>
                                         </div>
 									</section>
-                                
-                                    {{--  معلومات حول العمل للطالب  --}}
-                                    
-									<h3>معلومات العمل</h3>
+
+                                    {{--  معلومات حول العمل للطالب 
+
+									<h3>معلومات العمل.</h3>
 									<section>
 										<p class="mg-b-20">معلومات عن أعمال الطالب أو العمل الحالي.</p>
 										<div class="row row-sm">
@@ -1564,7 +1438,7 @@
                                                 <p class="mg-b-10">هل لديك عمل سابق؟ <span class="tx-danger">*</span></p>
                                                 <select class="form-control select2" name="job_last_have" id="job_last_have" >
                                                  <option label="test">
-                                                      أختر نعم او لا </option>
+                                                      حدد من فضلك نعم او لا </option>
                                                  <option value="نعم" >
                                                     نعم
                                                 </option>
@@ -1574,7 +1448,7 @@
                                                 </select>
                                              </div>
 											<div class="col-md-5 col-lg-4">
-												<label class="form-control-label">نوع عملك السابق؟  <span class="tx-danger">*</span></label> <input class="form-control" id="job_last_type" name="job_last_type" placeholder="أكتب أسم العمل السابق" required="" type="text">
+												<label class="form-control-label">نوع عملك السابق؟  <span class="tx-danger">*</span></label> <input class="form-control" id="job_last_type" name="job_last_type" placeholder="أكتب اسم العمل السابق" required="" type="text">
 											</div>
                                             <div class="col-md-5 col-lg-4">
 												<label class="form-control-label">كم راتبك السابق بعملك السابق؟ <span class="tx-danger">*</span></label> <input class="form-control" id="job_last_salary" name="job_last_salary" placeholder="أكتب قيمة الراتب في العمل السابق" required="" type="text">
@@ -1582,12 +1456,13 @@
 										</div>
 									</section>
 
-                                      {{--  معلومات حول الحالة  الصحية للطالب  --}}
-                                    <h3>معلومات الحالة الصحية</h3>
+                                      {{--  معلومات حول الحالة  الصحية للطالب  
+                                    <h3>معلومات الحالة الصحية.</h3>
 									<section>
 										<p class="mg-b-20">المعلومات حول الحالة الصحية للطالب! <span class="tx-danger">*</span></p>
                                         <div class="row row-sm">
-                                        <div class="col-md-5 col-lg-4">{{-- it must be select options  --}}
+                                        <div class="col-md-5 col-lg-4">{{-- it must be select options  
+                                            
                                             <p class="mg-b-10">هل يوجد لديك اي أمراض: <span class="tx-danger">*</span></p>
                                             <select class="form-control select2" name="disease_type" id="disease_type">
                                                 <option label="test">
@@ -1607,10 +1482,10 @@
                                             </select>
                                         </div>
 											<div class="col-md-5 col-lg-4">
-												<label class="form-control-label">أسم المرض: <span class="tx-danger">*</span></label> <input class="form-control" id="disease_name" name="disease_name" placeholder="أكتب أسم المرض" required="" type="text">
+												<label class="form-control-label">اسم المرض: <span class="tx-danger">*</span></label> <input class="form-control" id="disease_name" name="disease_name" placeholder="أكتب اسم المرض" required="" type="text">
 											</div>
                                             <div class="col-md-5 col-lg-4">
-												<label class="form-control-label">أسم الدكتور: <span class="tx-danger">*</span></label> <input class="form-control" id="dr_name" name="dr_name" placeholder="أكتب أسم الدكتور" required="" type="text">
+												<label class="form-control-label">اسم الدكتور: <span class="tx-danger">*</span></label> <input class="form-control" id="dr_name" name="dr_name" placeholder="أكتب اسم الدكتور" required="" type="text">
 											</div>
 											<div class="col-md-5 col-lg-4">
 												<label class="form-control-label">تكلفة العلاج: <span class="tx-danger">*</span></label> <input class="form-control" id="treat_cost" name="treat_cost" placeholder=" أكتب تكلفة العلاج" required="" type="text">
@@ -1630,10 +1505,10 @@
                                                 <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج">
                                                 </div>
                                             <div class="col-md-5 col-lg-4">
-												<label class="form-control-label">هل تم تحويلك لطبيب آخر؟ مع ذكر الأسم إن وجد: <span class="tx-danger">*</span></label> <input class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder="" required="" type="text">
+												<label class="form-control-label">هل تم تحويلك لطبيب آخر؟ مع ذكر الاسم إن وجد: <span class="tx-danger">*</span></label> <input class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder="" required="" type="text">
 											</div>
 										</div>
-									</section>
+									</section> --}}
 								</div>
 							</div>
 						</div>
@@ -1646,7 +1521,7 @@
 		<!-- main-content closed -->
 @endsection
 {{--  if code for sister and breother  --}}
-<script type="text/javascript">      
+<script type="text/javascript">
     function show2Div(select){
        if(select.value==1){
         document.getElementById('hidde_div').style.display = "flex";
@@ -1655,22 +1530,19 @@
        }
     }
     </script>
-    
+
 {{--  if code for wife and hasb  --}}
-    <script type="text/javascript">
-        function showDive22(select){
-           if(select.value==1){
-            document.getElementById('hidden_div').style.display = "flex";
-            document.getElementById('hidden1_div').style.display = "none";
-           } else{
-            document.getElementById('hidden_div').style.display = "none";
-            document.getElementById('hidden1_div').style.display = "flex";
-    
-           }
-        }
-        </script>  
+<script type="text/javascript">
+    function show99Div(select){
+       if(select.value==1){
+        document.getElementById('hidde99_div').style.display = "flex";
+       } else{
+        document.getElementById('hidde99_div').style.display = "none";
+       }
+    }
+    </script>
         {{--  if code for  children --}}
-<script type="text/javascript">      
+<script type="text/javascript">
     function show22Div(select){
        if(select.value==1){
         document.getElementById('hidde33_div').style.display = "flex";
@@ -1685,7 +1557,7 @@
            if(select.value==1){
             document.getElementById('hidden3_div').style.display = "flex";
            } else{
-            document.getElementById('hidden3_div').style.display = "none";    
+            document.getElementById('hidden3_div').style.display = "none";
            }
         }
         </script>
@@ -1695,7 +1567,7 @@
                if(select.value==1){
                 document.getElementById('hidden3_div3').style.display = "flex";
                } else{
-                document.getElementById('hidden3_div3').style.display = "none";    
+                document.getElementById('hidden3_div3').style.display = "none";
                }
             }
             </script>
@@ -1705,11 +1577,11 @@
                    if(select.value==1){
                     document.getElementById('hidden3_div33').style.display = "flex";
                    } else{
-                    document.getElementById('hidden3_div33').style.display = "none";    
+                    document.getElementById('hidden3_div33').style.display = "none";
                    }
                 }
                 </script>
-        
+
 @section('js')
 <!--Internal  Select2 js -->
 <script src="{{URL::asset('assets/plugins/select2/js/select2.min.js')}}"></script>
@@ -1721,4 +1593,4 @@
 @endsection
 @else
 
-@endif  
+@endif

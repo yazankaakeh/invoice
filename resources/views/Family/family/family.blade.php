@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 {{--  @dd($family)  --}}
 @section('title')
-العائلات
+قسم العائلات 
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">الاعدادات</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/الاقسام</span>
+							<h4 class="my-auto mb-0 content-title">قسم العائلات</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/الاقسام</span>
 						</div>
 					</div>
 
@@ -34,7 +34,7 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
-                                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo1">تفعيل فورم التسجيل</a>
+                                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo1">فورم تسجيل العائلات</a>
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة عائلة</a>
                                         </div>
                                      </div>
@@ -44,15 +44,15 @@
                                             <thead>
                                                 <tr>
                                                     <th class="border-bottom-0">Id</th>
-                                                    <th class="border-bottom-0">اسم صاحب القيد</th>
+                                                    <th class="border-bottom-0">اسم  صاحب القيد</th>
                                                     <th class="border-bottom-0">عدد أفراد</th>
-                                                    <th class="border-bottom-0">المعيل</th>
+                                                    <th class="border-bottom-0"> اسم المعيل</th>
                                                     <th class="border-bottom-0">عمل المعيل</th>
-                                                    <th class="border-bottom-0"> المعيل الثاني</th>
+                                                    <th class="border-bottom-0"> اسم المعيل الثاني</th>
                                                     <th class="border-bottom-0">عمل المعيل الثاني</th>
                                                     <th class="border-bottom-0"> الراتب الشهري</th>
-                                                    <th class="border-bottom-0">مساعدات</th>
-                                                    <th class="border-bottom-0">نوع المساعدات</th>
+                                                    <th class="border-bottom-0">هل يوجد مساعدات</th>
+                                                    <th class="border-bottom-0"> ماهي المساعدات أو قيمتها</th>
                                                     <th class="border-bottom-0">رقم هاتف</th>
                                                     <th class="border-bottom-0">رقم هاتف ثاني</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
@@ -61,8 +61,8 @@
                                                     <th class="border-bottom-0">حذف عائلة</th>
                                                     <th class="border-bottom-0">تعديل عائلة</th>
                                                     <th class="border-bottom-0">اضافة اطفال</th>
-                                                    <th class="border-bottom-0">السكن </th>
-                                                    <th class="border-bottom-0">العمل</th>
+                                                    <th class="border-bottom-0">إضافة السكن</th>
+                                                    <th class="border-bottom-0">إضافة العمل</th>
                                                     <th class="border-bottom-0">إضافة طالب</th>
                                                     <th class="border-bottom-0">إضافة مريض</th>
 
@@ -94,7 +94,7 @@
                                                     </a>
                                                     @if($x->pay_statu != 0)
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    <a class=" btn btn-sm btn-info" href="/Family_pay/show/family/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    <a class=" btn btn-sm btn-info" href="/Family_pay/show/family/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
                                                     @endif
                                                 </td>
 
@@ -113,7 +113,7 @@
                                                         </a>
                                                     </td>
                                                     @endif
-                                                   
+
 
                                                     <td>
                                                     {{-- delete Family  --}}
@@ -128,10 +128,10 @@
                                                     {{-- edit Family  --}}
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-family_constraint="{{$x->family_Constraint}}"
-                                                            data-family_number_member="{{$x->family_number_member}}" data-family_breadwinner="{{$x->family_breadwinner}}" 
-                                                            data-family_an_breadwinner="{{$x->family_an_breadwinner}}" 
-                                                            data-stu_cur_housing="{{$x->stu_Cur_housing}}" data-family_monthly_salary="{{$x->family_monthly_salary}}" 
-                                                            data-county_are_from="{{$x->county_are_from}}" data-family_aid="{{$x->family_has_aid}}" 
+                                                            data-family_number_member="{{$x->family_number_member}}" data-family_breadwinner="{{$x->family_breadwinner}}"
+                                                            data-family_an_breadwinner="{{$x->family_an_breadwinner}}"
+                                                            data-stu_cur_housing="{{$x->stu_Cur_housing}}" data-family_monthly_salary="{{$x->family_monthly_salary}}"
+                                                            data-county_are_from="{{$x->county_are_from}}" data-family_aid="{{$x->family_has_aid}}"
                                                             data-phone="{{$x->phone}}"
                                                             data-sec_phone="{{$x->sec_phone}}"
                                                             data-work_an_breadwinner="{{$x->work_an_breadwinner}}"
@@ -141,8 +141,8 @@
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
                                                     </td>
-                                                   
-                                                   
+
+
                                                     {{-- add children  --}}
                                                     <td>
                                                     @if($x->child_statu != 0)
@@ -190,7 +190,7 @@
 
                                                      {{-- Student  --}}
 
-                                                    <td>  
+                                                    <td>
                                                     @if($x->student_statu  !=  0)
 
                                                         <a class=" btn btn-sm btn-info" href=" {{route('family.student.show', ['id'=> $x->id])}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
@@ -221,7 +221,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                          <div> 
+                          <div>
                             @if (session()->has('Add'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>
@@ -230,7 +230,7 @@
                                 </button>
                             </div>
                             @endif
-                                                        
+
                             @if (session()->has('Form'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Form') }}</strong>
@@ -320,7 +320,7 @@
                                 </button>
                             </div>
                             @endif
-                            
+
                             @if (session()->has('Add_Address'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add_Address') }}</strong>
@@ -344,7 +344,7 @@
                             </div>
                             @endif
                         </div>
-                                 
+
                         {{-- Job --}}
                         <div class="modal fade" id="exampleModal13" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -375,15 +375,15 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ماهو عملك ؟ </label>
-                                <input type="text" class="form-control" id="job_type" name="job_type" placeholder="   أكنب ماهو العملك ">
+                                <input type="text" class="form-control" id="job_type" name="job_type" placeholder="   أكتب ماهو العملك ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">مكان العمل؟</label>
-                                <input type="text" class="form-control" id="job_place" name="job_place" placeholder="   أكنب ماهو العملك ">
+                                <input type="text" class="form-control" id="job_place" name="job_place" placeholder="   أكتب ماهو العملك ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري؟</label>
-                                <input type="text" class="form-control" id="job_monthly_salary" name="job_monthly_salary" placeholder="   أكنب ماهو العملك ">
+                                <input type="text" class="form-control" id="job_monthly_salary" name="job_monthly_salary" placeholder="   أكتب ماهو العملك ">
                                 </div>
                                 <div class="form-group">
                                    <p class="mg-b-10">هل لديك عمل سابق؟</p>
@@ -400,7 +400,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">نوع عملك السابق؟</label>
-                                <input type="text" class="form-control" id="job_last_type" name="job_last_type" placeholder="   أكنب ماهو العملك السابق ">
+                                <input type="text" class="form-control" id="job_last_type" name="job_last_type" placeholder="   أكتب ماهو العملك السابق ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم راتبك السابق بعملك السابق؟</label>
@@ -426,7 +426,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">السكن</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -438,23 +438,189 @@
                                    <div class="modal-body">
                                 <div class="form-group">
                                 <input type="hidden" name="family_id" id="family_id"  readonly>
-                                <label for="exampleInputEmail">اسم المحافظة</label>
-                                <input type="text" class="form-control" id="address_country" name="address_country" placeholder=" أكتب اسم الزوجة ">
-                                </div>
-
+                                <label for="exampleInputEmail"> اسم المحافظة الولاية</label>
+                                <select type="text" class="form-control" id="address_country" name="address_country" placeholder="">
+                                    <option label="test">
+                                        حدد من فضلك اسم  ولاية </option>
+                                    <option value="لايوجد كملك" >
+                                     لايوجد كملك
+                                    <option value="أضنة">
+                                        أضنة</option>
+                                    <option value="	أدي‌يمن">
+                                        أدي‌يمن</option>
+                                    <option value="	أفيون ‌قرةحصار">
+                                        أفيون ‌قرةحصار</option>
+                                    <option value="	أغري">
+                                        أغري</option>
+                                    <option value="	أماسيا">
+                                        أماسيا</option>
+                                    <option value="	أنقرة">
+                                        أنقرة</option>
+                                    <option value="	أنطاليا">
+                                        أنطاليا</option>
+                                    <option value="	أرتڤين">
+                                        أرتڤين</option>
+                                    <option value="	أيدين">
+                                        أيدين</option>
+                                    <option value="	بالكسير">
+                                        بالكسير</option>
+                                    <option value="	بيلجيك">
+                                        بيلجيك</option>
+                                    <option value="	بينگول">
+                                        بينگول</option>
+                                    <option value="	بيطليس">
+                                        بيطليس</option>
+                                    <option value="بولو">
+                                        بولو</option>
+                                    <option value="	بوردور">
+                                        بوردور</option>
+                                    <option value="	بورصة">
+                                        بورصة</option>
+                                    <option value="	چنق‌قلعه">
+                                        چنق‌قلعه</option>
+                                    <option value="	شانكيري">
+                                        شانكيري</option>
+                                    <option value="	چوروم">
+                                        چوروم</option>
+                                    <option value="	دنيزلي">
+                                        دنيزلي</option>
+                                    <option value="	ديار بكر">
+                                        ديار بكر</option>
+                                    <option value="	إدرنه">
+                                        إدرنه</option>
+                                    <option value="	الازيغ">
+                                        الازيغ</option>
+                                    <option value="إرزنجان">
+                                        إرزنجان</option>
+                                    <option value="	أرض‌ روم">
+                                        أرض‌ روم</option>
+                                    <option value="	إسكي‌ شهر">
+                                        إسكي‌ شهير</option>
+                                    <option value="	غازي‌عنتاپ">
+                                        غازي‌عنتاپ</option>
+                                    <option value="	گره‌سون">
+                                        گره‌سون</option>
+                                    <option value="	گوموش‌خانه">
+                                        گوموش‌خانه</option>
+                                    <option value="حكاري">
+                                        حكاري</option>
+                                    <option value="	هاتاي">
+                                        هاتاي</option>
+                                    <option value="	إسبرطة">
+                                        إسبرطة</option>
+                                    <option value="	مرسين">
+                                        مرسين</option>
+                                    <option value="	إسطنبول">
+                                        إسطنبول</option>
+                                    <option value="	إزمير">
+                                        إزمير</option>
+                                    <option value="	قارص">
+                                        قارص</option>
+                                    <option value="	كاستامونو">
+                                        كاستامونو</option>
+                                    <option value="	قيصري">
+                                        قيصري</option>
+                                    <option value="	كريك‌قلعه">
+                                        كريك‌قلعه</option>
+                                    <option value="	كيرشهر">
+                                        كيرشهر</option>
+                                    <option value="	خوجةإلي">
+                                        خوجةإلي</option>
+                                    <option value="قونيا">
+                                        قونيا</option>
+                                    <option value="	كوتاهيا">
+                                        كوتاهيا</option>
+                                    <option value="	ملاطيا">
+                                        ملاطيا</option>
+                                    <option value="	مانيسا">
+                                        مانيسا</option>
+                                    <option value="	كهرمان‌مرعش">
+                                        كهرمان‌مرعش</option>
+                                    <option value="	ماردين">
+                                        ماردين</option>
+                                    <option value="	موغلا">
+                                        موغلا</option>
+                                    <option value="	موش">
+                                        موش</option>
+                                    <option value="	نڤشهر">
+                                        نڤشهر</option>
+                                    <option value="	نيغدة">
+                                        نيغدة</option>
+                                    <option value="	أردو">
+                                        أردو</option>
+                                    <option value="	ريزه">
+                                        ريزه</option>
+                                    <option value="	ساكاريا">
+                                        ساكاريا</option>
+                                    <option value="سامسون">
+                                        سامسون</option>
+                                    <option value="سيرت">
+                                        سيرت</option>
+                                    <option value="سينوپ">
+                                        سينوپ</option>
+                                    <option value="	سيڤاس">
+                                        سيڤاس</option>
+                                    <option value="	تكيرداغ">
+                                        تكيرداغ</option>
+                                    <option value="توقاد">
+                                        توقاد</option>
+                                    <option value="	طرابزون">
+                                        طرابزون</option>
+                                    <option value="تونج‌ايلي">
+                                        تونج‌ايلي</option>
+                                    <option value="شانلي‌اورفا">
+                                        شانلي‌اورفا</option>
+                                    <option value="	عشاق">
+                                        عشاق</option>
+                                    <option value="	ڤان">
+                                        ڤان</option>
+                                    <option value="	يوزگات">
+                                        يوزگات</option>
+                                    <option value="	زونگولداك">
+                                        زونگولداك</option>
+                                    <option value="	أكساراي">
+                                        أكساراي</option>
+                                    <option value="بايبورت">
+                                        بايبورت</option>
+                                    <option value="	قرةمان">
+                                        قرةمان</option>
+                                    <option value="	قريق‌قلعه">
+                                        قريق‌قلعه</option>
+                                    <option value="	بطمان">
+                                        بطمان</option>
+                                    <option value="	شرناق">
+                                        شرناق</option>
+                                    <option value="	بارتين">
+                                        بارتين</option>
+                                    <option value="	أرض‌خان">
+                                        أرض‌خان</option>
+                                    <option value="	إغدير">
+                                        إغدير</option>
+                                    <option value="	يالوڤا">
+                                        يالوڤا</option>
+                                    <option value="	قرةبوك">
+                                        قرةبوك</option>
+                                    <option value="	كلس">
+                                        كلس</option>
+                                    <option value="	عثمانية">
+                                        عثمانية</option>
+                                    <option value="	دوزجه">
+                                        دوزجه</option>
+                                </select>
+                            </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الحي</label>
-                                <input type="text" class="form-control" id="address_city" name="address_city" placeholder=" أكتب اسم الزوجة ">
+                                <input type="text" class="form-control" id="address_city" name="address_city" placeholder=" أكتب اسم الحي ">
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">العنوان كما في الفاتورة</label>
-                                <input type="text" class="form-control" id="address_like_bill" name="address_like_bill" placeholder=" أكتب أسم المحافظة ">
+                                <input type="text" class="form-control" id="address_like_bill" name="address_like_bill" placeholder=" أكتب العنوان  كما في الفاتورة ">
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">العنوان السابق</label>
-                                <input type="text" class="form-control" id="address_last" name="address_last" placeholder=" أكتب أسم المحافظة ">
+                                <input type="text" class="form-control" id="address_last" name="address_last" placeholder=" أكتب العنوان السابق ">
                                 </div>
 
                                 </div>
@@ -488,9 +654,9 @@
                                 {{ csrf_field() }}
                                 <div class="modal-body">
                                 <div class="form-group">
-                                <input type="" name="family_id" id="family_id" readonly>
-                                <label for="exampleInputEmail">اسم الطفل</label>
-                                <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب أسم الطفل ">
+                                <input type="hidden" name="family_id" id="family_id" readonly>
+                                <label for="exampleInputEmail">اسم  الطفل</label>
+                                <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب اسم الطفل ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمر</label>
@@ -500,7 +666,7 @@
                                     <p class="mg-b-10">الجنس</p>
                                     <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" أكتب الجنس الطفل ">
                                         <option label="test">
-											اختر نوع الجنس </option>
+											حدد من فضلك نوع الجنس </option>
                                         <option value="ذكر" >
                                         ذكر
                                     </option>
@@ -513,9 +679,7 @@
                                 <label for="exampleInputEmail">المرحلة الدراسية</label>
                                 <select type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" placeholder=" أكتب المرحلة الدراسية ">
                                     <option label="test">
-                                        اختر المرحلة الدراسية </option>
-                                    <option value=" الأمِّيِّ">
-                                        الأمِّيِّ </option>
+                                        حدد من فضلك المرحلة الدراسية </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -528,8 +692,8 @@
                                     اعدادي </option>
                                 <option value="ثانوي">
                                     ثانوي </option>
-                                 <option> value="دبلوم ">
-                                    دبلوم </option>
+                                 <option> value="دبلوم عالي ">
+                                    دبلوم عالي </option>
                                  <option value="جامعي">
                                     جامعي </option>
                                 <option value="مايجستير">
@@ -544,9 +708,9 @@
                                 </div>
                                 <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">الهوية الشخصية من اي ولاية</p>
-                                    <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك ">
+                                    <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" حدد من فضلك من اسم  الولاية الصادرة منها الكملك ">
                                         <option label="test">
-											اختر اسم ولاية </option>
+											حدد من فضلك اسم  ولاية </option>
                                         <option value="لايوجد كملك" >
                                          لايوجد كملك
                                         <option value="أضنة">
@@ -717,7 +881,7 @@
                                     <p class="mg-b-10">هل يعيشون معكم</p>
                                     <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم ">
                                    <option label="test">
-											أختر نعم او لا  </option>
+											حدد من فضلك نعم او لا  </option>
                                         <option value="لا" >
                                         لا
                                     </option>
@@ -738,7 +902,7 @@
                                 </div>
                             </div>
                             </div>
-				        </div>
+				        </d
                         </div>
 
                         {{--  enable  --}}
@@ -746,16 +910,16 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content modal-content-demo">
                                     <div class="modal-header">
-                                        <h6 class="modal-title">اضافة قسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                        <h6 class="modal-title">قسم العائلات.</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                                     </div>
 
                                 <form action="{{ route('family.enable') }}" method="GET">
                                 {{ method_field('GET') }}
-                                {{ csrf_field() }}     
-                                 <div class="modal-body">         
+                                {{ csrf_field() }}
+                                 <div class="modal-body">
                                   <div class="form-group">{{-- it must be select options  --}}
-                                    <p class="mg-b-10">تفعيل فورم التسجيل للطلاب؟</p>
-                                    <select class="form-control select2" name="enable" id="enable" placeholder=" أكتب الجنس الطفل ">
+                                    <p class="mg-b-10">تفعيل فورم التسجيل العائلات ؟</p>
+                                    <select class="form-control select2" name="enable" id="enable" placeholder="  ">
                                     <option value="1" >
                                         تغعيل
                                     </option>
@@ -770,7 +934,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
                                 </div>
                                 </form>
-                            
+
                             </div>
                             </div>
                         </div>
@@ -780,13 +944,13 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content modal-content-demo">
                                     <div class="modal-header">
-                                        <h6 class="modal-title">اضافة قسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                        <h6 class="modal-title">اضافة طالب للعائلة.</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                                     </div>
 
                                 <form action="{{ route('family.student.add') }}" method="GET">
                                 {{ method_field('GET') }}
-                                {{ csrf_field() }}     
-                                 <div class="modal-body">         
+                                {{ csrf_field() }}
+                                 <div class="modal-body">
                                 <div class="form-group">
                                 <input type="hidden" name="family_id" id="family_id"  readonly>
                                 <label for="exampleInputEmail">رقم الطالب</label>
@@ -816,16 +980,16 @@
                                 <form action="{{ route('husband_Wife.family.store') }}" method="post">
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
-                               
-                               
+
+
                                 <div  class="row row-sm"id="hidden_div" style="display:flex;"> {{-- display:flex  --}}
-                                
+
                                 <div class="form-group">
                                 <input type="hidden" name="family_id" id="family_id"  readonly>
-                                <label for="exampleInputEmail">اسم الزوجة</label>
-                                <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم الزوجة ">
+                                <label for="exampleInputEmail">اسم  الزوجة</label>
+                                <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم  الزوجة ">
                                 </div>
-                                
+
                                  <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ ميلاد الزوجة</label>
                                 <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد">
@@ -833,9 +997,9 @@
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب أسم المحافظة ">
+                                <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب اسم المحافظة ">
                                   <option label="test">
-											اختر اسم المحافظة </option>
+                                    حدد من فضلك اسم المحافظة </option>
                                     <option value="	دمشق">
                                         دمشق</option>
                                     <option value="ريف دمشق">
@@ -869,13 +1033,13 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة ">
+                                    <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب اسم المدينة ">
                                 </div>
                                <div class="form-group">{{-- it must be select options  --}}
-                                    <p class="mg-b-10">الحالة الاجتماعية للزوجة</p>
+                                    <p class="mg-b-10"> الحالة الأجتماعية للزوجة  </p>
                                     <select class="form-control select2" name="wife_mar_stat" id="wife_mar_stat" placeholder=" أكتب الحالة الأجتماعية ">
                                         <option label="test">
-											اختر الحالة الأجتماعية </option>
+											حدد من فضلك  الحالة الأجتماعية </option>
                                         <option value="متزوجة" >
                                         متزوجة
                                     </option>
@@ -894,7 +1058,7 @@
                                 <label for="exampleInputEmail">المستوى التعليمي للزوجة</label>
                                 <select class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى التعليمي  ">
                                     <option label="test">
-                                        اختر المستوى التعليمي </option>
+                                        حدد من فضلك المستوى التعليمي </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -907,8 +1071,8 @@
                                     اعدادي </option>
                                 <option value="ثانوي">
                                     ثانوي </option>
-                                 <option value="دبلوم ">
-                                    دبلوم </option>
+                                 <option value="دبلوم عالي ">
+                                    دبلوم عالي </option>
                                  <option value="جامعي">
                                     جامعي </option>
                                 <option value="مايجستير">
@@ -920,13 +1084,13 @@
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اختصاص دراسة الزوجة</label>
-                                <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder="أكتب أسم الأختصاص">
+                                <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder="أكتب اسم الأختصاص">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">هل تعمل الزوجة؟</label>
-                                <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder=" هل الزوجة تعمل ام لاتعمل ">
+                                <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder="">
                                <option label="test">
-											اختر تعمل او لاتعمل </option>
+											حدد من فضلك  </option>
                                     <option value="تعمل" >
                                     تعمل
                                 </option>
@@ -944,13 +1108,13 @@
                                 <input type="text" class="form-control" id="wife_Pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  ">
                                 </div>
                                </div>
-
+                                <hr>
                                 {{--  Husband Part  --}}
-                                
+
                                 <div  class="row row-sm"id="hidden1_div" style="display:flex;"> {{-- display:flex  --}}
                                 <div class="form-group">
-                                <label for="exampleInputEmail">اسم الزوج</label>
-                                <input type="text" class="form-control" id="husb_name" name="husb_name" placeholder=" أكتب اسم الزوج ">
+                                <label for="exampleInputEmail">اسم  الزوج</label>
+                                <input type="text" class="form-control" id="husb_name" name="husb_name" placeholder=" أكتب اسم  الزوج ">
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ ميلاد الزوج</label>
@@ -958,9 +1122,9 @@
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <select class="form-control" id="husb_Orig_city" name="husb_Orig_city" placeholder=" أكتب اسم محافظة ">
+                                <select class="form-control" id="husb_Orig_city" name="husb_Orig_city" placeholder=" أكتب اسم  محافظة ">
                                     <option label="test">
-                                        اختر اسم المحافظة </option>
+                                        حدد من فضلك اسم  المحافظة </option>
                                     <option value="	دمشق">
                                         دمشق</option>
                                     <option value="ريف دمشق">
@@ -993,13 +1157,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="husb_district" name="husb_district" placeholder=" أكتب اسم المدينة ">
+                                    <input type="text" class="form-control" id="husb_district" name="husb_district" placeholder=" أكتب اسم  المدينة ">
                                 </div>
                                 <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">الحالة الاجتماعية للزوج</p>
                                     <select class="form-control select2" name="husb_mar_stat" id="husb_mar_stat" placeholder=" أكتب الحالة الاجتماعية ">
                                         <option label="test">
-											اختر الحالة الأجتماعية </option>
+											حدد من فضلك الحالة الأجتماعية </option>
                                         <option value="معتقل" >
                                         معتقل
                                     </option>
@@ -1018,7 +1182,7 @@
                                 <label for="exampleInputEmail">المستوى التعليمي للزوج</label>
                                 <select class="form-control" id="husb_academicel" name="husb_academicel" placeholder=" أكتب المستوى التعليمي ">
                                    <option label="test">
-											اختر المستوى التعليمي </option>
+											حدد من فضلك المستوى التعليمي </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -1031,8 +1195,8 @@
                                     اعدادي </option>
                                 <option value="ثانوي">
                                     ثانوي </option>
-                                 <option value="دبلوم ">
-                                    دبلوم </option>
+                                 <option value="دبلوم عالي ">
+                                    دبلوم عالي </option>
                                  <option value="جامعي">
                                     جامعي </option>
                                 <option value="مايجستير">
@@ -1044,14 +1208,14 @@
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اختصاص دراسة الزوج</label>
-                                <input type="text" class="form-control" id="husb_special" name="husb_special" placeholder=" أكتب اسم اختصاص ">
+                                <input type="text" class="form-control" id="husb_special" name="husb_special" placeholder=" أكتب اسم  اختصاص ">
                                 </div>
 
                                 <div class="form-group">
-                                <label for="exampleInputEmail">هل تعمل الزوج؟</label>
-                                <select class="form-control select2" name="husb_is_work" id="husb_is_work" placeholder=" هل الزوج يعمل ام لايعمل">
+                                <label for="exampleInputEmail">هل يعمل الزوج؟</label>
+                                <select class="form-control select2" name="husb_is_work" id="husb_is_work" placeholder="">
                               <option label="test">
-											اختر يعمل أو لايعمل </option>
+									حدد من فضلك   </option>
                                     <option value="يعمل" >
                                     يعمل
                                 </option>
@@ -1091,7 +1255,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة مالية للعائلة  </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -1103,16 +1267,16 @@
                                 <div class="modal-body">
                                 <div class="form-group">
                                 <input type="hidden" name="id" id="id" readonly>
-                                <label for="exampleInputEmail">اسم صاحب القيد</label>
+                                <label for="exampleInputEmail">اسم  صاحب القيد</label>
                                 <input type="text" class="form-control" id="family_constraint" name="family_constraint" readonly>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المبلغ المدفوع</label>
-                                <input type="text" class="form-control" id="family_value" name="family_value"  placeholder=" أكنب قيمة البملغ المدفوع ">
+                                <input type="text" class="form-control" id="family_value" name="family_value"  placeholder=" أكتب قيمة البملغ المدفوع ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="text" class="form-control" id="note" name="note"  placeholder=" أكنب قيمة البملغ المدفوع ">
+                                <input type="text" class="form-control" id="note" name="note"  placeholder=" أكتب ملاخظات ان وجد ">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1140,37 +1304,36 @@
                                         {{ csrf_field() }}
                                     <div class="modal-body">
                                         <div class="form-group">
-                                        <label for="exampleInputEmail">اسم صاحب القيد</label>
-                                        <input type="text" class="form-control" id="family_constraint" name="family_Constraint" placeholder="أكنب أسم الطالب ">
+                                        <label for="exampleInputEmail">اسم  صاحب القيد</label>
+                                        <input type="text" class="form-control" id="family_constraint" name="family_Constraint" placeholder="أكتب اسم صاحب القيد ">
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputEmail">  عدد أفراد</label>
-                                        <input type="number" class="form-control" id="family_number_member" name="family_number_member" placeholder="أكنب تاريخ الميلاد ">
-                                        </div>   
+                                        <label for="exampleInputEmail">  عدد أفراد العائلة</label>
+                                        <input type="number" class="form-control" id="family_number_member" name="family_number_member" placeholder="أكتب  عدد أفراد العائلة  ">
+                                        </div>
                                         <div class="form-group">
-                                        <label for="exampleInputEmail"> المعيل الأول</label>
-                                        <input type="text" class="form-control" id="family_breadwinner" name="family_breadwinner" placeholder="أكنب تاريخ الميلاد ">
-                                        </div>         
+                                        <label for="exampleInputEmail"> اسم المعيل الأول</label>
+                                        <input type="text" class="form-control" id="family_breadwinner" name="family_breadwinner" placeholder="أكتب اسم المعيل الأول  ">
+                                        </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> عمل المعيل الأول</label>
-                                        <input type="text" class="form-control" id="work_breadwinner" name="work_breadwinner" placeholder="أكنب تاريخ الميلاد ">
-                                        </div>  
-                                                               
-                                        <div class="form-group">
-                                        <label for="exampleInputEmail"> المعيل الثاني</label>
-                                        <input type="text" class="form-control" id="family_an_breadwinner" name="family_an_breadwinner" placeholder="أكنب العمر بأرقام ">
-                                        </div>                       
-                                        <div class="form-group">
-                                        <label for="exampleInputEmail"> عمل المعيل الثاني</label>
-                                        <input type="text" class="form-control" id="work_an_breadwinner" name="work_an_breadwinner" placeholder="أكنب العمر بأرقام ">
+                                        <input type="text" class="form-control" id="work_breadwinner" name="work_breadwinner" placeholder="أكتب عمل المعيل الأول ">
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputEmail">الدخل الشهري</label>
-                                        <input type="text" class="form-control" id="family_monthly_salary" name="family_monthly_salary" placeholder=" أكنب البريد الإلكتروني ">
+                                        <label for="exampleInputEmail">  اسم المعيل الثاني</label>
+                                        <input type="text" class="form-control" id="family_an_breadwinner" name="family_an_breadwinner" placeholder="أكتب اسم المعيل الثاني   ">
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail"> عمل المعيل الثاني</label>
+                                        <input type="text" class="form-control" id="work_an_breadwinner" name="work_an_breadwinner" placeholder="أكتب عمل المعيل الثاني  ">
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail">الدخل الشهري من العمل </label>
+                                        <input type="text" class="form-control" id="family_monthly_salary" name="family_monthly_salary" placeholder=" أكتب الدخل الشهري  ">
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هل يوجد مساعدات</label>
-                                        <select class="form-control" id="family_aid" name="family_has_aid"  placeholder=" أكنب اسم المحافظة الأصل ">
+                                        <select class="form-control" id="family_aid" name="family_has_aid"  placeholder="">
                                             <option label="test">
                                                 حدد من فضلك </option>
                                             <option value="	يوجد">
@@ -1180,20 +1343,20 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputEmail"> ماهي المساعدات</label>
-                                        <input type="text" class="form-control" id="family_what_aid" name="family_what_aid"  placeholder=" أكنب أسم المدينة  ">
+                                        <label for="exampleInputEmail"> ماهي المساعدات أو قيمتها</label>
+                                        <input type="text" class="form-control" id="family_what_aid" name="family_what_aid"  placeholder=" أكتب ما هي المساعدات أو قيمتها    ">
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputEmail">هاتف</label>
-                                        <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكنب تاريخ الدخول الى تركيا ">
+                                        <label for="exampleInputEmail"> رقم هاتف الأول </label>
+                                        <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكتب رقم الهاتف بدءً من 05 ">
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputEmail">هاتف ثاني</label>
-                                        <input type="text" class="form-control" id="sec_phone" name="sec_phone"  placeholder=" أكنب تاريخ الدخول الى تركيا ">
-                                        </div>                                
+                                        <label for="exampleInputEmail"> رقم هاتف ثاني</label>
+                                        <input type="text" class="form-control" id="sec_phone" name="sec_phone"  placeholder=" أكتب رقم هاتف ثاني بدءً من 05 ">
+                                        </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">ملاحظات</label>
-                                        <input type="text" class="form-control" id="note" name="note"  placeholder=" أكنب تاريخ الدخول الى تركيا ">
+                                        <input type="text" class="form-control" id="note" name="note"  placeholder=" أكتب ملاحظات ان وجد ">
                                         </div>
                                         </div>
                                     <div class="modal-footer">
@@ -1210,15 +1373,15 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content modal-content-demo">
                                     <div class="modal-header">
-                                        <h6 class="modal-title">حذف القسم</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                        <h6 class="modal-title">حذف العائلة من السجل</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                             type="button"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <form action="{{ route('family.destroy') }}" method="post">
                                         {{ method_field('delete') }}
                                         {{ csrf_field() }}
                                         <div class="modal-body">
-                                            <p>هل انت متاكد من عملية الحذف ؟</p><br>
-                                            <input type="" name="id" id="id" value="">
+                                            <p>هل انت متاكد من عملية الحذف لهذه العائلة ؟</p><br>
+                                            <input type="hidden" name="id" id="id" value="">
                                             <input class="form-control" name="family_Constraint" id="family_constraint" type="text" readonly>
                                         </div>
                                         <div class="modal-footer">
@@ -1236,7 +1399,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">تعديل معلومات العائلة</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -1248,45 +1411,45 @@
                                      <div class="modal-body">
                                         <div class="form-group">
                                         <input type="hidden" class="form-control" id="id" name="id" >
-                                        <label for="exampleInputEmail">اسم صاحب القيد</label>
-                                        <input type="text" class="form-control" id="family_constraint" name="family_Constraint" placeholder="أكنب أسم الطالب ">
+                                        <label for="exampleInputEmail">اسم  صاحب القيد</label>
+                                        <input type="text" class="form-control" id="family_constraint" name="family_Constraint" placeholder="أكتب اسم الطالب ">
                                         </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">  عدد أفراد</label>
-                                        <input type="number" class="form-control" id="family_number_member" name="family_number_member" placeholder="أكنب تاريخ الميلاد ">
-                                        </div>   
+                                        <input type="number" class="form-control" id="family_number_member" name="family_number_member" placeholder="أكتب تاريخ الميلاد ">
+                                        </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> المعيل الأول</label>
-                                        <input type="text" class="form-control" id="family_breadwinner" name="family_breadwinner" placeholder="أكنب تاريخ الميلاد ">
-                                        </div>         
+                                        <input type="text" class="form-control" id="family_breadwinner" name="family_breadwinner" placeholder="أكتب تاريخ الميلاد ">
+                                        </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> عمل المعيل الأول</label>
-                                        <input type="text" class="form-control" id="work_breadwinner" name="work_breadwinner" placeholder="أكنب تاريخ الميلاد ">
-                                        </div>  
-                        
+                                        <input type="text" class="form-control" id="work_breadwinner" name="work_breadwinner" placeholder="أكتب تاريخ الميلاد ">
+                                        </div>
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> المعيل الثاني</label>
-                                        <input type="text" class="form-control" id="family_an_breadwinner" name="family_an_breadwinner" placeholder="أكنب العمر بأرقام ">
-                                        </div>    
+                                        <input type="text" class="form-control" id="family_an_breadwinner" name="family_an_breadwinner" placeholder="أكتب العمر بأرقام ">
+                                        </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> عمل المعيل الثاني</label>
-                                        <input type="text" class="form-control" id="work_an_breadwinner" name="work_an_breadwinner" placeholder="أكنب العمر بأرقام ">
+                                        <input type="text" class="form-control" id="work_an_breadwinner" name="work_an_breadwinner" placeholder="أكتب العمر بأرقام ">
                                         </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">الدخل الشهري</label>
-                                        <input type="text" class="form-control" id="family_monthly_salary" name="family_monthly_salary" placeholder=" أكنب البريد الإلكتروني ">
+                                        <input type="text" class="form-control" id="family_monthly_salary" name="family_monthly_salary" placeholder=" أكتب البريد الإلكتروني ">
                                         </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هل يوجد مساعدات</label>
-                                        <select class="form-control" id="family_aid" name="family_has_aid"  placeholder=" أكنب اسم المحافظة الأصل ">
+                                        <select class="form-control" id="family_aid" name="family_has_aid"  placeholder=" أكتب اسم  المحافظة الأصل ">
                                             <option label="test">
-                                                اختر أسم المحافظة </option>
+                                                حدد من فضلك اسم المحافظة </option>
                                             <option value="	يوجد">
                                                 يوجد</option>
                                             <option value="	لا يوجد">
@@ -1296,22 +1459,22 @@
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> ماهي المساعدات</label>
-                                        <input type="text" class="form-control" id="family_what_aid" name="family_what_aid"  placeholder=" أكنب أسم المدينة  ">
+                                        <input type="text" class="form-control" id="family_what_aid" name="family_what_aid"  placeholder=" أكتب اسم المدينة  ">
                                         </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هاتف</label>
-                                        <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكنب تاريخ الدخول الى تركيا ">
+                                        <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكتب تاريخ الدخول الى تركيا ">
                                         </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هاتف ثاني</label>
-                                        <input type="text" class="form-control" id="sec_phone" name="sec_phone"  placeholder=" أكنب تاريخ الدخول الى تركيا ">
-                                        </div>       
-                                                                                                     
+                                        <input type="text" class="form-control" id="sec_phone" name="sec_phone"  placeholder=" أكتب تاريخ الدخول الى تركيا ">
+                                        </div>
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail">ملاحظات</label>
-                                        <input type="text" class="form-control" id="note" name="note"  placeholder=" أكنب تاريخ الدخول الى تركيا ">
+                                        <input type="text" class="form-control" id="note" name="note"  placeholder=" أكتب تاريخ الدخول الى تركيا ">
                                         </div>
                                         </div>
                                             <div class="modal-footer">
