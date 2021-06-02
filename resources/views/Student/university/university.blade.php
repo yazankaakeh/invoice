@@ -105,6 +105,7 @@
                                                     <td>{{$x->univer_fees_value}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
+                                                    @can(' تعديل قسم الجامعة الطلاب ')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-univer_name="{{$x->univer_name}}"
@@ -126,12 +127,15 @@
                                                                 data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
+                                                    @endcan
+                                                    @can('حذف قسم الجامعة الطلاب ')                                                        
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}" data-student_name="{{$x->student->student_name}}"  data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
+                                                    @endcan
                                                     </td>
                                                 </tr>
                                                 @endforeach

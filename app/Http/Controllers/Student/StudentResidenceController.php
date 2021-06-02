@@ -12,6 +12,17 @@ use App\Http\Controllers\Controller;
 class StudentResidenceController extends Controller
 {
 
+function __construct()
+{
+$this->middleware('permission: قسم سكن الطلاب ', ['only' => ['index']]);
+$this->middleware('permission: قسم سكن الطلاب ', ['only' => ['show']]);
+$this->middleware('permission: اضافة سكن الطلاب ', ['only' => ['storestudent']]);
+$this->middleware('permission: تعديل قسم سكن الطلاب ', ['only' => ['update']]);
+$this->middleware('permission:حذف قسم سكن الطلاب ', ['only' => ['destroy']]);
+
+
+}      
+
     public function storestudent(Request $request){
             $this->validate($request,[
             'student_id'=>'required',

@@ -20,6 +20,32 @@ class JobController extends Controller
 {
 
 
+function __construct()
+{
+
+    $this->middleware('permission: قسم العمل الطبي ', ['only' => ['show_medical']]);
+    $this->middleware('permission: قسم العمل الطبي ', ['only' => ['index_medical']]);
+    $this->middleware('permission: إضافة العمل الطبي ', ['only' => ['store_Medical']]);
+    $this->middleware('permission: تعديل قسم العمل الطبي ', ['only' => ['update_medical']]);
+    $this->middleware('permission:حذف قسم العمل الطبي ', ['only' => ['destroy_medical']]);
+
+    $this->middleware('permission: قسم العمل الطلاب ', ['only' => ['index']]);
+    $this->middleware('permission: قسم العمل الطلاب ', ['only' => ['show']]);
+    $this->middleware('permission: اضافة العمل الطلاب ', ['only' => ['store_student_husband_wife']]);
+    $this->middleware('permission: تعديل قسم العمل الطلاب ', ['only' => ['update']]);
+    $this->middleware('permission:حذف قسم العمل الطلاب ', ['only' => ['destroy']]);
+
+    $this->middleware('permission: قسم العمل العائلات ', ['only' => ['index_family']]);
+    $this->middleware('permission: قسم العمل العائلات ', ['only' => ['show_family']]);
+    $this->middleware('permission: إضافة العمل العائلات ', ['only' => ['store_family']]);
+    $this->middleware('permission: تعديل قسم العمل العائلات ', ['only' => ['update_family']]);
+    $this->middleware('permission:حذف قسم العمل العائلات ', ['only' => ['destroy_family']]);
+
+}
+
+
+///////////////////////////////////// Student Start ////////////////////////////////////////
+
     public function storestudent(Request $request){
             $this->validate($request,[
             'student_id'=>'required',
@@ -257,12 +283,7 @@ class JobController extends Controller
 
     public function index_medical()
     {
-    //     $job['job'] = Job::select('id','medical_id','updated_at','job_have','job_type',
-    //    'job_place','job_monthly_salary','job_last_have','job_last_type',
-    //    'job_last_salary')
-    //    ->orderBy('id', 'DESC')
-    //    ->get();
-      // dd($job);
+
         $job = Job::all();
        return view('medical.job.job_medical',compact('job'));
     }

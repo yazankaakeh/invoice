@@ -28,6 +28,7 @@ class CreateFamiliesTable extends Migration
             $table->string('family_an_breadwinner');// المعيل الثاني
             $table->string('work_an_breadwinner');// المعيل الثاني
             $table->string('family_monthly_salary');// الراتب الشهري من العمل
+            $table->string('aid_value');// هل يوجد مساعدات
             $table->string('phone');// هل يوجد مساعدات
             $table->string('sec_phone');// هل يوجد مساعدات
             $table->string('family_has_aid');// هل يوجد مساعدات

@@ -57,6 +57,8 @@
                                                     <td>{{$x->Note}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
+                                                    @can(' تعديل دفعة بالتركي الطلاب ')
+                                                        
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-student_name="{{$x->student->student_name}}"
                                                                 data-student_value="{{$x->value }}" data-student_id="{{$x->student_id}}"
@@ -67,7 +69,9 @@
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
+                                                    @endcan
 
+                                                    @can(' حذف دفعة بالتركي الطلاب ')
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-student_value="{{$x->value }}"
                                                                 data-number_bim_student="{{$x->number_bim_student }}"data-student_value_bim_student="{{$x->student_value_bim_student}}"
@@ -76,6 +80,7 @@
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
+                                                    @endcan
                                                     </td>
                                                 </tr>
                                                 @endif

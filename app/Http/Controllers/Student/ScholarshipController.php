@@ -12,6 +12,16 @@ use App\Http\Controllers\Controller;
 class ScholarshipController extends Controller
 {
 
+
+function __construct()
+{
+$this->middleware('permission: قسم المنح الدراسية الطلاب ', ['only' => ['index']]);
+$this->middleware('permission: قسم المنح الدراسية الطلاب ', ['only' => ['show']]);
+$this->middleware('permission: اضافة المنح الدراسية الطلاب ', ['only' => ['storestudent']]);
+$this->middleware('permission: تعديل قسم المنح الدراسية الطلاب ', ['only' => ['update']]);
+$this->middleware('permission:حذف قسم المنح الدراسية الطلاب ', ['only' => ['destroy']]);
+}
+
     public function storestudent(Request $request){
             $this->validate($request,[
             'student_id'=>'required',

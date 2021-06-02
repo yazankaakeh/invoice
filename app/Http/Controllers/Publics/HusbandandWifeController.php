@@ -14,6 +14,32 @@ use App\Http\Controllers\Controller;
 class HusbandandWifeController extends Controller
 {
 
+
+function __construct()
+{
+
+    // $this->middleware('permission: قسم الزوج والزوجة الطلاب ', ['only' => ['show_medical']]);
+    // $this->middleware('permission: قسم الزوج والزوجة الطلاب ', ['only' => ['index_medical']]);
+    // $this->middleware('permission: اضافة الزوج والزوجة الطلاب ', ['only' => ['store_medical_husband_wife']]);
+    // $this->middleware('permission: تعديل قسم الزوج والزوجة الطلاب ', ['only' => ['update_medical']]);
+    // $this->middleware('permission:حذف قسم الزوج والزوجة الطلاب ', ['only' => ['destroy_medical']]);
+
+    $this->middleware('permission: قسم الزوج والزوجة الطلاب ', ['only' => ['index']]);
+    $this->middleware('permission: قسم الزوج والزوجة الطلاب ', ['only' => ['show']]);
+    $this->middleware('permission: اضافة الزوج والزوجة الطلاب ', ['only' => ['store_student_husband_wife']]);
+    $this->middleware('permission: تعديل قسم الزوج والزوجة الطلاب ', ['only' => ['update']]);
+    $this->middleware('permission:حذف قسم الزوج والزوجة الطلاب ', ['only' => ['destroy']]);
+
+    $this->middleware('permission: قسم الزوج والزوجة العائلات ', ['only' => ['index_family']]);
+    $this->middleware('permission: قسم الزوج والزوجة العائلات ', ['only' => ['show_family']]);
+    $this->middleware('permission: إضافة الزوج والزوجة العائلات ', ['only' => ['store_family_husband_wife']]);
+    $this->middleware('permission: تعديل قسم الزوج والزوجة العائلات ', ['only' => ['update_family']]);
+    $this->middleware('permission:حذف قسم  الزوج والزوجة العائلات ', ['only' => ['destroy_family']]);
+
+}
+
+
+
 /////////////////////////////////////////// Student Start /////////////////////////////////////////////
 
     public  function store_student_husband_wife(Request $request)

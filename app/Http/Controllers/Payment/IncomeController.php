@@ -11,6 +11,15 @@ use App\Http\Controllers\Controller;
 class IncomeController extends Controller
 {
 
+function __construct()
+{
+$this->middleware('permission: قسم الدخل المالي ', ['only' => ['index']]);
+$this->middleware('permission: إضافة دفعة قسم الدخل المالي ', ['only' => ['store']]);
+$this->middleware('permission: حذف الدفعة قسم الدخل المالي ', ['only' => ['update']]);
+$this->middleware('permission: تعديل الدفعة قسم الدخل المالي ', ['only' => ['destroy']]);
+}
+
+
     public function index()
     {
         $income['income'] = Income::select('id','value_usd_fixed','value_euro_fixed','number_bim','number_bim_fixed','value_bim','value_tr_fixed','note','created_at','value_tr','value_usd','value_euro')

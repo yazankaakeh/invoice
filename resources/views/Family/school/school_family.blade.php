@@ -68,6 +68,7 @@
                                                     <td>{{$x->School_fees}}</td>
                                                     <td>{{$x->updated_at}}</td>                                              
                                                     <td>
+                                                    @can(' تعديل مدرسة لطفل العائلات ')                                                        
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-school_location="{{$x->School_location}}"
@@ -78,6 +79,8 @@
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
+                                                    @endcan
+                                                    @can(' حذف مدرسة لطفل العائلات ')                                                        
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-childre_name="{{$x->children->childre_name}}" 
@@ -85,6 +88,7 @@
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
+                                                    @endcan
                                                     </td>                                                
                                                 </tr>
                                                 @endforeach

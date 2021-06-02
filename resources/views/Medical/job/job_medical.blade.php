@@ -72,7 +72,7 @@
                                                     <td>{{$x->job_last_salary}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
-
+                                                    @can(' تعديل قسم العمل الطبي ')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-job_have="{{$x->job_have}}"
@@ -88,11 +88,14 @@
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                             {{-- Delete --}}
+                                                    @endcan
+                                                    @can('حذف قسم العمل الطبي ')
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-medical_name="{{$x->medical->medical_name}}" data-medical_id="{{$x->medical_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
+                                                    @endcan
                                                     </td>
                                                 </tr>
                                                 @endif

@@ -120,6 +120,7 @@
                                                 </td>
 
                                                 <td>
+                                                @can(' حذف مريض العائلات ')
                                                 {{-- delete Student  --}}
                                                     <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                         data-id="{{$x->id}}" data-medical_name="{{$x->medical_name}}"
@@ -127,6 +128,7 @@
                                                         data-toggle="modal" href="#modaldemo9" title="حذف">
                                                         <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                     </a>
+                                                @endcan
                                                 </td>
                                                    
                                                    

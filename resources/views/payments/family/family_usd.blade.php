@@ -56,6 +56,8 @@
                                                     <td>{{$x->Note}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
+
+                                                    @can(' تعديل دفعة بالدولار العائلات ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-family_id="{{$x->family_id}}"
                                                             data-id="{{$x->id}}"
@@ -65,13 +67,16 @@
                                                             href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"></i>
                                                         </a>
+                                                    @endcan
 
+                                                    @can(' حذف دفعة بالدولار العائلات ')
                                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                             data-id="{{ $x->id }}"  data-family_value_usd="{{$x->family_value_usd }}" data-note="{{$x->Note }}"
                                                             data-family_id="{{$x->family_id}}" data-family_constraint="{{$x->family->family_Constraint}}"
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
                                                             <i class="las la-trash"> </i>
                                                         </a>
+                                                    @endcan
                                                     </td>
                                                 </tr>
                                                 @endif

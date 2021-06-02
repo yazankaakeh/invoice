@@ -13,6 +13,16 @@ use App\Http\Controllers\Controller;
 class QuranController extends Controller
 {
 
+function __construct()
+{
+$this->middleware('permission: قسم القرأن الطلاب ', ['only' => ['index']]);
+$this->middleware('permission: قسم القرأن الطلاب ', ['only' => ['show']]);
+$this->middleware('permission: اضافة القرأن الطلاب ', ['only' => ['storestudent']]);
+$this->middleware('permission: تعديل قسم القرأن الطلاب ', ['only' => ['update']]);
+$this->middleware('permission:حذف قسم القرأن الطلاب ', ['only' => ['destroy']]);
+
+}
+
     public function storestudent(Request $request){
             $this->validate($request,[
             'student_id'=>'required',
@@ -45,7 +55,6 @@ class QuranController extends Controller
 
     }
 
-
     public function index()
     {
         $qurans['qurans'] = Quran::select('id','student_id','updated_at','quran_memorize','quran_parts',
@@ -55,14 +64,11 @@ class QuranController extends Controller
        return view('Student.quran.quran')->with($qurans);
     }
 
-
-
     public function show($id)
     {
       $qurans = Quran::where('student_id', $id)->get();
       return view('Student.quran.quran_show',compact('qurans'));
     }
-
 
     public function update(Request $request)
     {

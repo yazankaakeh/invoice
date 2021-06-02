@@ -61,14 +61,7 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($child as $x)
-<<<<<<< Updated upstream
                                                 @if($x->student_id != null)
-=======
-
-                                               
-                                                @if($x->student_id != null)
-                                                
->>>>>>> Stashed changes
                                                 <tr>
                                                     <td>{{$x->student_id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
@@ -83,7 +76,8 @@
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
 
-
+                                                            @can(' تعديل قسم الأطفال الطلاب ')
+                                                                
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
@@ -96,25 +90,31 @@
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
+                                                            @endcan
+                                                            @can('حذف قسم الأطفال الطلاب ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}" data-student_name="{{$x->student->student_name}}"  data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
+                                                            @endcan
                                                     </td>
                                                     <td>    
                                                             {{-- Add_School --}}
-
+                                                            @can('  مدرسة لطفل الطلاب ')                                                            
                                                             @if($x->student_statu != 0)
                                                             <a class=" btn btn-sm btn-info" href="/school_student/show/school/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                             @else
+                                                            @endcan
+                                                            @can(' إضافة مدرسة لطفل الطلاب ')                                                            
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal" title="إضافة مدرسة">
                                                                 <i class="las la-pen"></i>
                                                             </a> 
+                                                            @endcan
                                                             @endif
                                                     </td>                                                
                                                 </tr>

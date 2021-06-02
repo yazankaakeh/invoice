@@ -16,6 +16,51 @@ use App\Http\Controllers\Controller;
 class FamilyController extends Controller
 {
 
+
+function __construct()
+{
+$this->middleware('permission: قسم العائلات ', ['only' => ['index']]);
+$this->middleware('permission: إضافة العائلات ', ['only' => ['store']]);
+$this->middleware('permission: تعديل العائلات ', ['only' => ['update']]);
+$this->middleware('permission: حذف العائلات ', ['only' => ['destroy']]);
+//$this->middleware('permission: حذف مدرسة لطفل الطلاب ', ['only' => ['register']]);
+$this->middleware('permission: فورم تسجيل العائلات ', ['only' => ['enable']]);
+
+$this->middleware('permission: إضافة طالب العائلات ', ['only' => ['add_student']]);
+$this->middleware('permission:  طالب العائلات ', ['only' => ['show_student']]);
+$this->middleware('permission: حذف طالب العائلات ', ['only' => ['detroy_student']]);
+
+$this->middleware('permission: إضافة مريض العائلات ', ['only' => ['add_medical']]);
+$this->middleware('permission:  مريض العائلات ', ['only' => ['show_medical']]);
+$this->middleware('permission: حذف مريض العائلات ', ['only' => ['detroy_medical']]);
+
+
+}    
+
+
+
+    public function messages()
+    {
+        return $messages = [
+            'family_Constraint.required' => 'لم يتم ادخال معلومات اسم صاحب الفيد المطلوبة !!',
+            'family_number_member.required' => 'لم يتم ادخال معلومات عدد أفراد الأسرة المطلوبة !!',
+            'family_breadwinner.required' => 'لم يتم ادخال معلومات اسم المعيل الأول المطلوبة !!',
+            'family_an_breadwinner.required'=>'لم يتم ادخال معلومات اسم المعيل الثاني المطلوبة !!',
+            'family_monthly_salary.required'=>'لم يتم ادخال معلومات الراتب الشهري المطلوبة !!',
+            'email.required'=>'لم يتم ادخال معلومات الأيميل المطلوبة !!',
+            'phone.unique'=>'لم يتم ادخال معلومات رقم الهاتف الأول المطلوبة !!',
+            'sec_phone.unique'=>'لم يتم ادخال معلومات رقم الهاتف الثاني المطلوبة !!',
+            'family_what_aid.required'=>'لم يتم ادخال معلومات ماهي المساعدات المطلوبة !!',
+            'family_aid.required'=>'لم يتم ادخال معلومات هل يوجد مساعدات المطلوبة !!',
+            'aid_value.required'=>'لم يتم ادخال معلومات قيمة المساعدات المالية  المطلوبة !!',
+            'phone.required'=>'لم يتم ادخال معلومات رقم الهاتف الأول المطلوبة !!',
+            'work_an_breadwinner.required'=>'لم يتم ادخال معلومات عمل المعيل الثاني المطلوبة !!',
+            'work_breadwinner.required'=>'لم يتم ادخال معلومات عمل المعيل الأول المطلوبة !!',
+            'note.required'=>'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد !!',
+
+        ];
+    }   
+
     public function index(Request $request)
     {
         $payments = Income::select('value_bim')->distinct()->get();
@@ -26,21 +71,21 @@ class FamilyController extends Controller
 
     public function store(Request $request)
     {
+        $messages = $this->messages();
         $this->validate($request,[
             'family_Constraint' => 'required',
             'family_number_member' => 'required',
             'family_breadwinner' => 'required',
             'family_an_breadwinner' => 'required',
             'family_monthly_salary' => 'required',
-            'family_monthly_salary' => 'required',
             'family_what_aid' => 'required',
             'aid_value' => 'required',
             'note' => 'required',
-            'sec_phone' => 'required',
-            'phone' => 'required',
+            'sec_phone' => 'required|unique:families',
+            'phone' => 'required|unique:families',
             'work_an_breadwinner' => 'required',
             'work_breadwinner' => 'required'
-         ]);
+         ],$messages);
          //create new object of the model student and make mapping to the data
          $families = new Family;
          $families -> family_Constraint = $request->family_Constraint;
@@ -59,9 +104,20 @@ class FamilyController extends Controller
 
          //write to the data base
          $families ->save();
-         session()->flash('Add', 'تم اضافة العائلة بنجاح ');
+         //dd($request);
+         if ($request->register == "admin") {
+         session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         $request=null;
          return redirect(route('family.show'));
+         }
+         
+         if ($request->register == "register") {
+            $enable = From::find(1);
+            session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
+            $request=null;
+            return view('Family.family.register',compact('enable'));
+        }
     }
 
 
@@ -76,9 +132,9 @@ class FamilyController extends Controller
             'family_monthly_salary' => 'required',
             'family_monthly_salary' => 'required',
             'family_what_aid' => 'required',
-            'sec_phone' => 'required',
+            'sec_phone' => 'required|unique:familys',
             'aid_value' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|unique:familys',
             'work_an_breadwinner' => 'required',
             'work_breadwinner' => 'required',
             'note' => 'required'

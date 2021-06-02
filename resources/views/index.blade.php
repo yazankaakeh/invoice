@@ -165,7 +165,7 @@
 							<label class="main-content-label">Sales Revenue by Customers in USA</label>
 							<span class="d-block mg-b-20 text-muted tx-12">Sales Performance of all states in the United States</span>
 							<div class="">
-								<div class="vmap-wrapper ht-180" id="vmap2"></div>
+								<div class="vmap-wrapper ht-180" id="vmap1"></div>
 							</div>
 						</div>
 					</div>

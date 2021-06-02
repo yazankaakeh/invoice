@@ -21,4 +21,9 @@ class Euro extends Model
     {
         return $this->belongsTo('App\models\Medical\Medical');
     }
+
+    public function Income()
+    {
+        return $this->belongsTo('App\models\Payments\Income');
+    }
 }

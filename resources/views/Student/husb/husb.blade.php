@@ -81,7 +81,7 @@
                                                     <td>{{$x->wife_Pre_work}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
-                                                            {{-- Edite --}}
+                                                    @can(' تعديل قسم الزوج والزوجة الطلاب ')                                                                                                                    {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-wife_name="{{$x->wife_name}}"
                                                                 data-wife_birth="{{$x->wife_birth }}" data-wife_city="{{$x->wife_city}}"
@@ -96,12 +96,15 @@
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
+                                                    @endcan
+                                                    @can('حذف قسم الزوج والزوجة الطلاب ')                                                        
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}" data-student_name="{{$x->student->student_name}}"  data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
+                                                    @endcan
                                                     </td>
                                                 </tr>
                                                 @endif

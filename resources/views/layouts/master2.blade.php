@@ -11,9 +11,11 @@
 	</head>
 	
 	<body class="main-body bg-primary-transparent">
+		<div class="contianer">
 		<!-- Loader -->
 		<div id="global-loader">
 			<img src="{{URL::asset('assets/img/loader.svg')}}" class="loader-img" alt="Loader">
+		</div>
 		</div>
 		<!-- /Loader -->
 		@yield('content')		

@@ -17,6 +17,29 @@ use App\Http\Controllers\Controller;
 
 class BimController extends Controller
 {
+
+
+function __construct()
+{
+$this->middleware('permission: مدفوعات باكرت البيم العائلات ', ['only' => ['family_ind_bim']]);
+$this->middleware('permission: مدفوعات باكرت البيم العائلات ', ['only' => ['show_family_bim']]);
+$this->middleware('permission: إضافة دفعة باكرت البيم العائلات ', ['only' => ['store_family_bim']]);
+$this->middleware('permission: تعديل دفعة باكرت البيم العائلات ', ['only' => ['update_family_bim']]);
+$this->middleware('permission: حذف دفعة باكرت البيم العائلات ', ['only' => ['destroy_familys_bim']]);
+
+$this->middleware('permission: مدفوعات باكرت البيم الطلاب ', ['only' => ['student_ind_bim']]);
+$this->middleware('permission: مدفوعات باكرت البيم الطلاب ', ['only' => ['show_student_bim']]);
+$this->middleware('permission: إضافة دفعة باكرت البيم الطلاب ', ['only' => ['store_student_bim']]);
+$this->middleware('permission: تعديل دفعة باكرت البيم الطلاب ', ['only' => ['update_student_bim']]);
+$this->middleware('permission: حذف دفعة باكرت البيم الطلاب ', ['only' => ['destroy_students_bim']]);
+
+$this->middleware('permission: مدفوعات باكرت البيم الطبي ', ['only' => ['medical_ind_bim']]);
+$this->middleware('permission: مدفوعات باكرت البيم الطبي ', ['only' => ['show_medical_bim']]);
+$this->middleware('permission: إضافة دفعة باكرت البيم الطبي ', ['only' => ['store_medical_bim']]);
+$this->middleware('permission: تعديل دفعة باكرت البيم الطبي ', ['only' => ['update_medical_bim']]);
+$this->middleware('permission: حذف دفعة باكرت البيم الطبي ', ['only' => ['destroy_medicals_bim']]);
+}
+
 ##################################################### Family Start
 
     public function family_ind_bim()
@@ -44,7 +67,7 @@ class BimController extends Controller
         //dd($a);
         $m = $s - $a;
         if ($m < 0) {
-        session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
             //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.family.pay')); 
         }
@@ -113,7 +136,7 @@ class BimController extends Controller
         //dd($m);
         //dd($m);
         if ($m < 0) {
-        session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('bim.family.pay')); 
         }
@@ -211,7 +234,7 @@ class BimController extends Controller
         //dd($a);
         $m = $s - $a;
         if ($m < 0) {
-        session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
             //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.medical.pay')); 
         }
@@ -281,7 +304,7 @@ class BimController extends Controller
         //dd($m);
         //dd($m);
         if ($m < 0) {
-        session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('bim.medical.pay')); 
         }
@@ -379,7 +402,7 @@ class BimController extends Controller
         //dd($a);
         $m = $s - $a;
         if ($m < 0) {
-        session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
             //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.student.pay')); 
         }
@@ -449,7 +472,7 @@ class BimController extends Controller
         //dd($m);
         //dd($m);
         if ($m < 0) {
-        session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('bim.student.pay')); 
         }

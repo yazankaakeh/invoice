@@ -16,6 +16,30 @@ use App\Http\Controllers\Controller;
 
 class TrController extends Controller
 {
+    
+function __construct()
+{
+
+$this->middleware('permission: مدفوعات بالتركي العائلات ', ['only' => ['family_ind_tr']]);
+$this->middleware('permission: مدفوعات بالتركي العائلات ', ['only' => ['show_family_tr']]);
+$this->middleware('permission: إضافة دفعة بالتركي العائلات ', ['only' => ['store_family_tr']]);
+$this->middleware('permission: تعديل دفعة بالتركي العائلات ', ['only' => ['update_family_tr']]);
+$this->middleware('permission: حذف دفعة بالتركي العائلات ', ['only' => ['destroy_familys_tr']]);
+
+$this->middleware('permission: مدفوعات بالتركي الطلاب ', ['only' => ['student_ind_tr']]);
+$this->middleware('permission: مدفوعات بالتركي الطلاب ', ['only' => ['show_student_tr']]);
+$this->middleware('permission: إضافة دفعة بالتركي الطلاب ', ['only' => ['store_student_tr']]);
+$this->middleware('permission: تعديل دفعة بالتركي الطلاب ', ['only' => ['update_student_tr']]);
+$this->middleware('permission: حذف دفعة بالتركي الطلاب ', ['only' => ['destroy_students_tr']]);
+
+$this->middleware('permission: مدفوعات بالتركي الطبي ', ['only' => ['medical_ind_tr']]);
+$this->middleware('permission: مدفوعات بالتركي الطبي ', ['only' => ['show_medical_tr']]);
+$this->middleware('permission: إضافة دفعة بالتركي الطبي ', ['only' => ['store_medical_tr']]);
+$this->middleware('permission: تعديل دفعة بالتركي الطبي ', ['only' => ['update_medical_tr']]);
+$this->middleware('permission: حذف دفعة بالتركي الطبي ', ['only' => ['destroy_medicals_tr']]);
+
+}
+
     ##################################################### Family start 
 public function family_ind_tr()
 {
@@ -41,7 +65,7 @@ public function store_family_tr(Request $request)
     //dd($a);
     $m = $s - $a;
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
     return redirect(route('family.show')); 
     }
@@ -100,7 +124,7 @@ public function update_family_tr(Request $request)
     $m = $s - $a;
 
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('tr.family.pay')); 
     }
@@ -200,7 +224,7 @@ public function store_medical_tr(Request $request)
     //dd($a);
     $m = $s - $a;
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
     return redirect(route('medical.show')); 
     }
@@ -258,7 +282,7 @@ public function update_medical_tr(Request $request)
     $m = $s - $a;
 
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('tr.medical.pay')); 
     }
@@ -369,7 +393,7 @@ public function store_student_tr(Request $request)
     //dd($a);
     $m = $s - $a;
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
+    session()->flash('Warning',' المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
     return redirect(route('student.show')); 
     }
@@ -383,7 +407,7 @@ public function store_student_tr(Request $request)
     $x = $student->tr_statu;
     ++$x;
     $student->tr_statu = $x;
-    $student_Name = $student->student_Name;
+    $student_Name = $student->student_name;
     $payments = new Tr;
     $payments -> student_id = $request -> student_id;
     $payments -> note = $request->note;         
@@ -391,7 +415,7 @@ public function store_student_tr(Request $request)
     //write to the data base
     $payments ->save();
     $student ->save();
-    session()->flash('Edit', 'تم إضافة المبلغ المالي للعائلة  '. $student_Name .' بنجاح ');
+    session()->flash('Edit', 'تم إضافة المبلغ المالي للطالب  '. $student_Name .' بنجاح ');
     //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
     return redirect(route('student.show'));
     }
@@ -427,7 +451,7 @@ public function update_student_tr(Request $request)
     $m = $s - $a;
 
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_tr.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('tr.student.pay')); 
     }

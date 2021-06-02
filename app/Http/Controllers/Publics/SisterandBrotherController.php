@@ -12,6 +12,20 @@ use App\Http\Controllers\Controller;
 class SisterandBrotherController extends Controller
 {
 
+function __construct()
+{
+
+    $this->middleware('permission: قسم الأخوة الطلاب ', ['only' => ['index']]);
+    $this->middleware('permission: قسم الأخوة الطلاب ', ['only' => ['show']]);
+    $this->middleware('permission: اضافة الأخوة الطلاب ', ['only' => ['storestudent']]);
+    $this->middleware('permission: تعديل قسم الأخوة الطلاب ', ['only' => ['update']]);
+    $this->middleware('permission:حذف قسم الأخوة الطلاب ', ['only' => ['destroy']]);
+
+}  
+
+
+
+
     public function storestudent(Request $request)
     {
          $this->validate($request,[

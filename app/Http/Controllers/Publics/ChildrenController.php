@@ -17,6 +17,26 @@ use App\Http\Controllers\Controller;
 
 class ChildrenController extends Controller
 {
+
+function __construct()
+{
+
+    $this->middleware('permission: قسم الأطفال العائلات ', ['only' => ['index_family']]);
+    $this->middleware('permission: قسم الأطفال العائلات ', ['only' => ['show_family']]);
+    $this->middleware('permission: إضافة قسم لطفل العائلات ', ['only' => ['store_family_children']]);
+    $this->middleware('permission: تعديل قسم الأطفال العائلات ', ['only' => ['update_family']]);
+    $this->middleware('permission:حذف قسم الأطفال العائلات ', ['only' => ['delete_family']]);
+
+    $this->middleware('permission: قسم الأطفال الطلاب ', ['only' => ['index']]);
+    $this->middleware('permission: قسم الأطفال الطلاب ', ['only' => ['show']]);
+    $this->middleware('permission: اضافة قسم الأطفال الطلاب ', ['only' => ['store_student_children']]);
+    $this->middleware('permission: تعديل قسم الأطفال الطلاب ', ['only' => ['update']]);
+    $this->middleware('permission:حذف قسم الأطفال الطلاب ', ['only' => ['destroy']]);
+
+}
+
+
+
 /////////////////////////////////////////////////////////// Student Start////////////////////////////////////////
 
     public function show($id){

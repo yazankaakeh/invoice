@@ -17,8 +17,34 @@ use App\Http\Controllers\Controller;
 
 class UsdController extends Controller
 {
+
+function __construct()
+{
+
+$this->middleware('permission: مدفوعات بالدولار العائلات ', ['only' => ['family_ind_usd']]);
+$this->middleware('permission: مدفوعات بالدولار العائلات ', ['only' => ['show_family_usd']]);
+$this->middleware('permission: إضافة دفعة بالدولار العائلات ', ['only' => ['store_family_usd']]);
+$this->middleware('permission: تعديل دفعة بالدولار العائلات ', ['only' => ['update_family_usd']]);
+$this->middleware('permission: حذف دفعة بالدولار العائلات ', ['only' => ['destroy_familys_usd']]);
+
+$this->middleware('permission: مدفوعات بالدولار الطلاب ', ['only' => ['student_ind_usd']]);
+$this->middleware('permission: مدفوعات بالدولار الطلاب ', ['only' => ['show_student_usd']]);
+$this->middleware('permission: إضافة دفعة بالدولار الطلاب ', ['only' => ['store_student_usd']]);
+$this->middleware('permission: تعديل دفعة بالدولار الطلاب ', ['only' => ['update_student_usd']]);
+$this->middleware('permission: حذف دفعة بالدولار الطلاب ', ['only' => ['destroy_students_usd']]);
+
+$this->middleware('permission: مدفوعات بالدولار الطبي ', ['only' => ['medical_ind_usd']]);
+$this->middleware('permission: مدفوعات بالدولار الطبي ', ['only' => ['show_medical_usd']]);
+$this->middleware('permission: إضافة دفعة بالدولار الطبي ', ['only' => ['store_medical_usd']]);
+$this->middleware('permission: تعديل دفعة بالدولار الطبي ', ['only' => ['update_medical_usd']]);
+$this->middleware('permission: حذف دفعة بالدولار الطبي ', ['only' => ['destroy_medicals_usd']]);
+
+
+
+
+}
 ##################################################### Family start 
-    public function family_ind_usd()
+public function family_ind_usd()
 {
     $payments_income = Income::select('value_usd')->distinct()->get();
     $payments = Usd::with('family')->get();
@@ -42,7 +68,7 @@ public function store_family_usd(Request $request)
     //dd($a);
     $m = $s - $a;
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
     return redirect(route('family.show')); 
     }
@@ -101,7 +127,7 @@ public function update_family_usd(Request $request)
     $m = $s - $a;
 
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('usd.family.pay')); 
     }
@@ -202,7 +228,7 @@ public function store_medical_usd(Request $request)
     //dd($a);
     $m = $s - $a;
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
     return redirect(route('medical.show')); 
     }
@@ -261,7 +287,7 @@ public function update_medical_usd(Request $request)
     $m = $s - $a;
 
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('usd.medical.pay')); 
     }
@@ -364,7 +390,7 @@ public function store_student_usd(Request $request)
     //dd($a);
     $m = $s - $a;
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
     return redirect(route('student.show')); 
     }
@@ -422,7 +448,7 @@ public function update_student_usd(Request $request)
     $m = $s - $a;
 
     if ($m < 0) {
-    session()->flash('Warning','يامنيوك المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_usd.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('usd.student.pay')); 
     }

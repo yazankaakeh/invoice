@@ -12,6 +12,20 @@ use App\Http\Controllers\Controller;
 
 class UniversityController extends Controller
 {
+
+
+function __construct()
+{
+$this->middleware('permission: قسم الجامعة الطلاب ', ['only' => ['index']]);
+$this->middleware('permission: قسم الجامعة الطلاب ', ['only' => ['show']]);
+$this->middleware('permission: اضافة الجامعة الطلاب ', ['only' => ['storestudent']]);
+$this->middleware('permission: تعديل قسم الجامعة الطلاب ', ['only' => ['update']]);
+$this->middleware('permission:حذف قسم الجامعة الطلاب ', ['only' => ['destroy']]);
+
+
+}       
+
+    
     public function show($id){
       $univ = University::where('student_id', $id)->get();
       return view('Student.university.university',compact('univ')); 

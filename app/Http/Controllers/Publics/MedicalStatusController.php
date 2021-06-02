@@ -16,7 +16,26 @@ use App\Http\Controllers\Controller;
 class MedicalStatusController extends Controller
 {
 
-    ///////////////////////////////////////// Student Start //////////////////////////////////////////
+
+function __construct()
+{
+
+    $this->middleware('permission: قسم الحالة الصحية الطبي ', ['only' => ['show_medical']]);
+    $this->middleware('permission: قسم الحالة الصحية الطبي ', ['only' => ['index_medical']]);
+    $this->middleware('permission: إضافة الحالة الصحية الطبي ', ['only' => ['store_medical']]);
+    $this->middleware('permission: تعديل قسم الحالة الصحية الطبي ', ['only' => ['update_medical']]);
+    $this->middleware('permission:حذف قسم العمل الطبي ', ['only' => ['destroy_medical']]);
+
+    $this->middleware('permission: قسم الحالة الصحية الطلاب ', ['only' => ['index']]);
+    $this->middleware('permission: قسم الحالة الصحية الطلاب ', ['only' => ['show']]);
+    $this->middleware('permission: اضافة الحالة الصحية الطلاب ', ['only' => ['storestudent']]);
+    $this->middleware('permission: تعديل قسم الحالة الصحية الطلاب ', ['only' => ['update']]);
+    $this->middleware('permission:حذف قسم الحالة الصحية الطبي ', ['only' => ['destroy']]);
+
+}  
+
+
+///////////////////////////////////////// Student Start //////////////////////////////////////////
 
     public function show($id){
       $med = MedicalStatus::where('student_id', $id)->get();
@@ -130,7 +149,7 @@ class MedicalStatusController extends Controller
 
     ///////////////////////////////////////// Student End //////////////////////////////////////////
 
-    ///////////////////////////////////////// Student Start //////////////////////////////////////////
+    ///////////////////////////////////////// medical Start //////////////////////////////////////////
 
     public function show_medical($id){
       $med = MedicalStatus::where('medical_id', $id)->get();
@@ -242,6 +261,6 @@ class MedicalStatusController extends Controller
         return redirect(route('Medical_Statu.show'));
     }
 
-    ///////////////////////////////////////// Student End //////////////////////////////////////////
+    ///////////////////////////////////////// medical End //////////////////////////////////////////
 
 }

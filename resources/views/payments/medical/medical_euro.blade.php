@@ -56,6 +56,7 @@
                                                     <td>{{$x->Note}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td> 
+                                                    @can(' تعديل دفعة باليورو الطبي ')                                                        
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}"
                                                                 data-medical_value="{{$x->medical_value }}" data-medical_id="{{$x->medical_id}}"
@@ -66,6 +67,8 @@
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
+                                                    @endcan
+                                                    @can(' حذف دفعة باليورو الطبي ')
 
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-medical_value_euro="{{$x->medical_value_euro }}"
@@ -74,6 +77,7 @@
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
+                                                    @endcan
                                                     </td>
                                                 </tr>
                                                 @endif

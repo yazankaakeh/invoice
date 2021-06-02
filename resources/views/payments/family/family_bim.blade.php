@@ -58,6 +58,7 @@
                                                     <td>{{$x->Note}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
+                                                    @can(' تعديل دفعة بالكرت البيم العائلات ')
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}"
                                                                 data-number_bim_family="{{$x->number_bim_family }}" data-value_bim_family="{{$x->value_bim_family}}"
@@ -68,7 +69,8 @@
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
-
+                                                    @endcan
+                                                    @can(' حذف دفعة بالكرت البيم العائلات ')
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-family_value="{{$x->family_value }}"
                                                                 data-value_bim_family="{{$x->value_bim_family}}"
@@ -77,6 +79,7 @@
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
+                                                    @endcan
                                                     </td>
                                                 </tr>
                                                 @endif

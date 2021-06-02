@@ -77,6 +77,7 @@
                                                     <td>{{$x->childre_live_with}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
+                                                    @can(' تعديل قسم الأطفال العائلات ')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
@@ -90,18 +91,24 @@
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
+                                                    @endcan
+                                                    @can('حذف قسم الأطفال العائلات ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}" data-family_constraint="{{$x->family->family_Constraint}}"  data-family_id="{{$x->family_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
+                                                    @endcan
                                                     </td>
-                                                    <td>    
+                                                    <td> 
+                                                    @can('  مدرسة لطفل العائلات ')
 
                                                             @if($x->family_statu != 0)
                                                             <a class=" btn btn-sm btn-info" href="/school_family/show/school/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                              @else                                                           {{-- Add_School --}}
+                                                    @endcan   
+                                                    @can(' إضافة مدرسة لطفل العائلات ')
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
                                                                 data-toggle="modal"
@@ -109,6 +116,7 @@
                                                                 <i class="las la-pen"></i>
                                                             </a> 
                                                             @endif
+                                                    @endcan   
                                                     </td>                                                    
                                                 </tr>
                                                    @endif

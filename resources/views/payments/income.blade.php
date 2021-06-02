@@ -34,8 +34,10 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
-                                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo1">تفعيل فورم التسجيل</a>
+                                            @can(' إضافة دفعة قسم الدخل المالي ')
+                                                
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة مريض</a>
+                                            @endcan
                                         </div>
                                      </div>
                                 <div class="card-body">
@@ -76,6 +78,8 @@
                                                     <td>{{$x->created_at}}</td>
 
                                                     <td>
+                                                    @can(' حذف الدفعة قسم الدخل المالي ')
+                                                        
                                                     {{-- delete medical  --}}
                                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                             data-value_usd_fixed="{{$x->value_usd_fixed}}"
@@ -86,8 +90,11 @@
                                                             <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                         </a>
                                                     </td>
+                                                    @endcan
 
-                                                    <td>    
+                                                    <td>  
+
+                                                    @can(' تعديل الدفعة قسم الدخل المالي ')    
                                                     {{-- edit medical  --}}
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-number_bim="{{$x->number_bim}}" data-value_bim="{{$x->value_bim}}" 
@@ -97,6 +104,7 @@
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
+                                                    @endcan  
                                                     </td>
                                                   
                                                 @endforeach

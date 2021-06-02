@@ -14,6 +14,37 @@ use App\Http\Controllers\Controller;
 class StudentController extends Controller
 {
 
+function __construct()
+{
+$this->middleware('permission: قسم الطلاب ', ['only' => ['index']]);
+$this->middleware('permission: إضافة الطلاب ', ['only' => ['store']]);
+$this->middleware('permission: تعديل الطلاب ', ['only' => ['update']]);
+$this->middleware('permission: حذف الطلاب ', ['only' => ['destroy']]);
+//$this->middleware('permission: حذف مدرسة لطفل الطلاب ', ['only' => ['register']]);
+$this->middleware('permission: فورم تسجيل الطلاب ', ['only' => ['enable']]);
+
+
+}    
+
+    public function messages()
+    {
+        return $messages = [
+            'student_name.required' => 'اسم الطالب هذه الخانة مطلوبة !!',
+            'birthday.required' => 'تاريخ ميلاد الطالب هذه الخانة مطلوبة !!',
+            'age.required' => 'عمر الطالب مطلوب !!',
+            'age.numeric'=>'عمر الطالب يجب ان يكون رقم !!',
+            'email.unique'=>'لقد قمت بالستجيل من قبل !!',
+            'email.required'=>'ادخل البريد اللإلكتروني هذه الخانة مطلوبة !!',
+            'phone.required'=>'رقم الهاتف هذه الخانة مطلوبة !!',
+            'phone.unique'=>'لقد قمت بالستجيل من قبل !!',
+            'county_are_from.required'=>'معلومات الحمافظة الخاصة في الطالبة هذه الخانة مطلوبة !!',
+            'stu_Cur_housing.required'=>'اسم الولاية الحالية هذه الخانة مطلوبة !!',
+            'entry_turkey.required'=>'اسم الطالب هذه الخانة مطلوبة !!',
+            'Identity_type.required'=>'نوع الكملك هذه الخانة مطلوبة !!',
+            'Id_stud_source.required'=>'من أي ولاية الكملك هذه الخانة مطلوبة !!',
+        ];
+    }   
+
     public function index()
     {
         $payments = Income::select('value_bim')->distinct()->get();
@@ -24,19 +55,20 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
+        $messages = $this->messages();
         $this->validate($request,[
             'student_name' => 'required',
-            'birthday' => 'required',
+            'birthday' => 'required|date',
             'email' => 'required',
-            'phone' => 'required',
-            'age' => 'required',
+            'phone' => 'required|unique:students',
+            'age' => 'required|numeric',
             'county_are_from' => 'required',
             'city_name' => 'required',
             'stu_Cur_housing' => 'required',
             'entry_turkey' => 'required',
             'Identity_type' => 'required',
             'Id_stud_source' => 'required'
-         ]);
+        ],$messages);
          //create new object of the model student and make mapping to the data
          $students = new Student;
          $students -> student_name = $request->student_name;
@@ -54,9 +86,19 @@ class StudentController extends Controller
 
          //write to the data base
          $students ->save();
-         session()->flash('Add', 'تم اضافة الطالب بنجاح ');
+         if ($request->register == "admin") {
+         session()->flash('Add', 'تم اضافة الطالب '. $request->student_name.' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('student.show'));
+         }elseif ($request->register == "register") {
+             
+        $enable = From::find(1);
+        session()->flash('Add', 'تم اضافة الطالب '. $request->student_name.' بنجاح ');
+        $request=null;
+        return view('student.students.register',compact('enable'));    
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         }
+
     }
 
 
@@ -187,6 +229,9 @@ class StudentController extends Controller
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('student.show'));
         }
-    }        
+    }
+
+    
+
 
 }

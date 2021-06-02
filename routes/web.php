@@ -20,6 +20,10 @@ Route::get('invoices', "InvoiceController@index")->middleware('auth');
 //////////////////////////////////// Payment 
 
 
+Route::group(['middleware' => ['auth']], function() {
+Route::resource('roles','RoleController');
+Route::resource('users','UserController');
+});
 
 Route::prefix('medical_pay')->group(function () {
     ////// Family 
@@ -41,12 +45,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 //Auth::routes(['register'=>false]);
 
 Route::get('/index', function () {
     return view('index');
-})->middleware('auth');
+})->middleware('auth')->middleware('verified');
 
 Route::get('/{page}', 'AdminController@index')->middleware('auth');
 

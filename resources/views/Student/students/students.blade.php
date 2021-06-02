@@ -34,8 +34,13 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
+                                        @can(' فورم تسجيل الطلاب ')
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo1">فورم تسجيل الطلاب </a>
+                                        @endcan
+                                        @can(' إضافة الطلاب ')
+                                            
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة طالب</a>
+                                        @endcan
                                         </div>
                                      </div>
                                 <div class="card-body">
@@ -91,6 +96,8 @@
                                                     <td>{{$x->Id_stud_source}}</td>
 
                                                 <td>
+                                                @can(' إضافة دفعة بالدولار الطلاب ')
+                                                    
                                                     {{-- Add_Dollar--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
@@ -98,13 +105,17 @@
                                                         href="#exampleModa23" title="دفع بالدولار">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
+                                                @can(' مدفوعات بالدولار الطلاب ')
                                                     @if($x->usd_statu != 0)
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    <a class=" btn btn-sm btn-info" href="/Student_euro/show/student/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    <a class=" btn btn-sm btn-info" href="/Student_usd/show/student/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
+                                                @endcan
                                                 </td>                                                
 
                                                 <td>
+                                                @can(' إضافة دفعة بالتركي الطلاب ')                                              
                                                     {{-- Add_Tr--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
@@ -113,16 +124,18 @@
                                                         href="#exampleModa24" title="دفع بالتركي">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
+                                                @can(' مدفوعات بالتركي الطلاب ')                                              
                                                     @if($x->tr_statu != 0)
                                                     <a class=" btn btn-sm btn-info" href="/Student_tr/show/student/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
+                                                @endcan
                                                 </td>  
 
-<<<<<<< Updated upstream
-                                                    <a class=" btn btn-sm btn-info" href="/pay/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
 
-=======
                                                 <td>
+                                                @can(' إضافة دفعة باليورو الطلاب ')
+                                                    
                                                     {{-- Add_Euro--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
@@ -130,13 +143,16 @@
                                                         href="#exampleModa25" title="دفع باليورو">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
+                                                @can(' مدفوعات باليورو الطلاب ')
                                                     @if($x->euro_statu != 0)
                                                     <a class=" btn btn-sm btn-info" href="/Student_euro/show/student/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
->>>>>>> Stashed changes
                                                     @endif
+                                                @endcan
                                                 </td>    
 
                                                 <td>
+                                                @can(' إضافة دفعة باكرت البيم الطلاب ')
                                                     {{-- Add_Bim--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
@@ -144,52 +160,69 @@
                                                         href="#exampleModa26" title="دفع كروت">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
+                                                @can(' مدفوعات باكرت البيم الطلاب ')
                                                     @if($x->bim_statu != 0)
                                                     <a class=" btn btn-sm btn-info" href="/Student_bim/show/student/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
+                                                @endcan
                                                 </td>  
 
                                                     {{-- wife and husband  --}}
                                                     @if($x->husband_wife_statu == 1)
                                                     <td>
+                                                    @can(' قسم الزوج والزوجة الطلاب ')                                                        
                                                         <a class="btn btn-sm btn-info" href="/husband_Wife/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
                                                     </td>
                                                     @elseif($x->husband_wife_statu == 0)
                                                     <td>
+                                                    @can(' اضافة الزوج والزوجة الطلاب ')                                                        
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"
                                                             data-toggle="modal"
                                                             href="#exampleModal111" title="إضافة زوج و زوجة">
                                                             <i class="mdi mdi-account-multiple-plus" style="font-size: 18px;"></i>
                                                         </a>
+                                                    @endcan
                                                     </td>
                                                     @endif
+
                                                     {{-- father and mother  --}}
                                                     @if($x->father_mother_statu == 1)
                                                     <td>
+                                                    @can(' قسم الأب والأم الطلاب ')                                                        
                                                         <a class="btn btn-sm btn-info" href="/father_and_mother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     </td>
+                                                    @endcan
                                                     @elseif($x->father_mother_statu == 0)
                                                     <td>
+                                                    @can(' اضافة الأب والأم الطلاب ')                                                        
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-student_id="{{$x->id}}"
                                                         data-toggle="modal"
                                                         href="#exampleModal0" title="إضافة زوج و زوجة">
                                                         <i class="mdi mdi-account-multiple-plus" style="font-size: 18px;"></i>
                                                     </a>
+                                                    @endcan
                                                     </td>
                                                     @endif
 
                                                     <td>
+                                                    @can(' حذف الطلاب ')
+                                        
                                                     {{-- delete Student  --}}
                                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                             data-id="{{$x->id}}" data-student_name="{{$x->student_name}}"
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
                                                             <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                         </a>
+                                                    @endcan
                                                     </td>
 
                                                     <td>
+                                                    @can(' تعديل الطلاب ')
+                                                        
                                                     {{-- edit Student  --}}
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_name="{{$x->student_name}}"
@@ -201,120 +234,155 @@
                                                             href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
+                                                    @endcan
                                                     </td>
+                                                    
                                                     <td>
+
                                                     {{-- add children  --}}
                                                     @if($x->child_statu != 0)
+                                                    @can(' قسم الأطفال الطلاب ')  
                                                         <a class=" btn btn-sm btn-info" href="/children/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
                                                     @endif
+                                                    @can(' اضافة قسم الأطفال الطلاب ')  
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal4" title="إضافة طفل">
                                                             <i class="las la-child"  style="font-size: 20px;"></i>
                                                         </a>
+                                                    @endcan
                                                     </td>
+
                                                     {{-- Medical_Status  --}}
                                                     @if($x->medical_statu == 1)
                                                     <td>
+                                                    @can(' اضافة الحالة الصحية الطلاب ')                                                    
                                                         <a class=" btn btn-sm btn-info" href="/Medical_Statu/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
                                                     </td>
                                                     @elseif($x->medical_statu == 0)
                                                     <td>
+                                                    @can(' قسم الحالة الصحية الطلاب ')                                                    
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal5" title="إضافة حالة طبية">
                                                             <i class="fas fa-heartbeat"  style="font-size: 20px;"></i>
                                                         </a>
-                                                    </td>
+                                                    @endcan
                                                     @endif
+                                                    </td>
 
                                                     @if($x->residance_statu == 1)
                                                     <td>
+                                                    @can(' قسم سكن الطلاب ')                                                        
                                                         <a class=" btn btn-sm btn-info" href="/Student_Residance/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-
+                                                    @endcan
                                                     </td>
                                                     @elseif($x->residance_statu == 0)
                                                     {{-- Stduent_Residance  --}}
                                                     <td>
+                                                    @can(' اضافة سكن الطلاب ')                                                        
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal6" title="إضافة سكن للطالب">
                                                             <i class=" las la-home"  style="font-size: 20px;"></i>
                                                         </a>
+                                                    @endcan
                                                     </td>
                                                     @endif
 
                                                     {{-- Quran  --}}
                                                     @if($x->quran_statu == 1)
                                                     <td>
+                                                    @can(' قسم القرأن الطلاب ')                                                        
                                                     <a class=" btn btn-sm btn-info" href="/Quran/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
                                                     </td>
                                                     @elseif($x->quran_statu == 0)
                                                     <td>
+                                                    @can(' اضافة القرأن الطلاب ')                                                        
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal7" title="إضافة معلومات القرآن">
                                                             <i class="fas fa-book-open" style="font-size: 20px;"></i>
                                                         </a>
+                                                    @endcan
                                                     </td>
                                                     @endif
 
                                                     {{-- Job  --}}
                                                     @if($x->job_statu == 1)
                                                     <td>
+                                                    @can(' قسم العمل الطلاب ')                                                        
                                                         <a class=" btn btn-sm btn-info" href="/job/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
                                                     </td>
                                                     @elseif($x->job_statu == 0)
                                                     <td>
+                                                    @can(' اضافة العمل الطلاب ')                                                        
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal13" title="إضافة معلومات العمل">
                                                             <i class="fas fa-briefcase"  style="font-size: 20px;"></i>
                                                         </a>
+                                                    @endcan
                                                     </td>
                                                     @endif
 
                                                     {{-- Scholarship  --}}
                                                     @if($x->scholarship_statu == 1)
                                                     <td>
+                                                    @can(' قسم المنح الدراسية الطلاب ')                                                        
                                                         <a class=" btn btn-sm btn-info" href="/Scholarship/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
                                                     </td>
                                                     @elseif($x->scholarship_statu == 0)
                                                     <td>
+                                                    @can(' اضافة المنح الدراسية الطلاب ')                                                        
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal14" title="إضافة معلومات المنح الدراسية">
                                                             <i class="fas fa-address-card"  style="font-size: 20px;"></i>
                                                         </a>
+                                                    @endcan
                                                     </td>
                                                     @endif
 
                                                     {{-- University  --}}
                                                     @if($x->university_statu == 1)
                                                     <td>
+                                                    @can(' قسم الجامعة الطلاب ')                     
                                                     <a class=" btn btn-sm btn-info" href="/University/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
                                                     </td>
                                                     @elseif($x->university_statu == 0)
                                                     <td>
+                                                    @can(' اضافة الجامعة الطلاب ')                     
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal15" title="إضافة جامعة">
                                                             <i class="fas fa-graduation-cap"  style="font-size: 20px;"></i>
                                                         </a>
+                                                    @endcan
                                                     </td>
                                                     @endif
 
                                                     {{-- Sister and Brother  --}}
 
                                                     <td>
+                                                    @can(' قسم الأخوة الطلاب ')                                                        
                                                     @if($x->sis_statu != 0)
                                                     <a class="btn btn-sm btn-info" href="/Sister_and_Brother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endif
+                                                    @endcan
+                                                    @can(' اضافة الأخوة الطلاب ')                                                        
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal16" title="اضافة اخوة">
                                                             <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                         </a>
+                                                    @endcan
                                                     </td>
                                                 @endforeach
                                                 </tr>
@@ -481,10 +549,8 @@
                             </div>
                             @endif
                         </div>
-<<<<<<< Updated upstream
 
 
-=======
                         
                         {{-- Add_Dollar --}}
                         <div class="modal fade" id="exampleModa23" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -664,7 +730,6 @@
 				        </div>
                         </div>    
                     
->>>>>>> Stashed changes
                         {{-- Sister and Brother --}}
                         <div class="modal fade" id="exampleModal16" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -2149,79 +2214,7 @@
                             </div>
 				        </div>
                         </div>
-
-                        {{-- Pay --}}
-                        <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة مالية للطالب.</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                <form action="{{ route('pay.student.store') }}" method="post">
-                                {{ method_field('POST') }}
-                                {{ csrf_field() }}
-                                <div class="modal-body">
-                                <div class="form-group">
-                                <input type="hidden" name="id" id="id" readonly>
-                                <label for="exampleInputEmail">اسم الطالب</label>
-                                <input type="text" class="form-control" id="student_name" name="student_name" readonly>
-                                </div>
-                                <div class="form-group">
-<<<<<<< Updated upstream
-                                <label for="exampleInputEmail">المبلغ المدفوع</label>
-                                <input type="text" class="form-control" id="value" name="value"  placeholder=" أكتب قيمة البملغ المدفوع ">
-=======
-                                <label for="exampleInputEmail">المبلغ بالتركي</label>
-                                <input type="text" class="form-control" id="value" name="value"  placeholder=" أكنب قيمة البملغ المدفوع ">
->>>>>>> Stashed changes
-                                </div>
-                                <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">المبلغ بالدولار</label>
-                                <input class="form-control" name="value_euro" id="value_euro" type="text" >
-                                </div>
-                                <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">المبلغ باليورو</label>
-                                <input class="form-control" name="value_euro" id="value_euro" type="text" >
-                                </div>
-
-                                <div class="modal-body">
-                                    <p class="mg-b-10">قيمة الكروت</p>
-                                    <select class="form-control select2" name="value_bim_student" id="value_bim_student" >
-                                            @foreach($payments as $a)
-                                                <option value="{{$a->value_bim}}" >
-                                                    {{$a->value_bim}}
-                                                </option>                                                   
-                                            @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">عدد الكروت</label>
-                                    <input class="form-control" name="number_bim_student" id="number_bim_student" type="text" >
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="text" class="form-control" id="note" name="note"  placeholder=" أكتب قيمة البملغ المدفوع ">
-                                </div>
-                                </div>
-                                <div class="modal-footwer">
-                                <button type="submit" class="btn btn-primary">تاكيد</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                </div>
-                                </form>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                            </div>
-                         </div>
-				        </div>
-                        </div>
-
+                        
                         {{-- add --}}
                         <div class="modal" id="modaldemo8">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -2234,6 +2227,7 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                         <label for="exampleInputEmail">اسم الطالب</label>
+                                        <input class="form-control" value="admin"  name="register" type="hidden">
                                         <input type="text" class="form-control" id="student_name" name="student_name" placeholder="أكتب أسم الطالب ">
                                         </div>
                                         <div class="form-group">

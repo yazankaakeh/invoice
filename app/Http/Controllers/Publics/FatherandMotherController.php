@@ -13,7 +13,26 @@ use App\Http\Controllers\Controller;
 class FatherandMotherController extends Controller
 {
 
-    ////////////////////////////////////// Student Start /////////////////////////////////
+  
+function __construct()
+{
+
+    $this->middleware('permission: قسم الأب والأم الطبي ', ['only' => ['show_medical']]);
+    $this->middleware('permission: قسم الأب والأم الطبي ', ['only' => ['index_medical']]);
+    $this->middleware('permission: إضافة الأب والأم الطبي ', ['only' => ['store_medical']]);
+    $this->middleware('permission: تعديل قسم الأب و الأم الطبي ', ['only' => ['medical_edit']]);
+    $this->middleware('permission:حذف قسم الأب و الأم الطبي ', ['only' => ['destroy_medical']]);
+
+    $this->middleware('permission: قسم الأب والأم الطلاب ', ['only' => ['index']]);
+    $this->middleware('permission: قسم الأب والأم الطلاب ', ['only' => ['show']]);
+    $this->middleware('permission: اضافة الأب والأم الطلاب ', ['only' => ['storestudent']]);
+    $this->middleware('permission: تعديل قسم الأب و الأم الطلاب ', ['only' => ['update']]);
+    $this->middleware('permission:حذف قسم الأب و الأم الطلاب ', ['only' => ['destroy']]);
+
+}
+
+
+////////////////////////////////////// Student Start /////////////////////////////////
 
     public function storestudent(Request $request)
     {
@@ -161,11 +180,10 @@ class FatherandMotherController extends Controller
         $students->save();
         return redirect(route('FatherandMother.show'));
     }
+////////////////////////////////////// Student End /////////////////////////////////
 
-    ////////////////////////////////////// Student End /////////////////////////////////
 
-
-        ////////////////////////////////////// Medical Start /////////////////////////////////
+////////////////////////////////////// Medical Start /////////////////////////////////
 
     public function store_medical(Request $request)
     {

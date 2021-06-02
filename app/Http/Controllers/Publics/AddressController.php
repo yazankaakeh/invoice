@@ -12,6 +12,26 @@ use App\Http\Controllers\Controller;
 
 class AddressController extends Controller
 {
+
+
+function __construct()
+{
+
+    $this->middleware('permission: قسم السكن العائلات ', ['only' => ['index']]);
+    $this->middleware('permission: قسم السكن العائلات ', ['only' => ['show']]);
+    $this->middleware('permission: إضافة السكن العائلات ', ['only' => ['store_family_address']]);
+    $this->middleware('permission: تعديل قسم السكن العائلات ', ['only' => ['update']]);
+    $this->middleware('permission:حذف قسم السكن العائلات ', ['only' => ['destroy']]);
+
+    $this->middleware('permission: قسم السكن الطبي ', ['only' => ['index_medical']]);
+    $this->middleware('permission: قسم السكن الطبي ', ['only' => ['show_medical']]);
+    $this->middleware('permission: إضافة السكن الطبي ', ['only' => ['store_medical_address']]);
+    $this->middleware('permission: تعديل قسم السكن الطبي ', ['only' => ['update_medical']]);
+    $this->middleware('permission:حذف قسم السكن الطبي ', ['only' => ['destroy_medical']]);
+
+}
+
+
 ////////////////////////////////////////////////// Family Start ////////////////////////////////   
  
     public function index()
@@ -104,11 +124,6 @@ class AddressController extends Controller
 ////////////////////////////////////////////////// Family end ////////////////////////////////   
 
 
-
-
-////////////////////////////////////////////////// Family Start ////////////////////////////////   
-
-
 //////////////////////////////////////////////// Medical start ////////////////////////////////   
 
 
@@ -183,7 +198,7 @@ class AddressController extends Controller
       return view('medical.address.address_medical',compact('address'));
     }
 
-        public function destroy_medical(Request $request)
+    public function destroy_medical(Request $request)
     {
         /* here we have sued the table students and searched about the id using the find and then delete the
         id using the id note: we have passed the id from the show using the route */

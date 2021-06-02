@@ -34,8 +34,12 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
+                                        @can(' فورم تسجيل الطبي ')
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo1"> فورم التسجيل الطبي</a>
+                                        @endcan
+                                        @can(' اضافة قسم الطبي ')
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة مريض</a>
+                                        @endcan
                                         </div>
                                      </div>
                                 <div class="card-body">
@@ -82,6 +86,7 @@
                                                     <td>{{$x->note}}</td>
                                                     <td>{{$x->created_at}}</td>
                                                 <td>
+                                                @can(' إضافة دفعة بالدولار الطبي ')                                                    
                                                     {{-- Add_Dollar--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
@@ -89,13 +94,17 @@
                                                         href="#exampleModa23" title="دفع بالدولار">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
+                                                @can( ' مدفوعات بالدولار الطبي ')                                                    
                                                     @if($x->usd_statu != 0)
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
                                                     <a class=" btn btn-sm btn-info" href="/Medical_usd/show/medical/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
+                                                @endcan
                                                 </td>                                                
 
                                                 <td>
+                                                @can(' إضافة دفعة بالتركي الطبي ')                                                    
                                                     {{-- Add_Tr--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
@@ -104,12 +113,16 @@
                                                         href="#exampleModa24" title="دفع بالتركي">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
+                                                @can(' مدفوعات بالتركي الطبي ')
                                                     @if($x->tr_statu != 0)
                                                     <a class=" btn btn-sm btn-info" href="/Medical_tr/show/medical/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
+                                                @endcan
                                                 </td>  
 
                                                 <td>
+                                                @can(' إضافة دفعة باليورو الطبي ')
                                                     {{-- Add_Euro--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
@@ -117,22 +130,29 @@
                                                         href="#exampleModa25" title="دفع باليورو">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
+                                                @can(' مدفوعات باليورو الطبي ')
                                                     @if($x->euro_statu != 0)
                                                     <a class=" btn btn-sm btn-info" href="/Medical_euro/show/medical/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
+                                                @endcan
                                                 </td>    
 
                                                 <td>
                                                     {{-- Add_Bim--}}
+                                                @can(' إضافة دفعة باكرت البيم الطبي ')
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModa26" title="دفع كروت">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
+                                                @can(' مدفوعات باكرت البيم الطبي ')
                                                     @if($x->bim_statu != 0)
                                                     <a class=" btn btn-sm btn-info" href="/Medical_bim/show/medical/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
+                                                @endcan
                                                 </td>                                                
 
                                                     {{-- wife and husband  --}}
@@ -155,31 +175,38 @@
                                                     {{-- father and mother  --}}
                                                     @if($x->father_mother_statu == 1)
                                                     <td>
+                                                @can(' قسم الأب والأم الطبي ')
                                                         <a class="btn btn-sm btn-info" href="/father_and_mother_medical/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
                                                     </td>
                                                     @elseif($x->father_mother_statu == 0)
                                                     <td>
+                                                @can(' إضافة الأب والأم الطبي ')
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_id="{{$x->id}}"
                                                         data-toggle="modal"
                                                         href="#exampleModal0" title="إضافة زوج و زوجة">
                                                         <i class="mdi mdi-account-multiple-plus" style="font-size: 18px;"></i>
                                                     </a>
+                                                @endcan
                                                     </td>
                                                     @endif
 
 
                                                     <td>
                                                     {{-- delete medical  --}}
+                                                @can(' حذف الطبي ')
                                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                             data-id="{{$x->id}}" data-medical_name="{{$x->medical_name}}"
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
                                                             <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                         </a>
+                                                @endcan
                                                     </td>
 
                                                     <td>    
                                                     {{-- edit medical  --}}
+                                                @can(' تعديل الطبي ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-medical_name="{{$x->medical_name}}"
                                                             data-medical_age="{{$x->medical_age}}" data-medical_number="{{$x->medical_number}}" 
@@ -188,6 +215,7 @@
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
+                                                @endcan
                                                     </td>
                                                    
                                                    
@@ -207,47 +235,59 @@
 
                                                     @if($x->residance_statu == 1)
                                                     <td>
+                                                @can(' قسم السكن الطبي ')
                                                         <a class=" btn btn-sm btn-info" href="/address_medical/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
 
+                                                @endcan
                                                     </td>
                                                     @elseif($x->residance_statu == 0)
                                                     {{-- Stduent_Residance  --}}
                                                     <td>
+                                                @can(' إضافة السكن الطبي ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-medical_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal6" title="إضافة سكن للطالب">
                                                             <i class=" las la-home"  style="font-size: 20px;"></i>
                                                         </a>
+                                                @endcan
                                                     </td>
                                                     @endif
 
                                                     {{-- Medical_Status  --}}
                                                     @if($x->medical_statu == 1)
                                                     <td>
+                                                @can(' قسم الحالة الصحية الطبي ')
                                                         <a class=" btn btn-sm btn-info" href="/Medical_Statu_Medical/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
                                                     </td>
                                                     @elseif($x->medical_statu == 0)
                                                     <td>
+                                                @can(' إضافة الحالة الصحية الطبي ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-medical_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal5" title="إضافة حالة طبية">
                                                             <i class="fas fa-heartbeat"  style="font-size: 20px;"></i>
                                                         </a>
+                                                @endcan
                                                     </td>
                                                     @endif
 
                                                     {{-- Job  --}}
                                                     @if($x->job_statu == 1)
                                                     <td>
+                                                @can(' قسم العمل الطبي ')
                                                         <a class=" btn btn-sm btn-info" href="/job_medical/show/medical/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
                                                     </td>
                                                     @elseif($x->job_statu == 0)
                                                     <td>
+                                                @can(' إضافة العمل الطبي ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-medical_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal13" title="إضافة معلومات العمل">
                                                             <i class="fas fa-briefcase"  style="font-size: 20px;"></i>
                                                         </a>
+                                                @endcan
                                                     </td>
                                                     @endif
 
@@ -1761,6 +1801,7 @@
                                         <div class="form-group">
                                         <label for="exampleInputEmail">اسم المريض</label>
                                         <input type="text" class="form-control" id="medical_name" name="medical_name" placeholder="أكنب اسم المريض بالكامل ">
+                                        <input class="form-control" value="admin"  name="register" type="hidden">
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">  عمر المريض</label>

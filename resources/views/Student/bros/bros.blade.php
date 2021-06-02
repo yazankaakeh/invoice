@@ -74,6 +74,8 @@
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                             {{-- Edite --}}
+                                                            @can(' تعديل قسم الأخوة الطلاب ')
+                                                                
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-special="{{$x->special}}"
                                                                 data-name="{{$x->name }}" data-academicel="{{$x->academicel}}"
@@ -85,11 +87,14 @@
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
+                                                            @endcan
                                                             {{-- Delete --}}
+                                                            @can('حذف قسم الأخوة الطلاب ')                                                                
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-name="{{$x->name }}" data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
+                                                            @endcan
                                                             </a>
                                                     </td>
                                                 </tr>

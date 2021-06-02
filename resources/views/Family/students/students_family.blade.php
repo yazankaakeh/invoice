@@ -58,7 +58,7 @@
                                                     <th class="border-bottom-0">اضافة زوج وزوجة</th>
                                                     <th class="border-bottom-0">اضافة اب وام</th>
                                                     <th class="border-bottom-0">حذف الارتباط بالعائلة</th>
-                                                    <th class="border-bottom-0">تعديل الأرتباط بالعائلة</th>
+                                                    {{--  <th class="border-bottom-0">تعديل الأرتباط بالعائلة</th>  --}}
                                                     <th class="border-bottom-0">اضافة اطفال</th>
                                                     <th class="border-bottom-0">الحالة الطبية</th>
                                                     <th class="border-bottom-0">السكن الطلابي</th>
@@ -121,6 +121,7 @@
                                                     @endif
 
                                                     <td>
+                                                    @can(' حذف طالب العائلات ')
                                                     {{-- delete Student  --}}
                                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                             data-id="{{$x->id}}" data-student_name="{{$x->student_name}}"
@@ -128,10 +129,11 @@
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
                                                             <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                         </a>
+                                                    @endcan
                                                     </td>
 
-                                                    <td>
-                                                    {{-- edit Student  --}}
+                                                    {{--  <td>
+                                                    edit Student
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-student_name="{{$x->student_name}}"
                                                             data-birthday="{{$x->birthday}}" data-email="{{$x->email}}" data-age="{{$x->age}}"
@@ -142,7 +144,7 @@
                                                             href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
-                                                    </td>
+                                                    </td>  --}}
                                                     <td>
                                                     {{-- add children  --}}
                                                     @if($x->child_statu != 0)
@@ -410,7 +412,7 @@
                             </div>
                         </div>
 
-                        {{-- edit --}}
+                        {{--  edit
                         <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -685,7 +687,7 @@
                                     </option>
                                     </select>
                                     <div class="form-group">
-                                    <label for="exampleInputEmail">اسم الولاية </label>{{-- unCmoplete --}}
+                                    <label for="exampleInputEmail">اسم الولاية </label>
                                     <select class="form-control select2" name="Id_stud_source" id="Id_stud_source" readonly>
                                         <option label="test">
 											اختر أسم الولاية </option>
@@ -862,7 +864,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div>  --}}
 
 
                 </div>

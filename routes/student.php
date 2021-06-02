@@ -10,10 +10,10 @@ use App\Http\Controllers\Payment\Student_Payment;
 
 Route::prefix('student')->group(function () {
     Route::get('show', "Student\StudentController@index")->name('student.show')->middleware('auth');
-    Route::post('store', "Student\StudentController@store")->name('student.store')->middleware('auth');
+    Route::post('store', "Student\StudentController@store")->name('student.store');
     Route::patch('update', "Student\StudentController@update")->name('student.update')->middleware('auth');
     Route::delete('update', "Student\StudentController@destroy")->name('student.destroy')->middleware('auth');
-    Route::get('register', "Student\StudentController@register")->name('student.register')->middleware('auth');
+    Route::get('register', "Student\StudentController@register")->name('student.register');
     Route::get('enable', "Student\StudentController@enable")->name('student.enable')->middleware('auth');
     Route::get('disable', "Student\StudentController@disable")->name('student.disable')->middleware('auth');
 });

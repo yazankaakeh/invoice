@@ -1,7 +1,5 @@
-<?php
-?>
 
-@extends('layouts.master')
+@extends('layouts.master2')
 @section('css')
 <!--- Internal Select2 css-->
 <link href="{{URL::asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
@@ -9,6 +7,13 @@
 @section('title')
 تسجيل المرضى
 @endsection
+<style>
+body{
+    background-image:url('/assets/img/medical.jpg');
+      background-position: center;
+      background-size: cover;
+}
+</style>
 @if($enable->medical_form != 2)  
 
 
@@ -24,27 +29,30 @@
 				<!-- breadcrumb -->
 @endsection
 @section('content')
+
+				<div class="container" >
 				<!-- row -->
-				<div class="row">
-					<div class="col-lg-12 col-md-12">
+				<div class="row" style="padding-top:75; " >
+					<div class="col-lg-5 col-lg-5">
 						<div class="card">
 							<div class="card-body">
-								<div class="main-content-label mg-b-5">
-									قائمة تسجيل المريض.
-								</div>
-								<p class="mg-b-20">يرجى ملئ الحقول بالمعلومات المطلوبة لقسم تسجيل الطبي.</p>
-								<div id="wizard3">
+                                <form action="{{ route('medical.store') }}" method="POST">
+								<div id="">
 									<h3> المعلومات الشخصية.</h3>
 									<section>
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
 										<p class="mg-b-20">المعلومات الشخصية حول المريض !</p>
-										<div class="row row-sm">
-											<div class="col-md-5 col-lg-4">
-												<label class="form-control-label">اسم المريض: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_name" name="medical_name" placeholder="أكتب أسم المريض بالكامل" required="" type="text">
+										<div class="card card-body pd-20 pd-md-40 border shadow-none">
+											<div class="col-sm-12 col-sm-12">
+												<label class="form-control-label">اسم المريض: <span class="tx-danger">*</span></label> 
+                                                <input class="form-control" value="" id="medical_name" name="medical_name" placeholder="أكتب أسم المريض بالكامل" required="" type="text">
+                                                <input class="form-control" value="register"  name="register" type="hidden">
 											</div>
-                                            <div class="col-md-5 col-lg-4">
+                                            <div class="col-sm-12 col-sm-12">
 												<label class="form-control-label">عمر المريض: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_age" name="medical_age" placeholder="أكتب عمر المريض بأرقام" required="" type="text">
 											</div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
                                                 <p class="form-control-label">  الجنس: <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender">
                                                 <option label="test">
                                                     حدد من فضلك </option>
@@ -56,7 +64,7 @@
                                               </option>
                                             </select>
 											</div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
                                                 <p class="form-control-label">  هل يوجد كملك: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_have_id" id="medical_have_id">
                                                 <option label="test">
                                                     حدد من فضلك </option>
@@ -68,7 +76,7 @@
                                               </option>
                                             </select>
 											</div>
-                                            <div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
                                                 <p class="form-control-label"> الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_id_extr" id="medical_id_extr">
                                                     <option label="test">
                                                         حدد من فضلك  اسم ولاية </option>
@@ -238,9 +246,38 @@
                                                         دوزجه</option>
                                                 </select>
                                             </div>  
-											<div class="col-md-5 col-lg-4 mg-t-20 mg-md-t-0">
+											<div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
 												<label class="form-control-label"> رقم هاتف المريض : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف بدءً من 05  " required="" type="text">
 											</div>
+                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
+												<label class="form-control-label"> يرجى كتابة أي ملاحظة في حال وجدة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="إكتب الملاحظات إن وجد " required="" type="text">
+											</div>
+                            @if (session()->has('Add'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+
+                            @if ($errors->any())
+                            <div class="alert alert-danger mg-b-0" role="alert">
+                                <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                <ul>
+                                @foreach ($errors->all() as $error)
+                                <strong>ملاحظة!</strong> {{ $error }}
+                                @endforeach
+                                </ul>
+                            </div>
+                            @endif
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>                                            
 									</section>
                                                                                                
                                     
@@ -1511,7 +1548,11 @@
 <script src="{{URL::asset('assets/plugins/parsleyjs/parsley.min.js')}}"></script>
 <!--Internal  Form-wizard js -->
 <script src="{{URL::asset('assets/js/form-wizard.js')}}"></script>
-@endsection
 @else
+		<!-- Main-error-wrapper -->
+		<div class="main-error-wrapper  page page-h ">
 
+			<h2 style="font-size: 75px;">لقد تم إيقاف الرابط بشكل مؤقت</h2>
+			<h2> يرجى المحاولة لاحقا وشكرا</h6>
+		</div>
 @endif  

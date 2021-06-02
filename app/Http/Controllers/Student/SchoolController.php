@@ -10,6 +10,23 @@ use App\Http\Controllers\Controller;
 
 class SchoolController extends Controller
 {
+
+
+function __construct()
+{
+$this->middleware('permission:  مدرسة لطفل الطلاب ', ['only' => ['index_student']]);
+$this->middleware('permission:  مدرسة لطفل الطلاب ', ['only' => ['show_student']]);
+$this->middleware('permission: إضافة مدرسة لطفل الطلاب ', ['only' => ['store_student']]);
+$this->middleware('permission: تعديل مدرسة لطفل الطلاب ', ['only' => ['update_student']]);
+$this->middleware('permission: حذف مدرسة لطفل الطلاب ', ['only' => ['destroy_student']]);
+
+$this->middleware('permission:  مدرسة لطفل العائلات ', ['only' => ['index_family']]);
+$this->middleware('permission:  مدرسة لطفل العائلات ', ['only' => ['show_family']]);
+$this->middleware('permission: إضافة مدرسة لطفل العائلات ', ['only' => ['store_family']]);
+$this->middleware('permission: تعديل مدرسة لطفل العائلات ', ['only' => ['update_family']]);
+$this->middleware('permission: حذف مدرسة لطفل العائلات ', ['only' => ['destroy_family']]);
+}
+
 ####################################### Student Start #############################
     public function index_student()
     {
@@ -117,64 +134,64 @@ class SchoolController extends Controller
 #################################################
 ####################################### Medical Start #############################
     
-    public function index_medical()
-    {
-       $school = School::with('Children')->get();
-       dd($school);
-       return view('Medical.school.school_student',compact("school"));
-    }
+    // public function index_medical()
+    // {
+    //    $school = School::with('Children')->get();
+    //    dd($school);
+    //    return view('Medical.school.school_student',compact("school"));
+    // }
 
-    public function show_medical($id)
-    {      
-        $school = Children::where('medical_id', $id)->get();
-        dd($school);
-        return view('Medical.school.school_student',compact('school'));
-    }
+    // public function show_medical($id)
+    // {      
+    //     $school = Children::where('medical_id', $id)->get();
+    //     dd($school);
+    //     return view('Medical.school.school_student',compact('school'));
+    // }
 
-    public function store_medical(Request $request)
-    {
-         $this->validate($request,[
-            'id' => 'required',
-            'School_name' => 'required',
-            'School_type' => 'required',
-            'School_location' => 'required',
-            'School_cost' => 'required',
-            'School_fees' => 'required',
-         ]);
-         //create new object of the model student and make mapping to the data
-         $childrens =  Children::find($request->id);
-         $childrens_name = $childrens->childrens_name;
-         $x = $childrens->medical_statu;
-         ++$x;
-         $childrens->child_statu = $x;
+    // public function store_medical(Request $request)
+    // {
+    //      $this->validate($request,[
+    //         'id' => 'required',
+    //         'School_name' => 'required',
+    //         'School_type' => 'required',
+    //         'School_location' => 'required',
+    //         'School_cost' => 'required',
+    //         'School_fees' => 'required',
+    //      ]);
+    //      //create new object of the model student and make mapping to the data
+    //      $childrens =  Children::find($request->id);
+    //      $childrens_name = $childrens->childrens_name;
+    //      $x = $childrens->medical_statu;
+    //      ++$x;
+    //      $childrens->child_statu = $x;
 
-         $schools = new School;
-         $schools -> children_id = $request->id;
-         $schools -> School_name = $request->School_name;
-         $schools -> School_type = $request->School_type;
-         $schools -> School_location = $request->School_location;
-         $schools -> School_cost = $request->School_cost;
-         $schools -> School_fees = $request->School_fees;
-         //write to the data base
-         $childrens->save();
-         $schools ->save();
-         session()->flash('Add_School', 'تم اضافة مدرسة للطفل  '. $childrens_name .' بنجاح ');
-         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-         return redirect(route('Student.child.child'));
+    //      $schools = new School;
+    //      $schools -> children_id = $request->id;
+    //      $schools -> School_name = $request->School_name;
+    //      $schools -> School_type = $request->School_type;
+    //      $schools -> School_location = $request->School_location;
+    //      $schools -> School_cost = $request->School_cost;
+    //      $schools -> School_fees = $request->School_fees;
+    //      //write to the data base
+    //      $childrens->save();
+    //      $schools ->save();
+    //      session()->flash('Add_School', 'تم اضافة مدرسة للطفل  '. $childrens_name .' بنجاح ');
+    //      //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+    //      return redirect(route('Student.child.child'));
 
-    }
+    // }
 
-    public function update_medical(Request $request)
-    {
-        //
-    }
+    // public function update_medical(Request $request)
+    // {
+    //     //
+    // }
 
 
 
-    public function destroy_medical(School $school)
-    {
-        //
-    }
+    // public function destroy_medical(School $school)
+    // {
+    //     //
+    // }
 
 ####################################### Medical End #############################
 #################################################

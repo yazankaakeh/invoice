@@ -34,8 +34,12 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
+                                        @can(' فورم تسجيل العائلات ')
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo1">فورم تسجيل العائلات</a>
+                                        @endcan
+                                        @can(' اضافة العائلات ')
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة عائلة</a>
+                                        @endcan
                                         </div>
                                      </div>
                                 <div class="card-body">
@@ -99,6 +103,7 @@
 
 
                                                 <td>
+                                                @can(' إضافة دفعة بالدولار العائلات ')
                                                     {{-- Add_Dollar--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-family_constraint="{{$x->family_Constraint}}"  data-id="{{ $x->id }}"
@@ -106,16 +111,18 @@
                                                         href="#exampleModa23" title="دفع بالدولار">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
                                                     @if($x->usd_statu != 0)
+                                                @can(' مدفوعات بالدولار العائلات ')
+
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-
-                                                    <a class=" btn btn-sm btn-info" href="/Family_pay/show/family/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
-
                                                     <a class=" btn btn-sm btn-info" href="/Family_usd/show/family/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
+                                                @endcan
                                                 </td>                                                
 
                                                 <td>
+                                                @can(' إضافة دفعة بالتركي العائلات ')
                                                     {{-- Add_Tr--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-family_constraint="{{$x->family_Constraint}}"  data-id="{{ $x->id }}"
@@ -123,13 +130,17 @@
                                                         href="#exampleModa24" title="دفع بالتركي">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
+                                                @can(' مدفوعات بالتركي العائلات ')
                                                     @if($x->tr_statu != 0)
                                                     <a class=" btn btn-sm btn-info" href="/Family_tr/show/family/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
 
                                                     @endif
+                                                @endcan
                                                 </td>  
 
                                                 <td>
+                                                   @can(' إضافة دفعة باليورو العائلات ')
                                                     {{-- Add_Euro--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-family_constraint="{{$x->family_Constraint}}"  data-id="{{ $x->id }}"
@@ -137,12 +148,17 @@
                                                         href="#exampleModa25" title="دفع باليورو">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                   @endcan
+                                                </td>    
                                                     @if($x->euro_statu != 0)
+                                                   @can(' مدفوعات باليورو العائلات ')
                                                     <a class=" btn btn-sm btn-info" href="/Family_euro/show/family/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
+                                                   @endcan
                                                 </td>    
 
                                                 <td>
+                                                @can(' إضافة دفعة باكرت البيم العائلات ')
                                                     {{-- Add_Bim--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-family_constraint="{{$x->family_Constraint}}"  data-id="{{ $x->id }}"
@@ -150,23 +166,30 @@
                                                         href="#exampleModa26" title="دفع كروت">
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
+                                                @endcan
                                                     @if($x->bim_statu != 0)
+                                                @can(' مدفوعات باكرت البيم العائلات ')
                                                     <a class=" btn btn-sm btn-info" href="/Family_bim/show/family/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
                                                     @endif
+                                                @endcan
                                                 </td>  
                                                                                                                                               
                                                     {{-- wife and husband  --}}
                                                     @if($x->husband_wife_statu == 1)
                                                     <td>
+                                                @can(' قسم الزوج والزوجة العائلات ')
                                                         <a class="btn btn-sm btn-info" href="/husband_Wife_family/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
                                                     </td>
                                                     @elseif($x->husband_wife_statu == 0)
                                                     <td>
+                                                @can(' إضافة الزوج والزوجة العائلات ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-family_id="{{$x->id}}"
                                                             data-toggle="modal"
                                                             href="#exampleModal111" title="إضافة زوج و زوجة">
                                                             <i class="mdi mdi-account-multiple-plus" style="font-size: 18px;"></i>
+                                                @endcan
                                                         </a>
                                                     </td>
                                                     @endif
@@ -174,15 +197,18 @@
 
                                                     <td>
                                                     {{-- delete Family  --}}
+                                                @can(' حذف العائلات ')
                                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                             data-id="{{$x->id}}" data-family_constraint="{{$x->family_Constraint}}"
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
                                                             <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                         </a>
+                                                @endcan
                                                     </td>
 
                                                     <td>
                                                     {{-- edit Family  --}}
+                                                @can(' تعديل العائلات ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-family_constraint="{{$x->family_Constraint}}"
                                                             data-family_number_member="{{$x->family_number_member}}" data-family_breadwinner="{{$x->family_breadwinner}}"
@@ -198,36 +224,44 @@
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
+                                                @endcan
                                                     </td>
 
 
                                                     {{-- add children  --}}
                                                     <td>
                                                     @if($x->child_statu != 0)
+                                                @can(' قسم الأطفال العائلات ')
                                                         <a class=" btn btn-sm btn-info" href="/children_family/show/child/family/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
                                                     @endif
+                                                @can(' إضافة قسم لطفل العائلات ')
                                                         <a class="modal-effect btn btnsm btn-info" data-effect="effect-scale"
                                                             data-family_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal4" title="إضافة طفل">
                                                             <i class="las la-child"  style="font-size: 20px;"></i>
                                                         </a>
+                                                @endcan
                                                     </td>
 
 
 
                                                     @if($x->residance_statu == 1)
                                                     <td>
+                                                @can(' إضافة السكن العائلات ')
                                                         <a class=" btn btn-sm btn-info" href="/address_family/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-
+                                                @endcan
                                                     </td>
                                                     @elseif($x->residance_statu == 0)
                                                     {{-- Stduent_Residance  --}}
                                                     <td>
+                                                @can(' قسم السكن العائلات ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-family_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal6" title="إضافة سكن للطالب">
                                                             <i class=" las la-home"  style="font-size: 20px;"></i>
                                                         </a>
+                                                @endcan
                                                     </td>
                                                     @endif
 
@@ -235,30 +269,37 @@
 
                                                     <td>
                                                     @if($x->student_statu  !=  0)
-
+                                                @can('  طالب العائلات ')
                                                         <a class=" btn btn-sm btn-info" href=" {{route('family.student.show', ['id'=> $x->id])}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
                                                     @endif
+                                                @can(' إضافة طالب العائلات ')
                                                         <a class="modal-effect btn btnsm btn-info" data-effect="effect-scale"
                                                             data-family_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModa20" title="إضافة طفل">
                                                             <i class="las la-child"  style="font-size: 20px;"></i>
                                                         </a>
+                                                @endcan
                                                     </td>
 
                                                     {{--  Add_Patient_id  --}}
-                                                    @if($x->patient_statu == 1)
+                                                    @if($x->patient_statu != 0)
                                                     <td>
+                                                @can('  مريض العائلات ')
                                                         <a class=" btn btn-sm btn-info" href="/family/show/medical/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
                                                     </td>
-                                                    @elseif($x->patient_statu == 0)
+                            
+                                                    @endif
                                                     <td>
+                                                @can(' إضافة مريض العائلات ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-family_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal92" title="إضافة مريض">
                                                             <i class="fas fa-briefcase"  style="font-size: 20px;"></i>
                                                         </a>
+                                                @endcan
                                                     </td>
-                                                    @endif
                                                 @endforeach
                                                 </tr>
                                             </tbody>
@@ -284,7 +325,7 @@
                             @endif
 
                             @if (session()->has('Warning'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Warning') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -1666,6 +1707,7 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                         <label for="exampleInputEmail">اسم  صاحب القيد</label>
+                                                <input class="form-control" value="admin"  name="register" type="hidden">
                                         <input type="text" class="form-control" id="family_constraint" name="family_Constraint" placeholder="أكتب اسم صاحب القيد ">
                                         </div>
                                         <div class="form-group">
@@ -1704,20 +1746,16 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputEmail"> ماهي المساعدات أو قيمتها</label>
-                                        <input type="text" class="form-control" id="family_what_aid" name="family_what_aid"  placeholder=" أكتب ما هي المساعدات أو قيمتها    ">
+                                        <label for="exampleInputEmail"> ماهي المساعدات </label>
+                                        <input type="text" class="form-control" id="family_what_aid" name="family_what_aid"  placeholder=" أكتب ما هي المساعدات     ">
                                         </div>
                                         <div class="form-group">
-
-                                        <label for="exampleInputEmail"> رقم هاتف الأول </label>
-                                        <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكتب رقم الهاتف بدءً من 05 ">
-
                                         <label for="exampleInputEmail"> ماهي قيمة المساعدات</label>
-                                        <input type="text" class="form-control" id="aid_value" name="aid_value"  placeholder=" أكنب أسم المدينة  ">
+                                        <input type="text" class="form-control" id="aid_value" name="aid_value"  placeholder=" أكنب قيمة المساعدات  ">
                                         </div>                                        
                                         <div class="form-group">
-                                        <label for="exampleInputEmail">هاتف</label>
-                                        <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكنب تاريخ الدخول الى تركيا ">
+                                        <label for="exampleInputEmail">رقم هاتف الأول</label>
+                                        <input type="text" class="form-control" id="phone" name="phone" placeholder=" أكتب رقم هاتف الأول بدءً من 05 ">
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> رقم هاتف ثاني</label>
