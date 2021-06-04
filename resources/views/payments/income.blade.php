@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 {{--  @dd($medical)  --}}
 @section('title')
-قسم الدخل
+قسم الدخل المالي
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">المالية</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم الدخل</span>
+							<h4 class="my-auto mb-0 content-title">الأقسام المالية</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم الدخل</span>
 						</div>
 					</div>
 
@@ -35,8 +35,8 @@
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
                                             @can(' إضافة دفعة قسم الدخل المالي ')
-                                                
-                                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة مريض</a>
+
+                                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة دفعة مالية </a>
                                             @endcan
                                         </div>
                                      </div>
@@ -52,9 +52,9 @@
                                                     <th class="border-bottom-0">الدخل بالتركي المتبقي</th>
                                                     <th class="border-bottom-0">الدخل باليورو</th>
                                                     <th class="border-bottom-0">الدخل باليورو المتبقي</th>
-                                                    <th class="border-bottom-0">كروت بيم المتبقية</th>
                                                     <th class="border-bottom-0">كروت بيم</th>
                                                     <th class="border-bottom-0">قيمة كرت البيم</th>
+                                                    <th class="border-bottom-0">كروت بيم المتبقية</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
                                                     <th class="border-bottom-0">تاريخ الإضافة</th>
                                                     <th class="border-bottom-0">حذف المريض</th>
@@ -71,48 +71,48 @@
                                                     <td>{{$x->value_tr}}</td>
                                                     <td>{{$x->value_euro_fixed}}</td>
                                                     <td>{{$x->value_euro}}</td>
-                                                    <td>{{$x->number_bim}}</td>
                                                     <td>{{$x->number_bim_fixed}}</td>
                                                     <td>{{$x->value_bim}}</td>
+                                                    <td>{{$x->number_bim}}</td>
                                                     <td>{{$x->note}}</td>
                                                     <td>{{$x->created_at}}</td>
 
                                                     <td>
                                                     @can(' حذف الدفعة قسم الدخل المالي ')
-                                                        
+
                                                     {{-- delete medical  --}}
                                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                             data-value_usd_fixed="{{$x->value_usd_fixed}}"
-                                                            data-number_bim="{{$x->number_bim}}" data-value_bim="{{$x->value_bim}}" 
-                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}" 
-                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"   
+                                                            data-number_bim="{{$x->number_bim}}" data-value_bim="{{$x->value_bim}}"
+                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
+                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
                                                             <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                         </a>
                                                     </td>
                                                     @endcan
 
-                                                    <td>  
+                                                    <td>
 
-                                                    @can(' تعديل الدفعة قسم الدخل المالي ')    
+                                                    @can(' تعديل الدفعة قسم الدخل المالي ')
                                                     {{-- edit medical  --}}
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-number_bim="{{$x->number_bim}}" data-value_bim="{{$x->value_bim}}" 
+                                                            data-number_bim="{{$x->number_bim}}" data-value_bim="{{$x->value_bim}}"
                                                             data-value_usd_fixed="{{$x->value_usd_fixed}}"
-                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}" 
-                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}" 
+                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
+                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
-                                                    @endcan  
+                                                    @endcan
                                                     </td>
-                                                  
+
                                                 @endforeach
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>   
-                        <div> 
+                                    </div>
+                        <div>
                             @if (session()->has('Add'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>
@@ -130,7 +130,7 @@
                                 </button>
                             </div>
                             @endif
-                                                        
+
                             @if (session()->has('Form'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Form') }}</strong>
@@ -220,7 +220,7 @@
                                 </button>
                             </div>
                             @endif
-                            
+
                             @if (session()->has('Add_Address'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add_Address') }}</strong>
@@ -244,44 +244,44 @@
                             </div>
                             @endif
                         </div>
-                                 
+
                         {{-- add --}}
                         <div class="modal" id="modaldemo8">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content modal-content-demo">
                                     <div class="modal-header">
-                                        <h6 class="modal-title">اضافة معلومات عائلة</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                        <h6 class="modal-title">اضافة الدفعة المالية </h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <form action="{{ route('income.store') }}" method="POST">
                                         {{ csrf_field() }}
                                     <div class="modal-body">
 
                                         <div class="form-group">
-                                        <label for="exampleInputEmail">المبلغ المدخل بالدولار</label>
-                                        <input type="text" class="form-control" id="value_usd" name="value_usd" placeholder=" ">
+                                        <label for="exampleInputEmail">المبلغ المدخل بالدولار$</label>
+                                        <input type="number" class="form-control" id="value_usd" name="value_usd" placeholder=" ">
                                         </div>
 
                                         <div class="form-group">
-                                        <label for="exampleInputEmail"> المبلغ المدخل بالتركي</label>
+                                        <label for="exampleInputEmail"> المبلغ المدخل بالتركي TL</label>
                                         <input type="number" class="form-control" id="value_tr" name="value_tr" placeholder=" ">
-                                        </div>   
-                                                                                 
-                                                               
-                                        <div class="form-group">
-                                        <label for="exampleInputEmail"> المبلغ المدخل باليورو</label>
-                                        <input type="text" class="form-control" id="value_euro" name="value_euro" placeholder=" ">
-                                        </div>   
-
-                                        <div class="modal-body">
-                                        <label for="exampleInputEmail"> كروت البيم</label>
-                                        <input type="text" class="form-control" id="number_bim" name="number_bim" placeholder=" " >
                                         </div>
-                                        
-                                        <div class="modal-body">
+
+
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail"> المبلغ المدخل باليورو€</label>
+                                        <input type="number" class="form-control" id="value_euro" name="value_euro" placeholder=" ">
+                                        </div>
+
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail"> كروت البيم</label>
+                                        <input type="number" class="form-control" id="number_bim" name="number_bim" placeholder=" " >
+                                        </div>
+
+                                        <div class="form-group">
                                         <label for="exampleInputEmail"> قيمة كروت البيم</label>
-                                        <input type="text" class="form-control" id="value_bim" name="value_bim" placeholder=" " >
-                                        </div>                       
-                       
+                                        <input type="number" class="form-control" id="value_bim" name="value_bim" placeholder=" " >
+                                        </div>
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail">ملاحظات</label>
                                         <input type="text" class="form-control" id="note" name="note"  placeholder=" ">
@@ -302,7 +302,7 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content modal-content-demo">
                                     <div class="modal-header">
-                                        <h6 class="modal-title">حذف القسم</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                        <h6 class="modal-title">حذف الدفعة المالية  لللدخل</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                             type="button"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <form action="{{ route('income.destroy') }}" method="post">
@@ -310,16 +310,16 @@
                                     {{ csrf_field() }}
                                       <div class="modal-body">
                                         <label for="exampleInputEmail">المبلغ المدخل بالدولار</label>
-                                        <input type="text" class="form-control" id="value_usd_fixed" name="value_usd" placeholder=" " readonly> 
+                                        <input type="text" class="form-control" id="value_usd_fixed" name="value_usd" placeholder=" " readonly>
                                         <input type="hidden" class="form-control" id="id" name="id" placeholder=" ">
                                         </div>
 
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> المبلغ المدخل بالتركي</label>
                                         <input type="number" class="form-control" id="value_tr_fixed" name="value_tr" placeholder=" " readonly>
-                                        </div>   
-                                                                                 
-                                                               
+                                        </div>
+
+
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> المبلغ المدخل باليورو</label>
                                         <input type="text" class="form-control" id="value_euro_fixed" name="value_euro" placeholder=" " readonly>
@@ -329,11 +329,11 @@
                                         <label for="exampleInputEmail"> كروت البيم</label>
                                         <input type="text" class="form-control" id="number_bim" name="number_bim" placeholder=" " readonly>
                                         </div>
-                                        
+
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> قيمة كروت البيم</label>
                                         <input type="text" class="form-control" id="value_bim" name="value_bim" placeholder=" " readonly>
-                                        </div>   
+                                        </div>
 
                                         <div class="modal-body">
                                         <label for="exampleInputEmail">ملاحظات</label>
@@ -354,7 +354,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel"> تعديل الدفعة المالية للدخل </h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -364,32 +364,32 @@
                                         {{ method_field('patch') }}
                                         {{ csrf_field() }}
                                         <div class="modal-body">
-                                        <label for="exampleInputEmail">المبلغ المدخل بالدولار</label>
+                                        <label for="exampleInputEmail">المبلغ المدخل بالدولار $</label>
                                         <input type="text" class="form-control" id="value_euro_fixed" name="value_usd" placeholder=" ">
                                         <input type="hidden" class="form-control" id="id" name="id" placeholder=" ">
                                         </div>
 
                                         <div class="modal-body">
-                                        <label for="exampleInputEmail"> المبلغ المدخل بالتركي</label>
+                                        <label for="exampleInputEmail"> المبلغ المدخل بالتركي TL</label>
                                         <input type="number" class="form-control" id="value_tr_fixed" name="value_tr" placeholder=" ">
-                                        </div>   
-                                                                                 
-                                                               
+                                        </div>
+
+
                                         <div class="modal-body">
-                                        <label for="exampleInputEmail"> المبلغ المدخل باليورو</label>
+                                        <label for="exampleInputEmail"> المبلغ المدخل باليورو€</label>
                                         <input type="text" class="form-control" id="value_euro_fixed" name="value_euro" placeholder=" ">
-                                        </div>                     
+                                        </div>
 
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> كروت البيم</label>
                                         <input type="text" class="form-control" id="number_bim" name="number_bim" placeholder=" " >
                                         </div>
-                                        
+
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> قيمة كروت البيم</label>
                                         <input type="text" class="form-control" id="value_bim" name="value_bim" placeholder=" " >
-                                        </div>   
-                                                                                                             
+                                        </div>
+
                                         <div class="modal-body">
                                         <label for="exampleInputEmail">ملاحظات</label>
                                         <input type="text" class="form-control" id="note" name="note"  placeholder=" ">

@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم معلومات الحالة الصحية للطالب
+قسم  الحالة الصحية للطالب
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/معلومات الحالة الصحية  </span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم الحالة الصحية  </span>
 						</div>
 					</div>
 
@@ -63,7 +63,7 @@
                                             <tbody>
                                                 @foreach($med as $x)
                                                 @if($x->student_id != null)
-                                                    
+
                                                 <tr>
                                                     <td>{{$x->student_id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
@@ -79,7 +79,7 @@
                                                     <td>{{$x->Trans_to_doctor}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
-                                                    @can(' تعديل قسم الحالة الصحية الطلاب ')                                                        
+                                                    @can(' تعديل قسم الحالة الصحية الطلاب ')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-disease_type="{{$x->disease_type}}"
@@ -94,7 +94,7 @@
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                     @endcan
-                                                    @can('حذف قسم الحالة الصحية الطلاب ')                                                        
+                                                    @can('حذف قسم الحالة الصحية الطلاب ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-name="{{$x->student->student_name}}" data-student_id="{{$x->student_id}}"
@@ -175,7 +175,7 @@
                             </div>
                             </form>
                         </div>
-                    </div>  
+                    </div>
 
                     {{-- edit --}}
                     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -194,7 +194,7 @@
                                 {{ method_field('patch') }}
                                 {{ csrf_field() }}
                               <div class="modal-body">
-                                <div class="form-group">                                       
+                                <div class="form-group">
                                 <input type="hidden" name="id" id="id"  readonly>
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 </div>

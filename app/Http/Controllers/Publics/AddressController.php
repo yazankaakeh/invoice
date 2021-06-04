@@ -32,8 +32,8 @@ function __construct()
 }
 
 
-////////////////////////////////////////////////// Family Start ////////////////////////////////   
- 
+////////////////////////////////////////////////// Family Start ////////////////////////////////
+
     public function index()
     {
        $address['address'] = Address::select('id','updated_at','family_id','address_country',
@@ -42,18 +42,31 @@ function __construct()
        ->get();
        return view('family.address.address_family')->with($address);
     }
+    public function messages_family_address()
+    {
+    return $messages_family_address = [
+        'family_id.required' => '!!',
+        'address_country.required' => 'لم يتم ادخال اسم المحافظة   !!',
+        'address_city.required' => 'لم يتم ادخال اسم المديتة  !!',
+        'address_like_bill.required' => 'لم يتم ادخال العنوان   !!',
+        'address_last.required'  => 'لم يتم ادخال العنوان السابق   !!',
 
+
+    ];
+    }
     public  function store_family_address(Request $request)
     {
-           $this->validate($request,[
+
+        $messages = $this->messages_family_address();
+        $this->validate($request,[
             'family_id'=>'required',
             'address_country' => 'required',
             'address_city' => 'required',
             'address_like_bill' => 'required',
             'address_last' => 'required',
 
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
          $x=1;
@@ -93,17 +106,30 @@ function __construct()
         $familys->save();
         return redirect(route('address.show'));
     }
+    public function messages_family_update()
+    {
+    return $messages_family_update = [
+        'family_id.required' => '!!',
+        'address_country.required' => 'لم يتم ادخال اسم المحافظة   !!',
+        'address_city.required' => 'لم يتم ادخال اسم المديتة  !!',
+        'address_like_bill.required' => 'لم يتم ادخال العنوان   !!',
+        'address_last.required'  => 'لم يتم ادخال العنوان السابق   !!',
+
+
+    ];
+    }
 
     public function update(Request $request)
     {
+        $messages = $this->messages_update();
         $this->validate($request,[
             'family_id'=>'required',
             'address_country' => 'required',
             'address_city' => 'required',
             'address_like_bill' => 'required',
             'address_last' => 'required',
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
 
@@ -121,10 +147,10 @@ function __construct()
          return redirect(route('address.show'));
     }
 
-////////////////////////////////////////////////// Family end ////////////////////////////////   
+////////////////////////////////////////////////// Family end ////////////////////////////////
 
 
-//////////////////////////////////////////////// Medical start ////////////////////////////////   
+//////////////////////////////////////////////// Medical start ////////////////////////////////
 
 
     public function index_medical()
@@ -136,16 +162,29 @@ function __construct()
        //$address = Address::all();
        return view('medical.address.address_medical')->with($address);
     }
+    public function messages_medical_update()
+    {
+    return $messages_medical_update = [
+        'medical_id.required' => '!!',
+        'address_country.required' => 'لم يتم ادخال اسم المحافظة   !!',
+        'address_city.required' => 'لم يتم ادخال اسم المديتة  !!',
+        'address_like_bill.required' => 'لم يتم ادخال العنوان   !!',
+        'address_last.required'  => 'لم يتم ادخال العنوان السابق   !!',
 
+
+    ];
+    }
     public  function store_medical_address(Request $request)
     {
-           $this->validate($request,[
+        $messages = $this->messages_medical_update();
+        $this->validate($request,[
             'medical_id'=>'required',
             'address_country' => 'required',
             'address_city' => 'required',
             'address_like_bill' => 'required',
             'address_last' => 'required',
-         ]);
+        ],$messages);
+
          //create new object of the model student and make mapping to the data
          $medicals =  Medical::find($request->medical_id);
          $medical_name = $medicals->medical_name;
@@ -164,17 +203,29 @@ function __construct()
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('medical.show'));
     }
+    public function messages_update_medical()
+    {
+    return $messages_update_medical = [
+        'medical_id.required' => '!!',
+        'address_country.required' => 'لم يتم ادخال اسم المحافظة   !!',
+        'address_city.required' => 'لم يتم ادخال اسم المديتة  !!',
+        'address_like_bill.required' => 'لم يتم ادخال العنوان   !!',
+        'address_last.required'  => 'لم يتم ادخال العنوان السابق   !!',
 
+
+    ];
+    }
     public function update_medical(Request $request)
     {
+        $messages = $this->messages_update_medical();
         $this->validate($request,[
             'medical_id'=>'required',
             'address_country' => 'required',
             'address_city' => 'required',
             'address_like_bill' => 'required',
             'address_last' => 'required',
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $medicals =  Medical::find($request->medical_id);
          $medical_name = $medicals->medical_name;
 
@@ -215,7 +266,7 @@ function __construct()
     }
 
 
-////////////////////////////////////////////////// Medical End ////////////////////////////////   
+////////////////////////////////////////////////// Medical End ////////////////////////////////
 
 
 }

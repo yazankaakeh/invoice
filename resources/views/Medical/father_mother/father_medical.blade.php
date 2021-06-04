@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم معلومات الأم والأب للمريض
+قسم  الأم والأب للطبي
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/معلومات الأم و الأب</span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم الأم و الأب</span>
 						</div>
 					</div>
 
@@ -100,7 +100,7 @@
                                                     <td>{{$x->father_salary}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
-                                                    @can(' تعديل قسم الأب و الأم الطبي ')                                                        
+                                                    @can(' تعديل قسم الأب و الأم الطبي ')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-mother_name="{{$x->mother_name}}"
@@ -121,7 +121,7 @@
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                     @endcan
-                                                    @can('حذف قسم الأب و الأم الطبي ')                                                        
+                                                    @can('حذف قسم الأب و الأم الطبي ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}" data-medical_name="{{$x->medical->medical_name}}"  data-medical_id="{{$x->medical_id}}"
@@ -325,7 +325,7 @@
                                         مرض مزمن
                                     </option>
                                     </select>
-                                </div>                                
+                                </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للأب</label>
                                 <input type="text" class="form-control" id="father_academicel" name="father_academicel" placeholder=" أكتب المستوى التعليمي ">

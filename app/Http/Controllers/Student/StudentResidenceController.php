@@ -21,7 +21,7 @@ $this->middleware('permission: تعديل قسم سكن الطلاب ', ['only' 
 $this->middleware('permission:حذف قسم سكن الطلاب ', ['only' => ['destroy']]);
 
 
-}      
+}
 
     public function storestudent(Request $request){
             $this->validate($request,[

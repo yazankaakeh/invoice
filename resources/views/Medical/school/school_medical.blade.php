@@ -19,7 +19,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/معلومات الأطفال</span>
+							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/قسم الأطفال</span>
 						</div>
 					</div>
 
@@ -78,11 +78,11 @@
                                                             </a>
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                                data-id="{{ $x->id }}" 
+                                                                data-id="{{ $x->id }}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
-                                                    </td>                                                
+                                                    </td>
                                                 </tr>
                                                    @endif
                                                 @endforeach
@@ -188,7 +188,7 @@
                                         <label for="exampleInputEmail">اسم المدرسة </label>
                                         <input class="form-control" name="School_name" id="School_name" type="text" readonly>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail">نوع المدرسة </label>
                                         <input class="form-control" name="School_type" id="School_type" type="text" readonly>
@@ -198,7 +198,7 @@
                                         <label for="exampleInputEmail">موقع المدرسة </label>
                                         <input class="form-control" name="School_location" id="School_location" type="text" readonly>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail">تكاليف الدراسة</label>
                                         <input class="form-control" name="School_cost" id="School_cost" type="text" readonly>
@@ -207,7 +207,7 @@
                                         <div class="form-group">
                                         <label for="exampleInputEmail">نكاليف عامة</label>
                                         <input class="form-control" name="School_fees" id="School_fees" type="text" readonly>
-                                        </div>                                
+                                        </div>
                                         </div>
                                 <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">تاكيد</button>

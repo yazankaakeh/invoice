@@ -41,10 +41,28 @@ function __construct()
 
 
 /////////////////////////////////////////// Student Start /////////////////////////////////////////////
+public function messages_student_husband_wife()
+{
+return $messages_student_husband_wife = [
+    'student_id.required' => '!!',
+    'gender.required' => 'لم يتم ادخال  الجنس   !!',
+    'wife_name.required' => 'لم يتم ادخال اسم اسم الزوج/ة  !!',
+    'wife_birth.required' => 'لم يتم  تاريخ ميلاد الزوج/ة   !!',
+    'wife_city.required'  => 'لم يتم ادخال اسم المحافظة    !!',
+    'wife_district.required'  => 'لم يتم ادخال اسم مدينة   !!',
+    'wife_academicel.required'  => 'لم يتم ادخال المستوى التعليمي    !!',
+    'wife_special.required'  => 'لم يتم ادخال اختصاص دراسة    !!',
+    'wife_is_work.required'  => 'لم يتم ادخال خانة هل تعمل   !!',
+    'wife_now_work.required'  => 'لم يتم ادخال العمل الحالي   !!',
+    'wife_Pre_work.required'  => 'لم يتم ادخال العمل السابق    !!',
 
+
+];
+}
     public  function store_student_husband_wife(Request $request)
     {
-           $this->validate($request,[
+        $messages = $this->messages_student_husband_wife();
+        $this->validate($request,[
             'student_id'=>'required',
             'gender'=>'required',
             'wife_name' => 'required',
@@ -56,9 +74,8 @@ function __construct()
             'wife_is_work' => 'required',
             'wife_now_work' => 'required',
             'wife_Pre_work' => 'required',
-            // ////////////////////////////////////////////////
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
          $x=1;
@@ -99,9 +116,27 @@ function __construct()
       $husb = HusbandandWife::where('student_id', $id)->get();
       return view('Student.husb.husb',compact('husb'));
     }
+    public function messages_student_husband_wife_update()
+    {
+    return $messages_student_husband_wife_update = [
+        'student_id.required' => '!!',
+        'gender.required' => 'لم يتم ادخال  الجنس   !!',
+        'wife_name.required' => 'لم يتم ادخال اسم اسم الزوج/ة  !!',
+        'wife_birth.required' => 'لم يتم  تاريخ ميلاد الزوج/ة   !!',
+        'wife_city.required'  => 'لم يتم ادخال اسم المحافظة    !!',
+        'wife_district.required'  => 'لم يتم ادخال اسم مدينة   !!',
+        'wife_academicel.required'  => 'لم يتم ادخال المستوى التعليمي    !!',
+        'wife_special.required'  => 'لم يتم ادخال اختصاص دراسة    !!',
+        'wife_is_work.required'  => 'لم يتم ادخال خانة هل تعمل   !!',
+        'wife_now_work.required'  => 'لم يتم ادخال العمل الحالي   !!',
+        'wife_Pre_work.required'  => 'لم يتم ادخال العمل السابق    !!',
 
+
+    ];
+    }
     public function update(Request $request)
     {
+        $messages = $this->messages_student_husband_wife_update();
         $this->validate($request,[
             'student_id'=>'required',
             'gender' => 'required',
@@ -114,8 +149,8 @@ function __construct()
             'wife_is_work' => 'required',
             'wife_now_work' => 'required',
             'wife_Pre_work' => 'required',
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
 
@@ -156,11 +191,38 @@ function __construct()
 
 /////////////////////////////////////////// Student End /////////////////////////////////////////////
 
-/////////////////////////////////////////// Family   Start///////////////////////////////////////////    
-
+/////////////////////////////////////////// Family   Start///////////////////////////////////////////
+public function messages_family_husband_wife()
+{
+return $messages_family_husband_wife = [
+    'family_id.required' => '!!',
+    'gender.required' => 'لم يتم ادخال  الجنس الزوجة  !!',
+    'wife_name.required' => 'لم يتم ادخال اسم اسم الزوجة  !!',
+    'wife_birth.required' => 'لم يتم  تاريخ ميلاد الزوجة   !!',
+    'wife_city.required'  => 'لم يتم ادخال اسم المحافظة الزوجة   !!',
+    'wife_district.required'  => 'لم يتم ادخال اسم مدينةالزوجة   !!',
+    'wife_academicel.required'  => 'لم يتم ادخال المستوى التعليمي الزوجة   !!',
+    'wife_special.required'  => 'لم يتم ادخال اختصاص دراسة الزوجة   !!',
+    'wife_is_work.required'  => 'لم يتم ادخال خانة هل تعمل الزوجة  !!',
+    'wife_now_work.required'  => 'لم يتم ادخال العمل الحالي الزوجة  !!',
+    'wife_Pre_work.required'  => 'لم يتم ادخال العمل السابق الزوجة   !!',
+      ///////////////////////////////////////////////////////////
+      'gender.required' => 'لم يتم ادخال الجنس الزوج  !!',
+      'husb_name.required' => 'لم يتم ادخال اسم اسم الزوج  !!',
+      'husb_birth.required' => 'لم يتم  تاريخ ميلاد الزوج   !!',
+      'husb_city.required'  => 'لم يتم ادخال اسم المحافظةالزوج    !!',
+      'husb_district.required'  => 'لم يتم ادخال اسم مدينة الزوج  !!',
+      'husb_academicel.required'  => 'لم يتم ادخال المستوى التعليمي الزوج   !!',
+      'husb_special.required'  => 'لم يتم ادخال اختصاص دراسة الزوج   !!',
+      'husb_is_work.required'  => 'لم يتم ادخال خانة هل تعمل  الزوج !!',
+      'husb_now_work.required'  => 'لم يتم ادخال العمل الحالي الزوج  !!',
+      'husb_Pre_work.required'  => 'لم يتم ادخال العمل السابق الزوج   !!',
+];
+}
     public  function store_family_husband_wife(Request $request)
     {
-           $this->validate($request,[
+        $messages = $this->messages_family_husband_wife();
+        $this->validate($request,[
             'family_id'=>'required',
             'wife_name' => 'required',
             'wife_birth' => 'required',
@@ -185,8 +247,8 @@ function __construct()
             'husb_now_work' => 'required',
             'medical_dad' => 'required',
             'husb_Pre_work' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
          $x=1;
@@ -229,9 +291,36 @@ function __construct()
       $husb = HusbandandWife::where('family_id', $id)->get();
       return view('family.husb.husb_family',compact('husb'));
     }
-
+    public function messages_family_husband_wife_update()
+    {
+    return $messages_family_husband_wife_update = [
+        'family_id.required' => '!!',
+        'gender.required' => 'لم يتم ادخال  الجنس الزوجة  !!',
+        'wife_name.required' => 'لم يتم ادخال اسم اسم الزوجة  !!',
+        'wife_birth.required' => 'لم يتم  تاريخ ميلاد الزوجة   !!',
+        'wife_city.required'  => 'لم يتم ادخال اسم المحافظة الزوجة   !!',
+        'wife_district.required'  => 'لم يتم ادخال اسم مدينةالزوجة   !!',
+        'wife_academicel.required'  => 'لم يتم ادخال المستوى التعليمي الزوجة   !!',
+        'wife_special.required'  => 'لم يتم ادخال اختصاص دراسة الزوجة   !!',
+        'wife_is_work.required'  => 'لم يتم ادخال خانة هل تعمل الزوجة  !!',
+        'wife_now_work.required'  => 'لم يتم ادخال العمل الحالي الزوجة  !!',
+        'wife_Pre_work.required'  => 'لم يتم ادخال العمل السابق الزوجة   !!',
+          ///////////////////////////////////////////////////////////
+          'gender.required' => 'لم يتم ادخال الجنس الزوج  !!',
+          'husb_name.required' => 'لم يتم ادخال اسم اسم الزوج  !!',
+          'husb_birth.required' => 'لم يتم  تاريخ ميلاد الزوج   !!',
+          'husb_city.required'  => 'لم يتم ادخال اسم المحافظةالزوج    !!',
+          'husb_district.required'  => 'لم يتم ادخال اسم مدينة الزوج  !!',
+          'husb_academicel.required'  => 'لم يتم ادخال المستوى التعليمي الزوج   !!',
+          'husb_special.required'  => 'لم يتم ادخال اختصاص دراسة الزوج   !!',
+          'husb_is_work.required'  => 'لم يتم ادخال خانة هل تعمل  الزوج !!',
+          'husb_now_work.required'  => 'لم يتم ادخال العمل الحالي الزوج  !!',
+          'husb_Pre_work.required'  => 'لم يتم ادخال العمل السابق الزوج   !!',
+    ];
+    }
     public function update_family(Request $request)
     {
+        $messages = $this->messages_family_husband_wife_update();
         $this->validate($request,[
             'family_id'=>'required',
             'wife_name' => 'required',
@@ -257,8 +346,8 @@ function __construct()
             'medical_dad' => 'required',
             'wife_mar_stat' => 'required',
             'husb_Pre_work' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
 
@@ -322,13 +411,31 @@ function __construct()
         $familys->save();
         return redirect(route('husband_Wife.show.family'));
     }
-/////////////////////////////////////////// Family   End///////////////////////////////////////////    
+/////////////////////////////////////////// Family   End///////////////////////////////////////////
 
-/////////////////////////////////////////// Medical   Start///////////////////////////////////////////    
+/////////////////////////////////////////// Medical   Start///////////////////////////////////////////
+public function messages_medical_husband_wife()
+{
+return $messages_medical_husband_wife = [
+    'medical_id.required' => '!!',
+    'gender.required' => 'لم يتم ادخال  الجنس   !!',
+    'wife_name.required' => 'لم يتم ادخال اسم اسم الزوج/ة  !!',
+    'wife_birth.required' => 'لم يتم  تاريخ ميلاد الزوج/ة   !!',
+    'wife_city.required'  => 'لم يتم ادخال اسم المحافظة    !!',
+    'wife_district.required'  => 'لم يتم ادخال اسم مدينة   !!',
+    'wife_academicel.required'  => 'لم يتم ادخال المستوى التعليمي    !!',
+    'wife_special.required'  => 'لم يتم ادخال اختصاص دراسة    !!',
+    'wife_is_work.required'  => 'لم يتم ادخال خانة هل تعمل   !!',
+    'wife_now_work.required'  => 'لم يتم ادخال العمل الحالي   !!',
+    'wife_Pre_work.required'  => 'لم يتم ادخال العمل السابق    !!',
 
+
+];
+}
     public  function store_medical_husband_wife(Request $request)
     {
-           $this->validate($request,[
+        $messages = $this->messages_medical_husband_wife();
+        $this->validate($request,[
             'medical_id'=>'required',
             'wife_name' => 'required',
             'wife_birth' => 'required',
@@ -341,8 +448,8 @@ function __construct()
       //      'husb_mar_stat' => 'required',
             'wife_now_work' => 'required',
             'wife_Pre_work' => 'required',
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $medicals =  Medical::find($request->medical_id);
          $medical_name = $medicals->medical_name;
          $x=1;
@@ -373,9 +480,27 @@ function __construct()
       $husb = HusbandandWife::where('medical_id', $id)->get();
       return view('medical.husb.husb_medical',compact('husb'));
     }
+    public function messages_medical_husband_wife_update()
+    {
+    return $messages_medical_husband_wife_update = [
+        'medical_id.required' => '!!',
+        'gender.required' => 'لم يتم ادخال  الجنس   !!',
+        'wife_name.required' => 'لم يتم ادخال اسم اسم الزوج/ة  !!',
+        'wife_birth.required' => 'لم يتم  تاريخ ميلاد الزوج/ة   !!',
+        'wife_city.required'  => 'لم يتم ادخال اسم المحافظة    !!',
+        'wife_district.required'  => 'لم يتم ادخال اسم مدينة   !!',
+        'wife_academicel.required'  => 'لم يتم ادخال المستوى التعليمي    !!',
+        'wife_special.required'  => 'لم يتم ادخال اختصاص دراسة    !!',
+        'wife_is_work.required'  => 'لم يتم ادخال خانة هل تعمل   !!',
+        'wife_now_work.required'  => 'لم يتم ادخال العمل الحالي   !!',
+        'wife_Pre_work.required'  => 'لم يتم ادخال العمل السابق    !!',
 
+
+    ];
+    }
     public function update_medical(Request $request)
     {
+        $messages = $this->messages_medical_husband_wife_update();
         $this->validate($request,[
             'medical_id'=>'required',
             'wife_name' => 'required',
@@ -392,8 +517,8 @@ function __construct()
             'wife_Pre_work' => 'required',
             // ////////////////////////////////////////////////
 
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $medicals =  Medical::find($request->medical_id);
          $medical_name = $medicals->medical_name;
 
@@ -444,7 +569,7 @@ function __construct()
         $medicals->save();
         return redirect(route('husband_Wife.show.medical'));
     }
-/////////////////////////////////////////// Family   End///////////////////////////////////////////    
+/////////////////////////////////////////// Family   End///////////////////////////////////////////
 
 
 }

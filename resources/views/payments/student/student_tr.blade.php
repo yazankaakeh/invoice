@@ -12,14 +12,19 @@
 <!--- Select2 css -->
 
 @section('title')
-مدفوعات الطلاب
+قسم مدفوعات الطلاب بالتركي
 @endsection
 @section('page-header')
-				<!-- breadcrumb -->
-				<div class="breadcrumb-header justify-content-between">
+<!-- breadcrumb -->
+<div class="breadcrumb-header justify-content-between">
+     <div class="my-auto">
+    <div class="d-flex">
+<h4 class="my-auto mb-0 content-title"> قسم الطلاب </h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ قسم مدفوعات الطلاب  بالتركي </span>
+</div>
+</div>
 
-				</div>
-				<!-- breadcrumb -->
+</div>
+<!-- breadcrumb -->
 @endsection
 @section('content')
 				<!-- row -->
@@ -28,10 +33,13 @@
                             <div class="card mg-b-20">
                                 <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
-                                        <i class="mdi mdi-dots-horizontal text-gray"></i>
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    <div class="main-content-label mg-b-5">
+                                        قائمة  مدفوعات الطلاب بالتركي  .
+                                    </div>
+                                    <p class="mg-b-20">معلومات  مدفوعات الطلاب بالتركي.</p>
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons text-md-nowrap">
                                             <thead>
@@ -58,7 +66,7 @@
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                     @can(' تعديل دفعة بالتركي الطلاب ')
-                                                        
+
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-student_name="{{$x->student->student_name}}"
                                                                 data-student_value="{{$x->value }}" data-student_id="{{$x->student_id}}"
@@ -141,7 +149,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                    <h6 class="modal-title">حذف عملية الدفع </h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <form action="{{ Route('tr.destroy.student') }}" method="post">
@@ -182,7 +190,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">تعديل عملية الدفع </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -199,7 +207,7 @@
                                         </div>
 
                                         <div class="modal-body">
-                                        <label for="recipient-name" class="col-form-label">المبلغ بالدولار</label>
+                                        <label for="recipient-name" class="col-form-label">المبلغ  بالتركي</label>
                                         <input class="form-control" name="student_value" id="student_value" type="text" >
                                         <input class="form-control" name="student_value1" id="student_value" type="hidden" >
                                         </div>
@@ -267,7 +275,7 @@
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #student_id').val(student_id);
         modal.find('.modal-body #student_value').val(student_value);
-        modal.find('.modal-body #note').val(note);        
+        modal.find('.modal-body #note').val(note);
         modal.find('.modal-body #student_name').val(student_name);
         modal.find('.modal-body #student_value_euro').val(student_value_euro);
         modal.find('.modal-body #student_value').val(student_value);

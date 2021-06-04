@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
 class FatherandMotherController extends Controller
 {
 
-  
+
 function __construct()
 {
 
@@ -33,10 +33,35 @@ function __construct()
 
 
 ////////////////////////////////////// Student Start /////////////////////////////////
-
+public function messages_family()
+{
+return $messages_family = [
+    'student_id.required' => '!!',
+    'mother_name.required' => 'لم يتم ادخال اسم الأم    !!',
+    'mother_birth.required' => 'لم يتم ادخال  تاريخ ميلاد الأم  !!',
+    'mother_origin.required' => 'لم يتم اسم المحافظة  الأم   !!',
+    'mother_origin_city.required'  => 'لم يتم ادخال اسم المدينة الأم    !!',
+    'mother_academicel.required'  => 'لم يتم ادخال المستوى التعليمي للأم   !!',
+    'mother_special.required'  => 'لم يتم ادخال اختصاص دراسة الأم    !!',
+    'mother_is_work.required'  => 'لم يتم ادخال خانه عل تعمل الأم     !!',
+    'mother_now_work.required'  => 'لم يتم ادخال  العمل الحالي للأم   !!',
+    'mother_salary.required'  => 'لم يتم ادخال الراتب الشهري للأم    !!',
+        /////////////////////////////////////////////////////////////////////
+    'father_name.required'  => 'لم يتم ادخال اسم الأب    !!',
+    'father_birth.required' => 'لم يتم ادخال  تاريخ ميلاد الأب  !!',
+    'father_origin.required' => 'لم يتم اسم المحافظة  الأب   !!',
+    'father_origin_city.required'  => 'لم يتم ادخال اسم المدينة الأب    !!',
+    'father_academicel.required'  => 'لم يتم ادخال المستوى التعليمي الأب   !!',
+    'father_special.required'  => 'لم يتم ادخال اختصاص دراسة الأب    !!',
+    'father_is_work.required'  => 'لم يتم ادخال خانه عل تعمل الأب     !!',
+    'father_now_work.required' => 'لم يتم ادخال  العمل الحالي الأب   !!',
+    'father_salary.required' => 'لم يتم ادخال الراتب الشهري الأب    !!',
+];
+}
     public function storestudent(Request $request)
     {
-            $this->validate($request,[
+        $messages = $this->messages_family();
+        $this->validate($request,[
             'student_id'=> 'required',
             'mother_name' => 'required',
             'mother_birth' => 'required',
@@ -57,8 +82,8 @@ function __construct()
             'father_is_work' => 'required',
             'father_now_work' => 'required',
             'father_salary' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
          $x=1;
@@ -95,7 +120,7 @@ function __construct()
 
     public function show($id){
       $fath = FatherandMother::where('student_id', $id)->get();
-      return view('Student.father_mother.father_mother',compact('fath')); 
+      return view('Student.father_mother.father_mother',compact('fath'));
     }
     public function index()
     {
@@ -108,10 +133,36 @@ function __construct()
        ->get();
        return view('Student.father_mother.father_mother')->with($fath);
     }
-
+    public function messages_family_update()
+    {
+    return $messages_family_update = [
+        'id.required' => '!!',
+        'student_id.required' => '!!',
+        'mother_name.required' => 'لم يتم ادخال اسم الأم    !!',
+        'mother_birth.required' => 'لم يتم ادخال  تاريخ ميلاد الأم  !!',
+        'mother_origin.required' => 'لم يتم اسم المحافظة  الأم   !!',
+        'mother_origin_city.required'  => 'لم يتم ادخال اسم المدينة الأم    !!',
+        'mother_academicel.required'  => 'لم يتم ادخال المستوى التعليمي للأم   !!',
+        'mother_special.required'  => 'لم يتم ادخال اختصاص دراسة الأم    !!',
+        'mother_is_work.required'  => 'لم يتم ادخال خانه عل تعمل الأم     !!',
+        'mother_now_work.required'  => 'لم يتم ادخال  العمل الحالي للأم   !!',
+        'mother_salary.required'  => 'لم يتم ادخال الراتب الشهري للأم    !!',
+            /////////////////////////////////////////////////////////////////////
+        'father_name.required'  => 'لم يتم ادخال اسم الأب    !!',
+        'father_birth.required' => 'لم يتم ادخال  تاريخ ميلاد الأب  !!',
+        'father_origin.required' => 'لم يتم اسم المحافظة  الأب   !!',
+        'father_origin_city.required'  => 'لم يتم ادخال اسم المدينة الأب    !!',
+        'father_academicel.required'  => 'لم يتم ادخال المستوى التعليمي الأب   !!',
+        'father_special.required'  => 'لم يتم ادخال اختصاص دراسة الأب    !!',
+        'father_is_work.required'  => 'لم يتم ادخال خانه عل تعمل الأب     !!',
+        'father_now_work.required' => 'لم يتم ادخال  العمل الحالي الأب   !!',
+        'father_salary.required' => 'لم يتم ادخال الراتب الشهري الأب    !!',
+    ];
+    }
     public function update(Request $request)
     {
-          $this->validate($request,[
+        $messages = $this->messages_family_update();
+        $this->validate($request,[
               'id'=> 'required',
             'student_id'=> 'required',
             'mother_name' => 'required',
@@ -133,8 +184,8 @@ function __construct()
             'father_is_work' => 'required',
             'father_now_work' => 'required',
             'father_salary' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
          $FatherandMothers =  FatherandMother::find($request->id);
@@ -184,10 +235,35 @@ function __construct()
 
 
 ////////////////////////////////////// Medical Start /////////////////////////////////
-
+public function messages_medical()
+{
+return $messages_medical = [
+    'medical_id.required' => '!!',
+    'mother_name.required' => 'لم يتم ادخال اسم الأم    !!',
+    'mother_birth.required' => 'لم يتم ادخال  تاريخ ميلاد الأم  !!',
+    'mother_origin.required' => 'لم يتم اسم المحافظة  الأم   !!',
+    'mother_origin_city.required'  => 'لم يتم ادخال اسم المدينة الأم    !!',
+    'mother_academicel.required'  => 'لم يتم ادخال المستوى التعليمي للأم   !!',
+    'mother_special.required'  => 'لم يتم ادخال اختصاص دراسة الأم    !!',
+    'mother_is_work.required'  => 'لم يتم ادخال خانه عل تعمل الأم     !!',
+    'mother_now_work.required'  => 'لم يتم ادخال  العمل الحالي للأم   !!',
+    'mother_salary.required'  => 'لم يتم ادخال الراتب الشهري للأم    !!',
+        /////////////////////////////////////////////////////////////////////
+    'father_name.required'  => 'لم يتم ادخال اسم الأب    !!',
+    'father_birth.required' => 'لم يتم ادخال  تاريخ ميلاد الأب  !!',
+    'father_origin.required' => 'لم يتم اسم المحافظة  الأب   !!',
+    'father_origin_city.required'  => 'لم يتم ادخال اسم المدينة الأب    !!',
+    'father_academicel.required'  => 'لم يتم ادخال المستوى التعليمي الأب   !!',
+    'father_special.required'  => 'لم يتم ادخال اختصاص دراسة الأب    !!',
+    'father_is_work.required'  => 'لم يتم ادخال خانه عل تعمل الأب     !!',
+    'father_now_work.required' => 'لم يتم ادخال  العمل الحالي الأب   !!',
+    'father_salary.required' => 'لم يتم ادخال الراتب الشهري الأب    !!',
+];
+}
     public function store_medical(Request $request)
     {
-            $this->validate($request,[
+        $messages = $this->messages_medical();
+        $this->validate($request,[
             'medical_id'=> 'required',
             'mother_name' => 'required',
             'mother_birth' => 'required',
@@ -210,8 +286,8 @@ function __construct()
             'medical_dad' => 'required',
             'father_now_work' => 'required',
             'father_salary' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $Medicals =  Medical::find($request->medical_id);
          $Medical_name = $Medicals->Medical_name;
          $x=1;
@@ -249,10 +325,10 @@ function __construct()
     }
 
     public function show_medical($id){
-    
+
       $fath = FatherandMother::where('medical_id', $id)->get();
-    
-      return view('Medical.father_mother.father_medical',compact('fath')); 
+
+      return view('Medical.father_mother.father_medical',compact('fath'));
     }
 
     public function index_medical()
@@ -266,10 +342,36 @@ function __construct()
        ->get();
        return view('Medical.father_mother.father_medical')->with($fath);
     }
-
+    public function messages_medical_update()
+    {
+    return $messages_medical_update = [
+        'id.required' => '!!',
+        'medical_id.required' => '!!',
+        'mother_name.required' => 'لم يتم ادخال اسم الأم    !!',
+        'mother_birth.required' => 'لم يتم ادخال  تاريخ ميلاد الأم  !!',
+        'mother_origin.required' => 'لم يتم اسم المحافظة  الأم   !!',
+        'mother_origin_city.required'  => 'لم يتم ادخال اسم المدينة الأم    !!',
+        'mother_academicel.required'  => 'لم يتم ادخال المستوى التعليمي للأم   !!',
+        'mother_special.required'  => 'لم يتم ادخال اختصاص دراسة الأم    !!',
+        'mother_is_work.required'  => 'لم يتم ادخال خانه عل تعمل الأم     !!',
+        'mother_now_work.required'  => 'لم يتم ادخال  العمل الحالي للأم   !!',
+        'mother_salary.required'  => 'لم يتم ادخال الراتب الشهري للأم    !!',
+            /////////////////////////////////////////////////////////////////////
+        'father_name.required'  => 'لم يتم ادخال اسم الأب    !!',
+        'father_birth.required' => 'لم يتم ادخال  تاريخ ميلاد الأب  !!',
+        'father_origin.required' => 'لم يتم اسم المحافظة  الأب   !!',
+        'father_origin_city.required'  => 'لم يتم ادخال اسم المدينة الأب    !!',
+        'father_academicel.required'  => 'لم يتم ادخال المستوى التعليمي الأب   !!',
+        'father_special.required'  => 'لم يتم ادخال اختصاص دراسة الأب    !!',
+        'father_is_work.required'  => 'لم يتم ادخال خانه عل تعمل الأب     !!',
+        'father_now_work.required' => 'لم يتم ادخال  العمل الحالي الأب   !!',
+        'father_salary.required' => 'لم يتم ادخال الراتب الشهري الأب    !!',
+    ];
+    }
     public function medical_edit(Request $request)
     {
-          $this->validate($request,[
+        $messages = $this->messages_medical_update();
+        $this->validate($request,[
             'id'=> 'required',
             'medical_id'=> 'required',
             'mother_name' => 'required',
@@ -291,8 +393,8 @@ function __construct()
             'father_is_work' => 'required',
             'father_now_work' => 'required',
             'father_salary' => 'required'
-         ]);
-         //create new object of the model Medical and make mapping to the data
+        ],$messages);
+        //create new object of the model Medical and make mapping to the data
          $Medicals =  Medical::find($request->medical_id);
          $Medical_name = $Medicals->Medical_name;
          $FatherandMothers =  FatherandMother::find($request->id);

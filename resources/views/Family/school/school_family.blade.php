@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم الأطفال
+قسم المدرسة للطفل
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/معلومات الأطفال</span>
+							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/معلومات المدرسة للطفل </span>
 						</div>
 					</div>
 
@@ -33,10 +33,13 @@
                             <div class="card mg-b-20">
                                 <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
-                                        <i class="mdi mdi-dots-horizontal text-gray"></i>
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    <div class="main-content-label mg-b-5">
+                                     قائمة معلومات  المدرسة للطفل   .
+                                    </div>
+                                    <p class="mg-b-20">معلومات المدرسة للطفل.</p>
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons text-md-nowrap">
                                         <thead>
@@ -56,7 +59,7 @@
                                             <tbody>
                                             {{--  @dd($school);  --}}
                                                 @foreach($school as $x)
-                                                    
+
                                                 <tr>
                                                     <td>{{$x->children_id}}</td>
                                                     <td>{{$x->children->childre_name}}</td>
@@ -66,9 +69,9 @@
                                                     <td>{{$x->School_location}}</td>
                                                     <td>{{$x->School_cost}}</td>
                                                     <td>{{$x->School_fees}}</td>
-                                                    <td>{{$x->updated_at}}</td>                                              
+                                                    <td>{{$x->updated_at}}</td>
                                                     <td>
-                                                    @can(' تعديل مدرسة لطفل العائلات ')                                                        
+                                                    @can(' تعديل مدرسة لطفل العائلات ')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-school_location="{{$x->School_location}}"
@@ -80,16 +83,16 @@
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                     @endcan
-                                                    @can(' حذف مدرسة لطفل العائلات ')                                                        
+                                                    @can(' حذف مدرسة لطفل العائلات ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                                data-id="{{ $x->id }}"  data-childre_name="{{$x->children->childre_name}}" 
+                                                                data-id="{{ $x->id }}"  data-childre_name="{{$x->children->childre_name}}"
                                                                 data-children_id="{{$x->children_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
                                                     @endcan
-                                                    </td>                                                
+                                                    </td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -155,14 +158,14 @@
                                 {{ method_field('patch') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
-                                
+
                                     <div class="form-group">
                                     <input type="hidden" name="children_id" id="children_id"  readonly>
                                     <input type="hidden" name="id" id="id"  readonly>
                                     <label for="exampleInputEmail">اسم المدرسة </label>
                                     <input class="form-control" name="School_name" id="school_name" type="text">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نوع المدرسة </label>
                                     <input class="form-control" name="School_type" id="school_type" type="text">
@@ -172,7 +175,7 @@
                                     <label for="exampleInputEmail">موقع المدرسة </label>
                                     <input class="form-control" name="School_location" id="school_location" type="text">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                     <label for="exampleInputEmail">تكاليف الدراسة</label>
                                     <input class="form-control" name="School_cost" id="school_cost" type="text">
@@ -181,7 +184,7 @@
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نكاليف عامة</label>
                                     <input class="form-control" name="School_fees" id="school_fees" type="text">
-                                    </div>                                   
+                                    </div>
 
                                 </div>
                                     <div class="modal-footer">
@@ -198,7 +201,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                    <h6 class="modal-title">حذف عملية الدفع </h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <form action="{{ Route('school.destroy.family') }}" method="post">
@@ -209,7 +212,7 @@
                                         <div class="form-group">
                                         <input type="hidden" name="children_id" id="children_id"  readonly>
                                         <input type="hidden" name="id" id="id"  readonly>
-                                        <label for="exampleInputEmail">البيانات المتعلقة بهذا الطالب </label>
+                                        <label for="exampleInputEmail">البيانات المتعلقة بالمدرسة لهاذا الطفل  </label>
                                         <input class="form-control" name="childre_name" id="childre_name" type="text" readonly>
                                         </div>
                                     </div>

@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم الأطفال
+قسم المدرسة لأطفال الطلاب
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/معلومات الأطفال</span>
+							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قسم مدرسة الطفل للطالب</span>
 						</div>
 					</div>
 
@@ -33,10 +33,13 @@
                             <div class="card mg-b-20">
                                 <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
-                                        <i class="mdi mdi-dots-horizontal text-gray"></i>
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    <div class="main-content-label mg-b-5">
+                                        قائمة معلومات المدرسة  .
+                                    </div>
+                                    <p class="mg-b-20">معلومات المدرسة الطفل للطالب .</p>
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons text-md-nowrap">
                                             <thead>
@@ -67,7 +70,7 @@
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                             {{-- Edite --}}
-                                                            @can(' تعديل مدرسة لطفل الطلاب ')                                                                
+                                                            @can(' تعديل مدرسة لطفل الطلاب ')
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-school_location="{{$x->School_location}}"
                                                                 data-children_id="{{$x->children_id}}"
@@ -78,8 +81,8 @@
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                             @endcan
-                                                            
-                                                            @can(' حذف مدرسة لطفل الطلاب ')                                                                
+
+                                                            @can(' حذف مدرسة لطفل الطلاب ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-children_id="{{$x->children_id}}"
@@ -148,7 +151,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                    <h6 class="modal-title">حذف المدرسة </h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <form action="{{ Route('school.destroy.student') }}" method="post">
@@ -159,7 +162,7 @@
                                         <div class="form-group">
                                         <input type="hidden" name="children_id" id="children_id" readonly>
                                         <input type="hidden" name="id" id="id"  readonly>
-                                        <label for="exampleInputEmail">البيانات المتعلقة بهذا الطالب </label>
+                                        <label for="exampleInputEmail">هل أنت متأكد من حذف بيانات المدرسة للطفل </label>
                                         <input class="form-control" name="childre_name" id="childre_name" type="text" readonly>
                                         </div>
                                     </div>
@@ -178,7 +181,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">تعديل معلومات المدرسة </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -194,7 +197,7 @@
                                     <label for="exampleInputEmail">اسم المدرسة </label>
                                     <input class="form-control" name="School_name" id="school_name" type="text">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نوع المدرسة </label>
                                     <input class="form-control" name="School_type" id="school_type" type="text">
@@ -204,7 +207,7 @@
                                     <label for="exampleInputEmail">موقع المدرسة </label>
                                     <input class="form-control" name="School_location" id="school_location" type="text">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                     <label for="exampleInputEmail">تكاليف الدراسة</label>
                                     <input class="form-control" name="School_cost" id="school_cost" type="text">
@@ -213,7 +216,7 @@
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نكاليف عامة</label>
                                     <input class="form-control" name="School_fees" id="school_fees" type="text">
-                                    </div>  
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">تاكيد</button>

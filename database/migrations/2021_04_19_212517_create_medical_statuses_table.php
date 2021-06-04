@@ -25,15 +25,15 @@ class CreateMedicalStatusesTable extends Migration
             $table->foreign('husbandand_wives_id')->references('id')->on('husbandand_wives');
 
 ########################## medical_statuses info Begin ############################
-            $table->string('disease_type');//نوع المرض
-            $table->string('disease_name');// اسم المرض
-            $table->string('dr_name');// اسم الدكتور الحالي
-            $table->string('treat_cost');// نكلفة العلاج
-            $table->string('treat_type');// نوغ العلاج
-            $table->string('treat_Duratio');//مدة العلاج
-            $table->date('date_accept');// تاريخ القبول
-            $table->date('date_end');// تاريخ أنتهاء
-            $table->string('Trans_to_doctor');// التحويل الي طبيب أخر
+            $table->string('disease_type')->nullable();//نوع المرض
+            $table->string('disease_name')->nullable();// اسم المرض
+            $table->string('dr_name')->nullable();// اسم الدكتور الحالي
+            $table->string('treat_cost')->nullable();// نكلفة العلاج
+            $table->string('treat_type')->nullable();// نوغ العلاج
+            $table->string('treat_Duratio')->nullable();//مدة العلاج
+            $table->date('date_accept')->nullable();// تاريخ القبول
+            $table->date('date_end')->nullable();// تاريخ أنتهاء
+            $table->string('Trans_to_doctor')->nullable();// التحويل الي طبيب أخر
 ########################## medical_statuses info End ############################
 
             $table->timestamps();

@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم معلومات الجامعة للطالب
+قسم  الجامعة للطالب
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/معلومات الجامعات</span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم الجامعة</span>
 						</div>
 					</div>
 
@@ -128,7 +128,7 @@
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                     @endcan
-                                                    @can('حذف قسم الجامعة الطلاب ')                                                        
+                                                    @can('حذف قسم الجامعة الطلاب ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}" data-student_name="{{$x->student->student_name}}"  data-student_id="{{$x->student_id}}"

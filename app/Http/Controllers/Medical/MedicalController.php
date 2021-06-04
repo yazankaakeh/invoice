@@ -25,27 +25,28 @@ $this->middleware('permission: حذف الطبي ', ['only' => ['destroy']]);
 $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['enable']]);
 
 
-}        
+}
 
 
-    
+
     public function messages()
     {
         return $messages = [
-            'medical_name.required' => 'اسم المريض هذه الخانة مطلوبة !!',
-            'medical_age.required' => 'تاريخ ميلاد المريض هذه الخانة مطلوبة !!',
-            'gender.required' => 'عمر المريض مطلوب !!',
+            'medical_name.required' => 'لم يتم أدخال  معلومات اسم المريض المطلوبة !!',
+            'medical_age.required' => 'لم يتم أدخال  معلومات العمر للمريض  المطلوبة !!',
+            'medical_age.numeric' => 'يجب أدخال العمر حصراً بالأرقام!!',
+            'gender.required' => '    لم يتم أدخال  معلومات جنس المريض المطلوبة!!',
             'medical_have_id.required'=>'ادخل البريد اللإلكتروني هذه الخانة مطلوبة !!',
-            'medical_id_extr.required'=>'رقم الهاتف هذه الخانة مطلوبة !!',
-            'medical_number.required'=>'لقد قمت بالستجيل من قبل !!',
-            'medical_number.unique'=>'لقد قمت بالستجيل من قبل !!',
+            'medical_id_extr.required'=>'لم يتم ادخال معلومات الهاتف هذه الخانة مطلوبة !!',
+            'medical_number.required'=>'لم يتم أدخال معلومات الرقم الهاتف المطلوبة !!',
+            'medical_number.unique'=>'الرقم موجود بالفعل يرجى كتابة رقم أخر !!',
             'medical_number.numeric'=>'يجب ان يكون الرقم فقط أرقام !!',
-            'note.required'=>'معلومات الحمافظة الخاصة في المريضة هذه الخانة مطلوبة !!',
+            'note.required'=>'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد !!',
         ];
-    }   
+    }
 
     public function index()
-    {       
+    {
         $payments = Income::select('value_bim')->distinct()->get();
         $medical = Medical::all();
         //dd($medical);
@@ -89,14 +90,14 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
         $enable = From::find(1);
         session()->flash('Add', 'تم اضافة المريض '. $request->student_name .' بنجاح ');
         $request=null;
-        return view('Medical.medical.register_medical',compact('enable'));    
+        return view('Medical.medical.register_medical',compact('enable'));
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          }
     }
 
     public function update(Request $request)
     {
-    
+
         $this->validate($request,[
             'medical_name' => 'required',
             'medical_age' => 'required',
@@ -135,7 +136,7 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
         return redirect(route('medical.show'));
     }
 
-    public function register(){    
+    public function register(){
         $check = From::all();
 
     if($check->isEmpty())
@@ -144,7 +145,7 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
             'student_form' => 0,
             'medical_form' => 0,
             'medical_form' => 0,
-     
+
         ]);
         $enable = From::find(1);
         //dd($enable);
@@ -170,6 +171,6 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
          session()->flash('Form', 'تم تعديل حالة قائمة تسجيل العائلات بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('medical.show'));
-    }  
+    }
 
 }

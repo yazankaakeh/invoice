@@ -21,10 +21,10 @@ class CreateAddressesTable extends Migration
             $table->foreign('medical_id')->references('id')->on('medicals');
 
             ########################## address info Begin ############################
-            $table->string('address_country');// المحافظة
-            $table->string('address_city');// المدينة
-            $table->string('address_like_bill');// موقع كما في الفاتورة
-            $table->string('address_last');//السكن السابق
+            $table->string('address_country')->nullable();// المحافظة
+            $table->string('address_city')->nullable();// المدينة
+            $table->string('address_like_bill')->nullable();// موقع كما في الفاتورة
+            $table->string('address_last')->nullable();//السكن السابق
             ########################## address info End ############################
             $table->timestamps();
         });

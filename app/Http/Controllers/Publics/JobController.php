@@ -45,9 +45,25 @@ function __construct()
 
 
 ///////////////////////////////////// Student Start ////////////////////////////////////////
+public function messages_student()
+{
+return $messages_student = [
+    'student_id.required' => '!!',
+    'job_have.required' => 'لم يتم ادخال خانه هل يعمل   !!',
+    'job_type.required' => 'لم يتم ادخال  نوع العمل  !!',
+    'job_place.required' => 'لم يتم ادخال مكان العمل   !!',
+    'job_monthly_salary.required'  => 'لم يتم ادخال الراتب     !!',
+    'job_last_have.required'  => 'لم يتم ادخال  العمل السابق   !!',
+    'job_last_type.required'  => 'لم يتم ادخال نوع العمل السابق   !!',
+    'job_last_salary.required'  => 'لم يتم ادخال  الراتب السابق    !!',
 
-    public function storestudent(Request $request){
-            $this->validate($request,[
+
+];
+}
+    public function storestudent(Request $request)
+    {
+        $messages = $this->messages_student();
+        $this->validate($request,[
             'student_id'=>'required',
             'job_have' => 'required',
             'job_type' => 'required',
@@ -56,8 +72,8 @@ function __construct()
             'job_last_have' => 'required',
             'job_last_type' => 'required',
             'job_last_salary' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
          $x=1;
@@ -88,9 +104,25 @@ function __construct()
        ->get();
        return view('Student.job.job')->with($job);
     }
+    public function messages_student_update()
+    {
+    return $messages_student_update = [
+        'id.required' => '!!',
+        'student_id.required' => '!!',
+        'job_have.required' => 'لم يتم ادخال خانه هل يعمل   !!',
+        'job_type.required' => 'لم يتم ادخال  نوع العمل  !!',
+        'job_place.required' => 'لم يتم ادخال مكان العمل   !!',
+        'job_monthly_salary.required'  => 'لم يتم ادخال الراتب     !!',
+        'job_last_have.required'  => 'لم يتم ادخال  العمل السابق   !!',
+        'job_last_type.required'  => 'لم يتم ادخال نوع العمل السابق   !!',
+        'job_last_salary.required'  => 'لم يتم ادخال  الراتب السابق    !!',
 
+
+    ];
+    }
     public function update(Request $request)
     {
+        $messages = $this->messages_student_update();
         $this->validate($request,[
             'id'=>'required',
             'student_id'=>'required',
@@ -101,7 +133,8 @@ function __construct()
             'job_last_have' => 'required',
             'job_last_type' => 'required',
             'job_last_salary' => 'required'
-         ]);
+        ],$messages);
+
          //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
@@ -147,8 +180,25 @@ function __construct()
 
 
 //////////////////////////////// Family Start ///////////////////////////////////////////////
-    public function store_family(Request $request){
-            $this->validate($request,[
+public function messages_family()
+{
+return $messages_family = [
+    'family_id.required' => '!!',
+    'job_have.required' => 'لم يتم ادخال خانه هل يعمل   !!',
+    'job_type.required' => 'لم يتم ادخال  نوع العمل  !!',
+    'job_place.required' => 'لم يتم ادخال مكان العمل   !!',
+    'job_monthly_salary.required'  => 'لم يتم ادخال الراتب     !!',
+    'job_last_have.required'  => 'لم يتم ادخال  العمل السابق   !!',
+    'job_last_type.required'  => 'لم يتم ادخال نوع العمل السابق   !!',
+    'job_last_salary.required'  => 'لم يتم ادخال  الراتب السابق    !!',
+
+
+];
+}
+public function store_family(Request $request)
+{
+    $messages = $this->messages_family();
+    $this->validate($request,[
             'family_id'=>'required',
             'job_have' => 'required',
             'job_type' => 'required',
@@ -157,8 +207,8 @@ function __construct()
             'job_last_have' => 'required',
             'job_last_type' => 'required',
             'job_last_salary' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
          $x=1;
@@ -205,9 +255,25 @@ function __construct()
         $familys->save();
         return redirect(route('job.show.family'));
     }
+    public function messages_update_family()
+    {
+    return $messages_update_family = [
+        'id.required' => '!!',
+        'family_id.required' => '!!',
+        'job_have.required' => 'لم يتم ادخال خانه هل يعمل   !!',
+        'job_type.required' => 'لم يتم ادخال  نوع العمل  !!',
+        'job_place.required' => 'لم يتم ادخال مكان العمل   !!',
+        'job_monthly_salary.required'  => 'لم يتم ادخال الراتب     !!',
+        'job_last_have.required'  => 'لم يتم ادخال  العمل السابق   !!',
+        'job_last_type.required'  => 'لم يتم ادخال نوع العمل السابق   !!',
+        'job_last_salary.required'  => 'لم يتم ادخال  الراتب السابق    !!',
 
+
+    ];
+    }
     public function update_family(Request $request)
     {
+        $messages = $this->messages_update_family();
         $this->validate($request,[
             'id'=>'required',
             'family_id'=>'required',
@@ -218,7 +284,8 @@ function __construct()
             'job_last_have' => 'required',
             'job_last_type' => 'required',
             'job_last_salary' => 'required'
-         ]);
+        ],$messages);
+
          //create new object of the model student and make mapping to the data
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
@@ -242,9 +309,26 @@ function __construct()
 
 
 //////////////////////////////// Medical Start ///////////////////////////////////////////////
+public function messages_Medical()
+{
+return $messages_Medical = [
+    'medical_id.required' => '!!',
+    'job_have.required' => 'لم يتم ادخال خانه هل يعمل   !!',
+    'job_type.required' => 'لم يتم ادخال  نوع العمل  !!',
+    'job_place.required' => 'لم يتم ادخال مكان العمل   !!',
+    'job_monthly_salary.required'  => 'لم يتم ادخال الراتب     !!',
+    'job_last_have.required'  => 'لم يتم ادخال  العمل السابق   !!',
+    'job_last_type.required'  => 'لم يتم ادخال نوع العمل السابق   !!',
+    'job_last_salary.required'  => 'لم يتم ادخال  الراتب السابق    !!',
 
-    public function store_Medical(Request $request){
-            $this->validate($request,[
+
+];
+}
+    public function store_Medical(Request $request)
+    {
+
+        $messages = $this->messages_Medical();
+        $this->validate($request,[
             'medical_id'=>'required',
             'job_have' => 'required',
             'job_type' => 'required',
@@ -253,8 +337,8 @@ function __construct()
             'job_last_have' => 'required',
             'job_last_type' => 'required',
             'job_last_salary' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $Medicals =  Medical::find($request->medical_id);
          $Medical_name = $Medicals->medical_name;
          $x=1;
@@ -302,9 +386,25 @@ function __construct()
         $medicals->save();
         return redirect(route('job.show.medical'));
     }
+    public function messages_medical_update()
+    {
+    return $messages_medical_update = [
+        'id.required' => '!!',
+        'medical_id.required' => '!!',
+        'job_have.required' => 'لم يتم ادخال خانه هل يعمل   !!',
+        'job_type.required' => 'لم يتم ادخال  نوع العمل  !!',
+        'job_place.required' => 'لم يتم ادخال مكان العمل   !!',
+        'job_monthly_salary.required'  => 'لم يتم ادخال الراتب     !!',
+        'job_last_have.required'  => 'لم يتم ادخال  العمل السابق   !!',
+        'job_last_type.required'  => 'لم يتم ادخال نوع العمل السابق   !!',
+        'job_last_salary.required'  => 'لم يتم ادخال  الراتب السابق    !!',
 
+
+    ];
+    }
     public function update_medical(Request $request)
     {
+        $messages = $this->messages_medical_update();
         $this->validate($request,[
             'id'=>'required',
             'medical_id'=>'required',
@@ -315,8 +415,8 @@ function __construct()
             'job_last_have' => 'required',
             'job_last_type' => 'required',
             'job_last_salary' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $medicals =  Medical::find($request->medical_id);
          $medical_Constraint = $medicals->medical_Constraint;
          $jobs =  Job::find($request->id);

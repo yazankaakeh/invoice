@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم معلومات الأطفال للطالب 
+قسم الأطفال للطالب
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ معلومات الأطفال</span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ قسم الأطفال</span>
 						</div>
 					</div>
 
@@ -77,7 +77,7 @@
                                                     <td>
 
                                                             @can(' تعديل قسم الأطفال الطلاب ')
-                                                                
+
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
@@ -100,23 +100,23 @@
                                                             </a>
                                                             @endcan
                                                     </td>
-                                                    <td>    
+                                                    <td>
                                                             {{-- Add_School --}}
-                                                            @can('  مدرسة لطفل الطلاب ')                                                            
+                                                            @can('  مدرسة لطفل الطلاب ')
                                                             @if($x->student_statu != 0)
                                                             <a class=" btn btn-sm btn-info" href="/school_student/show/school/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                             @else
                                                             @endcan
-                                                            @can(' إضافة مدرسة لطفل الطلاب ')                                                            
+                                                            @can(' إضافة مدرسة لطفل الطلاب ')
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal" title="إضافة مدرسة">
                                                                 <i class="las la-pen"></i>
-                                                            </a> 
+                                                            </a>
                                                             @endcan
                                                             @endif
-                                                    </td>                                                
+                                                    </td>
                                                 </tr>
                                                 @endif
                                                 @endforeach
@@ -179,7 +179,7 @@
 
                     </div>
 				</div>
-                  
+
                    {{-- Edit_School --}}
                     <div class="modal" id="exampleModal">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -197,7 +197,7 @@
                                     <label for="exampleInputEmail">اسم المدرسة </label>
                                     <input class="form-control" name="School_name" id="School_name" type="text">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نوع المدرسة </label>
                                     <input class="form-control" name="School_type" id="School_type" type="text">
@@ -207,7 +207,7 @@
                                     <label for="exampleInputEmail">موقع المدرسة </label>
                                     <input class="form-control" name="School_location" id="School_location" type="text">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                     <label for="exampleInputEmail">تكاليف الدراسة</label>
                                     <input class="form-control" name="School_cost" id="School_cost" type="text">
@@ -216,7 +216,7 @@
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نكاليف عامة</label>
                                     <input class="form-control" name="School_fees" id="School_fees" type="text">
-                                    </div>  
+                                    </div>
 
                                     </div>
                                     <div class="modal-footer">
@@ -227,7 +227,7 @@
                             </form>
                         </div>
                     </div>
-                    
+
                     {{-- delete --}}
                     <div class="modal" id="modaldemo9">
                         <div class="modal-dialog modal-dialog-centered" role="document">

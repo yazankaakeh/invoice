@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم معلومات السكن للمريض
+قسم  السكن للطبي
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/معلومات السكن</span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم السكن للطبي</span>
 						</div>
 					</div>
 

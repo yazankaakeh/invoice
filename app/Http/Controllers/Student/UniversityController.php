@@ -23,12 +23,12 @@ $this->middleware('permission: تعديل قسم الجامعة الطلاب ', 
 $this->middleware('permission:حذف قسم الجامعة الطلاب ', ['only' => ['destroy']]);
 
 
-}       
+}
 
-    
+
     public function show($id){
       $univ = University::where('student_id', $id)->get();
-      return view('Student.university.university',compact('univ')); 
+      return view('Student.university.university',compact('univ'));
     }
     public function storestudent(Request $request)
     {
@@ -48,12 +48,12 @@ $this->middleware('permission:حذف قسم الجامعة الطلاب ', ['onl
             'Univer_Accept' => 'required',
             'Accept_rate' => 'required',
             'are_you_univer' => 'required',
-            'Ano_univer_name' => 'required',
-            'Ano_univer_special' => 'required',
-            'Ano_univer_Accept' => 'required',
-            'Ano_accept_rate' => 'required',
-            'Ano_Schoo_year' => 'required',
-            'Ano_Current_rate' => 'required',
+            // 'Ano_univer_name' => 'required',
+            // 'Ano_univer_special' => 'required',
+            // 'Ano_univer_Accept' => 'required',
+            // 'Ano_accept_rate' => 'required',
+            // 'Ano_Schoo_year' => 'required',
+            // 'Ano_Current_rate' => 'required',
             'univer_Premiums' => 'required',
             'univer_fees' => 'required',
             'univer_fees_value' => 'required'

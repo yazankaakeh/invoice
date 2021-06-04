@@ -25,20 +25,33 @@ $this->middleware('permission: تعديل الدفعة قسم الدخل الم�
         $income['income'] = Income::select('id','value_usd_fixed','value_euro_fixed','number_bim','number_bim_fixed','value_bim','value_tr_fixed','note','created_at','value_tr','value_usd','value_euro')
         ->orderBy('id', 'DESC')
         ->get();
-        //dd($payments);  
+        //dd($payments);
         return view('payments.income')->with($income);//
     }
+    public function messages()
+    {
+    return $messages = [
+        'value_tr.required' => '!لم يتم ادخال قيمة مالية بالتركي !',
+        'value_euro.required' => 'لم يتم ادخال قيمة مالية باليورو  !!',
+        'value_bim.required' => 'لم يتم ادخال قيمة   كرت البيم !!',
+        'number_bim.required' => 'لم يتم ادخال قيمة  عدد كرت البيم !!',
+        'value_usd.required' => 'لم يتم ادخال قيمة  مالية بالدولار   !!',
+        'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+    ];
+}
     public function store(Request $request)
     {
+        $messages = $this->messages();
         $this->validate($request,[
-            'value_tr' => 'required',
-            'value_euro'=> 'required',
-            'value_bim'=> 'required',
-            'number_bim'=> 'required',
-            'value_usd'=> 'required',
-            'note'=> 'required',
-         ]);
+            // 'value_tr' => 'required',
+            // 'value_euro'=> 'required',
+            // 'value_bim'=> 'required',
+            // 'number_bim'=> 'required',
+            // 'value_usd'=> 'required',
+            // 'note'=> 'required',
+        ],$messages);
 
          //create new object of the model student and make mapping to the data
          $incomes = new Income;
@@ -65,7 +78,7 @@ $this->middleware('permission: تعديل الدفعة قسم الدخل الم�
             'value_tr' => 'required',
             'id'=> 'required',
             'value_euro'=> 'required',
-            'value_usd'=> 'required',            
+            'value_usd'=> 'required',
             'value_bim'=> 'required',
             'number_bim'=> 'required',
             'note'=> 'required',

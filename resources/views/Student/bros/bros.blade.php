@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم معلومات الأخوة للطالب
+قسم  الأخوة للطالب
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/معلومات الأخوة و الأخوات</span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم الأخوة و الأخوات</span>
 						</div>
 					</div>
 
@@ -75,7 +75,7 @@
                                                     <td>
                                                             {{-- Edite --}}
                                                             @can(' تعديل قسم الأخوة الطلاب ')
-                                                                
+
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-special="{{$x->special}}"
                                                                 data-name="{{$x->name }}" data-academicel="{{$x->academicel}}"
@@ -89,7 +89,7 @@
                                                             </a>
                                                             @endcan
                                                             {{-- Delete --}}
-                                                            @can('حذف قسم الأخوة الطلاب ')                                                                
+                                                            @can('حذف قسم الأخوة الطلاب ')
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-name="{{$x->name }}" data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">

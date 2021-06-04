@@ -12,14 +12,19 @@
 <!--- Select2 css -->
 
 @section('title')
-مدفوعات المرضى
+قسم مدفوعات الطبي كرت البيم
 @endsection
 @section('page-header')
-				<!-- breadcrumb -->
-				<div class="breadcrumb-header justify-content-between">
+<!-- breadcrumb -->
+<div class="breadcrumb-header justify-content-between">
+     <div class="my-auto">
+    <div class="d-flex">
+<h4 class="my-auto mb-0 content-title"> قسم الطبي </h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ قسم مدفوعات الطبي كرت البيم  </span>
+</div>
+</div>
 
-				</div>
-				<!-- breadcrumb -->
+</div>
+<!-- breadcrumb -->
 @endsection
 @section('content')
 				<!-- row -->
@@ -28,17 +33,20 @@
                             <div class="card mg-b-20">
                                 <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
-                                        <i class="mdi mdi-dots-horizontal text-gray"></i>
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    <div class="main-content-label mg-b-5">
+                                        قائمة  مدفوعات الطبي كرت البيم   .
+                                    </div>
+                                    <p class="mg-b-20">معلومات  مدفوعات الطبي كرت البيم .</p>
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons text-md-nowrap">
                                             <thead>
                                                 <tr>
                                                     <th class="border-bottom-0">Id</th>
-                                                    <th class="border-bottom-0">رقم الطالب</th>
-                                                    <th class="border-bottom-0">اسم العائلة</th>
+                                                    <th class="border-bottom-0">رقم المريض</th>
+                                                    <th class="border-bottom-0">اسم المريض</th>
                                                     <th class="border-bottom-0">قيمة الكروت</th>
                                                     <th class="border-bottom-0">عدد الكروت</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
@@ -57,7 +65,7 @@
                                                     <td>{{$x->number_bim_medical}}</td>
                                                     <td>{{$x->Note}}</td>
                                                     <td>{{$x->updated_at}}</td>
-                                                    <td> 
+                                                    <td>
                                                     @can(' تعديل دفعة بالكرت البيم الطبي ')
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}"
@@ -138,12 +146,12 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">تعديل عملية الدفع </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                
+
                                 <div class="modal-body">
                                     <form action="{{ Route('bim.update.medical') }}" method="post" autocomplete="off">
                                         {{ method_field('patch') }}
@@ -151,7 +159,7 @@
                                         <div class="modal-body">
                                             <input type="hidden" name="id" id="id" value="" readonly>
                                             <input type="hidden" name="medical_id" id="medical_id" value="" readonly>
-                                            <label for="recipient-name" class="col-form-label">اسم الطالب:</label>
+                                            <label for="recipient-name" class="col-form-label">اسم المريض:</label>
                                             <input class="form-control" name="medical_name" id="medical_name" type="text" readonly>
                                         </div>
 
@@ -161,7 +169,7 @@
                                                     @foreach($payments_income as $a)
                                                         <option value="{{$a->value_bim}}" >
                                                             {{$a->value_bim}}
-                                                        </option>                                                        
+                                                        </option>
                                                     @endforeach
                                             </select>
                                         </div>
@@ -171,7 +179,7 @@
                                             <input class="form-control" name="number_bim_medical" id="number_bim_medical" type="text" >
                                             <input class="form-control" name="number_bim_medical1" id="number_bim_medical" type="hidden" >
                                         </div>
-                                        
+
                                         <div class="modal-body">
                                             <label for="message-text" class="col-form-label">ملاحظات:</label>
                                             <textarea class="form-control" id="note" name="note"></textarea>
@@ -192,7 +200,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                    <h6 class="modal-title">حذف عملية الدفع </h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <form action="{{ Route('bim.destroy.medical') }}" method="post">
@@ -203,9 +211,9 @@
                                         <p>هل انت متاكد من عملية الحذف ؟</p><br>
                                         <input type="hidden" name="medical_id" id="medical_id" value="" readonly>
                                         <input type="hidden" name="id" id="id" value="">
-                                        <label for="recipient-name" class="col-form-label">اسم الطالب:</label>
+                                        <label for="recipient-name" class="col-form-label">اسم المريض:</label>
                                         <input class="form-control" name="medical_name" id="medical_name" type="text" readonly>
-                                    </div> 
+                                    </div>
 
                                     <div class="modal-body">
                                         <p class="mg-b-10">قيمة الكروت</p>
@@ -213,7 +221,7 @@
                                                 @foreach($payments_income as $a)
                                                     <option value="{{$a->value_bim}}" >
                                                         {{$a->value_bim}}
-                                                    </option>                                                        
+                                                    </option>
                                                 @endforeach
                                         </select>
                                     </div>
@@ -222,7 +230,7 @@
                                         <label for="recipient-name" class="col-form-label">عدد الكروت</label>
                                         <input class="form-control" name="number_bim_medical" id="number_bim_medical" type="text" >
                                     </div>
-                                    
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
                                         <button type="submit" class="btn btn-danger">تاكيد</button>
@@ -237,7 +245,7 @@
 
 
 
-                
+
                 </div>
 				<!-- row closed -->
 			</div>
@@ -276,7 +284,7 @@
         var id = button.data('id')
         var medical_id = button.data('medical_id')
         var medical_value = button.data('medical_value')
-        var medical_name = button.data('medical_name')        
+        var medical_name = button.data('medical_name')
         var medical_value_euro = button.data('medical_value_euro')
         var medical_value_usd = button.data('medical_value_usd')
         var value_bim_medical = button.data('value_bim_medical')

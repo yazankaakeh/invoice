@@ -22,8 +22,23 @@ $this->middleware('permission: تعديل قسم القرأن الطلاب ', ['
 $this->middleware('permission:حذف قسم القرأن الطلاب ', ['only' => ['destroy']]);
 
 }
+public function messages()
+{
+    return $messages = [
+        'student_id.required' => '',
+        'quran_memorize.required' => 'لم يتم ادخال معلومات هل تحفظ القرأن المطلوبة !!',
+        'quran_parts.required' => 'لم يتم ادخال معلومات عدد الأجزاء المطلوبة !!',
+        'quran_teacher.required'=>'لم يتم ادخال معلومات أسم الشيخ المطلوبة !!',
+        'quran_have_certif.required'=>'لم يتم ادخال معلومات  شهادة حفظ قرآن المطلوبة !!',
+        'quran_Certif_essuer.required'=>'لم يتم ادخال معلومات مصدر الشهادة المطلوبة !!',
+        'quran_with_Certif.unique'=>'لم يتم ادخال معلومات الشهادة معك المطلوبة !!',
 
+
+    ];
+}
     public function storestudent(Request $request){
+
+          $messages = $this->messages();
             $this->validate($request,[
             'student_id'=>'required',
             'quran_memorize' => 'required',
@@ -32,7 +47,7 @@ $this->middleware('permission:حذف قسم القرأن الطلاب ', ['only'
             'quran_have_certif' => 'required',
             'quran_Certif_essuer' => 'required',
             'quran_with_Certif' => 'required'
-         ]);
+        ],$messages);
          //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;

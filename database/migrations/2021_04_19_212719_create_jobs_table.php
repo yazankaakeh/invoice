@@ -34,13 +34,13 @@ class CreateJobsTable extends Migration
             // $table->foreign('husbandand_wives_id')->references('id')->on('husbandand_wives');
 
 ########################## job info Begin ##############################
-            $table->string('job_have',null);// هل تعمل
-            $table->string('job_type',null);//نوع العمل
-            $table->string('job_place',null);// مكان العمل
-            $table->string('job_monthly_salary');// الراتب الشهري
-            $table->string('job_last_have');// هل لديك عمل سابق
-            $table->string('job_last_type');// نوع العمل السابق
-            $table->string('job_last_salary');// الراتب السابق للعمل
+            $table->string('job_have',null)->nullable();// هل تعمل
+            $table->string('job_type',null)->nullable();//نوع العمل
+            $table->string('job_place',null)->nullable();// مكان العمل
+            $table->string('job_monthly_salary')->nullable();// الراتب الشهري
+            $table->string('job_last_have')->nullable();// هل لديك عمل سابق
+            $table->string('job_last_type')->nullable();// نوع العمل السابق
+            $table->string('job_last_salary')->nullable();// الراتب السابق للعمل
 ########################## job info End ##############################
             $table->timestamps();
         });

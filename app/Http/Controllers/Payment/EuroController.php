@@ -17,7 +17,7 @@ use App\Http\Controllers\Controller;
 class EuroController extends Controller
 {
 
-    
+
 function __construct()
 {
 $this->middleware('permission: مدفوعات باليورو العائلات ', ['only' => ['family_ind_euro']]);
@@ -39,7 +39,7 @@ $this->middleware('permission: تعديل دفعة باليورو الطبي ', 
 $this->middleware('permission: حذف دفعة باليورو الطبي ', ['only' => ['destroy_medicals_euro']]);
 }
 
-  ##################################################### Family start 
+  ##################################################### Family start
 public function family_ind_euro()
 {
     $payments_income = Income::select('value_euro')->distinct()->get();
@@ -47,13 +47,25 @@ public function family_ind_euro()
     return view('payments.family.family_euro',compact("payments",'payments_income'));//->with($payments)
 }
 
+
+    public function messages_family()
+    {
+    return $messages_family = [
+        'family_id.required' => '!!',
+        'family_value_euro.required' => 'لم يتم ادخال البملغ المالي باليورو !!',
+        'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
+
+
+    ];
+}
 public function store_family_euro(Request $request)
 {
+    $messages = $this->messages_family();
     $this->validate($request,[
         'family_id' => 'required',
         'family_value_euro' => 'required',
         'note'=> 'required',
-        ]);
+    ],$messages);
     $s;
     if ($check = DB::table('incomes')->where('value_euro','!=', null)->where('value_euro','!=', 0)->latest()->first() != null) {
     $payments_cut = Income::where('value_euro','>', 0)
@@ -64,9 +76,9 @@ public function store_family_euro(Request $request)
     //dd($a);
     $m = $s - $a;
     if ($m < 0) {
-    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_euro.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة اليورو يرجى الدفع على دفعتين القيمة باليورو هي:  '.$payments_cut->value_euro.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    return redirect(route('family.show')); 
+    return redirect(route('family.show'));
     }
     else {
         $payments_cut->value_euro = $m;
@@ -81,9 +93,9 @@ public function store_family_euro(Request $request)
     $family_Conseuroaint = $family->family_Conseuroaint;
     $payments = new Euro;
     $payments -> family_id = $request -> family_id;
-    $payments -> note = $request->note;         
+    $payments -> note = $request->note;
 
-    $payments -> family_value_euro = $request->family_value_euro;                                 
+    $payments -> family_value_euro = $request->family_value_euro;
     //write to the data base
     $payments ->save();
     $family ->save();
@@ -107,7 +119,7 @@ public function update_family_euro(Request $request)
         'family_value_euro1' => 'required',
         'note'=> 'required',
     ]);
-    if ($request->family_value_euro1 != $request->family_value_euro) 
+    if ($request->family_value_euro1 != $request->family_value_euro)
     {
 
     $payments_cut = Income::where('value_euro','>', 0)->first();
@@ -123,21 +135,21 @@ public function update_family_euro(Request $request)
     $m = $s - $a;
 
     if ($m < 0) {
-    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_euro.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة اليورو يرجى الدفع على دفعتين القيمة المتبقية باليورو هي :  '.$payments_cut->value_euro.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-        return redirect(route('euro.family.pay')); 
+        return redirect(route('euro.family.pay'));
     }
     elseif ($m > 0) {
     $payments_cut->value_euro =$m  ;
 
-    } 
+    }
     //create new object of the model student and make mapping to the data
     $family =  Family::find($request->family_id);
     $family_Conseuroaint = $family->family_Conseuroaint;
     $payments = Euro::find($request->id);
     $payments -> family_id = $request -> family_id;
-    $payments -> note = $request->note;         
-    $payments -> family_value_euro = $request->family_value_euro;                                 
+    $payments -> note = $request->note;
+    $payments -> family_value_euro = $request->family_value_euro;
     //write to the data base
     $payments ->save();
     $family ->save();
@@ -159,7 +171,7 @@ public function update_family_euro(Request $request)
 }
 
 public function show_family_euro($id)
-{          
+{
     $payments_income = Income::select('value_euro')->distinct()->get();
     $payments = Euro::where('family_id', $id)->get();
     // $child = DB::table('childrens')->where('student_id', $id)->get();
@@ -194,11 +206,11 @@ public function destroy_familys_euro(Request $request)
     return redirect(route('euro.family.pay'));
 }
 
-##################################################### Family end 
+##################################################### Family end
 #########################################
 #######################
 #########################################
-##################################################### medical start 
+##################################################### medical start
 
 public function medical_ind_euro()
 {
@@ -206,14 +218,24 @@ public function medical_ind_euro()
     $payments = Euro::with('medical')->get();
     return view('payments.medical.medical_euro',compact("payments",'payments_income'));//->with($payments)
 }
+public function messages_medical_euro()
+{
+return $messages_medical_euro = [
+    'medical_id.required' => '!!',
+    'medical_value_euro.required' => 'لم يتم ادخال البملغ المالي باليورو !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
 public function store_medical_euro(Request $request)
 {
+    $messages = $this->messages_medical_euro();
     $this->validate($request,[
         'medical_id' => 'required',
         'medical_value_euro' => 'required',
         'note'=> 'required',
-        ]);
+    ],$messages);
     $s;
     if ($check = DB::table('incomes')->where('value_euro','!=', null)->where('value_euro','!=', 0)->latest()->first() != null) {
     $payments_cut = Income::where('value_euro','>', 0)
@@ -224,9 +246,9 @@ public function store_medical_euro(Request $request)
     //dd($a);
     $m = $s - $a;
     if ($m < 0) {
-    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_euro.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة اليورو يرجى الدفع على دفعتين القيمة المتبقية باليورو هي:  '.$payments_cut->value_euro.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    return redirect(route('medical.show')); 
+    return redirect(route('medical.show'));
     }
     else {
         $payments_cut->value_euro = $m;
@@ -241,8 +263,8 @@ public function store_medical_euro(Request $request)
     $medical_Name = $medical->medical_Name;
     $payments = new Euro;
     $payments -> medical_id = $request -> medical_id;
-    $payments -> note = $request->note;         
-    $payments -> medical_value_euro = $request->medical_value_euro;                                 
+    $payments -> note = $request->note;
+    $payments -> medical_value_euro = $request->medical_value_euro;
     //write to the data base
     $payments ->save();
     $medical ->save();
@@ -256,18 +278,28 @@ public function store_medical_euro(Request $request)
     return redirect(route('medical.show'));
     }
 }
+public function messages_medical()
+{
+return $messages_medical = [
+    'medical_id.required' => '!!',
+    'medical_value_euro.required' => 'لم يتم ادخال البملغ المالي باليورو !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
 
 public function update_medical_euro(Request $request)
 {
+    $messages = $this->messages_medical();
     $this->validate($request, [
         'medical_id' => 'required',
         'id' => 'required',
         'medical_value_euro' => 'required',
         'medical_value_euro1' => 'required',
         'note'=> 'required',
-    ]);
-    if ($request->medical_value_euro1 != $request->medical_value_euro) 
+        ],$messages);
+    if ($request->medical_value_euro1 != $request->medical_value_euro)
     {
 
     $payments_cut = Income::where('value_euro','>', 0)->first();
@@ -283,21 +315,21 @@ public function update_medical_euro(Request $request)
     $m = $s - $a;
 
     if ($m < 0) {
-    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_euro.'');
+    session()->flash('Warning','    المبلغ المضاف غير كافي بقيمة اليورو يرجى الدفع على دفعتين القيمة المتبقية باليورو هي:  '.$payments_cut->value_euro.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-        return redirect(route('euro.medical.pay')); 
+        return redirect(route('euro.medical.pay'));
     }
     elseif ($m > 0) {
     $payments_cut->value_euro =$m  ;
 
-    } 
+    }
     //create new object of the model student and make mapping to the data
     $medical =  Medical::find($request->medical_id);
     $medical_Name = $medical->medical_Name;
     $payments = Euro::find($request->id);
     $payments -> medical_id = $request -> medical_id;
-    $payments -> note = $request->note;         
-    $payments -> medical_value_euro = $request->medical_value_euro;                                 
+    $payments -> note = $request->note;
+    $payments -> medical_value_euro = $request->medical_value_euro;
     //write to the data base
     $payments ->save();
     $medical ->save();
@@ -312,11 +344,11 @@ public function update_medical_euro(Request $request)
     session()->flash('Edit', 'لم يتم تعديل المبلغ المالي للعائلة  '. $medical_Name .' يرجى التأكد من إضافة قيم جديدة ');
     //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
     return redirect(route('euro.medical.pay'));
-    }    
+    }
 }
 
 public function show_medical_euro($id)
-{          
+{
     $payments_income = Income::select('value_euro')->distinct()->get();
     $payments = Euro::where('medical_id', $id)->get();
     // $child = DB::table('childrens')->where('student_id', $id)->get();
@@ -324,7 +356,7 @@ public function show_medical_euro($id)
 }
 
 public function destroy_medicals_euro(Request $request)
-{    
+{
     $this->validate($request, [
         'medical_id' => 'required',
         'id' => 'required',
@@ -361,7 +393,7 @@ public function destroy_medicals_euro(Request $request)
 #########################################
 #######################
 #########################################
-##################################################### student start 
+##################################################### student start
 
 public function student_ind_euro()
 {
@@ -371,20 +403,41 @@ public function student_ind_euro()
 }
 
 public function show_student_euro($id)
-{          
+{
     $payments_income = Income::select('value_euro')->distinct()->get();
     $payments = Euro::where('student_id', $id)->get();
     // $child = DB::table('childrens')->where('student_id', $id)->get();
     return view('payments.student.student_euro',compact('payments','payments_income'));
 }
+public function messages_student_bim()
+{
+return $messages_student_bim = [
+    'student_id.required' => '!!',
+    'value_bim_student.required' => 'لم يتم ادخال قيمة كرت البيم  !!',
+    'number_bim_student.required' => 'لم يتم ادخال قيمة  عدد كرت البيم !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
+public function messages_student_euro()
+{
+return $messages_student_euro = [
+    'student_id.required' => '!!',
+    'student_value.required' => 'لم يتم ادخال البملغ المالي باليورو !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
+
+
+];
+}
 public function store_student_euro(Request $request)
 {
+    $messages = $this->messages_student_euro();
     $this->validate($request,[
         'student_id' => 'required',
         'student_value' => 'required',
         'note'=> 'required',
-        ]);
+    ],$messages);
     $s;
     if ($check = DB::table('incomes')->where('value_euro','!=', null)->where('value_euro','!=', 0)->latest()->first() != null) {
     $payments_cut = Income::where('value_euro','>', 0)
@@ -395,9 +448,9 @@ public function store_student_euro(Request $request)
     //dd($a);
     $m = $s - $a;
     if ($m < 0) {
-    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_euro.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة اليورو يرجى الدفع على دفعتين القيمة المتبقية باليورو هي:  '.$payments_cut->value_euro.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    return redirect(route('student.show')); 
+    return redirect(route('student.show'));
     }
     else {
         $payments_cut->value_euro = $m;
@@ -412,8 +465,8 @@ public function store_student_euro(Request $request)
     $student_Name = $student->student_Name;
     $payments = new Euro;
     $payments -> student_id = $request -> student_id;
-    $payments -> note = $request->note;         
-    $payments -> value_euro = $request->student_value;                                 
+    $payments -> note = $request->note;
+    $payments -> value_euro = $request->student_value;
     //write to the data base
     $payments ->save();
     $student ->save();
@@ -437,7 +490,7 @@ public function update_student_euro(Request $request)
         'student_value' => 'required',
         'note'=> 'required',
     ]);
-    if ($request->student_value1 != $request->student_value) 
+    if ($request->student_value1 != $request->student_value)
     {
 
     $payments_cut = Income::where('value_euro','>', 0)->first();
@@ -453,21 +506,21 @@ public function update_student_euro(Request $request)
     $m = $s - $a;
 
     if ($m < 0) {
-    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالدولار هية:  '.$payments_cut->value_euro.'');
+    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة اليورو يرجى الدفع على دفعتين القيمة المتبقية باليورو هي:  '.$payments_cut->value_euro.'');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-        return redirect(route('euro.student.pay')); 
+        return redirect(route('euro.student.pay'));
     }
     elseif ($m > 0) {
     $payments_cut->value_euro =$m  ;
 
-    } 
+    }
     //create new object of the model student and make mapping to the data
     $student =  Student::find($request->student_id);
     $student_Name = $student->student_Name;
     $payments = Euro::find($request->id);
     $payments -> student_id = $request -> student_id;
-    $payments -> note = $request->note;         
-    $payments -> value_euro = $request->student_value;                                 
+    $payments -> note = $request->note;
+    $payments -> value_euro = $request->student_value;
     //write to the data base
     $payments ->save();
     $student ->save();
@@ -482,7 +535,7 @@ public function update_student_euro(Request $request)
     session()->flash('Edit', 'لم يتم تعديل المبلغ المالي للعائلة  '. $student_Name .' يرجى التأكد من إضافة قيم جديدة ');
     //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
     return redirect(route('euro.student.pay'));
-    }    
+    }
 }
 
 public function destroy_students_euro(Request $request)

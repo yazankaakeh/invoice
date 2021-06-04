@@ -19,7 +19,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">قسم الطبي</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/الاقسام</span>
+							<h4 class="my-auto mb-0 content-title">الأقسام </h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم الطبي </span>
 						</div>
 					</div>
 
@@ -86,7 +86,7 @@
                                                     <td>{{$x->note}}</td>
                                                     <td>{{$x->created_at}}</td>
                                                 <td>
-                                                @can(' إضافة دفعة بالدولار الطبي ')                                                    
+                                                @can(' إضافة دفعة بالدولار الطبي ')
                                                     {{-- Add_Dollar--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
@@ -95,16 +95,16 @@
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
                                                 @endcan
-                                                @can( ' مدفوعات بالدولار الطبي ')                                                    
+                                                @can( ' مدفوعات بالدولار الطبي ')
                                                     @if($x->usd_statu != 0)
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    <a class=" btn btn-sm btn-info" href="/Medical_usd/show/medical/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_usd/show/medical/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
                                                     @endif
                                                 @endcan
-                                                </td>                                                
+                                                </td>
 
                                                 <td>
-                                                @can(' إضافة دفعة بالتركي الطبي ')                                                    
+                                                @can(' إضافة دفعة بالتركي الطبي ')
                                                     {{-- Add_Tr--}}
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
@@ -116,10 +116,11 @@
                                                 @endcan
                                                 @can(' مدفوعات بالتركي الطبي ')
                                                     @if($x->tr_statu != 0)
-                                                    <a class=" btn btn-sm btn-info" href="/Medical_tr/show/medical/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_tr/show/medical/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
                                                     @endif
                                                 @endcan
-                                                </td>  
+                                                </td>
 
                                                 <td>
                                                 @can(' إضافة دفعة باليورو الطبي ')
@@ -133,10 +134,11 @@
                                                 @endcan
                                                 @can(' مدفوعات باليورو الطبي ')
                                                     @if($x->euro_statu != 0)
-                                                    <a class=" btn btn-sm btn-info" href="/Medical_euro/show/medical/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_euro/show/medical/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
                                                     @endif
                                                 @endcan
-                                                </td>    
+                                                </td>
 
                                                 <td>
                                                     {{-- Add_Bim--}}
@@ -150,10 +152,11 @@
                                                 @endcan
                                                 @can(' مدفوعات باكرت البيم الطبي ')
                                                     @if($x->bim_statu != 0)
-                                                    <a class=" btn btn-sm btn-info" href="/Medical_bim/show/medical/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>                                                        
+                                                    <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_bim/show/medical/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
                                                     @endif
                                                 @endcan
-                                                </td>                                                
+                                                </td>
 
                                                     {{-- wife and husband  --}}
                                                     {{--  @if($x->husband_wife_statu == 1)
@@ -170,8 +173,8 @@
                                                         </a>
                                                     </td>
                                                     @endif  --}}
-                                                   
-                                                    
+
+
                                                     {{-- father and mother  --}}
                                                     @if($x->father_mother_statu == 1)
                                                     <td>
@@ -204,21 +207,21 @@
                                                 @endcan
                                                     </td>
 
-                                                    <td>    
+                                                    <td>
                                                     {{-- edit medical  --}}
                                                 @can(' تعديل الطبي ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-medical_name="{{$x->medical_name}}"
-                                                            data-medical_age="{{$x->medical_age}}" data-medical_number="{{$x->medical_number}}" 
-                                                            data-medical_have_id="{{$x->medical_have_id}}" data-id="{{$x->id}}" 
+                                                            data-medical_age="{{$x->medical_age}}" data-medical_number="{{$x->medical_number}}"
+                                                            data-medical_have_id="{{$x->medical_have_id}}" data-id="{{$x->id}}"
                                                             data-medical_id_extr="{{$x->medical_id_extr}}" data-gender="{{$x->gender}}" data-note="{{$x->note}}"
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
                                                 @endcan
                                                     </td>
-                                                   
-                                                   
+
+
                                                     {{-- add children  --}}
                                                     {{--  <td>
                                                     @if($x->child_statu != 0)
@@ -293,7 +296,7 @@
 
                                                      {{--  Student
 
-                                                    <td>  
+                                                    <td>
                                                     @if($x->student_statu  !=  0)
 
                                                         <a class=" btn btn-sm btn-info" href=" {{route('medical.student.show', ['id'=> $x->id])}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
@@ -324,7 +327,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                          <div> 
+                          <div>
                             @if (session()->has('Add'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>
@@ -351,7 +354,7 @@
                                 </button>
                             </div>
                             @endif
-                                                 
+
                             @if (session()->has('Form'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Form') }}</strong>
@@ -450,7 +453,7 @@
                                 </button>
                             </div>
                             @endif
-                            
+
                             @if (session()->has('Add_Address'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add_Address') }}</strong>
@@ -480,7 +483,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة بالجولار</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -493,14 +496,14 @@
                                 <input type="hidden" name="medical_id" id="id" readonly>
                                 <label for="exampleInputEmail">اسم صاحب القيد</label>
                                 <input type="text" class="form-control" id="medical_name" name="medical_name" readonly>
-                                </div>                                
+                                </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المبلغ المدفوع بالدولار</label>
-                                <input type="text" class="form-control" id="medical_value_usd" name="medical_value_usd" placeholder="   أكنب ماهو العملك السابق ">
+                                <input type="text" class="form-control" id="medical_value_usd" name="medical_value_usd" placeholder="   أكنب قيمة المبلغ بالدولار ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                <input type="textarea" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -522,7 +525,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة بالتركي</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -538,11 +541,11 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المبلغ المدفوع بالتركي</label>
-                                <input type="text" class="form-control" id="medical_value" name="medical_value_tr" placeholder="   أكنب ماهو العملك السابق ">
+                                <input type="text" class="form-control" id="medical_value" name="medical_value_tr" placeholder="   أكنب قيمة المبلغ بالتركي   ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                <input type="textarea" class="form-control" id="note" name="note" placeholder="أكتب ملاحظة ان وجد ">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -564,7 +567,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة باليورو</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -577,14 +580,14 @@
                                 <input type="hidden" name="medical_id" id="id" readonly>
                                 <label for="exampleInputEmail">اسم صاحب القيد</label>
                                 <input type="text" class="form-control" id="medical_name" name="medical_name" readonly>
-                                </div>                                
+                                </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المبلغ المدفوع باليورو</label>
-                                <input type="text" class="form-control" id="medical_value_euro" name="medical_value_euro" placeholder="   أكنب ماهو العملك السابق ">
+                                <input type="text" class="form-control" id="medical_value_euro" name="medical_value_euro" placeholder="   أكتب قيمة المبلغ باليورو ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                <input type="textarea" class="form-control" id="note" name="note" placeholder="   أكتب ملاحظة ان وجد">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -606,7 +609,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">اضافة كرت بيم </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -619,10 +622,10 @@
                                 <input type="hidden" name="medical_id" id="id" readonly>
                                 <label for="exampleInputEmail">اسم صاحب القيد</label>
                                 <input type="text" class="form-control" id="medical_name" name="medical_name" readonly>
-                                </div>                                
+                                </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">عدد كروت البيم</label>
-                                <input type="text" class="form-control" id="number_bim_medical" name="number_bim_medical" placeholder="   أكنب ماهو العملك السابق ">
+                                <input type="text" class="form-control" id="number_bim_medical" name="number_bim_medical" placeholder="أكتب قيمة عدد كروت البيم ">
                                 </div>
                                 <div class="modal-body">
                                     <p class="mg-b-10">قيمة الكروت</p>
@@ -630,13 +633,13 @@
                                             @foreach($payments as $a)
                                                 <option value="{{$a->value_bim}}" >
                                                     {{$a->value_bim}}
-                                                </option>                                                   
+                                                </option>
                                             @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                <input type="textarea" class="form-control" id="note" name="note" placeholder="  أكتب ملاحظة ان وجد">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -691,13 +694,13 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري؟</label>
-                                <input type="text" class="form-control" id="job_monthly_salary" name="job_monthly_salary" placeholder="   أكنب ماهو العملك ">
+                                <input type="number" class="form-control" id="job_monthly_salary" name="job_monthly_salary" placeholder="   أكنب ماهو العملك ">
                                 </div>
                                 <div class="form-group">
                                    <p class="mg-b-10">هل لديك عمل سابق؟</p>
                                    <select class="form-control select2" name="job_last_have" id="job_last_have" >
                                     <option label="test">
-                                         حدد من فضلك  </option>
+                                            </option>
                                     <option value="نعم" >
                                        نعم
                                    </option>
@@ -712,7 +715,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم راتبك السابق بعملك السابق؟</label>
-                                <input type="text" class="form-control" id="job_last_salary" name="job_last_salary" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                <input type="number" class="form-control" id="job_last_salary" name="job_last_salary" placeholder="   كم ماهو الراتبك بالعمل السابق">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -833,7 +836,7 @@
                                 <label for="exampleInputEmail">اسم المحافظة</label>
                                 <select type="text" class="form-control" id="address_country" name="address_country" placeholder="">
                                 <option label="test">
-                                    حدد من فضلك  اسم ولاية </option>
+                                         </option>
                                 <option value="لايوجد كملك" >
                                  لايوجد كملك
                                 <option value="أضنة">
@@ -1000,10 +1003,9 @@
                                     دوزجه</option>
                             </select>
                         </div>
-
                                 <div class="form-group">
-                                <label for="exampleInputEmail">اسم الحي</label>
-                                <input type="text" class="form-control" id="address_city" name="address_city" placeholder=" أكتب اسم الحي ">
+                                <label for="exampleInputEmail">اسم منطقة</label>
+                                <input type="text" class="form-control" id="address_city" name="address_city" placeholder=" أكتب اسم منطقة ">
                                 </div>
 
                                  <div class="form-group">
@@ -1059,7 +1061,7 @@
                                     <p class="mg-b-10">الجنس</p>
                                     <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" ">
                                         <option label="test">
-											حدد من فضلك    </option>
+											     </option>
                                         <option value="ذكر" >
                                         ذكر
                                     </option>
@@ -1072,9 +1074,7 @@
                                 <label for="exampleInputEmail">المرحلة الدراسية</label>
                                 <select type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" placeholder=" ">
                                     <option label="test">
-                                        حدد من فضلك  المرحلة الدراسية </option>
-                                    <option value=" الأمِّيِّ">
-                                        الأمِّيِّ </option>
+                                             </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -1105,7 +1105,7 @@
                                     <p class="mg-b-10">الهوية الشخصية من اي ولاية</p>
                                     <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك ">
                                         <option label="test">
-											حدد من فضلك  اسم ولاية </option>
+											     </option>
                                         <option value="لايوجد كملك" >
                                          لايوجد كملك
                                         <option value="أضنة">
@@ -1305,15 +1305,15 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content modal-content-demo">
                                     <div class="modal-header">
-                                        <h6 class="modal-title">اضافة قسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                        <h6 class="modal-title"> قسم الطبي </h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                                     </div>
 
                                 <form action="{{ route('medical.enable') }}" method="GET">
                                 {{ method_field('GET') }}
-                                {{ csrf_field() }}     
-                                 <div class="modal-body">         
+                                {{ csrf_field() }}
+                                 <div class="modal-body">
                                   <div class="form-group">{{-- it must be select options  --}}
-                                    <p class="mg-b-10">تفعيل فورم التسجيل للطلاب؟</p>
+                                    <p class="mg-b-10">تفعيل فورم التسجيل للطبي</p>
                                     <select class="form-control select2" name="enable" id="enable" placeholder=" أكتب الجنس الطفل ">
                                     <option value="1" >
                                         تغعيل
@@ -1329,7 +1329,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
                                 </div>
                                 </form>
-                            
+
                             </div>
                             </div>
                         </div>
@@ -1344,11 +1344,11 @@
 
                                 <form action="{{ route('medical.student.add') }}" method="GET">
                                 {{ method_field('GET') }}
-                                {{ csrf_field() }}     
-                                 <div class="modal-body">         
+                                {{ csrf_field() }}
+                                 <div class="modal-body">
                                 <div class="form-group">
                                 <input type="hidden" name="medical_id" id="medical_id"  readonly>
-                                <label for="exampleInputEmail">رقم الطالب</label>
+                                <label for="exampleInputEmail">رقم المريض</label>
                                 <input type="text" class="form-control" id="medical_id" name="medical_id" placeholder=" أكتب رقم ">
                                 </div>
                                 </div>
@@ -1381,7 +1381,7 @@
                                 <label for="exampleInputEmail">الجنس </label>
                                 <select type="text" class="form-control" id="gender" name="gender" >
                                     <option label="test">
-                                        حدد من فضلك  نوع الجنس </option>
+                                           نوع الجنس </option>
                                     <option value="ذكر" >
                                    ذكر
                                 </option>
@@ -1391,14 +1391,14 @@
 								</select>
                                 </div>
                                 <hr>
-                                <div  class="row row-sm"id="hidden_div" style="display:flex;"> 
-                                
+                                <div  class="row row-sm"id="hidden_div" style="display:flex;">
+
                                 <div class="form-group">
                                 <input type="hidden" name="medical_id" id="medical_id"  readonly>
                                 <label for="exampleInputEmail">اسم الزوجة</label>
                                 <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم الزوجة ">
                                 </div>
-                                
+
                                  <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ ميلاد الزوجة</label>
                                 <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد">
@@ -1408,7 +1408,7 @@
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
                                 <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب اسم المحافظة ">
                                   <option label="test">
-											حدد من فضلك  اسم المحافظة </option>
+											   اسم المحافظة </option>
                                     <option value="	دمشق">
                                         دمشق</option>
                                     <option value="ريف دمشق">
@@ -1448,7 +1448,7 @@
                                 <label for="exampleInputEmail">المستوى التعليمي للزوجة</label>
                                 <select class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى التعليمي  ">
                                     <option label="test">
-                                        حدد من فضلك  المستوى التعليمي </option>
+                                           المستوى التعليمي </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -1480,7 +1480,7 @@
                                 <label for="exampleInputEmail">هل تعمل الزوجة؟</label>
                                 <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder=" هل الزوجة تعمل ام لاتعمل ">
                                <option label="test">
-											حدد من فضلك  تعمل او لاتعمل </option>
+											   تعمل او لاتعمل </option>
                                     <option value="تعمل" >
                                     تعمل
                                 </option>
@@ -1511,7 +1511,7 @@
                             </div>
 				        </div>
                         </div>  --}}
-                        
+
                         {{-- Father and Mother --}}
                         <div class="modal fade" id="exampleModal0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -1543,7 +1543,7 @@
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
                                 <select class="form-control" id="mother_origin" name="mother_origin" placeholder=" أكتب اسم المحافظة ">
                                     <option label="test">
-                                        حدد من فضلك  المحافظة </option>
+                                            </option>
                                     <option value="	دمشق">
                                     دمشق</option>
                                 <option value="ريف دمشق">
@@ -1602,7 +1602,7 @@
                                 <label for="exampleInputEmail">المستوى التعليمي للأم</label>
                                 <select class="form-control" id="mother_academicel" name="mother_academicel" placeholder=" أكتب المستوى النعليمي ">
                                   <option label="test">
-											حدد من فضلك  المستوى التعليمي </option>
+											     </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -1648,7 +1648,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأم</label>
-                                <input type="text" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم ">
+                                <input type="number" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم ">
                                 </div>
 
                                 {{--  Father Part  --}}
@@ -1665,7 +1665,7 @@
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
                                 <select class="form-control" id="father_origin" name="father_origin" placeholder=" أكتب اسم المحافظة ">
                                     <option label="test">
-                                        حدد من فضلك  اسم المحافظة </option>
+                                             </option>
                                     <option value="	دمشق">
                                         دمشق</option>
                                     <option value="ريف دمشق">
@@ -1704,7 +1704,7 @@
                                 <label for="exampleInputEmail">المستوى التعليمي للأب</label>
                                 <select class="form-control" id="father_academicel" name="father_academicel" placeholder=" أكتب المستوى التعليمي ">
                                     <option label="test">
-                                        حدد من فضلك  المستورى التعليمي </option>
+                                             </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -1755,7 +1755,7 @@
                                 <label for="exampleInputEmail">هل يعمل للأب</label>
                                 <select class="form-control select2" name="father_is_work" id="father_is_work" placeholder=" ">
                                     <option label="test">
-                                        حدد من فضلك  </option>
+                                           </option>
                                     <option value="يعمل" >
                                     يعمل
                                 </option>
@@ -1771,7 +1771,7 @@
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأب</label>
-                                <input type="text" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري ">
+                                <input type="number" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري ">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1806,37 +1806,37 @@
                                         <div class="form-group">
                                         <label for="exampleInputEmail">  عمر المريض</label>
                                         <input type="number" class="form-control" id="medical_age" name="medical_age" placeholder="أكنب العمر المريض بأرقام ">
-                                        </div>   
-                                                                                
+                                        </div>
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail">جنس</label>
                                         <select class="form-control" id="gender" name="gender"  placeholder="">
                                             <option label="test">
-                                                حدد من فضلك </option>
+                                                  </option>
                                             <option value="ذكر">
                                                 ذكر</option>
                                             <option value="	انثى">
                                                 انثى</option>
                                             </select>
-                                        </div>  
+                                        </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هل يوجد كملك</label>
                                         <select class="form-control" id="medical_have_id" name="medical_have_id"  placeholder=" ">
                                             <option label="test">
-                                                حدد من فضلك </option>
+                                                  </option>
                                             <option value="	يوجد">
                                                 يوجد</option>
                                             <option value="	لا يوجد">
                                                 لا يوجد</option>
                                             </select>
-                                        </div>     
-                                                               
+                                        </div>
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> الولاية</label>
                                         <select type="text" class="form-control" id="medical_id_extr" name="medical_id_extr" placeholder="">
                                         <option label="test">
-											حدد من فضلك  اسم ولاية </option>
+											     </option>
                                         <option value="لايوجد كملك" >
                                          لايوجد كملك
                                         <option value="أضنة">
@@ -2002,15 +2002,15 @@
                                         <option value="	دوزجه">
                                             دوزجه</option>
                                     </select>
-                                </div>                      
+                                </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> رقم هاتف المريض</label>
                                         <input type="text" class="form-control" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف بدءً من 05">
                                         </div>
-                       
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail">ملاحظات</label>
-                                        <input type="text" class="form-control" id="note" name="note"  placeholder=" أكنب ملاحظات ان جد">
+                                        <input type="textarea" class="form-control" id="note" name="note"  placeholder=" أكنب ملاحظات ان جد">
                                         </div>
                                         </div>
 
@@ -2066,50 +2066,217 @@
                                      <div class="modal-body">
                                         <div class="form-group">
                                         <label for="exampleInputEmail">اسم المريض</label>
-                                        <input type="text" class="form-control" id="medical_name" name="medical_name" placeholder="أكنب اسم الطالب ">
-                                        <input type="hidden" class="form-control" id="id" name="id" placeholder="أكنب اسم الطالب ">
+                                        <input type="text" class="form-control" id="medical_name" name="medical_name" placeholder="أكنب اسم المريض ">
+                                        <input type="hidden" class="form-control" id="id" name="id" placeholder="أكنب اسم المريض ">
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">  عمر المريض</label>
-                                        <input type="number" class="form-control" id="medical_age" name="medical_age" placeholder="أكنب تاريخ الميلاد ">
-                                        </div>   
-                                                                                
+                                        <input type="number" class="form-control" id="medical_age" name="medical_age" placeholder="أكنب عمر المريض  ">
+                                        </div>
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail">الجنس</label>
                                         <select class="form-control" id="gender" name="gender"  placeholder=" ">
                                             <option label="test">
-                                                حدد من فضلك </option>
+                                                  </option>
                                             <option value="ذكر">
                                                 ذكر</option>
                                             <option value="	انثى">
                                                 انثى</option>
                                             </select>
-                                        </div>  
+                                        </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هل يوجد كملك</label>
                                         <select class="form-control" id="medical_have_id" name="medical_have_id"  placeholder=" أكنب اسم المحافظة الأصل ">
                                             <option label="test">
-                                                حدد من فضلك </option>
+                                                  </option>
                                             <option value="	يوجد">
                                                 يوجد</option>
                                             <option value="	لا يوجد">
                                                 لا يوجد</option>
                                             </select>
-                                        </div>     
-                                                               
+                                        </div>
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> الولاية</label>
-                                        <input type="text" class="form-control" id="medical_id_extr" name="medical_id_extr" placeholder="أكنب العمر بأرقام ">
-                                        </div>                       
+                                        <select type="text" class="form-control" id="medical_id_extr" name="medical_id_extr" placeholder="أكنب اسم الولاية  ">
+                                        <option label="test">
+                                        </option>
+                                                <option value="لايوجد كملك" >
+                                                    لايوجد كملك
+                                                <option value="أضنة">
+                                                    أضنة</option>
+                                                <option value="	أدي‌يمن">
+                                                    أدي‌يمن</option>
+                                                <option value="	أفيون ‌قرةحصار">
+                                                    أفيون ‌قرةحصار</option>
+                                                <option value="	أغري">
+                                                    أغري</option>
+                                                <option value="	أماسيا">
+                                                    أماسيا</option>
+                                                <option value="	أنقرة">
+                                                    أنقرة</option>
+                                                <option value="	أنطاليا">
+                                                    أنطاليا</option>
+                                                <option value="	أرتڤين">
+                                                    أرتڤين</option>
+                                                <option value="	أيدين">
+                                                    أيدين</option>
+                                                <option value="	بالكسير">
+                                                    بالكسير</option>
+                                                <option value="	بيلجيك">
+                                                    بيلجيك</option>
+                                                <option value="	بينگول">
+                                                    بينگول</option>
+                                                <option value="	بيطليس">
+                                                    بيطليس</option>
+                                                <option value="بولو">
+                                                    بولو</option>
+                                                <option value="	بوردور">
+                                                    بوردور</option>
+                                                <option value="	بورصة">
+                                                    بورصة</option>
+                                                <option value="	چنق‌قلعه">
+                                                    چنق‌قلعه</option>
+                                                <option value="	شانكيري">
+                                                    شانكيري</option>
+                                                <option value="	چوروم">
+                                                    چوروم</option>
+                                                <option value="	دنيزلي">
+                                                    دنيزلي</option>
+                                                <option value="	ديار بكر">
+                                                    ديار بكر</option>
+                                                <option value="	إدرنه">
+                                                    إدرنه</option>
+                                                <option value="	الازيغ">
+                                                    الازيغ</option>
+                                                <option value="إرزنجان">
+                                                    إرزنجان</option>
+                                                <option value="	أرض‌ روم">
+                                                    أرض‌ روم</option>
+                                                <option value="	إسكي‌ شهر">
+                                                    إسكي‌ شهير</option>
+                                                <option value="	غازي‌عنتاپ">
+                                                    غازي‌عنتاپ</option>
+                                                <option value="	گره‌سون">
+                                                    گره‌سون</option>
+                                                <option value="	گوموش‌خانه">
+                                                    گوموش‌خانه</option>
+                                                <option value="حكاري">
+                                                    حكاري</option>
+                                                <option value="	هاتاي">
+                                                    هاتاي</option>
+                                                <option value="	إسبرطة">
+                                                    إسبرطة</option>
+                                                <option value="	مرسين">
+                                                    مرسين</option>
+                                                <option value="	إسطنبول">
+                                                    إسطنبول</option>
+                                                <option value="	إزمير">
+                                                    إزمير</option>
+                                                <option value="	قارص">
+                                                    قارص</option>
+                                                <option value="	كاستامونو">
+                                                    كاستامونو</option>
+                                                <option value="	قيصري">
+                                                    قيصري</option>
+                                                <option value="	كريك‌قلعه">
+                                                    كريك‌قلعه</option>
+                                                <option value="	كيرشهر">
+                                                    كيرشهر</option>
+                                                <option value="	خوجةإلي">
+                                                    خوجةإلي</option>
+                                                <option value="قونيا">
+                                                    قونيا</option>
+                                                <option value="	كوتاهيا">
+                                                    كوتاهيا</option>
+                                                <option value="	ملاطيا">
+                                                    ملاطيا</option>
+                                                <option value="	مانيسا">
+                                                    مانيسا</option>
+                                                <option value="	كهرمان‌مرعش">
+                                                    كهرمان‌مرعش</option>
+                                                <option value="	ماردين">
+                                                    ماردين</option>
+                                                <option value="	موغلا">
+                                                    موغلا</option>
+                                                <option value="	موش">
+                                                    موش</option>
+                                                <option value="	نڤشهر">
+                                                    نڤشهر</option>
+                                                <option value="	نيغدة">
+                                                    نيغدة</option>
+                                                <option value="	أردو">
+                                                    أردو</option>
+                                                <option value="	ريزه">
+                                                    ريزه</option>
+                                                <option value="	ساكاريا">
+                                                    ساكاريا</option>
+                                                <option value="سامسون">
+                                                    سامسون</option>
+                                                <option value="سيرت">
+                                                    سيرت</option>
+                                                <option value="سينوپ">
+                                                    سينوپ</option>
+                                                <option value="	سيڤاس">
+                                                    سيڤاس</option>
+                                                <option value="	تكيرداغ">
+                                                    تكيرداغ</option>
+                                                <option value="توقاد">
+                                                    توقاد</option>
+                                                <option value="	طرابزون">
+                                                    طرابزون</option>
+                                                <option value="تونج‌ايلي">
+                                                    تونج‌ايلي</option>
+                                                <option value="شانلي‌اورفا">
+                                                    شانلي‌اورفا</option>
+                                                <option value="	عشاق">
+                                                    عشاق</option>
+                                                <option value="	ڤان">
+                                                    ڤان</option>
+                                                <option value="	يوزگات">
+                                                    يوزگات</option>
+                                                <option value="	زونگولداك">
+                                                    زونگولداك</option>
+                                                <option value="	أكساراي">
+                                                    أكساراي</option>
+                                                <option value="بايبورت">
+                                                    بايبورت</option>
+                                                <option value="	قرةمان">
+                                                    قرةمان</option>
+                                                <option value="	قريق‌قلعه">
+                                                    قريق‌قلعه</option>
+                                                <option value="	بطمان">
+                                                    بطمان</option>
+                                                <option value="	شرناق">
+                                                    شرناق</option>
+                                                <option value="	بارتين">
+                                                    بارتين</option>
+                                                <option value="	أرض‌خان">
+                                                    أرض‌خان</option>
+                                                <option value="	إغدير">
+                                                    إغدير</option>
+                                                <option value="	يالوڤا">
+                                                    يالوڤا</option>
+                                                <option value="	قرةبوك">
+                                                    قرةبوك</option>
+                                                <option value="	كلس">
+                                                    كلس</option>
+                                                <option value="	عثمانية">
+                                                    عثمانية</option>
+                                                <option value="	دوزجه">
+                                                    دوزجه</option>
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> رقم هاتف المريض</label>
-                                        <input type="text" class="form-control" id="medical_number" name="medical_number" placeholder="أكنب العمر بأرقام ">
+                                        <input type="number" class="form-control" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف  ">
                                         </div>
-                       
+
                                         <div class="form-group">
                                         <label for="exampleInputEmail">ملاحظات</label>
-                                        <input type="text" class="form-control" id="note" name="note"  placeholder=" أكنب تاريخ الدخول الى تركيا ">
+                                        <input type="textarea" class="form-control" id="note" name="note"  placeholder=" أكتب ملاحظة ان وجد ">
                                         </div>
                                         </div>
                                             <div class="modal-footer">

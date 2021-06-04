@@ -32,18 +32,36 @@ function __construct()
     $this->middleware('permission: تعديل قسم الحالة الصحية الطلاب ', ['only' => ['update']]);
     $this->middleware('permission:حذف قسم الحالة الصحية الطبي ', ['only' => ['destroy']]);
 
-}  
+}
 
 
 ///////////////////////////////////////// Student Start //////////////////////////////////////////
 
     public function show($id){
       $med = MedicalStatus::where('student_id', $id)->get();
-      return view('Student.med_sta.med_sta',compact('med')); 
+      return view('Student.med_sta.med_sta',compact('med'));
     }
+    public function messages_student()
+    {
+    return $messages_student = [
+        'student_id.required' => '!!',
+        'disease_type.required' => 'لم يتم ادخال نوع المرض !!',
+        'disease_name.required' => 'لم يتم ادخال  اسم المريض  !!',
+        'dr_name.required' => 'لم يتم اسم الطبيب   !!',
+        'treat_cost.required'  => 'لم يتم ادخال تكلفة العلاج  !!',
+        'treat_type.required'  => 'لم يتم ادخال  نوع العلاج  !!',
+        'treat_Duratio.required'  => 'لم يتم ادخال نوع مدة العلاج   !!',
+        'date_accept.required'  => 'لم يتم ادخال  تاريخ البدء    !!',
+        'date_end.required'  => 'لم يتم ادخال  تاريخ الأنهاء    !!',
+        'Trans_to_doctor.required'  => 'لم يتم ادخال  اسم طيب أخر ان وجد او أكتب لايوجد!!',
 
-    public function storestudent(Request $request){
-            $this->validate($request,[
+
+    ];
+    }
+    public function storestudent(Request $request)
+    {
+        $messages = $this->messages_student();
+        $this->validate($request,[
             'student_id'=>'required',
             'disease_type' => 'required',
             'disease_name' => 'required',
@@ -54,7 +72,7 @@ function __construct()
             'date_accept' => 'required',
             'date_end' => 'required',
             'Trans_to_doctor' => 'required'
-         ]);
+        ],$messages);
 
          //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
@@ -92,9 +110,29 @@ function __construct()
        ->get();
        return view('Student.med_sta.med_sta')->with($med);
     }
-    
+    public function messages_update()
+    {
+    return $messages_update = [
+        'student_id.required' => '!!',
+        'id.required' => '!!',
+        'disease_type.required' => 'لم يتم ادخال نوع المرض !!',
+        'disease_name.required' => 'لم يتم ادخال  اسم المريض  !!',
+        'dr_name.required' => 'لم يتم اسم الطبيب   !!',
+        'treat_cost.required'  => 'لم يتم ادخال تكلفة العلاج  !!',
+        'treat_type.required'  => 'لم يتم ادخال  نوع العلاج  !!',
+        'treat_Duratio.required'  => 'لم يتم ادخال نوع مدة العلاج   !!',
+        'date_accept.required'  => 'لم يتم ادخال  تاريخ البدء    !!',
+        'date_end.required'  => 'لم يتم ادخال  تاريخ الأنهاء    !!',
+        'Trans_to_doctor.required'  => 'لم يتم ادخال  اسم طيب أخر ان وجد او أكتب لايوجد!!',
+
+
+    ];
+    }
     public function update(Request $request, MedicalStatus $medicalStatus)
-    {  $this->validate($request,[
+    {
+
+        $messages = $this->messages_update();
+        $this->validate($request,[
             'student_id'=>'required',
             'id'=>'required',
             'disease_type' => 'required',
@@ -106,7 +144,8 @@ function __construct()
             'date_accept' => 'required',
             'date_end' => 'required',
             'Trans_to_doctor' => 'required'
-         ]);
+        ],$messages);
+
 
          //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
@@ -128,7 +167,7 @@ function __construct()
          session()->flash('Edit',  'تم تعديل الحالة الطبية للطالب  '. $student_name .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('Medical_Statu.show'));
-       
+
     }
 
     public function destroy(Request $request)
@@ -153,11 +192,30 @@ function __construct()
 
     public function show_medical($id){
       $med = MedicalStatus::where('medical_id', $id)->get();
-      return view('Medical.med_sta.med_sta',compact('med')); 
+      return view('Medical.med_sta.med_sta',compact('med'));
     }
+    public function messages_medical()
+    {
+    return $messages_medical = [
+        'medical_id.required' => '!!',
+        'disease_type.required' => 'لم يتم ادخال نوع المرض !!',
+        'disease_name.required' => 'لم يتم ادخال  اسم المريض  !!',
+        'dr_name.required' => 'لم يتم اسم الطبيب   !!',
+        'treat_cost.required'  => 'لم يتم ادخال تكلفة العلاج  !!',
+        'treat_type.required'  => 'لم يتم ادخال  نوع العلاج  !!',
+        'treat_Duratio.required'  => 'لم يتم ادخال نوع مدة العلاج   !!',
+        'date_accept.required'  => 'لم يتم ادخال  تاريخ البدء    !!',
+        'date_end.required'  => 'لم يتم ادخال  تاريخ الأنهاء    !!',
+        'Trans_to_doctor.required'  => 'لم يتم ادخال  اسم طيب أخر ان وجد او أكتب لايوجد!!',
 
-    public function store_medical(Request $request){
-            $this->validate($request,[
+
+    ];
+    }
+    public function store_medical(Request $request)
+    {
+
+        $messages = $this->messages_medical();
+        $this->validate($request,[
             'medical_id'=>'required',
             'disease_type' => 'required',
             'disease_name' => 'required',
@@ -168,7 +226,7 @@ function __construct()
             'date_accept' => 'required',
             'date_end' => 'required',
             'Trans_to_doctor' => 'required'
-         ]);
+        ],$messages);
 
          //create new object of the model medical and make mapping to the data
          $medicals =  Medical::find($request->medical_id);
@@ -206,9 +264,29 @@ function __construct()
        ->get();
        return view('Medical.med_sta.med_sta')->with($med);
     }
-    
+    public function messages_update_medical()
+    {
+    return $messages_update_medical = [
+        'medical_id.required' => '!!',
+        'id.required' => '!!',
+        'disease_type.required' => 'لم يتم ادخال نوع المرض !!',
+        'disease_name.required' => 'لم يتم ادخال  اسم المريض  !!',
+        'dr_name.required' => 'لم يتم اسم الطبيب   !!',
+        'treat_cost.required'  => 'لم يتم ادخال تكلفة العلاج  !!',
+        'treat_type.required'  => 'لم يتم ادخال  نوع العلاج  !!',
+        'treat_Duratio.required'  => 'لم يتم ادخال نوع مدة العلاج   !!',
+        'date_accept.required'  => 'لم يتم ادخال  تاريخ البدء    !!',
+        'date_end.required'  => 'لم يتم ادخال  تاريخ الأنهاء    !!',
+        'Trans_to_doctor.required'  => 'لم يتم ادخال  اسم طيب أخر ان وجد او أكتب لايوجد!!',
+
+
+    ];
+    }
     public function update_medical(Request $request, MedicalStatus $medicalStatus)
-    {  $this->validate($request,[
+    {
+
+        $messages = $this->messages_update_medical();
+        $this->validate($request,[
             'medical_id'=>'required',
             'id'=>'required',
             'disease_type' => 'required',
@@ -220,7 +298,7 @@ function __construct()
             'date_accept' => 'required',
             'date_end' => 'required',
             'Trans_to_doctor' => 'required'
-         ]);
+        ],$messages);
 
          //create new object of the model medical and make mapping to the data
          $medicals =  Medical::find($request->medical_id);
@@ -242,7 +320,7 @@ function __construct()
          session()->flash('Edit',  'تم تعديل الحالة الطبية للطالب  '. $medical_name .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Medical Successfully')
          return redirect(route('Medical_Statu.show.medical'));
-       
+
     }
 
     public function destroy_medical(Request $request)

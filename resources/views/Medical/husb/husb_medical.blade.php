@@ -12,7 +12,7 @@
 <!--- Select2 css -->
 
 @section('title')
-عرض بيانات الزوج و الزوجة للمريض
+ قسم الزوج و الزوجة للطبي
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
@@ -33,10 +33,13 @@
                             <div class="card mg-b-20">
                                 <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
-                                        <i class="mdi mdi-dots-horizontal text-gray"></i>
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    <div class="main-content-label mg-b-5">
+                                        قائمة معلومات الزوج    .
+                                    </div>
+                                    <p class="mg-b-20">معلومات السكن للطلاب .</p>
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons text-md-nowrap">
                                             <thead>

@@ -19,7 +19,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/معلومات القرأن</span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم القرأن</span>
 						</div>
 					</div>
 
@@ -71,7 +71,7 @@
                                                     <td>{{$x->quran_with_Certif}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
-                                                    @can(' تعديل قسم القرأن الطلاب ')                                                        
+                                                    @can(' تعديل قسم القرأن الطلاب ')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-quran_parts="{{$x->quran_parts}}"
@@ -85,7 +85,7 @@
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                     @endcan
-                                                    @can('حذف قسم القرأن الطلاب ')                                                        
+                                                    @can('حذف قسم القرأن الطلاب ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-name="{{$x->name }}" data-student_id="{{$x->student_id}}"

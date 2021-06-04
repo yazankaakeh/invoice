@@ -22,15 +22,29 @@ $this->middleware('permission: تعديل قسم المنح الدراسية ا�
 $this->middleware('permission:حذف قسم المنح الدراسية الطلاب ', ['only' => ['destroy']]);
 }
 
-    public function storestudent(Request $request){
+public function messages()
+{
+    return $messages = [
+        'student_id.required' => '',
+        'scholar_name.required' => 'لم يتم ادخال معلومات اسم المنحة المطلوبة !!',
+        'scholar_type.required' => 'لم يتم ادخال معلومات نوع المنحة المطلوبة !!',
+        'scholar_value.required'=>'لم يتم ادخال معلومات قيمة المنحة المطلوبة !!',
+        'scholar_source.required'=>'لم يتم ادخال معلومات  مصدر المنحة  المطلوبة !!',
+
+
+    ];
+}
+    public function storestudent(Request $request)
+    {
+        $messages = $this->messages();
             $this->validate($request,[
             'student_id'=>'required',
             'scholar_name' => 'required',
             'scholar_type' => 'required',
             'scholar_value' => 'required',
             'scholar_source' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
          $x=1;
@@ -56,10 +70,10 @@ $this->middleware('permission:حذف قسم المنح الدراسية الطل
        'scholar_source')
        ->orderBy('id', 'DESC')
        ->get();
-       return view('Student.scholarship.scholarship')->with($schol);    
+       return view('Student.scholarship.scholarship')->with($schol);
     }
 
- 
+
 
     public function update(Request $request){
             $this->validate($request,[
@@ -86,7 +100,7 @@ $this->middleware('permission:حذف قسم المنح الدراسية الطل
          session()->flash('Edit',  'تم تعديل المنحة للطالب  '. $student_name .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('Scholarship.show'));
-    } 
+    }
 
 
 

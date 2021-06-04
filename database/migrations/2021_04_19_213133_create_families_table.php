@@ -21,19 +21,19 @@ class CreateFamiliesTable extends Migration
             // $table->foreign('medical_id')->references('id')->on('medicals');
 
             ########################## family info Begin ############################
-            $table->string('family_Constraint');// صاحب القيد
-            $table->string('family_number_member');// عدد أفراد
-            $table->string('family_breadwinner');// المعيل
-            $table->string('work_breadwinner');// المعيل
-            $table->string('family_an_breadwinner');// المعيل الثاني
-            $table->string('work_an_breadwinner');// المعيل الثاني
-            $table->string('family_monthly_salary');// الراتب الشهري من العمل
-            $table->string('aid_value');// هل يوجد مساعدات
-            $table->string('phone');// هل يوجد مساعدات
-            $table->string('sec_phone');// هل يوجد مساعدات
-            $table->string('family_has_aid');// هل يوجد مساعدات
-            $table->string('family_what_aid');// ماهي المساعدات
-            $table->string('note');// 
+            $table->string('family_Constraint')->nullable();// صاحب القيد
+            $table->string('family_number_member')->nullable();// عدد أفراد
+            $table->string('family_breadwinner')->nullable();// المعيل
+            $table->string('work_breadwinner')->nullable();// المعيل
+            $table->string('family_an_breadwinner')->nullable();// المعيل الثاني
+            $table->string('work_an_breadwinner')->nullable();// المعيل الثاني
+            $table->string('family_monthly_salary')->nullable();// الراتب الشهري من العمل
+            $table->string('aid_value')->nullable();// هل يوجد مساعدات
+            $table->string('phone')->nullable();// هل يوجد مساعدات
+            $table->string('sec_phone')->nullable();// هل يوجد مساعدات
+            $table->string('family_has_aid')->nullable();// هل يوجد مساعدات
+            $table->string('family_what_aid')->nullable();// ماهي المساعدات
+            $table->string('note')->nullable();//
             ########################## family info End ############################
 
             ########################## Parts ######################################

@@ -12,14 +12,18 @@
 <!--- Select2 css -->
 
 @section('title')
-مدفوعات العائلات
+قسم مدفوعات العائلة بالتركي
 @endsection
 @section('page-header')
-				<!-- breadcrumb -->
-				<div class="breadcrumb-header justify-content-between">
-
-				</div>
-				<!-- breadcrumb -->
+    <!-- breadcrumb -->
+            <div class="breadcrumb-header justify-content-between">
+              <div class="my-auto">
+                  <div class="d-flex">
+                    <h4 class="my-auto mb-0 content-title"> قسم العائلات </h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ قسم مدفوعات العائلة بالتركي </span>
+                      </div>
+                          </div>
+                             </div>
+                            <!-- breadcrumb -->
 @endsection
 @section('content')
 				<!-- row -->
@@ -28,17 +32,20 @@
                             <div class="card mg-b-20">
                                 <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
-                                        <i class="mdi mdi-dots-horizontal text-gray"></i>
                                     </div>
                                 </div>
                                 <div class="card-body">
+                              <div class="main-content-label mg-b-5">
+                                    قائمة  مدفوعات العائلة بالتركي  .
+                                </div>
+                                <p class="mg-b-20">معلومات  مدفوعات العائلة بالتركي.</p>
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons text-md-nowrap">
                                             <thead>
                                                 <tr>
                                                     <th class="border-bottom-0">Id</th>
                                                     <th class="border-bottom-0">المبلغ المدفوع بالتركي</th>
-                                                    <th class="border-bottom-0">رقم الطالب</th>
+                                                    <th class="border-bottom-0">رقم العائلة </th>
                                                     <th class="border-bottom-0">اسم العائلة</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
                                                     <th class="border-bottom-0">تاريخ الدفع</th>
@@ -61,7 +68,7 @@
                                                             data-family_id="{{$x->family_id}}"
                                                             data-id="{{$x->id}}"
                                                             data-family_constraint="{{$x->family->family_Constraint}}" data-note="{{$x->Note }}"
-                                                            data-family_value="{{$x->family_value }}"                                                                
+                                                            data-family_value="{{$x->family_value }}"
                                                             data-toggle="modal"
                                                             href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"></i>
@@ -102,8 +109,8 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            @endif                            
-                            
+                            @endif
+
                             @if (session()->has('Warning'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Warning') }}</strong>
@@ -133,7 +140,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                    <h6 class="modal-title">حذف عملية الدفع </h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <form action="{{ Route('tr.destroy.family') }}" method="post">
@@ -146,9 +153,9 @@
                                         <label for="recipient-name" class="col-form-label">اسم الطالب:</label>
                                         <input class="form-control" name="family_Constraint" id="family_constraint" type="text" readonly>
                                     </div>
-                                        
+
                                     <div class="modal-body">
-                                    <label for="recipient-name" class="col-form-label">المبلغ بالدولار</label>
+                                    <label for="recipient-name" class="col-form-label">المبلغ  بالتركي</label>
                                     <input class="form-control" name="family_value_tr" id="family_value" type="text" readonly>
                                     </div>
 
@@ -158,7 +165,7 @@
                                         <textarea class="form-control" id="note" name="note" readonly></textarea>
                                     </div>
 
-                                    
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
                                         <button type="submit" class="btn btn-danger">تاكيد</button>
@@ -176,7 +183,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">تعديل عملية الدفع </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -193,7 +200,7 @@
                                         </div>
 
                                         <div class="modal-body">
-                                        <label for="recipient-name" class="col-form-label">المبلغ بالدولار</label>
+                                        <label for="recipient-name" class="col-form-label">المبلغ بالتركي</label>
                                         <input class="form-control" name="family_value_tr" id="family_value" type="text" >
                                         <input class="form-control" name="family_value_tr1" id="family_value" type="hidden" >
                                         </div>
@@ -211,7 +218,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                
+                    </div>
 				</div>
 
 

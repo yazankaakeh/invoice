@@ -19,7 +19,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ معلومات السكن للطلاب</span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ قسم السكن للطلاب</span>
 						</div>
 					</div>
 
@@ -69,7 +69,7 @@
                                                     <td>{{$x->stud_valu_expen}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
-                                                    @can(' تعديل قسم سكن الطلاب ')                                                      
+                                                    @can(' تعديل قسم سكن الطلاب ')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-stud_type_housing="{{$x->stud_type_housing}}"
@@ -82,7 +82,7 @@
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                     @endcan
-                                                    @can('حذف قسم سكن الطلاب ')                                                        
+                                                    @can('حذف قسم سكن الطلاب ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-student_name="{{$x->student->student_name}}" data-student_id="{{$x->student_id}}"

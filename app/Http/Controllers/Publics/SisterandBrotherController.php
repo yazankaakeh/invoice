@@ -21,14 +21,30 @@ function __construct()
     $this->middleware('permission: تعديل قسم الأخوة الطلاب ', ['only' => ['update']]);
     $this->middleware('permission:حذف قسم الأخوة الطلاب ', ['only' => ['destroy']]);
 
-}  
+}
 
 
 
+public function messages_student()
+{
+return $messages_student = [
+    'student_id.required' => '!!',
+    'name.required' => 'لم يتم ادخال اسم  !!',
+    'age.required' => 'لم يتم ادخال  العمر   !!',
+    'gender.required' => 'لم يتم الجنس    !!',
+    'academicel.required'  => 'لم يتم ادخال مرحلة دراسية  !!',
+    'special.required'  => 'لم يتم ادخال الأختصتص  !!',
+    'work.required'  => 'لم يتم ادخال العمل !!',
+    'salary.required'  => 'لم يتم ادخال الراتب الشهري !!',
 
+
+
+];
+}
     public function storestudent(Request $request)
     {
-         $this->validate($request,[
+        $messages = $this->messages_student();
+        $this->validate($request,[
             'student_id'=>'required',
             'name' => 'required',
             'age' => 'required',
@@ -37,13 +53,13 @@ function __construct()
             'special' => 'required',
             'work' => 'required',
             'salary' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
          $x = $students->sis_statu;
          ++$x;
-         $students->sis_statu = $x;         
+         $students->sis_statu = $x;
          $SisterandBrothers = new SisterandBrother;
          $SisterandBrothers -> student_id = $request->student_id;
          $SisterandBrothers -> name = $request->name;
@@ -79,9 +95,24 @@ function __construct()
        //->with($bros);
     }
 
+    public function messages_update()
+    {
+    return $messages_update = [
+        'name.required' => 'لم يتم ادخال اسم  !!',
+        'age.required' => 'لم يتم ادخال  العمر   !!',
+        'gender.required' => 'لم يتم الجنس    !!',
+        'academicel.required'  => 'لم يتم ادخال مرحلة دراسية  !!',
+        'special.required'  => 'لم يتم ادخال الأختصتص  !!',
+        'work.required'  => 'لم يتم ادخال العمل !!',
+        'salary.required'  => 'لم يتم ادخال الراتب الشهري !!',
 
+
+
+    ];
+    }
     public function update(Request $request, SisterandBrother $sisterandBrother)
     {
+        $messages = $this->messages_update();
         $this->validate($request, [
             'name' => 'required',
             'age' => 'required',
@@ -90,8 +121,8 @@ function __construct()
             'special' => 'required',
             'work' => 'required',
             'salary' => 'required'
-        ]);
-         //create new object of the model student and make mapping to the data ::find($request->id);
+        ],$messages);
+        //create new object of the model student and make mapping to the data ::find($request->id);
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
          $SisterandBrothers =  SisterandBrother::find($request->id);

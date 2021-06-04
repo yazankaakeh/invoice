@@ -19,10 +19,10 @@ class CreateScholarshipsTable extends Migration
             $table->foreign('student_id')->references('id')->on('students');
 
             ########################## scholarships info Begin ############################
-            $table->string('scholar_name');// أسم
-            $table->string('scholar_type');// نوع
-            $table->string('scholar_value');// قيمة
-            $table->string('scholar_source');//الجهة مانحة
+            $table->string('scholar_name')->nullable();// أسم
+            $table->string('scholar_type')->nullable();// نوع
+            $table->string('scholar_value')->nullable();// قيمة
+            $table->string('scholar_source')->nullable();//الجهة مانحة
             ########################## scholarships info Begin ############################
 
             $table->timestamps();

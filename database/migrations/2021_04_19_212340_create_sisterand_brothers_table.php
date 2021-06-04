@@ -18,13 +18,13 @@ class CreateSisterandBrothersTable extends Migration
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students');
             ########################## sister info Begin ############################
-            $table->string('name');// الأسم
-            $table->string('age');// العمر
-            $table->string('gender');// الجنس
-            $table->string('academicel');// مستوى الدراسي
-            $table->string('special');// الأختصاص
-            $table->string('work');// العمل الحالي
-            $table->string('salary');//الراتب الشهري
+            $table->string('name')->nullable();// الأسم
+            $table->string('age')->nullable();// العمر
+            $table->string('gender')->nullable();// الجنس
+            $table->string('academicel')->nullable();// مستوى الدراسي
+            $table->string('special')->nullable();// الأختصاص
+            $table->string('work')->nullable();// العمل الحالي
+            $table->string('salary')->nullable();//الراتب الشهري
             ########################## sister info End ############################
             $table->timestamps();
         });

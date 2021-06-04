@@ -20,7 +20,7 @@ class FamilyController extends Controller
 function __construct()
 {
 $this->middleware('permission: قسم العائلات ', ['only' => ['index']]);
-$this->middleware('permission: إضافة العائلات ', ['only' => ['store']]);
+$this->middleware('permission: اضافة العائلات ', ['only' => ['store']]);
 $this->middleware('permission: تعديل العائلات ', ['only' => ['update']]);
 $this->middleware('permission: حذف العائلات ', ['only' => ['destroy']]);
 //$this->middleware('permission: حذف مدرسة لطفل الطلاب ', ['only' => ['register']]);
@@ -35,7 +35,7 @@ $this->middleware('permission:  مريض العائلات ', ['only' => ['show_m
 $this->middleware('permission: حذف مريض العائلات ', ['only' => ['detroy_medical']]);
 
 
-}    
+}
 
 
 
@@ -48,18 +48,22 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
             'family_an_breadwinner.required'=>'لم يتم ادخال معلومات اسم المعيل الثاني المطلوبة !!',
             'family_monthly_salary.required'=>'لم يتم ادخال معلومات الراتب الشهري المطلوبة !!',
             'email.required'=>'لم يتم ادخال معلومات الأيميل المطلوبة !!',
-            'phone.unique'=>'لم يتم ادخال معلومات رقم الهاتف الأول المطلوبة !!',
-            'sec_phone.unique'=>'لم يتم ادخال معلومات رقم الهاتف الثاني المطلوبة !!',
+            'email.unique'=>'هذا الأيميل مسجل بالفعل لدينا يجب أضافة ايميل أخر!!',
+            'phone.required'=>'لم يتم ادخال معلومات رقم الهاتف الأول المطلوبة !!',
+            'phone.numeric'=>'يجب أدخال رقم الهاتف الأول حصراً أرقام  !!',
+            'phone.unique'=>'الرقم المضاف موجود بالغعل يرجى أضافة رقم أخر !!',
+            'sec_phone.unique'=>'الرقم المضاف موجود بالغعل يرجى أضافة رقم أخر !!',
+            'sec_phone.numeric'=>'يجب أدخال رقم الهاتف الثاني حصراً أرقام !!',
+            'sec_phone.required'=>'لم يتم ادخال معلومات رقم الهاتف الثاني المطلوبة !!',
             'family_what_aid.required'=>'لم يتم ادخال معلومات ماهي المساعدات المطلوبة !!',
             'family_aid.required'=>'لم يتم ادخال معلومات هل يوجد مساعدات المطلوبة !!',
             'aid_value.required'=>'لم يتم ادخال معلومات قيمة المساعدات المالية  المطلوبة !!',
-            'phone.required'=>'لم يتم ادخال معلومات رقم الهاتف الأول المطلوبة !!',
             'work_an_breadwinner.required'=>'لم يتم ادخال معلومات عمل المعيل الثاني المطلوبة !!',
             'work_breadwinner.required'=>'لم يتم ادخال معلومات عمل المعيل الأول المطلوبة !!',
             'note.required'=>'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد !!',
 
         ];
-    }   
+    }
 
     public function index(Request $request)
     {
@@ -67,7 +71,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
         $family = Family::all();
         return view('Family.family.family',compact('family','payments'));
     }
-  
+
 
     public function store(Request $request)
     {
@@ -111,7 +115,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
          $request=null;
          return redirect(route('family.show'));
          }
-         
+
          if ($request->register == "register") {
             $enable = From::find(1);
             session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
@@ -149,7 +153,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
          $families -> family_breadwinner = $request->family_breadwinner;
          $families -> family_an_breadwinner = $request->family_an_breadwinner;
          $families -> family_monthly_salary = $request->family_monthly_salary;
-         $families -> family_what_aid = $request->family_what_aid;         
+         $families -> family_what_aid = $request->family_what_aid;
          $families -> work_breadwinner = $request->work_breadwinner;
          $families -> work_an_breadwinner = $request->work_an_breadwinner;
          $families -> family_has_aid = $request->family_has_aid;
@@ -166,12 +170,12 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
     {
         /* here we have sued the table students and searched about the id using the find and then delete the
         id using the id note: we have passed the id from the show using the route */
-        
+
         $user = DB::table('students')->where('family_id', $request->id )->value('family_id');
       //  dd($user);
         if ($user == null) {
             $familys =  Family::find($request->id);
-            $family_Constraint = $familys->family_Constraint;         
+            $family_Constraint = $familys->family_Constraint;
             Family::find($request->id)->delete();
             session()->flash('Delete','تم حذف معلومات العائلة  '. $family_Constraint .' بنجاح ');
             return redirect(route('family.show'));
@@ -186,13 +190,13 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
         session()->flash('Delete','تم حذف معلومات العائلة  '. $family_Constraint .' بنجاح ');
         return redirect(route('family.show'));
         }
-        
+
 
     }
 
 ////////////////////////////////////////////////////////// Form /////////////////////////
-    
-    public function register(){    
+
+    public function register(){
         $check = From::all();
 
         if($check->isEmpty())
@@ -201,7 +205,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
             'student_form' => 0,
             'family_form' => 0,
             'medical_form' => 0,
-     
+
         ]);
         $enable = From::find(1);
         //dd($enable);
@@ -227,7 +231,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
          session()->flash('Form', 'تم تعديل حالة قائمة تسجيل العائلات بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('family.show'));
-    }  
+    }
 
 
 
@@ -238,13 +242,13 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
     {
         $this->validate($request,[
          'family_id' => 'required',
-         'student_id' => 'required',  
+         'student_id' => 'required',
          ]);
          $last = DB::table('students')->latest()->first();
         //  dd($last);
         if ($last != null) {
         if ($request->student_id <= $last->id ) {
-        
+
          //create new object of the model student and make mapping to the data
          $students = Student::find($request->student_id);
          if ($students ->family_id  == null) {
@@ -316,14 +320,14 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
     {
         $this->validate($request,[
          'family_id' => 'required',
-         'medical_id' => 'required',  
+         'medical_id' => 'required',
          ]);
          $last = DB::table('medicals')->latest()->first();
         //  dd($last)c;
         if ($last != null) {
-        
+
          if (  $request->medical_id <= $last->id ) {
-        
+
          //create new object of the model student and make mapping to the data
          $medicals = Medical::find($request->medical_id);
          if ($medicals ->family_id  == null) {

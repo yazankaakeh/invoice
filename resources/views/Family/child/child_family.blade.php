@@ -12,7 +12,7 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم الأطفال
+قسم الأطفال للعائلة
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
@@ -101,23 +101,23 @@
                                                             </a>
                                                     @endcan
                                                     </td>
-                                                    <td> 
+                                                    <td>
                                                     @can('  مدرسة لطفل العائلات ')
 
                                                             @if($x->family_statu != 0)
                                                             <a class=" btn btn-sm btn-info" href="/school_family/show/school/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                              @else                                                           {{-- Add_School --}}
-                                                    @endcan   
+                                                    @endcan
                                                     @can(' إضافة مدرسة لطفل العائلات ')
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal" title="إضافة مدرسة">
                                                                 <i class="las la-pen"></i>
-                                                            </a> 
+                                                            </a>
                                                             @endif
-                                                    @endcan   
-                                                    </td>                                                    
+                                                    @endcan
+                                                    </td>
                                                 </tr>
                                                    @endif
                                                 @endforeach
@@ -196,28 +196,28 @@
                                     <div class="form-group">
                                     <input type="hidden" name="id" id="id"  readonly>
                                     <label for="exampleInputEmail">اسم المدرسة </label>
-                                    <input class="form-control" name="School_name" id="School_name" type="text">
+                                    <input class="form-control" name="School_name" id="School_name" type="text" placeholder=" أكتب أسم المدرسة  ">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نوع المدرسة </label>
-                                    <input class="form-control" name="School_type" id="School_type" type="text">
+                                    <input class="form-control" name="School_type" id="School_type" type="text" placeholder=" أكتب نوع المدرسة  ">
                                     </div>
 
                                     <div class="form-group">
                                     <label for="exampleInputEmail">موقع المدرسة </label>
-                                    <input class="form-control" name="School_location" id="School_location" type="text">
+                                    <input class="form-control" name="School_location" id="School_location" type="text" placeholder=" أكتب موقع  المدرسة  ">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                     <label for="exampleInputEmail">تكاليف الدراسة</label>
-                                    <input class="form-control" name="School_cost" id="School_cost" type="text">
+                                    <input class="form-control" name="School_cost" id="School_cost" type="text" placeholder=" أكتب تكاليف المالية للمدرسة  ">
                                     </div>
 
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نكاليف عامة</label>
-                                    <input class="form-control" name="School_fees" id="School_fees" type="text">
-                                    </div>  
+                                    <input class="form-control" name="School_fees" id="School_fees" type="text"  placeholder=" أكتب تكاليف العامة للطفل في المدرسة  ">
+                                    </div>
 
 
                                     </div>
@@ -235,7 +235,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                    <h6 class="modal-title">حدف عملية الدفع </h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <form action="{{ Route('children.delete.family') }}" method="post">
@@ -246,7 +246,7 @@
                                         <div class="form-group">
                                         <input type="hidden" name="family_id" id="family_id" readonly>
                                         <input type="hidden" name="id" id="id"  readonly>
-                                        <label for="exampleInputEmail">البيانات المتعلقة بهذا الطالب </label>
+                                        <label for="exampleInputEmail">البيانات المتعلقة بهذا الطفل  </label>
                                         <input class="form-control" name="family_constraint" id="family_constraint" type="text" readonly>
                                         </div>
                                     </div>
@@ -265,7 +265,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">تعديل بيانات الطفل </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

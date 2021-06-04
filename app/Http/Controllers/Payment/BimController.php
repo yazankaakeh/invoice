@@ -48,15 +48,26 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
        $payments = Bim::with('student')->get();
        return view('payments.family.family_bim',compact("payments",'payments_income'));//->with($payments)
     }
+    public function messages_family_bim()
+    {
+    return $messages_family_bim = [
+        'family_id.required' => '!!',
+        'value_bim_family.required' => 'لم يتم ادخال قيمة كرت البيم  !!',
+        'number_bim_family.required' => 'لم يتم ادخال قيمة  عدد كرت البيم !!',
+        'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+    ];
+}
     public function store_family_bim(Request $request)
     {
+        $messages = $this->messages_family_bim();
      $this->validate($request,[
             'family_id' => 'required',
             'value_bim_family' => 'required',
             'number_bim_family' => 'required',
             'note'=> 'required',
-         ]);
+        ],$messages);
         $s;
         if ($check = DB::table('incomes')->where('value_bim','!=', null)->where('value_bim','!=', 0)->latest()->first() != null) {
         $payments_cut = Income::where('value_bim',$request->value_bim_family )
@@ -67,9 +78,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         //dd($a);
         $m = $s - $a;
         if ($m < 0) {
-        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هي:  '.$payments_cut->number_bim.'');
             //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-        return redirect(route('bim.family.pay')); 
+        return redirect(route('bim.family.pay'));
         }
         else {
             $payments_cut->number_bim = $m;
@@ -84,9 +95,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         $family_Constraint = $family->family_Constraint;
         $payments = new Bim;
         $payments -> family_id = $request -> family_id;
-        $payments -> note = $request->note;         
+        $payments -> note = $request->note;
         $payments -> value_bim_family = $request->value_bim_family;
-        $payments -> number_bim_family = $request->number_bim_family;                                 
+        $payments -> number_bim_family = $request->number_bim_family;
         //write to the data base
         $payments ->save();
         $family ->save();
@@ -102,7 +113,7 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
     }
 
     public function show_family_bim($id)
-    {          
+    {
       $payments_income = Income::select('value_bim')->distinct()->get();
       $payments = Bim::where('family_id', $id)->get();
      // $child = DB::table('childrens')->where('student_id', $id)->get();
@@ -117,7 +128,7 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
             'number_bim_family' => 'required',
             'note'=> 'required',
         ]);
-        if ($request->number_bim_family1 != $request->number_bim_family) 
+        if ($request->number_bim_family1 != $request->number_bim_family)
         {
 
         $payments_cut = Income::where('value_bim',$request->value_bim_family )
@@ -136,23 +147,23 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         //dd($m);
         //dd($m);
         if ($m < 0) {
-        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هي:  '.$payments_cut->number_bim.'');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-         return redirect(route('bim.family.pay')); 
+         return redirect(route('bim.family.pay'));
         }
         elseif ($m > 0) {
         $payments_cut->number_bim =$m  ;
            // dd($payments_cut->number_bim);
-        } 
+        }
         //dd($m);
               //create new object of the model student and make mapping to the data
         $family =  Family::find($request->family_id);
         $family_Constraint = $family->family_Constraint;
         $payments = Bim::find($request->id);
         $payments -> family_id = $request -> family_id;
-        $payments -> note = $request->note;         
+        $payments -> note = $request->note;
         $payments -> value_bim_family = $request->value_bim_family;
-        $payments -> number_bim_family = $request->number_bim_family;                                 
+        $payments -> number_bim_family = $request->number_bim_family;
         //write to the data base
         $payments ->save();
         $family ->save();
@@ -169,8 +180,8 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         return redirect(route('bim.family.pay'));
         }
 
-  
-    
+
+
     }
 
       public function delete_familys_bim(Request $request)
@@ -215,15 +226,26 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
        $payments = Bim::with('medical')->get();
        return view('payments.medical.medical_bim',compact("payments",'payments_income'));//->with($payments)
     }
+    public function messages_medical_bim()
+    {
+    return $messages_medical_bim = [
+        'medical_id.required' => '!!',
+        'value_bim_medical.required' => 'لم يتم ادخال قيمة كرت البيم  !!',
+        'number_bim_medical.required' => 'لم يتم ادخال قيمة  عدد كرت البيم !!',
+        'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+    ];
+}
     public function store_medical_bim(Request $request)
     {
+        $messages = $this->messages_medical_bim();
      $this->validate($request,[
             'medical_id' => 'required',
             'value_bim_medical' => 'required',
             'number_bim_medical' => 'required',
             'note'=> 'required',
-         ]);
+        ],$messages);
         $s;
         if ($check = DB::table('incomes')->where('value_bim','!=', null)->where('value_bim','!=', 0)->latest()->first() != null) {
         $payments_cut = Income::where('value_bim',$request->value_bim_medical )
@@ -234,9 +256,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         //dd($a);
         $m = $s - $a;
         if ($m < 0) {
-        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هي:  '.$payments_cut->number_bim.'');
             //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-        return redirect(route('bim.medical.pay')); 
+        return redirect(route('bim.medical.pay'));
         }
         else {
             $payments_cut->number_bim = $m;
@@ -251,9 +273,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         $medical_name = $medical->medical_name;
         $payments = new Bim;
         $payments -> medical_id = $request -> medical_id;
-        $payments -> note = $request->note;         
+        $payments -> note = $request->note;
         $payments -> value_bim_medical = $request->value_bim_medical;
-        $payments -> number_bim_medical = $request->number_bim_medical;                                 
+        $payments -> number_bim_medical = $request->number_bim_medical;
         //write to the data base
         $payments ->save();
         $medical ->save();
@@ -270,7 +292,7 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
 
     public function show_medical_bim($id)
     {
-              
+
       $payments_income = Income::select('value_bim')->distinct()->get();
       $payments = Bim::where('medical_id', $id)->get();
      // $child = DB::table('childrens')->where('student_id', $id)->get();
@@ -285,7 +307,7 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
             'number_bim_medical' => 'required',
             'note'=> 'required',
         ]);
-        if ($request->number_bim_medical1 != $request->number_bim_medical) 
+        if ($request->number_bim_medical1 != $request->number_bim_medical)
         {
 
         $payments_cut = Income::where('value_bim',$request->value_bim_medical )
@@ -304,23 +326,23 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         //dd($m);
         //dd($m);
         if ($m < 0) {
-        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هي:  '.$payments_cut->number_bim.'');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-         return redirect(route('bim.medical.pay')); 
+         return redirect(route('bim.medical.pay'));
         }
         elseif ($m > 0) {
         $payments_cut->number_bim =$m  ;
            // dd($payments_cut->number_bim);
-        } 
+        }
         //dd($m);
               //create new object of the model student and make mapping to the data
         $medical =  Medical::find($request->medical_id);
         $medical_name = $medical->medical_name;
         $payments = Bim::find($request->id);
         $payments -> medical_id = $request -> medical_id;
-        $payments -> note = $request->note;         
+        $payments -> note = $request->note;
         $payments -> value_bim_medical = $request->value_bim_medical;
-        $payments -> number_bim_medical = $request->number_bim_medical;                                 
+        $payments -> number_bim_medical = $request->number_bim_medical;
         //write to the data base
         $payments ->save();
         $medical ->save();
@@ -337,8 +359,8 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         return redirect(route('bim.medical.pay'));
         }
 
-  
-    
+
+
     }
 
       public function delete_medicals_bim(Request $request)
@@ -383,15 +405,26 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
        $payments = Bim::with('student')->get();
        return view('payments.student.student_bim',compact("payments",'payments_income'));//->with($payments)
     }
+    public function messages_student_bim()
+    {
+    return $messages_student_bim = [
+        'student_id.required' => '!!',
+        'value_bim_student.required' => 'لم يتم ادخال قيمة كرت البيم  !!',
+        'number_bim_student.required' => 'لم يتم ادخال قيمة  عدد كرت البيم !!',
+        'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+    ];
+}
     public function store_student_bim(Request $request)
     {
+        $messages = $this->messages_student_bim();
      $this->validate($request,[
             'student_id' => 'required',
             'value_bim_student' => 'required',
             'number_bim_student' => 'required',
             'note'=> 'required',
-         ]);
+        ],$messages);
         $s;
         if ($check = DB::table('incomes')->where('value_bim','!=', null)->where('value_bim','!=', 0)->latest()->first() != null) {
         $payments_cut = Income::where('value_bim',$request->value_bim_student )
@@ -402,9 +435,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         //dd($a);
         $m = $s - $a;
         if ($m < 0) {
-        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هي:  '.$payments_cut->number_bim.'');
             //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-        return redirect(route('bim.student.pay')); 
+        return redirect(route('bim.student.pay'));
         }
         else {
             $payments_cut->number_bim = $m;
@@ -419,9 +452,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         $student_name = $student->student_name;
         $payments = new Bim;
         $payments -> student_id = $request -> student_id;
-        $payments -> note = $request->note;         
+        $payments -> note = $request->note;
         $payments -> value_bim_student = $request->value_bim_student;
-        $payments -> number_bim_student = $request->number_bim_student;                                 
+        $payments -> number_bim_student = $request->number_bim_student;
         //write to the data base
         $payments ->save();
         $student ->save();
@@ -438,7 +471,7 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
 
     public function show_student_bim($id)
     {
-              
+
       $payments_income = Income::select('value_bim')->distinct()->get();
       $payments = Bim::where('student_id', $id)->get();
      // $child = DB::table('childrens')->where('student_id', $id)->get();
@@ -453,7 +486,7 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
             'number_bim_student' => 'required',
             'note'=> 'required',
         ]);
-        if ($request->number_bim_student1 != $request->number_bim_student) 
+        if ($request->number_bim_student1 != $request->number_bim_student)
         {
 
         $payments_cut = Income::where('value_bim',$request->value_bim_student )
@@ -472,23 +505,23 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         //dd($m);
         //dd($m);
         if ($m < 0) {
-        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هية:  '.$payments_cut->number_bim.'');
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الكروت يرجى الدفع على دفعتين القيمة المتبقية بالكرت هي:  '.$payments_cut->number_bim.'');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-         return redirect(route('bim.student.pay')); 
+         return redirect(route('bim.student.pay'));
         }
         elseif ($m > 0) {
         $payments_cut->number_bim =$m  ;
            // dd($payments_cut->number_bim);
-        } 
+        }
         //dd($m);
               //create new object of the model student and make mapping to the data
         $student =  Student::find($request->student_id);
         $student_name = $student->student_name;
         $payments = Bim::find($request->id);
         $payments -> student_id = $request -> student_id;
-        $payments -> note = $request->note;         
+        $payments -> note = $request->note;
         $payments -> value_bim_student = $request->value_bim_student;
-        $payments -> number_bim_student = $request->number_bim_student;                                 
+        $payments -> number_bim_student = $request->number_bim_student;
         //write to the data base
         $payments ->save();
         $student ->save();

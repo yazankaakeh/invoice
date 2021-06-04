@@ -43,11 +43,11 @@ function __construct()
       $child = Children::where('student_id', $id)->get();
      // $child = DB::table('childrens')->where('student_id', $id)->get();
        return view('Student.child.child',compact('child'));
-       // using compant with where 
+       // using compant with where
        //->with($child);
 
     }
-    
+
     public function index()
     {
         $child['child'] = Children::select('id','student_id','updated_at','childre_name','childre_age',
@@ -56,11 +56,29 @@ function __construct()
        ->orderBy('id', 'DESC')
        ->get();
        return view('Student.child.child')->with($child);
-       //use (with) for passing the data with select 
+       //use (with) for passing the data with select
+    }
+    public function messages_student_children()
+    {
+    return $messages_student_children = [
+        'student_id.required' => '!!',
+        'childre_name.required' => 'لم يتم ادخال اسم الطفل   !!',
+        'childre_age.required' => 'لم يتم ادخال العمر   !!',
+        'childre_gender.required' => 'لم يتم ادخال الجنس   !!',
+        'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
+        'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
+        'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
+        'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
+
+
+    ];
     }
 
-    public function store_student_children(Request $request){
-            $this->validate($request,[
+    public function store_student_children(Request $request)
+    {
+
+        $messages = $this->messages_student_children();
+        $this->validate($request,[
             'student_id' => 'required',
             'childre_name' => 'required',
             'childre_age' => 'required',
@@ -69,7 +87,8 @@ function __construct()
             'childre_class_number' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
-         ]);
+         ],$messages);
+
          //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
@@ -94,9 +113,25 @@ function __construct()
          return redirect(route('student.show'));
 
     }
+    public function messages_update()
+    {
+    return $messages_update = [
+        'student_id.required' => '!!',
+        'id.required' => '!!',
+        'childre_name.required' => 'لم يتم ادخال اسم الطفل   !!',
+        'childre_age.required' => 'لم يتم ادخال العمر   !!',
+        'childre_gender.required' => 'لم يتم ادخال الجنس   !!',
+        'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
+        'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
+        'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
+        'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
 
+
+    ];
+    }
     public function update(Request $request)
     {
+        $messages = $this->messages_update();
         $this->validate($request,[
             'student_id' => 'required',
             'id' => 'required',
@@ -107,8 +142,8 @@ function __construct()
             'childre_class_number' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
          $Childrens =  Children::find($request->id);
@@ -153,19 +188,36 @@ function __construct()
       $child = Children::where('family_id', $id)->get();
      // $child = DB::table('childrens')->where('student_id', $id)->get();
        return view('family.child.child_family',compact('child'));
-       // using compant with where 
+       // using compant with where
        //->with($child);
 
     }
- 
+
     public function index_family()
     {
        $child = Children::all();
        return view('family.child.child_family',compact('child'));//->with($child);//
     }
+    public function messages_family_children()
+    {
+    return $messages_family_children = [
+        'family_id.required' => '!!',
+        'childre_name.required' => 'لم يتم ادخال اسم الطفل   !!',
+        'childre_age.required' => 'لم يتم ادخال العمر   !!',
+        'childre_gender.required' => 'لم يتم ادخال الجنس   !!',
+        'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
+        'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
+        'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
+        'medical_stat.required'  => 'لم يتم ادخال  الحالة الصحية  !!',
+        'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
 
-    public function store_family_children(Request $request){
-            $this->validate($request,[
+
+    ];
+    }
+    public function store_family_children(Request $request)
+    {
+        $messages = $this->messages_family_children();
+        $this->validate($request,[
             'family_id' => 'required',
             'childre_name' => 'required',
             'childre_age' => 'required',
@@ -175,8 +227,8 @@ function __construct()
             'medical_stat' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
          $x = $familys->child_statu;
@@ -200,9 +252,25 @@ function __construct()
          return redirect(route('family.show'));
 
     }
+    public function messages_family_medical()
+    {
+    return $messages_family_medical = [
+        'family_id.required' => '!!',
+        'id.required' => '!!',
+        'childre_name.required' => 'لم يتم ادخال اسم الطفل   !!',
+        'childre_age.required' => 'لم يتم ادخال العمر   !!',
+        'childre_gender.required' => 'لم يتم ادخال الجنس   !!',
+        'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
+        'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
+        'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
+        'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
 
+
+    ];
+    }
     public function update_family(Request $request)
     {
+        $messages = $this->messages_family_medical();
         $this->validate($request,[
             'family_id' => 'required',
             'id' => 'required',
@@ -214,7 +282,8 @@ function __construct()
             'childre_class_number' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
-         ]);
+        ],$messages);
+
          //create new object of the model student and make mapping to the data
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
@@ -258,19 +327,36 @@ function __construct()
       $child = Children::where('medical_id', $id)->get();
      // $child = DB::table('childrens')->where('student_id', $id)->get();
        return view('medical.child.child_medical',compact('child'));
-       // using compant with where 
+       // using compant with where
        //->with($child);
 
     }
- 
+
     public function index_medical()
     {
        $child = Children::all();
        return view('medical.child.child_medical',compact('child'));//->with($child);//
     }
+    public function messages_medical_children()
+    {
+    return $messages_medical_children = [
+        'medical_id.required' => '!!',
+        'childre_name.required' => 'لم يتم ادخال اسم الطفل   !!',
+        'childre_age.required' => 'لم يتم ادخال العمر   !!',
+        'childre_gender.required' => 'لم يتم ادخال الجنس   !!',
+        'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
+        'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
+        'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
+        'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
 
-    public function store_medical_children(Request $request){
-            $this->validate($request,[
+
+    ];
+    }
+    public function store_medical_children(Request $request)
+    {
+
+        $messages = $this->messages_medical_children();
+        $this->validate($request,[
             'medical_id' => 'required',
             'childre_name' => 'required',
             'childre_age' => 'required',
@@ -279,8 +365,8 @@ function __construct()
             'childre_class_number' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
-         ]);
-         //create new object of the model student and make mapping to the data
+        ],$messages);
+        //create new object of the model student and make mapping to the data
          $medicals =  Medical::find($request->medical_id);
          $medical_name = $medicals->medical_name;
          $x = $medicals->child_statu;
@@ -303,9 +389,25 @@ function __construct()
          return redirect(route('medical.show'));
 
     }
+    public function messages_update_medical()
+    {
+    return $messages_update_medical = [
+        'medical_id.required' => '!!',
+        'id.required' => '!!',
+        'childre_name.required' => 'لم يتم ادخال اسم الطفل   !!',
+        'childre_age.required' => 'لم يتم ادخال العمر   !!',
+        'childre_gender.required' => 'لم يتم ادخال الجنس   !!',
+        'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
+        'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
+        'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
+        'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
 
+
+    ];
+    }
     public function update_medical(Request $request)
     {
+        $messages = $this->messages_update_medical();
         $this->validate($request,[
             'medical_id' => 'required',
             'id' => 'required',
@@ -316,7 +418,8 @@ function __construct()
             'childre_class_number' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
-         ]);
+        ],$messages);
+
          //create new object of the model student and make mapping to the data
          $medicals =  medical::find($request->medical_id);
          $medical_Constraint = $medicals->medical_Constraint;

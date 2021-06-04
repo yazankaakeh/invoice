@@ -16,7 +16,7 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('family_id')->nullable();
-            $table->foreign('family_id')->references('id')->on('families');            
+            $table->foreign('family_id')->references('id')->on('families');
             $table->unsignedBigInteger('medical_id')->nullable();
             $table->foreign('medical_id')->references('id')->on('medicals');
             $table->string('student_name')->nullable();
@@ -43,8 +43,9 @@ class CreateStudentsTable extends Migration
             $table->integer('bim_statu')->default('0')->nullable();
             $table->integer('euro_statu')->default('0')->nullable();
             $table->integer('usd_statu')->default('0')->nullable();
+            $table->integer('sis_statu')->default('0')->nullable();
             $table->integer('tr_statu')->default('0')->nullable();
-            $table->string('note')->nullable();// 
+            $table->string('note')->nullable();//
             $table->integer('enable')->default('0')->nullable();
             $table->string('gender');
             $table->timestamps();

@@ -12,14 +12,19 @@
 <!--- Select2 css -->
 
 @section('title')
-مدفوعات الطلاب
+قسم مدفوعات الطلاب باليورو
 @endsection
 @section('page-header')
-				<!-- breadcrumb -->
-				<div class="breadcrumb-header justify-content-between">
+<!-- breadcrumb -->
+<div class="breadcrumb-header justify-content-between">
+     <div class="my-auto">
+    <div class="d-flex">
+<h4 class="my-auto mb-0 content-title"> قسم الطلاب </h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ قسم مدفوعات الطلاب باليورو </span>
+</div>
+</div>
 
-				</div>
-				<!-- breadcrumb -->
+</div>
+<!-- breadcrumb -->
 @endsection
 @section('content')
 				<!-- row -->
@@ -28,10 +33,13 @@
                             <div class="card mg-b-20">
                                 <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
-                                        <i class="mdi mdi-dots-horizontal text-gray"></i>
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    <div class="main-content-label mg-b-5">
+                                        قائمة  مدفوعات الطلاب باليورو  .
+                                    </div>
+                                    <p class="mg-b-20">معلومات  مدفوعات الطلاب باليورو.</p>
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons text-md-nowrap">
                                             <thead>
@@ -57,19 +65,19 @@
                                                     <td>{{$x->Note}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
-                                                    @can( ' تعديل دفعة باليورو الطلاب ')                                                        
+                                                    @can( ' تعديل دفعة باليورو الطلاب ')
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-student_name="{{$x->student->student_name}}"
                                                                 data-student_id="{{$x->student_id}}"
                                                                 data-number_bim_student="{{$x->number_bim_student }}" data-value_bim_student="{{$x->value_bim_student}}"
-                                                                data-value_euro="{{$x->value_euro }}" 
+                                                                data-value_euro="{{$x->value_euro }}"
                                                                  data-note="{{$x->Note }}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                     @endcan
-                                                    @can(' حذف دفعة باليورو الطلاب ')                                                        
+                                                    @can(' حذف دفعة باليورو الطلاب ')
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-value_euro="{{$x->value_euro }}"
                                                                 data-number_bim_student="{{$x->number_bim_student }}"data-value_bim_student="{{$x->value_bim_student}}"
@@ -139,7 +147,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">حذف الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                    <h6 class="modal-title">حذف عملية الدفع</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <form action="{{ Route('euro.destroy.student') }}" method="post">
@@ -153,7 +161,7 @@
                                         <input class="form-control" name="student_name" id="student_name" type="text" readonly>
                                     </div>
                                         <div class="modal-body">
-                                        <label for="recipient-name" class="col-form-label">المبلغ بالدولار</label>
+                                        <label for="recipient-name" class="col-form-label">المبلغ باليورو</label>
                                         <input class="form-control" name="student_value" id="value_euro" type="text" >
                                         <input class="form-control" name="student_value1" id="value_euro" type="hidden" >
                                         </div>
@@ -180,7 +188,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">تعديل القسم</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">تعديل عملية الدفع </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -197,7 +205,7 @@
                                         </div>
 
                                         <div class="modal-body">
-                                        <label for="recipient-name" class="col-form-label">المبلغ بالدولار</label>
+                                        <label for="recipient-name" class="col-form-label">المبلغ باليورو</label>
                                         <input class="form-control" name="student_value" id="value_euro" type="text" >
                                         <input class="form-control" name="student_value1" id="value_euro" type="hidden" >
                                         </div>
@@ -264,7 +272,7 @@
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #student_id').val(student_id);
         modal.find('.modal-body #value').val(value);
-        modal.find('.modal-body #note').val(note);        
+        modal.find('.modal-body #note').val(note);
         modal.find('.modal-body #student_name').val(student_name);
         modal.find('.modal-body #value_euro').val(value_euro);
         modal.find('.modal-body #number_bim_student').val(number_bim_student);

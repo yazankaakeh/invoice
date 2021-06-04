@@ -24,26 +24,28 @@ $this->middleware('permission: حذف الطلاب ', ['only' => ['destroy']]);
 $this->middleware('permission: فورم تسجيل الطلاب ', ['only' => ['enable']]);
 
 
-}    
+}
 
     public function messages()
     {
         return $messages = [
-            'student_name.required' => 'اسم الطالب هذه الخانة مطلوبة !!',
-            'birthday.required' => 'تاريخ ميلاد الطالب هذه الخانة مطلوبة !!',
-            'age.required' => 'عمر الطالب مطلوب !!',
-            'age.numeric'=>'عمر الطالب يجب ان يكون رقم !!',
-            'email.unique'=>'لقد قمت بالستجيل من قبل !!',
-            'email.required'=>'ادخل البريد اللإلكتروني هذه الخانة مطلوبة !!',
-            'phone.required'=>'رقم الهاتف هذه الخانة مطلوبة !!',
-            'phone.unique'=>'لقد قمت بالستجيل من قبل !!',
-            'county_are_from.required'=>'معلومات الحمافظة الخاصة في الطالبة هذه الخانة مطلوبة !!',
-            'stu_Cur_housing.required'=>'اسم الولاية الحالية هذه الخانة مطلوبة !!',
-            'entry_turkey.required'=>'اسم الطالب هذه الخانة مطلوبة !!',
-            'Identity_type.required'=>'نوع الكملك هذه الخانة مطلوبة !!',
-            'Id_stud_source.required'=>'من أي ولاية الكملك هذه الخانة مطلوبة !!',
+            'student_name.required' => 'لم يتم أدخال معلومات اسم الطالب المطلوبة  !!',
+            'birthday.required' => 'لم يتم أدخال معلومات تاريخ الميلاد المطلوبة!!',
+            'age.required' => 'لم يتم أدخال معلومات عمر المطلوبة!!',
+            'age.numeric'=>'معلومات العمر يجب أن تكون حصراً أرقام !!',
+            'email.unique'=>'هذا الأيميل مسجل بالفعل لدينا يجب أضافة ايميل أخر!!',
+            'email.required'=>'لم يتم ادخال معلومات الأيميل المطلوبة !!',
+            'phone.required'=>'لم يتم أدخال معلومات الهاتف المطلوبة !!',
+            'phone.numeric'=>'يجب أن يكون رقم الهاتف حصراً من أرقام !!',
+            'phone.unique'=>'الرقم المسجل موجود بالغعل يرجى أدخال رقم أخر  !!',
+            'county_are_from.required'=>'لم يتم أدخال معلومات اسم المحافظة المطلوبة !!',
+            'city_name.required'=>'لم يتم أدخال معلومات اسم المدينة المطلوبة !!',
+            'stu_Cur_housing.required'=>'لم يتم أدخال معلومات اسم الولاية المطلوبة!!',
+            'entry_turkey.required'=>'لم يتم أدخال معلومات تاريخ دخول تركياالمطلوبة!!',
+            'Identity_type.required'=>'لم يتم أدخال معلومات نوع الهوية المطلوبة  !!',
+            'Id_stud_source.required'=>'لم يتم أدخال معلومات اسم الولاية للكملك المطلوية!!',
         ];
-    }   
+    }
 
     public function index()
     {
@@ -91,11 +93,11 @@ $this->middleware('permission: فورم تسجيل الطلاب ', ['only' => ['
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('student.show'));
          }elseif ($request->register == "register") {
-             
+
         $enable = From::find(1);
         session()->flash('Add', 'تم اضافة الطالب '. $request->student_name.' بنجاح ');
         $request=null;
-        return view('student.students.register',compact('enable'));    
+        return view('student.students.register',compact('enable'));
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          }
 
@@ -164,13 +166,13 @@ $this->middleware('permission: فورم تسجيل الطلاب ', ['only' => ['
         Student::find($request->id)->delete();
         /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
         session()->flash('Delete', 'تم حذف العلاقة بين الطالب والعائلة بنجاح ');
-        return redirect(route('student.show'));    
+        return redirect(route('student.show'));
         }
-        
+
 
     }
 
-    public function register(){    
+    public function register(){
         $check = From::all();
 
         if($check->isEmpty())
@@ -179,24 +181,24 @@ $this->middleware('permission: فورم تسجيل الطلاب ', ['only' => ['
             'student_form' => 0,
             'family_form' => 0,
             'medical_form' => 0,
-     
+
         ]);
         $enable = From::find(1);
         //dd($enable);
 
-        return view('student.students.register',compact('enable'));    
+        return view('student.students.register',compact('enable'));
         }
         else {
         $enable = From::find(1);
         //dd($enable);
-        return view('student.students.register',compact('enable'));   
+        return view('student.students.register',compact('enable'));
 
         }
 
     }
 
     public function enable(Request $request){
-       
+
         $check = From::all();
         if($check->isEmpty())
         {
@@ -204,7 +206,7 @@ $this->middleware('permission: فورم تسجيل الطلاب ', ['only' => ['
             'student_form' => 0,
             'family_form' => 0,
             'medical_form' => 0,
-    
+
         ]);
         $this->validate($request,[
             'enable' => 'required'
@@ -231,7 +233,7 @@ $this->middleware('permission: فورم تسجيل الطلاب ', ['only' => ['
         }
     }
 
-    
+
 
 
 }

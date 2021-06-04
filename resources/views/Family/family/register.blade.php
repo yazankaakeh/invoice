@@ -35,7 +35,7 @@ body{
 				<div class="container" >
 				<!-- row -->
 				<div class="row" style="padding-top:75; " >
-					<div class="col-lg-5 col-lg-5">
+					<div class="col-lg-5">
 						<div class="card">
 							<div class="card-body">
                                 <form action="{{ route('family.store') }}" method="post">
@@ -45,32 +45,32 @@ body{
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
 										<p class="mg-b-20">يرجى إدخال المعلومات الشخصية الخاصة بك !</p>
-										<div class="card card-body pd-20 pd-md-40 border shadow-none" style="text-align:center">
-											<div class="col-sm-12 col-sm-12">
-                                             <div class="col-sm-12 col-sm-12">
-                                                 <label class="form-control-label"> اسم صاحب القيد: <span class="tx-danger">*</span></label> 
+										<div class="border shadow-none card card-body pd-20 pd-md-40" style="text-align:center">
+											<div class="col-sm-12">
+                                             <div class="col-sm-12">
+                                                 <label class="form-control-label"> اسم صاحب القيد: <span class="tx-danger">*</span></label>
                                                  <input class="form-control" value="" id="family_constraint" name="family_Constraint" placeholder="أكتب اسم صاحب القيد" required="" type="text">
                                                 <input class="form-control" value="register"  name="register" type="hidden">
                                              </div>
-                                             <div  class="col-sm-12 col-sm-12">
+                                             <div  class="col-sm-12">
                                                  <label class="form-control-label"> عدد أفراد العائلة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_number_member" name="family_number_member" placeholder="أكتب عدد أفراد العائلة " required="" type="text">
                                              </div>
-                                             <div class="col-sm-12 col-sm-12">
+                                             <div class="col-sm-12">
                                                  <label class="form-control-label"> اسم المعيل الأول : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_breadwinner" name="family_breadwinner" placeholder="أكتب اسم المعيل الأول  " required="" type="text">
                                              </div>
-                                             <div class="col-sm-12 col-sm-12">
+                                             <div class="col-sm-12">
                                                  <label class="form-control-label">  عمل المعيل الأول : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="work_breadwinner" name="work_breadwinner" placeholder="أكتب عمل المعيل الثاني" required="" type="text">
                                              </div>
-                                             <div class="col-sm-12 col-sm-12">
+                                             <div class="col-sm-12">
                                                  <label class="form-control-label"> اسم المعيل الثاني : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_an_breadwinner" name="family_an_breadwinner" placeholder="أكتب اسم المعيل الثاني" required="" type="text">
                                              </div>
-                                             <div class="col-sm-12 col-sm-12">
+                                             <div class="col-sm-12">
                                                  <label class="form-control-label"> عمل المعيل الثاني : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="work_an_breadwinner" name="work_an_breadwinner" placeholder="أكتب عمل معيل الثاني " required="" type="text">
                                              </div>
-                                             <div class="col-sm-12 col-sm-12">
+                                             <div class="col-sm-12">
                                                  <label class="form-control-label"> الدخل الشهري من العمل للأسرة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_monthly_salary" name="family_monthly_salary" placeholder="أكتب الدخل الشهري للأسرة باليرة التركية  " required="" type="text">
                                              </div>
-                                             <div class="col-sm-12 col-sm-12"> {{-- it must be select options  --}}
+                                             <div class="col-sm-12"> {{-- it must be select options  --}}
                                                  <p class="form-control-label">   هل يوجد  مساعدات :<span class="tx-danger">*</span></p><select class="form-control select2" name="family_has_aid" id="family_aid">
                                                  <option label="test">
                                                      حدد من فضلك     </option>
@@ -80,29 +80,29 @@ body{
                                                      لايوجد </option>
                                                  </select>
                                              </div>
-                                             <div class="col-sm-12 col-sm-12">
+                                             <div class="col-sm-12">
                                                  <label class="form-control-label">ماهي المساعدات : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_what_aid" name="family_what_aid" placeholder="أكتب ماهي المساعدات أو قيمتها " required="" type="text">
                                              </div>
 
-                                            <div class="col-sm-12 col-sm-12">
+                                            <div class="col-sm-12">
                                             <label for="exampleInputEmail"> ماهي قيمة المساعدات</label>
                                             <input type="text" class="form-control" id="aid_value" name="aid_value"  placeholder=" أكنب أسم المدينة  ">
-                                            </div>     
+                                            </div>
 
-                                             <div class="col-sm-12 col-sm-12">
+                                             <div class="col-sm-12">
                                                  <label class="form-control-label"> رقم هاتف الأول: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="phone" name="phone" placeholder="أكتب رقم الهاتف بدءً من 05 " required="" type="text">
                                              </div>
-                                             <div class="col-sm-12 col-sm-12">
+                                             <div class="col-sm-12">
                                                  <label class="form-control-label">رقم هاتف ثاني: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="sec_phone" name="sec_phone" placeholder="أكتب الثاني رقم الهاتف بدءً من 05 يجب أن لايكون مكرر  " required="" type="text">
                                              </div>
-                                             <div class="col-sm-12 col-sm-12">
+                                             <div class="col-sm-12">
                                                  <label class="form-control-label">أي ملاحظات: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="يرجى كتابة أي ملاحظة " required="" type="text">
-                                             </div>                                             
+                                             </div>
                             </form>
                                 <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">تاكيد</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                </div>                            
+                                </div>
                             @if (session()->has('Add'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>
@@ -127,23 +127,23 @@ body{
                             @endif
                                      </section>
                                     {{--  General info for registered family part 1 End   --}}
- 
+
                                      {{-- Husband and wife info  family part 2  Begin--}}
- 
-                                     {{--  <h3>معلومات الزوج والزوجة. </h3>  
+
+                                     {{--  <h3>معلومات الزوج والزوجة. </h3>
                                      <section>
                                          <p>المعلومات حول الزوج والزوجة للعائلة.</p>
 
-                                         {{--  wife  part Begin 
+                                         {{--  wife  part Begin
                                          <div class="row row-sm">
-                                         <div class="col-sm-12 col-sm-12 ">
+                                         <div class="col-sm-12 ">
                                              <label class="form-control-label"> اسم الزوجة: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="wife_name" name="wife_name" placeholder="أكتب اسم الزوجة  بالكامل" required="" type="text">
                                          </div>
-                                         <div class="col-sm-12 col-sm-12 ">
+                                         <div class="col-sm-12 ">
                                              <label for="exampleInputEmail">تاريخ ميلاد الزوجة :<span class="tx-danger">*</span></label>
                                              <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder="أكتب تاريخ ميلاد الزوجة ">
                                              </div>
-                                         <div class="col-sm-12 col-sm-12 ">
+                                         <div class="col-sm-12 ">
                                          <label for="exampleInputEmail">من اي محافظة من سوريا؟ <span class="tx-danger">*</span></label>
                                          <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب اسم المحافظة ">
                                        <option label="test">
@@ -178,12 +178,12 @@ body{
                                              القنيطرة</option>
                                          </select>
                                      </div>
-     
-                                     <div class="col-sm-12 col-sm-12 ">
+
+                                     <div class="col-sm-12 ">
                                          <label for="exampleInputEmail">من اي مدينة؟ <span class="tx-danger">*</span></label>
                                          <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب اسم المدينة ">
-                                     </div>  
-                                             <div class="col-sm-12 col-sm-12 ">   {{-- it must be select options  
+                                     </div>
+                                             <div class="col-sm-12 ">   {{-- it must be select options
                                                  <label for="exampleInputEmail">الحالة الأجتماعية للزوجة:<span class="tx-danger">*</span></label>
                                                  <select class="form-control" id="wife_mar_stat" name="wife_mar_stat" placeholder="">
                                                      <option label="test">
@@ -202,7 +202,7 @@ body{
                                                  </option>
                                                  </select>
                                                  </div>
-                                                 <div class="col-sm-12 col-sm-12"> {{-- it must be select options  
+                                                 <div class="col-sm-12"> {{-- it must be select options
                                                  <label for="exampleInputEmail">المستوى التعليمي للزوجة: <span class="tx-danger">*</span></label>
                                                  <select class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى النعليمي للزوجة  ">
                                                    <option label="test">
@@ -229,11 +229,11 @@ body{
                                                      ديكتورا </option>
                                                  </select>
                                                  </div>
-                                                 <div class="col-sm-12 col-sm-12">
+                                                 <div class="col-sm-12">
                                                      <label for="exampleInputEmail">اختصاص دراسة الزوجة: <span class="tx-danger">*</span></label>
                                                  <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder=" أكتب اسم الأختصاص">
                                                  </div>
-                                                 <div class="col-sm-12 col-sm-12">
+                                                 <div class="col-sm-12">
                                                      <label for="exampleInputEmail">هل تعمل الزوجة؟ <span class="tx-danger">*</span></label>
                                                  <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder="هل الزوجة تعمل ام لا تعمل">
                                                      <option label="test">
@@ -246,29 +246,29 @@ body{
                                                  </option>
                                                  </select>
                                                  </div>
-                                                 <div class="col-sm-12 col-sm-12">
+                                                 <div class="col-sm-12">
                                                      <label for="exampleInputEmail">العمل الحالي للزوجة: <span class="tx-danger">*</span></label>
                                                  <input type="text" class="form-control" id="wife_now_work" name="wife_now_work" placeholder=" أكتب العمل الحالي للزوجة">
                                                  </div>
-                                                 <div class="col-sm-12 col-sm-12">
+                                                 <div class="col-sm-12">
                                                      <label for="exampleInputEmail">العمل السابق للزوجة: <span class="tx-danger">*</span></label>
                                                  <input type="text" class="form-control" id="wife_Pre_work" name="wife_Pre_work" placeholder="  أكتب العمل  السابق للزوجة ">
                                                  </div>
                                                 </div>
                                                 <hr>
                                                 {{--  wife  part End  --}}
-                                                
-                                                {{--  Husband  part Begin  
-                                              
+
+                                                {{--  Husband  part Begin
+
                                                 <div class="row row-sm">
-                                                    <div class="col-sm-12 col-sm-12 ">
+                                                    <div class="col-sm-12 ">
                                                         <label class="form-control-label"> اسم الزوج: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="husb_name" name="husb_name" placeholder="أكتب اسم الزوج  بالكامل" required="" type="text">
                                                     </div>
-                                                    <div class="col-sm-12 col-sm-12 ">
+                                                    <div class="col-sm-12 ">
                                                         <label for="exampleInputEmail">تاريخ ميلاد الزوج :<span class="tx-danger">*</span></label>
                                                         <input type="date" class="form-control" id="husb_birth" name="husb_birth" placeholder="أكتب تاريخ ميلاد للزوج ">
                                                         </div>
-                                                    <div class="col-sm-12 col-sm-12 ">
+                                                    <div class="col-sm-12 ">
                                                     <label for="exampleInputEmail">من اي محافظة من سوريا؟ <span class="tx-danger">*</span></label>
                                                     <select class="form-control" id="husb_Orig_city" name="husb_Orig_city" placeholder=" أكتب اسم المحافظة ">
                                                   <option label="test">
@@ -303,12 +303,12 @@ body{
                                                         القنيطرة</option>
                                                     </select>
                                                 </div>
-                
-                                                <div class="col-sm-12 col-sm-12 ">
+
+                                                <div class="col-sm-12 ">
                                                     <label for="exampleInputEmail">من اي مدينة؟ <span class="tx-danger">*</span></label>
                                                     <input type="text" class="form-control" id="husb_district" name="husb_district" placeholder=" أكتب اسم المدينة ">
-                                                </div>  
-                                                        <div class="col-sm-12 col-sm-12 ">   {{-- it must be select options  
+                                                </div>
+                                                        <div class="col-sm-12 ">   {{-- it must be select options
                                                             <label for="exampleInputEmail">الحالة الأجتماعية للزوج:<span class="tx-danger">*</span></label>
                                                             <select class="form-control" id="husb_mar_stat" name="husb_mar_stat" placeholder="">
                                                                 <option label="test">
@@ -327,7 +327,7 @@ body{
                                                             </option>
                                                             </select>
                                                             </div>
-                                                            <div class="col-sm-12 col-sm-12"> {{-- it must be select options  
+                                                            <div class="col-sm-12"> {{-- it must be select options
                                                             <label for="exampleInputEmail">المستوى التعليمي للزوج: <span class="tx-danger">*</span></label>
                                                             <select class="form-control" id="husb_academicel" name="husb_academicel" placeholder=" أكتب المستوى النعليمي للزوج  ">
                                                               <option label="test">
@@ -354,11 +354,11 @@ body{
                                                                 ديكتورا </option>
                                                             </select>
                                                             </div>
-                                                            <div class="col-sm-12 col-sm-12">
+                                                            <div class="col-sm-12">
                                                                 <label for="exampleInputEmail">اختصاص دراسة للزوج: <span class="tx-danger">*</span></label>
                                                             <input type="text" class="form-control" id="husb_special" name="husb_special" placeholder=" أكتب اسم الأختصاص">
                                                             </div>
-                                                            <div class="col-sm-12 col-sm-12">
+                                                            <div class="col-sm-12">
                                                                 <label for="exampleInputEmail">هل يعمل للزوج؟ <span class="tx-danger">*</span></label>
                                                             <select class="form-control select2" name="husb_is_work" id="husb_is_work" placeholder="هل الزوج يعمل ام لا يعمل">
                                                                 <option label="test">
@@ -371,11 +371,11 @@ body{
                                                             </option>
                                                             </select>
                                                             </div>
-                                                            <div class="col-sm-12 col-sm-12">
+                                                            <div class="col-sm-12">
                                                                 <label for="exampleInputEmail">العمل الحالي للزوج: <span class="tx-danger">*</span></label>
                                                             <input type="text" class="form-control" id="husb_now_work" name="husb_now_work" placeholder=" أكتب العمل الحالي للزوج">
                                                             </div>
-                                                            <div class="col-sm-12 col-sm-12">
+                                                            <div class="col-sm-12">
                                                                 <label for="exampleInputEmail">العمل السابق للزوج: <span class="tx-danger">*</span></label>
                                                             <input type="text" class="form-control" id="husb_Pre_work" name="husb_Pre_work" placeholder="  أكتب العمل  السابق للزوج ">
                                                             </div>
@@ -384,19 +384,19 @@ body{
 
                                                   {{-- Husband and wife info  family part 2  End--}}
 
-                                                {{--  Children's information for the family part 3 Begin  
+                                                {{--  Children's information for the family part 3 Begin
 
 									<h3>معلومات الأطفال للعائلة. </h3>
 									<section>
                                         <p class="mg-b-20">المعلومات  حول الاطفال للعائلة !</p>
                                         <div class="row row-sm">
-										<div class="col-sm-12 col-sm-12">
+										<div class="col-sm-12">
 											<label class="form-control-label"> اسم الطفل : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="childre_name" name="childre_name" placeholder="أكتب اسم الطفل " required="" type="text">
 										</div>
-                                        <div class="col-sm-12 col-sm-12">
+                                        <div class="col-sm-12">
 											<label class="form-control-label"> العمر : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="childre_age" name="childre_age" placeholder="أكتب  العمر بالرقم" required="" type="text">
 										</div>
-                                        <div class="col-sm-12 col-sm-12"> {{-- it must be select options  
+                                        <div class="col-sm-12"> {{-- it must be select options
 
                                             <label for="exampleInputEmail">  الجنس: <span class="tx-danger">*</span> </label>
                                             <select type="text" class="form-control" id="childre_gender" name="childre_gender" >
@@ -408,9 +408,9 @@ body{
                                             <option value=" انثى" >
                                                  انثى
                                             </option>
-                                            </select>  
+                                            </select>
                                             </div>
-                                            <div class="col-sm-12 col-sm-12"> {{-- it must be select options  
+                                            <div class="col-sm-12"> {{-- it must be select options
 
                                                 <label for="exampleInputEmail">  المرحلة الدراسية: <span class="tx-danger">*</span> </label>
                                                 <select type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" >
@@ -438,11 +438,11 @@ body{
                                                     ديكتورا </option>
                                                 </select>
                                                 </div>
-                                        <div class="col-sm-12 col-sm-12">
+                                        <div class="col-sm-12">
 											<label class="form-control-label"> رقم الصف الدراسي : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="childre_class_number" name="childre_class_number" placeholder="أكتب رقم الصف الدراسي  " required="" type="text">
 										</div>
-                                        <div class="col-sm-12 col-sm-12">
-											<label class="form-control-label"> الهوية الشخصية من اي ولاية : <span class="tx-danger">*</span></label> 
+                                        <div class="col-sm-12">
+											<label class="form-control-label"> الهوية الشخصية من اي ولاية : <span class="tx-danger">*</span></label>
                                             <select class="form-control" value="" id="childre_id_extr" name="childre_id_extr" placeholder="" required="" type="text">
                                             <option label="test">
                                                 حدد من فضلك اسم  ولاية </option>
@@ -612,7 +612,7 @@ body{
                                                 دوزجه</option>
                                         </select>
                                     </div>
-                                        <div class="col-sm-12 col-sm-12">
+                                        <div class="col-sm-12">
                                             <label for="exampleInputEmail">هل الأطفال يعيشون معكم :  <span class="tx-danger">*</span></label>
                                             <select type="text" class="form-control" id="childre_live_with" name="childre_live_with">
                                                 <option label="test">
@@ -629,12 +629,12 @@ body{
 									</section>
                                                 {{--  Children's information for the family part 3 End  --}}
 
-                                                {{--  info for Family housing info part 4 Begin  
+                                                {{--  info for Family housing info part 4 Begin
 									<h3>معلومات السكن للعائلة .</h3>
 									<section>
 									<p>المعلومات حول مكان سكن العائلة .</p>
                                         <div class="row row-sm">
-                                            <div class="col-sm-12 col-sm-12">
+                                            <div class="col-sm-12">
                                                 <p class="mg-b-10">اسم المحافظة الولاية: <span class="tx-danger">*</span></p>
                                                 <select class="form-control select2" name="address_country" id="address_country">
                                                     <option label="test">
@@ -805,26 +805,26 @@ body{
                                                         دوزجه</option>
                                                 </select>
                                             </div>
-                                        <div class="col-sm-12 col-sm-12">
+                                        <div class="col-sm-12">
 											<label class="form-control-label">اسم الحي: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="address_city" name="address_city" placeholder="أكتب اسم الحي" required="" type="text">
 										</div>
-                                        <div class="col-sm-12 col-sm-12">
+                                        <div class="col-sm-12">
 											<label class="form-control-label"> العنوان كما في الفاتورة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="address_like_bill" name="address_like_bill" placeholder="أكتب العنوان كما في الفاتورة" required="" type="text">
 										</div>
-                                        <div class="col-sm-12 col-sm-12">
+                                        <div class="col-sm-12">
 											<label class="form-control-label"> العنوان السابق: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="address_last" name="address_last" placeholder="أكتب العنوان السابق " required="" type="text">
 										</div>
                                         </div>
 									</section>
 
                                               {{--  info for Family housing info part 4 End  --}}
-                                  
-                                      {{--  معلومات حول الحالة  الصحية للطالب  
+
+                                      {{--  معلومات حول الحالة  الصحية للطالب
                                     <h3>معلومات الحالة الصحية</h3>
 									<section>
 										<p class="mg-b-20">المعلومات حول الحالة الصحية للطالب! <span class="tx-danger">*</span></p>
                                         <div class="row row-sm">
-                                        <div class="col-sm-12 col-sm-12">{{-- it must be select options  
+                                        <div class="col-sm-12">{{-- it must be select options
                                             <p class="mg-b-10">هل يوجد لديك اي أمراض: <span class="tx-danger">*</span></p>
                                             <select class="form-control select2" name="disease_type" id="disease_type">
                                                 <option label="test">
@@ -843,30 +843,30 @@ body{
                                             </option>
                                             </select>
                                         </div>
-											<div class="col-sm-12 col-sm-12">
+											<div class="col-sm-12">
 												<label class="form-control-label">اسم المرض: <span class="tx-danger">*</span></label> <input class="form-control" id="disease_name" name="disease_name" placeholder="أكتب اسم المرض" required="" type="text">
 											</div>
-                                            <div class="col-sm-12 col-sm-12">
+                                            <div class="col-sm-12">
 												<label class="form-control-label">اسم الدكتور: <span class="tx-danger">*</span></label> <input class="form-control" id="dr_name" name="dr_name" placeholder="أكتب اسم الدكتور" required="" type="text">
 											</div>
-											<div class="col-sm-12 col-sm-12">
+											<div class="col-sm-12">
 												<label class="form-control-label">تكلفة العلاج: <span class="tx-danger">*</span></label> <input class="form-control" id="treat_cost" name="treat_cost" placeholder=" أكتب تكلفة العلاج" required="" type="text">
 											</div>
-                                            <div class="col-sm-12 col-sm-12">
+                                            <div class="col-sm-12">
 												<label class="form-control-label">نوع العلاج: <span class="tx-danger">*</span></label> <input class="form-control" id="treat_type" name="treat_type" placeholder="أكتب نوع العلاج" required="" type="text">
 											</div>
-                                            <div class="col-sm-12 col-sm-12">
+                                            <div class="col-sm-12">
 												<label class="form-control-label">مدة العلاج: <span class="tx-danger">*</span></label> <input class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder="أكتب مدة العلاج" required="" type="text">
 											</div>
-                                            <div class="col-sm-12 col-sm-12">
+                                            <div class="col-sm-12">
                                                 <label for="exampleInputEmail">تاريخ بدء العلاج :<span class="tx-danger">*</span></label>
                                                 <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج">
                                                 </div>
-                                                <div class="col-sm-12 col-sm-12">
+                                                <div class="col-sm-12">
                                                 <label for="exampleInputEmail">تاريخ الانتهاء من العلاج :<span class="tx-danger">*</span></label>
                                                 <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج">
                                                 </div>
-                                            <div class="col-sm-12 col-sm-12">
+                                            <div class="col-sm-12">
 												<label class="form-control-label">هل تم تحويلك لطبيب آخر؟ مع ذكر الاسم إن وجد: <span class="tx-danger">*</span></label> <input class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder="" required="" type="text">
 											</div>
 										</div>

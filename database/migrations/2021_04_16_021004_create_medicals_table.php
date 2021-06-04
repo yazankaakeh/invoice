@@ -15,18 +15,18 @@ class CreateMedicalsTable extends Migration
     {
         Schema::create('medicals', function (Blueprint $table) {
             $table->unsignedBigInteger('family_id')->nullable();
-            $table->foreign('family_id')->references('id')->on('families');  
-            
+            $table->foreign('family_id')->references('id')->on('families');
+
 
             $table->id();
             ########################## medical info Begin ##############################
-            $table->string('medical_name');// اسم المريض
-            $table->string('medical_age');// عمر المريض
-            $table->string('gender');
-            $table->string('medical_have_id');// هل يوجد هوية
-            $table->string('medical_id_extr');// مدينة أستخراج هوية
-            $table->string('medical_number');//رقم الهاتف
-            $table->string('note');// 
+            $table->string('medical_name')->nullable();// اسم المريض
+            $table->string('medical_age')->nullable();// عمر المريض
+            $table->string('gender')->nullable();
+            $table->string('medical_have_id')->nullable();// هل يوجد هوية
+            $table->string('medical_id_extr')->nullable();// مدينة أستخراج هوية
+            $table->string('medical_number')->nullable();//رقم الهاتف
+            $table->string('note')->nullable();//
             ########################## medical info End ################################
             $table->integer('husband_wife_statu')->default('0');
             $table->integer('residance_statu')->default('0');
