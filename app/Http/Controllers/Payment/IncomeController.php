@@ -83,32 +83,60 @@ $this->middleware('permission: تعديل الدفعة قسم الدخل الم�
             'number_bim'=> 'required',
             'note'=> 'required',
          ]);
+         $incomes =  Income::find($request->id);
+
+        $tr = $incomes -> value_tr_fixed  - $incomes -> value_tr ;
+        $tr_fn = $request->value_tr - $tr;
+
+        $eu = $incomes -> value_euro_fixed  - $incomes -> value_euro ;
+        $eu_fn = $request->value_euro - $eu;
+
+        $usd = $incomes -> value_usd_fixed  - $incomes -> value_usd ;
+        $usd_fn = $request->value_usd - $usd; 
+
+        $bim = $incomes -> number_bim_fixed - $incomes -> number_bim  ;
+        $bim_fn = $request->number_bim - $bim;
+
+        if($bim_fn > 0  && $usd_fn  > 0 &&  $eu_fn > 0 && $tr_fn > 0 )
+        {
 
          //create new object of the model student and make mapping to the data
-         $incomes =  Income::find($request->id);
-         $incomes -> value_tr = $request->value_tr;
+         $incomes -> value_tr = $tr_fn;
          $incomes -> value_tr_fixed = $request->value_tr;
          $incomes -> note = $request->note;
-         $incomes -> value_usd = $request->value_usd;
+         $incomes -> value_usd = $usd_fn;
          $incomes -> value_usd_fixed = $request->value_usd;
          $incomes -> value_euro_fixed = $request->value_euro;
-         $incomes -> value_euro = $request->value_euro;
+         $incomes -> value_euro = $eu_fn;
          $incomes -> value_bim = $request->value_bim;
-         $incomes -> number_bim_fixed = $request->value_bim;
-         $incomes -> number_bim = $request->number_bim;
+         $incomes -> number_bim_fixed = $request->number_bim;
+         $incomes -> number_bim =  $bim_fn;
 
          //write to the data base
          $incomes ->save();
-         session()->flash('Edit','تم اضافة مبلغ مالي بنجاح ');
+         session()->flash('Edit','تم تعديل المبلغ المالي بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('income.show'));
+        }
+        else {
+         session()->flash('warning','التعديل الذي قمت به غير صالح');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('income.show'));        
+        }
     }
 
     public function destroy(Request $request)
     {
+        $incomes =  Income::find($request->id);
+        if($incomes->incomes_statu == 0){
+
         Income::find($request->id)->delete();
         /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
         session()->flash('Delete','تم حذف المبلغ المالي  بنجاح ');
         return redirect(route('income.show'));
+        }else {
+        session()->flash('warning','لايمكن حذف المبلغ المالي بعد ان قمت بالسحب منه ');
+        return redirect(route('income.show'));
+        }
     }
 }

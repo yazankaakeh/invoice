@@ -196,7 +196,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
 
 ////////////////////////////////////////////////////////// Form /////////////////////////
 
-    public function register(){
+    public function register(){    
         $check = From::all();
 
         if($check->isEmpty())
@@ -219,6 +219,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
 
         }
     }
+    
 
     public function enable(Request $request){
         $this->validate($request,[

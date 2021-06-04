@@ -28,5 +28,6 @@
 				@include('layouts.models')
             	@include('layouts.footer')
 				@include('layouts.footer-scripts')	
+				@yield('jss')
 	</body>
 </html>

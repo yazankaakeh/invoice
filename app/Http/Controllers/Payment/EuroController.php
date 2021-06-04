@@ -82,6 +82,9 @@ public function store_family_euro(Request $request)
     }
     else {
         $payments_cut->value_euro = $m;
+    $sta = $payments_cut->incomes_statu;
+    ++$sta;
+    $payments_cut->incomes_statu = $sta;            
         $payments_cut ->save();
     }
 
@@ -190,6 +193,9 @@ public function destroy_familys_euro(Request $request)
 
     $s;
     $payments_cut = Income::where('value_euro','>', 0)->first();
+    $sta = $payments_cut->incomes_statu;
+    --$sta;
+    $payments_cut->incomes_statu = $sta;        
     $s= $payments_cut->value_euro;
     $a=$request->family_value_euro;
     //dd($a);
@@ -252,6 +258,9 @@ public function store_medical_euro(Request $request)
     }
     else {
         $payments_cut->value_euro = $m;
+    $sta = $payments_cut->incomes_statu;
+    ++$sta;
+    $payments_cut->incomes_statu = $sta;            
         $payments_cut ->save();
     }
 
@@ -320,7 +329,7 @@ public function update_medical_euro(Request $request)
         return redirect(route('euro.medical.pay'));
     }
     elseif ($m > 0) {
-    $payments_cut->value_euro =$m  ;
+    $payments_cut->value_euro = $m ;
 
     }
     //create new object of the model student and make mapping to the data
@@ -373,6 +382,9 @@ public function destroy_medicals_euro(Request $request)
 
     $s;
     $payments_cut = Income::where('value_euro','>', 0)->first();
+    $sta = $payments_cut->incomes_statu;
+    --$sta;
+    $payments_cut->incomes_statu = $sta;        
     $s= $payments_cut->value_euro;
     $a=$request->medical_value_euro;
     //dd($a);
@@ -454,6 +466,9 @@ public function store_student_euro(Request $request)
     }
     else {
         $payments_cut->value_euro = $m;
+    $sta = $payments_cut->incomes_statu;
+    ++$sta;
+    $payments_cut->incomes_statu = $sta;            
         $payments_cut ->save();
     }
 
@@ -550,6 +565,9 @@ public function destroy_students_euro(Request $request)
 
     $s;
     $payments_cut = Income::where('value_euro','>', 0)->first();
+    $sta = $payments_cut->incomes_statu;
+    --$sta;
+    $payments_cut->incomes_statu = $sta;        
     $s= $payments_cut->value_euro;
     $a=$request->student_value;
     //dd($a);

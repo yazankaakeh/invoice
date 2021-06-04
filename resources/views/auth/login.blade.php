@@ -4,7 +4,9 @@
 تسجيل الدخول - مورا سوفت للادارة القانونية
 @stop
 
-
+@section('jss')
+{!! NoCaptcha::renderJs() !!}
+@endsection
 @section('css')
 <!-- Sidemenu-respoansive-tabs css -->
 <link href="{{URL::asset('assets/plugins/sidemenu-responsive-tabs/css/sidemenu-responsive-tabs.css')}}" rel="stylesheet">
@@ -50,12 +52,15 @@
 												  @enderror
                                                   <div class="form-group row">
                                                       <div class="col-md-6 offset-md-4">
+													  {!! NoCaptcha::display() !!}
                                                            <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <label class="form-check-label" for="remember">
                                                                        {{ __('تذكرني') }}
                                                                 </label>
+																													  {!! NoCaptcha::display() !!}
+
                                                            </div>
                                                        </div>
                                                    </div>
@@ -84,5 +89,6 @@
 			</div>
 		</div>
 @endsection
+
 @section('js')
 @endsection

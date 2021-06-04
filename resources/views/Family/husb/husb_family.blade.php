@@ -241,11 +241,42 @@
                                 <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد">
                                 </div>
 
-                                 <div class="form-group">
+                                <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <input type="text" class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب أسم المحافظة ">
+                                <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب اسم المحافظة ">
+                                  <option label="test">
+                                    حدد من فضلك اسم المحافظة </option>
+                                    <option value="	دمشق">
+                                        دمشق</option>
+                                    <option value="ريف دمشق">
+                                        ريف دمشق</option>
+                                    <option value="	حلب ">
+                                        حلب</option>
+                                    <option value="حمص">
+                                        حمص</option>
+                                    <option value="حماه">
+                                        حماه</option>
+                                    <option value="	درعا">
+                                        درعا</option>
+                                    <option value="	ادلب">
+                                        ادلب</option>
+                                    <option value="	سويداء">
+                                        سويداء</option>
+                                    <option value="	ديرالزور">
+                                        دير الزور</option>
+                                    <option value="	الرقة">
+                                        الرقة</option>
+                                    <option value="الحسكة">
+                                        الحسكة</option>
+                                    <option value="	اللاذقية">
+                                        اللاذقية</option>
+                                    <option value="	طرطوس">
+                                        طرطوس</option>
+                                    <option value="	القنيطرة">
+                                        القنيطرة</option>
+                                    </select>
                                 </div>
-
+{{-- asdasd --}}
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
                                     <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة ">
@@ -325,9 +356,40 @@
                                 <label for="exampleInputEmail">تاريخ ميلاد الزوج</label>
                                 <input type="date" class="form-control" id="husb_birth" name="husb_birth" placeholder=" أكتب تاريخ الميلاد">
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <input type="text" class="form-control" id="husb_orig_city" name="husb_Orig_city" placeholder=" أكتب اسم محافظة ">
+                                <select class="form-control" id="husb_Orig_city" name="husb_Orig_city" placeholder=" أكتب اسم  محافظة ">
+                                    <option label="test">
+                                        حدد من فضلك اسم  المحافظة </option>
+                                    <option value="	دمشق">
+                                        دمشق</option>
+                                    <option value="ريف دمشق">
+                                        ريف دمشق</option>
+                                    <option value="	حلب ">
+                                        حلب</option>
+                                    <option value="حمص">
+                                        حمص</option>
+                                    <option value="حماه">
+                                        حماه</option>
+                                    <option value="	درعا">
+                                        درعا</option>
+                                    <option value="	ادلب">
+                                        ادلب</option>
+                                    <option value="	سويداء">
+                                        سويداء</option>
+                                    <option value="	ديرالزور">
+                                        دير الزور</option>
+                                    <option value="	الرقة">
+                                        الرقة</option>
+                                    <option value="الحسكة">
+                                        الحسكة</option>
+                                    <option value="	اللاذقية">
+                                        اللاذقية</option>
+                                    <option value="	طرطوس">
+                                        طرطوس</option>
+                                    <option value="	القنيطرة">
+                                        القنيطرة</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>

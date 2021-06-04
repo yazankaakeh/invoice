@@ -53,6 +53,7 @@
                                                     <th class="border-bottom-0">الدخل باليورو</th>
                                                     <th class="border-bottom-0">الدخل باليورو المتبقي</th>
                                                     <th class="border-bottom-0">كروت بيم</th>
+                                                    <th class="border-bottom-0">كروت بيم المتبقية</th>
                                                     <th class="border-bottom-0">قيمة كرت البيم</th>
                                                     <th class="border-bottom-0">كروت بيم المتبقية</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
@@ -72,6 +73,7 @@
                                                     <td>{{$x->value_euro_fixed}}</td>
                                                     <td>{{$x->value_euro}}</td>
                                                     <td>{{$x->number_bim_fixed}}</td>
+                                                    <td>{{$x->number_bim}}</td>
                                                     <td>{{$x->value_bim}}</td>
                                                     <td>{{$x->number_bim}}</td>
                                                     <td>{{$x->note}}</td>
@@ -86,6 +88,9 @@
                                                             data-number_bim="{{$x->number_bim}}" data-value_bim="{{$x->value_bim}}"
                                                             data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
                                                             data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
+                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}" 
+                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}" 
+                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"   
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
                                                             <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                         </a>
@@ -101,6 +106,13 @@
                                                             data-value_usd_fixed="{{$x->value_usd_fixed}}"
                                                             data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
                                                             data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
+                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}" 
+                                                            data-value_usd_fixed="{{$x->value_usd_fixed}}"
+                                                            data-value_usd_fixed1="{{$x->value_usd}}"  data-number_bim1="{{$x->number_bim}}"
+                                                            data-value_tr_fixed1="{{$x->value_tr_fixed}}" data-value_euro_fixed1="{{$x->value_euro_fixed}}" 
+
+                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}" 
+                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}" 
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
@@ -122,23 +134,7 @@
                             </div>
                             @endif
 
-                            @if (session()->has('Add_MedicalStatues'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_MedicalStatues') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
 
-                            @if (session()->has('Form'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Form') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
 
                             @if (session()->has('Edit'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -158,23 +154,6 @@
                             </div>
                             @endif
 
-                            @if (session()->has('Add_student_error'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_student_error') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_student'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_student') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
 
                             @if (session()->has('Delete'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -185,50 +164,17 @@
                             </div>
                             @endif
 
-                            @if (session()->has('Add_husbandandWife'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_husbandandWife') }}</strong>
+                            @if (session()->has('warning'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('warning') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             @endif
 
-                            @if (session()->has('Add_Child'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_Child') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
 
-                            @if (session()->has('Add_StudentResidences'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_StudentResidences') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
 
-                            @if (session()->has('Add_jobs'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_jobs') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_Address'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_Address') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
 
                             @if ($errors->any())
                             <div class="alert alert-danger mg-b-0" role="alert">
@@ -366,6 +312,9 @@
                                         <div class="modal-body">
                                         <label for="exampleInputEmail">المبلغ المدخل بالدولار $</label>
                                         <input type="text" class="form-control" id="value_euro_fixed" name="value_usd" placeholder=" ">
+                                        <label for="exampleInputEmail">المبلغ المدخل بالدولار</label>
+                                        <input type="text" class="form-control" id="value_usd_fixed" name="value_usd" placeholder=" ">
+                                        <input type="hidden" class="form-control" id="value_usd_fixed1" name="value_usd1" placeholder=" ">
                                         <input type="hidden" class="form-control" id="id" name="id" placeholder=" ">
                                         </div>
 
@@ -375,14 +324,21 @@
                                         </div>
 
 
+                                        <input type="hidden" class="form-control" id="value_tr_fixed1" name="value_tr1" placeholder=" ">
+                                        </div>   
+                                                                                 
+                                                               
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> المبلغ المدخل باليورو€</label>
                                         <input type="text" class="form-control" id="value_euro_fixed" name="value_euro" placeholder=" ">
                                         </div>
+                                        <input type="hidden" class="form-control" id="value_euro_fixed1" name="value_euro1" placeholder=" ">
+                                        </div>                     
 
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> كروت البيم</label>
                                         <input type="text" class="form-control" id="number_bim" name="number_bim" placeholder=" " >
+                                        <input type="hidden" class="form-control" id="number_bim1" name="number_bim1" placeholder=" " >
                                         </div>
 
                                         <div class="modal-body">
@@ -441,10 +397,14 @@
         var button = $(event.relatedTarget)
         var id = button.data('id')
         var value_tr_fixed = button.data('value_tr_fixed')
+        var value_tr_fixed1 = button.data('value_tr_fixed1')
         var value_usd_fixed = button.data('value_usd_fixed')
+        var value_usd_fixed1 = button.data('value_usd_fixed1')
         var value_euro_fixed = button.data('value_euro_fixed')
+        var value_euro_fixed1 = button.data('value_euro_fixed1')
         var value_bim = button.data('value_bim')
         var number_bim = button.data('number_bim')
+        var number_bim1 = button.data('number_bim1')
         var note = button.data('note')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);

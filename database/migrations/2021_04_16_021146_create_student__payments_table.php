@@ -25,9 +25,11 @@ class CreateStudentPaymentsTable extends Migration
             $table->integer('value')->nullable();
             $table->integer('value_usd')->nullable();
             $table->integer('value_euro')->nullable();
+
             $table->integer('family_value')->nullable();
             $table->integer('family_value_usd')->nullable();
             $table->integer('family_value_euro')->nullable();
+            
             $table->integer('medical_value')->nullable();
             $table->integer('medical_value_usd')->nullable();
             $table->integer('medical_value_euro')->nullable();

@@ -84,6 +84,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         }
         else {
             $payments_cut->number_bim = $m;
+        $sta = $payments_cut->incomes_statu;
+        ++$sta;
+        $payments_cut->incomes_statu = $sta;                
             $payments_cut ->save();
         }
 
@@ -204,7 +207,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         $m = $s + $a;
         //dd($m);
         $payments_cut->number_bim = $m;
-
+        $sta = $payments_cut->incomes_statu;
+        --$sta;
+        $payments_cut->incomes_statu = $sta;    
         Bim::find($request->id)->delete();
         $payments_cut->save();
         $family->save();
@@ -261,8 +266,11 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         return redirect(route('bim.medical.pay'));
         }
         else {
-            $payments_cut->number_bim = $m;
-            $payments_cut ->save();
+             $payments_cut->number_bim = $m;
+             $sta = $payments_cut->incomes_statu;
+             ++$sta;
+             $payments_cut->incomes_statu = $sta;                
+             $payments_cut ->save();
         }
 
         //create new object of the model student and make mapping to the data
@@ -383,6 +391,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         $m = $s + $a;
         //dd($m);
         $payments_cut->number_bim = $m;
+          $sta = $payments_cut->incomes_statu;
+         --$sta;
+         $payments_cut->incomes_statu = $sta;            
 
         Bim::find($request->id)->delete();
         $payments_cut->save();
@@ -441,6 +452,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         }
         else {
             $payments_cut->number_bim = $m;
+               $sta = $payments_cut->incomes_statu;
+               ++$sta;
+             $payments_cut->incomes_statu = $sta;                
             $payments_cut ->save();
         }
 
@@ -559,6 +573,9 @@ $this->middleware('permission: حذف دفعة باكرت البيم الطبي 
         $m = $s + $a;
         //dd($m);
         $payments_cut->number_bim = $m;
+           $sta = $payments_cut->incomes_statu;
+          --$sta;
+         $payments_cut->incomes_statu = $sta;            
 
         Bim::find($request->id)->delete();
         $payments_cut->save();

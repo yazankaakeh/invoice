@@ -23,6 +23,7 @@ class CreateIncomesTable extends Migration
             $table->integer('value_bim')->nullable();
             $table->integer('number_bim')->nullable();
             $table->integer('number_bim_fixed')->nullable();
+            $table->integer('incomes_statu')->default('0')->nullable();
 
             $table->string('note')->nullable();
             $table->timestamps();

@@ -13,167 +13,653 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="left-content">
 						<div>
-						  <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back!</h2>
-						  <p class="mg-b-0">Sales monitoring dashboard template.</p>
+						  <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">مرحبا بكم</h2>
+						  <p class="mg-b-0">في برنامج إدارة البيانات</p>
 						</div>
 					</div>
-					<div class="main-dashboard-header-right">
-						<div>
-							<label class="tx-13">Customer Ratings</label>
-							<div class="main-star">
-								<i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star"></i> <span>(14,873)</span>
-							</div>
-						</div>
-						<div>
-							<label class="tx-13">Online Sales</label>
-							<h5>563,275</h5>
-						</div>
-						<div>
-							<label class="tx-13">Offline Sales</label>
-							<h5>783,675</h5>
-						</div>
-					</div>
+				
 				</div>
 				<!-- /breadcrumb -->
 @endsection
 @section('content')
 				<!-- row -->
 				<div class="row row-sm">
+
+				@can(' قسم الدخل المالي ')						
 					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">TODAY ORDERS</h6>
+									<h6 class="mb-3 tx-12 text-white">
+									مجموع المبلغ المدخل بالتركي
+									</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$5,74.12</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{number_format($total_tr=\App\models\Payment\Income::sum('value_tr_fixed'),2) }}₺ </h4>
+											{{-- <p class="mb-0 tx-12 text-white op-7">Compared to last week</p> --}}
 										</div>
 										<span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-up text-white"></i>
-											<span class="text-white op-7"> +427</span>
+											{{-- <i class="fas fa-arrow-circle-up text-white"></i>
+											<span class="text-white op-7"> +427</span> --}}
 										</span>
 									</div>
 								</div>
 							</div>
-							<span id="compositeline" class="pt-1">5,9,5,6,4,12,18,14,10,15,12,5,8,5,12,5,12,10,16,12</span>
 						</div>
 					</div>
+
 					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
-						<div class="card overflow-hidden sales-card bg-danger-gradient">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">TODAY EARNINGS</h6>
+									<h6 class="mb-3 tx-12 text-white">
+									مجموع المبلغ المدخل باليورو
+									</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$1,230.17</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($total_euro=\App\models\Payment\Income::sum('value_euro_fixed'),2) }}€ </h4>
 										</div>
-										<span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-down text-white"></i>
-											<span class="text-white op-7"> -23.09%</span>
-										</span>
+
 									</div>
 								</div>
 							</div>
-							<span id="compositeline2" class="pt-1">3,2,4,6,12,14,8,7,14,16,12,7,8,4,3,2,2,5,6,7</span>
 						</div>
 					</div>
+
 					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									مجموع المبلغ المدخل بالدولار
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($totlat_usd=\App\models\Payment\Income::sum('value_usd_fixed'),2) }}$ </h4>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									مجموع كروت البيم
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($total_bim=\App\models\Payment\Income::sum('number_bim_fixed'),2) }} </h4>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				@endcan
+				@can(' قسم الطلاب ')					
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									عدد الطلاب المسجلين
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ \App\models\Student\Student::count() }}طالب </h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				@endcan
+
+				@can(' قسم العائلات ')					
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									عدد العوائل المسجلة
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ \App\models\Family\Family::count() }}عائلة </h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				@endcan
+
+				@can(' قسم الطبي ')					
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									عدد المرضى المسجلين
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ \App\models\Medical\Medical::count() }}مريض </h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				@endcan
+
+					{{-- USD Percent $ --}}
+					@can(' مدفوعات بالدولار الطلاب ')
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للطلاب بالدولار
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($usd_student=\App\models\Payment\Usd::whereNotNull("student_id")->sum('value_usd'),2) }}$ </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بالدولار لقسم الطلاب</p>
+											<p class="mb-0 tx-12 text-white op-7">
+												@if($usd_student != 0 && $totlat_usd !=0)
+												{{round($usd_student/$totlat_usd*100) }}
+												@else
+												0
+												@endif													
+												%</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+
+					@can(' مدفوعات بالدولار العائلات ')
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للعائلات بالدولار
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($usd_family=\App\models\Payment\Usd::whereNotNull("family_id")->sum('family_value_usd'),2) }}$ </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بالدولار لقسم العائلات</p>
+											<p class="mb-0 tx-12 text-white op-7"> 
+												
+												@if($usd_family != 0 && $totlat_usd !=0)
+												{{round($usd_family/$totlat_usd*100) }}
+												@else
+												0
+												@endif													
+												%</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+
+					@can(' مدفوعات بالدولار الطبي ')
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للمرضى بالدولار
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($usd_medical=\App\models\Payment\Usd::whereNotNull("medical_id")->sum('medical_value_usd'),2) }}$ </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بالدولار لقسم الطبي</p>
+											<p class="mb-0 tx-12 text-white op-7"> 
+												@if($usd_medical != 0 && $totlat_usd !=0)
+												{{round($usd_medical / $totlat_usd * 100) }}
+												@else
+												0
+												@endif													
+												%</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+
+					{{-- TR Percent ₺ --}}
+					@can(' مدفوعات بالتركي الطلاب ')
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-success-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">TOTAL EARNINGS</h6>
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للطلاب بالتركي
+									</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$7,125.70</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($tr_student=\App\models\Payment\Tr::whereNotNull("student_id")->sum('value'),2) }}₺ </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بالتركي لقسم الطلاب</p>
+											<p class="mb-0 tx-12 text-white op-7">	
+												
+												@if($tr_student != 0 && $total_tr !=0)
+												{{round($tr_student / $total_tr * 100)}}
+												@else
+												0
+												@endif												
+												 % </p>
 										</div>
-										<span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-up text-white"></i>
-											<span class="text-white op-7"> 52.09%</span>
-										</span>
 									</div>
 								</div>
 							</div>
-							<span id="compositeline3" class="pt-1">5,10,5,20,22,12,15,18,20,15,8,12,22,5,10,12,22,15,16,10</span>
 						</div>
 					</div>
-					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
+					@endcan
+
+					@can(' مدفوعات بالتركي العائلات ')
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-success-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للعائلات بالتركي
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($tr_family=\App\models\Payment\Tr::whereNotNull("family_id")->sum('family_value'),2) }}₺ </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بالتركي لقسم العائلة</p>
+											<p class="mb-0 tx-12 text-white op-7">
+												
+												@if($tr_family != 0 && $total_tr !=0)
+												{{round($tr_family /	$total_tr * 100)}}
+												@else
+												0
+												@endif												
+												% </p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+					@can(' مدفوعات بالتركي الطبي ')
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-success-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للمرضى بالتركي
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($tr_medical=\App\models\Payment\Tr::whereNotNull("medical_id")->sum('medical_value'),2) }}₺ </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بالتركي لقسم الطبي</p>
+											<p class="mb-0 tx-12 text-white op-7">
+											
+												@if($tr_medical != 0 && $total_tr !=0)
+												{{round($tr_medical /	$total_tr * 100)}}
+												@else
+												0
+												@endif
+											% 
+											
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+					@endcan
+
+					@can(' مدفوعات باليورو الطلاب ')
+					{{-- Euro Percent %  --}}
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-danger-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للطلاب باليورو
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($euro_student=\App\models\Payment\Euro::whereNotNull("student_id")->sum('value_euro'),2) }}€ </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات باليورو لقسم الطلاب</p>
+											<p class="mb-0 tx-12 text-white op-7">	
+												
+												@if($euro_student != 0 && $total_euro !=0)
+												{{round($euro_student / $total_euro * 100)}}
+												@else
+												0
+												@endif
+												% 
+												
+												</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+
+					@can(' مدفوعات باليورو العائلات ')
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-danger-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للعائلات باليورو
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($euro_family=\App\models\Payment\Euro::whereNotNull("family_id")->sum('family_value_euro'),2) }}€ </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات باليورو لقسم العائلة</p>
+											<p class="mb-0 tx-12 text-white op-7">
+												
+												@if($euro_family != 0 && $total_euro !=0)
+												{{round($euro_family /	$total_euro * 100)}}
+												@else
+												0
+												@endif
+												% 
+												</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+
+					@can(' إضافة دفعة باليورو الطبي ')
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-danger-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للمرضى باليورو
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($euro_medical=\App\models\Payment\Euro::whereNotNull("medical_id")->sum('medical_value_euro'),2) }}€ </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات باليورو لقسم الطبي</p>
+											<p class="mb-0 tx-12 text-white op-7">
+											
+												@if($euro_medical != 0 && $total_euro !=0)
+												{{round($euro_medical /	$total_euro * 100)}}
+												@else
+												0
+												@endif
+											
+											% 
+											
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+
+					{{-- Bim Percent %  --}}
+					@can(' مدفوعات باكرت البيم الطلاب ')
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-warning-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">PRODUCT SOLD</h6>
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للطلاب بكروت البيم
+									</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$4,820.50</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($bim_student=\App\models\Payment\Bim::whereNotNull("student_id")->sum('number_bim_student'),2) }}كرت </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بكروت البيم لقسم الطلاب</p>
+											<p class="mb-0 tx-12 text-white op-7">
+												@if($bim_student != 0 && $total_bim !=0)
+												{{round($bim_student / $total_bim * 100)}}
+												@else()
+												0														
+												@endif
+												
+												% </p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+					
+					@can(' مدفوعات باكرت البيم العائلات ')
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-warning-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للعائلات بكروت البيم
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($bim_family=\App\models\Payment\Bim::whereNotNull("family_id")->sum('number_bim_family'),2) }}كرت </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بكروت البيم لقسم العائلة</p>
+											<p class="mb-0 tx-12 text-white op-7">
+												@if($bim_family != 0  && $total_bim != 0 )
+												{{round($bim_family /	$total_bim * 100)}}
+													
+												@else()
+												0
+												@endif
+												% </p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+
+					@can(' مدفوعات باكرت البيم الطبي ')						
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-warning-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									المبلغ المدفوع للمرضى بكروت البيم
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($bim_medical=\App\models\Payment\Bim::whereNotNull("medical_id")->sum('number_bim_medical'),2) }}كرت </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بكروت البيم لقسم الطبي</p>
+											<p class="mb-0 tx-12 text-white op-7">
+											
+												{{$total_bim=\App\models\Payment\Income::sum('number_bim_fixed')}}												@if($total_bim !=0 &&  $bim_medical !=0)
+												{{round($bim_medical /	$total_bim * 100)}}
+												
+												@else ()
+												0
+												@endif	
+												% 
+											
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+					@can(' قسم الدخل المالي ')						
+					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									مجموع المبلغ المتبقي بالتركي
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{number_format($total_tr=\App\models\Payment\Income::sum('value_tr'),2) }}₺ </h4>
 										</div>
 										<span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-down text-white"></i>
-											<span class="text-white op-7"> -152.3</span>
 										</span>
 									</div>
 								</div>
 							</div>
-							<span id="compositeline4" class="pt-1">5,9,5,6,4,12,18,14,10,15,12,5,8,5,12,5,12,10,16,12</span>
 						</div>
 					</div>
-				</div>
-				<!-- row closed -->
 
-				<!-- row opened -->
-				<div class="row row-sm">
-					<div class="col-md-12 col-lg-12 col-xl-7">
-						<div class="card">
-							<div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
-								<div class="d-flex justify-content-between">
-									<h4 class="card-title mb-0">Order status</h4>
-									<i class="mdi mdi-dots-horizontal text-gray"></i>
+					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									مجموع المبلغ المتبقي باليورو
+									</h6>
 								</div>
-								<p class="tx-12 text-muted mb-0">Order Status and Tracking. Track your order from ship date to arrival. To begin, enter your order number.</p>
-							</div>
-							<div class="card-body">
-								<div class="total-revenue">
-									<div>
-									  <h4>120,750</h4>
-									  <label><span class="bg-primary"></span>success</label>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($total_euro=\App\models\Payment\Income::sum('value_euro'),2) }}€ </h4>
+										</div>
+
 									</div>
-									<div>
-									  <h4>56,108</h4>
-									  <label><span class="bg-danger"></span>Pending</label>
-									</div>
-									<div>
-									  <h4>32,895</h4>
-									  <label><span class="bg-warning"></span>Failed</label>
-									</div>
-								  </div>
-								<div id="bar" class="sales-bar mt-4"></div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-12 col-xl-5">
+
+					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									مجموع المبلغ المتبقي بالدولار
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($totlat_usd=\App\models\Payment\Income::sum('value_usd'),2) }}$ </h4>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									مجموع كروت البيم المتبقية
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($total_bim=\App\models\Payment\Income::sum('number_bim'),2) }} </h4>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endcan
+				<!-- row closed -->
+
+				<!-- row opened -->
+				<div class="row row-xl">
+					<div class="col-md-12 col-lg-12 col-xl-7">
+					</div>
+					@can(' قسم العائلات ')
+						<div class="col-md-12 col-lg-12 col-xl-12">
 						<div class="card card-dashboard-map-one">
-							<label class="main-content-label">Sales Revenue by Customers in USA</label>
-							<span class="d-block mg-b-20 text-muted tx-12">Sales Performance of all states in the United States</span>
-							<div class="">
-								<div class="vmap-wrapper ht-180" id="vmap1"></div>
+							<label class="main-content-label">تقرير المحافظات السورية لعائلات</label>
+							<div class=""  >
+								{!! $chartjs->render() !!}
 							</div>
 						</div>
+					@endcan
 					</div>
+
+					@can(' قسم الطلاب ')
+						<div class="col-md-12 col-lg-12 col-xl-12">
+						<div class="card card-dashboard-map-one">
+							<label class="main-content-label">تقرير المحافظات السورية للطلاب</label>
+							<div class=""  >
+								{!! $chartjs1->render() !!}
+							</div>
+						</div>
+					@endcan
+					</div>
+				</div>
+
 				</div>
 				<!-- row closed -->
 
 				<!-- row opened -->
-				<div class="row row-sm">
+				{{-- <div class="row row-sm">
 					<div class="col-xl-4 col-md-12 col-lg-12">
 						<div class="card">
 							<div class="card-header pb-1">
@@ -437,7 +923,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- /row -->
+				<!-- /row --> --}}
 			</div>
 		</div>
 		<!-- Container closed -->
@@ -458,8 +944,9 @@
 <script src="{{URL::asset('assets/js/apexcharts.js')}}"></script>
 <!-- Internal Map -->
 <script src="{{URL::asset('assets/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-<script src="{{URL::asset('assets/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<script src="{{URL::asset('assets\plugins\jqvmap\maps\jquery.vmap.turkey.js')}}"></script>
 <script src="{{URL::asset('assets/js/modal-popup.js')}}"></script>
+
 <!--Internal  index js -->
 <script src="{{URL::asset('assets/js/index.js')}}"></script>
 <script src="{{URL::asset('assets/js/jquery.vmap.sampledata.js')}}"></script>

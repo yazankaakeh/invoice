@@ -83,6 +83,9 @@ public function store_family_usd(Request $request)
     return redirect(route('family.show'));
     }
     else {
+        $sta = $payments_cut->incomes_statu;
+        ++$sta;
+        $payments_cut->incomes_statu = $sta;        
         $payments_cut->value_usd = $m;
         $payments_cut ->save();
     }
@@ -192,6 +195,11 @@ public function destroy_familys_usd(Request $request)
 
     $s;
     $payments_cut = Income::where('value_usd','>', 0)->first();
+    
+    $sta = $payments_cut->incomes_statu;
+    --$sta;
+    $payments_cut->incomes_statu = $sta;    
+
     $s= $payments_cut->value_usd;
     $a=$request->family_value_usd;
     //dd($a);
@@ -253,6 +261,9 @@ public function store_medical_usd(Request $request)
     return redirect(route('medical.show'));
     }
     else {
+        $sta = $payments_cut->incomes_statu;
+        ++$sta;
+        $payments_cut->incomes_statu = $sta;            
         $payments_cut->value_usd = $m;
         $payments_cut ->save();
     }
@@ -425,6 +436,9 @@ public function store_student_usd(Request $request)
     return redirect(route('student.show'));
     }
     else {
+        $sta = $payments_cut->incomes_statu;
+        ++$sta;
+        $payments_cut->incomes_statu = $sta;            
         $payments_cut->value_usd = $m;
         $payments_cut ->save();
     }
@@ -522,6 +536,9 @@ public function destroy_students_usd(Request $request)
 
     $s;
     $payments_cut = Income::where('value_usd','>', 0)->first();
+    $sta = $payments_cut->incomes_statu;
+    --$sta;
+    $payments_cut->incomes_statu = $sta;        
     $s= $payments_cut->value_usd;
     $a=$request->value_usd;
     //dd($a);

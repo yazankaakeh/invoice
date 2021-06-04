@@ -18,7 +18,9 @@
 		</div>
 		</div>
 		<!-- /Loader -->
+
 		@yield('content')		
 		@include('layouts.footer-scripts')	
+		
 	</body>
 </html>

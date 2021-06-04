@@ -466,6 +466,7 @@ body{
                                         <label for="form-control-label">تاريخ الدخول لتركيا</label>
                                         <input type="date" class="form-control" id="entry_turkey" name="entry_turkey"  placeholder=" أكتب تاريخ الدخول الى تركيا ">
                                         </div>
+                                        {!! NoCaptcha::display() !!}
 									</section>
 
 								</div>
@@ -577,6 +578,7 @@ body{
 <script src="{{URL::asset('assets/plugins/parsleyjs/parsley.min.js')}}"></script>
 <!--Internal  Form-wizard js -->
 <script src="{{URL::asset('assets/js/form-wizard.js')}}"></script>
+{!! NoCaptcha::renderJs() !!}
 @endsection
 @else
 		<!-- Main-error-wrapper -->

@@ -1085,7 +1085,8 @@
                                 <input type="text" class="form-control" id="Accept_rate" name="Accept_rate" placeholder="   أكتب معدل القبول الجامعي ">
                                 </div>
                                 <div class="form-group">
-                                    <p class="mg-b-10"> هل يوجد جامعة ثانية</p><select class="form-control select2" name="are_you_univer" id="are_you_univer" onchange="showDiv(this)">
+                                    <p class="mg-b-10"> هل يوجد جامعة ثانية</p>
+                                    <select class="form-control select2" name="are_you_univer" id="are_you_univer" onchange="showDiv(this)">
                                         <option label="test">
                                                   </option>
                                         <option value="يوجد" >
@@ -2278,7 +2279,7 @@
                                                 حماه</option>
                                             <option value="	درعا">
                                                 درعا</option>
-                                            <option value="	ادالب">
+                                            <option value="	ادلب">
                                                 ادلب</option>
                                             <option value="	سويداء">
                                                 سويداء</option>
@@ -2752,7 +2753,7 @@
                                         حماه</option>
                                     <option value="	درعا">
                                         درعا</option>
-                                    <option value="	ادالب">
+                                    <option value="	ادلب">
                                         ادلب</option>
                                     <option value="	سويداء">
                                         سويداء</option>

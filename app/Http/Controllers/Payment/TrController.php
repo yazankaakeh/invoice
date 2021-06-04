@@ -80,6 +80,9 @@ public function store_family_tr(Request $request)
     return redirect(route('family.show'));
     }
     else {
+        $sta = $payments_cut->incomes_statu;
+        ++$sta;
+        $payments_cut->incomes_statu = $sta;            
         $payments_cut->value_tr = $m;
         $payments_cut ->save();
     }
@@ -185,9 +188,12 @@ public function destroy_familys_tr(Request $request)
     --$x;
     $family->tr_statu = $x;
     $family_Constraint = $family->family_Constraint;
-
+  
     $s;
     $payments_cut = Income::where('value_tr','>', 0)->first();
+    $sta = $payments_cut->incomes_statu;
+    --$sta;
+    $payments_cut->incomes_statu = $sta;  
     $s= $payments_cut->value_tr;
     $a=$request->family_value_tr;
     //dd($a);
@@ -249,6 +255,9 @@ public function store_medical_tr(Request $request)
     return redirect(route('medical.show'));
     }
     else {
+        $sta = $payments_cut->incomes_statu;
+        ++$sta;
+        $payments_cut->incomes_statu = $sta;            
         $payments_cut->value_tr = $m;
         $payments_cut ->save();
     }
@@ -357,8 +366,13 @@ public function destroy_medicals_tr(Request $request)
     $medical->tr_statu = $x;
     $medical_Name = $medical->medical_Name;
 
+  
+
     $s;
     $payments_cut = Income::where('value_tr','>', 0)->first();
+    $sta = $payments_cut->incomes_statu;
+    --$sta;
+    $payments_cut->incomes_statu = $sta;      
     $s= $payments_cut->value_tr;
     $a=$request->medical_value_tr;
     //dd($a);
@@ -429,6 +443,9 @@ public function store_student_tr(Request $request)
     return redirect(route('student.show'));
     }
     else {
+        $sta = $payments_cut->incomes_statu;
+        ++$sta;
+        $payments_cut->incomes_statu = $sta;            
         $payments_cut->value_tr = $m;
         $payments_cut ->save();
     }
@@ -524,8 +541,13 @@ public function destroy_students_tr(Request $request)
     $student->tr_statu = $x;
     $student_Name = $student->student_Name;
 
+
+    
     $s;
     $payments_cut = Income::where('value_tr','>', 0)->first();
+    $sta = $payments_cut->incomes_statu;
+    --$sta;
+    $payments_cut->incomes_statu = $sta;        
     $s= $payments_cut->value_tr;
     $a=$request->student_value;
     //dd($a);

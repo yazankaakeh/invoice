@@ -729,10 +729,10 @@
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                    <div class="modal-body">
-                                <div class="form-group">
+                            <div class="form-group">
                                 <input type="hidden" name="family_id" id="family_id"  readonly>
                                 <label for="exampleInputEmail"> اسم المحافظة أو الولاية</label>
-                                <select type="text" class="form-control" id="address_country" name="address_country" placeholder="">
+                                <select type="text" class="form-control"  id="address_country" name="address_country" onchange="showDiv(this)">
                                     <option label="test">
                                          </option>
                                     <option value="لايوجد كملك" >
@@ -803,7 +803,7 @@
                                         إسبرطة</option>
                                     <option value="	مرسين">
                                         مرسين</option>
-                                    <option value="	إسطنبول">
+                                    <option value="إسطنبول">
                                         إسطنبول</option>
                                     <option value="	إزمير">
                                         إزمير</option>
@@ -902,9 +902,26 @@
                                 </select>
                             </div>
 
-                                <div class="form-group">
+                                    <script type="text/javascript">
+                                    function showDiv(select){
+                                    if(select.value == 'إسطنبول'){
+                                        document.getElementById('address_city1').style.display = "block";
+                                        document.getElementById('address_city').style.display = "none";
+                                    } else{
+                                        document.getElementById('address_city1').style.display = "none";
+                                        document.getElementById('address_city').style.display = "block";
+                                    }
+                                    }
+                                    </script>
+                            
+                                <div class="form-group" style="display:none;" id="address_city" >
                                 <label for="exampleInputEmail">اسم المنطقة</label>
-                                <select type="text" class="form-control" id="address_city" name="address_city" placeholder=" أكتب اسم المنطقة ">
+                                <input type="text" class="form-control"  id="address_city" name="address_city" placeholder=" أكتب العنوان  كما في الفاتورة ">
+                                </div>   
+
+                                <div class="form-group" style="display:none;" id="address_city1" >
+                                <label for="exampleInputEmail">اسم المنطقة</label>
+                                <select type="text" class="form-control"  id="address_city1" name="address_city" placeholder=" أكتب اسم المنطقة ">
                                     <option label="test">
                                     </option>
                                  <option value="Adalar" >
@@ -1433,7 +1450,7 @@
                                         حماه</option>
                                     <option value="	درعا">
                                         درعا</option>
-                                    <option value="	ادالب">
+                                    <option value="	ادلب">
                                         ادلب</option>
                                     <option value="	سويداء">
                                         سويداء</option>
@@ -1576,7 +1593,7 @@
                                         حماه</option>
                                     <option value="	درعا">
                                         درعا</option>
-                                    <option value="	ادالب">
+                                    <option value="	ادلب">
                                         ادلب</option>
                                     <option value="	سويداء">
                                         سويداء</option>
@@ -2189,6 +2206,8 @@
         var modal = $(this)
         modal.find('.modal-body #family_id').val(family_id);})
 </script>  --}}
+
+
 
 @endsection
 
