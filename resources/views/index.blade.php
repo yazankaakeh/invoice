@@ -633,7 +633,7 @@
 					<div class="col-md-12 col-lg-12 col-xl-7">
 					</div>
 					@can(' قسم العائلات ')
-						<div class="col-md-12 col-lg-12 col-xl-12">
+						<div class="col-md-12 col-lg-12 col-xl-6">
 						<div class="card card-dashboard-map-one">
 							<label class="main-content-label">تقرير المحافظات السورية لعائلات</label>
 							<div class=""  >
@@ -644,7 +644,7 @@
 					</div>
 
 					@can(' قسم الطلاب ')
-						<div class="col-md-12 col-lg-12 col-xl-12">
+						<div class="col-md-12 col-lg-12 col-xl-6">
 						<div class="card card-dashboard-map-one">
 							<label class="main-content-label">تقرير المحافظات السورية للطلاب</label>
 							<div class=""  >
