@@ -84,7 +84,7 @@ public function store_family_euro(Request $request)
         $payments_cut->value_euro = $m;
     $sta = $payments_cut->incomes_statu;
     ++$sta;
-    $payments_cut->incomes_statu = $sta;            
+    $payments_cut->incomes_statu = $sta;
         $payments_cut ->save();
     }
 
@@ -112,16 +112,27 @@ public function store_family_euro(Request $request)
     return redirect(route('family.show'));
     }
 }
+public function messages_update_family()
+{
+return $messages_update_family = [
+    'family_id.required' => '!!',
+    'family_value_euro.required' => 'لم يتم ادخال البملغ المالي باليورو !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
 public function update_family_euro(Request $request)
 {
+    $messages = $this->messages_update_family();
     $this->validate($request, [
         'family_id' => 'required',
         'id' => 'required',
         'family_value_euro' => 'required',
         'family_value_euro1' => 'required',
         'note'=> 'required',
-    ]);
+    ],$messages);
+
     if ($request->family_value_euro1 != $request->family_value_euro)
     {
 
@@ -195,7 +206,7 @@ public function destroy_familys_euro(Request $request)
     $payments_cut = Income::where('value_euro','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
-    $payments_cut->incomes_statu = $sta;        
+    $payments_cut->incomes_statu = $sta;
     $s= $payments_cut->value_euro;
     $a=$request->family_value_euro;
     //dd($a);
@@ -260,7 +271,7 @@ public function store_medical_euro(Request $request)
         $payments_cut->value_euro = $m;
     $sta = $payments_cut->incomes_statu;
     ++$sta;
-    $payments_cut->incomes_statu = $sta;            
+    $payments_cut->incomes_statu = $sta;
         $payments_cut ->save();
     }
 
@@ -384,7 +395,7 @@ public function destroy_medicals_euro(Request $request)
     $payments_cut = Income::where('value_euro','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
-    $payments_cut->incomes_statu = $sta;        
+    $payments_cut->incomes_statu = $sta;
     $s= $payments_cut->value_euro;
     $a=$request->medical_value_euro;
     //dd($a);
@@ -421,17 +432,7 @@ public function show_student_euro($id)
     // $child = DB::table('childrens')->where('student_id', $id)->get();
     return view('payments.student.student_euro',compact('payments','payments_income'));
 }
-public function messages_student_bim()
-{
-return $messages_student_bim = [
-    'student_id.required' => '!!',
-    'value_bim_student.required' => 'لم يتم ادخال قيمة كرت البيم  !!',
-    'number_bim_student.required' => 'لم يتم ادخال قيمة  عدد كرت البيم !!',
-    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
-
-];
-}
 public function messages_student_euro()
 {
 return $messages_student_euro = [
@@ -468,7 +469,7 @@ public function store_student_euro(Request $request)
         $payments_cut->value_euro = $m;
     $sta = $payments_cut->incomes_statu;
     ++$sta;
-    $payments_cut->incomes_statu = $sta;            
+    $payments_cut->incomes_statu = $sta;
         $payments_cut ->save();
     }
 
@@ -495,16 +496,26 @@ public function store_student_euro(Request $request)
     return redirect(route('medical.show'));
     }
 }
+public function messages_updat_student_euro()
+{
+return $messages_updat_student_euro = [
+    'student_id.required' => '!!',
+    'student_value.required' => 'لم يتم ادخال البملغ المالي باليورو !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
 public function update_student_euro(Request $request)
 {
+    $messages = $this->messages_updat_student_euro();
     $this->validate($request, [
         'student_id' => 'required',
         'id' => 'required',
         'student_value1' => 'required',
         'student_value' => 'required',
         'note'=> 'required',
-    ]);
+    ],$messages);
     if ($request->student_value1 != $request->student_value)
     {
 
@@ -567,7 +578,7 @@ public function destroy_students_euro(Request $request)
     $payments_cut = Income::where('value_euro','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
-    $payments_cut->incomes_statu = $sta;        
+    $payments_cut->incomes_statu = $sta;
     $s= $payments_cut->value_euro;
     $a=$request->student_value;
     //dd($a);

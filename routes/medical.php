@@ -14,7 +14,7 @@ Route::prefix('medical')->group(function () {
     Route::post('store', "medical\medicalController@store")->name('medical.store')->middleware('auth');
     Route::patch('update', "medical\medicalController@update")->name('medical.update')->middleware('auth');
     Route::delete('update', "medical\medicalController@destroy")->name('medical.destroy')->middleware('auth');
-    Route::get('register', "medical\medicalController@register")->name('medical.register')->middleware('auth');
+    Route::get('register', "medical\medicalController@register")->name('medical.register');
     Route::get('enable', "medical\medicalController@enable")->name('medical.enable')->middleware('auth');
     Route::get('/add/medical', "medical\medicalController@add_medical")->name('medical.medical.add')->middleware('auth');
     Route::get('disable', "medical\medicalController@disable")->name('medical.disable')->middleware('auth');

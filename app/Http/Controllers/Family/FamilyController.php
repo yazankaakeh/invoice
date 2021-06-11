@@ -7,6 +7,7 @@ use App\models\Student\Student;
 use App\models\Payment\Income;
 use Illuminate\Http\Request;
 use App\models\Publics\From;
+use App\models\Publics\HusbandandWife;
 use App\models\Medical\Medical;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -19,25 +20,101 @@ class FamilyController extends Controller
 
 function __construct()
 {
-$this->middleware('permission: قسم العائلات ', ['only' => ['index']]);
-$this->middleware('permission: اضافة العائلات ', ['only' => ['store']]);
-$this->middleware('permission: تعديل العائلات ', ['only' => ['update']]);
-$this->middleware('permission: حذف العائلات ', ['only' => ['destroy']]);
-//$this->middleware('permission: حذف مدرسة لطفل الطلاب ', ['only' => ['register']]);
-$this->middleware('permission: فورم تسجيل العائلات ', ['only' => ['enable']]);
+    $this->middleware('permission: قسم العائلات ', ['only' => ['index']]);
+    $this->middleware('permission: اضافة العائلات ', ['only' => ['store']]);
+    $this->middleware('permission: تعديل العائلات ', ['only' => ['update']]);
+    $this->middleware('permission: حذف العائلات ', ['only' => ['destroy']]);
+    //$this->middleware('permission: حذف مدرسة لطفل الطلاب ', ['only' => ['register']]);
+    $this->middleware('permission: فورم تسجيل العائلات ', ['only' => ['enable']]);
 
-$this->middleware('permission: إضافة طالب العائلات ', ['only' => ['add_student']]);
-$this->middleware('permission:  طالب العائلات ', ['only' => ['show_student']]);
-$this->middleware('permission: حذف طالب العائلات ', ['only' => ['detroy_student']]);
+    $this->middleware('permission: إضافة طالب العائلات ', ['only' => ['add_student']]);
+    $this->middleware('permission:  طالب العائلات ', ['only' => ['show_student']]);
+    $this->middleware('permission: حذف طالب العائلات ', ['only' => ['detroy_student']]);
 
-$this->middleware('permission: إضافة مريض العائلات ', ['only' => ['add_medical']]);
-$this->middleware('permission:  مريض العائلات ', ['only' => ['show_medical']]);
-$this->middleware('permission: حذف مريض العائلات ', ['only' => ['detroy_medical']]);
+    $this->middleware('permission: إضافة مريض العائلات ', ['only' => ['add_medical']]);
+    $this->middleware('permission:  مريض العائلات ', ['only' => ['show_medical']]);
+    $this->middleware('permission: حذف مريض العائلات ', ['only' => ['detroy_medical']]);
+
+
+    $this->middleware('permission: عرض العائلات الجدد', ['only' => ['new_family']]);
+    $this->middleware('permission: عرض العائلات المرفوضة ', ['only' => ['archievd_family']]);
+    $this->middleware('permission: عرض العائلات المؤجلة ', ['only' => ['delayed_family']]);
+    $this->middleware('permission: عرض العائلات المرفوضة ', ['only' => ['rejected_family']]);
 
 
 }
 
+  public function store_register(Request $request)
+    {
+        $messages = $this->messages();
+        $this->validate($request,[
+            'family_Constraint' => 'required',
+            'family_number_member' => 'required',
+            'family_breadwinner' => 'required',
+            'family_an_breadwinner' => 'required',
+            'family_monthly_salary' => 'required',
+            'family_has_aid' => 'required',
+            'family_what_aid' => 'required',
+            'aid_value' => 'required',
+            'gender' => 'required',
+            'note' => 'required',
+            'sec_phone' => 'required|unique:families',
+            'phone' => 'required|unique:families',
+            'work_an_breadwinner' => 'required',
+            'work_breadwinner' => 'required',
+            'academicel' => 'required',
+            'now_work' => 'required',
+            'work' => 'required',
+            'city' => 'required',
+         ],$messages);
+         //create new object of the model student and make mapping to the data
+         $families = new Family;
+         $families -> family_Constraint = $request->family_Constraint;
+         $families -> gender = $request->gender;
+         $families -> phone = $request->phone;
+         $families -> sec_phone = $request->sec_phone;
+         $families -> family_number_member = $request->family_number_member;
+         $families -> family_breadwinner = $request->family_breadwinner;
+         $families -> family_an_breadwinner = $request->family_an_breadwinner;
+         $families -> aid_value = $request->aid_value;
+         $families -> work_breadwinner = $request->work_breadwinner;
+         $families -> work_an_breadwinner = $request->work_an_breadwinner;
+         $families -> family_monthly_salary = $request->family_monthly_salary;
+         $families -> family_what_aid = $request->family_what_aid;
+         $families -> family_has_aid = $request->family_has_aid;
+         $families -> academicel = $request->academicel;
+         $families -> work = $request->work;
+         $families -> now_work = $request->now_work;
+         $families -> city = $request->city;
+         $families -> note = $request->note;
+         $x=1;
+         $families->husband_wife_statu = $x;
+         //write to the data base
+         $families ->save();
 
+         $husbandandWife = new HusbandandWife;
+         $husbandandWife->family_id = $families->id;
+
+         if($request->gender == "ذكر"){
+         $husbandandWife -> wife_city = $request->city;
+         $husbandandWife -> wife_now_work = $request->now_work;
+         $husbandandWife -> wife_Pre_work = $request->work;
+         $husbandandWife -> wife_academicel = $request->academicel;
+         }
+         elseif ($request->gender == "انثى") {
+         $husbandandWife -> husb_Orig_city = $request->husb_Orig_city;
+         $husbandandWife -> husb_academicel = $request->husb_academicel;
+         $husbandandWife -> husb_now_work = $request->husb_now_work;
+         $husbandandWife -> husb_Pre_work = $request->husb_Pre_work;
+        }
+         $husbandandWife->save();
+
+
+         $enable = From::find(1);
+         session()->flash('Add', 'تم تسجيل العائلة بنجاح سوف يتم التواصل معكم قريباً. '. $request->family_Constraint .' بنجاح ');
+         $request=0;
+         return view('Family.family.register',compact('enable'));
+    }
 
     public function messages()
     {
@@ -61,6 +138,10 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
             'work_an_breadwinner.required'=>'لم يتم ادخال معلومات عمل المعيل الثاني المطلوبة !!',
             'work_breadwinner.required'=>'لم يتم ادخال معلومات عمل المعيل الأول المطلوبة !!',
             'note.required'=>'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد !!',
+            'city.required'=>'يجب عليك ادخال معلومات المحافظة السورية !!',
+            'work.required'=>'يجب عليك ادخال معلومات العمل السابق !!',
+            'now_work.required'=>'يجب عليك ادخال معلومات العمل الحالي !!',
+            'academicel.required'=>'يجب عليك ادخال معلومات المستوى التعليمي !!',
 
         ];
     }
@@ -68,31 +149,37 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
     public function index(Request $request)
     {
         $payments = Income::select('value_bim')->distinct()->get();
-        $family = Family::all();
+        $family = Family::where('new_statu', 1)->get();
         return view('Family.family.family',compact('family','payments'));
     }
 
-
     public function store(Request $request)
     {
-        $messages = $this->messages();
+           $messages = $this->messages();
         $this->validate($request,[
             'family_Constraint' => 'required',
             'family_number_member' => 'required',
             'family_breadwinner' => 'required',
             'family_an_breadwinner' => 'required',
             'family_monthly_salary' => 'required',
+            'family_has_aid' => 'required',
             'family_what_aid' => 'required',
             'aid_value' => 'required',
+            'gender' => 'required',
             'note' => 'required',
             'sec_phone' => 'required|unique:families',
             'phone' => 'required|unique:families',
             'work_an_breadwinner' => 'required',
-            'work_breadwinner' => 'required'
+            'work_breadwinner' => 'required',
+            'academicel' => 'required',
+            'now_work' => 'required',
+            'work' => 'required',
+            'city' => 'required',
          ],$messages);
          //create new object of the model student and make mapping to the data
          $families = new Family;
          $families -> family_Constraint = $request->family_Constraint;
+         $families -> gender = $request->gender;
          $families -> phone = $request->phone;
          $families -> sec_phone = $request->sec_phone;
          $families -> family_number_member = $request->family_number_member;
@@ -104,26 +191,21 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
          $families -> family_monthly_salary = $request->family_monthly_salary;
          $families -> family_what_aid = $request->family_what_aid;
          $families -> family_has_aid = $request->family_has_aid;
+         $families -> academicel = $request->academicel;
+         $families -> work = $request->work;
+         $families -> now_work = $request->now_work;
+         $families -> city = $request->city;
          $families -> note = $request->note;
+
 
          //write to the data base
          $families ->save();
          //dd($request);
-         if ($request->register == "admin") {
          session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          $request=null;
          return redirect(route('family.show'));
-         }
-
-         if ($request->register == "register") {
-            $enable = From::find(1);
-            session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
-            $request=null;
-            return view('Family.family.register',compact('enable'));
-        }
     }
-
 
     public function update(Request $request)
     {
@@ -136,27 +218,35 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
             'family_monthly_salary' => 'required',
             'family_monthly_salary' => 'required',
             'family_what_aid' => 'required',
-            'sec_phone' => 'required|unique:familys',
             'aid_value' => 'required',
-            'phone' => 'required|unique:familys',
             'work_an_breadwinner' => 'required',
             'work_breadwinner' => 'required',
-            'note' => 'required'
+            'note' => 'required',
+            'academicel' => 'required',
+            'now_work' => 'required',
+            'work' => 'required',
+            'gender' => 'required',
+            'city' => 'required',
          ]);
          //create new object of the model student and make mapping to the data
          $families = Family::find($request->id);
+        $families -> family_Constraint = $request->family_Constraint;
+         $families -> gender = $request->gender;
          $families -> phone = $request->phone;
          $families -> sec_phone = $request->sec_phone;
-         $families -> family_Constraint = $request->family_Constraint;
          $families -> family_number_member = $request->family_number_member;
-         $families -> aid_value = $request->aid_value;
          $families -> family_breadwinner = $request->family_breadwinner;
          $families -> family_an_breadwinner = $request->family_an_breadwinner;
-         $families -> family_monthly_salary = $request->family_monthly_salary;
-         $families -> family_what_aid = $request->family_what_aid;
+         $families -> aid_value = $request->aid_value;
          $families -> work_breadwinner = $request->work_breadwinner;
          $families -> work_an_breadwinner = $request->work_an_breadwinner;
+         $families -> family_monthly_salary = $request->family_monthly_salary;
+         $families -> family_what_aid = $request->family_what_aid;
          $families -> family_has_aid = $request->family_has_aid;
+         $families -> academicel = $request->academicel;
+         $families -> work = $request->work;
+         $families -> now_work = $request->now_work;
+         $families -> city = $request->city;
          $families -> note = $request->note;
 
          //write to the data base
@@ -196,7 +286,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
 
 ////////////////////////////////////////////////////////// Form /////////////////////////
 
-    public function register(){    
+    public function register(){
         $check = From::all();
 
         if($check->isEmpty())
@@ -219,7 +309,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
 
         }
     }
-    
+
 
     public function enable(Request $request){
         $this->validate($request,[
@@ -234,10 +324,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
          return redirect(route('family.show'));
     }
 
-
-
 ///////////////////////////////////////////    Student /////////////////////////////////
-
 
     public function add_student(Request $request)
     {
@@ -285,7 +372,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
          else {
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
-         session()->flash('Add_student_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح يامسخم ');
+         session()->flash('Add_student_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح   ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('family.show'));
          }
@@ -358,7 +445,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
          else {
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
-         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح يامسخم ');
+         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح   ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added medical Successfully')
          return redirect(route('family.show'));
          }
@@ -366,7 +453,7 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
         else {
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
-         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح يامسخم ');
+         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح   ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added medical Successfully')
          return redirect(route('family.show'));
          }
@@ -396,4 +483,73 @@ $this->middleware('permission: حذف مريض العائلات ', ['only' => ['
 
     }
 
+///////////////////////////////////////////    Medical   ///////////////////////////////////
+
+///////////////////////////////////////////    Show Status   ///////////////////////////////////
+
+    public function new_family()
+    {
+        $family = Family::where('new_statu', 0)->get();
+        return view('Family.family.new_family',compact('family'));
     }
+
+    public function archievd_family()
+    {
+        $family = Family::where('new_statu',3)->get();
+        return view('Family.family.archived_family',compact('family'));
+    }
+
+    public function delayed_family()
+    {
+        $family = Family::where('new_statu',4)->get();
+        return view('Family.family.delayed_family',compact('family'));
+    }
+
+    public function rejected_family()
+    {
+        $family = Family::where('new_statu',2)->get();
+        return view('Family.family.rejected_family',compact('family'));
+    }
+
+///////////////////////////////////////////    Show Status   ///////////////////////////////////
+
+    //family statu
+    public function family_statu(Request $request)
+    {
+        if($request->statu == 1)
+        {
+        $family = Family::find($request->family_id);
+        $family->new_statu = $request->statu;
+        session()->flash('accepted', 'تم تعديل حالة العائلة '. $family->family_Constraint .' لمقيول  ');
+        $family->save();
+        return back();
+        }
+
+        if($request->statu == 2)
+        {
+        $family = Family::find($request->family_id);
+        $family->new_statu = $request->statu;
+        session()->flash('rejected', 'تم تعديل حالة العائلة '. $family->family_Constraint.' لمرفوض  ');
+        $family->save();
+        return back();
+        }
+
+        if($request->statu == 3)
+        {
+        $family = Family::find($request->family_id);
+        $family->new_statu = $request->statu;
+        session()->flash('archived', 'تم تعديل حالة العائلة '. $family->family_Constraint .' للأرشفة  ');
+        $family->save();
+        return back();
+        }
+
+        if($request->statu == 4)
+        {
+        $family = Family::find($request->family_id);
+        $family->new_statu = $request->statu;
+        session()->flash('delayed', 'تم تعديل حالة العائلة '. $family->family_Constraint.' للمؤجل  ');
+        $family->save();
+        return back();
+        }
+    }
+}

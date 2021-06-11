@@ -174,7 +174,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>Oh snap!</strong> {{ $error }}
+                                    <strong>ملاحظة!</strong> {{ $error }}
                             @endforeach
                             </ul>
                          </div>

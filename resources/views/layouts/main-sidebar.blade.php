@@ -54,7 +54,7 @@
                             	<li><a class="slide-item" href="{{ url('/' . ($page = 'roles')) }}">صلاحيات المستخدمين</a></li>
                         	@endcan
                     		</ul>
-                			</li>
+                			    </li>
             				@endcan
 					{{--  <li class="slide">
 						<a class="side-menu__item" href="{{ url('/' . $page='icons') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"  viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm3.5 4c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm-7 0c.83 0 1.5.67 1.5 1.5S9.33 11 8.5 11 7 10.33 7 9.5 7.67 8 8.5 8zm3.5 9.5c-2.33 0-4.32-1.45-5.12-3.5h1.67c.7 1.19 1.97 2 3.45 2s2.76-.81 3.45-2h1.67c-.8 2.05-2.79 3.5-5.12 3.5z" opacity=".3"/><circle cx="15.5" cy="9.5" r="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M12 16c-1.48 0-2.75-.81-3.45-2H6.88c.8 2.05 2.79 3.5 5.12 3.5s4.32-1.45 5.12-3.5h-1.67c-.69 1.19-1.97 2-3.45 2zm-.01-14C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg><span class="side-menu__label">ايقونات</span><span class="badge badge-danger side-badge">New</span></a>
@@ -91,7 +91,7 @@
 								@can(' مدفوعات بالدولار العائلات ')
 							<li><a class="slide-item" href="{{ route('usd.family.pay') }}">مدفوعات الدولار</a></li>
 								@endcan
-								@can(' مدفوعات باكرت البيم العائلات ')
+								@can(' مدفوعات بالكرت البيم العائلات ')
 							<li><a class="slide-item" href="{{ route('bim.family.pay') }}">كروت البيم</a></li>
 								@endcan
 								</ul>
@@ -110,7 +110,7 @@
 								@can(' مدفوعات بالدولار الطلاب ')
 							<li><a class="slide-item" href="{{ route('usd.student.pay') }}">مدفوعات الدولار</a></li>
 								@endcan
-								@can(' مدفوعات باكرت البيم الطلاب ')
+								@can(' مدفوعات بالكرت البيم الطلاب ')
 							<li><a class="slide-item" href="{{ route('bim.student.pay') }}">كروت البيم</a></li>
 								@endcan
 								</ul>
@@ -130,7 +130,7 @@
 								@can(' مدفوعات بالدولار الطبي ')
 							<li><a class="slide-item" href="{{ route('usd.medical.pay') }}">مدفوعات الدولار</a></li>
 								@endcan
-								@can(' مدفوعات باكرت البيم الطبي ')
+								@can(' مدفوعات بالكرت البيم الطبي ')
 							<li><a class="slide-item" href="{{ route('bim.medical.pay') }}">كروت البيم</a></li>
 								@endcan
 								</ul>
@@ -165,30 +165,39 @@
 						@can(' قسم الأطفال الطلاب ')
 							<li><a class="slide-item" href="{{ route('children.show') }}">قسم الاطفال</a></li>
 						@endcan
+                        <hr>
 						@can(' قسم الزوج والزوجة الطلاب ')
 							<li><a class="slide-item" href="{{ route('husband_Wife.show') }}">قسم الزوج والزوجة</a></li>
 						@endcan
+                        <hr>
 						@can(' قسم الأخوة الطلاب ')
 							<li><a class="slide-item" href="{{ route('Sister_and_Brother.show') }}"> قسم الاخوة</a></li>
 						@endcan
+                        <hr>
 						@can(' اضافة الأب والأم الطلاب ')
 							<li><a class="slide-item" href="{{ route('FatherandMother.show') }}"> قسم الأب والأم </a></li>
 						@endcan
+                        <hr>
 						@can(' قسم الجامعة الطلاب ')
 							<li><a class="slide-item" href="{{ route('University.show') }}"> قسم الجامعة</a></li>
 						@endcan
+                        <hr>
 						@can(' قسم المنح الدراسية الطلاب ')
 							<li><a class="slide-item" href="{{ route('Scholarship.show') }}"> قسم المنح الدراسية</a></li>
 						@endcan
+                        <hr>
 						@can(' اضافة الحالة الصحية الطلاب ')
 							<li><a class="slide-item" href="{{ route('Medical_Statu.show') }}"> قسم الحالة الصحية</a></li>
 						@endcan
+                        <hr>
 						@can(' قسم سكن الطلاب ')
 							<li><a class="slide-item" href="{{ route('Student_Residence.show') }}"> قسم سكن الطلاب</a></li>
 						@endcan
+                        <hr>
 						@can(' اضافة القرأن الطلاب ')
-							<li><a class="	slide-item" href="{{ route('Quran.show') }}"> قسم القرآن</a></li>
+							<li><a class=" slide-item" href="{{ route('Quran.show') }}"> قسم القرآن</a></li>
 						@endcan
+                        <hr>
 						@can(' اضافة العمل الطلاب ')
 							<li><a class="slide-item" href="{{ route('job.show') }}"> قسم العمل</a></li>
 						@endcan
@@ -204,9 +213,11 @@
 						@can(' قسم الزوج والزوجة العائلات ')
 							<li><a class="slide-item" href="{{ route('husband_Wife.show.family')}}"> قسم الزوج والزوجة</a></li>
 						@endcan
+                        <hr>
 						@can(' قسم الأطفال العائلات ')
 							<li><a class="slide-item" href="{{ route('children.show.family')}}"> قسم الاطفال</a></li>
 						@endcan
+                        <hr>
 						@can(' قسم السكن العائلات ')
 							<li><a class="slide-item" href="{{ route('address.show') }}"> قسم السكن</a></li>
 						@endcan
@@ -232,12 +243,15 @@
 								@can(' قسم الأب والأم الطبي ')
 							<li><a class="slide-item" href="{{ route('FatherandMother.show.medical') }}"> قسم الأب و الأم</a></li>
 								@endcan
+                                <hr>
 								@can(' قسم الحالة الصحية الطبي ')
 							<li><a class="slide-item" href="{{ route('Medical_Statu.show.medical') }}"> قسم الحالة الصحية</a></li>
 								@endcan
-									@can(' قسم السكن الطبي ')
+                                <hr>
+                                @can(' قسم السكن الطبي ')
 							<li><a class="slide-item" href="{{ route('address.medical.show') }}"> قسم السكن</a></li>
 								@endcan
+                                <hr>
 								@can(' قسم العمل الطبي ')
 							<li><a class="slide-item" href="{{ route('job.show.medical') }}"> قسم العمل</a></li>
 								@endcan

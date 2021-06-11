@@ -55,11 +55,10 @@
                                                     <th class="border-bottom-0">كروت بيم</th>
                                                     <th class="border-bottom-0">كروت بيم المتبقية</th>
                                                     <th class="border-bottom-0">قيمة كرت البيم</th>
-                                                    <th class="border-bottom-0">كروت بيم المتبقية</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
                                                     <th class="border-bottom-0">تاريخ الإضافة</th>
-                                                    <th class="border-bottom-0">حذف المريض</th>
-                                                    <th class="border-bottom-0">تعديل المريض</th>
+                                                    <th class="border-bottom-0">حذف دفعة الدخل</th>
+                                                    <th class="border-bottom-0">تعديل دفعة الدخل</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -75,7 +74,6 @@
                                                     <td>{{$x->number_bim_fixed}}</td>
                                                     <td>{{$x->number_bim}}</td>
                                                     <td>{{$x->value_bim}}</td>
-                                                    <td>{{$x->number_bim}}</td>
                                                     <td>{{$x->note}}</td>
                                                     <td>{{$x->created_at}}</td>
 
@@ -88,9 +86,9 @@
                                                             data-number_bim="{{$x->number_bim}}" data-value_bim="{{$x->value_bim}}"
                                                             data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
                                                             data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
-                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}" 
-                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}" 
-                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"   
+                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}"
+                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
+                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
                                                             <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                         </a>
@@ -106,13 +104,14 @@
                                                             data-value_usd_fixed="{{$x->value_usd_fixed}}"
                                                             data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
                                                             data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
-                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}" 
+                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}"
                                                             data-value_usd_fixed="{{$x->value_usd_fixed}}"
-                                                            data-value_usd_fixed1="{{$x->value_usd}}"  data-number_bim1="{{$x->number_bim}}"
-                                                            data-value_tr_fixed1="{{$x->value_tr_fixed}}" data-value_euro_fixed1="{{$x->value_euro_fixed}}" 
 
-                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}" 
-                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}" 
+                                                            data-value_usd_fixed1="{{$x->value_usd}}"  data-number_bim1="{{$x->number_bim}}"
+                                                            data-value_tr_fixed1="{{$x->value_tr_fixed}}" data-value_euro_fixed1="{{$x->value_euro_fixed}}"
+
+                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
+                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
@@ -314,7 +313,6 @@
                                         <input type="text" class="form-control" id="value_euro_fixed" name="value_usd" placeholder=" ">
                                         <label for="exampleInputEmail">المبلغ المدخل بالدولار</label>
                                         <input type="text" class="form-control" id="value_usd_fixed" name="value_usd" placeholder=" ">
-                                        <input type="hidden" class="form-control" id="value_usd_fixed1" name="value_usd1" placeholder=" ">
                                         <input type="hidden" class="form-control" id="id" name="id" placeholder=" ">
                                         </div>
 
@@ -323,22 +321,14 @@
                                         <input type="number" class="form-control" id="value_tr_fixed" name="value_tr" placeholder=" ">
                                         </div>
 
-
-                                        <input type="hidden" class="form-control" id="value_tr_fixed1" name="value_tr1" placeholder=" ">
-                                        </div>   
-                                                                                 
-                                                               
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> المبلغ المدخل باليورو€</label>
                                         <input type="text" class="form-control" id="value_euro_fixed" name="value_euro" placeholder=" ">
                                         </div>
-                                        <input type="hidden" class="form-control" id="value_euro_fixed1" name="value_euro1" placeholder=" ">
-                                        </div>                     
 
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> كروت البيم</label>
                                         <input type="text" class="form-control" id="number_bim" name="number_bim" placeholder=" " >
-                                        <input type="hidden" class="form-control" id="number_bim1" name="number_bim1" placeholder=" " >
                                         </div>
 
                                         <div class="modal-body">
@@ -409,9 +399,13 @@
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #value_usd_fixed').val(value_usd_fixed);
+        modal.find('.modal-body #value_euro_fixed1').val(value_euro_fixed1);
+        modal.find('.modal-body #value_tr_fixed1').val(value_tr_fixed1);
         modal.find('.modal-body #value_tr_fixed').val(value_tr_fixed);
         modal.find('.modal-body #value_euro_fixed').val(value_euro_fixed);
         modal.find('.modal-body #value_bim').val(value_bim);
+        modal.find('.modal-body #value_usd_fixed1').val(value_usd_fixed1);
+        modal.find('.modal-body #number_bim1').val(number_bim1);
         modal.find('.modal-body #number_bim').val(number_bim);
         modal.find('.modal-body #note').val(note);
 

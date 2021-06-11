@@ -92,7 +92,7 @@ $this->middleware('permission: تعديل الدفعة قسم الدخل الم�
         $eu_fn = $request->value_euro - $eu;
 
         $usd = $incomes -> value_usd_fixed  - $incomes -> value_usd ;
-        $usd_fn = $request->value_usd - $usd; 
+        $usd_fn = $request->value_usd - $usd;
 
         $bim = $incomes -> number_bim_fixed - $incomes -> number_bim  ;
         $bim_fn = $request->number_bim - $bim;
@@ -121,7 +121,7 @@ $this->middleware('permission: تعديل الدفعة قسم الدخل الم�
         else {
          session()->flash('warning','التعديل الذي قمت به غير صالح');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-         return redirect(route('income.show'));        
+         return redirect(route('income.show'));
         }
     }
 

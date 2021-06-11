@@ -85,7 +85,7 @@ public function store_family_usd(Request $request)
     else {
         $sta = $payments_cut->incomes_statu;
         ++$sta;
-        $payments_cut->incomes_statu = $sta;        
+        $payments_cut->incomes_statu = $sta;
         $payments_cut->value_usd = $m;
         $payments_cut ->save();
     }
@@ -114,16 +114,26 @@ public function store_family_usd(Request $request)
     return redirect(route('family.show'));
     }
 }
+public function messages_update_family_usd()
+{
+return $messages_update_family_usd = [
+    'family_id.required' => '!!',
+    'family_value_usd.required' => 'لم يتم ادخال قيمة  بالدولار  !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
 public function update_family_usd(Request $request)
 {
+    $messages = $this->messages_update_family_usd();
     $this->validate($request, [
         'family_id' => 'required',
         'id' => 'required',
         'family_value_usd' => 'required',
         'family_value_usd1' => 'required',
         'note'=> 'required',
-    ]);
+    ],$messages);
     if ($request->family_value_usd1 != $request->family_value_usd)
     {
 
@@ -195,10 +205,10 @@ public function destroy_familys_usd(Request $request)
 
     $s;
     $payments_cut = Income::where('value_usd','>', 0)->first();
-    
+
     $sta = $payments_cut->incomes_statu;
     --$sta;
-    $payments_cut->incomes_statu = $sta;    
+    $payments_cut->incomes_statu = $sta;
 
     $s= $payments_cut->value_usd;
     $a=$request->family_value_usd;
@@ -263,7 +273,7 @@ public function store_medical_usd(Request $request)
     else {
         $sta = $payments_cut->incomes_statu;
         ++$sta;
-        $payments_cut->incomes_statu = $sta;            
+        $payments_cut->incomes_statu = $sta;
         $payments_cut->value_usd = $m;
         $payments_cut ->save();
     }
@@ -292,16 +302,27 @@ public function store_medical_usd(Request $request)
     return redirect(route('medical.show'));
     }
 }
+public function messages_update_medical_usd()
+{
+return $messages_update_medical_usd = [
+    'medical_id.required' => '!!',
+    'medical_value_usd.required' => 'لم يتم ادخال قيمة  بالدولار  !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
 public function update_medical_usd(Request $request)
 {
+    $messages = $this->messages_update_medical_usd();
     $this->validate($request, [
         'medical_id' => 'required',
         'id' => 'required',
         'medical_value_usd' => 'required',
         'medical_value_usd1' => 'required',
         'note'=> 'required',
-    ]);
+    ],$messages);
+
     if ($request->medical_value_usd1 != $request->medical_value_usd)
     {
 
@@ -438,7 +459,7 @@ public function store_student_usd(Request $request)
     else {
         $sta = $payments_cut->incomes_statu;
         ++$sta;
-        $payments_cut->incomes_statu = $sta;            
+        $payments_cut->incomes_statu = $sta;
         $payments_cut->value_usd = $m;
         $payments_cut ->save();
     }
@@ -466,16 +487,27 @@ public function store_student_usd(Request $request)
     return redirect(route('student.show'));
     }
 }
+public function messages_update_student_usd()
+{
+return $messages_update_student_usd = [
+    'student_id.required' => '!!',
+    'student_value_usd.required' => 'لم يتم ادخال قيمة  بالدولار  !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
 public function update_student_usd(Request $request)
 {
+    $messages = $this->messages_update_student_usd();
     $this->validate($request, [
         'student_id' => 'required',
         'id' => 'required',
         'value_usd' => 'required',
         'value_usd' => 'required',
         'note'=> 'required',
-    ]);
+    ],$messages);
+
     if ($request->value_usd1 != $request->value_usd)
     {
 
@@ -538,7 +570,7 @@ public function destroy_students_usd(Request $request)
     $payments_cut = Income::where('value_usd','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
-    $payments_cut->incomes_statu = $sta;        
+    $payments_cut->incomes_statu = $sta;
     $s= $payments_cut->value_usd;
     $a=$request->value_usd;
     //dd($a);

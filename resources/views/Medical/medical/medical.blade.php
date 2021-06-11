@@ -142,7 +142,7 @@
 
                                                 <td>
                                                     {{-- Add_Bim--}}
-                                                @can(' إضافة دفعة باكرت البيم الطبي ')
+                                                @can(' إضافة دفعة بالكرت البيم الطبي ')
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical_name}}"  data-id="{{ $x->id }}"
                                                         data-description="" data-toggle="modal"
@@ -150,7 +150,7 @@
                                                         <i class="cf cf-zec"  style="font-size: 20px;"></i>
                                                     </a>
                                                 @endcan
-                                                @can(' مدفوعات باكرت البيم الطبي ')
+                                                @can(' مدفوعات بالكرت البيم الطبي ')
                                                     @if($x->bim_statu != 0)
                                                     <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
                                                     <a class=" btn btn-sm btn-info" href="/Medical_bim/show/medical/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>

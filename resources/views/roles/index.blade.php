@@ -78,7 +78,7 @@
                     <table class="table mg-b-0 text-md-nowrap table-hover ">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>رقم</th>
                                 <th>الاسم</th>
                                 <th>العمليات</th>
                             </tr>
@@ -93,7 +93,7 @@
                                             <a class="btn btn-success btn-sm"
                                                 href="{{ route('roles.show', $role->id) }}">عرض</a>
                                         @endcan
-                                        
+
                                         @can('تعديل صلاحية')
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{ route('roles.edit', $role->id) }}">تعديل</a>
