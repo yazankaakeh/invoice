@@ -40,6 +40,10 @@
                                         @can(' اضافة قسم الطبي ')
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة مريض</a>
                                         @endcan
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.new")}}"> عرض المرضى الجدد</a>
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.delayed")}}"> عرض المرضى المؤجلين</a>
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.archive")}}"> عرض المرضى المؤرشفين</a>
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.reject")}}"> عرض المرضى المرفوضين</a>
                                         </div>
                                      </div>
                                 <div class="card-body">
@@ -68,6 +72,7 @@
                                                     <th class="border-bottom-0">السكن </th>
                                                     <th class="border-bottom-0">الحالة الطبية</th>
                                                     <th class="border-bottom-0">العمل</th>
+                                                    <th class="border-bottom-0"> تعديل الحالة</th>
                                                     {{--  <th class="border-bottom-0">إضافة طالب</th>  --}}
                                                     {{--  <th class="border-bottom-0">إضافة مريض</th>  --}}
 
@@ -293,35 +298,14 @@
                                                 @endcan
                                                     </td>
                                                     @endif
-
-                                                     {{--  Student
-
-                                                    <td>
-                                                    @if($x->student_statu  !=  0)
-
-                                                        <a class=" btn btn-sm btn-info" href=" {{route('medical.student.show', ['id'=> $x->id])}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    @endif
-                                                        <a class="modal-effect btn btnsm btn-info" data-effect="effect-scale"
-                                                            data-medical_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModa20" title="إضافة طفل">
-                                                            <i class="las la-child"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    </td>
-
-                                                     Medical
-                                                    @if($x->medical_statu == 1)
-                                                    <td>
-                                                        <a class=" btn btn-sm btn-info" href="/job/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    </td>
-                                                    @elseif($x->medical_statu == 0)
                                                     <td>
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-medical_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal13" title="إضافة معلومات العمل">
-                                                            <i class="fas fa-briefcase"  style="font-size: 20px;"></i>
-                                                        </a>
+                                                        data-medical_name="{{$x->medical_name}}"  data-medical_id="{{$x->id}}"
+                                                        data-description="" data-toggle="modal"
+                                                        href="#exampleModal160" title="تعديل الحالة">
+                                                        <i class="si si-user-follow"  style="font-size: 20px;"></i>
+                                                    </a>
                                                     </td>
-                                                    @endif  --}}
                                                 @endforeach
                                                 </tr>
                                             </tbody>
@@ -476,6 +460,59 @@
 
                             </div>
                             @endif
+                        </div>
+
+                        {{-- medical statu --}}
+                        <div class="modal fade" id="exampleModal160" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">تعديل حالة المريض </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('medical.statu') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="modal-body">
+                                <input type="text" class="form-control select2" id="medical_name" name="medical_name"  readonly>
+                                <input type="hidden" name="medical_id" id="medical_id" readonly>
+                                <div class="form-group">
+                                <div class="modal-body">
+                                <p class="mg-b-10">حالة المريض</p>
+                                    <select class="form-control select2" name="statu" id="statu" >
+                                    <option value="1" >
+                                        مقبول
+                                    </option>
+                                    <option value="0" >
+                                        جديد
+                                    </option>
+                                    <option value="3" >
+                                        ارشيف
+                                    </option>
+                                    <option value="4" >
+                                        مؤجل
+                                    </option>
+                                    <option value="2" >
+                                        مرفوض
+                                    </option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
                         </div>
 
                         {{-- Add_Dollar --}}
@@ -2504,7 +2541,19 @@
 
        }
     }
-    </script>
+</script>
+
+<script>
+    $('#exampleModal160').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var medical_id = button.data('medical_id')
+        var medical_name = button.data('medical_name')
+        var modal = $(this)
+        modal.find('.modal-body #medical_id').val(medical_id);
+        modal.find('.modal-body #medical_name').val(medical_name);
+})
+</script>
+
 @endsection
 
 

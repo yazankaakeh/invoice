@@ -12,4 +12,9 @@ class Quran extends Model
      {
         return $this->belongsTo('App\models\Student\Student');
      }
+
+     public function Children()
+     {
+        return $this->belongsTo('App\models\Publics\Children');
+     }
 }

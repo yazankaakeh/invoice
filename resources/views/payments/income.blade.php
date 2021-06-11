@@ -57,8 +57,8 @@
                                                     <th class="border-bottom-0">قيمة كرت البيم</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
                                                     <th class="border-bottom-0">تاريخ الإضافة</th>
-                                                    <th class="border-bottom-0">حذف دفعة الدخل</th>
-                                                    <th class="border-bottom-0">تعديل دفعة الدخل</th>
+                                                    <th class="border-bottom-0">حذف الدفعة</th>
+                                                    <th class="border-bottom-0">تعديل الدفعة</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -83,18 +83,12 @@
                                                     {{-- delete medical  --}}
                                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                             data-value_usd_fixed="{{$x->value_usd_fixed}}"
-<<<<<<< Updated upstream
                                                             data-number_bim="{{$x->number_bim}}" data-value_bim="{{$x->value_bim}}"
                                                             data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
                                                             data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
                                                             data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}"
                                                             data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
                                                             data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
-=======
-                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}" 
-                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}" 
-                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"   
->>>>>>> Stashed changes
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
                                                             <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                         </a>
@@ -106,7 +100,6 @@
                                                     @can(' تعديل الدفعة قسم الدخل المالي ')
                                                     {{-- edit medical  --}}
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-<<<<<<< Updated upstream
                                                             data-number_bim="{{$x->number_bim}}" data-value_bim="{{$x->value_bim}}"
                                                             data-value_usd_fixed="{{$x->value_usd_fixed}}"
                                                             data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
@@ -119,15 +112,6 @@
 
                                                             data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
                                                             data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
-=======
-                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}" 
-                                                            data-value_usd_fixed="{{$x->value_usd_fixed}}"
-                                                            data-value_usd_fixed1="{{$x->value_usd}}"  data-number_bim1="{{$x->number_bim}}"
-                                                            data-value_tr_fixed1="{{$x->value_tr_fixed}}" data-value_euro_fixed1="{{$x->value_euro_fixed}}" 
-
-                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}" 
-                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}" 
->>>>>>> Stashed changes
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
@@ -150,10 +134,6 @@
                             @endif
 
 
-<<<<<<< Updated upstream
-=======
-                                                    
->>>>>>> Stashed changes
 
                             @if (session()->has('Edit'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -193,10 +173,7 @@
                             @endif
 
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 
                             @if ($errors->any())
                             <div class="alert alert-danger mg-b-0" role="alert">
@@ -332,45 +309,26 @@
                                         {{ method_field('patch') }}
                                         {{ csrf_field() }}
                                         <div class="modal-body">
-<<<<<<< Updated upstream
                                         <label for="exampleInputEmail">المبلغ المدخل بالدولار $</label>
                                         <input type="text" class="form-control" id="value_euro_fixed" name="value_usd" placeholder=" ">
                                         <label for="exampleInputEmail">المبلغ المدخل بالدولار</label>
                                         <input type="text" class="form-control" id="value_usd_fixed" name="value_usd" placeholder=" ">
-=======
-                                        <label for="exampleInputEmail">المبلغ المدخل بالدولار</label>
-                                        <input type="text" class="form-control" id="value_usd_fixed" name="value_usd" placeholder=" ">
-                                        <input type="hidden" class="form-control" id="value_usd_fixed1" name="value_usd1" placeholder=" ">
->>>>>>> Stashed changes
                                         <input type="hidden" class="form-control" id="id" name="id" placeholder=" ">
                                         </div>
 
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> المبلغ المدخل بالتركي TL</label>
                                         <input type="number" class="form-control" id="value_tr_fixed" name="value_tr" placeholder=" ">
-<<<<<<< Updated upstream
                                         </div>
 
-=======
-                                        <input type="hidden" class="form-control" id="value_tr_fixed1" name="value_tr1" placeholder=" ">
-                                        </div>   
-                                                                                 
-                                                               
->>>>>>> Stashed changes
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> المبلغ المدخل باليورو€</label>
                                         <input type="text" class="form-control" id="value_euro_fixed" name="value_euro" placeholder=" ">
-<<<<<<< Updated upstream
                                         </div>
-=======
-                                        <input type="hidden" class="form-control" id="value_euro_fixed1" name="value_euro1" placeholder=" ">
-                                        </div>                     
->>>>>>> Stashed changes
 
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> كروت البيم</label>
                                         <input type="text" class="form-control" id="number_bim" name="number_bim" placeholder=" " >
-                                        <input type="hidden" class="form-control" id="number_bim1" name="number_bim1" placeholder=" " >
                                         </div>
 
                                         <div class="modal-body">

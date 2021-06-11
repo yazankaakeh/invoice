@@ -27,6 +27,7 @@ class CreateMedicalStatusesTable extends Migration
 ########################## medical_statuses info Begin ############################
             $table->string('disease_type')->nullable();//نوع المرض
             $table->string('disease_name')->nullable();// اسم المرض
+            $table->string('medical_rate')->nullable();// اسم المرض
             $table->string('dr_name')->nullable();// اسم الدكتور الحالي
             $table->string('treat_cost')->nullable();// نكلفة العلاج
             $table->string('treat_type')->nullable();// نوغ العلاج

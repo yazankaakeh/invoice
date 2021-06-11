@@ -3,10 +3,6 @@
 namespace App\Http\Controllers;
 use \App\models\Publics\HusbandandWife;
 use App\models\Student\Student;
-<<<<<<< Updated upstream
-use App\models\Publics\Address;
-=======
->>>>>>> Stashed changes
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
+
         $damas=HusbandandWife::where("husb_Orig_city","دمشق" )->count();
         $r_damas=HusbandandWife::where("husb_Orig_city","ريف دمشق" )->count();
         $alippo=HusbandandWife::where("husb_Orig_city","حلب" )->count();
@@ -53,11 +49,8 @@ class HomeController extends Controller
             [
                 'backgroundColor' => ['#E4FFF9', '#B5FBDD','#76FEC5','#45D090','#F2F2E5','#414042','#48CFAF','#00848C','#AEE8E4','#00DFC8','#004156','#00DFC8','#004156','#2398f'],
                 'hoverBackgroundColor' => ['#E4FFF9', '#B5FBDD','#76FEC5' ,'#45D090','#F2F2E5','#414042','#48CFAF','#00848C','#AEE8E4','#00DFC8','#004156','#00DFC8','#004156','#2398f'],
-<<<<<<< Updated upstream
-            //    'data' => [20,10,5]
-=======
                // 'data' => [20,10,5]
->>>>>>> Stashed changes
+            //    'data' => [20,10,5]
                 'data' => [ $damas , $r_damas , $alippo , $homs , $hama , $draa , $idlib , $soudaa , $der, $raqa, $hasaka, $lat, $tartous, $qon]
             ]
         ])
@@ -94,59 +87,8 @@ class HomeController extends Controller
         ])
         ->options([]);
 
-<<<<<<< Updated upstream
-        // $damas_student=Address::where("address_city","Adalar" )->count();
-        // $r_damas_Address=Address::where("address_city","ريف دمشق" )->count();
-        // $alippo_Address=Address::where("address_city","حلب" )->count();
-        // $homs_Address=Address::where("address_city","حمص" )->count();
-        // $hama_Address=Address::where("address_city","حماه" )->count();
-        // $draa_Address=Address::where("address_city","درعا" )->count();
-        // $idlib_Address=Address::where("address_city","ادلب" )->count();
-        // $soudaa_Address=Address::where("address_city","سويداء" )->count();
-        // $der_Address=Address::where("address_city","ديرالزور" )->count();
-        // $raqa_Address=Address::where("address_city","الرقة" )->count();
-        // $hasaka_Address=Address::where("address_city","الحسكة" )->count();
-        // $lat_Address=Address::where("address_city","اللاذقية" )->count();
-        // $tartous_Address=Address::where("address_city","طرطوس" )->count();
-        // $qon_Address=Address::where("address_city","القنيطرة" )->count();
-
-        // $chartjs2 = app()->chartjs
-        // ->name('pieChart_student')
-        // ->type('pie')
-        // ->size(['width' => 400, 'height' => 200])
-        // ->labels(['دمشق', 'ريف دمشق','حلب','حمص' ,'حماه' ,'درعا' ,'ادلب','سويداء' ,'ديرالزور' ,'الرقة'  ,'الحسكة','اللاذقية','طرطوس','القنيطرة'])
-        // ->datasets([
-        //     [
-        //         'backgroundColor' => ['#E4FFF9', '#B5FBDD','#76FEC5','#45D090','#F2F2E5','#414042','#48CFAF','#00848C','#AEE8E4','#00DFC8','#004156','#00DFC8','#004156','#2398f'],
-        //         'hoverBackgroundColor' => ['#E4FFF9', '#B5FBDD','#76FEC5' ,'#45D090','#F2F2E5','#414042','#48CFAF','#00848C','#AEE8E4','#00DFC8','#004156','#00DFC8','#004156','#2398f'],
-        //        // 'data' => [20,10,5]
-        //         'data' => [ $damas_student , $r_damas_student , $alippo_student , $homs_student , $hama_student , $draa_student , $idlib_student , $soudaa_student , $der_student, $raqa_student, $hasaka_student, $lat_student, $tartous_student, $qon_student]
-        //     ]
-        // ])
-        // ->options([]);        
 
         return view('index', compact('chartjs','chartjs1'));
-=======
-
-$chartjs2 = app()->chartjs
-         ->name('barChartTest')
-         ->type('bar')
-         ->size(['width' => 400, 'height' => 200])
-         ->labels(['Label x'])
-         ->datasets([
-             [
-                 "label" => "Label x",
-                 'backgroundColor' => ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
-                 'data' => [69, 59, 59, 59, 59]
-             ],
-
-         ])
-         ->options([]);
-
-
-
-        return view('index', compact('chartjs','chartjs1','chartjs2'));
->>>>>>> Stashed changes
       //  return view('home');
     }
 }

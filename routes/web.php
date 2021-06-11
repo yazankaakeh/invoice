@@ -26,8 +26,20 @@ use App\Http\Controllers\Payment\Student_Payment;
     Route::resource('users','UserController');
     });
 
+    Route::get('/', 'HomeController@index')->middleware('auth');
 
-<<<<<<< Updated upstream
+    //Auth::routes(['verify' => true]);
+    Auth::routes(['register'=>false]);
+
+    Route::get('/index', 'HomeController@index')->middleware('auth');
+
+
+    Route::get('/{page}', 'AdminController@index')->middleware('auth');
+
+    Route::get('/home', 'HomeController@index')->middleware('auth');
+Route::get('/', function () {
+    return view('welcome');
+});
     Route::get('/', 'HomeController@index')->middleware('auth');
 
     //Auth::routes(['verify' => true]);
@@ -37,19 +49,7 @@ use App\Http\Controllers\Payment\Student_Payment;
 
     Route::get('/{page}', 'AdminController@index')->middleware('auth');
 
-    Route::get('/home', 'HomeController@index')->middleware('auth');
-=======
-Route::get('/', function () {
-    return view('welcome');
-});
-
-//Auth::routes(['verify' => true]);
-Auth::routes(['register'=>false]);
-
-Route::get('/index', 'HomeController@index')->middleware('auth');
-
-Route::get('/{page}', 'AdminController@index')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->middleware('auth');
->>>>>>> Stashed changes
 
+Route::get('/home', 'HomeController@index')->middleware('auth');

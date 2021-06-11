@@ -8,22 +8,35 @@ class Children extends Model
 {
      protected $guarded =['id'];
 
-     public function MedicalStatus()
-        {
-        return $this->hasOne('App\models\Publics\MedicalStatus');
-        }
+
+
+    public function MedicalStatus()
+    {
+    return $this->hasOne('App\models\Publics\MedicalStatus');
+    }
+
+    public function Hoobies()
+    {
+    return $this->hasOne('App\models\Publics\Hoobies');
+    }
+
+
+    public function Quran()
+    {
+    return $this->hasOne('App\models\Student\Quran');
+    }
 
      public function School()
-        {
-        return $this->hasOne('App\models\Publics\School');
-        }
-        
-     public function Student()
+    {
+    return $this->hasOne('App\models\Publics\School');
+    }
+
+    public function Student()
     {
         return $this->belongsTo('App\models\Student\Student');
     }
 
-     public function Family()
+    public function Family()
     {
         return $this->belongsTo('App\models\Family\Family', "family_id");
     }

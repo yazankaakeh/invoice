@@ -55,38 +55,36 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($qurans as $x)
+                                                @foreach($hoobie as $x)
                                                 <tr>
-                                                    <td>{{}}</td>
-                                                    <td>{{}}</td>
+                                                    <td>{{$x->children_id}}</td>
+                                                    <td>{{$x->children->childre_name}}</td>
                                                     <td>{{$x->id}}</td>
                                                     <td>{{$x->skills}}</td>
-                                                    <td>{{$x->activites}}</td>
-                                                    <td>{{$x->lang}}</td>
-                                                    <td>{{$x->updated_at}}</td>
+                                                    <td>{{$x->fav_active}}</td>
+                                                    <td>{{$x->language}}</td>
+                                                    <td>{{$x->created_at}}</td>
                                                     <td>
-                                                    @can(' تعديل قسم المهارات و الخبرات للعائلة  ')
+                                                    {{-- @can(' تعديل قسم المهارات و الخبرات للعائلة  ') --}}
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                                data-id="{{$x->id}}" data-quran_parts="{{$x->quran_parts}}"
-                                                                data-name="{{$x->name }}" data-quran_memorize="{{$x->quran_memorize}}"
-                                                                data-quran_have_certif="{{$x->quran_have_certif}}" data-quran_teacher="{{$x->quran_teacher}}"
-                                                                data-quran_certif_essuer="{{$x->quran_Certif_essuer}}"
-                                                                data-quran_with_certif="{{$x->quran_with_Certif}}" data-student_name="{{$x->student->student_name}}"
-                                                                data-student_id="{{$x->student_id}}"
+                                                                data-id="{{$x->id}}" data-fav_active="{{$x->fav_active}}"
+                                                                data-name="{{$x->children->childre_name }}" data-language="{{$x->language}}"
+                                                                data-skills="{{$x->skills}}" data-quran_teacher="{{$x->quran_teacher}}"
+                                                                data-children_id="{{$x->children_id}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
-                                                    @endcan
-                                                    @can('حذف قسم المهارات والخبرات للعائلة ')
+                                                    {{-- @endcan --}}
+                                                    {{-- @can('حذف قسم المهارات والخبرات للعائلة ') --}}
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                                data-id="{{ $x->id }}"  data-name="{{$x->name }}" data-student_id="{{$x->student_id}}"
+                                                                data-id="{{ $x->id }}"  data-name="{{$x->children->childre_name }}" data-children_id="{{$x->children_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
-                                                    @endcan
+                                                    {{-- @endcan --}}
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -122,7 +120,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>ملاحظة!</strong> {{ $error }}
+                                    <strong>Oh snap!</strong> {{ $error }}
                             @endforeach
                             </ul>
                             </div>
@@ -137,16 +135,16 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">حذف بيانات القرأن </h6><button aria-label="Close" class="close" data-dismiss="modal"
+                                    <h6 class="modal-title">حذف بيانات المهارات </h6><button aria-label="Close" class="close" data-dismiss="modal"
                                         type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
-                                <form action="{{ Route('Quran.destroy') }}" method="post">
+                                <form action="{{ Route('hoobie.destroy.family') }}" method="post">
                                     {{ method_field('delete') }}
                                     {{ csrf_field() }}
                                     <div class="modal-body">
                                         <p>هل انت متاكد من عملية الحذف ؟</p><br>
                                         <div class="form-group">
-                                        <input type="hidden" name="student_id" id="student_id" readonly>
+                                        <input type="hidden" name="children_id" id="children_id" readonly>
                                         <input type="hidden" name="id" id="id"  readonly>
                                         <label for="exampleInputEmail">اسم الطفل</label>
                                         <input class="form-control" name="name" id="name" type="text" readonly>
@@ -174,56 +172,26 @@
                                 </div>
                                 <div class="modal-body">
 
-                                 <form action="{{ route('Quran.update') }}" method="post">
+                                 <form action="{{ route('hoobie.update.family') }}" method="post">
                                 {{ method_field('patch') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
-                                <input type="hidden" name="student_id" id="student_id" readonly>
+                                <input type="hidden" name="children_id" id="children_id" readonly>
                                 <input type="hidden" name="id" id="id" readonly>
-                                    <div class="form-group">
-                                    <p class="mg-b-10">هل تحفظ القرآن</p>
-                                    <select class="form-control select2" name="quran_memorize" id="quran_memorize">
-                                    <option value="نعم" >
-                                        نعم
-                                    </option>
-                                    <option value="لا" >
-                                        لا
-                                    </option>
-                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                <label for="exampleInputEmail">مهارات يجيدها الطفل  </label>
+                                <input type="text" class="form-control" id="skills" name="skills" placeholder="    أكتب المهارات التي يجيدها الطفل ">
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">عدد الأجزاء التي أتممت حفظها </label>
-                                <input type="text" class="form-control" id="quran_parts" name="quran_parts" placeholder="    أكنب عدد الأجزاءالمحفوظة ">
+                                <label for="exampleInputEmail"> لغات يجيدها الطفل</label>
+                                <input type="text" class="form-control" id="language" name="language" placeholder="   أكتب اللغات التي يتقنها الطفل ">
                                 </div>
+
                                 <div class="form-group">
-                                <label for="exampleInputEmail">أسم الشيخ الذي درسك</label>
-                                <input type="text" class="form-control" id="quran_teacher" name="quran_teacher" placeholder="أكنب أسم الشيخ ">
-                                </div>
-                                <div class="form-group">
-                                <p class="mg-b-10">هل لديك شهادة حفظ قرآن</p>
-                                <select class="form-control select2" name="quran_have_certif" id="quran_have_certif">
-                                <option value="نعم" >
-                                    نعم
-                                </option>
-                                <option value="لا" >
-                                    لا
-                                </option>
-                                </select>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">مصدر الشهادة</label>
-                                <input type="text" class="form-control" id="quran_Certif_essuer" name="quran_Certif_essuer" placeholder="   أكنب مصدر الشهادة ">
-                                </div>
-                                <div class="form-group">
-                                <p class="mg-b-10">هل الشهادة معك؟</p>
-                                <select class="form-control select2" name="quran_with_Certif" id="quran_with_Certif" >
-                                <option value="نعم" >
-                                    نعم
-                                </option>
-                                <option value="لا" >
-                                    لا
-                                </option>
-                                </select>
+                                <label for="exampleInputEmail">مهارات ومواهب يفضلها الطفل</label>
+                                <input type="text" class="form-control" id="fav_active" name="fav_active" placeholder="   أكتب مهارات ومواهب يفضلها الطفل ">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -271,22 +239,19 @@
     $('#exampleModal2').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
-        var quran_teacher = button.data('quran_teacher')
-        var quran_memorize = button.data('quran_memorize')
-        var quran_parts = button.data('quran_parts')
-        var student_id = button.data('student_id')
-        var quran_have_certif = button.data('quran_have_certif')
-        var quran_certif_essuer = button.data('quran_certif_essuer')
-        var quran_with_certif = button.data('quran_with_certif')
+        var language = button.data('language')
+        var fav_active = button.data('fav_active')
+        var children_id = button.data('children_id')
+        var skills = button.data('skills')
+        var name = button.data('name')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #quran_memorize').val(quran_memorize);
-        modal.find('.modal-body #student_id').val(student_id);
-        modal.find('.modal-body #quran_teacher').val(quran_teacher);
-        modal.find('.modal-body #quran_parts').val(quran_parts);
-        modal.find('.modal-body #quran_have_certif').val(quran_have_certif);
-        modal.find('.modal-body #quran_certif_essuer').val(quran_certif_essuer);
-        modal.find('.modal-body #quran_with_certif').val(quran_with_certif);
+        modal.find('.modal-body #language').val(language);
+        modal.find('.modal-body #children_id').val(children_id);
+        modal.find('.modal-body #fav_active').val(fav_active);
+        modal.find('.modal-body #name').val(name);
+        modal.find('.modal-body #skills').val(skills);
+
     })
 </script>
 
@@ -294,11 +259,11 @@
     $('#modaldemo9').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
-        var student_id = button.data('student_id')
+        var children_id = button.data('children_id')
         var name = button.data('name')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #student_id').val(student_id);
+        modal.find('.modal-body #children_id').val(children_id);
         modal.find('.modal-body #name').val(name);
     })
 </script>

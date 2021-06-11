@@ -86,11 +86,8 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
             $payments_cut->number_bim = $m;
         $sta = $payments_cut->incomes_statu;
         ++$sta;
-<<<<<<< Updated upstream
         $payments_cut->incomes_statu = $sta;
-=======
-        $payments_cut->incomes_statu = $sta;                
->>>>>>> Stashed changes
+        $payments_cut->incomes_statu = $sta;
             $payments_cut ->save();
         }
 
@@ -224,11 +221,8 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $payments_cut->number_bim = $m;
         $sta = $payments_cut->incomes_statu;
         --$sta;
-<<<<<<< Updated upstream
         $payments_cut->incomes_statu = $sta;
-=======
-        $payments_cut->incomes_statu = $sta;    
->>>>>>> Stashed changes
+        $payments_cut->incomes_statu = $sta;
         Bim::find($request->id)->delete();
         $payments_cut->save();
         $family->save();
@@ -288,11 +282,8 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
              $payments_cut->number_bim = $m;
              $sta = $payments_cut->incomes_statu;
              ++$sta;
-<<<<<<< Updated upstream
              $payments_cut->incomes_statu = $sta;
-=======
-             $payments_cut->incomes_statu = $sta;                
->>>>>>> Stashed changes
+             $payments_cut->incomes_statu = $sta;
              $payments_cut ->save();
         }
 
@@ -427,11 +418,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $payments_cut->number_bim = $m;
           $sta = $payments_cut->incomes_statu;
          --$sta;
-<<<<<<< Updated upstream
          $payments_cut->incomes_statu = $sta;
-=======
-         $payments_cut->incomes_statu = $sta;            
->>>>>>> Stashed changes
 
         Bim::find($request->id)->delete();
         $payments_cut->save();
@@ -492,11 +479,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
             $payments_cut->number_bim = $m;
                $sta = $payments_cut->incomes_statu;
                ++$sta;
-<<<<<<< Updated upstream
              $payments_cut->incomes_statu = $sta;
-=======
-             $payments_cut->incomes_statu = $sta;                
->>>>>>> Stashed changes
             $payments_cut ->save();
         }
 
@@ -628,12 +611,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $payments_cut->number_bim = $m;
            $sta = $payments_cut->incomes_statu;
           --$sta;
-<<<<<<< Updated upstream
          $payments_cut->incomes_statu = $sta;
-=======
-         $payments_cut->incomes_statu = $sta;            
->>>>>>> Stashed changes
-
         Bim::find($request->id)->delete();
         $payments_cut->save();
         $student->save();

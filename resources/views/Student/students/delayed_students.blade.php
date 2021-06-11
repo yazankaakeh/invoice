@@ -277,8 +277,9 @@
         var student_id = button.data('student_id')
         var student_name = button.data('student_name')
         var modal = $(this)
-        modal.find('.modal-body #student_name').val(student_name);})
-        modal.find('.modal-body #student_id').val(student_id);})
+        modal.find('.modal-body #student_id').val(student_id);
+        modal.find('.modal-body #student_name').val(student_name);
+})
 </script>
 
 @endsection

@@ -2151,7 +2151,7 @@
                                     <p class="mg-b-10">هل يعيشون معكم</p>
                                     <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم ">
                                    <option label="test">
-									              </option>
+											أختر نعم او لا  </option>
                                         <option value="لا" >
                                         لا
                                     </option>
@@ -2895,7 +2895,7 @@
                                                 <p class="mg-b-10"> الحالة الأجتماعي :    </p>
                                                 <select class="form-control select2" name="social_state" id="social_state" placeholder=" أكتب الحالة الأجتماعية ">
                                                 <option label="test">
-                                                             </option>
+                                                          حدد من فضلك الحالة الأجتماعية   </option>
                                                 <option value="متزوج/ة" >
                                                 متزوج/ة
                                                 </option>

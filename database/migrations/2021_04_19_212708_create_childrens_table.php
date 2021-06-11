@@ -34,6 +34,8 @@ class CreateChildrensTable extends Migration
             $table->string('medical_stat')->nullable();//هل يعيشون معكم
             $table->string('status')->nullable();//هل يعيشون معكم
 
+            $table->string('quran_statu')->nullable()->deafult(0);
+            $table->string('hoobie_statu')->nullable()->deafult(0);
             $table->string('student_statu')->nullable()->deafult(0);
             $table->string('family_statu')->nullable()->deafult(0);
             $table->string('medical_statu')->nullable()->deafult(0);

@@ -82,13 +82,9 @@ public function store_family_euro(Request $request)
     }
     else {
         $payments_cut->value_euro = $m;
-    $sta = $payments_cut->incomes_statu;
-    ++$sta;
-<<<<<<< Updated upstream
-    $payments_cut->incomes_statu = $sta;
-=======
-    $payments_cut->incomes_statu = $sta;            
->>>>>>> Stashed changes
+        $sta = $payments_cut->incomes_statu;
+        ++$sta;
+        $payments_cut->incomes_statu = $sta;
         $payments_cut ->save();
     }
 
@@ -210,11 +206,7 @@ public function destroy_familys_euro(Request $request)
     $payments_cut = Income::where('value_euro','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
-<<<<<<< Updated upstream
     $payments_cut->incomes_statu = $sta;
-=======
-    $payments_cut->incomes_statu = $sta;        
->>>>>>> Stashed changes
     $s= $payments_cut->value_euro;
     $a=$request->family_value_euro;
     //dd($a);
@@ -277,13 +269,9 @@ public function store_medical_euro(Request $request)
     }
     else {
         $payments_cut->value_euro = $m;
-    $sta = $payments_cut->incomes_statu;
-    ++$sta;
-<<<<<<< Updated upstream
-    $payments_cut->incomes_statu = $sta;
-=======
-    $payments_cut->incomes_statu = $sta;            
->>>>>>> Stashed changes
+        $sta = $payments_cut->incomes_statu;
+        ++$sta;
+        $payments_cut->incomes_statu = $sta;
         $payments_cut ->save();
     }
 
@@ -407,11 +395,7 @@ public function destroy_medicals_euro(Request $request)
     $payments_cut = Income::where('value_euro','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
-<<<<<<< Updated upstream
     $payments_cut->incomes_statu = $sta;
-=======
-    $payments_cut->incomes_statu = $sta;        
->>>>>>> Stashed changes
     $s= $payments_cut->value_euro;
     $a=$request->medical_value_euro;
     //dd($a);
@@ -483,13 +467,9 @@ public function store_student_euro(Request $request)
     }
     else {
         $payments_cut->value_euro = $m;
-    $sta = $payments_cut->incomes_statu;
-    ++$sta;
-<<<<<<< Updated upstream
-    $payments_cut->incomes_statu = $sta;
-=======
-    $payments_cut->incomes_statu = $sta;            
->>>>>>> Stashed changes
+        $sta = $payments_cut->incomes_statu;
+        ++$sta;
+        $payments_cut->incomes_statu = $sta;
         $payments_cut ->save();
     }
 
@@ -513,7 +493,7 @@ public function store_student_euro(Request $request)
     else {
     session()->flash('Warning', 'لايوجد مبالغ مالية متوفرة ');
     //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    return redirect(route('medical.show'));
+    return redirect(route('student.show'));
     }
 }
 public function messages_updat_student_euro()
@@ -598,11 +578,7 @@ public function destroy_students_euro(Request $request)
     $payments_cut = Income::where('value_euro','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
-<<<<<<< Updated upstream
     $payments_cut->incomes_statu = $sta;
-=======
-    $payments_cut->incomes_statu = $sta;        
->>>>>>> Stashed changes
     $s= $payments_cut->value_euro;
     $a=$request->student_value;
     //dd($a);

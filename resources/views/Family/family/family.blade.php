@@ -1139,8 +1139,8 @@
                                      Üsküdar</option>
                                  <option value="	Zeytinburnu">
                                      Zeytinburnu</option>
-                             </select>
-                         </div>
+                                 </select>
+                                </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">العنوان كما في الفاتورة</label>
                                 <input type="text" class="form-control" id="address_like_bill" name="address_like_bill" placeholder=" أكتب العنوان  كما في الفاتورة ">
@@ -1462,7 +1462,7 @@
                                 </div>
                             </div>
                             </div>
-				        </d
+                        </div>
                         </div>
 
                         {{--  enable  --}}
@@ -1638,7 +1638,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail">من اي مدينة؟</label>
+                                    <label for="exampleInputEmail">من اي منطقة؟</label>
                                     <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب اسم المدينة ">
                                 </div>
                                <div class="form-group">{{-- it must be select options  --}}
@@ -1874,73 +1874,6 @@
 				        </div>
                         </div>
 
-                        {{-- Pay --}}
-                        {{--  <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة مالية للعائلة  </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                <form action="{{ route('pay.store.family') }}" method="post">
-                                {{ method_field('POST') }}
-                                {{ csrf_field() }}
-                                <div class="modal-body">
-                                <div class="form-group">
-                                <input type="hidden" name="id" id="id" readonly>
-                                <label for="exampleInputEmail">اسم  صاحب القيد</label>
-                                <input type="text" class="form-control" id="family_constraint" name="family_constraint" readonly>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">المبلغ المدفوع</label>
-                                <input type="text" class="form-control" id="family_value" name="family_value"  placeholder=" أكتب قيمة البملغ المدفوع ">
-                                </div>
-                                <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">المبلغ بالدولار</label>
-                                <input class="form-control" name="family_value_usd" id="family_value_usd" type="text" >
-                                </div>
-                                <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">المبلغ باليورو</label>
-                                <input class="form-control" name="family_value_euro" id="family_value_euro" type="text" >
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">عدد الكروت</label>
-                                    <input class="form-control" name="number_bim_family" id="number_bim_family" type="text" >
-                                </div>
-
-                                <div class="modal-body">
-                                    <p class="mg-b-10">قيمة الكروت</p>
-                                    <select class="form-control select2" name="value_bim_family" id="value_bim_family" >
-                                            @foreach($payments as $a)
-                                                <option value="{{$a->value_bim}}" >
-                                                    {{$a->value_bim}}
-                                                </option>
-                                            @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="text" class="form-control" id="note" name="note"  placeholder=" أكتب ملاخظات ان وجد ">
-                                </div>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">تاكيد</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                </div>
-                                </form>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                            </div>
-                         </div>
-				        </div>
-                        </div>  --}}
 
                         {{-- add --}}
                         <div class="modal" id="modaldemo8">
@@ -2041,9 +1974,10 @@
                                             </select>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group" id="family_what_aid">
                                         <label for="exampleInputEmail"> نوع المساعادات </label>
-                                        <select class="form-control" id="family_what_aid" name="family_what_aid" onchange="show25Div(this)">
+                                        <select class="form-control" id="family_what_aid" name="family_what_aid"
+                                        onchange = "showDivs(this)">
                                        <option label="test">
                                             </option>
                                       <option value="كرت هلال">
@@ -2055,24 +1989,24 @@
                                          <option value="مساعدة مالية ">
                                             مساعدة مالية</option>
                                             <option value="أخرى">
-                                                 أخرى</option>
+                                            أخرى</option>
                                         </select>
                                         </div>
 
+                                    <script type="text/javascript">
+                                    function showDivs(select){
+                                    if(select.value == 'أخرى'){
+                                        document.getElementById('family_what_aid1').style.display = "block";
+                                    } else{
+                                        document.getElementById('family_what_aid1').style.display = "none";
+                                    }
 
-                                        <script type="text/javascript">
-                                            function show25Div(select){
-                                               if(select.value=='أخرى'){
-                                                document.getElementById('family_what_aid1').style.display = "block";
-                                               } else{
-                                                document.getElementById('family_what_aid').style.display = "none";
-                                               }
-                                            }
-                                            </script>
+                                    }
+                                    </script>
 
                                         <div class="form-group" style="display:none;" id="family_what_aid1" >
                                         <label for="exampleInputEmail"> نوع مساعادت الأخرى</label>
-                                        <input type="text" class="form-control"  id="family_what_aid" name="family_what_aid" placeholder=" أكتب اسم أو نوع مساعدات الأخرى ">
+                                        <input type="text" class="form-control"  id="family_what_aid1" name="family_what_aid1" placeholder=" أكتب اسم أو نوع مساعدات الأخرى ">
                                         </div>
 
                                         <div class="form-group">

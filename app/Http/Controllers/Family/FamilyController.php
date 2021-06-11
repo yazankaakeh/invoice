@@ -20,21 +20,20 @@ class FamilyController extends Controller
 
 function __construct()
 {
-<<<<<<< Updated upstream
+
     $this->middleware('permission: قسم العائلات ', ['only' => ['index']]);
     $this->middleware('permission: اضافة العائلات ', ['only' => ['store']]);
     $this->middleware('permission: تعديل العائلات ', ['only' => ['update']]);
     $this->middleware('permission: حذف العائلات ', ['only' => ['destroy']]);
     //$this->middleware('permission: حذف مدرسة لطفل الطلاب ', ['only' => ['register']]);
     $this->middleware('permission: فورم تسجيل العائلات ', ['only' => ['enable']]);
-=======
-$this->middleware('permission: قسم العائلات ', ['only' => ['index']]);
+
+    $this->middleware('permission: قسم العائلات ', ['only' => ['index']]);
 $this->middleware('permission: اضافة العائلات ', ['only' => ['store']]);
 $this->middleware('permission: تعديل العائلات ', ['only' => ['update']]);
 $this->middleware('permission: حذف العائلات ', ['only' => ['destroy']]);
 //$this->middleware('permission: حذف مدرسة لطفل الطلاب ', ['only' => ['register']]);
 $this->middleware('permission: فورم تسجيل العائلات ', ['only' => ['enable']]);
->>>>>>> Stashed changes
 
     $this->middleware('permission: إضافة طالب العائلات ', ['only' => ['add_student']]);
     $this->middleware('permission:  طالب العائلات ', ['only' => ['show_student']]);
@@ -89,16 +88,21 @@ $this->middleware('permission: فورم تسجيل العائلات ', ['only' =
          $families -> work_breadwinner = $request->work_breadwinner;
          $families -> work_an_breadwinner = $request->work_an_breadwinner;
          $families -> family_monthly_salary = $request->family_monthly_salary;
+         if($request->family_what_aid1 != null){
+         $families -> family_what_aid = $request->family_what_aid1;
+         }else
+         {
          $families -> family_what_aid = $request->family_what_aid;
+         }
          $families -> family_has_aid = $request->family_has_aid;
          $families -> academicel = $request->academicel;
          $families -> work = $request->work;
          $families -> now_work = $request->now_work;
          $families -> city = $request->city;
          $families -> note = $request->note;
+         //write to the data base
          $x=1;
          $families->husband_wife_statu = $x;
-         //write to the data base
          $families ->save();
 
          $husbandandWife = new HusbandandWife;
@@ -120,10 +124,13 @@ $this->middleware('permission: فورم تسجيل العائلات ', ['only' =
 
 
          $enable = From::find(1);
-         session()->flash('Add', 'تم تسجيل العائلة بنجاح سوف يتم التواصل معكم قريباً. '. $request->family_Constraint .' بنجاح ');
+         session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
          $request=0;
-         return view('Family.family.register',compact('enable'));
-    }
+         return back()->with('enable');
+        //  return view('Family.family.register',compact('enable'));
+
+}
+
 
     public function messages()
     {
@@ -198,7 +205,13 @@ $this->middleware('permission: فورم تسجيل العائلات ', ['only' =
          $families -> work_breadwinner = $request->work_breadwinner;
          $families -> work_an_breadwinner = $request->work_an_breadwinner;
          $families -> family_monthly_salary = $request->family_monthly_salary;
+
+         if($request->family_what_aid != "اخرى"){
+         $families -> family_what_aid = $request->family_what_aid1;
+         }else
+         {
          $families -> family_what_aid = $request->family_what_aid;
+         }
          $families -> family_has_aid = $request->family_has_aid;
          $families -> academicel = $request->academicel;
          $families -> work = $request->work;
@@ -209,6 +222,23 @@ $this->middleware('permission: فورم تسجيل العائلات ', ['only' =
 
          //write to the data base
          $families ->save();
+        //  $husbandandWife = new HusbandandWife;
+        //  $husbandandWife->family_id = $families->id;
+
+        //  if($request->gender == "ذكر"){
+        //  $husbandandWife -> wife_city = $request->city;
+        //  $husbandandWife -> wife_now_work = $request->now_work;
+        //  $husbandandWife -> wife_Pre_work = $request->work;
+        //  $husbandandWife -> wife_academicel = $request->academicel;
+        //  }
+        //  elseif ($request->gender == "انثى") {
+        //  $husbandandWife -> husb_Orig_city = $request->husb_Orig_city;
+        //  $husbandandWife -> husb_academicel = $request->husb_academicel;
+        //  $husbandandWife -> husb_now_work = $request->husb_now_work;
+        //  $husbandandWife -> husb_Pre_work = $request->husb_Pre_work;
+        // }
+        //  $husbandandWife->save();
+
          //dd($request);
          session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
@@ -295,12 +325,10 @@ $this->middleware('permission: فورم تسجيل العائلات ', ['only' =
 
 ////////////////////////////////////////////////////////// Form /////////////////////////
 
-<<<<<<< Updated upstream
-    public function register(){
-=======
 
-    public function register(){    
->>>>>>> Stashed changes
+
+
+    public function register(){
         $check = From::all();
 
         if($check->isEmpty())
@@ -323,7 +351,7 @@ $this->middleware('permission: فورم تسجيل العائلات ', ['only' =
 
         }
     }
-    
+
 
 
     public function enable(Request $request){

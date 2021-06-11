@@ -341,8 +341,8 @@ body{
                                         <label class="form-control-label">تاريخ الدخول لتركيا : <span class="tx-danger">*</span> </label>
                                         <input type="date" class="form-control" id="entry_turkey" name="entry_turkey"  placeholder=" أكتب تاريخ الدخول الى تركيا ">
                                         </div>
-<<<<<<< Updated upstream
-                                          <div class="col-sm-12">
+
+                                        <div class="col-sm-12">
                                         <label class="form-control-label">اسم الجامعة: <span class="tx-danger">*</span>  </label>
                                         <input type="text" class="form-control" id="univer_name" name="univer_name" placeholder="   أكنب اسم الجامعة ">
                                         </div>
@@ -376,8 +376,7 @@ body{
                                         <label class="form-control-label">المعدل الحالي: <span class="tx-danger">*</span>  </label>
                                         <input type="text" class="form-control" id="current_rate" name="current_rate" placeholder="   أكنب لمعدل الحالي ">
                                         </div>
-=======
->>>>>>> Stashed changes
+
                                         {!! NoCaptcha::display() !!}
 									</section>
 

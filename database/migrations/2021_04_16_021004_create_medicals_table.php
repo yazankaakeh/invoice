@@ -28,6 +28,7 @@ class CreateMedicalsTable extends Migration
             $table->string('medical_number')->nullable();//رقم الهاتف
             $table->string('note')->nullable();//
             ########################## medical info End ################################
+            $table->integer('new_statu')->deafult(0);// اسم المرض
             $table->integer('husband_wife_statu')->default('0');
             $table->integer('residance_statu')->default('0');
             $table->integer('job_statu')->default('0');

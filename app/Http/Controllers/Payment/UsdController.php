@@ -85,11 +85,8 @@ public function store_family_usd(Request $request)
     else {
         $sta = $payments_cut->incomes_statu;
         ++$sta;
-<<<<<<< Updated upstream
         $payments_cut->incomes_statu = $sta;
-=======
-        $payments_cut->incomes_statu = $sta;        
->>>>>>> Stashed changes
+
         $payments_cut->value_usd = $m;
         $payments_cut ->save();
     }
@@ -209,17 +206,10 @@ public function destroy_familys_usd(Request $request)
 
     $s;
     $payments_cut = Income::where('value_usd','>', 0)->first();
-<<<<<<< Updated upstream
 
     $sta = $payments_cut->incomes_statu;
     --$sta;
     $payments_cut->incomes_statu = $sta;
-=======
-    
-    $sta = $payments_cut->incomes_statu;
-    --$sta;
-    $payments_cut->incomes_statu = $sta;    
->>>>>>> Stashed changes
 
     $s= $payments_cut->value_usd;
     $a=$request->family_value_usd;
@@ -284,11 +274,7 @@ public function store_medical_usd(Request $request)
     else {
         $sta = $payments_cut->incomes_statu;
         ++$sta;
-<<<<<<< Updated upstream
         $payments_cut->incomes_statu = $sta;
-=======
-        $payments_cut->incomes_statu = $sta;            
->>>>>>> Stashed changes
         $payments_cut->value_usd = $m;
         $payments_cut ->save();
     }
@@ -474,11 +460,7 @@ public function store_student_usd(Request $request)
     else {
         $sta = $payments_cut->incomes_statu;
         ++$sta;
-<<<<<<< Updated upstream
         $payments_cut->incomes_statu = $sta;
-=======
-        $payments_cut->incomes_statu = $sta;            
->>>>>>> Stashed changes
         $payments_cut->value_usd = $m;
         $payments_cut ->save();
     }
@@ -589,11 +571,7 @@ public function destroy_students_usd(Request $request)
     $payments_cut = Income::where('value_usd','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
-<<<<<<< Updated upstream
     $payments_cut->incomes_statu = $sta;
-=======
-    $payments_cut->incomes_statu = $sta;        
->>>>>>> Stashed changes
     $s= $payments_cut->value_usd;
     $a=$request->value_usd;
     //dd($a);

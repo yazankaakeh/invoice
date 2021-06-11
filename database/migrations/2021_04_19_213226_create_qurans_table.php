@@ -13,7 +13,8 @@ class CreateQuransTable extends Migration
             $table->id();
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students');
-
+            $table->unsignedBigInteger('children_id');
+            $table->foreign('children_id')->references('id')->on('childrens');
             ########################## qurans info Begin ############################
             $table->string('quran_memorize')->nullable();// هل تحفظ قرأن
             $table->string('quran_parts')->nullable();// عدد أجزاء

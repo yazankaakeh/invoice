@@ -82,7 +82,6 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($family as $x)
-
                                                 <tr>
                                                 {{--  @dd($family)  --}}
                                                     <td>{{$x->id}}</td>
