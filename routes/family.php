@@ -19,12 +19,22 @@ use App\Http\Controllers\Family\FamilyController;
 |
 */
 
+Route::prefix('family/statu')->group(function () {
+    Route::get('/new', "family\FamilyController@new_family")->name('new.family')->middleware('auth');
+    Route::get('/archievd', "family\FamilyController@archievd_family")->name('family.archive')->middleware('auth');
+    Route::get('/rejected', "family\FamilyController@rejected_family")->name('family.reject')->middleware('auth');
+    Route::get('/delayed', "family\FamilyController@delayed_family")->name('family.delayed')->middleware('auth');
+    Route::get('/show', "family\FamilyController@index")->name('family.show')->middleware('auth');
+    Route::post('/statu', "family\FamilyController@family_statu")->name('family.statu')->middleware('auth');
+});
+
 Route::prefix('family')->group(function () {
     Route::get('show', "Family\FamilyController@index")->name('family.show')->middleware('auth');
     Route::post('store', "Family\FamilyController@store")->name('family.store')->middleware('auth');
+    Route::POST('/new/register', "Family\FamilyController@store_register")->name('family.new')->middleware('auth');
     Route::patch('update', "Family\FamilyController@update")->name('family.update')->middleware('auth');
     Route::delete('update', "Family\FamilyController@destroy")->name('family.destroy')->middleware('auth');
-    Route::get('register', "Family\FamilyController@register")->name('family.register')->middleware('auth');
+    Route::get('register', "Family\FamilyController@register")->name('family.register');
     Route::get('enable', "Family\FamilyController@enable")->name('family.enable')->middleware('auth');
     Route::get('disable', "Family\FamilyController@disable")->name('family.disable')->middleware('auth');
     Route::get('/add/student', "Family\FamilyController@add_student")->name('family.student.add')->middleware('auth');

@@ -22,6 +22,7 @@ class CreateFamiliesTable extends Migration
 
             ########################## family info Begin ############################
             $table->string('family_Constraint')->nullable();// صاحب القيد
+            $table->string('gender')->nullable();// عدد أفراد
             $table->string('family_number_member')->nullable();// عدد أفراد
             $table->string('family_breadwinner')->nullable();// المعيل
             $table->string('work_breadwinner')->nullable();// المعيل
@@ -33,7 +34,11 @@ class CreateFamiliesTable extends Migration
             $table->string('sec_phone')->nullable();// هل يوجد مساعدات
             $table->string('family_has_aid')->nullable();// هل يوجد مساعدات
             $table->string('family_what_aid')->nullable();// ماهي المساعدات
-            $table->string('note')->nullable();//
+            $table->string('academicel')->nullable();// ماهي المساعدات
+            $table->string('now_work')->nullable();// ماهي المساعدات
+            $table->string('work')->nullable();// ماهي المساعدات
+            $table->string('city')->nullable();// ماهي المساعدات
+            $table->text('note')->nullable();//
             ########################## family info End ############################
 
             ########################## Parts ######################################
@@ -51,6 +56,7 @@ class CreateFamiliesTable extends Migration
             $table->integer('euro_statu')->default('0');
             $table->integer('usd_statu')->default('0');
             $table->integer('tr_statu')->default('0');
+            $table->integer('new_statu')->default('0')->nullable();
             $table->timestamps();
         });
     }

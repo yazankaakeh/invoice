@@ -12,14 +12,14 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم الطلاب
+الطلاب الجدد
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title"> الأقسام</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/قسم الطلاب</span>
+							<h4 class="my-auto mb-0 content-title"> الأقسام</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">الطلاب الجدد/قسم الطلاب</span>
 						</div>
 					</div>
 
@@ -34,15 +34,23 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
-                                        @can(' فورم تسجيل الطلاب ')
-                                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo1">فورم تسجيل الطلاب </a>
-                                        @endcan
-                                        @can(' إضافة الطلاب ')
-
-                                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة طالب</a>
-                                        @endcan
+                                                <div class="dropdown">
+                                                <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
+                                                data-toggle="dropdown" id="dropdownMenuButton" type="button">المزيد من الخيارات <i class="btn btn-primary dropdown-toggle dropdown-toggle-split"></i></button>
+                                                <div  class="dropdown-menu tx-13">
+                                            @can( ' عرض الطلاب المؤرشفة ')
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.archive')}}">عرض الطلاب المؤرشفة</a>
+                                            @endcan
+                                            @can(' عرض الطلاب المؤجلين ')
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.delayed')}}">عرض الطلاب المؤجلين</a>
+                                            @endcan
+                                            @can(' عرض الطلاب المرفوضين ')
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.reject')}}">عرض الطلاب المرفوضين</a>
+                                            @endcan
                                         </div>
+                                      </div>
                                      </div>
+                                    </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
@@ -50,342 +58,73 @@
                                                 <tr>
                                                     <th class="border-bottom-0">Id</th>
                                                     <th class="border-bottom-0">اسم الطالب</th>
+                                                    <th class="border-bottom-0">الحالة</th>
+                                                    <th class="border-bottom-0">الحالةالاجتماعية</th>
                                                     <th class="border-bottom-0">تاريخ الميلاد</th>
                                                     <th class="border-bottom-0">العمر</th>
                                                     <th class="border-bottom-0">البريد الإلكتروني</th>
                                                     <th class="border-bottom-0">رقم الهاتف</th>
                                                     <th class="border-bottom-0">من اي محافظة</th>
+                                                    <th class="border-bottom-0">الحالة الاجنماعية</th>
                                                     <th class="border-bottom-0">من اي مدينة</th>
                                                     <th class="border-bottom-0">السكن الحالي</th>
                                                     <th class="border-bottom-0">سنة الدخول</th>
                                                     <th class="border-bottom-0">نوع الإقامة</th>
                                                     <th class="border-bottom-0">الولاية</th>
-                                                    <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
-                                                    <th class="border-bottom-0">اضافة دفعة تركي</th>
-                                                    <th class="border-bottom-0">اضافة دفعة يورو</th>
-                                                    <th class="border-bottom-0">اضافة كروت بيم</th>
-                                                    <th class="border-bottom-0">اضافة زوج وزوجة</th>
-                                                    <th class="border-bottom-0">اضافة اب وام</th>
-                                                    <th class="border-bottom-0">حذف طالب</th>
-                                                    <th class="border-bottom-0">تعديل طالب</th>
-                                                    <th class="border-bottom-0">اضافة اطفال</th>
-                                                    <th class="border-bottom-0">الحالة الطبية</th>
-                                                    <th class="border-bottom-0">السكن الطلابي</th>
-                                                    <th class="border-bottom-0">القرآن الكريم</th>
-                                                    <th class="border-bottom-0">العمل</th>
-                                                    <th class="border-bottom-0">المنحة الدراسية</th>
-                                                    <th class="border-bottom-0">الجامعة</th>
-                                                    <th class="border-bottom-0">الإخوة</th>
+
+                                                    <th class="border-bottom-0">اسم الجامعة</th>
+                                                    <th class="border-bottom-0"> موقع الجامعة</th>
+                                                    <th class="border-bottom-0">أختصاص</th>
+                                                    <th class="border-bottom-0">السنة الدراسية</th>
+                                                    <th class="border-bottom-0"> المعدل الدراسي</th>
+
+                                                    <th class="border-bottom-0">تحديث الحالة</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($students as $x)
+                                                @foreach($univ as $x)
+                                                @if($x->student_id != null && $x->student->new_statu == 0)
+
                                                 <tr>
-                                                    <td>{{$x->id}}</td>
-                                                    <td>{{$x->student_name}}</td>
-                                                    <td>{{$x->birthday}}</td>
-                                                    <td>{{$x->age}}</td>
-                                                    <td>{{$x->email}}</td>
-                                                    <td dir="ltr" lang="en">{{$x->phone}}</td>
-                                                    <td>{{$x->county_are_from}}</td>
-                                                    <td>{{$x->city_name}}</td>
-                                                    <td>{{$x->stu_Cur_housing}}</td>
-                                                    <td>{{$x->entry_turkey}}</td>
-                                                    <td>{{$x->Identity_type}}</td>
-                                                    <td>{{$x->Id_stud_source}}</td>
+                                                    <td>{{$x->student->id}}</td>
+                                                    <td>{{$x->student->student_name}}</td>
+                                                    <td>
+                                                        <span class="label text-success d-flex">
+                                                        <div  class="ml-1 dot-label bg-success"></div>جديد
+                                                        </span>
+                                                    </td>
+                                                    <td>{{$x->student->social_state}}</td>
+                                                    <td>{{$x->student->birthday}}</td>
+                                                    <td>{{$x->student->age}}</td>
+                                                    <td>{{$x->student->email}}</td>
+                                                    <td dir="ltr" lang="en">{{$x->student->phone}}</td>
+                                                    <td>{{$x->student->county_are_from}}</td>
+                                                    <td>{{$x->student->social_state}}</td>
+                                                    <td>{{$x->student->city_name}}</td>
+                                                    <td>{{$x->student->stu_Cur_housing}}</td>
+                                                    <td>{{$x->student->entry_turkey}}</td>
+                                                    <td>{{$x->student->Identity_type}}</td>
+                                                    <td>{{$x->student->Id_stud_source}}</td>
 
-                                                <td>
-                                                @can(' إضافة دفعة بالدولار الطلاب ')
+                                                    <td>{{$x->univer_name}}</td>
+                                                    <td>{{$x->univer_location}}</td>
+                                                    <td>{{$x->univer_special}}</td>
+                                                    <td>{{$x->Schoo_year}}</td>
+                                                    <td>{{$x->Current_rate}}</td>
 
-                                                    {{-- Add_Dollar--}}
-                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                        data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
+                                                    <td>
+
+                                                        @can(' عرض حالةالطلاب ')
+                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                        data-student_name="{{$x->student->student_name}}"  data-student_id="{{$x->student->id}}"
                                                         data-description="" data-toggle="modal"
-                                                        href="#exampleModa23" title="دفع بالدولار">
-                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
+                                                        href="#exampleModal160" title="تعديل الحالة">
+                                                        <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                     </a>
-                                                @endcan
-                                                @can(' مدفوعات بالدولار الطلاب ')
-                                                    @if($x->usd_statu != 0)
-                                                    <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    <a class=" btn btn-sm btn-info" href="/Student_usd/show/student/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
-                                                    @endif
-                                                @endcan
+                                                    @endcan
                                                 </td>
-
-                                                <td>
-                                                @can(' إضافة دفعة بالتركي الطلاب ')
-                                                    {{-- Add_Tr--}}
-                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                        data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
-                                                         data-student_id="{{ $x->id }}"
-                                                        data-description="" data-toggle="modal"
-                                                        href="#exampleModa24" title="دفع بالتركي">
-                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
-                                                    </a>
-                                                @endcan
-                                                @can(' مدفوعات بالتركي الطلاب ')
-                                                    @if($x->tr_statu != 0)
-                                                    <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    <a class=" btn btn-sm btn-info" href="/Student_tr/show/student/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
-                                                    @endif
-                                                @endcan
-                                                </td>
-
-
-                                                <td>
-                                                @can(' إضافة دفعة باليورو الطلاب ')
-
-                                                    {{-- Add_Euro--}}
-                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                        data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
-                                                        data-description="" data-toggle="modal"
-                                                        href="#exampleModa25" title="دفع باليورو">
-                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
-                                                    </a>
-                                                @endcan
-                                                @can(' مدفوعات باليورو الطلاب ')
-                                                    @if($x->euro_statu != 0)
-                                                    <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    <a class=" btn btn-sm btn-info" href="/Student_euro/show/student/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
-                                                    @endif
-                                                @endcan
-                                                </td>
-
-                                                <td>
-                                                @can(' إضافة دفعة باكرت البيم الطلاب ')
-                                                    {{-- Add_Bim--}}
-                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                        data-student_name="{{$x->student_name}}"  data-id="{{ $x->id }}"
-                                                        data-description="" data-toggle="modal"
-                                                        href="#exampleModa26" title="دفع كروت">
-                                                        <i class="cf cf-zec"  style="font-size: 20px;"></i>
-                                                    </a>
-                                                @endcan
-                                                @can(' مدفوعات باكرت البيم الطلاب ')
-                                                    @if($x->bim_statu != 0)
-                                                    <a class=" btn btn-sm btn-info" href="/Student_bim/show/student/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
-                                                    @endif
-                                                @endcan
-                                                </td>
-
-                                                    {{-- wife and husband  --}}
-                                                    @if($x->husband_wife_statu == 1)
-                                                    <td>
-                                                    @can(' قسم الزوج والزوجة الطلاب ')
-                                                        <a class="btn btn-sm btn-info" href="/husband_Wife/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    @endcan
-                                                    </td>
-                                                    @elseif($x->husband_wife_statu == 0)
-                                                    <td>
-                                                    @can(' اضافة الزوج والزوجة الطلاب ')
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-student_id="{{$x->id}}"
-                                                            data-toggle="modal"
-                                                            href="#exampleModal111" title="إضافة زوج و زوجة">
-                                                            <i class="mdi mdi-account-multiple-plus" style="font-size: 18px;"></i>
-                                                        </a>
-                                                    @endcan
-                                                    </td>
-                                                    @endif
-
-                                                    {{-- father and mother  --}}
-                                                    @if($x->father_mother_statu == 1)
-                                                    <td>
-                                                    @can(' قسم الأب والأم الطلاب ')
-                                                        <a class="btn btn-sm btn-info" href="/father_and_mother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    </td>
-                                                    @endcan
-                                                    @elseif($x->father_mother_statu == 0)
-                                                    <td>
-                                                    @can(' اضافة الأب والأم الطلاب ')
-                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                        data-student_id="{{$x->id}}"
-                                                        data-toggle="modal"
-                                                        href="#exampleModal0" title="إضافة زوج و زوجة">
-                                                        <i class="mdi mdi-account-multiple-plus" style="font-size: 18px;"></i>
-                                                    </a>
-                                                    @endcan
-                                                    </td>
-                                                    @endif
-
-                                                    <td>
-                                                    @can(' حذف الطلاب ')
-
-                                                    {{-- delete Student  --}}
-                                                        <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                            data-id="{{$x->id}}" data-student_name="{{$x->student_name}}"
-                                                            data-toggle="modal" href="#modaldemo9" title="حذف">
-                                                            <i class="las la-trash"  style="font-size: 20px;"> </i>
-                                                        </a>
-                                                    @endcan
-                                                    </td>
-
-                                                    <td>
-                                                    @can(' تعديل الطلاب ')
-
-                                                    {{-- edit Student  --}}
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-student_name="{{$x->student_name}}"
-                                                            data-birthday="{{$x->birthday}}" data-email="{{$x->email}}" data-age="{{$x->age}}"
-                                                            data-city_name="{{$x->city_name}}" data-stu_Cur_housing="{{$x->stu_Cur_housing}}" data-phone="{{$x->phone}}" data-county_are_from="{{$x->county_are_from}}"
-                                                                data-entry_turkey="{{$x->entry_turkey}}" data-Identity_type="{{$x->Identity_type}}"
-                                                            data-Id_stud_source="{{$x->Id_stud_source}}" data-id="{{$x->id}}"
-                                                            data-description="" data-toggle="modal"
-                                                            href="#exampleModal2" title="تعديل">
-                                                            <i class="las la-pen"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    @endcan
-                                                    </td>
-
-                                                    <td>
-
-                                                    {{-- add children  --}}
-                                                    @if($x->child_statu != 0)
-                                                    @can(' قسم الأطفال الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/children/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    @endcan
-                                                    @endif
-                                                    @can(' اضافة قسم الأطفال الطلاب ')
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal4" title="إضافة طفل">
-                                                            <i class="las la-child"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    @endcan
-                                                    </td>
-
-                                                    {{-- Medical_Status  --}}
-                                                    @if($x->medical_statu == 1)
-                                                    <td>
-                                                    @can(' اضافة الحالة الصحية الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/Medical_Statu/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    @endcan
-                                                    </td>
-                                                    @elseif($x->medical_statu == 0)
-                                                    <td>
-                                                    @can(' قسم الحالة الصحية الطلاب ')
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal5" title="إضافة حالة طبية">
-                                                            <i class="fas fa-heartbeat"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    @endcan
-                                                    @endif
-                                                    </td>
-
-                                                    @if($x->residance_statu == 1)
-                                                    <td>
-                                                    @can(' قسم سكن الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/Student_Residance/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    @endcan
-                                                    </td>
-                                                    @elseif($x->residance_statu == 0)
-                                                    {{-- Stduent_Residance  --}}
-                                                    <td>
-                                                    @can(' اضافة سكن الطلاب ')
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal6" title="إضافة سكن للطالب">
-                                                            <i class=" las la-home"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    @endcan
-                                                    </td>
-                                                    @endif
-
-                                                    {{-- Quran  --}}
-                                                    @if($x->quran_statu == 1)
-                                                    <td>
-                                                    @can(' قسم القرأن الطلاب ')
-                                                    <a class=" btn btn-sm btn-info" href="/Quran/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    @endcan
-                                                    </td>
-                                                    @elseif($x->quran_statu == 0)
-                                                    <td>
-                                                    @can(' اضافة القرأن الطلاب ')
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal7" title="إضافة معلومات القرآن">
-                                                            <i class="fas fa-book-open" style="font-size: 20px;"></i>
-                                                        </a>
-                                                    @endcan
-                                                    </td>
-                                                    @endif
-
-                                                    {{-- Job  --}}
-                                                    @if($x->job_statu == 1)
-                                                    <td>
-                                                    @can(' قسم العمل الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/job/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    @endcan
-                                                    </td>
-                                                    @elseif($x->job_statu == 0)
-                                                    <td>
-                                                    @can(' اضافة العمل الطلاب ')
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal13" title="إضافة معلومات العمل">
-                                                            <i class="fas fa-briefcase"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    @endcan
-                                                    </td>
-                                                    @endif
-
-                                                    {{-- Scholarship  --}}
-                                                    @if($x->scholarship_statu == 1)
-                                                    <td>
-                                                    @can(' قسم المنح الدراسية الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/Scholarship/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    @endcan
-                                                    </td>
-                                                    @elseif($x->scholarship_statu == 0)
-                                                    <td>
-                                                    @can(' اضافة المنح الدراسية الطلاب ')
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal14" title="إضافة معلومات المنح الدراسية">
-                                                            <i class="fas fa-address-card"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    @endcan
-                                                    </td>
-                                                    @endif
-
-                                                    {{-- University  --}}
-                                                    @if($x->university_statu == 1)
-                                                    <td>
-                                                    @can(' قسم الجامعة الطلاب ')
-                                                    <a class=" btn btn-sm btn-info" href="/University/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    @endcan
-                                                    </td>
-                                                    @elseif($x->university_statu == 0)
-                                                    <td>
-                                                    @can(' اضافة الجامعة الطلاب ')
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal15" title="إضافة جامعة">
-                                                            <i class="fas fa-graduation-cap"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    @endcan
-                                                    </td>
-                                                    @endif
-
-                                                    {{-- Sister and Brother  --}}
-
-                                                    <td>
-                                                    @can(' قسم الأخوة الطلاب ')
-                                                    @if($x->sis_statu != 0)
-                                                    <a class="btn btn-sm btn-info" href="/Sister_and_Brother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    @endif
-                                                    @endcan
-                                                    @can(' اضافة الأخوة الطلاب ')
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal16" title="اضافة اخوة">
-                                                            <i class="si si-user-follow"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    @endcan
-                                                    </td>
+                                                @endif
                                                 @endforeach
                                                 </tr>
                                             </tbody>
@@ -393,145 +132,37 @@
                                     </div>
 
                            <div>
-                            @if (session()->has('Add'))
+
+                            @if (session()->has('accepted'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>
+                                <strong style="right: 30px; position: relative;">{{ session()->get('accepted') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             @endif
 
-                            @if (session()->has('Form'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Form') }}</strong>
+                            @if (session()->has('rejected'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('rejected') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             @endif
 
-                            @if (session()->has('Edit'))
+                            @if (session()->has('archived'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Edit') }}</strong>
+                                <strong style="right: 30px; position: relative;">{{ session()->get('archived') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             @endif
 
-                             @if (session()->has('Add Money'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add Money') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Delete'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Delete') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-
-                            @if (session()->has('Add_husbandandWife'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_husbandandWife') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Warning'))
-                            <div class="alert alert-denger alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Warning') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_Child'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_Child') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_fatherandmother'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_fatherandmother') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_MedicalStatues'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_MedicalStatues') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_StudentResidences'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_StudentResidences') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_Quran'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_Quran') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_jobs'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_jobs') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_Scholarship'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_Scholarship') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_University'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_University') }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @endif
-
-                            @if (session()->has('Add_sister'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_sister') }}</strong>
+                            @if (session()->has('delayed'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('delayed') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -553,117 +184,40 @@
                         </div>
 
 
-
-                        {{-- Add_Dollar --}}
-                        <div class="modal fade" id="exampleModa23" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        {{-- student statu --}}
+                        <div class="modal fade" id="exampleModal160" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة بالدولار</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">تعديل حالة الطالب </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                                 </div>
                                 <div class="modal-body">
-                                <form action="{{ route('usd.store.student') }}" method="post">
+                                <form action="{{ route('student.statu') }}" method="post">
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
-                                <div class="form-group">
-                                <label for="exampleInputEmail">اسم الطالب</label>
-                                <input type="hidden" name="student_id" id="id" readonly>
-                                <input type="text" class="form-control" id="student_name" name="student_name" placeholder="  " readonly>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">المبلغ المدفوع بالدولار</label>
-                                <input type="text" class="form-control" id="student_value_usd" name="student_value_usd" placeholder="   أكنب قيمة المبلغ المالي  ">
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="textarea" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد ">
-                                </div>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">تاكيد</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                </div>
-                                </form>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                            </div>
-                         </div>
-				        </div>
-                        </div>
-
-                        {{-- Add_Tr --}}
-                        <div class="modal fade" id="exampleModa24" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة بالتركي</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
                                 <div class="modal-body">
-                                <form action="{{ route('tr.store.student') }}" method="post">
-                                {{ method_field('POST') }}
-                                {{ csrf_field() }}
-                                <div class="form-group">
-                                <label for="exampleInputEmail">اسم الطالب</label>
-                                <input type="text" class="form-control" id="student_name" name="student_name" placeholder=" " readonly>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">المبلغ المدفوع بالتركي</label>
+                                <input type="text" class="form-control select2" id="student_name" name="student_name"  readonly>
                                 <input type="hidden" name="student_id" id="student_id" readonly>
-                                <input type="text" class="form-control" id="student_value" name="student_value" placeholder=" أكنب قيمة المبلغ المالي ">
-                                </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="textarea" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد">
-                                </div>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">تاكيد</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                </div>
-                                </form>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                            </div>
-                         </div>
-				        </div>
-                        </div>
-
-                        {{-- Add_Euro --}}
-                        <div class="modal fade" id="exampleModa25" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة باليورو</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
                                 <div class="modal-body">
-                                <form action="{{ route('euro.store.student') }}" method="post">
-                                {{ method_field('POST') }}
-                                {{ csrf_field() }}
-                                <div class="form-group">
-                                <label for="exampleInputEmail">اسم الطالب</label>
-                                <input type="text" class="form-control" id="student_name" name="student_name" placeholder="    " readonly>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">المبلغ المدفوع باليورو</label>
-                                <input type="hidden" name="student_id" id="id" readonly>
-                                <input type="text" class="form-control" id="student_value" name="student_value" placeholder="   أكنب قيمة المبلغ المالي ">
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="textarea" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد">
+                                <p class="mg-b-10">حالة الطالب</p>
+                                    <select class="form-control select2" name="statu" id="statu" >
+                                    <option value="1" >
+                                        مقبول
+                                    </option>
+                                    <option value="2" >
+                                        مرفوض
+                                    </option>
+                                    <option value="3" >
+                                        ارشيف
+                                    </option>
+                                    <option value="4" >
+                                        مؤجل
+                                    </option>
+                                    </select>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -680,12 +234,14 @@
 				        </div>
                         </div>
 
+<<<<<<< Updated upstream
+=======
                         {{-- Add_Bim --}}
                         <div class="modal fade" id="exampleModa26" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">اضافة دفعة كرت بيم </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">العمل</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -696,12 +252,12 @@
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الطالب</label>
-                                <input type="text" class="form-control" id="student_name" name="student_name" placeholder="  " readonly>
+                                <input type="text" class="form-control" id="student_name" name="student_name" placeholder="   أكنب ماهو العملك السابق " readonly>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">عدد كروت البيم</label>
                                 <input type="hidden" name="student_id" id="id" readonly>
-                                <input type="text" class="form-control" id="number_bim_student" name="number_bim_student" placeholder=" أكتب قيمة عدد الكروت  ">
+                                <input type="text" class="form-control" id="number_bim_student" name="number_bim_student" placeholder="   أكنب ماهو العملك السابق ">
                                 </div>
                                 <div class="modal-body">
                                     <p class="mg-b-10">قيمة الكروت</p>
@@ -709,13 +265,13 @@
                                             @foreach($payments as $a)
                                                 <option value="{{$a->value_bim}}" >
                                                     {{$a->value_bim}}
-                                                </option>
+                                                </option>                                                   
                                             @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ملاحظات</label>
-                                <input type="textarea" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد">
+                                <input type="text" class="form-control" id="note" name="note" placeholder="   كم ماهو الراتبك بالعمل السابق">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -730,8 +286,8 @@
                             </div>
                          </div>
 				        </div>
-                        </div>
-
+                        </div>    
+                    
                         {{-- Sister and Brother --}}
                         <div class="modal fade" id="exampleModal16" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -761,7 +317,7 @@
                                 <label for="exampleInputEmail">الجنس </label>
                                 <select type="text" class="form-control" id="gender" name="gender" >
                                     <option label="test">
-                                          </option>
+                                        حدد منفضلك نوع الجنس </option>
                                     <option value="ذكر" >
                                    ذكر
                                 </option>
@@ -774,7 +330,7 @@
                                 <label for="exampleInputEmail">المستوى الدراسي</label>
                                 <select class="form-control" id="academicel" name="academicel" placeholder="">
                                     <option label="test">
-                                           </option>
+                                        حدد منفضلك المستوى التعليمي  </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -807,7 +363,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم الراتب </label>
-                                <input type="number" class="form-control" id="salary" name="salary" placeholder=" أكتب قيمة الراتب">
+                                <input type="text" class="form-control" id="salary" name="salary" placeholder=" أكتب قيمة الراتب">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -849,7 +405,7 @@
                                 <label for="exampleInputEmail">مكان الجامعة</label>
                                 <select type="text" class="form-control" id="univer_location" name="univer_location" placeholder="   أكتب مكان الجامعة ">
                                     <option label="test">
-                                           </option>
+                                        حدد منفضلك مكان الجامعة </option>
                                     <option value="أضنة">
                                         أضنة</option>
                                     <option value="	أدي‌يمن">
@@ -1026,7 +582,7 @@
                                 <label for="exampleInputEmail">السنة الدراسية الحالية </label>
                                 <select type="text" class="form-control" id="Schoo_year" name="Schoo_year" >
                                     <option label="test">
-                                            </option>
+                                        حدد منفضلك نوع السنة الدراسية </option>
                                     <option value="تحضيري" >
                                    تحضيري
                                 </option>
@@ -1053,7 +609,7 @@
                                 <label for="exampleInputEmail">اللغة الدراسية </label>
                                 <select type="text" class="form-control" id="language_name" name="language_name">
                                     <option label="test">
-                                            </option>
+                                        حدد منفضلك اللغة الدراسية </option>
                                     <option value="العربية" >
                                    العربية
                                 </option>
@@ -1085,10 +641,9 @@
                                 <input type="text" class="form-control" id="Accept_rate" name="Accept_rate" placeholder="   أكتب معدل القبول الجامعي ">
                                 </div>
                                 <div class="form-group">
-                                    <p class="mg-b-10"> هل يوجد جامعة ثانية</p>
-                                    <select class="form-control select2" name="are_you_univer" id="are_you_univer" onchange="showDiv(this)">
+                                    <p class="mg-b-10"> هل يوجد جامعة ثانية</p><select class="form-control select2" name="are_you_univer" id="are_you_univer" onchange="showDiv(this)">
                                         <option label="test">
-                                                  </option>
+                                        </option>
                                         <option value="يوجد" >
                                             يوجد
                                         </option>
@@ -1117,8 +672,8 @@
                                 <div class="form-group">
                                 <label for="exampleInputEmail">  السنة الدراسية بالجامعة الثانية   </label>
                                 <select type="text" class="form-control" id="Ano_Schoo_year" name="Ano_Schoo_year">
-                                    <option>
-                                         </option>
+                                    <option label="test">
+                                        حدد منفضلك السنة الدراسية </option>
                                     <option value="تحضيري" >
                                    تحضيري
                                 </option>
@@ -1252,7 +807,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري؟</label>
-                                <input type="number" class="form-control" id="job_monthly_salary" name="job_monthly_salary" placeholder="   أكتب ماهو العملك ">
+                                <input type="text" class="form-control" id="job_monthly_salary" name="job_monthly_salary" placeholder="   أكتب ماهو العملك ">
                                 </div>
                                 <div class="form-group">
                                    <p class="mg-b-10">هل لديك عمل سابق؟</p>
@@ -1273,7 +828,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم راتبك السابق بعملك السابق؟</label>
-                                <input type="number" class="form-control" id="job_last_salary" name="job_last_salary" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                <input type="text" class="form-control" id="job_last_salary" name="job_last_salary" placeholder="   كم ماهو الراتبك بالعمل السابق">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1311,7 +866,7 @@
                                     <p class="mg-b-10">هل تحفظ القرآن</p>
                                     <select class="form-control select2" name="quran_memorize" id="quran_memorize">
                                         <option label="test">
-											    </option>
+											  </option>
                                         <option value="نعم" >
                                         نعم
                                     </option>
@@ -1332,7 +887,7 @@
                                 <p class="mg-b-10">هل لديك شهادة حفظ قرآن</p>
                                 <select class="form-control select2" name="quran_have_certif" id="quran_have_certif">
                                     <option label="test">
-                                           </option>
+                                          </option>
                                     <option value="نعم" >
                                     نعم
                                 </option>
@@ -1394,7 +949,7 @@
                                     <p class="mg-b-10">نوع السكن</p>
                                     <select class="form-control select2" name="stud_type_housing" id="stud_type_housing">
                                         <option label="test">
-											     </option>
+											حدد منفضلك نوع السكن  </option>
                                         <option value="يورت" >
                                         يورت
                                     </option> <option value="وقف" >
@@ -1464,7 +1019,7 @@
                                     <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
                                     <select class="form-control select2" name="disease_type" id="disease_type">
                                         <option label="test">
-											   </option>
+											حدد من فضلك  </option>
                                         <option value="لايوجد" >
                                         لايوجد
                                     </option>
@@ -1557,7 +1112,7 @@
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
                                 <select class="form-control" id="mother_origin" name="mother_origin" placeholder=" أكتب أسم المحافظة ">
                                     <option label="test">
-                                            </option>
+                                        حدد منفضلك المحافظة </option>
                                     <option value="	دمشق">
                                     دمشق</option>
                                 <option value="ريف دمشق">
@@ -1597,7 +1152,7 @@
                                 <label for="exampleInputEmail">المستوى التعليمي للأم</label>
                                 <select class="form-control" id="mother_academicel" name="mother_academicel" placeholder=" أكتب المستوى النعليمي ">
                                   <option label="test">
-											  </option>
+											حدد منفضلك المستوى التعليمي </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -1628,7 +1183,7 @@
                                 <label for="exampleInputEmail">هل تعمل الأم</label>
                                 <select class="form-control select2" name="mother_is_work" id="mother_is_work" placeholder="هل الأم تعمل ام لا تعمل">
                                     <option label="test">
-                                            </option>
+                                          </option>
                                     <option value="تعمل" >
                                     تعمل
                                 </option>
@@ -1643,7 +1198,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأم</label>
-                                <input type="number" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم ">
+                                <input type="text" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم ">
                                 </div>
 
                                 {{--  Father Part  --}}
@@ -1660,7 +1215,7 @@
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
                                 <select class="form-control" id="father_origin" name="father_origin" placeholder=" أكتب أسم المحافظة ">
                                     <option label="test">
-                                            </option>
+                                        حدد منفضلك أسم المحافظة </option>
                                     <option value="	دمشق">
                                         دمشق</option>
                                     <option value="ريف دمشق">
@@ -1699,7 +1254,7 @@
                                 <label for="exampleInputEmail">المستوى التعليمي للأب</label>
                                 <select class="form-control" id="father_academicel" name="father_academicel" placeholder=" أكتب المستوى التعليمي ">
                                     <option label="test">
-                                           </option>
+                                        حدد منفضلك المستورى التعليمي </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -1732,7 +1287,7 @@
                                 <label for="exampleInputEmail">هل يعمل للأب</label>
                                 <select class="form-control select2" name="father_is_work" id="father_is_work" placeholder=" هل الأب يعمل ام لا يعمل  ">
                                     <option label="test">
-                                            </option>
+                                          </option>
                                     <option value="يعمل" >
                                     يعمل
                                 </option>
@@ -1748,7 +1303,7 @@
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأب</label>
-                                <input type="number" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري ">
+                                <input type="text" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري ">
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1793,7 +1348,7 @@
                                     <p class="mg-b-10">الجنس</p>
                                     <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" أكتب الجنس الطفل ">
                                         <option label="test">
-											  </option>
+											حدد منفضلك نوع الجنس </option>
                                         <option value="ذكر" >
                                         ذكر
                                     </option>
@@ -1806,7 +1361,7 @@
                                 <label for="exampleInputEmail">المرحلة الدراسية</label>
                                 <select type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" placeholder=" أكتب المرحلة الدراسية ">
                                     <option label="test">
-                                           </option>
+                                        حدد منفضلك المرحلة الدراسية </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -1837,7 +1392,7 @@
                                     <p class="mg-b-10">الهوية الشخصية من اي ولاية</p>
                                     <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك ">
                                         <option label="test">
-											    </option>
+											حدد منفضلك اسم ولاية </option>
                                         <option value="لايوجد كملك" >
                                          لايوجد كملك
                                         <option value="أضنة">
@@ -2087,7 +1642,7 @@
                                 <label for="exampleInputEmail">الجنس </label>
                                 <select type="text" class="form-control" id="gender" name="gender" >
                                     <option label="test">
-                                          </option>
+                                        حدد منفضلك نوع الجنس </option>
                                     <option value="ذكر" >
                                    ذكر
                                 </option>
@@ -2114,7 +1669,7 @@
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
                                 <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب أسم المحافظة ">
                                   <option label="test">
-											    </option>
+											حدد منفضلك اسم المحافظة </option>
                                     <option value="	دمشق">
                                         دمشق</option>
                                     <option value="ريف دمشق">
@@ -2154,7 +1709,7 @@
                                 <label for="exampleInputEmail">المستوى التعليمي للزوج/ة</label>
                                 <select class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" ">
                                     <option label="test">
-                                          </option>
+                                        حدد منفضلك المستوى التعليمي </option>
                                     <option value=" الأمِّيِّ">
                                         الأمِّيِّ </option>
                                  <option value="حضانة">
@@ -2186,7 +1741,7 @@
                                 <label for="exampleInputEmail">هل تعمل الزوج/ة؟</label>
                                 <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder="  ">
                                <option label="test">
-											   </option>
+											حدد منفضلك  </option>
                                     <option value="تعمل" >
                                     تعمل
                                 </option>
@@ -2217,13 +1772,13 @@
                             </div>
 				        </div>
                         </div>
-
+                        
                         {{-- add --}}
                         <div class="modal" id="modaldemo8">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content modal-content-demo">
                                     <div class="modal-header">
-                                        <h6 class="modal-title">اضافة طالب .</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                        <h6 class="modal-title">اضافة قسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <form action="{{ route('student.store') }}" method="POST">
                                         {{ csrf_field() }}
@@ -2234,14 +1789,14 @@
                                         <input type="text" class="form-control" id="student_name" name="student_name" placeholder="أكتب أسم الطالب ">
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputEmail">تاريخ الميلاد </label>
+                                        <label for="exampleInputEmail">الميلاد</label>
                                         <input type="date" class="form-control" id="birthday" name="birthday" placeholder="أكتب تاريخ الميلاد ">
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">الجنس </label>{{-- unCmoplete --}}
                                         <select class="form-control select2" name="gender" id="gender" >
                                             <option label="test">
-                                                  </option>
+                                                حدد منفضلك نوع الجنس </option>
                                             <option value="ذكر" >
                                             ذكر
                                         </option>
@@ -2266,7 +1821,7 @@
                                         <label for="exampleInputEmail">من اي محافظة</label>
                                         <select class="form-control" id="county_are_from" name="county_are_from"  placeholder=" أكتب اسم المحافظة الأصل ">
                                             <option label="test">
-                                                    </option>
+                                                حدد منفضلك أسم المحافظة </option>
                                             <option value="	دمشق">
                                                 دمشق</option>
                                             <option value="ريف دمشق">
@@ -2305,7 +1860,7 @@
                                         <label for="exampleInputEmail">السكن الحال في اي الولاية </label>{{-- unCmoplete --}}
                                         <select class="form-control select2" name="stu_Cur_housing" id="stu_Cur_housing" >
                                           <option label="test">
-											 </option>
+											حدد منفضلك أسم الولاية </option>
                                             <option value="أضنة">
                                                 أضنة</option>
                                             <option value="	أدي‌يمن">
@@ -2475,10 +2030,10 @@
                                         <input type="date" class="form-control" id="entry_turkey" name="entry_turkey"  placeholder=" أكتب تاريخ الدخول الى تركيا ">
                                         </div>
                                         <div class="form-group">
-                                        <p class="mg-b-10">هل يوجد لديك الهوية </p>
+                                        <p class="mg-b-10">هل يوجد لديك كملك </p>
                                         <select class="form-control select2" name="Identity_type" id="Identity_type">
                                             <option label="test">
-                                                 </option>
+                                             حدد منفضلك نوع الهوية  </option>
                                             <option value="كملك" >
                                             كملك
                                         </option>
@@ -2492,12 +2047,11 @@
                                             لايوجد
                                         </option>
                                         </select>
-                                    </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">اسم الولاية </label>{{-- unCmoplete --}}
                                         <select class="form-control select2" name="Id_stud_source" id="Id_stud_source">
                                            <option label="test">
-										 </option>
+											حدد منفضلك أسم الولاية </option>
                                             <option value="أضنة">
                                                 أضنة</option>
                                             <option value="	أدي‌يمن">
@@ -2662,9 +2216,11 @@
                                                 دوزجه</option>
                                         </select>
                                         </div>
+                                        </div>
+
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn ripple btn-primary" type="submit"> حفظ المعلومات</button>
+                                        <button class="btn ripple btn-primary" type="submit">حفظ القسم</button>
                                         <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">اغلاق</button>
                                     </div>
                             </form>
@@ -2721,7 +2277,7 @@
                                     <input type="text" class="form-control" id="student_name" name="student_name">
                                     </div>
                                     <div class="form-group">
-                                    <label for="exampleInputEmail">تاريخ الميلاد</label>
+                                    <label for="exampleInputEmail">الميلاد</label>
                                     <input type="date" class="form-control" id="birthday" name="birthday">
                                     </div>
                                     <div class="form-group">
@@ -2740,7 +2296,7 @@
                                     <label for="exampleInputEmail">من اي محافظة</label>
                                     <select class="form-control" id="county_are_from" name="county_are_from">
                                     <option label="test">
-									    </option>
+									حدد منفضلك أسم المحافظة </option>
                                         <option value="	دمشق">
                                         دمشق</option>
                                     <option value="ريف دمشق">
@@ -2779,7 +2335,7 @@
                                     <label for="exampleInputEmail">السكن الحالي أي ولاية</label>
                                     <select class="form-control" id="stu_Cur_housing" name="stu_Cur_housing">
                                     <option label="test">
-											 </option>
+											حدد منفضلك أسم الولاية </option>
                                         <option value="أضنة">
                                         أضنة</option>
                                     <option value="	أدي‌يمن">
@@ -2949,10 +2505,10 @@
                                     <input type="date" class="form-control" id="entry_turkey" name="entry_turkey">
                                     </div>
                                     <div class="form-group">
-                                    <p class="mg-b-10">هل يوجد لديك هوية </p>
+                                    <p class="mg-b-10">هل يوجد لديك كملك </p>
                                     <select class="form-control select2" name="Identity_type" id="Identity_type">
                                     <option label="test">
-											   </option>
+											  </option>
                                         <option value="كملك" >
                                         كملك
                                     </option>
@@ -2966,12 +2522,11 @@
                                         لايوجد
                                     </option>
                                     </select>
-                                </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">اسم الولاية </label>{{-- unCmoplete --}}
                                     <select class="form-control select2" name="Id_stud_source" id="Id_stud_source">
                                         <option label="test">
-											    </option>
+											حدد منفضلك أسم الولاية </option>
                                         <option value="أضنة">
                                             أضنة</option>
                                         <option value="	أدي‌يمن">
@@ -3147,6 +2702,7 @@
                             </div>
                         </div>
 
+>>>>>>> Stashed changes
 
                 </div>
 				<!-- row closed -->
@@ -3179,230 +2735,20 @@
 <script src="{{URL::asset('assets/js/modal.js')}}"></script>
 <script src="{{ URL::asset('assets/plugins/datatable/js/vfs_fonts.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
-{{--  edit student Jquery  --}}
+
+
+{{-- student statu --}}
 <script>
-    $('#exampleModal2').on('show.bs.modal', function(event) {
+    $('#exampleModal160').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var student_name = button.data('student_name')
-        var birthday = button.data('birthday')
-        var age = button.data('age')
-        var phone = button.data('phone')
-        var email = button.data('email')
-        var county_are_from = button.data('county_are_from')
-        var city_name = button.data('city_name')
-        var stu_Cur_housing = button.data('stu_Cur_housing')
-        var entry_turkey = button.data('entry_turkey')
-        var Identity_type = button.data('Identity_type')
-        var Id_stud_source = button.data('Id_stud_source')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #student_name').val(student_name);
-        modal.find('.modal-body #birthday').val(birthday);
-        modal.find('.modal-body #age').val(age);
-        modal.find('.modal-body #phone').val(phone);
-        modal.find('.modal-body #stu_Cur_housing').val(stu_Cur_housing);
-        modal.find('.modal-body #email').val(email);
-        modal.find('.modal-body #county_are_from').val(county_are_from);
-        modal.find('.modal-body #city_name').val(city_name);
-        modal.find('.modal-body #entry_turkey').val(entry_turkey);
-        modal.find('.modal-body #Identity_type').val(Identity_type);
-        modal.find('.modal-body #Id_stud_source').val(Id_stud_source);
-    })
-</script>
-
-{{--  delete Student Jquery  --}}
-<script>
-    $('#modaldemo9').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var student_name = button.data('student_name')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #student_name').val(student_name);
-    })
-</script>
-
-{{--  father and Mother   --}}
-<script>
-    $('#exampleModal0').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);
-
-})
-</script>
-
-{{--  Husband and Wife    --}}
-<script>
-    $('#exampleModal111').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);
-    })
-</script>
-
-{{--  children    --}}
-<script>
-    $('#exampleModal4').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);
-    })
-</script>
-
-{{--  Pay  --}}
-<script>
-    $('#exampleModal3').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var student_name = button.data('student_name')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #student_name').val(student_name);
-})
-</script>
-
-{{--  Medical_Status  --}}
-<script>
-    $('#exampleModal5').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);
-})
-</script>
-
-{{--  Student_Residance  --}}
-<script>
-    $('#exampleModal6').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-{{--  Quran  --}}
-<script>
-    $('#exampleModal7').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-{{--  Job  --}}
-<script>
-    $('#exampleModal13').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-{{--  Scholarship  --}}
-<script>
-    $('#exampleModal14').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-{{--  universities  --}}
-<script>
-    $('#exampleModal15').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-{{-- Sister and Brother --}}
-<script>
-    $('#exampleModal16').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
-        var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
-</script>
-
-<script type="text/javascript">
-    function showDiv1(select){
-       if(select.value==1){
-        document.getElementById('hidden_div').style.display = "flex";
-        document.getElementById('hidden1_div').style.display = "none";
-       } else{
-        document.getElementById('hidden_div').style.display = "none";
-        document.getElementById('hidden1_div').style.display = "flex";
-
-       }
-    }
-    </script>
-
-    <script type="text/javascript">
-        function showDiv(select){
-           if(select.value=='يوجد'){
-            document.getElementById('hidden3_div').style.display = "flex";
-           } else{
-            document.getElementById('hidden3_div').style.display = "none";
-           }
-        }
-        </script>
-
-{{--  Add_dollar  --}}
-<script>
-    $('#exampleModa23').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var student_name = button.data('student_name')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #student_name').val(student_name);
-})
-</script>
-
-{{--  Add_tr  --}}
-<script>
-    $('#exampleModa24').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
         var student_id = button.data('student_id')
         var student_name = button.data('student_name')
         var modal = $(this)
-        modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #student_id').val(student_id);
         modal.find('.modal-body #student_name').val(student_name);
 })
 </script>
 
-
-{{--  Add_euro  --}}
-<script>
-    $('#exampleModa25').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var student_name = button.data('student_name')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #student_name').val(student_name);
-})
-</script>
-
-{{--  Add_bim  --}}
-<script>
-    $('#exampleModa26').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var student_name = button.data('student_name')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #student_name').val(student_name);
-})
-</script>
 @endsection
 
 

@@ -7,13 +7,26 @@ use App\Http\Controllers\Student\SchoolController;
 use App\Http\Controllers\Medical\MediaclController;
 use App\Http\Controllers\Payment\Student_Payment;
 
+Route::prefix('turkey')->group(function () {
+    Route::post('/edit', "Publics\TurkeyController@edit")->name('turkey.edit')->middleware('auth');
+});
+
+
+Route::prefix('student/statu')->group(function () {
+    Route::get('/new', "Student\StudentController@new_student")->name('student.new')->middleware('auth');
+    Route::get('/archievd', "Student\StudentController@archive_student")->name('student.archive')->middleware('auth');
+    Route::get('/rejected', "Student\StudentController@reject_student")->name('student.reject')->middleware('auth');
+    Route::get('/delayed', "Student\StudentController@delayed_student")->name('student.delayed')->middleware('auth');
+    Route::get('/show', "Student\StudentController@index")->name('student.show')->middleware('auth');
+    Route::post('/statu', "Student\StudentController@student_statu")->name('student.statu')->middleware('auth');
+});
 
 Route::prefix('student')->group(function () {
-    Route::get('show', "Student\StudentController@index")->name('student.show')->middleware('auth');
     Route::post('store', "Student\StudentController@store")->name('student.store');
     Route::patch('update', "Student\StudentController@update")->name('student.update')->middleware('auth');
     Route::delete('update', "Student\StudentController@destroy")->name('student.destroy')->middleware('auth');
     Route::get('register', "Student\StudentController@register")->name('student.register');
+    Route::post('register', "Student\StudentController@store_register")->name('store.register');
     Route::get('enable', "Student\StudentController@enable")->name('student.enable')->middleware('auth');
     Route::get('disable', "Student\StudentController@disable")->name('student.disable')->middleware('auth');
 });

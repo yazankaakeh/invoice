@@ -25,6 +25,7 @@ class CreateStudentsTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('county_are_from')->nullable();//  من اي محافظة الأصل
+            $table->string('social_state')->nullable();//  من اي محافظة الأصل
             $table->string('city_name')->nullable();// اسم المدينة الأصل
             $table->string('stu_Cur_housing')->nullable();// اسم مدينة السكن الحالي
             $table->string('entry_turkey')->nullable();// سنة الدخول الى تركيا
@@ -45,7 +46,8 @@ class CreateStudentsTable extends Migration
             $table->integer('usd_statu')->default('0')->nullable();
             $table->integer('sis_statu')->default('0')->nullable();
             $table->integer('tr_statu')->default('0')->nullable();
-            $table->string('note')->nullable();//
+            $table->integer('new_statu')->default('0')->nullable();
+            $table->text('note')->nullable();//
             $table->integer('enable')->default('0')->nullable();
             $table->string('gender');
             $table->timestamps();

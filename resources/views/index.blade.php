@@ -109,8 +109,11 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 				@endcan
 				@can(' قسم الطلاب ')					
+=======
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -129,9 +132,13 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 				@endcan
 
 				@can(' قسم العائلات ')					
+=======
+
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -150,9 +157,13 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 				@endcan
 
 				@can(' قسم الطبي ')					
+=======
+										
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -171,10 +182,15 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 				@endcan
 
 					{{-- USD Percent $ --}}
 					@can(' مدفوعات بالدولار الطلاب ')
+=======
+
+					{{-- USD Percent $ --}}
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -201,9 +217,13 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					@endcan
 
 					@can(' مدفوعات بالدولار العائلات ')
+=======
+
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -231,9 +251,13 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					@endcan
 
 					@can(' مدفوعات بالدولار الطبي ')
+=======
+
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -260,10 +284,15 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					@endcan
 
 					{{-- TR Percent ₺ --}}
 					@can(' مدفوعات بالتركي الطلاب ')
+=======
+
+					{{-- TR Percent ₺ --}}
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-success-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -291,9 +320,13 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					@endcan
 
 					@can(' مدفوعات بالتركي العائلات ')
+=======
+
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-success-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -321,8 +354,12 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					@endcan
 					@can(' مدفوعات بالتركي الطبي ')
+=======
+
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-success-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -352,9 +389,12 @@
 							</div>
 						</div>
 					</div>	
+<<<<<<< Updated upstream
 					@endcan
 
 					@can(' مدفوعات باليورو الطلاب ')
+=======
+>>>>>>> Stashed changes
 					{{-- Euro Percent %  --}}
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-danger-gradient">
@@ -385,9 +425,13 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					@endcan
 
 					@can(' مدفوعات باليورو العائلات ')
+=======
+
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-danger-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -416,9 +460,13 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					@endcan
 
 					@can(' إضافة دفعة باليورو الطبي ')
+=======
+
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-danger-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -449,10 +497,15 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					@endcan
 
 					{{-- Bim Percent %  --}}
 					@can(' مدفوعات باكرت البيم الطلاب ')
+=======
+
+					{{-- Bim Percent %  --}}
+>>>>>>> Stashed changes
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-warning-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -480,6 +533,7 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					@endcan
 					
 					@can(' مدفوعات باكرت البيم العائلات ')
@@ -513,6 +567,41 @@
 					@endcan
 
 					@can(' مدفوعات باكرت البيم الطبي ')						
+=======
+
+>>>>>>> Stashed changes
+					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-warning-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+<<<<<<< Updated upstream
+									المبلغ المدفوع للمرضى بكروت البيم
+									</h6>
+=======
+									المبلغ المدفوع للعائلات بكروت البيم
+									</h6>
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($bim_family=\App\models\Payment\Bim::whereNotNull("family_id")->sum('number_bim_family'),2) }}كرت </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بكروت البيم لقسم العائلة</p>
+											<p class="mb-0 tx-12 text-white op-7">
+												@if($bim_family != 0  && $total_bim != 0 )
+												{{round($bim_family /	$total_bim * 100)}}
+													
+												@else()
+												0
+												@endif
+												% </p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-warning-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -524,6 +613,39 @@
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($bim_medical=\App\models\Payment\Bim::whereNotNull("medical_id")->sum('number_bim_medical'),2) }}كرت </h4>
+											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بكروت البيم لقسم الطبي</p>
+											<p class="mb-0 tx-12 text-white op-7">
+											
+											
+												@if($total_bim !=0 &&  $bim_medical !=0)
+												{{round($bim_medical /	$total_bim * 100)}}
+												
+												@else ()
+												0
+												@endif	
+												% 
+											
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
+						<div class="card overflow-hidden sales-card bg-primary-gradient">
+							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
+								<div class="">
+									<h6 class="mb-3 tx-12 text-white">
+									مجموع المبلغ المتبقي بالتركي
+									</h6>
+>>>>>>> Stashed changes
+								</div>
+								<div class="pb-0 mt-0">
+									<div class="d-flex">
+										<div class="">
+<<<<<<< Updated upstream
 											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format($bim_medical=\App\models\Payment\Bim::whereNotNull("medical_id")->sum('number_bim_medical'),2) }}كرت </h4>
 											<p class="mb-0 tx-12 text-white op-7">نسبة المدفوعات بكروت البيم لقسم الطبي</p>
 											<p class="mb-0 tx-12 text-white op-7">
@@ -559,6 +681,14 @@
 											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{number_format($total_tr=\App\models\Payment\Income::sum('value_tr'),2) }}₺ </h4>
 										</div>
 										<span class="float-right my-auto mr-auto">
+=======
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{number_format($total_tr=\App\models\Payment\Income::sum('value_tr'),2) }}₺ </h4>
+											{{-- <p class="mb-0 tx-12 text-white op-7">Compared to last week</p> --}}
+										</div>
+										<span class="float-right my-auto mr-auto">
+											{{-- <i class="fas fa-arrow-circle-up text-white"></i>
+											<span class="text-white op-7"> +427</span> --}}
+>>>>>>> Stashed changes
 										</span>
 									</div>
 								</div>
@@ -625,6 +755,7 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< Updated upstream
 					@endcan
 				<!-- row closed -->
 
@@ -652,6 +783,31 @@
 							</div>
 						</div>
 					@endcan
+=======
+				<!-- row closed -->
+
+				<!-- row opened -->
+				<div class="row row-sm">
+					<div class="col-md-12 col-lg-12 col-xl-7">
+
+					</div>
+					<div class="col-md-12 col-lg-12 col-xl-6">
+						<div class="card card-dashboard-map-one">
+							<label class="main-content-label">تقرير المحافظات السورية لعائلات</label>
+							<div class=""  >
+								{!! $chartjs->render() !!}
+							</div>
+						</div>
+					</div>
+						<div class="col-md-12 col-lg-12 col-xl-6">
+						<div class="card card-dashboard-map-one">
+							<label class="main-content-label">تقرير المحافظات السورية للطلاب</label>
+							<div class=""  >
+								{!! $chartjs1->render() !!}
+							</div>
+						</div>
+						
+>>>>>>> Stashed changes
 					</div>
 				</div>
 

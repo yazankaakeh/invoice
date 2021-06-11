@@ -17,16 +17,28 @@ use App\Http\Controllers\Payment\Student_Payment;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('invoices', "InvoiceController@index")->middleware('auth');
-//////////////////////////////////// Payment 
+    Route::get('invoices', "InvoiceController@index")->middleware('auth');
+    //////////////////////////////////// Payment
 
 
-Route::group(['middleware' => ['auth']], function() {
-Route::resource('roles','RoleController');
-Route::resource('users','UserController');
-});
+    Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+    });
 
 
+<<<<<<< Updated upstream
+    Route::get('/', 'HomeController@index')->middleware('auth');
+
+    //Auth::routes(['verify' => true]);
+    Auth::routes(['register'=>false]);
+
+    Route::get('/index', 'HomeController@index')->middleware('auth');
+
+    Route::get('/{page}', 'AdminController@index')->middleware('auth');
+
+    Route::get('/home', 'HomeController@index')->middleware('auth');
+=======
 Route::get('/', function () {
     return view('welcome');
 });
@@ -39,4 +51,5 @@ Route::get('/index', 'HomeController@index')->middleware('auth');
 Route::get('/{page}', 'AdminController@index')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->middleware('auth');
+>>>>>>> Stashed changes
 

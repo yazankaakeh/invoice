@@ -82,7 +82,11 @@ public function store_family_tr(Request $request)
     else {
         $sta = $payments_cut->incomes_statu;
         ++$sta;
+<<<<<<< Updated upstream
+        $payments_cut->incomes_statu = $sta;
+=======
         $payments_cut->incomes_statu = $sta;            
+>>>>>>> Stashed changes
         $payments_cut->value_tr = $m;
         $payments_cut ->save();
     }
@@ -111,16 +115,26 @@ public function store_family_tr(Request $request)
     return redirect(route('family.show'));
     }
 }
+public function messages_update_family_tr()
+{
+return $messages_update_family_tr = [
+    'family_id.required' => '!!',
+    'family_value_tr.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
 public function update_family_tr(Request $request)
 {
+    $messages = $this->messages_update_family_tr();
     $this->validate($request, [
         'family_id' => 'required',
         'id' => 'required',
         'family_value_tr' => 'required',
         'family_value_tr1' => 'required',
         'note'=> 'required',
-    ]);
+    ],$messages);
     if ($request->family_value_tr1 != $request->family_value_tr)
     {
 
@@ -193,7 +207,11 @@ public function destroy_familys_tr(Request $request)
     $payments_cut = Income::where('value_tr','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
+<<<<<<< Updated upstream
+    $payments_cut->incomes_statu = $sta;
+=======
     $payments_cut->incomes_statu = $sta;  
+>>>>>>> Stashed changes
     $s= $payments_cut->value_tr;
     $a=$request->family_value_tr;
     //dd($a);
@@ -257,7 +275,11 @@ public function store_medical_tr(Request $request)
     else {
         $sta = $payments_cut->incomes_statu;
         ++$sta;
+<<<<<<< Updated upstream
+        $payments_cut->incomes_statu = $sta;
+=======
         $payments_cut->incomes_statu = $sta;            
+>>>>>>> Stashed changes
         $payments_cut->value_tr = $m;
         $payments_cut ->save();
     }
@@ -285,16 +307,26 @@ public function store_medical_tr(Request $request)
     return redirect(route('medical.show'));
     }
 }
+public function messages_update_medical_tr()
+{
+return $messages_update_medical_tr = [
+    'medical_id.required' => '!!',
+    'medical_value_tr.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
 public function update_medical_tr(Request $request)
 {
+    $messages = $this->messages_update_medical_tr();
     $this->validate($request, [
         'medical_id' => 'required',
         'id' => 'required',
         'medical_value_tr' => 'required',
         'medical_value_tr1' => 'required',
         'note'=> 'required',
-    ]);
+    ],$messages);
     if ($request->medical_value_tr1 != $request->medical_value_tr)
     {
 
@@ -366,13 +398,21 @@ public function destroy_medicals_tr(Request $request)
     $medical->tr_statu = $x;
     $medical_Name = $medical->medical_Name;
 
+<<<<<<< Updated upstream
+
+=======
   
+>>>>>>> Stashed changes
 
     $s;
     $payments_cut = Income::where('value_tr','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
+<<<<<<< Updated upstream
+    $payments_cut->incomes_statu = $sta;
+=======
     $payments_cut->incomes_statu = $sta;      
+>>>>>>> Stashed changes
     $s= $payments_cut->value_tr;
     $a=$request->medical_value_tr;
     //dd($a);
@@ -445,7 +485,11 @@ public function store_student_tr(Request $request)
     else {
         $sta = $payments_cut->incomes_statu;
         ++$sta;
+<<<<<<< Updated upstream
+        $payments_cut->incomes_statu = $sta;
+=======
         $payments_cut->incomes_statu = $sta;            
+>>>>>>> Stashed changes
         $payments_cut->value_tr = $m;
         $payments_cut ->save();
     }
@@ -473,16 +517,26 @@ public function store_student_tr(Request $request)
     return redirect(route('student.show'));
     }
 }
+public function messages_update_student_tr()
+{
+return $messages_update_student_tr = [
+    'student_id.required' => '!!',
+    'student_value.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
+    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
+
+];
+}
 public function update_student_tr(Request $request)
 {
+    $messages = $this->messages_update_student_tr();
     $this->validate($request, [
         'student_id' => 'required',
         'id' => 'required',
         'student_value1' => 'required',
         'student_value' => 'required',
         'note'=> 'required',
-    ]);
+    ],$messages);
     if ($request->student_value1 != $request->student_value)
     {
 
@@ -542,12 +596,20 @@ public function destroy_students_tr(Request $request)
     $student_Name = $student->student_Name;
 
 
+<<<<<<< Updated upstream
+
+=======
     
+>>>>>>> Stashed changes
     $s;
     $payments_cut = Income::where('value_tr','>', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
+<<<<<<< Updated upstream
+    $payments_cut->incomes_statu = $sta;
+=======
     $payments_cut->incomes_statu = $sta;        
+>>>>>>> Stashed changes
     $s= $payments_cut->value_tr;
     $a=$request->student_value;
     //dd($a);

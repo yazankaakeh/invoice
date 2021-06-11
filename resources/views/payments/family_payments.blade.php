@@ -26,7 +26,7 @@
 				<div class="row">
                         <div class="col-xl-12">
                             <div class="card mg-b-20">
-                                <div class="card-header pb-0">
+                                <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                                     </div>
@@ -69,7 +69,7 @@
                                                                 data-number_bim_family="{{$x->number_bim_family }}" data-value_bim_family="{{$x->value_bim_family}}"
                                                                 data-family_value="{{$x->family_value }}" data-family_id="{{$x->family_id}}"
                                                                 data-family_constraint="{{$x->family->family_Constraint}}" data-note="{{$x->Note }}"
-                                                                data-family_value_euro="{{$x->family_value_euro}}" data-family_value_usd="{{$x->family_value_usd }}"                                                                
+                                                                data-family_value_euro="{{$x->family_value_euro}}" data-family_value_usd="{{$x->family_value_usd }}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
@@ -110,10 +110,10 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            @endif                            
-                            
+                            @endif
+
                             @if (session()->has('Warning'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Warning') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -128,7 +128,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>Oh snap!</strong> {{ $error }}
+                                    <strong>ملاحظة!</strong> {{ $error }}
                             @endforeach
                             </ul>
                             </div>
@@ -161,7 +161,7 @@
                                                     @foreach($payments_income as $a)
                                                         <option value="{{$a->value_bim}}" >
                                                             {{$a->value_bim}}
-                                                        </option>                                                        
+                                                        </option>
                                                     @endforeach
                                             </select>
                                         </div>
@@ -216,14 +216,14 @@
                                         <label for="recipient-name" class="col-form-label">المبلغ باليورو</label>
                                         <input class="form-control" name="family_value_euro" id="family_value_euro" type="text" >
                                         </div>
-                                        
+
                                         <div class="modal-body">
                                             <p class="mg-b-10">قيمة الكروت</p>
                                             <select class="form-control select2" name="value_bim_family" id="value_bim_family" >
                                                     @foreach($payments_income as $a)
                                                         <option value="{{$a->value_bim}}" >
                                                             {{$a->value_bim}}
-                                                        </option>                                                        
+                                                        </option>
                                                     @endforeach
                                             </select>
                                         </div>

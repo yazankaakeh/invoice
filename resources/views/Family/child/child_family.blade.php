@@ -19,7 +19,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/معلومات الأطفال</span>
+							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/معلومات الأطفال</span>
 						</div>
 					</div>
 
@@ -31,7 +31,7 @@
 				<div class="row">
                         <div class="col-xl-12">
                             <div class="card mg-b-20">
-                                <div class="card-header pb-0">
+                                <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                     </div>
                                 </div>
@@ -50,6 +50,7 @@
                                                     <th class="border-bottom-0">اسم الطفل</th>
                                                     <th class="border-bottom-0">عمره</th>
                                                     <th class="border-bottom-0">جنسه</th>
+                                                    <th class="border-bottom-0">الحالة الأجتماعية</th>
                                                     <th class="border-bottom-0">الحالة الصحية</th>
                                                     <th class="border-bottom-0">المرحلة الدراسية</th>
                                                     <th class="border-bottom-0">الصف الدراسي</th>
@@ -57,6 +58,7 @@
                                                     <th class="border-bottom-0">هل يعيشون معكم</th>
                                                     <th class="border-bottom-0">تاريخ التعديل</th>
                                                     <th class="border-bottom-0">العمليات</th>
+                                                    <th class="border-bottom-0">معلومات القرأن الكريم</th>
                                                     <th class="border-bottom-0">إضافة مدرسة</th>
                                                 </tr>
                                             </thead>
@@ -70,6 +72,7 @@
                                                     <td>{{$x->childre_name}}</td>
                                                     <td>{{$x->childre_age}}</td>
                                                     <td>{{$x->childre_gender}}</td>
+                                                    <td>{{$x->status}}</td>
                                                     <td>{{$x->medical_stat}}</td>
                                                     <td>{{$x->childre_educa_leve}}</td>
                                                     <td>{{$x->childre_class_number}}</td>
@@ -77,6 +80,7 @@
                                                     <td>{{$x->childre_live_with}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
+
                                                     @can(' تعديل قسم الأطفال العائلات ')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
@@ -85,22 +89,43 @@
                                                                 data-childre_educa_leve="{{$x->childre_educa_leve}}"
                                                                 data-childre_class_number="{{$x->childre_class_number }}" data-childre_id_extr="{{$x->childre_id_extr}}"
                                                                 data-medical_stat="{{$x->medical_stat}}"
+                                                                data-status="{{$x->status}}"
                                                                 data-childre_live_with="{{$x->childre_live_with}}"
                                                                 data-family_Constraint="{{$x->family->family_Constraint}}"   data-family_id="{{$x->family_id}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
-                                                                <i class="las la-pen"></i>
+                                                                <i class="las la-pen"style="font-size: 15px;"></i>
                                                             </a>
                                                     @endcan
+
                                                     @can('حذف قسم الأطفال العائلات ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}" data-family_constraint="{{$x->family->family_Constraint}}"  data-family_id="{{$x->family_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
-                                                                <i class="las la-trash"> </i>
+                                                                <i class="las la-trash"style="font-size: 15px;"></i>
                                                             </a>
                                                     @endcan
                                                     </td>
+ {{-- Quran  --}}
+                                                        @if($x->quran_statu == 1)
+                                                        <td>
+                                                        @can(' قسم القرأن الطلاب ')
+                                                        <a class=" btn btn-sm btn-info" href="/Quran/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        @endcan
+                                                        </td>
+                                                        @elseif($x->quran_statu == 0)
+                                                        <td>
+                                                        @can(' اضافة القرأن الطلاب ')
+                                                            <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                                data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
+                                                            href="#exampleModal7" title="إضافة معلومات القرآن">
+                                                            <i class="fas fa-book-open" style="font-size: 20px;"></i>
+                                                        </a>
+                                                    @endcan
+                                                    </td>
+                                                    @endif
+
                                                     <td>
                                                     @can('  مدرسة لطفل العائلات ')
 
@@ -113,7 +138,7 @@
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal" title="إضافة مدرسة">
-                                                                <i class="las la-pen"></i>
+                                                                <i class="fas fa-address-card" style="font-size: 20px;"></i>
                                                             </a>
                                                             @endif
                                                     @endcan
@@ -164,6 +189,16 @@
                             </div>
                             @endif
 
+                            @if (session()->has('Add_Quran'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_Quran') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+
+
                             @if ($errors->any())
                          <div class="alert alert-danger mg-b-0" role="alert">
                             <button aria-label="Close" class="close" data-dismiss="alert" type="button">
@@ -171,7 +206,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>Oh snap!</strong> {{ $error }}
+                                    <strong>ملاحظة!</strong> {{ $error }}
                             @endforeach
                             </ul>
                          </div>
@@ -229,6 +264,90 @@
                             </form>
                         </div>
                     </div>
+
+                            {{-- add  Holy Quran --}}
+                        <div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">القرآن الكريم</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{ route('Quran.student.store') }}" method="post">
+                                {{ method_field('POST') }}
+                                {{ csrf_field() }}
+                                <div class="modal-body">
+
+                                <input type="hidden" name="student_id" id="student_id" readonly>
+                                    <div class="form-group">
+                                    <p class="mg-b-10">هل تحفظ القرآن</p>
+                                    <select class="form-control select2" name="quran_memorize" id="quran_memorize">
+                                        <option label="test">
+											    </option>
+                                        <option value="نعم" >
+                                        نعم
+                                    </option>
+                                    <option value="لا" >
+                                        لا
+                                    </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">عدد الأجزاء التي أتممت حفظها </label>
+                                <input type="text" class="form-control" id="quran_parts" name="quran_parts" placeholder="    أكتب عدد الأجزاء المحفوظة ">
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">أسم الشيخ الذي درسك</label>
+                                <input type="text" class="form-control" id="quran_teacher" name="quran_teacher" placeholder="   أكتب أسم الشيخ ">
+                                </div>
+                                <div class="form-group">
+                                <p class="mg-b-10">هل لديك شهادة حفظ قرآن</p>
+                                <select class="form-control select2" name="quran_have_certif" id="quran_have_certif">
+                                    <option label="test">
+                                           </option>
+                                    <option value="نعم" >
+                                    نعم
+                                </option>
+                                <option value="لا" >
+                                    لا
+                                </option>
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                <label for="exampleInputEmail">مصدر الشهادة</label>
+                                <input type="text" class="form-control" id="quran_Certif_essuer" name="quran_Certif_essuer" placeholder="   أكتب مصدر الشهادة ">
+                                </div>
+                                <div class="form-group">
+                                <p class="mg-b-10">هل الشهادة معك؟</p>
+                                <select class="form-control select2" name="quran_with_Certif" id="quran_with_Certif" >
+                                    <option label="test">
+                                          </option>
+                                    <option value="نعم" >
+                                    نعم
+                                </option>
+                                <option value="لا" >
+                                    لا
+                                </option>
+                                </select>
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">تاكيد</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                         </div>
+				        </div>
+                        </div>
+
 
                     {{-- delete --}}
                     <div class="modal" id="modaldemo9">
@@ -294,6 +413,19 @@
                                     </option>
                                     <option value="انثى" >
                                         انثى
+                                    </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">{{-- it must be select options  --}}
+                                    <p class="mg-b-10">الحالة الأجتماعية</p>
+                                    <select class="form-control select2" name="status" id="status" placeholder="  ">
+                                        <option label="test">
+											       </option>
+                                        <option value="يتيم/ة" >
+                                        يتيم/ة
+                                    </option>
+                                    <option value="غير يتيم" >
+                                        غير يتيم
                                     </option>
                                     </select>
                                 </div>
@@ -415,6 +547,7 @@
         var childre_age = button.data('childre_age')
         var childre_name = button.data('childre_name')
         var childre_gender = button.data('childre_gender')
+        var status = button.data('status')
         var childre_educa_leve = button.data('childre_educa_leve')
         var childre_class_number = button.data('childre_class_number')
         var childre_id_extr = button.data('childre_id_extr')
@@ -426,6 +559,7 @@
         modal.find('.modal-body #childre_age').val(childre_age);
         modal.find('.modal-body #childre_name').val(childre_name);
         modal.find('.modal-body #childre_gender').val(childre_gender);
+        modal.find('.modal-body #status').val(status);
         modal.find('.modal-body #childre_educa_leve').val(childre_educa_leve);
         modal.find('.modal-body #childre_class_number').val(childre_class_number);
         modal.find('.modal-body #childre_id_extr').val(childre_id_extr);
@@ -446,6 +580,15 @@
         modal.find('.modal-body #family_id').val(family_id);
         modal.find('.modal-body #family_constraint').val(family_constraint);
     })
+</script>
+
+{{--  Quran  --}}
+<script>
+    $('#exampleModal7').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var student_id = button.data('student_id')
+        var modal = $(this)
+        modal.find('.modal-body #student_id').val(student_id);})
 </script>
 
 {{--  Add_School  --}}

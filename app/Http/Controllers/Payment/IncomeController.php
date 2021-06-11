@@ -92,7 +92,11 @@ $this->middleware('permission: تعديل الدفعة قسم الدخل الم�
         $eu_fn = $request->value_euro - $eu;
 
         $usd = $incomes -> value_usd_fixed  - $incomes -> value_usd ;
+<<<<<<< Updated upstream
+        $usd_fn = $request->value_usd - $usd;
+=======
         $usd_fn = $request->value_usd - $usd; 
+>>>>>>> Stashed changes
 
         $bim = $incomes -> number_bim_fixed - $incomes -> number_bim  ;
         $bim_fn = $request->number_bim - $bim;
@@ -115,6 +119,16 @@ $this->middleware('permission: تعديل الدفعة قسم الدخل الم�
          //write to the data base
          $incomes ->save();
          session()->flash('Edit','تم تعديل المبلغ المالي بنجاح ');
+<<<<<<< Updated upstream
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('income.show'));
+        }
+        else {
+         session()->flash('warning','التعديل الذي قمت به غير صالح');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('income.show'));
+        }
+=======
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('income.show'));
         }
@@ -123,12 +137,17 @@ $this->middleware('permission: تعديل الدفعة قسم الدخل الم�
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('income.show'));        
         }
+>>>>>>> Stashed changes
     }
 
     public function destroy(Request $request)
     {
         $incomes =  Income::find($request->id);
+<<<<<<< Updated upstream
         if($incomes->incomes_statu == 0){
+=======
+        if($incomes->incomes_statu = 0){
+>>>>>>> Stashed changes
 
         Income::find($request->id)->delete();
         /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/

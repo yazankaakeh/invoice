@@ -209,6 +209,7 @@ function __construct()
         'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
         'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'medical_stat.required'  => 'لم يتم ادخال  الحالة الصحية  !!',
+        'status.required'  => 'لم يتم ادخال  الحالة الأجتماعية  !!',
         'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
 
 
@@ -225,6 +226,7 @@ function __construct()
             'childre_educa_leve' => 'required',
             'childre_class_number' => 'required',
             'medical_stat' => 'required',
+            'status' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
         ],$messages);
@@ -237,6 +239,7 @@ function __construct()
          $Childrens = new Children;
          $Childrens -> family_id = $request->family_id;
          $Childrens -> childre_name = $request->childre_name;
+         $Childrens -> status = $request->status;
          $Childrens -> childre_age = $request->childre_age;
          $Childrens -> childre_gender = $request->childre_gender;
          $Childrens -> childre_educa_leve = $request->childre_educa_leve;
@@ -252,9 +255,9 @@ function __construct()
          return redirect(route('family.show'));
 
     }
-    public function messages_family_medical()
+    public function messages_update_family_children()
     {
-    return $messages_family_medical = [
+    return $messages_update_family_children = [
         'family_id.required' => '!!',
         'id.required' => '!!',
         'childre_name.required' => 'لم يتم ادخال اسم الطفل   !!',
@@ -262,6 +265,7 @@ function __construct()
         'childre_gender.required' => 'لم يتم ادخال الجنس   !!',
         'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
         'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
+        'status.required'  => 'لم يتم ادخال  الحالة الأجتماعية  !!',
         'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
 
@@ -270,7 +274,7 @@ function __construct()
     }
     public function update_family(Request $request)
     {
-        $messages = $this->messages_family_medical();
+        $messages = $this->messages_update_family_children();
         $this->validate($request,[
             'family_id' => 'required',
             'id' => 'required',
@@ -279,6 +283,7 @@ function __construct()
             'childre_gender' => 'required',
             'medical_stat' => 'required',
             'childre_educa_leve' => 'required',
+            'status' => 'required',
             'childre_class_number' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
@@ -292,6 +297,7 @@ function __construct()
          $Childrens -> childre_name = $request->childre_name;
          $Childrens -> childre_age = $request->childre_age;
          $Childrens -> medical_stat = $request->medical_stat;
+         $Childrens -> status = $request->status;
          $Childrens -> childre_gender = $request->childre_gender;
          $Childrens -> childre_educa_leve = $request->childre_educa_leve;
          $Childrens -> childre_class_number = $request->childre_class_number;

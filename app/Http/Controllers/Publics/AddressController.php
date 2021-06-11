@@ -61,7 +61,6 @@ function __construct()
         $this->validate($request,[
             'family_id'=>'required',
             'address_country' => 'required',
-            'address_city' => 'required',
             'address_like_bill' => 'required',
             'address_last' => 'required',
 
@@ -71,6 +70,21 @@ function __construct()
          $family_Constraint = $familys->family_Constraint;
          $x=1;
          $familys->residance_statu = $x;
+         if($request->address_city1 != null)
+         {
+         $Address = new Address;
+         $Address -> family_id = $request->family_id;
+         $Address -> address_country = $request->address_country;
+         $Address -> address_city = $request->address_city1;
+         $Address -> address_like_bill = $request->address_like_bill;
+         $Address -> address_last = $request->address_last;
+         //write to the data base
+         $familys->save();
+         $Address ->save();
+         session()->flash('Add_Address',  'تم اضافة معلومات العنوان للعائلة  '. $family_Constraint .' بنجاح ');
+         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+         return redirect(route('family.show'));
+        }elseif ($request->address_city1 == null) {
          $Address = new Address;
          $Address -> family_id = $request->family_id;
          $Address -> address_country = $request->address_country;
@@ -82,7 +96,9 @@ function __construct()
          $Address ->save();
          session()->flash('Add_Address',  'تم اضافة معلومات العنوان للعائلة  '. $family_Constraint .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-         return redirect(route('family.show'));
+         return redirect(route('family.show'));            
+        }
+        
     }
 
     public function show( $id)

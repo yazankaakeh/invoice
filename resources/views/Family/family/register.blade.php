@@ -38,20 +38,67 @@ body{
 					<div class="col-lg-5">
 						<div class="card">
 							<div class="card-body">
-                                <form action="{{ route('family.store') }}" method="post">
+                                <form action="{{ route('family.new') }}" method="post">
 								<div id="">
 									<h3> المعلومات الشخصية.</h3>
 									<section>
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
 										<p class="mg-b-20">يرجى إدخال المعلومات الشخصية الخاصة بك !</p>
-										<div class="border shadow-none card card-body pd-20 pd-md-40" style="text-align:center">
-											<div class="col-sm-12">
+										<div class="border shadow-none card card-body pd-20 pd-md-40">
                                              <div class="col-sm-12">
                                                  <label class="form-control-label"> اسم صاحب القيد: <span class="tx-danger">*</span></label>
                                                  <input class="form-control" value="" id="family_constraint" name="family_Constraint" placeholder="أكتب اسم صاحب القيد" required="" type="text">
                                                 <input class="form-control" value="register"  name="register" type="hidden">
                                              </div>
+                                             <div class="col-sm-12"> {{-- it must be select options  --}}
+                                                 <p class="form-control-label">  الجنس </p>
+                                                 <select class="form-control select2" name="gender" id="gender">
+                                                    <option label="test">
+                                                    </option>
+                                                 <option value="ذكر">
+                                                     ذكر
+                                                     </option>
+                                                 <option value="انثى">
+                                                     انثى
+                                                      </option>
+                                                 </select>
+                                             </div>
+                                            <div class="col-sm-12">
+                                            <label for="exampleInputEmail">من اي محافظة من سوريا؟ : <span class="tx-danger">*</span></label>
+                                            <select class="form-control" id="city" name="city" placeholder=" أكتب اسم المحافظة ">
+                                            <option label="test">
+                                                    </option>
+                                                <option value="	دمشق">
+                                                    دمشق</option>
+                                                <option value="ريف دمشق">
+                                                    ريف دمشق</option>
+                                                <option value="	حلب ">
+                                                    حلب</option>
+                                                <option value="حمص">
+                                                    حمص</option>
+                                                <option value="حماه">
+                                                    حماه</option>
+                                                <option value="	درعا">
+                                                    درعا</option>
+                                                <option value="	ادلب">
+                                                    ادلب</option>
+                                                <option value="	سويداء">
+                                                    سويداء</option>
+                                                <option value="	ديرالزور">
+                                                    دير الزور</option>
+                                                <option value="	الرقة">
+                                                    الرقة</option>
+                                                <option value="الحسكة">
+                                                    الحسكة</option>
+                                                <option value="	اللاذقية">
+                                                    اللاذقية</option>
+                                                <option value="	طرطوس">
+                                                    طرطوس</option>
+                                                <option value="	القنيطرة">
+                                                    القنيطرة</option>
+                                                </select>
+                                            </div>
                                              <div  class="col-sm-12">
                                                  <label class="form-control-label"> عدد أفراد العائلة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_number_member" name="family_number_member" placeholder="أكتب عدد أفراد العائلة " required="" type="text">
                                              </div>
@@ -73,11 +120,14 @@ body{
                                              <div class="col-sm-12"> {{-- it must be select options  --}}
                                                  <p class="form-control-label">   هل يوجد  مساعدات :<span class="tx-danger">*</span></p><select class="form-control select2" name="family_has_aid" id="family_aid">
                                                  <option label="test">
-                                                     حدد من فضلك     </option>
+                                                     حدد من فضلك
+                                                     </option>
                                                  <option value="	يوجد">
-                                                     يوجد</option>
+                                                     يوجد
+                                                     </option>
                                                  <option value=" لايوجد">
-                                                     لايوجد </option>
+                                                     لايوجد
+                                                      </option>
                                                  </select>
                                              </div>
                                              <div class="col-sm-12">
@@ -85,24 +135,60 @@ body{
                                              </div>
 
                                             <div class="col-sm-12">
-                                            <label for="exampleInputEmail"> ماهي قيمة المساعدات</label>
+                                            <label for="exampleInputEmail"> ماهي قيمة المساعدات : <span class="tx-danger">*</span></label>
                                             <input type="text" class="form-control" id="aid_value" name="aid_value"  placeholder=" أكنب أسم المدينة  ">
                                             </div>
-
+                                            <div class="col-sm-12">
+                                            <label for="exampleInputEmail">المستوى التعليمي : <span class="tx-danger">*</span></label>
+                                            <select class="form-control" id="academicel" name="academicel" placeholder=" أكتب المستوى التعليمي  ">
+                                            <option label="test">
+                                                    </option>
+                                            <option value=" الأمِّيِّ">
+                                                الأمِّيِّ </option>
+                                            <option value="حضانة">
+                                                حضانة </option>
+                                            <option value="روضة">
+                                                روضة </option>
+                                            <option value="ابتدائي">
+                                                ابتدائي </option>
+                                            <option value="اعدادي">
+                                                اعدادي </option>
+                                            <option value="ثانوي">
+                                                ثانوي </option>
+                                            <option value="دبلوم عالي ">
+                                                دبلوم عالي </option>
+                                            <option value="جامعي">
+                                                جامعي </option>
+                                            <option value="ماجستير">
+                                                مايجستير </option>
+                                            <option value="دكتورا">
+                                                ديكتورا </option>
+                                            </select>
+                                            </div>
+                                            <div class="col-sm-12">
+                                            <label for="exampleInputEmail">العمل الحالي: <span class="tx-danger">*</span></label>
+                                            <input type="text" class="form-control" id="now_work" name="now_work" placeholder=" أكتب العمل الحالي ">
+                                            </div>
+                                            <div class="col-sm-12">
+                                            <label for="exampleInputEmail">العمل السابق : <span class="tx-danger">*</span> </label>
+                                            <input type="text" class="form-control" id="work" name="work" placeholder=" أكتب العمل السابق  ">
+                                            </div>
                                              <div class="col-sm-12">
                                                  <label class="form-control-label"> رقم هاتف الأول: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="phone" name="phone" placeholder="أكتب رقم الهاتف بدءً من 05 " required="" type="text">
                                              </div>
                                              <div class="col-sm-12">
-                                                 <label class="form-control-label">رقم هاتف ثاني: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="sec_phone" name="sec_phone" placeholder="أكتب الثاني رقم الهاتف بدءً من 05 يجب أن لايكون مكرر  " required="" type="text">
+                                                 <label class="form-control-label">رقم هاتف ثاني: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="sec_phone" name="sec_phone" placeholder="أكتب  رقم الهاتف بدءً من 05 يجب أن لايكون مكرر  " required="" type="text">
                                              </div>
                                              <div class="col-sm-12">
                                                  <label class="form-control-label">أي ملاحظات: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="يرجى كتابة أي ملاحظة " required="" type="text">
                                              </div>
-                            </form>
-                                <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">تاكيد</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                </div>
+                                            </form>
+
+                                            <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">تاكيد</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                            </div>
+
                             @if (session()->has('Add'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>
@@ -125,7 +211,7 @@ body{
                                 </ul>
                             </div>
                             @endif
-                                     </section>
+                            </section>
                                     {{--  General info for registered family part 1 End   --}}
 
                                      {{-- Husband and wife info  family part 2  Begin--}}
