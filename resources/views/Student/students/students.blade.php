@@ -35,14 +35,21 @@
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.archive')}}">عرض الطلاب المؤرشفة</a>
-                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.delayed')}}">عرض الطلاب المؤجلين</a>
+                                            @endcan
+                                            @can(' عرض الطلاب المرفوضين ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.reject')}}">عرض الطلاب المرفوضين</a>
+                                            @endcan
+                                            @can(' عرض الطلاب المؤجلين ')
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.delayed')}}">عرض الطلاب المؤجلين</a>
+                                            @endcan
+
                                         </div>
                                      </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
                                             <thead>
+
                                                 <tr>
                                                     <th class="border-bottom-0">Id</th>
                                                     <th class="border-bottom-0">اسم الطالب</th>
