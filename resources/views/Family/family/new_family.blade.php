@@ -34,23 +34,11 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
-                                            <div class="dropdown">
-                                                <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
-                                                data-toggle="dropdown" id="dropdownMenuButton" type="button">المزيد من الخيارات <i class="btn btn-primary dropdown-toggle dropdown-toggle-split"></i></button>
-                                                <div  class="dropdown-menu tx-13">
-                                             @can(' عرض العائلات المؤرشفة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('family.archive')}}">عرض العائلات المؤرشفة</a>
-                                            @endcan
-                                            @can(' عرض العائلات المؤجلة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('family.delayed')}}">عرض العائلات المؤجلة</a>
-                                            @endcan
-                                            @can(' عرض العائلات المرفوضة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('family.reject')}}">عرض العائلات المرفوضة</a>
-                                            @endcan
                                         </div>
                                      </div>
-                                    </div>
-                                </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
@@ -76,22 +64,22 @@
                                                     <th class="border-bottom-0">رقم هاتف</th>
                                                     <th class="border-bottom-0">رقم هاتف ثاني</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
-                                                    <th class="border-bottom-0">تحديث الحالة</th>
+                                                    <th class="border-bottom-0">تحديث الحالة</th>                                                   
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($family as $x)
-
+                                                    
                                                 <tr>
                                                 {{--  @dd($family)  --}}
                                                     <td>{{$x->id}}</td>
                                                     <td>{{$x->family_Constraint}}</td>
-                                                    <td>
+                                                    <td> 
                                                         <span class="label text-success d-flex">
                                                         <div  class="dot-label bg-success ml-1"></div>جديد
-                                                        </span>
-                                                    </td>
+                                                        </span> 
+                                                    </td>                                                      
                                                     <td>{{$x->gender}}</td>
                                                     <td>{{$x->city}}</td>
                                                     <td>{{$x->family_number_member}}</td>
@@ -111,15 +99,13 @@
                                                     <td>{{$x->note}}</td>
 
                                                     <td>
-
-                                                        @can(' عرض حالة العائلات ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-family_name="{{$x->family_Constraint}}"  data-family_id="{{$x->id}}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModal160" title="تعديل الحالة">
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                     </a>
-                                                    @endcan
+                                                    
                                                 @endforeach
                                                 </tr>
                                             </tbody>
@@ -152,7 +138,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            @endif
+                            @endif 
 
                             @if (session()->has('delayed'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -161,7 +147,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            @endif
+                            @endif 
 
                             @if ($errors->any())
                             <div class="alert alert-danger mg-b-0" role="alert">
@@ -201,19 +187,19 @@
                                     <select class="form-control select2" name="statu" id="statu" >
                                     <option value="0" >
                                         جديد
-                                    </option>
+                                    </option>                                                                              
                                     <option value="1" >
                                         مقبول
                                     </option>
                                     <option value="2" >
                                         مرفوض
-                                    </option>
+                                    </option>  
                                     <option value="3" >
                                         ارشيف
                                     </option>
                                     <option value="4" >
                                         مؤجل
-                                    </option>
+                                    </option>                                                                                                                          
                                     </select>
                                 </div>
                                 </div>

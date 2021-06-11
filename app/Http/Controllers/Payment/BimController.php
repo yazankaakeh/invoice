@@ -21,23 +21,23 @@ class BimController extends Controller
 
 function __construct()
 {
-$this->middleware('permission: مدفوعات بالكرت البيم العائلات ', ['only' => ['family_ind_bim']]);
-$this->middleware('permission: مدفوعات بالكرت البيم العائلات ', ['only' => ['show_family_bim']]);
-$this->middleware('permission: إضافة دفعة بالكرت البيم العائلات ', ['only' => ['store_family_bim']]);
-$this->middleware('permission: تعديل دفعة بالكرت البيم العائلات ', ['only' => ['update_family_bim']]);
-$this->middleware('permission: حذف دفعة بالكرت البيم العائلات ', ['only' => ['destroy_familys_bim']]);
+$this->middleware('permission: مدفوعات باكرت البيم العائلات ', ['only' => ['family_ind_bim']]);
+$this->middleware('permission: مدفوعات باكرت البيم العائلات ', ['only' => ['show_family_bim']]);
+$this->middleware('permission: إضافة دفعة باكرت البيم العائلات ', ['only' => ['store_family_bim']]);
+$this->middleware('permission: تعديل دفعة باكرت البيم العائلات ', ['only' => ['update_family_bim']]);
+$this->middleware('permission: حذف دفعة باكرت البيم العائلات ', ['only' => ['destroy_familys_bim']]);
 
-$this->middleware('permission: مدفوعات بالكرت البيم الطلاب ', ['only' => ['student_ind_bim']]);
-$this->middleware('permission: مدفوعات بالكرت البيم الطلاب ', ['only' => ['show_student_bim']]);
-$this->middleware('permission: إضافة دفعة بالكرت البيم الطلاب ', ['only' => ['store_student_bim']]);
-$this->middleware('permission: تعديل دفعة بالكرت البيم الطلاب ', ['only' => ['update_student_bim']]);
-$this->middleware('permission: حذف دفعة بالكرت البيم الطلاب ', ['only' => ['destroy_students_bim']]);
+$this->middleware('permission: مدفوعات باكرت البيم الطلاب ', ['only' => ['student_ind_bim']]);
+$this->middleware('permission: مدفوعات باكرت البيم الطلاب ', ['only' => ['show_student_bim']]);
+$this->middleware('permission: إضافة دفعة باكرت البيم الطلاب ', ['only' => ['store_student_bim']]);
+$this->middleware('permission: تعديل دفعة باكرت البيم الطلاب ', ['only' => ['update_student_bim']]);
+$this->middleware('permission: حذف دفعة باكرت البيم الطلاب ', ['only' => ['destroy_students_bim']]);
 
-$this->middleware('permission: مدفوعات بالكرت البيم الطبي ', ['only' => ['medical_ind_bim']]);
-$this->middleware('permission: مدفوعات بالكرت البيم الطبي ', ['only' => ['show_medical_bim']]);
-$this->middleware('permission: إضافة دفعة بالكرت البيم الطبي ', ['only' => ['store_medical_bim']]);
-$this->middleware('permission: تعديل دفعة بالكرت البيم الطبي ', ['only' => ['update_medical_bim']]);
-$this->middleware('permission: حذف دفعة بالكرت البيم الطبي ', ['only' => ['destroy_medicals_bim']]);
+$this->middleware('permission: مدفوعات باكرت البيم الطبي ', ['only' => ['medical_ind_bim']]);
+$this->middleware('permission: مدفوعات باكرت البيم الطبي ', ['only' => ['show_medical_bim']]);
+$this->middleware('permission: إضافة دفعة باكرت البيم الطبي ', ['only' => ['store_medical_bim']]);
+$this->middleware('permission: تعديل دفعة باكرت البيم الطبي ', ['only' => ['update_medical_bim']]);
+$this->middleware('permission: حذف دفعة باكرت البيم الطبي ', ['only' => ['destroy_medicals_bim']]);
 }
 
 ##################################################### Family Start
@@ -104,7 +104,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         //write to the data base
         $payments ->save();
         $family ->save();
-        session()->flash('Edit', 'تم إضافة كروت البيم للعائلة  '. $family_Constraint .' بنجاح ');
+        session()->flash('Edit', 'تم إضافة المبلغ المالي للعائلة  '. $family_Constraint .' بنجاح ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('family.show'));
     }
@@ -182,14 +182,14 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $payments ->save();
         $family ->save();
         $payments_cut ->save();
-        session()->flash('Edit', 'تم تعديل كروت البيم للعائلة  '. $family_Constraint .' بنجاح ');
+        session()->flash('Edit', 'تم تعديل المبلغ المالي للعائلة  '. $family_Constraint .' بنجاح ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.family.pay'));
         }
         else {
         $family =  Family::find($request->family_id);
         $family_Constraint = $family->family_Constraint;
-        session()->flash('Edit', 'لم يتم تعديل كروت البيم للعائلة  '. $family_Constraint .' يرجى التأكد من إضافة قيم جديدة ');
+        session()->flash('Edit', 'لم يتم تعديل المبلغ المالي للعائلة  '. $family_Constraint .' يرجى التأكد من إضافة قيم جديدة ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.family.pay'));
         }
@@ -226,7 +226,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $family->save();
 
         /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
-        session()->flash('Delete','تم حذف كروت البيم للعائلة  '. $family_Constraint .' بنجاح ');
+        session()->flash('Delete','تم حذف المبلغ المالي للعائلة  '. $family_Constraint .' بنجاح ');
         return redirect(route('bim.family.pay'));
     }
 
@@ -298,7 +298,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         //write to the data base
         $payments ->save();
         $medical ->save();
-        session()->flash('Edit', 'تم إضافة كروت البيم للعائلة  '. $medical_name .' بنجاح ');
+        session()->flash('Edit', 'تم إضافة المبلغ المالي للعائلة  '. $medical_name .' بنجاح ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('medical.show'));
     }
@@ -377,14 +377,14 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $payments ->save();
         $medical ->save();
         $payments_cut ->save();
-        session()->flash('Edit', 'تم تعديل كروت البيم للعائلة  '. $medical_name .' بنجاح ');
+        session()->flash('Edit', 'تم تعديل المبلغ المالي للعائلة  '. $medical_name .' بنجاح ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.medical.pay'));
         }
         else {
         $medical =  Medical::find($request->medical_id);
         $medical_name = $medical->medical_name;
-        session()->flash('Edit', 'لم يتم تعديل كروت البيم للعائلة  '. $medical_name .' يرجى التأكد من إضافة قيم جديدة ');
+        session()->flash('Edit', 'لم يتم تعديل المبلغ المالي للعائلة  '. $medical_name .' يرجى التأكد من إضافة قيم جديدة ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.medical.pay'));
         }
@@ -422,7 +422,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $medical->save();
 
         /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
-        session()->flash('Delete','تم حذف كروت البيم للعائلة  '. $medical_name .' بنجاح ');
+        session()->flash('Delete','تم حذف المبلغ المالي للعائلة  '. $medical_name .' بنجاح ');
         return redirect(route('bim.medical.pay'));
     }
 
@@ -494,7 +494,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         //write to the data base
         $payments ->save();
         $student ->save();
-        session()->flash('Edit', 'تم إضافة كروت البيم للعائلة  '. $student_name .' بنجاح ');
+        session()->flash('Edit', 'تم إضافة المبلغ المالي للعائلة  '. $student_name .' بنجاح ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('student.show'));
     }
@@ -573,14 +573,14 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $payments ->save();
         $student ->save();
         $payments_cut ->save();
-        session()->flash('Edit', 'تم تعديل كروت البيم للعائلة  '. $student_name .' بنجاح ');
+        session()->flash('Edit', 'تم تعديل المبلغ المالي للعائلة  '. $student_name .' بنجاح ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.student.pay'));
         }
         else {
         $student =  Student::find($request->student_id);
         $student_name = $student->student_name;
-        session()->flash('Edit', 'لم يتم تعديل كروت البيم للعائلة  '. $student_name .' يرجى التأكد من إضافة قيم جديدة ');
+        session()->flash('Edit', 'لم يتم تعديل المبلغ المالي للعائلة  '. $student_name .' يرجى التأكد من إضافة قيم جديدة ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.student.pay'));
         }
@@ -615,7 +615,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $student->save();
 
         /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
-        session()->flash('Delete','تم حذف كروت البيم للعائلة  '. $student_name .' بنجاح ');
+        session()->flash('Delete','تم حذف المبلغ المالي للعائلة  '. $student_name .' بنجاح ');
         return redirect(route('bim.student.pay'));
     }
 

@@ -39,35 +39,14 @@
                                         @endcan
                                         @can(' إضافة الطلاب ')
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة طالب</a>
-                                            @endcan
-                                            @can(' عرض الولاية المتاحة الطلاب ')
-                                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#exampleModal00">عرض الولايات المتاحة</a>
+                                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#exampleModal00">عرض الولابات المتاحة</a>
                                         @endcan
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.new')}}">عرض الطلاب الجدد</a>
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.archive')}}">عرض الطلاب المؤرشفة</a>
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.delayed')}}">عرض الطلاب المؤجلين</a>
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.reject')}}">عرض الطلاب المرفوضين</a>
                                         </div>
                                      </div>
-                                     <div class="pb-0 card-header">
-                                        <div class="d-flex justify-content-between">
-                                        <div class="dropdown">
-                                        <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
-                                        data-toggle="dropdown" id="dropdownMenuButton" type="button">المزيد من الخيارات <i class="btn btn-primary dropdown-toggle dropdown-toggle-split"></i></button>
-                                        <div  class="dropdown-menu tx-13">
-                                            @can(' عرض الطلاب الجدد')
-                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.new')}}">عرض الطلاب الجدد</a>
-                                            @endcan
-                                            @can( ' عرض الطلاب المؤرشفة ')
-                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.archive')}}">عرض الطلاب المؤرشفة</a>
-                                            @endcan
-                                            @can(' عرض الطلاب المؤجلين ')
-                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.delayed')}}">عرض الطلاب المؤجلين</a>
-                                            @endcan
-                                            @can(' عرض الطلاب المرفوضين ')
-                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.reject')}}">عرض الطلاب المرفوضين</a>
-                                            @endcan
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
@@ -421,15 +400,13 @@
                                                     </td>
 
                                                       <td>
-                                                        @can(' عرض حالةالطلاب ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-student_name="{{$x->student_name}}"  data-student_id="{{$x->id}}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModal160" title="تعديل الحالة">
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                     </a>
-                                                    @endcan
-                                                </td>
+                                                    </td>
                                                 @endif
                                                 @endforeach
                                                 </tr>
@@ -1465,7 +1442,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">عدد الأجزاء التي أتممت حفظها </label>
-                                <input type="text" class="form-control" id="quran_parts" name="quran_parts" placeholder="    أكتب عدد الأجزاء المحفوظة ">
+                                <input type="text" class="form-control" id="quran_parts" name="quran_parts" placeholder="    أكتب عدد الأجزاءالمحفوظة ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">أسم الشيخ الذي درسك</label>
@@ -2151,7 +2128,7 @@
                                     <p class="mg-b-10">هل يعيشون معكم</p>
                                     <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم ">
                                    <option label="test">
-									              </option>
+											أختر نعم او لا  </option>
                                         <option value="لا" >
                                         لا
                                     </option>
@@ -2895,7 +2872,7 @@
                                                 <p class="mg-b-10"> الحالة الأجتماعي :    </p>
                                                 <select class="form-control select2" name="social_state" id="social_state" placeholder=" أكتب الحالة الأجتماعية ">
                                                 <option label="test">
-                                                             </option>
+                                                          حدد من فضلك الحالة الأجتماعية   </option>
                                                 <option value="متزوج/ة" >
                                                 متزوج/ة
                                                 </option>

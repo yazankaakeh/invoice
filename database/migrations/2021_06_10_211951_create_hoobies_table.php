@@ -15,6 +15,13 @@ class CreateHoobiesTable extends Migration
     {
         Schema::create('hoobies', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('children_id');
+            $table->foreign('children_id')->references('id')->on('childrens');
+
+            $table->string('skills')->nullable();// المهارات
+            $table->string('language')->nullable(); //  اللغات
+            $table->string('fav_active')->nullable();//  انشطة مفضلة
+
             $table->timestamps();
         });
     }

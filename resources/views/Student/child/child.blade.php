@@ -104,17 +104,17 @@
                                                             {{-- Add_School --}}
 
                                                             @if($x->student_statu == 1)
-                                                            @can('  مدرسة لطفل الطلاب ')
+                                                            @can('  مدرسة لطفل الطلاب ')                                                            
                                                             <a class=" btn btn-sm btn-info" href="/school_student/show/school/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                             @endcan
                                                             @elseif($x->student_statu == 0)
-                                                            @can(' إضافة مدرسة لطفل الطلاب ')
+                                                            @can(' إضافة مدرسة لطفل الطلاب ')                                                            
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal" title="إضافة مدرسة">
                                                                 <i class="las la-pen" style="font-size: 20px;"></i>
-                                                            </a>
+                                                            </a> 
                                                             @endcan
                                                             @endif
                                                     </td>
@@ -171,7 +171,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>ملاحظة!</strong> {{ $error }}
+                                    <strong>Oh snap!</strong> {{ $error }}
                             @endforeach
                             </ul>
                          </div>
@@ -196,27 +196,27 @@
                                     <div class="form-group">
                                     <input type="hidden" name="id" id="id"  readonly>
                                     <label for="exampleInputEmail">اسم المدرسة </label>
-                                    <input class="form-control" name="School_name" id="School_name" type="text" placeholder="أكتب أسم المدرسة ">
+                                    <input class="form-control" name="School_name" id="School_name" type="text">
                                     </div>
 
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نوع المدرسة </label>
-                                    <input class="form-control" name="School_type" id="School_type" type="text" placeholder="أكتب نوع المدرسة ">
+                                    <input class="form-control" name="School_type" id="School_type" type="text">
                                     </div>
 
                                     <div class="form-group">
                                     <label for="exampleInputEmail">موقع المدرسة </label>
-                                    <input class="form-control" name="School_location" id="School_location" type="text" placeholder="أكتب موقع المدرسة ">
+                                    <input class="form-control" name="School_location" id="School_location" type="text">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="exampleInputEmail">تكاليف مصروف الطفل</label>
-                                    <input class="form-control" name="School_cost" id="School_cost" type="text" placeholder="أكتب قيمة تكاليف مصروف الطفل ">
+                                    <label for="exampleInputEmail">تكاليف الدراسة</label>
+                                    <input class="form-control" name="School_cost" id="School_cost" type="text">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="exampleInputEmail">نكاليف المدرسة أو الأقصاط</label>
-                                    <input class="form-control" name="School_fees" id="School_fees" type="text" placeholder="أكتب قيمة تكاليف المدرسة ">
+                                    <label for="exampleInputEmail">نكاليف عامة</label>
+                                    <input class="form-control" name="School_fees" id="School_fees" type="text">
                                     </div>
 
                                     </div>

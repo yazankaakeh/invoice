@@ -31,7 +31,7 @@
 				<div class="row">
                         <div class="col-xl-12">
                             <div class="card mg-b-20">
-                                <div class="pb-0 card-header">
+                                <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>ملاحظة!</strong> {{ $error }}
+                                    <strong>Oh snap!</strong> {{ $error }}
                             @endforeach
                             </ul>
                             </div>

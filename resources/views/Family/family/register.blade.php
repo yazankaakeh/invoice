@@ -130,9 +130,41 @@ body{
                                                       </option>
                                                  </select>
                                              </div>
-                                             <div class="col-sm-12">
-                                                 <label class="form-control-label">ماهي المساعدات : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_what_aid" name="family_what_aid" placeholder="أكتب ماهي المساعدات أو قيمتها " required="" type="text">
-                                             </div>
+                                            <div class="form-group" id="family_what_aid">
+                                            <label for="exampleInputEmail"> نوع المساعادات </label>
+                                            <select class="form-control" id="family_what_aid" name="family_what_aid"
+                                            onchange = "showDivs(this)">
+                                            <option label="test">
+                                                </option>
+                                            <option value="كرت هلال">
+                                                كرت هلال</option>
+                                            <option value="كرت زراعات">
+                                            كرت زراعات</option>
+                                            <option value="سلة غذائية">
+                                                سلة غذائية</option>
+                                            <option value="مساعدة مالية ">
+                                                مساعدة مالية</option>
+                                                <option value="أخرى">
+                                                أخرى</option>
+                                            </select>
+                                            </div>
+
+                                    <script type="text/javascript">
+                                    function showDivs(select){
+                                    if(select.value == 'أخرى'){
+                                        document.getElementById('family_what_aid1').style.display = "block";
+                                    } else{
+                                        document.getElementById('family_what_aid1').style.display = "none";
+                                    }
+
+                                    }
+                                    </script>
+
+                                        <div class="form-group" style="display:none;" id="family_what_aid1" >
+                                        <label for="exampleInputEmail"> نوع مساعادت الأخرى</label>
+                                        <input type="text" class="form-control"  id="family_wha t_aid1" name="family_what_aid1" placeholder=" أكتب اسم أو نوع مساعدات الأخرى ">
+                                        </div>
+
 
                                             <div class="col-sm-12">
                                             <label for="exampleInputEmail"> ماهي قيمة المساعدات : <span class="tx-danger">*</span></label>

@@ -18,7 +18,7 @@ use App\Http\Controllers\Payment\Student_Payment;
 |
 */
     Route::get('invoices', "InvoiceController@index")->middleware('auth');
-    //////////////////////////////////// Payment
+    //////////////////////////////////// Payment 
 
 
     Route::group(['middleware' => ['auth']], function() {

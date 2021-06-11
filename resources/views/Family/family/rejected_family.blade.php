@@ -34,23 +34,11 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
-                                            <div class="dropdown">
-                                                <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
-                                                data-toggle="dropdown" id="dropdownMenuButton" type="button">المزيد من الخيارات <i class="btn btn-primary dropdown-toggle dropdown-toggle-split"></i></button>
-                                                <div  class="dropdown-menu tx-13">
-                                            @can(' عرض العائلات المؤرشفة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('family.archive')}}">عرض العائلات المؤرشفة</a>
-                                            @endcan
-                                            @can(' عرض العائلات المؤجلة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('family.delayed')}}">عرض العائلات المؤجلة</a>
-                                            @endcan
-                                            @can(' عرض العائلات الجدد')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('new.family')}}">عرض العائلات الجدد</a>
-                                            @endcan
                                         </div>
-                                      </div>
-                                    </div>
-                                </div>
+                                     </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
@@ -110,14 +98,13 @@
                                                     <td>{{$x->note}}</td>
 
                                                     <td>
-                                                        @can(' عرض حالة العائلات ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-family_name="{{$x->family_Constraint}}"  data-family_id="{{$x->id}}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModal160" title="تعديل الحالة">
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                     </a>
-                                                    @endcan
+
                                                 @endforeach
                                                 </tr>
                                             </tbody>

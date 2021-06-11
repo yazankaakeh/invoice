@@ -34,23 +34,12 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
-                                            <div class="dropdown">
-                                                <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
-                                                data-toggle="dropdown" id="dropdownMenuButton" type="button">المزيد من الخيارات <i class="btn btn-primary dropdown-toggle dropdown-toggle-split"></i></button>
-                                                <div  class="dropdown-menu tx-13">
-                                            @can(' عرض الطلاب المؤجلين ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.delayed')}}">عرض الطلاب المؤجلين</a>
-                                            @endcan
-                                            @can(' عرض الطلاب الجدد')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.new')}}">عرض الطلاب الجدد</a>
-                                            @endcan
-                                            @can(' عرض الطلاب المرفوضين ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.reject')}}">عرض الطلاب المرفوضين</a>
-                                            @endcan
+
                                         </div>
-                                       </div>
-                                     </div>
-                                    </div>
+                                     </div>                                     
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
@@ -76,7 +65,7 @@
                                                     <th class="border-bottom-0"> موقع الجامعة</th>
                                                     <th class="border-bottom-0">أختصاص</th>
                                                     <th class="border-bottom-0">السنة الدراسية</th>
-                                                    <th class="border-bottom-0"> المعدل الدراسي</th>
+                                                    <th class="border-bottom-0"> المعدل الدراسي</th>  
 
                                                     <th class="border-bottom-0">تجديث الحالة</th>
 
@@ -85,15 +74,15 @@
                                             <tbody>
                                                 @foreach($univ as $x)
                                                 @if($x->student_id != null && $x->student->new_statu == 3)
-
+                                                    
                                                 <tr>
                                                     <td>{{$x->student->id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
-                                                    <td>
+                                                    <td> 
                                                         <span class="label text-warning d-flex">
                                                         <div class="dot-label bg-warning ml-1"></div>مؤرشف
-                                                        </span>
-                                                    </td>
+                                                        </span> 
+                                                    </td>                                                    
                                                     <td>{{$x->student->birthday}}</td>
                                                     <td>{{$x->student->age}}</td>
                                                     <td>{{$x->student->social_state}}</td>
@@ -113,16 +102,14 @@
                                                     <td>{{$x->Schoo_year}}</td>
                                                     <td>{{$x->Current_rate}}</td>
 
-
+                                          
                                                     <td>
-                                                        @can(' عرض حالةالطلاب ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-student_name="{{$x->student->student_name}}"  data-student_id="{{$x->student->id}}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModal160" title="تعديل الحالة">
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
-                                                     </a>
-                                                     @endcan
+                                                    </a>
                                                     </td>
                                                 @endif
                                                 @endforeach
@@ -167,7 +154,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            @endif
+                            @endif                                                                    
 
                             @if ($errors->any())
                             <div class="alert alert-danger mg-b-0" role="alert">
@@ -207,19 +194,19 @@
                                 <div class="form-group">
                                 <div class="modal-body">
                                 <p class="mg-b-10">حالة الطالب</p>
-                                    <select class="form-control select2" name="statu" id="statu" >
+                                    <select class="form-control select2" name="statu" id="statu" >                                    
                                     <option value="1" >
                                         مقبول
                                     </option>
                                     <option value="2" >
                                         مرفوض
-                                    </option>
+                                    </option>  
                                     <option value="0" >
                                         جديد
                                     </option>
                                     <option value="4" >
                                         مؤجل
-                                    </option>
+                                    </option>                                                                                                                       
                                     </select>
                                 </div>
                                 </div>

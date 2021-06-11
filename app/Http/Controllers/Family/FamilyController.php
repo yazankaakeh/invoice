@@ -36,12 +36,6 @@ function __construct()
     $this->middleware('permission: حذف مريض العائلات ', ['only' => ['detroy_medical']]);
 
 
-    $this->middleware('permission: عرض العائلات الجدد', ['only' => ['new_family']]);
-    $this->middleware('permission: عرض العائلات المرفوضة ', ['only' => ['archievd_family']]);
-    $this->middleware('permission: عرض العائلات المؤجلة ', ['only' => ['delayed_family']]);
-    $this->middleware('permission: عرض العائلات المرفوضة ', ['only' => ['rejected_family']]);
-
-
 }
 
   public function store_register(Request $request)
@@ -67,6 +61,8 @@ function __construct()
             'work' => 'required',
             'city' => 'required',
          ],$messages);
+
+
          //create new object of the model student and make mapping to the data
          $families = new Family;
          $families -> family_Constraint = $request->family_Constraint;
@@ -80,15 +76,19 @@ function __construct()
          $families -> work_breadwinner = $request->work_breadwinner;
          $families -> work_an_breadwinner = $request->work_an_breadwinner;
          $families -> family_monthly_salary = $request->family_monthly_salary;
+         if($request->family_what_aid != "اخرى"){
          $families -> family_what_aid = $request->family_what_aid;
+         }elseif ($request->family_what_aid ==  "اخرى")
+         {
+         $families -> family_what_aid = $request->family_what_aid1;
+         }
          $families -> family_has_aid = $request->family_has_aid;
          $families -> academicel = $request->academicel;
          $families -> work = $request->work;
          $families -> now_work = $request->now_work;
          $families -> city = $request->city;
          $families -> note = $request->note;
-         $x=1;
-         $families->husband_wife_statu = $x;
+
          //write to the data base
          $families ->save();
 
@@ -111,10 +111,13 @@ function __construct()
 
 
          $enable = From::find(1);
-         session()->flash('Add', 'تم تسجيل العائلة بنجاح سوف يتم التواصل معكم قريباً. '. $request->family_Constraint .' بنجاح ');
+         session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
          $request=0;
-         return view('Family.family.register',compact('enable'));
-    }
+         return back()->with('enable');
+        //  return view('Family.family.register',compact('enable'));
+
+}
+
 
     public function messages()
     {
@@ -189,7 +192,13 @@ function __construct()
          $families -> work_breadwinner = $request->work_breadwinner;
          $families -> work_an_breadwinner = $request->work_an_breadwinner;
          $families -> family_monthly_salary = $request->family_monthly_salary;
+
+         if($request->family_what_aid != "اخرى"){
+         $families -> family_what_aid = $request->family_what_aid1;
+         }else
+         {
          $families -> family_what_aid = $request->family_what_aid;
+         }
          $families -> family_has_aid = $request->family_has_aid;
          $families -> academicel = $request->academicel;
          $families -> work = $request->work;
@@ -197,9 +206,25 @@ function __construct()
          $families -> city = $request->city;
          $families -> note = $request->note;
 
-
          //write to the data base
          $families ->save();
+         $husbandandWife = new HusbandandWife;
+         $husbandandWife->family_id = $families->id;
+
+         if($request->gender == "ذكر"){
+         $husbandandWife -> wife_city = $request->city;
+         $husbandandWife -> wife_now_work = $request->now_work;
+         $husbandandWife -> wife_Pre_work = $request->work;
+         $husbandandWife -> wife_academicel = $request->academicel;
+         }
+         elseif ($request->gender == "انثى") {
+         $husbandandWife -> husb_Orig_city = $request->husb_Orig_city;
+         $husbandandWife -> husb_academicel = $request->husb_academicel;
+         $husbandandWife -> husb_now_work = $request->husb_now_work;
+         $husbandandWife -> husb_Pre_work = $request->husb_Pre_work;
+        }
+         $husbandandWife->save();
+
          //dd($request);
          session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
@@ -372,7 +397,7 @@ function __construct()
          else {
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
-         session()->flash('Add_student_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح   ');
+         session()->flash('Add_student_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح يامسخم ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('family.show'));
          }
@@ -445,7 +470,7 @@ function __construct()
          else {
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
-         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح   ');
+         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح يامسخم ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added medical Successfully')
          return redirect(route('family.show'));
          }
@@ -453,7 +478,7 @@ function __construct()
         else {
          $familys =  Family::find($request->family_id);
          $family_Constraint = $familys->family_Constraint;
-         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح   ');
+         session()->flash('Add_medical_error', 'حدث حطأ اثناء اضافة طالب للعائلة '. $family_Constraint .' يرجى التأكد من الرقم المدخل ان يكون صحيح يامسخم ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added medical Successfully')
          return redirect(route('family.show'));
          }

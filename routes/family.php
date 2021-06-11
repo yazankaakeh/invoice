@@ -87,3 +87,19 @@ Route::prefix('school_family')->group(function () {
     Route::get('/show/school/{id}', "Student\SchoolController@show_family")->middleware('auth');
     Route::delete('/delete/school/', "Student\SchoolController@destroy_family")->name('school.destroy.family')->middleware('auth');
 });
+
+Route::prefix('hoobie_family')->group(function () {
+    Route::get('/show/hoobie/', "Publics\HoobiesController@index_hoobies")->name('hoobie.show.family')->middleware('auth');
+    Route::post('/store/hoobie/', "Publics\HoobiesController@store_hoobies")->name('hoobie.family.store')->middleware('auth');
+    Route::patch('/update/hoobie/', "Publics\HoobiesController@update_hoobies")->name('hoobie.update.family')->middleware('auth');
+    Route::get('/show/hoobie/{id}', "Publics\HoobiesController@show_hoobies")->middleware('auth');
+    Route::delete('/delete/hoobie/', "Publics\HoobiesController@destroy_hoobies")->name('hoobie.destroy.family')->middleware('auth');
+});
+
+Route::prefix('quran_family')->group(function () {
+    Route::get('/show/quran/', "Student\quranController@index_child")->name('quran.show.family')->middleware('auth');
+    Route::post('/store/quran/', "Student\quranController@store_child")->name('quran.family.store')->middleware('auth');
+    Route::patch('/update/quran/', "Student\quranController@update_child")->name('quran.update.family')->middleware('auth');
+    Route::get('/show/quran/family/{id}', "Student\quranController@show_child")->middleware('auth');
+    Route::delete('/delete/quran/', "Student\quranController@destroy_child")->name('quran.destroy.family')->middleware('auth');
+});

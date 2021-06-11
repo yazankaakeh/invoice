@@ -43,7 +43,8 @@ function __construct()
     }
     public function messages_student()
     {
-    return $messages_student = [
+
+        return $messages_student = [
         'student_id.required' => '!!',
         'disease_type.required' => 'لم يتم ادخال نوع المرض !!',
         'disease_name.required' => 'لم يتم ادخال  اسم المريض  !!',
@@ -266,7 +267,8 @@ function __construct()
     }
     public function messages_update_medical()
     {
-    return $messages_update_medical = [
+
+        return $messages_update_medical = [
         'medical_id.required' => '!!',
         'id.required' => '!!',
         'disease_type.required' => 'لم يتم ادخال نوع المرض !!',
@@ -282,6 +284,7 @@ function __construct()
 
     ];
     }
+
     public function update_medical(Request $request, MedicalStatus $medicalStatus)
     {
 

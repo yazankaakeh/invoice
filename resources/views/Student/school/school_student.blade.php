@@ -19,7 +19,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="my-auto mb-0 content-title">اقسام عامة</h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ قسم مدرسة الطفل للطالب</span>
+							<h4 class="content-title mb-0 my-auto">اقسام عامة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قسم مدرسة الطفل للطالب</span>
 						</div>
 					</div>
 
@@ -31,7 +31,7 @@
 				<div class="row">
                         <div class="col-xl-12">
                             <div class="card mg-b-20">
-                                <div class="pb-0 card-header">
+                                <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>ملاحظة!</strong> {{ $error }}
+                                    <strong>Oh snap!</strong> {{ $error }}
                             @endforeach
                             </ul>
                          </div>
@@ -195,27 +195,27 @@
                                     <input type="hidden" name="children_id" id="children_id"  readonly>
                                     <input type="hidden" name="id" id="id"  readonly>
                                     <label for="exampleInputEmail">اسم المدرسة </label>
-                                    <input class="form-control" name="School_name" id="school_name" type="text" placeholder="أكتب أسم المدرسة ">
+                                    <input class="form-control" name="School_name" id="school_name" type="text">
                                     </div>
 
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نوع المدرسة </label>
-                                    <input class="form-control" name="School_type" id="school_type" type="text" placeholder="أكتب نوع المدرسة ">
+                                    <input class="form-control" name="School_type" id="school_type" type="text">
                                     </div>
 
                                     <div class="form-group">
                                     <label for="exampleInputEmail">موقع المدرسة </label>
-                                    <input class="form-control" name="School_location" id="school_location" type="text" placeholder="أكتب موقع المدرسة ">
+                                    <input class="form-control" name="School_location" id="school_location" type="text">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="exampleInputEmail">تكاليف مصروف الطفل</label>
-                                    <input class="form-control" name="School_cost" id="school_cost" type="text" placeholder="أكتب قيمة تكاليف مصروف الطفل ">
+                                    <label for="exampleInputEmail">تكاليف الدراسة</label>
+                                    <input class="form-control" name="School_cost" id="school_cost" type="text">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="exampleInputEmail">نكاليف المدرسة أو الأقصاط</label>
-                                    <input class="form-control" name="School_fees" id="school_fees" type="text" placeholder="أكتب قيمة تكاليف المدرسة ">
+                                    <label for="exampleInputEmail">نكاليف عامة</label>
+                                    <input class="form-control" name="School_fees" id="school_fees" type="text">
                                     </div>
                                 </div>
                                 <div class="modal-footer">

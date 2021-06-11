@@ -26,44 +26,12 @@ $this->middleware('permission: قسم الطلاب ', ['only' => ['index']]);
 $this->middleware('permission: إضافة الطلاب ', ['only' => ['store']]);
 $this->middleware('permission: تعديل الطلاب ', ['only' => ['update']]);
 $this->middleware('permission: حذف الطلاب ', ['only' => ['destroy']]);
-//$this->middleware('permission: حذف مدرسة لطفل الطلاب ', ['only' => ['register']]);
 $this->middleware('permission: فورم تسجيل الطلاب ', ['only' => ['enable']]);
 
-$this->middleware('permission: عرض الطلاب المرفوضين ', ['only' => ['reject_student']]);
-$this->middleware('permission: عرض الطلاب المؤرشفة ', ['only' => ['archive_student']]);
-$this->middleware('permission: عرض الطلاب المؤجلين ', ['only' => ['delayed_student']]);
-$this->middleware('permission: عرض الطلاب الجدد', ['only' => ['new_student']]);
-
-
-}
-
-public function messages_store_register()
-{
-    return $messages_store_register = [
-        'student_name.required' => 'لم يتم أدخال معلومات اسم الطالب المطلوبة  !!',
-        'birthday.required' => 'لم يتم أدخال معلومات تاريخ الميلاد المطلوبة!!',
-        'age.required' => 'لم يتم أدخال معلومات عمر المطلوبة!!',
-        'age.numeric'=>'معلومات العمر يجب أن تكون حصراً أرقام !!',
-        'email.unique'=>'هذا الأيميل مسجل بالفعل لدينا يجب أضافة ايميل أخر!!',
-        'email.required'=>'لم يتم ادخال معلومات الأيميل المطلوبة !!',
-        'phone.required'=>'لم يتم أدخال معلومات الهاتف المطلوبة !!',
-        'phone.numeric'=>'يجب أن يكون رقم الهاتف حصراً من أرقام !!',
-        'phone.unique'=>'الرقم المسجل موجود بالغعل يرجى أدخال رقم أخر  !!',
-        'county_are_from.required'=>'لم يتم أدخال معلومات اسم المحافظة المطلوبة !!',
-        'city_name.required'=>'لم يتم أدخال معلومات اسم المدينة المطلوبة !!',
-        'stu_Cur_housing.required'=>'لم يتم أدخال معلومات اسم الولاية المطلوبة!!',
-        'entry_turkey.required'=>'لم يتم أدخال معلومات تاريخ دخول تركياالمطلوبة!!',
-        'Identity_type.required'=>'لم يتم أدخال معلومات نوع الهوية المطلوبة  !!',
-        'Id_stud_source.required'=>'لم يتم أدخال معلومات اسم الولاية للكملك المطلوية!!',
-        'univer_name.required'=>'لم يتم أدخال معلومات اسم الجامعة!!',
-        'univer_location.required'=>'لم يتم أدخال معلومات موقع الجامعة!!',
-        'univer_special.required'=>'لم يتم أدخال معلومات اختصاص الجامعة!!',
-        'current_rate.required'=>'لم يتم أدخال معلومات المعدل الحالي!!',
-    ];
 }
     public function store_register(Request $request)
     {
-        $messages = $this->messages_store_register();
+        $messages = $this->messages();
         $this->validate($request,[
             'student_name' => 'required',
             'birthday' => 'required|date',
@@ -118,6 +86,7 @@ public function messages_store_register()
          $request=null;
          $enable = From::find(1);
          session()->flash('Add', 'تم تسجيل الطالب '.  $students -> student_name.'  بنجاح سيتم التواصل معكم قريبا');
+         return back()->with('enable','cities');
          return view('student.students.register',compact('enable','cities'));
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
     }
@@ -182,50 +151,16 @@ public function messages_store_register()
          $students->new_statu = 1;
          //write to the data base
          $students ->save();
-         if ($request->register == "admin") {
          session()->flash('Add', 'تم اضافة الطالب '. $request->student_name.' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
          return redirect(route('student.show'));
-         }elseif ($request->register == "register") {
 
-        $enable = From::find(1);
-        session()->flash('Add', 'تم اضافة الطالب '. $request->student_name.' بنجاح ');
-        $request=null;
-        return view('student.students.register',compact('enable'));
-         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-         }
 
     }
 
-
-    public function messages_update()
-    {
-        return $messages_update = [
-            'student_name.required' => 'لم يتم أدخال معلومات اسم الطالب المطلوبة  !!',
-            'birthday.required' => 'لم يتم أدخال معلومات تاريخ الميلاد المطلوبة!!',
-            'age.required' => 'لم يتم أدخال معلومات عمر المطلوبة!!',
-            'age.numeric'=>'معلومات العمر يجب أن تكون حصراً أرقام !!',
-            'email.unique'=>'هذا الأيميل مسجل بالفعل لدينا يجب أضافة ايميل أخر!!',
-            'email.required'=>'لم يتم ادخال معلومات الأيميل المطلوبة !!',
-            'phone.required'=>'لم يتم أدخال معلومات الهاتف المطلوبة !!',
-            'phone.numeric'=>'يجب أن يكون رقم الهاتف حصراً من أرقام !!',
-            'phone.unique'=>'الرقم المسجل موجود بالغعل يرجى أدخال رقم أخر  !!',
-            'county_are_from.required'=>'لم يتم أدخال معلومات اسم المحافظة المطلوبة !!',
-            'city_name.required'=>'لم يتم أدخال معلومات اسم المدينة المطلوبة !!',
-            'stu_Cur_housing.required'=>'لم يتم أدخال معلومات اسم الولاية المطلوبة!!',
-            'entry_turkey.required'=>'لم يتم أدخال معلومات تاريخ دخول تركياالمطلوبة!!',
-            'Identity_type.required'=>'لم يتم أدخال معلومات نوع الهوية المطلوبة  !!',
-            'Id_stud_source.required'=>'لم يتم أدخال معلومات اسم الولاية للكملك المطلوية!!',
-            'univer_name.required'=>'لم يتم أدخال معلومات اسم الجامعة!!',
-            'univer_location.required'=>'لم يتم أدخال معلومات موقع الجامعة!!',
-            'univer_special.required'=>'لم يتم أدخال معلومات اختصاص الجامعة!!',
-            'current_rate.required'=>'لم يتم أدخال معلومات المعدل الحالي!!',
-        ];
-    }
     public function update(Request $request)
     {
         //we write this code with id validation to make sure it the same id and also allow the user to rename the same name for edite
-        $messages = $this->messages_update();
         $id = $request->id;
         $this->validate($request, [
             'student_name' => 'required',
@@ -239,8 +174,7 @@ public function messages_store_register()
             'entry_turkey' => 'required',
             'Identity_type' => 'required',
             'Id_stud_source' => 'required'
-        ],$messages);
-
+        ]);
          //create new object of the model student and make mapping to the data ::find($request->id);
          $students =  Student::find($request->id);
          $students -> student_name = $request->student_name;

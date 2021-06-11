@@ -131,7 +131,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>ملاحظة !</strong> {{ $error }}
+                                    <strong>Oh snap!</strong> {{ $error }}
                             @endforeach
                             </ul>
                             </div>
@@ -191,11 +191,11 @@
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الاسم </label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder=" أكتب الأسم بالكامل">
+                                <input type="text" class="form-control" id="name" name="name" placeholder=" العمر">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمر</label>
-                                <input type="text" class="form-control" id="age" name="age" placeholder=" أكتب العمر بأرقام ">
+                                <input type="text" class="form-control" id="age" name="age" placeholder=" العمر">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الجنس </label>
@@ -214,15 +214,15 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الأختصاص </label>
-                                <input type="text" class="form-control" id="special" name="special" placeholder=" أكتب اسم الأختصاص">
+                                <input type="text" class="form-control" id="special" name="special" placeholder=" أكتب مصدر المنحة او أسم الجهة المانحة">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ما هو نوع العمل </label>
-                                <input type="text" class="form-control" id="work" name="work" placeholder=" أكتب نوع العمل ">
+                                <input type="text" class="form-control" id="work" name="work" placeholder=" أكتب مصدر المنحة او أسم الجهة المانحة">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم الراتب </label>
-                                <input type="text" class="form-control" id="salary" name="salary" placeholder=" أكتب قينة الراتب الشهري   ">
+                                <input type="text" class="form-control" id="salary" name="salary" placeholder=" أكتب مصدر المنحة او أسم الجهة المانحة">
                                 </div>
                                 </div>
                                 <div class="modal-footer">

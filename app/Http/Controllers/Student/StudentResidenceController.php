@@ -22,32 +22,16 @@ $this->middleware('permission:حذف قسم سكن الطلاب ', ['only' => ['
 
 
 }
-public function messages_storestudent()
-{
-    return $messages_storestudent = [
-        'student_id.required' => '',
-        'stud_type_housing.required' => 'لم يتم ادخال معلومات نوع السكن  !!',
-        'stud_rent_housing.required' => 'لم يتم ادخال معلومات ايجار السكن !!',
-        'stud_Place_housing.required'=>'لم يتم ادخال معلومات موقع السكن !!',
-        'stud_expen.required'=>'لم يتم ادخال معلومات مصاريف السكن !!',
-        'stud_valu_expen.required'=>'لم يتم ادخال معلومات  قيمة السكن !!',
 
-
-    ];
-}
-    public function storestudent(Request $request)
-    {
-
-             $messages = $this->messages_storestudent();
-             $this->validate($request,[
+    public function storestudent(Request $request){
+            $this->validate($request,[
             'student_id'=>'required',
             'stud_type_housing' => 'required',
             'stud_rent_housing' => 'required',
             'stud_Place_housing' => 'required',
             'stud_expen' => 'required',
             'stud_valu_expen' => 'required',
-        ],$messages);
-
+         ]);
          //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
@@ -84,31 +68,17 @@ public function messages_storestudent()
       $res = Student_Residence::where('student_id', $id)->get();
       return view('Student.student_res.student_res',compact('res'));
     }
-    public function messages_storestuden_updatet()
-    {
-        return $messages_storestuden_updatet = [
-            'student_id.required' => '',
-            'stud_type_housing.required' => 'لم يتم ادخال معلومات نوع السكن  !!',
-            'stud_rent_housing.required' => 'لم يتم ادخال معلومات ايجار السكن !!',
-            'stud_Place_housing.required'=>'لم يتم ادخال معلومات موقع السكن !!',
-            'stud_expen.required'=>'لم يتم ادخال معلومات مصاريف السكن !!',
-            'stud_valu_expen.required'=>'لم يتم ادخال معلومات  قيمة السكن !!',
 
-
-        ];
-    }
     public function update(Request $request, Student_Residence $student_Residence)
     {
-            $messages = $this->messages_storestuden_updatet();
-            $this->validate($request,[
+              $this->validate($request,[
             'student_id'=>'required',
             'stud_type_housing' => 'required',
             'stud_rent_housing' => 'required',
             'stud_Place_housing' => 'required',
             'stud_expen' => 'required',
             'stud_valu_expen' => 'required',
-        ],$messages);
-
+         ]);
          //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;

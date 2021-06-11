@@ -30,34 +30,9 @@ $this->middleware('permission:حذف قسم الجامعة الطلاب ', ['onl
       $univ = University::where('student_id', $id)->get();
       return view('Student.university.university',compact('univ'));
     }
-
-    public function messages_storestudent()
-{
-    return $messages_storestudent = [
-        'student_id.required' => '',
-        'univer_name.required' => 'لم يتم أدخال معلومات اسم الجامعة المطلوبة  !!',
-        'univer_location.required' => 'لم يتم أدخال معلومات تاريخ موقع الجامعة المطلوبة!!',
-        'univer_special.required' => 'لم يتم أدخال معلومات أختصاص المطلوبة!!',
-        'Number_years.numeric'=>'لم يتم أجخال معلومات عدد السنوات يجب    أن تكون حصراً أرقام !!',
-        'Schoo_year.numeric'=>'لم يتم أدخال معلومات السنه الدراسية المطلوبة!!',
-        'Current_rate.required'=>'لم يتم ادخال معلومات المعدل الحالي المطلوبة !!',
-        'Cumulative_rate.required'=>'لم يتم أدخال معلومات المعدل التراكمي المطلوبة !!',
-        'language_name.required'=>' لم يتم أدخال نوع اللغة الدراسية المطلوبة !!',
-        'Current_level.required'=>'لم يتم أدخال معدل المستوى الحالي للغة المطلوبة!!',
-        'Curr_level_rate.required'=>'لم يتم أدخال معدل المستوى السابق المطلوبة !!',
-        'Previ_level_rate.required'=>'لم يتم أدخال معلومات المطلوبة !!',
-        'Univer_Accept.required'=>'لم يتم أدخال معلومات طريقة القبول بالجامعة المطلوبة!!',
-        'Accept_rate.required'=>'لم يتم أدخال معلومات معدل القبول المطلوبة!!',
-        'are_you_univer.required'=>'لم يتم أدخال معلومات هل انت يجامعة أخرى المطلوبة  !!',
-        'univer_Premiums.required'=>'لم يتم أدخال معلومات  اقساط جامعية  المطلوية!!',
-        'univer_fees.required'=>'لم يتم أدخال معلومات مصاريف جامعية الجامعة!!',
-        'univer_fees_value.required'=>'لم يتم أدخال معلومات كم مصاريف الجامعة!!',
-    ];
-}
     public function storestudent(Request $request)
     {
-        $messages = $this->messages_storestudent();
-        $this->validate($request,[
+           $this->validate($request,[
             'student_id'=>'required',
             'univer_name' => 'required',
             'univer_location' => 'required',
@@ -82,8 +57,7 @@ $this->middleware('permission:حذف قسم الجامعة الطلاب ', ['onl
             'univer_Premiums' => 'required',
             'univer_fees' => 'required',
             'univer_fees_value' => 'required'
-        ],$messages);
-
+            ]);
          //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
@@ -137,33 +111,8 @@ $this->middleware('permission:حذف قسم الجامعة الطلاب ', ['onl
        return view('Student.university.university')->with($univ);
     }
 
-    public function messages_storestudent_update()
-{
-    return $messages_storestudent_update = [
-        'student_id.required' => '',
-        'univer_name.required' => 'لم يتم أدخال معلومات اسم الجامعة المطلوبة  !!',
-        'univer_location.required' => 'لم يتم أدخال معلومات تاريخ موقع الجامعة المطلوبة!!',
-        'univer_special.required' => 'لم يتم أدخال معلومات أختصاص المطلوبة!!',
-        'Number_years.numeric'=>'لم يتم أجخال معلومات عدد السنوات يجب    أن تكون حصراً أرقام !!',
-        'Schoo_year.numeric'=>'لم يتم أدخال معلومات السنه الدراسية المطلوبة!!',
-        'Current_rate.required'=>'لم يتم ادخال معلومات المعدل الحالي المطلوبة !!',
-        'Cumulative_rate.required'=>'لم يتم أدخال معلومات المعدل التراكمي المطلوبة !!',
-        'language_name.required'=>' لم يتم أدخال نوع اللغة الدراسية المطلوبة !!',
-        'Current_level.required'=>'لم يتم أدخال معدل المستوى الحالي للغة المطلوبة!!',
-        'Curr_level_rate.required'=>'لم يتم أدخال معدل المستوى السابق المطلوبة !!',
-        'Previ_level_rate.required'=>'لم يتم أدخال معلومات المطلوبة !!',
-        'Univer_Accept.required'=>'لم يتم أدخال معلومات طريقة القبول بالجامعة المطلوبة!!',
-        'Accept_rate.required'=>'لم يتم أدخال معلومات معدل القبول المطلوبة!!',
-        'are_you_univer.required'=>'لم يتم أدخال معلومات هل انت يجامعة أخرى المطلوبة  !!',
-        'univer_Premiums.required'=>'لم يتم أدخال معلومات  اقساط جامعية  المطلوية!!',
-        'univer_fees.required'=>'لم يتم أدخال معلومات مصاريف جامعية الجامعة!!',
-        'univer_fees_value.required'=>'لم يتم أدخال معلومات كم مصاريف الجامعة!!',
-
-    ];
-}
     public function update(Request $request)
     {
-        $messages = $this->messages_storestudent_update();
         $this->validate($request,[
             'student_id'=>'required',
             'univer_name' => 'required',
@@ -180,17 +129,16 @@ $this->middleware('permission:حذف قسم الجامعة الطلاب ', ['onl
             'Univer_Accept' => 'required',
             'Accept_rate' => 'required',
             'are_you_univer' => 'required',
-            // 'Ano_univer_name' => 'required',
-            // 'Ano_univer_special' => 'required',
-            // 'Ano_univer_Accept' => 'required',
-            // 'Ano_accept_rate' => 'required',
-            // 'Ano_Schoo_year' => 'required',
-            // 'Ano_Current_rate' => 'required',
+            'Ano_univer_name' => 'required',
+            'Ano_univer_special' => 'required',
+            'Ano_univer_Accept' => 'required',
+            'Ano_accept_rate' => 'required',
+            'Ano_Schoo_year' => 'required',
+            'Ano_Current_rate' => 'required',
             'univer_Premiums' => 'required',
             'univer_fees' => 'required',
             'univer_fees_value' => 'required'
-        ],$messages);
-
+            ]);
             //create new object of the model student and make mapping to the data
             $students =  Student::find($request->student_id);
             $student_name = $students->student_name;

@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    المستخدمين
+    المستخدمين 
 @stop
 
 <!-- Internal Data table css -->
@@ -53,7 +53,7 @@
                     <table class="table table-hover" id="example1" data-page-length='50' style=" text-align: center;">
                         <thead>
                             <tr>
-                                <th class="wd-10p border-bottom-0">الرقم</th>
+                                <th class="wd-10p border-bottom-0">#</th>
                                 <th class="wd-15p border-bottom-0">اسم المستخدم</th>
                                 <th class="wd-20p border-bottom-0">البريد الالكتروني</th>
                                 <th class="wd-15p border-bottom-0">حالة المستخدم</th>

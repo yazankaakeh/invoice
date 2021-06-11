@@ -57,8 +57,8 @@
                                                     <th class="border-bottom-0">قيمة كرت البيم</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
                                                     <th class="border-bottom-0">تاريخ الإضافة</th>
-                                                    <th class="border-bottom-0">حذف دفعة الدخل</th>
-                                                    <th class="border-bottom-0">تعديل دفعة الدخل</th>
+                                                    <th class="border-bottom-0">حذف المريض</th>
+                                                    <th class="border-bottom-0">تعديل المريض</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -86,9 +86,9 @@
                                                             data-number_bim="{{$x->number_bim}}" data-value_bim="{{$x->value_bim}}"
                                                             data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
                                                             data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
-                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}"
-                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
-                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
+                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}" 
+                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}" 
+                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"   
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
                                                             <i class="las la-trash"  style="font-size: 20px;"> </i>
                                                         </a>
@@ -104,14 +104,14 @@
                                                             data-value_usd_fixed="{{$x->value_usd_fixed}}"
                                                             data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
                                                             data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
-                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}"
+                                                            data-number_bim="{{$x->number_bim_fixed}}" data-value_bim="{{$x->value_bim}}" 
                                                             data-value_usd_fixed="{{$x->value_usd_fixed}}"
 
                                                             data-value_usd_fixed1="{{$x->value_usd}}"  data-number_bim1="{{$x->number_bim}}"
-                                                            data-value_tr_fixed1="{{$x->value_tr_fixed}}" data-value_euro_fixed1="{{$x->value_euro_fixed}}"
+                                                            data-value_tr_fixed1="{{$x->value_tr_fixed}}" data-value_euro_fixed1="{{$x->value_euro_fixed}}" 
 
-                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}"
-                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}"
+                                                            data-value_tr_fixed="{{$x->value_tr_fixed}}" data-note="{{$x->note}}" 
+                                                            data-value_euro_fixed="{{$x->value_euro_fixed}}" data-id="{{$x->id}}" 
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
@@ -319,8 +319,8 @@
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> المبلغ المدخل بالتركي TL</label>
                                         <input type="number" class="form-control" id="value_tr_fixed" name="value_tr" placeholder=" ">
-                                        </div>
-
+                                        </div>                                                                                 
+                                                               
                                         <div class="modal-body">
                                         <label for="exampleInputEmail"> المبلغ المدخل باليورو€</label>
                                         <input type="text" class="form-control" id="value_euro_fixed" name="value_euro" placeholder=" ">
@@ -339,7 +339,7 @@
                                         <div class="modal-body">
                                         <label for="exampleInputEmail">ملاحظات</label>
                                         <input type="text" class="form-control" id="note" name="note"  placeholder=" ">
-                                        </div>
+                                        </div>                     
                                         </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-primary">تاكيد</button>

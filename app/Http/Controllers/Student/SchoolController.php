@@ -48,32 +48,18 @@ $this->middleware('permission: حذف مدرسة لطفل العائلات ', ['
       return view('Student.school.school_student',compact('school'));
     }
 
-    public function messages_store_student()
-    {
-        return $messages_store_student = [
-            'id.required' => '',
-            'School_name.required' => 'لم يتم ادخال معلومات اسم المدرسة  !!',
-            'School_type.required' => 'لم يتم ادخال معلومات نوع  المدرسة !!',
-            'School_location.required'=>'لم يتم ادخال معلومات موقع المدرسة !!',
-            'School_cost.required'=>'لم يتم ادخال معلومات أجور المدرسة !!',
-            'School_fees.required'=>'لم يتم ادخال معلومات  مصدر المطلوبة !!',
-            'School_fees.required'=>'لم يتم ادخال معلومات  مصدر مصاريف  !!',
 
-
-        ];
-    }
     public function store_student(Request $request)
     {
-        $messages = $this->messages_store_student();
-        $this->validate($request,[
+         $this->validate($request,[
             'id' => 'required',
             'School_name' => 'required',
             'School_type' => 'required',
             'School_location' => 'required',
             'School_cost' => 'required',
             'School_fees' => 'required',
-        ],$messages);
-        //create new object of the model student and make mapping to the data
+         ]);
+         //create new object of the model student and make mapping to the data
          $childrens =  Children::find($request->id);
          $childrens_name = $childrens->childrens_name;
          $x = $childrens->student_statu;
@@ -95,24 +81,9 @@ $this->middleware('permission: حذف مدرسة لطفل العائلات ', ['
          return redirect(route('children.show'));
     }
 
-    public function messages_update_student()
-    {
-        return $messages_update_student = [
-            'id.required' => '',
-            'School_name.required' => 'لم يتم ادخال معلومات اسم المدرسة  !!',
-            'School_type.required' => 'لم يتم ادخال معلومات نوع  المدرسة !!',
-            'School_location.required'=>'لم يتم ادخال معلومات موقع المدرسة !!',
-            'School_cost.required'=>'لم يتم ادخال معلومات أجور المدرسة !!',
-            'School_fees.required'=>'لم يتم ادخال معلومات  مصدر المطلوبة !!',
-            'School_fees.required'=>'لم يتم ادخال معلومات  مصدر مصاريف  !!',
-
-
-        ];
-    }
     public function update_student(Request $request)
     {
-        $messages = $this->messages_update_student();
-        $this->validate($request,[
+         $this->validate($request,[
             'children_id' => 'required',
             'id' => 'required',
             'School_name' => 'required',
@@ -120,8 +91,7 @@ $this->middleware('permission: حذف مدرسة لطفل العائلات ', ['
             'School_location' => 'required',
             'School_cost' => 'required',
             'School_fees' => 'required',
-        ],$messages);
-
+         ]);
          //create new object of the model student and make mapping to the data
          $childrens =  Children::find($request->children_id);
          $childrens_name = $childrens->childre_name;
@@ -163,7 +133,7 @@ $this->middleware('permission: حذف مدرسة لطفل العائلات ', ['
 #######################
 #################################################
 ####################################### Medical Start #############################
-
+    
     // public function index_medical()
     // {
     //    $school = School::with('Children')->get();
@@ -172,7 +142,7 @@ $this->middleware('permission: حذف مدرسة لطفل العائلات ', ['
     // }
 
     // public function show_medical($id)
-    // {
+    // {      
     //     $school = Children::where('medical_id', $id)->get();
     //     dd($school);
     //     return view('Medical.school.school_student',compact('school'));
@@ -229,7 +199,7 @@ $this->middleware('permission: حذف مدرسة لطفل العائلات ', ['
 ###################
 #################################################
 ####################################### Family Start #############################
-
+   
     public function index_family()
     {
         $school['school'] = School::select('id','School_name','children_id','updated_at','School_type','School_location',
@@ -243,38 +213,22 @@ $this->middleware('permission: حذف مدرسة لطفل العائلات ', ['
     }
 
     public function show_family($id)
-    {
+    {        
         $school = School::where('children_id', $id)->get();
         //dd($school);
         return view('Family.school.school_family',compact('school'));
     }
-
-    public function messages_store_family()
-    {
-        return $messages_store_family = [
-            'id.required' => '',
-            'School_name.required' => 'لم يتم ادخال معلومات اسم المدرسة  !!',
-            'School_type.required' => 'لم يتم ادخال معلومات نوع  المدرسة !!',
-            'School_location.required'=>'لم يتم ادخال معلومات موقع المدرسة !!',
-            'School_cost.required'=>'لم يتم ادخال معلومات أجور المدرسة !!',
-            'School_fees.required'=>'لم يتم ادخال معلومات  مصدر المطلوبة !!',
-            'School_fees.required'=>'لم يتم ادخال معلومات  مصدر مصاريف  !!',
-
-
-        ];
-    }
+    
     public function store_family(Request $request)
     {
-        $messages = $this->messages_store_family();
-        $this->validate($request,[
+         $this->validate($request,[
             'id' => 'required',
             'School_name' => 'required',
             'School_type' => 'required',
             'School_location' => 'required',
             'School_cost' => 'required',
             'School_fees' => 'required',
-        ],$messages);
-
+         ]);
          //create new object of the model student and make mapping to the data
          $childrens =  Children::find($request->id);
          $childrens_name = $childrens->childrens_name;
@@ -297,24 +251,9 @@ $this->middleware('permission: حذف مدرسة لطفل العائلات ', ['
          return redirect(route('children.show.family'));
     }
 
-    public function messages_update_family()
-    {
-        return $messages_update_family = [
-            'id.required' => '',
-            'School_name.required' => 'لم يتم ادخال معلومات اسم المدرسة  !!',
-            'School_type.required' => 'لم يتم ادخال معلومات نوع  المدرسة !!',
-            'School_location.required'=>'لم يتم ادخال معلومات موقع المدرسة !!',
-            'School_cost.required'=>'لم يتم ادخال معلومات أجور المدرسة !!',
-            'School_fees.required'=>'لم يتم ادخال معلومات  مصدر المطلوبة !!',
-            'School_fees.required'=>'لم يتم ادخال معلومات  مصدر مصاريف  !!',
-
-
-        ];
-    }
     public function update_family(Request $request)
     {
-        $messages = $this->messages_update_family();
-        $this->validate($request,[
+         $this->validate($request,[
             'children_id' => 'required',
             'id' => 'required',
             'School_name' => 'required',
@@ -322,8 +261,8 @@ $this->middleware('permission: حذف مدرسة لطفل العائلات ', ['
             'School_location' => 'required',
             'School_cost' => 'required',
             'School_fees' => 'required',
-        ],$messages);
-        //create new object of the model student and make mapping to the data
+         ]);
+         //create new object of the model student and make mapping to the data
          $childrens =  Children::find($request->children_id);
         // dd($childrens);
          $childrens_name = $childrens->childre_name;

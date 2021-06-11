@@ -74,30 +74,17 @@ public function messages()
     }
 
 
-    public function messages_update()
-    {
-        return $messages_update = [
-            'student_id.required' => '',
-            'scholar_name.required' => 'لم يتم ادخال معلومات اسم المنحة المطلوبة !!',
-            'scholar_type.required' => 'لم يتم ادخال معلومات نوع المنحة المطلوبة !!',
-            'scholar_value.required'=>'لم يتم ادخال معلومات قيمة المنحة المطلوبة !!',
-            'scholar_source.required'=>'لم يتم ادخال معلومات  مصدر المنحة  المطلوبة !!',
 
-
-        ];
-    }
-    public function update(Request $request)
-    {
-        $messages = $this->messages_update();
-        $this->validate($request,[
+    public function update(Request $request){
+            $this->validate($request,[
             'student_id'=>'required',
             'id'=>'required',
             'scholar_name' => 'required',
             'scholar_type' => 'required',
             'scholar_value' => 'required',
             'scholar_source' => 'required'
-        ],$messages);
-        //create new object of the model student and make mapping to the data
+         ]);
+         //create new object of the model student and make mapping to the data
          $students =  Student::find($request->student_id);
          $student_name = $students->student_name;
 

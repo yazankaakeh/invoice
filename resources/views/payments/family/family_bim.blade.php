@@ -31,7 +31,7 @@
 				<div class="row">
                         <div class="col-xl-12">
                             <div class="card mg-b-20">
-                                <div class="pb-0 card-header">
+                                <div class="card-header pb-0">
                                     <div class="d-flex justify-content-between">
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@
                             @endif
 
                             @if (session()->has('Warning'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Warning') }}</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -133,7 +133,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>ملاحظة!</strong> {{ $error }}
+                                    <strong>Oh snap!</strong> {{ $error }}
                             @endforeach
                             </ul>
                             </div>
@@ -162,7 +162,7 @@
                                         <input class="form-control" name="family_Constraint" id="family_constraint" type="text" readonly>
                                         <div class="modal-body">
                                             <p class="mg-b-10">قيمة الكروت</p>
-                                            <select class="form-control select2" name="value_bim_family" id="value_bim_family" type="text" readonly>
+                                            <select class="form-control select2" name="value_bim_family" id="value_bim_family" >
                                                     @foreach($payments_income as $a)
                                                         <option value="{{$a->value_bim}}" >
                                                             {{$a->value_bim}}
@@ -173,7 +173,7 @@
 
                                         <div class="modal-body">
                                             <label for="recipient-name" class="col-form-label">عدد الكروت</label>
-                                            <input class="form-control" name="number_bim_family" id="number_bim_family" type="text" readonly >
+                                            <input class="form-control" name="number_bim_family" id="number_bim_family" type="text" >
                                         </div>
 
                                     </div>

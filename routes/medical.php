@@ -7,19 +7,27 @@ use App\Http\Controllers\medical\medicalController;
 use App\Http\Controllers\Medical\MediaclController;
 use App\Http\Controllers\Payment\medical_Payment;
 
+Route::prefix('medical/statu')->group(function () {
+    Route::get('/new', "medical\MedicalController@new_medical")->name('medical.new')->middleware('auth');
+    Route::get('/archievd', "medical\MedicalController@archievd_medical")->name('medical.archive')->middleware('auth');
+    Route::get('/rejected', "medical\MedicalController@rejected_medical")->name('medical.reject')->middleware('auth');
+    Route::get('/delayed', "medical\MedicalController@delayed_medical")->name('medical.delayed')->middleware('auth');
+    Route::post('/statu', "medical\MedicalController@medical_statu")->name('medical.statu')->middleware('auth');
+});
 
 
 Route::prefix('medical')->group(function () {
-    Route::get('show', "medical\medicalController@index")->name('medical.show')->middleware('auth');
-    Route::post('store', "medical\medicalController@store")->name('medical.store')->middleware('auth');
-    Route::patch('update', "medical\medicalController@update")->name('medical.update')->middleware('auth');
-    Route::delete('update', "medical\medicalController@destroy")->name('medical.destroy')->middleware('auth');
-    Route::get('register', "medical\medicalController@register")->name('medical.register');
-    Route::get('enable', "medical\medicalController@enable")->name('medical.enable')->middleware('auth');
-    Route::get('/add/medical', "medical\medicalController@add_medical")->name('medical.medical.add')->middleware('auth');
-    Route::get('disable', "medical\medicalController@disable")->name('medical.disable')->middleware('auth');
-    Route::get('/show/medical/{id}/', "medical\medicalController@show_medical")->name('medical.medical.show')->middleware('auth');
-    Route::delete('/destroy/medical/', "medical\medicalController@detroy_medical")->name('medical.medical.destroy')->middleware('auth');
+    Route::get('show', "medical\MedicalController@index")->name('medical.show')->middleware('auth');
+    Route::post('store', "medical\MedicalController@store")->name('medical.store')->middleware('auth');
+    Route::patch('update', "medical\MedicalController@update")->name('medical.update')->middleware('auth');
+    Route::delete('update', "medical\MedicalController@destroy")->name('medical.destroy')->middleware('auth');
+    Route::get('register', "medical\MedicalController@register")->name('medical.register');
+    Route::get('enable', "medical\MedicalController@enable")->name('medical.enable')->middleware('auth');
+    Route::get('/add/medical', "medical\MedicalController@add_medical")->name('medical.medical.add')->middleware('auth');
+    Route::get('disable', "medical\MedicalController@disable")->name('medical.disable')->middleware('auth');
+    Route::get('/show/medical/{id}/', "medical\MedicalController@show_medical")->name('medical.medical.show')->middleware('auth');
+    Route::delete('/destroy/medical/', "medical\MedicalController@detroy_medical")->name('medical.medical.destroy')->middleware('auth');
+    Route::post('/new/register/', "medical\MedicalController@store_register")->name('medical.register')->middleware('auth');
 });
 
 Route::prefix('address_medical')->group(function () {

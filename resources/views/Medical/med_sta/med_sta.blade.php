@@ -49,6 +49,7 @@
                                                     <th class="border-bottom-0">رقم</th>
                                                     <th class="border-bottom-0"> نوع المرض</th>
                                                     <th class="border-bottom-0"> اسم المرض</th>
+                                                    <th class="border-bottom-0"> تقييم الحالة الصحية</th>
                                                     <th class="border-bottom-0"> اسم الدكتور</th>
                                                     <th class="border-bottom-0"> تكلفة العلاج</th>
                                                     <th class="border-bottom-0"> نوع العلاج</th>
@@ -69,6 +70,7 @@
                                                     <td>{{$x->id}}</td>
                                                     <td>{{$x->disease_type}}</td>
                                                     <td>{{$x->disease_name}}</td>
+                                                    <td>{{$x->medical_rate}}</td>
                                                     <td>{{$x->dr_name}}</td>
                                                     <td>{{$x->treat_cost}}</td>
                                                     <td>{{$x->treat_type}}</td>
@@ -88,6 +90,7 @@
                                                                 data-date_accept="{{$x->date_accept}}" data-date_end="{{$x->date_end}}"
                                                                 data-treat_cost="{{$x->treat_cost}}"
                                                                 data-medical_id="{{$x->medical_id}}"
+                                                                data-medical_rate="{{$x->medical_rate}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
@@ -137,7 +140,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>ملاحظة!</strong> {{ $error }}
+                                    <strong>Oh snap!</strong> {{ $error }}
                             @endforeach
                             </ul>
                             </div>
@@ -198,11 +201,8 @@
                                 <input type="hidden" name="medical_id" id="medical_id" readonly>
                                 </div>
                                  <div class="form-group">{{-- it must be select options  --}}
-                                    <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
+                                    <p class="mg-b-10">نوع الرض</p>
                                     <select class="form-control select2" name="disease_type" id="disease_type">
-                                    <option value="لايوجد" >
-                                        لايوجد
-                                    </option>
                                     <option value="اصابة حرب" >
                                         اصابة حرب
                                     </option>
@@ -217,6 +217,23 @@
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم المرض</label>
                                 <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض">
+                                </div>
+                                <div class="form-group">
+                                    <p class="mg-b-10">تقييم الحالة المرضية</p>
+                                    <select class="form-control select2" name="medical_rate" id="medical_rate">
+                                    <option value="خطرة جدا" >
+                                    خطرة جدا
+                                    </option>
+                                    <option value="خطرة" >
+                                    خطرة
+                                    </option>
+                                    <option value="متوسطة" >
+                                    متوسطة
+                                    </option>
+                                    <option value="عادية">
+                                    عادية
+                                    </option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الدكتور</label>
@@ -296,6 +313,7 @@
         var disease_type = button.data('disease_type')
         var treat_duratio = button.data('treat_duratio')
         var medical_id = button.data('medical_id')
+        var medical_rate = button.data('medical_rate')
         var treat_type = button.data('treat_type')
         var treat_cost = button.data('treat_cost')
         var dr_name = button.data('dr_name')
@@ -305,6 +323,7 @@
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #disease_name').val(disease_name);
+        modal.find('.modal-body #medical_rate').val(medical_rate);
         modal.find('.modal-body #disease_type').val(disease_type);
         modal.find('.modal-body #medical_id').val(medical_id);
         modal.find('.modal-body #treat_duratio').val(treat_duratio);

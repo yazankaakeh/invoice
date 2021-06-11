@@ -34,23 +34,11 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
-                                                <div class="dropdown">
-                                                <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
-                                                data-toggle="dropdown" id="dropdownMenuButton" type="button">المزيد من الخيارات <i class="btn btn-primary dropdown-toggle dropdown-toggle-split"></i></button>
-                                                <div  class="dropdown-menu tx-13">
-                                            @can( ' عرض الطلاب المؤرشفة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.archive')}}">عرض الطلاب المؤرشفة</a>
-                                            @endcan
-                                            @can(' عرض الطلاب المؤجلين ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.delayed')}}">عرض الطلاب المؤجلين</a>
-                                            @endcan
-                                            @can(' عرض الطلاب المرفوضين ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.reject')}}">عرض الطلاب المرفوضين</a>
-                                            @endcan
                                         </div>
-                                      </div>
                                      </div>
-                                    </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
@@ -114,16 +102,13 @@
                                                     <td>{{$x->Current_rate}}</td>
 
                                                     <td>
-
-                                                        @can(' عرض حالةالطلاب ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-student_name="{{$x->student->student_name}}"  data-student_id="{{$x->student->id}}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModal160" title="تعديل الحالة">
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                     </a>
-                                                    @endcan
-                                                </td>
+                                                    </td>
                                                 @endif
                                                 @endforeach
                                                 </tr>

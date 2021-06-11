@@ -60,6 +60,7 @@
                                                     <th class="border-bottom-0">العمليات</th>
                                                     <th class="border-bottom-0">معلومات القرأن الكريم</th>
                                                     <th class="border-bottom-0">إضافة مدرسة</th>
+                                                    <th class="border-bottom-0">إضافة هوايات</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -80,7 +81,6 @@
                                                     <td>{{$x->childre_live_with}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
-
                                                     @can(' تعديل قسم الأطفال العائلات ')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
@@ -94,7 +94,7 @@
                                                                 data-family_Constraint="{{$x->family->family_Constraint}}"   data-family_id="{{$x->family_id}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
-                                                                <i class="las la-pen"style="font-size: 15px;"></i>
+                                                                <i class="las la-pen"style="font-size: 20px;"></i>
                                                             </a>
                                                     @endcan
 
@@ -103,37 +103,34 @@
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}" data-family_constraint="{{$x->family->family_Constraint}}"  data-family_id="{{$x->family_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
-                                                                <i class="las la-trash"style="font-size: 15px;"></i>
+                                                                <i class="las la-trash"style="font-size: 20px;"></i>
                                                             </a>
                                                     @endcan
                                                     </td>
- {{-- Quran  --}}
+                                                        {{-- Quran  --}}
+                                                        <td>
                                                         @if($x->quran_statu == 1)
-                                                        <td>
-                                                        @can(' قسم القرأن الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/Quran/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                        @endcan
-                                                        </td>
-                                                        @elseif($x->quran_statu == 0)
-                                                        <td>
-                                                        @can(' اضافة القرأن الطلاب ')
+                                                        <a class=" btn btn-sm btn-info" href="/quran_family/show/quran/family/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+
+                                                        @elseif ($x->quran_statu == 0)
+
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                                data-student_id="{{$x->id}}"  data-description="" data-toggle="modal"
+                                                                data-child_id="{{$x->id}}"  data-description="" data-toggle="modal"
                                                             href="#exampleModal7" title="إضافة معلومات القرآن">
                                                             <i class="fas fa-book-open" style="font-size: 20px;"></i>
                                                         </a>
-                                                    @endcan
-                                                    </td>
                                                     @endif
+                                                    </td>
 
                                                     <td>
                                                     @can('  مدرسة لطفل العائلات ')
 
                                                             @if($x->family_statu != 0)
                                                             <a class=" btn btn-sm btn-info" href="/school_family/show/school/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                             @else                                                           {{-- Add_School --}}
+                                                            @endif
                                                     @endcan
                                                     @can(' إضافة مدرسة لطفل العائلات ')
+                                                            @if($x->family_statu == 0)
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
                                                                 data-toggle="modal"
@@ -142,6 +139,22 @@
                                                             </a>
                                                             @endif
                                                     @endcan
+                                                    </td>
+                                                {{-- Hoobies  --}}
+                                                        <td>
+
+                                                            @if($x->hoobie_statu != 0)
+                                                            <a class=" btn btn-sm btn-info" href="/hoobie_family/show/hoobie/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                            @endif
+
+                                                            @if($x->hoobie_statu == 0)
+                                                            <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                            data-child_id="{{$x->id}}"  data-description="" data-toggle="modal"
+                                                            href="#exampleModal9" title="إضافة هوايات ">
+
+                                                            <i class="fas fa-book-open" style="font-size: 20px;"></i>
+                                                            </a>
+                                                            @endif
                                                     </td>
                                                 </tr>
                                                    @endif
@@ -198,6 +211,14 @@
                             </div>
                             @endif
 
+                            @if (session()->has('Add_hoobies'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_hoobies') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
 
                             @if ($errors->any())
                          <div class="alert alert-danger mg-b-0" role="alert">
@@ -206,7 +227,7 @@
                             </button>
                             <ul>
                             @foreach ($errors->all() as $error)
-                                    <strong>ملاحظة!</strong> {{ $error }}
+                                    <strong>Oh snap!</strong> {{ $error }}
                             @endforeach
                             </ul>
                          </div>
@@ -265,88 +286,131 @@
                         </div>
                     </div>
 
-                            {{-- add  Holy Quran --}}
-                        <div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">القرآن الكريم</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                <form action="{{ route('Quran.student.store') }}" method="post">
-                                {{ method_field('POST') }}
-                                {{ csrf_field() }}
-                                <div class="modal-body">
-
-                                <input type="hidden" name="student_id" id="student_id" readonly>
-                                    <div class="form-group">
-                                    <p class="mg-b-10">هل تحفظ القرآن</p>
-                                    <select class="form-control select2" name="quran_memorize" id="quran_memorize">
-                                        <option label="test">
-											    </option>
-                                        <option value="نعم" >
-                                        نعم
-                                    </option>
-                                    <option value="لا" >
-                                        لا
-                                    </option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">عدد الأجزاء التي أتممت حفظها </label>
-                                <input type="text" class="form-control" id="quran_parts" name="quran_parts" placeholder="    أكتب عدد الأجزاء المحفوظة ">
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">أسم الشيخ الذي درسك</label>
-                                <input type="text" class="form-control" id="quran_teacher" name="quran_teacher" placeholder="   أكتب أسم الشيخ ">
-                                </div>
-                                <div class="form-group">
-                                <p class="mg-b-10">هل لديك شهادة حفظ قرآن</p>
-                                <select class="form-control select2" name="quran_have_certif" id="quran_have_certif">
-                                    <option label="test">
-                                           </option>
-                                    <option value="نعم" >
-                                    نعم
-                                </option>
-                                <option value="لا" >
-                                    لا
-                                </option>
-                                </select>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">مصدر الشهادة</label>
-                                <input type="text" class="form-control" id="quran_Certif_essuer" name="quran_Certif_essuer" placeholder="   أكتب مصدر الشهادة ">
-                                </div>
-                                <div class="form-group">
-                                <p class="mg-b-10">هل الشهادة معك؟</p>
-                                <select class="form-control select2" name="quran_with_Certif" id="quran_with_Certif" >
-                                    <option label="test">
-                                          </option>
-                                    <option value="نعم" >
-                                    نعم
-                                </option>
-                                <option value="لا" >
-                                    لا
-                                </option>
-                                </select>
-                                </div>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">تاكيد</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                </div>
-                                </form>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
+                    {{-- add  skills and activities --}}
+                    <div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">المهارات واللغات المفضلة</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
                             </div>
-                         </div>
-				        </div>
+                            <div class="modal-body">
+                            <form action="{{ route('hoobie.family.store') }}" method="post">
+                            {{ method_field('POST') }}
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                            <label for="exampleInputEmail">مهارات يجيدها الطفل  </label>
+                            <input type="hidden" name="children_id" id="child_id" readonly>
+                            <input type="text" class="form-control" id="skills" name="skills" placeholder="    أكتب المهارات التي يجيدها الطفل ">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleInputEmail"> لغات يجيدها الطفل</label>
+                            <input type="text" class="form-control" id="language" name="language" placeholder="   أكتب اللغات التي يتقنها الطفل ">
+                            </div>
+
+                            <div class="form-group">
+                            <label for="exampleInputEmail">مهارات ومواهب يفضلها الطفل</label>
+                            <input type="text" class="form-control" id="fav_active" name="fav_active" placeholder="   أكتب مهارات ومواهب يفضلها الطفل ">
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">تاكيد</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                            </div>
+                            </form>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
                         </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    {{-- add  Holy Quran --}}
+                    <div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">القرآن الكريم</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <form action="{{ route('quran.family.store') }}" method="post">
+                            {{ method_field('POST') }}
+                            {{ csrf_field() }}
+                            <div class="modal-body">
+
+                            <input type="hidden" name="child_id" id="child_id" readonly>
+                                <div class="form-group">
+                                <p class="mg-b-10">هل تحفظ القرآن</p>
+                                <select class="form-control select2" name="quran_memorize" id="quran_memorize">
+                                    <option label="test">
+                                            </option>
+                                    <option value="نعم" >
+                                    نعم
+                                </option>
+                                <option value="لا" >
+                                    لا
+                                </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleInputEmail">عدد الأجزاء التي أتممت حفظها </label>
+                            <input type="text" class="form-control" id="quran_parts" name="quran_parts" placeholder="    أكتب عدد الأجزاء المحفوظة ">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleInputEmail">أسم الشيخ الذي درسك</label>
+                            <input type="text" class="form-control" id="quran_teacher" name="quran_teacher" placeholder="   أكتب أسم الشيخ ">
+                            </div>
+                            <div class="form-group">
+                            <p class="mg-b-10">هل لديك شهادة حفظ قرآن</p>
+                            <select class="form-control select2" name="quran_have_certif" id="quran_have_certif">
+                                <option label="test">
+                                        </option>
+                                <option value="نعم" >
+                                نعم
+                            </option>
+                            <option value="لا" >
+                                لا
+                            </option>
+                            </select>
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleInputEmail">مصدر الشهادة</label>
+                            <input type="text" class="form-control" id="quran_Certif_essuer" name="quran_Certif_essuer" placeholder="   أكتب مصدر الشهادة ">
+                            </div>
+                            <div class="form-group">
+                            <p class="mg-b-10">هل الشهادة معك؟</p>
+                            <select class="form-control select2" name="quran_with_Certif" id="quran_with_Certif" >
+                                <option label="test">
+                                        </option>
+                                <option value="نعم" >
+                                نعم
+                            </option>
+                            <option value="لا" >
+                                لا
+                            </option>
+                            </select>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">تاكيد</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                            </div>
+                            </form>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
 
 
                     {{-- delete --}}
@@ -586,9 +650,17 @@
 <script>
     $('#exampleModal7').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
-        var student_id = button.data('student_id')
+        var child_id = button.data('child_id')
         var modal = $(this)
-        modal.find('.modal-body #student_id').val(student_id);})
+        modal.find('.modal-body #child_id').val(child_id);})
+</script>
+
+<script>
+    $('#exampleModal9').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var child_id = button.data('child_id')
+        var modal = $(this)
+        modal.find('.modal-body #child_id').val(child_id);})
 </script>
 
 {{--  Add_School  --}}
