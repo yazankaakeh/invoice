@@ -208,22 +208,22 @@ function __construct()
 
          //write to the data base
          $families ->save();
-         $husbandandWife = new HusbandandWife;
-         $husbandandWife->family_id = $families->id;
+        //  $husbandandWife = new HusbandandWife;
+        //  $husbandandWife->family_id = $families->id;
 
-         if($request->gender == "ذكر"){
-         $husbandandWife -> wife_city = $request->city;
-         $husbandandWife -> wife_now_work = $request->now_work;
-         $husbandandWife -> wife_Pre_work = $request->work;
-         $husbandandWife -> wife_academicel = $request->academicel;
-         }
-         elseif ($request->gender == "انثى") {
-         $husbandandWife -> husb_Orig_city = $request->husb_Orig_city;
-         $husbandandWife -> husb_academicel = $request->husb_academicel;
-         $husbandandWife -> husb_now_work = $request->husb_now_work;
-         $husbandandWife -> husb_Pre_work = $request->husb_Pre_work;
-        }
-         $husbandandWife->save();
+        //  if($request->gender == "ذكر"){
+        //  $husbandandWife -> wife_city = $request->city;
+        //  $husbandandWife -> wife_now_work = $request->now_work;
+        //  $husbandandWife -> wife_Pre_work = $request->work;
+        //  $husbandandWife -> wife_academicel = $request->academicel;
+        //  }
+        //  elseif ($request->gender == "انثى") {
+        //  $husbandandWife -> husb_Orig_city = $request->husb_Orig_city;
+        //  $husbandandWife -> husb_academicel = $request->husb_academicel;
+        //  $husbandandWife -> husb_now_work = $request->husb_now_work;
+        //  $husbandandWife -> husb_Pre_work = $request->husb_Pre_work;
+        // }
+        //  $husbandandWife->save();
 
          //dd($request);
          session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
