@@ -41,12 +41,13 @@
                                             @can( ' عرض الطلاب المؤرشفة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.archive')}}">عرض الطلاب المؤرشفة</a>
                                             @endcan
-                                            @can(' عرض الطلاب المؤجلين ')
-                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.delayed')}}">عرض الطلاب المؤجلين</a>
-                                            @endcan
                                             @can(' عرض الطلاب المرفوضين ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.reject')}}">عرض الطلاب المرفوضين</a>
                                             @endcan
+                                            @can(' عرض الطلاب المؤجلين ')
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.delayed')}}">عرض الطلاب المؤجلين</a>
+                                            @endcan
+
                                         </div>
                                       </div>
                                      </div>
@@ -55,6 +56,7 @@
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
                                             <thead>
+
                                                 <tr>
                                                     <th class="border-bottom-0">Id</th>
                                                     <th class="border-bottom-0">اسم الطالب</th>
