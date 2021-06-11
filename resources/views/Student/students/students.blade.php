@@ -41,12 +41,13 @@
                                             @can( ' عرض الطلاب المؤرشفة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.archive')}}">عرض الطلاب المؤرشفة</a>
                                             @endcan
-                                            @can(' عرض الطلاب المرفوضين ')
-                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.reject')}}">عرض الطلاب المرفوضين</a>
-                                            @endcan
                                             @can(' عرض الطلاب المؤجلين ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route('student.delayed')}}">عرض الطلاب المؤجلين</a>
                                             @endcan
+                                            @can(' عرض الطلاب المرفوضين ')
+                                            <a class=" btn btn-outline-primary btn-block"  href="{{route('student.reject')}}">عرض الطلاب المرفوضين</a>
+                                            @endcan
+
 
                                         </div>
                                       </div>
