@@ -114,7 +114,7 @@ public function store_family_tr(Request $request)
 }
 public function messages_update_family_tr()
 {
-return $messages_update_family_tr = [
+    return $messages_update_family_tr = [
     'family_id.required' => '!!',
     'family_value_tr.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
     'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
@@ -135,7 +135,7 @@ public function update_family_tr(Request $request)
     if ($request->family_value_tr1 != $request->family_value_tr)
     {
 
-    $payments_cut = Income::where('value_tr','>', 0)->first();
+    $payments_cut = Income::where('value_tr','>=', 0)->first();
 
     $s= $payments_cut->value_tr;
     $a=$request->family_value_tr1;
@@ -201,7 +201,7 @@ public function destroy_familys_tr(Request $request)
     $family_Constraint = $family->family_Constraint;
 
     $s;
-    $payments_cut = Income::where('value_tr','>', 0)->first();
+    $payments_cut = Income::where('value_tr','>=', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
     $payments_cut->incomes_statu = $sta;
@@ -236,7 +236,7 @@ public function medical_ind_tr()
 }
 public function messages_medical_tr()
 {
-return $messages_medical_tr = [
+    return $messages_medical_tr = [
     'medical_id.required' => '!!',
     'medical_value_tr.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
     'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
@@ -300,7 +300,7 @@ public function store_medical_tr(Request $request)
 }
 public function messages_update_medical_tr()
 {
-return $messages_update_medical_tr = [
+    return $messages_update_medical_tr = [
     'medical_id.required' => '!!',
     'medical_value_tr.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
     'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
@@ -321,7 +321,7 @@ public function update_medical_tr(Request $request)
     if ($request->medical_value_tr1 != $request->medical_value_tr)
     {
 
-    $payments_cut = Income::where('value_tr','>', 0)->first();
+    $payments_cut = Income::where('value_tr','>=', 0)->first();
 
     $s= $payments_cut->value_tr;
     $a=$request->medical_value_tr1;
@@ -392,7 +392,7 @@ public function destroy_medicals_tr(Request $request)
 
 
     $s;
-    $payments_cut = Income::where('value_tr','>', 0)->first();
+    $payments_cut = Income::where('value_tr','>=', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
     $payments_cut->incomes_statu = $sta;
@@ -434,7 +434,7 @@ public function show_student_tr($id)
 }
 public function messages_student_tr()
 {
-return $messages_student_tr = [
+    return $messages_student_tr = [
     'student_id.required' => '!!',
     'student_value.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
     'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
@@ -498,7 +498,7 @@ public function store_student_tr(Request $request)
 }
 public function messages_update_student_tr()
 {
-return $messages_update_student_tr = [
+    return $messages_update_student_tr = [
     'student_id.required' => '!!',
     'student_value.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
     'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
@@ -519,7 +519,7 @@ public function update_student_tr(Request $request)
     if ($request->student_value1 != $request->student_value)
     {
 
-    $payments_cut = Income::where('value_tr','>', 0)->first();
+    $payments_cut = Income::where('value_tr','>=', 0)->first();
 
     $s= $payments_cut->value_tr;
     $a=$request->student_value1;
@@ -577,7 +577,7 @@ public function destroy_students_tr(Request $request)
 
 
     $s;
-    $payments_cut = Income::where('value_tr','>', 0)->first();
+    $payments_cut = Income::where('value_tr','>=', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
     $payments_cut->incomes_statu = $sta;
@@ -597,4 +597,172 @@ public function destroy_students_tr(Request $request)
     return redirect(route('tr.student.pay'));
 }
 ##################################################### student End
+            public function spent_ind_tr()
+        {
+            $payments = Tr::all();
+            return view('payments.spent.tr',compact("payments"));//->with($payments)
+        }
+
+            public function show_spent_tr($id)
+        {
+            $payments = Tr::where('id', $id)->get();
+            return view('payments.spent.tr',compact("payments"));//->with($payments)
+        }
+
+            public function messages_spent_tr()
+        {
+            return $messages_spent_tr  = [
+            'spent_value.required' => 'ادخال يجب ان اكون قيمة الدولار ارقام فقط !!',
+            'spent_value.numeric' => 'لم يتم ادخال قيمة  بالتركي  !!',
+            'desc.required' => 'يجب عليك ادخال معلومات الفاتورة !!',
+            'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
+            ];
+        }
+
+            public function store_spent_tr (Request $request)
+        {
+           // dd($request);
+            $messages = $this->messages_spent_tr ();
+            $this->validate($request,[
+                'user_name' => 'required',
+                'spent_value' => 'required|numeric',
+                'desc'=> 'required',
+                'note'=> 'required',
+            ],$messages);
+            $s;
+            if ($check = DB::table('incomes')->where('value_tr','!=', null)->where('value_tr','!=', 0)->latest()->first() != null)
+            {
+            $payments_cut = Income::where('value_tr','>=', 0)->first();
+
+            $s= $payments_cut->value_tr;
+            $a=$request->spent_value;
+            //dd($a);
+
+            $m = $s - $a;
+            if ($m < 0) {
+            session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الدولار يرجى الدفع على دفعتين القيمة المتبقية بالدولار  هي:  '.$payments_cut->value_tr.'');
+                //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('usd.pay'));
+            }
+            else {
+                // Subtract from incomes
+                // incomes status
+                $sta = $payments_cut->incomes_statu;
+                ++$sta;
+                $payments_cut->incomes_statu = $sta;
+                // incomes status
+                $payments_cut->value_tr = $m;
+                $payments_cut ->save();
+            }
+
+            //create new object of the model student and make mapping to the data
+            $payments = new Tr;
+            $payments -> note = $request->note;
+            $payments -> spent_value = $request->spent_value;
+            $payments -> user_name = $request->user_name;
+            $payments -> desc = $request->desc;
+            //write to the data base
+            $payments ->save();
+            session()->flash('Edit', 'تم إضافة المبلغ بنجاح');
+            //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('tr.pay'));
+            }
+            else {
+            session()->flash('Warning', 'لايوجد مبالغ مالية متوفرة ');
+            //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('tr.pay'));
+            }
+        }
+
+            public function messages_update_tr()
+        {
+            return $messages_update_tr = [
+            'spent_value.required' => 'ادخال يجب ان اكون قيمة الدولار ارقام فقط !!',
+            'spent_value.numeric' => 'لم يتم ادخال قيمة  بالدولار  !!',
+            'desc.required' => 'يجب عليك ادخال معلومات الفاتورة !!',
+            'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
+            ];
+        }
+            public function update_spent_tr (Request $request)
+        {
+            $messages = $this->messages_update_tr();
+            $this->validate($request, [
+                'user_name' => 'required',
+                'id' => 'required',
+                'spent_value' => 'required|numeric',
+                'spent_value1' => 'required|numeric',
+                'desc'=> 'required',
+                'note'=> 'required',
+            ],$messages);
+
+            if ($request->spent_value1 != $request->spent_value)
+            {
+
+            $payments_cut = Income::where('value_tr','>=', 0)->first();
+
+            $s= $payments_cut->value_tr;
+            $a=$request->spent_value1;
+            $m = $s + $a;
+            $payments_cut->value_tr = $m;
+            $m =0;
+
+            $s= $payments_cut->value_tr;
+            $a=$request->spent_value;
+            $m = $s - $a;
+
+            if ($m < 0) {
+            session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الدولار يرجى الدفع على دفعتين القيمة المتبقية بالتركي  هي:  '.$payments_cut->value_tr.'');
+                //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+                return redirect(route('tr.pay'));
+            }
+            elseif ($m > 0) {
+            $payments_cut->value_tr = $m  ;
+
+            }
+            //create new object of the model student and make mapping to the data
+            $payments = Tr::find($request->id);
+            $payments -> note = $request->note;
+            $payments -> spent_value = $request->spent_value;
+            $payments -> user_name = $request->user_name;
+            $payments -> desc = $request->desc;
+            //write to the data base
+            $payments ->save();
+            $payments_cut ->save();
+            session()->flash('Edit', 'تم تعديل المبلغ المالي بنجاح ');
+            //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('tr.pay'));
+            }
+            else {
+
+            session()->flash('Edit', 'لم يتم تعديل المبلغ المالي  يرجى التأكد من إضافة قيم جديدة ');
+            //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('tr.pay'));
+            }
+        }
+
+            public function destroy_spent_tr (Request $request)
+        {
+            /* here we have sued the table students and searched about the id using the find and then delete the
+            id using the id note: we have passed the id from the show using the route */
+            $s;
+            $payments_cut = Income::where('value_tr','>=', 0)->first();
+            $sta = $payments_cut->incomes_statu;
+            --$sta;
+
+            $payments_cut->incomes_statu = $sta;
+            $s= $payments_cut->value_tr;
+            $a=$request->spent_value;
+
+            //dd($a);
+            $m = $s + $a;
+            //dd($m);
+            $payments_cut->value_tr = $m;
+
+            Tr::find($request->id)->delete();
+            $payments_cut->save();
+
+            /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
+            session()->flash('Delete','تم حذف المبلغ المالي بنجاح ');
+            return redirect(route('tr.pay'));
+        }
 }

@@ -12,10 +12,10 @@
 							<a class="open-toggle" href="#"><i class="header-icon fe fe-align-left" ></i></a>
 							<a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
 						</div>
-                        
+
                                                  {{-- Time code  Begin--}}
-                                                 
-                        <div  class="mr-3 main-header-right d-sm-none d-md-none d-lg-block" id="time"></div>
+
+                        {{-- <div  class="mr-3 main-header-right d-sm-none d-md-none d-lg-block" id="time"></div>
                         <script type="text/javascript">
                           function showTime() {
                             var date = new Date(),
@@ -31,14 +31,14 @@
                             document.getElementById('time').innerHTML = utc.toLocaleTimeString();
                           }
                           setInterval(showTime, 1000);
-                        </script>
+                        </script> --}}
                                                       {{-- Time code  End --}}
 
-                                                 
+
 						 {{-- <div class="mr-3 main-header-center d-sm-none d-md-none d-lg-block">
 							<input class="form-control" placeholder="Search for anything..." type="search"> <button class="btn"><i class="fas fa-search d-none d-md-block"></i></button>
 						</div>   --}}
-                        
+
 					</div>
 					 <div class="main-header-right">
 						<ul class="nav">
@@ -301,7 +301,7 @@
 								</a>
 							</div> --}}
 						</div>
-					</div>  
+					</div>
 				</div>
 			</div>
 <!-- /main-header -->

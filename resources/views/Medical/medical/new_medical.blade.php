@@ -34,12 +34,26 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
+                                            <div class="dropdown">
+                                                <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
+                                                data-toggle="dropdown" id="dropdownMenuButton" type="button">المزيد من الخيارات <i class="btn btn-primary dropdown-toggle dropdown-toggle-split"></i></button>
+                                                <div  class="dropdown-menu tx-13">
+                                             @can(' عرض الطبي الجدد')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.new")}}"> عرض المرضى الجدد</a>
+                                               @endcan
+                                                @can(' عرض الطبي المؤجلة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.delayed")}}"> عرض المرضى المؤجلين</a>
+                                                 @endcan
+                                                @can(' عرض الطبي المؤرشفة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.archive")}}"> عرض المرضى المؤرشفين</a>
+                                                 @endcan
+                                              @can(' عرض الطبي المرفوضة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.reject")}}"> عرض المرضى المرفوضين</a>
-                                        </div>
-                                     </div>
+                                             @endcan
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
@@ -78,7 +92,7 @@
                                                     <td>{{$x->medical->medical_name}}</td>
                                                     <td>
                                                         <span class="label text-success d-flex">
-                                                        <div  class="dot-label bg-success ml-1"></div>مقبول
+                                                        <div  class="dot-label bg-success ml-1"></div>جديد
                                                         </span>
                                                     </td>
                                                     <td>{{$x->medical->medical_age}}</td>
@@ -100,12 +114,14 @@
                                                     <td>{{$x->created_at}}</td>
 
                                                     <td>
+                                                        @can(' عرض حالة الطبي ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical->medical_name}}"  data-medical_id="{{$x->medical->id}}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModal160" title="تعديل الحالة">
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                     </a>
+                                                     @endcan
                                                     </td>
                                                 @endif
                                                 @endforeach

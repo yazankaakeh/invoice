@@ -71,7 +71,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $s;
         if ($check = DB::table('incomes')->where('value_bim','!=', null)->where('value_bim','!=', 0)->latest()->first() != null) {
         $payments_cut = Income::where('value_bim',$request->value_bim_family )
-        ->having('number_bim', '>', 0)
+        ->having('number_bim', '>=', 0)
         ->first();
         $s= $payments_cut->number_bim;
         $a=$request->number_bim_family;
@@ -147,7 +147,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         {
 
         $payments_cut = Income::where('value_bim',$request->value_bim_family )
-        ->having('number_bim', '>', 0)
+        ->having('number_bim', '>=', 0)
         ->first();
         $s= $payments_cut->number_bim;
         $a=$request->number_bim_family1;
@@ -267,7 +267,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $s;
         if ($check = DB::table('incomes')->where('value_bim','!=', null)->where('value_bim','!=', 0)->latest()->first() != null) {
         $payments_cut = Income::where('value_bim',$request->value_bim_medical )
-        ->having('number_bim', '>', 0)
+        ->having('number_bim', '>=', 0)
         ->first();
         $s= $payments_cut->number_bim;
         $a=$request->number_bim_medical;
@@ -344,7 +344,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         {
 
         $payments_cut = Income::where('value_bim',$request->value_bim_medical )
-        ->having('number_bim', '>', 0)
+        ->having('number_bim', '>=', 0)
         ->first();
         $s= $payments_cut->number_bim;
         $a=$request->number_bim_medical1;
@@ -455,7 +455,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
     public function store_student_bim(Request $request)
     {
         $messages = $this->messages_student_bim();
-     $this->validate($request,[
+        $this->validate($request,[
             'student_id' => 'required',
             'value_bim_student' => 'required',
             'number_bim_student' => 'required',
@@ -464,7 +464,8 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $s;
         if ($check = DB::table('incomes')->where('value_bim','!=', null)->where('value_bim','!=', 0)->latest()->first() != null) {
         $payments_cut = Income::where('value_bim',$request->value_bim_student )
-        ->having('number_bim', '>', 0)
+
+        ->having('number_bim', '>=', 0)
         ->first();
         $s= $payments_cut->number_bim;
         $a=$request->number_bim_student;
@@ -497,15 +498,15 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         //write to the data base
         $payments ->save();
         $student ->save();
-        session()->flash('Edit', 'تم إضافة كروت البيم للعائلة  '. $student_name .' بنجاح ');
+        session()->flash('Edit', 'تم إضافة كروت البيم للطالب  '. $student_name .' بنجاح ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('student.show'));
-    }
-    else {
-    session()->flash('Warning', 'لايوجد مبالغ مالية متوفرة ');
-    //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    return redirect(route('student.show'));
-    }
+        }
+        else {
+        session()->flash('Warning', 'لايوجد مبالغ مالية متوفرة ');
+        //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+        return redirect(route('student.show'));
+        }
     }
 
     public function show_student_bim($id)
@@ -540,7 +541,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         {
 
         $payments_cut = Income::where('value_bim',$request->value_bim_student )
-        ->having('number_bim', '>', 0)
+        ->having('number_bim', '>=', 0)
         ->first();
         $s= $payments_cut->number_bim;
         $a=$request->number_bim_student1;
@@ -576,14 +577,14 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $payments ->save();
         $student ->save();
         $payments_cut ->save();
-        session()->flash('Edit', 'تم تعديل كروت البيم للعائلة  '. $student_name .' بنجاح ');
+        session()->flash('Edit', 'تم تعديل كروت البيم للطالب  '. $student_name .' بنجاح ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.student.pay'));
         }
         else {
         $student =  Student::find($request->student_id);
         $student_name = $student->student_name;
-        session()->flash('Edit', 'لم يتم تعديل كروت البيم للعائلة  '. $student_name .' يرجى التأكد من إضافة قيم جديدة ');
+        session()->flash('Edit', 'لم يتم تعديل كروت البيم للطالب  '. $student_name .' يرجى التأكد من إضافة قيم جديدة ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('bim.student.pay'));
         }
@@ -617,7 +618,7 @@ $this->middleware('permission: حذف دفعة بالكرت البيم الطب�
         $student->save();
 
         /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
-        session()->flash('Delete','تم حذف كروت البيم للعائلة  '. $student_name .' بنجاح ');
+        session()->flash('Delete','تم حذف كروت البيم للطالب  '. $student_name .' بنجاح ');
         return redirect(route('bim.student.pay'));
     }
 

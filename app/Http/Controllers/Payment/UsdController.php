@@ -39,7 +39,11 @@ $this->middleware('permission: إضافة دفعة بالدولار الطبي '
 $this->middleware('permission: تعديل دفعة بالدولار الطبي ', ['only' => ['update_medical_usd']]);
 $this->middleware('permission: حذف دفعة بالدولار الطبي ', ['only' => ['destroy_medicals_usd']]);
 
-
+$this->middleware('permission: مدفوعات بالدولار ', ['only' => ['spent_ind_usd']]);
+$this->middleware('permission: مدفوعات بالدولار ', ['only' => ['show_spent_usd']]);
+$this->middleware('permission: اضافة مدفوعات بالدولار ', ['only' => ['store_spent_usd']]);
+$this->middleware('permission: تعديل مدفوعات بالدولار ', ['only' => ['update_spent_usd']]);
+$this->middleware('permission: حذف مدفوعات بالدولار ', ['only' => ['destroy_spent_usd']]);
 
 
 }
@@ -86,7 +90,6 @@ public function store_family_usd(Request $request)
         $sta = $payments_cut->incomes_statu;
         ++$sta;
         $payments_cut->incomes_statu = $sta;
-
         $payments_cut->value_usd = $m;
         $payments_cut ->save();
     }
@@ -138,7 +141,7 @@ public function update_family_usd(Request $request)
     if ($request->family_value_usd1 != $request->family_value_usd)
     {
 
-    $payments_cut = Income::where('value_usd','>', 0)->first();
+    $payments_cut = Income::where('value_usd','>=', 0)->first();
 
     $s= $payments_cut->value_usd;
     $a=$request->family_value_usd1;
@@ -205,7 +208,7 @@ public function destroy_familys_usd(Request $request)
     $family_Constraint = $family->family_Constraint;
 
     $s;
-    $payments_cut = Income::where('value_usd','>', 0)->first();
+    $payments_cut = Income::where('value_usd','>=', 0)->first();
 
     $sta = $payments_cut->incomes_statu;
     --$sta;
@@ -254,7 +257,7 @@ public function store_medical_usd(Request $request)
     $messages = $this->messages_medical_usd();
     $this->validate($request,[
         'medical_id' => 'required',
-        'medical_value_usd' => 'required',
+        'medical_value_usd' => 'required|numeric',
         'note'=> 'required',
     ],$messages);
     $s;
@@ -305,7 +308,7 @@ public function store_medical_usd(Request $request)
 }
 public function messages_update_medical_usd()
 {
-return $messages_update_medical_usd = [
+    return $messages_update_medical_usd = [
     'medical_id.required' => '!!',
     'medical_value_usd.required' => 'لم يتم ادخال قيمة  بالدولار  !!',
     'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
@@ -319,24 +322,24 @@ public function update_medical_usd(Request $request)
     $this->validate($request, [
         'medical_id' => 'required',
         'id' => 'required',
-        'medical_value_usd' => 'required',
-        'medical_value_usd1' => 'required',
+        'medical_value_usd' => 'required|numeric',
+        'medical_value_usd1' => 'required|numeric',
         'note'=> 'required',
     ],$messages);
 
     if ($request->medical_value_usd1 != $request->medical_value_usd)
     {
 
-    $payments_cut = Income::where('value_usd','>', 0)->first();
+    $payments_cut = Income::where('value_usd','>=', 0)->first();
 
     $s= $payments_cut->value_usd;
-    $a=$request->medical_value_usd1;
+    $a=$request->value_usd1;
     $m = $s + $a;
     $payments_cut->value_usd = $m;
     $m =0;
 
     $s= $payments_cut->value_usd;
-    $a=$request->medical_value_usd;
+    $a=$request->value_usd;
     $m = $s - $a;
 
     if ($m < 0) {
@@ -391,7 +394,7 @@ public function destroy_medicals_usd(Request $request)
     $medical_Name = $medical->medical_Name;
 
     $s;
-    $payments_cut = Income::where('value_usd','>', 0)->first();
+    $payments_cut = Income::where('value_usd','>=', 0)->first();
     $s= $payments_cut->value_usd;
     $a=$request->medical_value_usd;
     //dd($a);
@@ -411,6 +414,7 @@ public function destroy_medicals_usd(Request $request)
 ##################################################### medical End
 
 ##################################################### student start
+
 public function student_ind_usd()
 {
     $payments_income = Income::select('value_usd')->distinct()->get();
@@ -425,22 +429,24 @@ public function show_student_usd($id)
     // $child = DB::table('childrens')->where('student_id', $id)->get();
     return view('payments.student.student_usd',compact('payments','payments_income'));
 }
+
 public function messages_student_usd()
 {
-return $messages_student_usd = [
+    return $messages_student_usd = [
     'student_id.required' => '!!',
     'student_value_usd.required' => 'لم يتم ادخال قيمة  بالدولار  !!',
     'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
 
-];
+    ];
 }
+
 public function store_student_usd(Request $request)
 {
     $messages = $this->messages_student_usd();
     $this->validate($request,[
         'student_id' => 'required',
-        'student_value_usd' => 'required',
+        'student_value_usd' => 'required|numeric',
         'note'=> 'required',
     ],$messages);
     $s;
@@ -488,15 +494,16 @@ public function store_student_usd(Request $request)
     return redirect(route('student.show'));
     }
 }
+
 public function messages_update_student_usd()
 {
-return $messages_update_student_usd = [
+    return $messages_update_student_usd = [
     'student_id.required' => '!!',
     'student_value_usd.required' => 'لم يتم ادخال قيمة  بالدولار  !!',
     'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
 
 
-];
+    ];
 }
 public function update_student_usd(Request $request)
 {
@@ -504,15 +511,15 @@ public function update_student_usd(Request $request)
     $this->validate($request, [
         'student_id' => 'required',
         'id' => 'required',
-        'value_usd' => 'required',
-        'value_usd' => 'required',
+        'value_usd' => 'required|numeric',
+        'value_usd' => 'required|numeric',
         'note'=> 'required',
     ],$messages);
 
     if ($request->value_usd1 != $request->value_usd)
     {
 
-    $payments_cut = Income::where('value_usd','>', 0)->first();
+    $payments_cut = Income::where('value_usd','>=', 0)->first();
 
     $s= $payments_cut->value_usd;
     $a=$request->value_usd1;
@@ -568,7 +575,7 @@ public function destroy_students_usd(Request $request)
     $student_Name = $student->student_Name;
 
     $s;
-    $payments_cut = Income::where('value_usd','>', 0)->first();
+    $payments_cut = Income::where('value_usd','>=', 0)->first();
     $sta = $payments_cut->incomes_statu;
     --$sta;
     $payments_cut->incomes_statu = $sta;
@@ -589,4 +596,179 @@ public function destroy_students_usd(Request $request)
 }
 
 ##################################################### student End
+
+
+##################################################### student start
+
+            public function spent_ind_usd()
+        {
+            $payments = Usd::all();
+            return view('payments.spent.usd',compact("payments"));//->with($payments)
+        }
+
+            public function show_spent_usd($id)
+        {
+            $payments = Usd::where('id', $id)->get();
+            return view('payments.spent.usd',compact("payments"));//->with($payments)
+        }
+
+            public function messages_spent_usd()
+        {
+            return $messages_student_usd = [
+            'spent_value_usd.required' => 'ادخال يجب ان اكون قيمة الدولار ارقام فقط !!',
+            'spent_value_usd.numeric' => 'لم يتم ادخال قيمة  بالدولار  !!',
+            'desc.required' => 'يجب عليك ادخال معلومات الفاتورة !!',
+            'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
+            ];
+        }
+
+            public function store_spent_usd(Request $request)
+        {
+           // dd($request);
+            $messages = $this->messages_student_usd();
+            $this->validate($request,[
+                'user_name' => 'required',
+                'spent_value_usd' => 'required|numeric',
+                'desc'=> 'required',
+                'note'=> 'required',
+            ],$messages);
+            $s;
+            if ($check = DB::table('incomes')->where('value_usd','!=', null)->where('value_usd','!=', 0)->latest()->first() != null)
+            {
+            $payments_cut = Income::where('value_usd','>=', 0)->first();
+
+            $s= $payments_cut->value_usd;
+            $a=$request->spent_value_usd;
+            //dd($a);
+
+            $m = $s - $a;
+            if ($m < 0) {
+            session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الدولار يرجى الدفع على دفعتين القيمة المتبقية بالدولار  هي:  '.$payments_cut->value_usd.'');
+                //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('usd.pay'));
+            }
+            else {
+                // Subtract from incomes
+                // incomes status
+                $sta = $payments_cut->incomes_statu;
+                ++$sta;
+                $payments_cut->incomes_statu = $sta;
+                // incomes status
+                $payments_cut->value_usd = $m;
+                $payments_cut ->save();
+            }
+
+            //create new object of the model student and make mapping to the data
+            $payments = new Usd;
+            $payments -> note = $request->note;
+            $payments -> spent_value_usd = $request->spent_value_usd;
+            $payments -> user_name = $request->user_name;
+            $payments -> desc = $request->desc;
+            //write to the data base
+            $payments ->save();
+            session()->flash('Edit', 'تم إضافة المبلغ بنجاح');
+            //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('usd.pay'));
+            }
+            else {
+            session()->flash('Warning', 'لايوجد مبالغ مالية متوفرة ');
+            //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('usd.pay'));
+            }
+        }
+
+            public function messages_update_spent_usd()
+        {
+            return $messages_update_student_usd = [
+            'spent_value_usd.required' => 'ادخال يجب ان اكون قيمة الدولار ارقام فقط !!',
+            'spent_value_usd.numeric' => 'لم يتم ادخال قيمة  بالدولار  !!',
+            'desc.required' => 'يجب عليك ادخال معلومات الفاتورة !!',
+            'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
+            ];
+        }
+            public function update_spent_usd(Request $request)
+        {
+            $messages = $this->messages_update_student_usd();
+            $this->validate($request, [
+                'user_name' => 'required',
+                'id' => 'required',
+                'spent_value_usd' => 'required|numeric',
+                'spent_value_usd1' => 'required|numeric',
+                'desc'=> 'required',
+                'note'=> 'required',
+            ],$messages);
+
+            if ($request->spent_value_usd1 != $request->spent_value_usd)
+            {
+
+            $payments_cut = Income::where('value_usd','=>', 0)->first();
+
+            $s= $payments_cut->value_usd;
+            $a=$request->spent_value_usd1;
+            $m = $s + $a;
+            $payments_cut->value_usd = $m;
+            $m =0;
+
+            $s= $payments_cut->value_usd;
+            $a=$request->spent_value_usd;
+            $m = $s - $a;
+
+            if ($m < 0) {
+            session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة الدولار يرجى الدفع على دفعتين القيمة المتبقية بالدولار  هي:  '.$payments_cut->value_usd.'');
+                //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+                return redirect(route('usd.pay'));
+            }
+            elseif ($m > 0) {
+            $payments_cut->value_usd = $m  ;
+
+            }
+            //create new object of the model student and make mapping to the data
+            $payments = Usd::find($request->id);
+            $payments -> note = $request->note;
+            $payments -> spent_value_usd = $request->spent_value_usd;
+            $payments -> user_name = $request->user_name;
+            $payments -> desc = $request->desc;
+            //write to the data base
+            $payments ->save();
+            $payments_cut ->save();
+            session()->flash('Edit', 'تم تعديل المبلغ المالي بنجاح ');
+            //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('usd.pay'));
+            }
+            else {
+
+            session()->flash('Edit', 'لم يتم تعديل المبلغ المالي  يرجى التأكد من إضافة قيم جديدة ');
+            //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('usd.pay'));
+            }
+        }
+
+            public function destroy_spent_usd(Request $request)
+        {
+            /* here we have sued the table students and searched about the id using the find and then delete the
+            id using the id note: we have passed the id from the show using the route */
+            $s;
+            $payments_cut = Income::where('value_usd','>=', 0)->first();
+            $sta = $payments_cut->incomes_statu;
+            --$sta;
+
+            $payments_cut->incomes_statu = $sta;
+            $s= $payments_cut->value_usd;
+            $a=$request->spent_value_usd;
+
+            //dd($a);
+            $m = $s + $a;
+            //dd($m);
+            $payments_cut->value_usd = $m;
+
+            Usd::find($request->id)->delete();
+            $payments_cut->save();
+
+            /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
+            session()->flash('Delete','تم حذف المبلغ المالي بنجاح ');
+            return redirect(route('usd.pay'));
+        }
+
+##################################################### student End
+
 }

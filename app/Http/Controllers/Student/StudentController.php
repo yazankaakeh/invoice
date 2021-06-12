@@ -35,92 +35,31 @@ $this->middleware('permission: عرض الطلاب الجدد', ['only' => ['new
 
 
 }
-    // public function store_register(Request $request)
-    // {
-    //     $messages = $this->messages();
-    //     $this->validate($request,[
-    //         'student_name' => 'required',
-    //         'birthday' => 'required|date',
-    //         'email' => 'required',
-    //         'phone' => 'required|unique:students',
-    //         'age' => 'required|numeric',
-    //         'county_are_from' => 'required',
-    //         'city_name' => 'required',
-    //         'social_state' => 'required',
-    //         'stu_Cur_housing' => 'required',
-    //         'entry_turkey' => 'required',
-    //         'Identity_type' => 'required',
-    //         'univer_name' => 'required',
-    //         'univer_location' => 'required',
-    //         'univer_special' => 'required',
-    //         'schoo_year' => 'required',
-    //         'current_rate' => 'required',
-    //         'Id_stud_source' => 'required'
-    //     ],$messages);
-    //      //create new object of the model student and make mapping to the data
-    //      $students = new Student;
-    //      $students -> student_name = $request->student_name;
-    //      $students -> birthday = $request->birthday;
-    //      $students -> email = $request->email;
-    //      $students -> phone = $request->phone;
-    //      $students -> age = $request->age;
-    //      $students -> county_are_from = $request->county_are_from;
-    //      $students -> city_name = $request->city_name;
-    //      $students -> social_state = $request->social_state;
-    //      $students -> stu_Cur_housing = $request->stu_Cur_housing;
-    //      $students -> entry_turkey = $request->entry_turkey;
-    //      $students -> Identity_type = $request->Identity_type;
-    //      $students -> Id_stud_source = $request->Id_stud_source;
-    //      $students -> gender = $request->gender;
-    //      $students ->save();
-    //     // dd($students->id);
 
-    //      $s = Student::where('phone', $request->phone)->get();
-    //     //  dd($s);
-    //      $University = new University;
-    //      $University->student_id = $students->id;
-    //      $University->univer_name = $request->univer_name;
-    //      $University->univer_location = $request->univer_location;
-    //      $University->univer_special = $request->univer_special;
-    //      $University->number_years = $request->number_years;
-    //      $University->schoo_year = $request->schoo_year;
-
-    //     $cities = Turkey::where('show', 1)->get();
-
-    //      //write to the data base
-    //      $University ->save();
-    //      $request=null;
-    //      $enable = From::find(1);
-    //      session()->flash('Add', 'تم تسجيل الطالب '.  $students -> student_name.'  بنجاح سيتم التواصل معكم قريبا');
-    //      return back()->with('enable','cities');
-    //      return view('student.students.register',compact('enable','cities'));
-    //      //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    // }
-
-public function messages_store_register()
-{
-    return $messages_store_register = [
-        'student_name.required' => 'لم يتم أدخال معلومات اسم الطالب المطلوبة  !!',
-        'birthday.required' => 'لم يتم أدخال معلومات تاريخ الميلاد المطلوبة!!',
-        'age.required' => 'لم يتم أدخال معلومات عمر المطلوبة!!',
-        'age.numeric'=>'معلومات العمر يجب أن تكون حصراً أرقام !!',
-        'email.unique'=>'هذا الأيميل مسجل بالفعل لدينا يجب أضافة ايميل أخر!!',
-        'email.required'=>'لم يتم ادخال معلومات الأيميل المطلوبة !!',
-        'phone.required'=>'لم يتم أدخال معلومات الهاتف المطلوبة !!',
-        'phone.numeric'=>'يجب أن يكون رقم الهاتف حصراً من أرقام !!',
-        'phone.unique'=>'الرقم المسجل موجود بالغعل يرجى أدخال رقم أخر  !!',
-        'county_are_from.required'=>'لم يتم أدخال معلومات اسم المحافظة المطلوبة !!',
-        'city_name.required'=>'لم يتم أدخال معلومات اسم المدينة المطلوبة !!',
-        'stu_Cur_housing.required'=>'لم يتم أدخال معلومات اسم الولاية المطلوبة!!',
-        'entry_turkey.required'=>'لم يتم أدخال معلومات تاريخ دخول تركياالمطلوبة!!',
-        'Identity_type.required'=>'لم يتم أدخال معلومات نوع الهوية المطلوبة  !!',
-        'Id_stud_source.required'=>'لم يتم أدخال معلومات اسم الولاية للكملك المطلوية!!',
-        'univer_name.required'=>'لم يتم أدخال معلومات اسم الجامعة!!',
-        'univer_location.required'=>'لم يتم أدخال معلومات موقع الجامعة!!',
-        'univer_special.required'=>'لم يتم أدخال معلومات اختصاص الجامعة!!',
-        'current_rate.required'=>'لم يتم أدخال معلومات المعدل الحالي!!',
-    ];
-}
+    public function messages_store_register()
+    {
+        return $messages_store_register = [
+            'student_name.required' => 'لم يتم أدخال معلومات اسم الطالب المطلوبة  !!',
+            'birthday.required' => 'لم يتم أدخال معلومات تاريخ الميلاد المطلوبة!!',
+            'age.required' => 'لم يتم أدخال معلومات عمر المطلوبة!!',
+            'age.numeric'=>'معلومات العمر يجب أن تكون حصراً أرقام !!',
+            'email.unique'=>'هذا الأيميل مسجل بالفعل لدينا يجب أضافة ايميل أخر!!',
+            'email.required'=>'لم يتم ادخال معلومات الأيميل المطلوبة !!',
+            'phone.required'=>'لم يتم أدخال معلومات الهاتف المطلوبة !!',
+            'phone.numeric'=>'يجب أن يكون رقم الهاتف حصراً من أرقام !!',
+            'phone.unique'=>'الرقم المسجل موجود بالغعل يرجى أدخال رقم أخر  !!',
+            'county_are_from.required'=>'لم يتم أدخال معلومات اسم المحافظة المطلوبة !!',
+            'city_name.required'=>'لم يتم أدخال معلومات اسم المدينة المطلوبة !!',
+            'stu_Cur_housing.required'=>'لم يتم أدخال معلومات اسم الولاية المطلوبة!!',
+            'entry_turkey.required'=>'لم يتم أدخال معلومات تاريخ دخول تركياالمطلوبة!!',
+            'Identity_type.required'=>'لم يتم أدخال معلومات نوع الهوية المطلوبة  !!',
+            'Id_stud_source.required'=>'لم يتم أدخال معلومات اسم الولاية للكملك المطلوية!!',
+            'univer_name.required'=>'لم يتم أدخال معلومات اسم الجامعة!!',
+            'univer_location.required'=>'لم يتم أدخال معلومات موقع الجامعة!!',
+            'univer_special.required'=>'لم يتم أدخال معلومات اختصاص الجامعة!!',
+            'current_rate.required'=>'لم يتم أدخال معلومات المعدل الحالي!!',
+        ];
+    }
     public function store_register(Request $request)
     {
         $messages = $this->messages_store_register();
@@ -286,7 +225,7 @@ public function messages_store_register()
             'student_name' => 'required',
             'birthday' => 'required',
             'email' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|unique:students,phone,$id',
             'age' => 'required',
             'county_are_from' => 'required',
             'city_name' => 'required',

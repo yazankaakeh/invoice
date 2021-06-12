@@ -12,7 +12,7 @@
 <!--- Select2 css -->
 
 @section('title')
-قسم معلومات القرأن للطالب
+قسم معلومات القرأن للطفل
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
@@ -72,7 +72,7 @@
                                                     <td>{{$x->quran_with_Certif}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
-                                                    @can(' تعديل قسم القرأن الطلاب ')
+                                                    @can('تعديل قرآن الطفل العائلة')
                                                             {{-- Edite --}}
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-quran_parts="{{$x->quran_parts}}"
@@ -86,7 +86,7 @@
                                                                 <i class="las la-pen"></i>
                                                             </a>
                                                     @endcan
-                                                    @can('حذف قسم القرأن الطلاب ')
+                                                    @can('حذف قرآن الطفل العائلة ')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-name="{{$x->children->childre_name }}" data-child_id="{{$x->children_id}}"

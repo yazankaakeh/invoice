@@ -63,7 +63,7 @@
                                                     <td>{{$x->number_bim_medical}}</td>
                                                     <td>{{$x->Note}}</td>
                                                     <td>{{$x->updated_at}}</td>
-                                                    <td> 
+                                                    <td>
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}"
                                                                 data-medical_value="{{$x->medical_value }}" data-medical_id="{{$x->medical_id}}"
@@ -149,7 +149,7 @@
                                                     @foreach($payments_income as $a)
                                                         <option value="{{$a->value_bim}}" >
                                                             {{$a->value_bim}}
-                                                        </option>                                                        
+                                                        </option>
                                                     @endforeach
                                             </select>
                                         </div>
@@ -191,14 +191,14 @@
                                             <label for="recipient-name" class="col-form-label">اسم الطالب:</label>
                                             <input class="form-control" name="medical_Constraint" id="medical_constraint" type="text" readonly>
                                         </div>
-                                        
+
                                         <div class="modal-body">
                                             <p class="mg-b-10">قيمة الكروت</p>
                                             <select class="form-control select2" name="value_bim_medical" id="value_bim_medical" >
                                                     @foreach($payments_income as $a)
                                                         <option value="{{$a->value_bim}}" >
                                                             {{$a->value_bim}}
-                                                        </option>                                                        
+                                                        </option>
                                                     @endforeach
                                             </select>
                                         </div>
@@ -228,7 +228,7 @@
 
 
 
-                
+
                 </div>
 				<!-- row closed -->
 			</div>
@@ -267,7 +267,7 @@
         var id = button.data('id')
         var medical_id = button.data('medical_id')
         var medical_value = button.data('medical_value')
-        var medical_name = button.data('medical_name')        
+        var medical_name = button.data('medical_name')
         var medical_value_euro = button.data('medical_value_euro')
         var medical_value_usd = button.data('medical_value_usd')
         var value_bim_medical = button.data('value_bim_medical')

@@ -58,8 +58,7 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
          $medicals -> medical_id_extr = $request->medical_id_extr;
          $medicals -> medical_number = $request->medical_number;
          $medicals -> note = $request->note;
-         $x=1;
-         $medicals->medical_statu = $x;
+
          $medicals ->save();
 
          $MedicalStatues = new MedicalStatus;
@@ -165,8 +164,9 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
     }
 
     public function update(Request $request)
-    {
-
+{
+        $id = $request->id;
+        $messages = $this->messages();
         $this->validate($request,[
 
             'medical_name' => 'required',
@@ -174,9 +174,9 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
             'gender' => 'required',
             'medical_have_id' => 'required',
             'medical_id_extr' => 'required',
-            'medical_number' => 'required|numeric|unique:medicals',
+            'medical_number' => 'required|numeric|unique:medicals,medical_number,$id',
             'note' => 'required'
-         ]);
+         ],$messages);
          //create new object of the model student and make mapping to the data
          $medicals =  Medical::find($request->id);
          $medicals -> medical_name = $request->medical_name;

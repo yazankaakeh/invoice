@@ -13,6 +13,15 @@ use App\Http\Controllers\Controller;
 class HoobiesController extends Controller
 {
 
+    function __construct()
+{
+        $this->middleware('permission:هوايات الطفل العائلة', ['only' => ['index_hoobies']]);
+        $this->middleware('permission:اضافة هوايات الطفل العائلة ', ['only' => ['store_hoobies']]);
+        $this->middleware('permission:تعديل هوايات الطفل العائلة', ['only' => ['update_hoobies']]);
+        $this->middleware('permission:حذف هوايات الطفل العائلة ', ['only' => ['destroy_hoobies']]);
+        $this->middleware('permission:هوايات الطفل العائلة', ['only' => ['show_hoobies']]);
+
+}
 public function messages()
 {
     return $messages = [

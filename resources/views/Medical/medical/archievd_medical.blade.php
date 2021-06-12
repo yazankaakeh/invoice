@@ -34,12 +34,26 @@
                                 <div class="pb-0 card-header">
                                     <div class="d-flex justify-content-between">
                                         <div class="col-sm-3 col-md-4 col-xl-2">
+                                            <div class="dropdown">
+                                                <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
+                                                data-toggle="dropdown" id="dropdownMenuButton" type="button">المزيد من الخيارات <i class="btn btn-primary dropdown-toggle dropdown-toggle-split"></i></button>
+                                                <div  class="dropdown-menu tx-13">
+                                             @can(' عرض الطبي الجدد')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.new")}}"> عرض المرضى الجدد</a>
+                                               @endcan
+                                                @can(' عرض الطبي المؤجلة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.delayed")}}"> عرض المرضى المؤجلين</a>
+                                                 @endcan
+                                                @can(' عرض الطبي المؤرشفة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.archive")}}"> عرض المرضى المؤرشفين</a>
+                                                 @endcan
+                                              @can(' عرض الطبي المرفوضة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.reject")}}"> عرض المرضى المرفوضين</a>
-                                        </div>
-                                     </div>
+                                             @endcan
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
@@ -65,8 +79,15 @@
                                                     <th class="border-bottom-0"> تاريخ الانتهاء </th>
                                                     <th class="border-bottom-0"> طبيب آخر </th>
                                                     <th class="border-bottom-0"> تاريخ التسجيل</th>
+                                                    <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
+                                                    <th class="border-bottom-0">اضافة دفعة تركي</th>
+                                                    <th class="border-bottom-0">اضافة دفعة يورو</th>
+                                                    <th class="border-bottom-0">اضافة كروت بيم</th>
+                                                    <th class="border-bottom-0">اضافة اب وام</th>
+                                                    <th class="border-bottom-0">السكن </th>
+                                                    <th class="border-bottom-0">الحالة الطبية</th>
+                                                    <th class="border-bottom-0">العمل</th>
                                                     <th class="border-bottom-0"> تعديل الحالة</th>
-
 
                                                 </tr>
                                             </thead>
@@ -99,13 +120,86 @@
                                                     <td>{{$x->Trans_to_doctor}}</td>
                                                     <td>{{$x->created_at}}</td>
 
+                                                <td>
+                                                @can(' إضافة دفعة بالدولار الطبي ')
+                                                    @if($x->medical->usd_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_usd/show/medical/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+                                                <td>
+                                                @can(' مدفوعات بالتركي الطبي ')
+                                                    @if($x->medical->tr_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_tr/show/medical/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+                                                <td>
+
+                                                @can(' مدفوعات باليورو الطبي ')
+                                                    @if($x->medical->euro_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_euro/show/medical/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+                                                <td>
+                                                    {{-- Add_Bim--}}
+
+                                                @can(' مدفوعات بالكرت البيم الطبي ')
+                                                    @if($x->medical->bim_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Medical_bim/show/medical/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+                                                    {{-- father and mother  --}}
                                                     <td>
+                                                    @if($x->medical->father_mother_statu == 1)
+                                                @can(' قسم الأب والأم الطبي ')
+                                                        <a class="btn btn-sm btn-info" href="/father_and_mother_medical/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
+                                                    </td>
+                                                   @endif
+
+                                                    <td>
+                                                    @if($x->medical->residance_statu == 1)
+                                                @can(' قسم السكن الطبي ')
+                                                        <a class=" btn btn-sm btn-info" href="/address_medical/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+
+                                                @endcan
+                                                    </td>
+                                                    @endif
+
+                                                    {{-- Medical_Status  --}}
+                                                    <td>
+                                                    @if($x->medical->medical_statu == 1)
+                                                @can(' قسم الحالة الصحية الطبي ')
+                                                        <a class=" btn btn-sm btn-info" href="/Medical_Statu_Medical/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
+                                                    </td>
+                                                    @endif
+
+                                                    {{-- Job  --}}
+                                                    <td>
+                                                    @if($x->medical->job_statu == 1)
+                                                @can(' قسم العمل الطبي ')
+                                                        <a class=" btn btn-sm btn-info" href="/job_medical/show/medical/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
+                                                    </td>
+                                                    @endif
+
+                                                    <td>
+                                                       @can(' عرض حالة الطبي ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical->medical_name}}"  data-medical_id="{{$x->medical->id}}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModal160" title="تعديل الحالة">
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                     </a>
+                                                    @endcan
                                                     </td>
                                                 @endif
                                                 @endforeach

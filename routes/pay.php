@@ -30,7 +30,7 @@ Route::prefix('pay')->group(function () {
 });
 
 Route::prefix('medical_pay')->group(function () {
-    ////// medical 
+    ////// medical
     Route::get('/show/medical', "Payment\StudentPaymentController@medical_ind")->middleware('auth')->name('show.medical.pay');
     Route::post('/store/medical', "Payment\StudentPaymentController@store_medical")->name('pay.store.medical')->middleware('auth');
     Route::patch('/update/medical', "Payment\StudentPaymentController@update_medical")->name('pay.update.medical')->middleware('auth');
@@ -39,7 +39,7 @@ Route::prefix('medical_pay')->group(function () {
 });
 
 Route::prefix('Family_pay')->group(function () {
-    ////// Family 
+    ////// Family
     Route::get('/show/family', "Payment\StudentPaymentController@family_ind")->middleware('auth')->name('show.family.pay');
     Route::post('/store/family', "Payment\StudentPaymentController@store_family")->name('pay.store.family')->middleware('auth');
     Route::patch('/update/family', "Payment\StudentPaymentController@update_family")->name('pay.update.family')->middleware('auth');
@@ -51,7 +51,7 @@ Route::prefix('Family_pay')->group(function () {
 
 //////////////////////////////// Family Pay
 Route::prefix('Family_usd')->group(function () {
-    ////// Family 
+    ////// Family
     Route::get('/show/family/usd', "Payment\UsdController@family_ind_usd")->middleware('auth')->name('usd.family.pay');
     Route::post('/store/family/usd', "Payment\UsdController@store_family_usd")->name('usd.store.family')->middleware('auth');
     Route::patch('/update/family/usd', "Payment\UsdController@update_family_usd")->name('usd.update.family')->middleware('auth');
@@ -60,7 +60,7 @@ Route::prefix('Family_usd')->group(function () {
 });
 
 Route::prefix('Family_euro')->group(function () {
-    ////// Family 
+    ////// Family
     Route::get('/show/family/euro', "Payment\EuroController@family_ind_euro")->middleware('auth')->name('euro.family.pay');
     Route::post('/store/family/euro', "Payment\EuroController@store_family_euro")->name('euro.store.family')->middleware('auth');
     Route::patch('/update/family/euro', "Payment\EuroController@update_family_euro")->name('euro.update.family')->middleware('auth');
@@ -69,7 +69,7 @@ Route::prefix('Family_euro')->group(function () {
 });
 
 Route::prefix('Family_tr')->group(function () {
-    ////// Family 
+    ////// Family
     Route::get('/show/family/tr', "Payment\TrController@family_ind_tr")->middleware('auth')->name('tr.family.pay');
     Route::post('/store/family/tr', "Payment\TrController@store_family_tr")->name('tr.store.family')->middleware('auth');
     Route::patch('/update/family/tr', "Payment\TrController@update_family_tr")->name('tr.update.family')->middleware('auth');
@@ -78,7 +78,7 @@ Route::prefix('Family_tr')->group(function () {
 });
 
 Route::prefix('Family_bim')->group(function () {
-    ////// Family 
+    ////// Family
     Route::get('/show/family/bim', "Payment\BimController@family_ind_bim")->middleware('auth')->name('bim.family.pay');
     Route::post('/store/family/bim', "Payment\BimController@store_family_bim")->name('bim.store.family')->middleware('auth');
     Route::patch('/update/family/bim', "Payment\BimController@update_family_bim")->name('bim.update.family')->middleware('auth');
@@ -86,12 +86,12 @@ Route::prefix('Family_bim')->group(function () {
     Route::delete('/delete/family/bim', "Payment\BimController@delete_familys_bim")->name('bim.destroy.family')->middleware('auth');
 });
 
- 
+
 
 
 //////////////////////////////// Student Pay
 Route::prefix('Student_usd')->group(function () {
-    ////// Student 
+    ////// Student
     Route::get('/show/student/usd', "Payment\UsdController@student_ind_usd")->middleware('auth')->name('usd.student.pay');
     Route::post('/store/student/usd', "Payment\UsdController@store_student_usd")->name('usd.store.student')->middleware('auth');
     Route::patch('/update/student/usd', "Payment\UsdController@update_student_usd")->name('usd.update.student')->middleware('auth');
@@ -100,7 +100,7 @@ Route::prefix('Student_usd')->group(function () {
 });
 
 Route::prefix('Student_euro')->group(function () {
-    ////// Student 
+    ////// Student
     Route::get('/show/student/euro', "Payment\EuroController@student_ind_euro")->middleware('auth')->name('euro.student.pay');
     Route::post('/store/student/euro', "Payment\EuroController@store_student_euro")->name('euro.store.student')->middleware('auth');
     Route::patch('/update/student/euro', "Payment\EuroController@update_student_euro")->name('euro.update.student')->middleware('auth');
@@ -109,7 +109,7 @@ Route::prefix('Student_euro')->group(function () {
 });
 
 Route::prefix('Student_tr')->group(function () {
-    ////// Student 
+    ////// Student
     Route::get('/show/student/tr', "Payment\TrController@student_ind_tr")->middleware('auth')->name('tr.student.pay');
     Route::post('/store/student/tr', "Payment\TrController@store_student_tr")->name('tr.store.student')->middleware('auth');
     Route::patch('/update/student/tr', "Payment\TrController@update_student_tr")->name('tr.update.student')->middleware('auth');
@@ -118,7 +118,7 @@ Route::prefix('Student_tr')->group(function () {
 });
 
 Route::prefix('Student_bim')->group(function () {
-    ////// Student 
+    ////// Student
     Route::get('/show/student/bim', "Payment\BimController@student_ind_bim")->middleware('auth')->name('bim.student.pay');
     Route::post('/store/student/bim', "Payment\BimController@store_student_bim")->name('bim.store.student')->middleware('auth');
     Route::patch('/update/student/bim', "Payment\BimController@update_student_bim")->name('bim.update.student')->middleware('auth');
@@ -129,7 +129,7 @@ Route::prefix('Student_bim')->group(function () {
 
 //////////////////////////////// Medical Pay
 Route::prefix('Medical_usd')->group(function () {
-    ////// Medical 
+    ////// Medical
     Route::get('/show/medical/usd', "Payment\UsdController@medical_ind_usd")->middleware('auth')->name('usd.medical.pay');
     Route::post('/store/medical/usd', "Payment\UsdController@store_medical_usd")->name('usd.store.medical')->middleware('auth');
     Route::patch('/update/medical/usd', "Payment\UsdController@update_medical_usd")->name('usd.update.medical')->middleware('auth');
@@ -138,7 +138,7 @@ Route::prefix('Medical_usd')->group(function () {
 });
 
 Route::prefix('Medical_euro')->group(function () {
-    ////// Medical 
+    ////// Medical
     Route::get('/show/medical/euro', "Payment\EuroController@medical_ind_euro")->middleware('auth')->name('euro.medical.pay');
     Route::post('/store/medical/euro', "Payment\EuroController@store_medical_euro")->name('euro.store.medical')->middleware('auth');
     Route::patch('/update/medical/euro', "Payment\EuroController@update_medical_euro")->name('euro.update.medical')->middleware('auth');
@@ -147,7 +147,7 @@ Route::prefix('Medical_euro')->group(function () {
 });
 
 Route::prefix('Medical_tr')->group(function () {
-    ////// Medical 
+    ////// Medical
     Route::get('/show/medical/tr', "Payment\TrController@medical_ind_tr")->middleware('auth')->name('tr.medical.pay');
     Route::post('/store/medical/tr', "Payment\TrController@store_medical_tr")->name('tr.store.medical')->middleware('auth');
     Route::patch('/update/medical/tr', "Payment\TrController@update_medical_tr")->name('tr.update.medical')->middleware('auth');
@@ -156,7 +156,7 @@ Route::prefix('Medical_tr')->group(function () {
 });
 
 Route::prefix('Medical_bim')->group(function () {
-    ////// Medical 
+    ////// Medical
     Route::get('/show/medical/bim', "Payment\BimController@medical_ind_bim")->middleware('auth')->name('bim.medical.pay');
     Route::post('/store/medical/bim', "Payment\BimController@store_medical_bim")->name('bim.store.medical')->middleware('auth');
     Route::patch('/update/medical/bim', "Payment\BimController@update_medical_bim")->name('bim.update.medical')->middleware('auth');
@@ -165,3 +165,24 @@ Route::prefix('Medical_bim')->group(function () {
 });
 
 ///////////////////////////////////////// Payments
+
+Route::prefix('spent')->group(function () {
+    ////// Student
+    Route::get('/show/euro', "Payment\EuroController@spent_ind_euro")->middleware('auth')->name('euro.pay');
+    Route::post('/store/euro', "Payment\EuroController@store_spent_euro")->name('euro.store')->middleware('auth');
+    Route::patch('/update/euro', "Payment\EuroController@update_spent_euro")->name('euro.update')->middleware('auth');
+    Route::get('/show/euro/{id}', "Payment\EuroController@show_spent_euro")->middleware('auth')->name('euro.shows');
+    Route::delete('/destroy/euro', "Payment\EuroController@destroy_spent_euro")->name('euro.destroy')->middleware('auth');
+
+    Route::get('/show/usd', "Payment\UsdController@spent_ind_usd")->middleware('auth')->name('usd.pay');
+    Route::post('/store/usd', "Payment\UsdController@store_spent_usd")->name('usd.store.spent')->middleware('auth');
+    Route::patch('/update/usd', "Payment\UsdController@update_spent_usd")->name('usd.update.spent')->middleware('auth');
+    Route::get('/show/usd/{id}', "Payment\UsdController@show_spent_usd")->middleware('auth')->name('usd.shows.spent');
+    Route::delete('/destroy/usd', "Payment\UsdController@destroy_spent_usd")->name('usd.destroy.spent')->middleware('auth');
+
+    Route::get('/show/spent/tr', "Payment\TrController@spent_ind_tr")->middleware('auth')->name('tr.pay');
+    Route::post('/store/spent/tr', "Payment\TrController@store_spent_tr")->name('tr.store')->middleware('auth');
+    Route::patch('/update/spent/tr', "Payment\TrController@update_spent_tr")->name('tr.update')->middleware('auth');
+    Route::get('/show/spent/tr/{id}', "Payment\TrController@show_spent_tr")->middleware('auth')->name('tr.shows');
+    Route::delete('/destroy/spent/tr', "Payment\TrController@destroy_spent_tr")->name('tr.destroy')->middleware('auth');
+});

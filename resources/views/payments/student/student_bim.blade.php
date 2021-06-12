@@ -163,10 +163,11 @@
                                     </div>
 
                                         <div class="modal-body">
+                                    <p style="color:red"> ملاحظة لايجب تعديل قيمة كروت البيم</p>
                                             <p class="mg-b-10">قيمة الكروت</p>
-                                            <select class="form-control select2" name="value_bim_student" id="value_bim_student" >
+                                            <select class="form-control select2" name="value_bim_student" id="value_bim_student" readonly >
                                                     @foreach($payments_income as $a)
-                                                        <option value="{{$a->value_bim}}" >
+                                                        <option value="{{$a->value_bim}}" disabled>
                                                             {{$a->value_bim}}
                                                         </option>
                                                     @endforeach
@@ -175,7 +176,7 @@
 
                                     <div class="modal-body">
                                         <label for="recipient-name" class="col-form-label">عدد الكروت</label>
-                                        <input class="form-control" name="number_bim_student" id="number_bim_student" type="text" >
+                                        <input class="form-control" name="number_bim_student" id="number_bim_student" type="text" readonly>
                                     </div>
 
                                     <div class="modal-footer">
@@ -211,10 +212,11 @@
                                         </div>
 
                                         <div class="modal-body">
+                                    <p style="color:red"> ملاحظة لايجب تعديل قيمة كروت البيم</p>
                                             <p class="mg-b-10">قيمة الكروت</p>
-                                            <select class="form-control select2" name="value_bim_student" id="value_bim_student" >
+                                            <select class="form-control select2" name="value_bim_student" id="value_bim_student" readonly>
                                                     @foreach($payments_income as $a)
-                                                        <option value="{{$a->value_bim}}" >
+                                                        <option value="{{$a->value_bim}}" readonly disabled>
                                                             {{$a->value_bim}}
                                                         </option>
                                                     @endforeach

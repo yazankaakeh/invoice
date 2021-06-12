@@ -110,8 +110,11 @@
                                                     </td>
                                                         {{-- Quran  --}}
                                                         <td>
+                                                        @can('قرآن الطفل العائلة')
                                                         @if($x->quran_statu == 1)
                                                         <a class=" btn btn-sm btn-info" href="/quran_family/show/quran/family/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        @endcan
+                                                        @can('اضافة قرآن الطفل العائلة ')
 
                                                         @elseif ($x->quran_statu == 0)
 
@@ -120,7 +123,8 @@
                                                             href="#exampleModal7" title="إضافة معلومات القرآن">
                                                             <i class="fas fa-book-open" style="font-size: 20px;"></i>
                                                         </a>
-                                                    @endif
+                                                        @endif
+                                                        @endcan
                                                     </td>
 
                                                     <td>
@@ -143,11 +147,12 @@
                                                     </td>
                                                 {{-- Hoobies  --}}
                                                         <td>
-
+                                                        @can('هوايات الطفل العائلة')
                                                             @if($x->hoobie_statu != 0)
                                                             <a class=" btn btn-sm btn-info" href="/hoobie_family/show/hoobie/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                             @endif
-
+                                                        @endcan
+                                                        @can('اضافة هوايات الطفل العائلة ')
                                                             @if($x->hoobie_statu == 0)
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-child_id="{{$x->id}}"  data-description="" data-toggle="modal"
@@ -156,6 +161,7 @@
                                                             <i class="fas fa-book-open" style="font-size: 20px;"></i>
                                                             </a>
                                                             @endif
+                                                        @endcan
                                                     </td>
                                                 </tr>
                                                    @endif

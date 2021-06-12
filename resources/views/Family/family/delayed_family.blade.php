@@ -82,6 +82,7 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($family as $x)
+                                                @if ($x->new_statu == 4)
                                                 <tr>
                                                 {{--  @dd($family)  --}}
                                                     <td>{{$x->id}}</td>
@@ -119,6 +120,7 @@
                                                     </a>
                                                     @endcan
 
+                                                @endif
                                                 @endforeach
                                                 </tr>
                                             </tbody>

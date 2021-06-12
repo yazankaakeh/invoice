@@ -65,8 +65,9 @@
                                                     <td>{{$x->language}}</td>
                                                     <td>{{$x->created_at}}</td>
                                                     <td>
-                                                    {{-- @can(' تعديل قسم المهارات و الخبرات للعائلة  ') --}}
+
                                                             {{-- Edite --}}
+                                                            @can('تعديل هوايات الطفل العائلة')
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-fav_active="{{$x->fav_active}}"
                                                                 data-name="{{$x->children->childre_name }}" data-language="{{$x->language}}"
@@ -76,15 +77,15 @@
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
-                                                    {{-- @endcan --}}
-                                                    {{-- @can('حذف قسم المهارات والخبرات للعائلة ') --}}
+                                                            @endcan
                                                             {{-- Delete --}}
+                                                            @can('حذف هوايات الطفل العائلة ')
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                                 data-id="{{ $x->id }}"  data-name="{{$x->children->childre_name }}" data-children_id="{{$x->children_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
-                                                    {{-- @endcan --}}
+                                                            @endcan
                                                     </td>
                                                 </tr>
                                                 @endforeach

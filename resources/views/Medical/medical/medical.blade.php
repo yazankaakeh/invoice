@@ -40,12 +40,30 @@
                                         @can(' اضافة قسم الطبي ')
                                             <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">اضافة مريض</a>
                                         @endcan
+                                         </div>
+                                    </div>
+                                     <div class="pb-0 card-header">
+                                        <div class="d-flex justify-content-between">
+                                        <div class="dropdown">
+                                        <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
+                                        data-toggle="dropdown" id="dropdownMenuButton" type="button">المزيد من الخيارات <i class="btn btn-primary dropdown-toggle dropdown-toggle-split"></i></button>
+                                        <div  class="dropdown-menu tx-13">
+                                              @can(' عرض الطبي الجدد')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.new")}}"> عرض المرضى الجدد</a>
+                                               @endcan
+                                                @can(' عرض الطبي المؤجلة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.delayed")}}"> عرض المرضى المؤجلين</a>
+                                                 @endcan
+                                                @can(' عرض الطبي المؤرشفة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.archive")}}"> عرض المرضى المؤرشفين</a>
+                                                 @endcan
+                                              @can(' عرض الطبي المرفوضة ')
                                             <a class=" btn btn-outline-primary btn-block"  href="{{route("medical.reject")}}"> عرض المرضى المرفوضين</a>
-                                        </div>
+                                             @endcan
+                                    </div>
+                                    </div>
                                      </div>
+                                    </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example" class="table key-buttons ">
@@ -80,6 +98,8 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($medical as $x)
+                                                @if ($x->new_statu == 1)
+
                                                 <tr>
                                                     <td>{{$x->id}}</td>
                                                     <td>{{$x->medical_name}}</td>
@@ -299,13 +319,16 @@
                                                     </td>
                                                     @endif
                                                     <td>
+                                                        @can(' عرض حالة الطبي ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                         data-medical_name="{{$x->medical_name}}"  data-medical_id="{{$x->id}}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModal160" title="تعديل الحالة">
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                     </a>
+                                                    @endcan
                                                     </td>
+                                                @endif
                                                 @endforeach
                                                 </tr>
                                             </tbody>

@@ -1,7 +1,7 @@
 @extends('layouts.master2')
 
 @section('title')
-تسجيل الدخول - مورا سوفت للادارة القانونية
+تسجيل الدخول -  للادارة البيانات
 @stop
 
 @section('jss')
@@ -23,11 +23,11 @@
 							<div class="row">
 								<div class="col-md-10 col-lg-10 col-xl-9 mx-auto">
 									<div class="card-sigin">
-										<div class="mb-5 d-flex"> <a href="{{ url('/' . $page='Home') }}"><img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="sign-favicon ht-40" alt="logo"></a><h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">Mora<span>So</span>ft</h1></div>
+										<div class="mb-5 d-flex"> <a href="{{ url('/' . $page='Home') }}"><img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="sign-favicon ht-40" alt="logo"></a><h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">Abo<span>Sa</span>id</h1></div>
 										<div class="card-sigin">
 											<div class="main-signup-header">
 												<h2>مرحبا بك</h2>
-												<h5 class="font-weight-semibold mb-4"> تسجيل الدخول</h5>
+												<h5 class="font-weight-semibold mb-4"> تسجيل الدخول للادارة البيانات.</h5>
                                                 <form method="POST" action="{{ route('login') }}">
                                                  @csrf
 													<div class="form-group">
@@ -81,7 +81,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-7 d-none d-md-flex bg-primary-transparent">
 					<div class="row wd-100p mx-auto text-center">
 						<div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
-							<img src="{{URL::asset('assets/img/media/login.png')}}" class="my-auto ht-xl-80p wd-md-100p wd-xl-80p mx-auto" alt="logo">
+							<img src="{{URL::asset('assets/img/media/login.jpg')}}" class="my-auto ht-xl-80p wd-md-100p wd-xl-80p mx-auto" alt="logo">
 						</div>
 					</div>
 				</div>

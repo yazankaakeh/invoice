@@ -172,7 +172,7 @@ $this->middleware('permission: فورم تسجيل العائلات ', ['only' =
     public function store(Request $request)
     {
            $messages = $this->messages();
-        $this->validate($request,[
+            $this->validate($request,[
             'family_Constraint' => 'required',
             'family_number_member' => 'required',
             'family_breadwinner' => 'required',
@@ -206,11 +206,11 @@ $this->middleware('permission: فورم تسجيل العائلات ', ['only' =
          $families -> work_an_breadwinner = $request->work_an_breadwinner;
          $families -> family_monthly_salary = $request->family_monthly_salary;
 
-         if($request->family_what_aid != "اخرى"){
-         $families -> family_what_aid = $request->family_what_aid1;
-         }else
-         {
+         if($request->family_what_aid != "أخرى"){
          $families -> family_what_aid = $request->family_what_aid;
+         }elseif($request->family_what_aid == "أخرى")
+         {
+         $families -> family_what_aid = $request->family_what_aid1;
          }
          $families -> family_has_aid = $request->family_has_aid;
          $families -> academicel = $request->academicel;
@@ -218,6 +218,7 @@ $this->middleware('permission: فورم تسجيل العائلات ', ['only' =
          $families -> now_work = $request->now_work;
          $families -> city = $request->city;
          $families -> note = $request->note;
+         $families -> new_statu = 1;
 
 
          //write to the data base
@@ -258,6 +259,8 @@ $this->middleware('permission: فورم تسجيل العائلات ', ['only' =
             'family_monthly_salary' => 'required',
             'family_what_aid' => 'required',
             'aid_value' => 'required',
+            'sec_phone' => 'required|unique:families,sec_phone,$id',
+            'phone' => 'required|unique:families,phone,$id',
             'work_an_breadwinner' => 'required',
             'work_breadwinner' => 'required',
             'note' => 'required',

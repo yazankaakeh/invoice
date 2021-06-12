@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\models\Payment;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Hoobies extends Model
+class Spent extends Model
 {
     //
 }

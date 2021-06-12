@@ -76,12 +76,22 @@
                                                     <th class="border-bottom-0">رقم هاتف</th>
                                                     <th class="border-bottom-0">رقم هاتف ثاني</th>
                                                     <th class="border-bottom-0">ملاحظات</th>
-                                                    <th class="border-bottom-0">تحديث الحالة</th>
+                                                    <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
+                                                    <th class="border-bottom-0">اضافة دفعة تركي</th>
+                                                    <th class="border-bottom-0">اضافة دفعة يورو</th>
+                                                    <th class="border-bottom-0">اضافة كروت بيم</th>
+                                                    <th class="border-bottom-0">اضافة زوج وزوجة</th>
+                                                    <th class="border-bottom-0">اضافة اطفال</th>
+                                                    <th class="border-bottom-0">إضافة السكن</th>
+                                                    <th class="border-bottom-0">إضافة طالب</th>
+                                                    <th class="border-bottom-0">إضافة مريض</th>
+                                                    <th class="border-bottom-0">تعديل الحالة</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($family as $x)
+                                                @if ($x->new_statu == 4)
                                                 <tr>
                                                 {{--  @dd($family)  --}}
                                                     <td>{{$x->id}}</td>
@@ -109,6 +119,95 @@
                                                     <td>{{$x->sec_phone}}</td>
                                                     <td>{{$x->note}}</td>
 
+                                                <td>
+                                                    @if($x->usd_statu != 0)
+                                                @can(' مدفوعات بالدولار العائلات ')
+
+                                                    {{-- <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;"> --}}
+                                                    <a class=" btn btn-sm btn-info" href="/Family_usd/show/family/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+                                                <td>
+                                                @can(' مدفوعات بالتركي العائلات ')
+                                                    @if($x->tr_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Family_tr/show/family/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+                                                <td>
+                                                    @if($x->euro_statu != 0)
+                                                   @can(' مدفوعات باليورو العائلات ')
+                                                    <a class=" btn btn-sm btn-info" href="/Family_euro/show/family/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                   @endcan
+                                                </td>
+
+                                                <td>
+                                                    @if($x->bim_statu != 0)
+                                                @can(' مدفوعات بالكرت البيم العائلات ')
+                                                    <a class=" btn btn-sm btn-info" href="/Family_bim/show/family/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+                                                    {{-- wife and husband  --}}
+                                                    <td>
+                                                    @if($x->husband_wife_statu == 1)
+                                                @can(' قسم الزوج والزوجة العائلات ')
+                                                        <a class="btn btn-sm btn-info" href="/husband_Wife_family/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
+                                                    @endif
+                                                    </td>
+
+                                                    {{-- add children  --}}
+                                                    <td>
+                                                    @if($x->child_statu != 0)
+                                                @can(' قسم الأطفال العائلات ')
+                                                        <a class=" btn btn-sm btn-info" href="/children_family/show/child/family/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
+                                                    @endif
+                                                    </td>
+
+
+
+                                                    @if($x->residance_statu == 1)
+                                                    <td>
+                                                @can(' إضافة السكن العائلات ')
+                                                        <a class=" btn btn-sm btn-info" href="/address_family/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
+                                                    {{-- Stduent_Residance  --}}
+                                                    @endif
+                                                    </td>
+
+
+                                                     {{-- Student  --}}
+
+                                                    <td>
+                                                    @if($x->student_statu  !=  0)
+                                                @can('  طالب العائلات ')
+                                                        <a class=" btn btn-sm btn-info" href=" {{route('family.student.show', ['id'=> $x->id])}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
+                                                    @endif
+                                                    </td>
+
+
+                                                    {{--  Add_Patient_id  --}}
+                                                    <td>
+                                                    @if($x->patient_statu != 0)
+                                                @can('  مريض العائلات ')
+                                                        <a class=" btn btn-sm btn-info" href="/family/show/medical/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                @endcan
+                                                    @endif
+                                                    </td>
+
+
+
+
+
                                                     <td>
                                                         @can(' عرض حالة العائلات ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
@@ -119,6 +218,7 @@
                                                     </a>
                                                     @endcan
 
+                                                    @endif
                                                 @endforeach
                                                 </tr>
                                             </tbody>

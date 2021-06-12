@@ -22,11 +22,15 @@ class CreateUsdsTable extends Migration
             $table->foreign('medical_id')->references('id')->on('medicals');
 
             $table->id();
+            $table->integer('spent_value_usd')->nullable();
+            $table->string('user_name')->nullable();
+            $table->text('desc')->nullable();
+
             $table->integer('family_value_usd')->nullable();
             $table->integer('value_usd')->nullable();
             $table->integer('medical_value_usd')->nullable();
             $table->string('Note')->nullable();
-            
+
             $table->timestamps();
         });
     }

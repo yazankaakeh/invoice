@@ -22,6 +22,12 @@ $this->middleware('permission: اضافة القرأن الطلاب ', ['only' =
 $this->middleware('permission: تعديل قسم القرأن الطلاب ', ['only' => ['update']]);
 $this->middleware('permission:حذف قسم القرأن الطلاب ', ['only' => ['destroy']]);
 
+$this->middleware('permission:قرآن الطفل العائلة', ['only' => ['index_child']]);
+$this->middleware('permission:قرآن الطفل العائلة', ['only' => ['show_child']]);
+$this->middleware('permission:اضافة قرآن الطفل العائلة ', ['only' => ['store_child']]);
+$this->middleware('permission:تعديل قرآن الطفل العائلة', ['only' => ['update_child']]);
+$this->middleware('permission:حذف قرآن الطفل العائلة ', ['only' => ['destroy_child']]);
+
 }
     public function messages()
     {

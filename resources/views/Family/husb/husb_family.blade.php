@@ -76,7 +76,7 @@
                                             <tbody>
                                                 @foreach($husb as $x)
                                                 @if($x->family_id != null)
-                                                    
+
                                                 <tr>
                                                     <td>{{$x->family_id}}</td>
                                                     <td>{{$x->family->family_Constraint}}</td>
@@ -298,7 +298,7 @@
                                         مطلقة
                                     </option>
                                     </select>
-                                </div> 
+                                </div>
                                 <div class="form-group">
                                     <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
                                     <select class="form-control select2" name="medical_mom" id="medical_mom">
@@ -430,7 +430,7 @@
                                         مرض مزمن
                                     </option>
                                     </select>
-                                </div>                                
+                                </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للزوج</label>
                                 <input type="text" class="form-control" id="husb_academicel" name="husb_academicel" placeholder=" أكتب المستوى التعليمي ">

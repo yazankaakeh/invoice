@@ -22,6 +22,9 @@ class CreateEurosTable extends Migration
             $table->foreign('medical_id')->references('id')->on('medicals');
 
             $table->id();
+            $table->integer('spent_value_euro')->nullable();
+            $table->string('user_name')->nullable();
+            $table->string('desc')->nullable();
             $table->integer('value_euro')->nullable();
             $table->integer('family_value_euro')->nullable();
             $table->integer('medical_value_euro')->nullable();

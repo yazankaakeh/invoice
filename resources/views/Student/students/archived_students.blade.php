@@ -78,7 +78,22 @@
                                                     <th class="border-bottom-0">السنة الدراسية</th>
                                                     <th class="border-bottom-0"> المعدل الدراسي</th>
 
-                                                    <th class="border-bottom-0">تجديث الحالة</th>
+                                                    <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
+                                                    <th class="border-bottom-0">اضافة دفعة تركي</th>
+                                                    <th class="border-bottom-0">اضافة دفعة يورو</th>
+                                                    <th class="border-bottom-0">اضافة كروت بيم</th>
+                                                    <th class="border-bottom-0">اضافة زوج وزوجة</th>
+                                                    <th class="border-bottom-0">اضافة اب وام</th>
+                                                    <th class="border-bottom-0">اضافة اطفال</th>
+                                                    <th class="border-bottom-0">الحالة الطبية</th>
+                                                    <th class="border-bottom-0">السكن الطلابي</th>
+                                                    <th class="border-bottom-0">القرآن الكريم</th>
+                                                    <th class="border-bottom-0">العمل</th>
+                                                    <th class="border-bottom-0">المنحة الدراسية</th>
+                                                    <th class="border-bottom-0">الجامعة</th>
+                                                    <th class="border-bottom-0">الإخوة</th>
+                                                    <th class="border-bottom-0">تحديث الحالة</th>
+
 
                                                 </tr>
                                             </thead>
@@ -114,16 +129,141 @@
                                                     <td>{{$x->Current_rate}}</td>
 
 
+                                                <td>
+                                                @can(' مدفوعات بالدولار الطلاب ')
+                                                    @if($x->student->usd_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Student_usd/show/student/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+                                                <td>
+                                                @can(' مدفوعات بالتركي الطلاب ')
+                                                    @if($x->student->tr_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Student_tr/show/student/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+
+                                                <td>
+                                                @can(' مدفوعات باليورو الطلاب ')
+                                                    @if($x->student->euro_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Student_euro/show/student/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+                                                <td>
+                                                @can(' مدفوعات بالكرت البيم الطلاب ')
+                                                    @if($x->student->bim_statu != 0)
+                                                    <a class=" btn btn-sm btn-info" href="/Student_bim/show/student/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    @endif
+                                                @endcan
+                                                </td>
+
+                                                    {{-- wife and husband  --}}
                                                     <td>
+                                                    @if($x->student->husband_wife_statu == 1)
+                                                    @can(' قسم الزوج والزوجة الطلاب ')
+                                                        <a class="btn btn-sm btn-info" href="/husband_Wife/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
+                                                    @endif
+                                                    </td>
+
+                                                    {{-- father and mother  --}}
+                                                    <td>
+                                                    @if($x->student->father_mother_statu == 1)
+                                                    @can(' قسم الأب والأم الطلاب ')
+                                                        <a class="btn btn-sm btn-info" href="/father_and_mother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
+                                                    @endif
+                                                    </td>
+
+
+                                                    <td>
+                                                    {{-- add children  --}}
+                                                    @if($x->student->child_statu != 0)
+                                                    @can(' قسم الأطفال الطلاب ')
+                                                        <a class=" btn btn-sm btn-info" href="/children/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
+                                                    @endif
+                                                    </td>
+
+                                                    {{-- Medical_Status  --}}
+                                                    <td>
+                                                    @if($x->student->medical_statu == 1)
+                                                    @can(' اضافة الحالة الصحية الطلاب ')
+                                                        <a class=" btn btn-sm btn-info" href="/Medical_Statu/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
+                                                    @endif
+                                                    </td>
+
+                                                    <td>
+                                                    @if($x->student->residance_statu == 1)
+                                                    @can(' قسم سكن الطلاب ')
+                                                        <a class=" btn btn-sm btn-info" href="/Student_Residance/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
+                                                    @endif
+                                                    </td>
+
+                                                        {{-- Quran  --}}
+                                                    <td>
+                                                    @if($x->student->quran_statu == 1)
+                                                    @can(' قسم القرأن الطلاب ')
+                                                    <a class=" btn btn-sm btn-info" href="/Quran/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
+                                                    @endif
+                                                    </td>
+
+                                                    {{-- Job  --}}
+                                                    <td>
+                                                    @if($x->student->job_statu == 1)
+                                                    @can(' قسم العمل الطلاب ')
+                                                        <a class=" btn btn-sm btn-info" href="/job/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
+                                                    @endif
+                                                    </td>
+
+                                                    {{-- Scholarship  --}}
+                                                    <td>
+                                                    @if($x->student->scholarship_statu == 1)
+                                                    @can(' قسم المنح الدراسية الطلاب ')
+                                                        <a class=" btn btn-sm btn-info" href="/Scholarship/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
+                                                    @endif
+                                                    </td>
+
+                                                    {{-- University  --}}
+                                                    <td>
+                                                    @if($x->student->university_statu == 1)
+                                                    @can(' قسم الجامعة الطلاب ')
+                                                    <a class=" btn btn-sm btn-info" href="/University/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endcan
+                                                    @endif
+                                                    </td>
+
+                                                    {{-- Sister and Brother  --}}
+
+                                                    <td>
+                                                    @can(' قسم الأخوة الطلاب ')
+                                                    @if($x->student->sis_statu != 0)
+                                                    <a class="btn btn-sm btn-info" href="/Sister_and_Brother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endif
+                                                    @endcan
+                                                    </td>
+
+                                                      <td>
                                                         @can(' عرض حالةالطلاب ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                        data-student_name="{{$x->student->student_name}}"  data-student_id="{{$x->student->id}}"
+                                                        data-student_name="{{$x->student_name}}"  data-student_id="{{$x->id}}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModal160" title="تعديل الحالة">
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
-                                                     </a>
-                                                     @endcan
-                                                    </td>
+                                                    </a>
+                                                    @endcan
+                                                </td>
+
                                                 @endif
                                                 @endforeach
                                                 </tr>

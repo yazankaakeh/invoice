@@ -25,6 +25,7 @@ $this->middleware('permission:  مدرسة لطفل العائلات ', ['only' 
 $this->middleware('permission: إضافة مدرسة لطفل العائلات ', ['only' => ['store_family']]);
 $this->middleware('permission: تعديل مدرسة لطفل العائلات ', ['only' => ['update_family']]);
 $this->middleware('permission: حذف مدرسة لطفل العائلات ', ['only' => ['destroy_family']]);
+
 }
 
 ####################################### Student Start #############################

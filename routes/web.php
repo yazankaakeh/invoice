@@ -53,3 +53,7 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->middleware('auth');
+
+    Route::prefix('payment')->group(function () {
+    Route::post('/show', "Publics\TurkeyController@edit")->name('turkey.edit')->middleware('auth');
+});
