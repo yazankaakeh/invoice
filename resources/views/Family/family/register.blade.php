@@ -99,6 +99,10 @@ body{
                                                     القنيطرة</option>
                                                 </select>
                                             </div>
+                                            <div class="col-sm-12">
+                                                <label for="exampleInputEmail">من اي مدينة؟</label>
+                                                <input type="text" class="form-control" id="district" name="district" placeholder=" أكتب أسم المدينة ">
+                                            </div>
                                              <div  class="col-sm-12">
                                                  <label class="form-control-label"> عدد أفراد العائلة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_number_member" name="family_number_member" placeholder="أكتب عدد أفراد العائلة " required="" type="text">
                                              </div>

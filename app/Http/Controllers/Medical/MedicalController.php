@@ -174,7 +174,7 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
             'gender' => 'required',
             'medical_have_id' => 'required',
             'medical_id_extr' => 'required',
-            'medical_number' => 'required|numeric|unique:medicals,medical_number,$id',
+            'medical_number' => 'required|numeric',
             'note' => 'required'
          ],$messages);
          //create new object of the model student and make mapping to the data

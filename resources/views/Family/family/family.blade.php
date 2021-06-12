@@ -74,6 +74,7 @@
                                                     <th class="border-bottom-0">الحالة</th>
                                                     <th class="border-bottom-0">الجنس</th>
                                                     <th class="border-bottom-0">المدينة</th>
+                                                    <th class="border-bottom-0">الحي</th>
                                                     <th class="border-bottom-0">عدد أفراد</th>
                                                     <th class="border-bottom-0"> اسم المعيل</th>
                                                     <th class="border-bottom-0">عمل المعيل</th>
@@ -122,6 +123,7 @@
                                                     </td>
                                                     <td>{{$x->gender}}</td>
                                                     <td>{{$x->city}}</td>
+                                                    <td>{{$x->district}}</td>
                                                     <td>{{$x->family_number_member}}</td>
                                                     <td>{{$x->family_breadwinner}}</td>
                                                     <td>{{$x->work_breadwinner}}</td>
@@ -256,6 +258,7 @@
                                                             data-academicel="{{$x->academicel}}"
                                                             data-work="{{$x->work}}"
                                                             data-gender="{{$x->gender}}"
+                                                            data-district="{{$x->district}}"
                                                             data-city="{{$x->city}}"
                                                             data-sec_phone="{{$x->sec_phone}}"
                                                             data-work_an_breadwinner="{{$x->work_an_breadwinner}}"
@@ -1938,6 +1941,10 @@
                                                     القنيطرة</option>
                                                 </select>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail">من اي مدينة؟</label>
+                                                <input type="text" class="form-control" id="district" name="district" placeholder=" أكتب أسم المدينة ">
+                                            </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">  عدد أفراد العائلة</label>
                                         <input type="number" class="form-control" id="family_number_member" name="family_number_member" placeholder="أكتب  عدد أفراد العائلة  ">
@@ -2169,6 +2176,10 @@
                                                 <option value="	القنيطرة">
                                                     القنيطرة</option>
                                                 </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail">من اي مدينة؟</label>
+                                                <input type="text" class="form-control" id="district" name="district" placeholder=" أكتب أسم المدينة ">
                                             </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> اسم المعيل الأول </label>

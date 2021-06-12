@@ -61,6 +61,7 @@
                                                     <th class="border-bottom-0">اسم الطالب</th>
                                                     <th class="border-bottom-0">الجنس</th>
                                                     <th class="border-bottom-0">المدينة</th>
+                                                    <th class="border-bottom-0">الحي</th>
                                                     <th class="border-bottom-0">عدد أفراد</th>
                                                     <th class="border-bottom-0"> اسم المعيل</th>
                                                     <th class="border-bottom-0">عمل المعيل</th>
@@ -91,7 +92,7 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($family as $x)
-                                                @if ($x->new_statu == 4)
+                                                @if ($x->new_statu = 4)
                                                 <tr>
                                                 {{--  @dd($family)  --}}
                                                     <td>{{$x->id}}</td>
@@ -103,6 +104,7 @@
                                                     </td>
                                                     <td>{{$x->gender}}</td>
                                                     <td>{{$x->city}}</td>
+                                                    <td>{{$x->district}}</td>
                                                     <td>{{$x->family_number_member}}</td>
                                                     <td>{{$x->family_breadwinner}}</td>
                                                     <td>{{$x->work_breadwinner}}</td>
@@ -174,8 +176,8 @@
 
 
 
-                                                    @if($x->residance_statu == 1)
                                                     <td>
+                                                    @if($x->residance_statu == 1)
                                                 @can(' إضافة السكن العائلات ')
                                                         <a class=" btn btn-sm btn-info" href="/address_family/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                 @endcan
@@ -217,6 +219,7 @@
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
                                                     </a>
                                                     @endcan
+                                                    </td>
 
                                                     @endif
                                                 @endforeach

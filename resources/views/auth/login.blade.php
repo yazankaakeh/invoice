@@ -4,9 +4,10 @@
 تسجيل الدخول -  للادارة البيانات
 @stop
 
-@section('jss')
-{!! NoCaptcha::renderJs() !!}
+@section('recaptha')
+{!! RecaptchaV3::initJs() !!}
 @endsection
+
 @section('css')
 <!-- Sidemenu-respoansive-tabs css -->
 <link href="{{URL::asset('assets/plugins/sidemenu-responsive-tabs/css/sidemenu-responsive-tabs.css')}}" rel="stylesheet">
@@ -42,9 +43,7 @@
 
 												 <div class="form-group">
 											 	 <label>كلمة المرور</label>
-
                                                   <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
                                                   @error('password')
                                                   <span class="invalid-feedback" role="alert">
                                                   <strong>{{ $message }}</strong>
@@ -52,20 +51,19 @@
 												  @enderror
                                                   <div class="form-group row">
                                                       <div class="col-md-6 offset-md-4">
-													  {!! NoCaptcha::display() !!}
+                                                   {!! RecaptchaV3::field('login') !!}
+
                                                            <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <label class="form-check-label" for="remember">
                                                                        {{ __('تذكرني') }}
                                                                 </label>
-																													  {!! NoCaptcha::display() !!}
-
                                                            </div>
                                                        </div>
                                                    </div>
 												  </div>
-                                                    <button type="submit" class="btn btn-main-primary btn-block">
+                                                    <button type="submit" value="login" class="btn btn-main-primary btn-block">
                                                     {{ __('تسجيل الدخول') }}
                                                     </button>
 												</form>

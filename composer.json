@@ -15,6 +15,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "fx3costa/laravelchartjs": "^2.8",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
+        "josiasmontag/laravel-recaptchav3": "^0.6.0",
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "laravel/ui": "2.4",

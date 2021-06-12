@@ -30,6 +30,7 @@ class CreateFamiliesTable extends Migration
             $table->string('work_an_breadwinner')->nullable();// المعيل الثاني
             $table->string('family_monthly_salary')->nullable();// الراتب الشهري من العمل
             $table->string('aid_value')->nullable();// هل يوجد مساعدات
+            $table->string('district')->nullable();// هل يوجد مساعدات
             $table->string('phone')->nullable();// هل يوجد مساعدات
             $table->string('sec_phone')->nullable();// هل يوجد مساعدات
             $table->string('family_has_aid')->nullable();// هل يوجد مساعدات

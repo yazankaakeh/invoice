@@ -61,6 +61,7 @@
                                                     <th class="border-bottom-0">الحالة</th>
                                                     <th class="border-bottom-0">الجنس</th>
                                                     <th class="border-bottom-0">المدينة</th>
+                                                    <th class="border-bottom-0">الحي</th>
                                                     <th class="border-bottom-0">عدد أفراد</th>
                                                     <th class="border-bottom-0"> اسم المعيل</th>
                                                     <th class="border-bottom-0">عمل المعيل</th>
@@ -94,6 +95,7 @@
                                                     </td>
                                                     <td>{{$x->gender}}</td>
                                                     <td>{{$x->city}}</td>
+                                                    <td>{{$x->district}}</td>
                                                     <td>{{$x->family_number_member}}</td>
                                                     <td>{{$x->family_breadwinner}}</td>
                                                     <td>{{$x->work_breadwinner}}</td>
