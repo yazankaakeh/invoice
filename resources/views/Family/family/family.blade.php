@@ -1947,7 +1947,7 @@
                                             </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">  عدد أفراد العائلة</label>
-                                        <input type="number" class="form-control" id="family_number_member" name="family_number_member" placeholder="أكتب  عدد أفراد العائلة  ">
+                                        <input type="number" class="form-control" id="family_number_member" name="family_number_member" placeholder="أكتب  عدد أفراد العائلة  " >
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> اسم المعيل الأول</label>
