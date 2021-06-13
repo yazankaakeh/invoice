@@ -55,6 +55,7 @@
                                                     <th class="border-bottom-0">نوع العمل السابق</th>
                                                     <th class="border-bottom-0">الراتب السابق</th>
                                                     <th class="border-bottom-0">تاريخ التعديل</th>
+                                                    <th class="border-bottom-0"> ملاحظة</th>
                                                     <th class="border-bottom-0">عمليات</th>
                                                 </tr>
                                             </thead>
@@ -73,6 +74,7 @@
                                                     <td>{{$x->job_last_have}}</td>
                                                     <td>{{$x->job_last_type}}</td>
                                                     <td>{{$x->job_last_salary}}</td>
+                                                    <td>{{$x->note}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                     @can(' تعديل قسم العمل الطبي ')
@@ -86,6 +88,7 @@
                                                                 data-job_last_salary="{{$x->job_last_salary}}"
                                                                 data-work="{{$x->work}}" data-medical_name="{{$x->medical->medical_name}}"
                                                                 data-medical_id="{{$x->medical_id}}"
+                                                                data-note="{{$x->note}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
@@ -235,6 +238,10 @@
                                 <label for="exampleInputEmail">كم راتبك السابق بعملك السابق؟</label>
                                 <input type="text" class="form-control" id="job_last_salary" name="job_last_salary" placeholder="   كم ماهو الراتبك بالعمل السابق">
                                 </div>
+                                <div class="form-group">
+                                 <label for="exampleInputEmail">ملاحظة</label>
+                                <input type="text" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد "required>
+                                </div>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">تاكيد</button>
@@ -289,6 +296,7 @@
         var job_last_have = button.data('job_last_have')
         var job_last_type = button.data('job_last_type')
         var job_last_salary = button.data('job_last_salary')
+        var note = button.data('note')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #job_have').val(job_have);
@@ -298,6 +306,7 @@
         modal.find('.modal-body #job_monthly_salary').val(job_monthly_salary);
         modal.find('.modal-body #job_last_have').val(job_last_have);
         modal.find('.modal-body #job_last_type').val(job_last_type);
+        modal.find('.modal-body #note').val(note);
         modal.find('.modal-body #job_last_salary').val(job_last_salary);
     })
 </script>

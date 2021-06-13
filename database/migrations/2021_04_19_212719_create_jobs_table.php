@@ -41,6 +41,7 @@ class CreateJobsTable extends Migration
             $table->string('job_last_have')->nullable();// هل لديك عمل سابق
             $table->string('job_last_type')->nullable();// نوع العمل السابق
             $table->string('job_last_salary')->nullable();// الراتب السابق للعمل
+            $table->string('note')->nullable();// الراتب السابق للعمل
 ########################## job info End ##############################
             $table->timestamps();
         });

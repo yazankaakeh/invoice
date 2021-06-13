@@ -48,9 +48,9 @@
                                                     <th class="border-bottom-0">اسم المريض</th>
                                                     <th class="border-bottom-0">رقم </th>
                                                     <th class="border-bottom-0">اسم المحافظة</th>
-                                                    <th class="border-bottom-0">الحي</th>
+                                                    <th class="border-bottom-0">اسم الحي او المدينة</th>
                                                     <th class="border-bottom-0">الموقع كما في الفاتورة</th>
-                                                    <th class="border-bottom-0">الموقع السابق</th>
+                                                    <th class="border-bottom-0">عنوان السكن السابق في سوريا </th>
                                                     <th class="border-bottom-0">تاريخ التعديل</th>
                                                     <th class="border-bottom-0">العمليات</th>
                                                 </tr>

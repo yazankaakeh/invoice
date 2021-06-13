@@ -320,6 +320,7 @@ return $messages_Medical = [
     'job_last_have.required'  => 'لم يتم ادخال  العمل السابق   !!',
     'job_last_type.required'  => 'لم يتم ادخال نوع العمل السابق   !!',
     'job_last_salary.required'  => 'لم يتم ادخال  الراتب السابق    !!',
+    'note.required'  => 'لم يتم كتابة ملاحظة !!',
 
 
 ];
@@ -336,7 +337,8 @@ return $messages_Medical = [
             'job_monthly_salary' => 'required',
             'job_last_have' => 'required',
             'job_last_type' => 'required',
-            'job_last_salary' => 'required'
+            'job_last_salary' => 'required',
+            'note' => 'required',
         ],$messages);
         //create new object of the model student and make mapping to the data
          $Medicals =  Medical::find($request->medical_id);
@@ -352,6 +354,7 @@ return $messages_Medical = [
          $jobs -> job_last_have = $request->job_last_have;
          $jobs -> job_last_type = $request->job_last_type;
          $jobs -> job_last_salary = $request->job_last_salary;
+         $jobs -> note = $request->note;
          //write to the data base
          $Medicals->save();
          $jobs ->save();
@@ -398,6 +401,7 @@ return $messages_Medical = [
         'job_last_have.required'  => 'لم يتم ادخال  العمل السابق   !!',
         'job_last_type.required'  => 'لم يتم ادخال نوع العمل السابق   !!',
         'job_last_salary.required'  => 'لم يتم ادخال  الراتب السابق    !!',
+        'note.required'  => 'لم يتم كتابة ملاحظة !!',
 
 
     ];
@@ -414,7 +418,9 @@ return $messages_Medical = [
             'job_monthly_salary' => 'required',
             'job_last_have' => 'required',
             'job_last_type' => 'required',
-            'job_last_salary' => 'required'
+            'job_last_salary' => 'required',
+            'note' => 'required',
+
         ],$messages);
         //create new object of the model student and make mapping to the data
          $medicals =  Medical::find($request->medical_id);
@@ -428,6 +434,8 @@ return $messages_Medical = [
          $jobs -> job_last_have = $request->job_last_have;
          $jobs -> job_last_type = $request->job_last_type;
          $jobs -> job_last_salary = $request->job_last_salary;
+         $jobs -> note = $request->note;
+
          //write to the data base
          $jobs ->save();
          session()->flash('Edit',  'تم تعديل خبرات العمل للعائلة  '. $medical_Constraint .' بنجاح ');

@@ -66,6 +66,7 @@ function __construct()
         'childre_age.required' => 'لم يتم ادخال العمر   !!',
         'childre_gender.required' => 'لم يتم ادخال الجنس   !!',
         'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
+        'identity.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
         'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
@@ -85,6 +86,7 @@ function __construct()
             'childre_gender' => 'required',
             'childre_educa_leve' => 'required',
             'childre_class_number' => 'required',
+            'identity' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
          ],$messages);
@@ -102,6 +104,7 @@ function __construct()
          $Childrens -> childre_age = $request->childre_age;
          $Childrens -> childre_gender = $request->childre_gender;
          $Childrens -> childre_educa_leve = $request->childre_educa_leve;
+         $Childrens -> identity = $request->identity;
          $Childrens -> childre_class_number = $request->childre_class_number;
          $Childrens -> childre_id_extr = $request->childre_id_extr;
          $Childrens -> childre_live_with = $request->childre_live_with;
@@ -123,6 +126,7 @@ function __construct()
         'childre_gender.required' => 'لم يتم ادخال الجنس   !!',
         'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
         'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
+        'identity.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
 
@@ -140,6 +144,7 @@ function __construct()
             'childre_gender' => 'required',
             'childre_educa_leve' => 'required',
             'childre_class_number' => 'required',
+            'identity' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
         ],$messages);
@@ -153,6 +158,7 @@ function __construct()
          $Childrens -> childre_gender = $request->childre_gender;
          $Childrens -> childre_educa_leve = $request->childre_educa_leve;
          $Childrens -> childre_class_number = $request->childre_class_number;
+         $Childrens -> identity = $request->identity;
          $Childrens -> childre_id_extr = $request->childre_id_extr;
          $Childrens -> childre_live_with = $request->childre_live_with;
          //write to the data base
@@ -208,6 +214,7 @@ function __construct()
         'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
         'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
         'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
+        'identity.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'medical_stat.required'  => 'لم يتم ادخال  الحالة الصحية  !!',
         'status.required'  => 'لم يتم ادخال  الحالة الأجتماعية  !!',
         'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
@@ -226,6 +233,7 @@ function __construct()
             'childre_educa_leve' => 'required',
             'childre_class_number' => 'required',
             'medical_stat' => 'required',
+            'identity' => 'required',
             'status' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
@@ -246,6 +254,7 @@ function __construct()
          $Childrens -> childre_class_number = $request->childre_class_number;
          $Childrens -> medical_stat = $request->medical_stat;
          $Childrens -> childre_id_extr = $request->childre_id_extr;
+         $Childrens -> identity = $request->identity;
          $Childrens -> childre_live_with = $request->childre_live_with;
          //write to the data base
          $familys->save();
@@ -265,6 +274,7 @@ function __construct()
         'childre_gender.required' => 'لم يتم ادخال الجنس   !!',
         'childre_educa_leve.required'  => 'لم يتم ادخال المرحلة الدراسية    !!',
         'childre_class_number.required'  => 'لم يتم ادخال  رقم الصف الدراسي   !!',
+        'identity.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'status.required'  => 'لم يتم ادخال  الحالة الأجتماعية  !!',
         'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
@@ -284,6 +294,7 @@ function __construct()
             'medical_stat' => 'required',
             'childre_educa_leve' => 'required',
             'status' => 'required',
+            'identity' => 'required',
             'childre_class_number' => 'required',
             'childre_id_extr' => 'required',
             'childre_live_with' => 'required'
@@ -301,6 +312,7 @@ function __construct()
          $Childrens -> childre_gender = $request->childre_gender;
          $Childrens -> childre_educa_leve = $request->childre_educa_leve;
          $Childrens -> childre_class_number = $request->childre_class_number;
+         $Childrens -> identity = $request->identity;
          $Childrens -> childre_id_extr = $request->childre_id_extr;
          $Childrens -> childre_live_with = $request->childre_live_with;
          //write to the data base

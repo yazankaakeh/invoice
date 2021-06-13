@@ -33,27 +33,28 @@ body{
 				<div class="container" >
 				<!-- row -->
 				<div class="row" style="padding-top:75; " >
-					<div class="col-lg-5 col-lg-5">
+					<div class="col-lg-5">
 						<div class="card">
 							<div class="card-body">
                                 <form action="{{ route('medical.register') }}" method="POST">
 								<div id="">
-									<h3> المعلومات الشخصية.</h3>
+									<h3> تسجيل الطبي.</h3>
 									<section>
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
-										<p class="mg-b-20">المعلومات الشخصية حول المريض !</p>
-										<div class="card card-body pd-20 pd-md-40 border shadow-none">
-											<div class="col-sm-12 col-sm-12">
+                                <p class="mg-b-20">يرجى إدخال المعلومات الشخصية الخاصة بك !</p>
+                                    <div class="border shadow-none card card-body pd-20 pd-md-40">
+                                            <h3> المعلومات الشخصية.</h3>
+											<div class="col-sm-12">
 												<label class="form-control-label">اسم المريض: <span class="tx-danger">*</span></label>
-                                                <input class="form-control" value="" id="medical_name" name="medical_name" placeholder="أكتب أسم المريض بالكامل" required="" type="text">
+                                                <input class="form-control" value="" id="medical_name" name="medical_name" placeholder="أكتب أسم المريض بالكامل" required="" type="text"required>
                                                 <input class="form-control" value="register"  name="register" type="hidden">
 											</div>
-                                            <div class="col-sm-12 col-sm-12">
-												<label class="form-control-label">عمر المريض: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_age" name="medical_age" placeholder="أكتب عمر المريض بأرقام" required="" type="text">
+                                            <div class="col-sm-12">
+												<label class="form-control-label">عمر المريض: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_age" name="medical_age" placeholder="أكتب عمر المريض بأرقام" required="" type="text"required>
 											</div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="form-control-label">  الجنس: <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender">
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                                <p class="form-control-label">  الجنس: <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender"required>
                                                 <option label="test">
                                                     حدد من فضلك </option>
                                                 <option value="ذكر" >
@@ -64,8 +65,8 @@ body{
                                               </option>
                                             </select>
 											</div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="form-control-label">  هل يوجد كملك: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_have_id" id="medical_have_id">
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                                <p class="form-control-label">  هل يوجد كملك: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_have_id" id="medical_have_id"required>
                                                 <option label="test">
                                                     حدد من فضلك </option>
                                                 <option value="يوجد" >
@@ -76,10 +77,11 @@ body{
                                               </option>
                                             </select>
 											</div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="form-control-label"> الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_id_extr" id="medical_id_extr">
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                                <p class="form-control-label"> الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_id_extr" id="medical_id_extr"required>
                                                     <option label="test">
-                                                        حدد من فضلك  اسم ولاية </option>
+                                                        حدد من فضلك
+                                                      </option>
                                                     <option value="لايوجد كملك" >
                                                      لايوجد كملك
                                                     <option value="أضنة">
@@ -246,14 +248,17 @@ body{
                                                         دوزجه</option>
                                                 </select>
                                             </div>
-											<div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
+											<div class="col-sm-12 mg-t-20 mg-md-t-0">
 												<label class="form-control-label"> رقم هاتف المريض : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف بدءً من 05  " required="" type="text">
 											</div>
                                             {{-- medical_Statu --}}
-                                             <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
+                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
                                                 <p class="mg-b-10">نوع الرض</p>
                                                 <select class="form-control select2" name="disease_type" id="disease_type">
-                                                <option value="اصابة حرب" >
+                                                    <option label="test">
+                                                        حدد من فضلك
+                                                      </option>
+                                                    <option value="اصابة حرب" >
                                                     اصابة حرب
                                                 </option>
                                                 <option value="وباء" >
@@ -264,14 +269,17 @@ body{
                                                 </option>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
                                             <label for="exampleInputEmail">اسم المرض</label>
-                                            <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض">
+                                            <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض"required>
                                             </div>
-                                             <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
+                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
                                                 <p class="mg-b-10">تقييم الحالة المرضية</p>
-                                                <select class="form-control select2" name="medical_rate" id="medical_rate">
-                                                <option value="خطرة جدا" >
+                                                <select class="form-control select2" name="medical_rate" id="medical_rate"required>
+                                                  <option label="test">
+                                                    حدد من فضلك
+                                                  </option>
+                                                 <option value="خطرة جدا" >
                                                 خطرة جدا
                                                 </option>
                                                 <option value="خطرة" >
@@ -285,36 +293,36 @@ body{
                                                 </option>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-                                            <label for="exampleInputEmail">اسم الدكتور</label>
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                            <label class="exampleInputEmail">اسم الدكتور</label>
                                             <input type="text" class="form-control" id="dr_name" name="dr_name" placeholder=" أكتب أسم الطبيب">
                                             </div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-                                            <label for="exampleInputEmail">تكلفة العلاج</label>
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                            <label class="exampleInputEmail">تكلفة العلاج</label>
                                             <input type="text" class="form-control" id="treat_cost" name="treat_cost" placeholder="أكتب تكلفة العلاج ">
                                             </div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-                                            <label for="exampleInputEmail">نوع العلاج</label>
-                                            <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج ">
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                            <label class="exampleInputEmail">نوع العلاج</label>
+                                            <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج "required>
                                             </div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-                                            <label for="exampleInputEmail">مدة العلاج</label>
-                                            <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج">
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                            <label class="exampleInputEmail">مدة العلاج</label>
+                                            <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج"required>
                                             </div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-                                            <label for="exampleInputEmail">تاريخ بدء العلاج</label>
-                                            <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج">
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                            <label class="exampleInputEmail">تاريخ بدء العلاج</label>
+                                            <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج"required>
                                             </div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-                                            <label for="exampleInputEmail">تاريخ الانتهاء من العلاج</label>
-                                            <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج">
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                            <label class="exampleInputEmail">تاريخ الانتهاء من العلاج</label>
+                                            <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج"required>
                                             </div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-                                            <label for="exampleInputEmail">هل تم تحويلك لطبيب آخر؟ مع ذكر الأسم إن وجد</label>
-                                            <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر أسم الطبيب ان وجد">
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                            <label class="exampleInputEmail">هل تم تحويلك لطبيب آخر؟ مع ذكر الأسم إن وجد</label>
+                                            <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر أسم الطبيب ان وجد"required>
                                             </div>
-                                            <div class="col-sm-12 col-sm-12 mg-t-20 mg-md-t-0">
-												<label class="form-control-label"> يرجى كتابة أي ملاحظة في حال وجدة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="إكتب الملاحظات إن وجد " required="" type="text">
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+												<label class="form-control-label"> يرجى كتابة أي ملاحظة في حال وجدة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="إكتب الملاحظات إن وجد " required="" type="text"required>
 											</div>
                                             @if (session()->has('Add'))
                                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -433,7 +441,7 @@ body{
 <script src="{{URL::asset('assets/js/form-wizard.js')}}"></script>
 @else
 		<!-- Main-error-wrapper -->
-		<div class="main-error-wrapper  page page-h ">
+		<div class="main-error-wrapper page page-h ">
 
 			<h2 style="font-size: 75px;">لقد تم إيقاف الرابط بشكل مؤقت</h2>
 			<h2> يرجى المحاولة لاحقا وشكرا</h6>

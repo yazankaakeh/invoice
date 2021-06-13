@@ -735,7 +735,7 @@
                                 <input type="hidden" name="medical_id" id="medical_id" readonly>
                                     <div class="form-group">
                                     <p class="mg-b-10">هل تعمل؟</p>
-                                    <select class="form-control select2" name="job_have" id="job_have">
+                                    <select class="form-control select2" name="job_have" id="job_have"required>
                                     <option value="نعم" >
                                         نعم
                                     </option>
@@ -746,19 +746,19 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ماهو عملك ؟ </label>
-                                <input type="text" class="form-control" id="job_type" name="job_type" placeholder="   أكنب ماهو العملك ">
+                                <input type="text" class="form-control" id="job_type" name="job_type" placeholder="   أكنب ماهو العملك "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">مكان العمل؟</label>
-                                <input type="text" class="form-control" id="job_place" name="job_place" placeholder="   أكنب ماهو العملك ">
+                                <input type="text" class="form-control" id="job_place" name="job_place" placeholder="   أكنب ماهو العملك "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري؟</label>
-                                <input type="number" class="form-control" id="job_monthly_salary" name="job_monthly_salary" placeholder="   أكنب ماهو العملك ">
+                                <input type="number" class="form-control" id="job_monthly_salary" name="job_monthly_salary" placeholder="   أكنب ماهو العملك "required>
                                 </div>
                                 <div class="form-group">
                                    <p class="mg-b-10">هل لديك عمل سابق؟</p>
-                                   <select class="form-control select2" name="job_last_have" id="job_last_have" >
+                                   <select class="form-control select2" name="job_last_have" id="job_last_have"required >
                                     <option label="test">
                                             </option>
                                     <option value="نعم" >
@@ -771,12 +771,16 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">نوع عملك السابق؟</label>
-                                <input type="text" class="form-control" id="job_last_type" name="job_last_type" placeholder="   أكنب ماهو العملك السابق ">
+                                <input type="text" class="form-control" id="job_last_type" name="job_last_type" placeholder="   أكنب ماهو العملك السابق "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم راتبك السابق بعملك السابق؟</label>
-                                <input type="number" class="form-control" id="job_last_salary" name="job_last_salary" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                <input type="number" class="form-control" id="job_last_salary" name="job_last_salary" placeholder="   كم ماهو الراتبك بالعمل السابق"required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail">ملاحظة</label>
+                                    <input type="text" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد "required>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">تاكيد</button>
@@ -812,7 +816,7 @@
                                 </div>
                                  <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
-                                    <select class="form-control select2" name="disease_type" id="disease_type">
+                                    <select class="form-control select2" name="disease_type" id="disease_type"required>
                                         <option label="test">
 											  </option>
                                         <option value="لايوجد" >
@@ -831,36 +835,40 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم المرض</label>
-                                <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب اسم المرض">
+                                <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب اسم المرض"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الدكتور</label>
-                                <input type="text" class="form-control" id="dr_name" name="dr_name" placeholder=" أكتب اسم الطبيب">
+                                <input type="text" class="form-control" id="dr_name" name="dr_name" placeholder=" أكتب اسم الطبيب"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">تكلفة العلاج</label>
-                                <input type="text" class="form-control" id="treat_cost" name="treat_cost" placeholder="أكتب تكلفة العلاج ">
+                                <input type="text" class="form-control" id="treat_cost" name="treat_cost" placeholder="أكتب تكلفة العلاج "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">نوع العلاج</label>
-                                <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج ">
+                                <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج "required>
                                 </div>
                                <div class="form-group">
                                 <label for="exampleInputEmail">مدة العلاج</label>
-                                <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج">
+                                <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ بدء العلاج</label>
-                                <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج">
+                                <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ الانتهاء من العلاج</label>
-                                <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج">
+                                <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">هل تم تحويلك لطبيب آخر؟ مع ذكر الاسم إن وجد</label>
-                                <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر اسم الطبيب ان وجد">
+                                <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر اسم الطبيب ان وجد"required>
                                 </div>
+                                <div class="form-group">
+                                 <label for="exampleInputEmail">ملاحظة</label>
+                                 <Input type="text" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد"required>
+                                 </div>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">تاكيد</button>
@@ -894,7 +902,7 @@
                                 <div class="form-group">
                                 <input type="hidden" name="medical_id" id="medical_id"  readonly>
                                 <label for="exampleInputEmail">اسم المحافظة</label>
-                                <select type="text" class="form-control" id="address_country" name="address_country" placeholder="">
+                                <select type="text" class="form-control" id="address_country" name="address_country" placeholder=""required>
                                 <option label="test">
                                          </option>
                                 <option value="لايوجد كملك" >
@@ -1065,17 +1073,17 @@
                         </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم منطقة</label>
-                                <input type="text" class="form-control" id="address_city" name="address_city" placeholder=" أكتب اسم منطقة ">
+                                <input type="text" class="form-control" id="address_city" name="address_city" placeholder=" أكتب اسم منطقة "required>
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">العنوان كما في الفاتورة</label>
-                                <input type="text" class="form-control" id="address_like_bill" name="address_like_bill" placeholder=" أكتب العنان كما في الفاتورة  ">
+                                <input type="text" class="form-control" id="address_like_bill" name="address_like_bill" placeholder=" أكتب عنوان كما في الفاتورة  "required>
                                 </div>
 
                                  <div class="form-group">
-                                <label for="exampleInputEmail">العنوان السابق</label>
-                                <input type="text" class="form-control" id="address_last" name="address_last" placeholder=" أكتب االعنوان السابق">
+                                <label for="exampleInputEmail">عنوان السكن السابق في سوريا</label>
+                                <input type="text" class="form-control" id="address_last" name="address_last" placeholder=" أكتب عنوان السكن السابق في سوريا"required>
                                 </div>
 
                                 </div>
@@ -1111,15 +1119,15 @@
                                 <div class="form-group">
                                 <input type="hidden" name="medical_id" id="medical_id" readonly>
                                 <label for="exampleInputEmail">اسم الطفل</label>
-                                <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب اسم الطفل ">
+                                <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب اسم الطفل "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمر</label>
-                                <input type="number" class="form-control" id="childre_age" name="childre_age" placeholder=" أكتب  العمر بالرقم ">
+                                <input type="number" class="form-control" id="childre_age" name="childre_age" placeholder=" أكتب  العمر بالرقم "required>
                                 </div>
                                 <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">الجنس</p>
-                                    <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" ">
+                                    <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" "required>
                                         <option label="test">
 											     </option>
                                         <option value="ذكر" >
@@ -1132,7 +1140,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المرحلة الدراسية</label>
-                                <select type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" placeholder=" ">
+                                <select type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" placeholder=" "required>
                                     <option label="test">
                                              </option>
                                     <option value=" الأمِّيِّ">
@@ -1153,17 +1161,17 @@
                                     جامعي </option>
                                 <option value="مايجستير">
                                     مايجستير </option>
-                                 <option value="ديكتورا">
-                                    ديكتورا </option>
+                                 <option value="دوكتورا">
+                                    دوكتورا </option>
                                 </select>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail"> رقم الصف الدراسي </label>
-                                <input type="text" class="form-control" id="childre_class_number" name="childre_class_number" placeholder="  أكتب رقم الصف الدراسي ">
+                                <input type="text" class="form-control" id="childre_class_number" name="childre_class_number" placeholder="  أكتب رقم الصف الدراسي "required>
                                 </div>
                                 <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">الهوية الشخصية من اي ولاية</p>
-                                    <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك ">
+                                    <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك "required>
                                         <option label="test">
 											     </option>
                                         <option value="لايوجد كملك" >
@@ -1334,7 +1342,7 @@
                                 </div>
                                  <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">هل يعيشون معكم</p>
-                                    <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم ">
+                                    <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم "required>
                                    <option label="test">
 											أختر نعم او لا  </option>
                                         <option value="لا" >
@@ -1527,8 +1535,8 @@
                                     جامعي </option>
                                 <option value="مايجستير">
                                     مايجستير </option>
-                                 <option value="ديكتورا">
-                                    ديكتورا </option>
+                                 <option value="دوكتورا">
+                                    دوكتورا </option>
                                 </select>
                                 </div>
 
@@ -1591,17 +1599,17 @@
                                 <input type="HIDDEN" name="medical_id" id="medical_id"  readonly>
 
                                 <label for="exampleInputEmail">اسم الأم</label>
-                                <input type="text" class="form-control" id="mother_name" name="mother_name" placeholder=" أكتب اسم الأم  ">
+                                <input type="text" class="form-control" id="mother_name" name="mother_name" placeholder=" أكتب اسم الأم  "required>
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ ميلاد الأم</label>
-                                <input type="date" class="form-control" id="mother_birth" name="mother_birth" placeholder=" أكتب تاريخ الميلاد ">
+                                <input type="date" class="form-control" id="mother_birth" name="mother_birth" placeholder=" أكتب تاريخ الميلاد "required>
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <select class="form-control" id="mother_origin" name="mother_origin" placeholder=" أكتب اسم المحافظة ">
+                                <select class="form-control" id="mother_origin" name="mother_origin" placeholder=" أكتب اسم المحافظة "required>
                                     <option label="test">
                                             </option>
                                     <option value="	دمشق">
@@ -1637,7 +1645,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="mother_origin_city" name="mother_origin_city" placeholder=" أكتب اسم المدينة">
+                                    <input type="text" class="form-control" id="mother_origin_city" name="mother_origin_city" placeholder=" أكتب اسم المدينة"required>
                                 </div>
                                 <div class="form-group">
                                     <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
@@ -1660,7 +1668,7 @@
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للأم</label>
-                                <select class="form-control" id="mother_academicel" name="mother_academicel" placeholder=" أكتب المستوى النعليمي ">
+                                <select class="form-control" id="mother_academicel" name="mother_academicel" placeholder=" أكتب المستوى النعليمي "required>
                                   <option label="test">
 											     </option>
                                     <option value=" الأمِّيِّ">
@@ -1681,17 +1689,17 @@
                                     جامعي </option>
                                 <option value="مايجستير">
                                     مايجستير </option>
-                                 <option value="ديكتورا">
-                                    ديكتورا </option>
+                                 <option value="دوكتورا">
+                                    دوكتورا </option>
                                 </select>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اختصاص دراسة الأم</label>
-                                <input type="text" class="form-control" id="mother_special" name="mother_special" placeholder=" أكتب اسم الأختصاص">
+                                <input type="text" class="form-control" id="mother_special" name="mother_special" placeholder=" أكتب اسم الأختصاص"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">هل تعمل الأم</label>
-                                <select class="form-control select2" name="mother_is_work" id="mother_is_work" placeholder="هل الأم تعمل ام لا تعمل">
+                                <select class="form-control select2" name="mother_is_work" id="mother_is_work" placeholder="هل الأم تعمل ام لا تعمل"required>
                                     <option label="test">
                                           </option>
                                     <option value="تعمل" >
@@ -1704,26 +1712,26 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمل الحالي للأم</label>
-                                <input type="text" class="form-control" id="mother_now_work" name="mother_now_work" placeholder=" أكتب العمل الحالي للأم">
+                                <input type="text" class="form-control" id="mother_now_work" name="mother_now_work" placeholder=" أكتب العمل الحالي للأم"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأم</label>
-                                <input type="number" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم ">
+                                <input type="number" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم "required>
                                 </div>
 
                                 {{--  Father Part  --}}
                                 <hr>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الأب</label>
-                                <input type="text" class="form-control" id="father_name" name="father_name" placeholder=" أكتب اسم الأب ">
+                                <input type="text" class="form-control" id="father_name" name="father_name" placeholder=" أكتب اسم الأب "required>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ ميلاد الأب</label>
-                                <input type="date" class="form-control" id="father_birth" name="father_birth" placeholder=" أكتب تاريخ ميلاد الأب">
+                                <input type="date" class="form-control" id="father_birth" name="father_birth" placeholder=" أكتب تاريخ ميلاد الأب"required>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <select class="form-control" id="father_origin" name="father_origin" placeholder=" أكتب اسم المحافظة ">
+                                <select class="form-control" id="father_origin" name="father_origin" placeholder=" أكتب اسم المحافظة "required>
                                     <option label="test">
                                              </option>
                                     <option value="	دمشق">
@@ -1758,11 +1766,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="father_origin_city" name="father_origin_city" placeholder=" أكتب اسم المدينة">
+                                    <input type="text" class="form-control" id="father_origin_city" name="father_origin_city" placeholder=" أكتب اسم المدينة"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للأب</label>
-                                <select class="form-control" id="father_academicel" name="father_academicel" placeholder=" أكتب المستوى التعليمي ">
+                                <select class="form-control" id="father_academicel" name="father_academicel" placeholder=" أكتب المستوى التعليمي "required>
                                     <option label="test">
                                              </option>
                                     <option value=" الأمِّيِّ">
@@ -1783,13 +1791,13 @@
                                     جامعي </option>
                                 <option value="مايجستير">
                                     مايجستير </option>
-                                 <option value="ديكتورا">
-                                    ديكتورا </option>
+                                 <option value="دوكتورا">
+                                    دوكتورا </option>
                                 </select>
                                 </div>
                                 <div class="form-group">
                                     <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
-                                    <select class="form-control select2" name="medical_dad" id="medical_dad">
+                                    <select class="form-control select2" name="medical_dad" id="medical_dad"required>
                                         <option label="test">
 											  </option>
                                         <option value="لايوجد" >
@@ -1808,12 +1816,12 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اختصاص دراسة الأب</label>
-                                <input type="text" class="form-control" id="father_special" name="father_special" placeholder=" أكتب اسم الأختصاص">
+                                <input type="text" class="form-control" id="father_special" name="father_special" placeholder=" أكتب اسم الأختصاص"required>
                                 </div>
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">هل يعمل للأب</label>
-                                <select class="form-control select2" name="father_is_work" id="father_is_work" placeholder=" ">
+                                <select class="form-control select2" name="father_is_work" id="father_is_work" placeholder=" "required>
                                     <option label="test">
                                            </option>
                                     <option value="يعمل" >
@@ -1826,12 +1834,12 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمل الحالي للأب</label>
-                                <input type="text" class="form-control" id="father_now_work" name="father_now_work" placeholder=" أكتب العمل الحالي للأب ">
+                                <input type="text" class="form-control" id="father_now_work" name="father_now_work" placeholder=" أكتب العمل الحالي للأب "required>
                                 </div>
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأب</label>
-                                <input type="number" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري ">
+                                <input type="number" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري "required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1860,17 +1868,17 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                         <label for="exampleInputEmail">اسم المريض</label>
-                                        <input type="text" class="form-control" id="medical_name" name="medical_name" placeholder="أكنب اسم المريض بالكامل ">
+                                        <input type="text" class="form-control" id="medical_name" name="medical_name" placeholder="أكنب اسم المريض بالكامل "required>
                                         <input class="form-control" value="admin"  name="register" type="hidden">
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">  عمر المريض</label>
-                                        <input type="number" class="form-control" id="medical_age" name="medical_age" placeholder="أكنب العمر المريض بأرقام ">
+                                        <input type="number" class="form-control" id="medical_age" name="medical_age" placeholder="أكنب العمر المريض بأرقام "required>
                                         </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">جنس</label>
-                                        <select class="form-control" id="gender" name="gender"  placeholder="">
+                                        <select class="form-control" id="gender" name="gender"  placeholder=""required>
                                             <option label="test">
                                                   </option>
                                             <option value="ذكر">
@@ -1882,7 +1890,7 @@
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هل يوجد كملك</label>
-                                        <select class="form-control" id="medical_have_id" name="medical_have_id"  placeholder=" ">
+                                        <select class="form-control" id="medical_have_id" name="medical_have_id"  placeholder=" "required>
                                             <option label="test">
                                                   </option>
                                             <option value="	يوجد">
@@ -1894,7 +1902,7 @@
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> الولاية</label>
-                                        <select type="text" class="form-control" id="medical_id_extr" name="medical_id_extr" placeholder="">
+                                        <select type="text" class="form-control" id="medical_id_extr" name="medical_id_extr" placeholder=""required>
                                         <option label="test">
 											     </option>
                                         <option value="لايوجد كملك" >
@@ -2065,12 +2073,12 @@
                                 </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> رقم هاتف المريض</label>
-                                        <input type="text" class="form-control" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف بدءً من 05">
+                                        <input type="text" class="form-control" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف بدءً من 05"required>
                                         </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">ملاحظات</label>
-                                        <input type="textarea" class="form-control" id="note" name="note"  placeholder=" أكنب ملاحظات ان جد">
+                                        <input type="textarea" class="form-control" id="note" name="note"  placeholder=" أكنب ملاحظات ان جد"required>
                                         </div>
                                         </div>
 
@@ -2131,12 +2139,12 @@
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">  عمر المريض</label>
-                                        <input type="number" class="form-control" id="medical_age" name="medical_age" placeholder="أكنب عمر المريض  ">
+                                        <input type="number" class="form-control" id="medical_age" name="medical_age" placeholder="أكنب عمر المريض  "required>
                                         </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">الجنس</label>
-                                        <select class="form-control" id="gender" name="gender"  placeholder=" ">
+                                        <select class="form-control" id="gender" name="gender"  placeholder=" "required>
                                             <option label="test">
                                                   </option>
                                             <option value="ذكر">
@@ -2148,7 +2156,7 @@
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هل يوجد كملك</label>
-                                        <select class="form-control" id="medical_have_id" name="medical_have_id"  placeholder=" أكنب اسم المحافظة الأصل ">
+                                        <select class="form-control" id="medical_have_id" name="medical_have_id"  placeholder=" أكنب اسم المحافظة الأصل "required>
                                             <option label="test">
                                                   </option>
                                             <option value="	يوجد">
@@ -2160,7 +2168,7 @@
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> الولاية</label>
-                                        <select type="text" class="form-control" id="medical_id_extr" name="medical_id_extr" placeholder="أكنب اسم الولاية  ">
+                                        <select type="text" class="form-control" id="medical_id_extr" name="medical_id_extr" placeholder="أكنب اسم الولاية  "required>
                                         <option label="test">
                                         </option>
                                                 <option value="لايوجد كملك" >
@@ -2331,12 +2339,12 @@
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail"> رقم هاتف المريض</label>
-                                        <input type="number" class="form-control" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف  ">
+                                        <input type="number" class="form-control" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف  "required>
                                         </div>
 
                                         <div class="form-group">
                                         <label for="exampleInputEmail">ملاحظات</label>
-                                        <input type="textarea" class="form-control" id="note" name="note"  placeholder=" أكتب ملاحظة ان وجد ">
+                                        <input type="textarea" class="form-control" id="note" name="note"  placeholder=" أكتب ملاحظة ان وجد "required>
                                         </div>
                                         </div>
                                             <div class="modal-footer">

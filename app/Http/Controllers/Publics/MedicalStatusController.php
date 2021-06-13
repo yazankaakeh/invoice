@@ -72,7 +72,7 @@ function __construct()
             'treat_Duratio' => 'required',
             'date_accept' => 'required',
             'date_end' => 'required',
-            'Trans_to_doctor' => 'required'
+            'Trans_to_doctor' => 'required',
         ],$messages);
 
          //create new object of the model student and make mapping to the data
@@ -208,6 +208,8 @@ function __construct()
         'date_accept.required'  => 'لم يتم ادخال  تاريخ البدء    !!',
         'date_end.required'  => 'لم يتم ادخال  تاريخ الأنهاء    !!',
         'Trans_to_doctor.required'  => 'لم يتم ادخال  اسم طيب أخر ان وجد او أكتب لايوجد!!',
+        'note.required'  => 'لم يتم ادخال  ملاحظة!!',
+
 
 
     ];
@@ -226,7 +228,9 @@ function __construct()
             'treat_Duratio' => 'required',
             'date_accept' => 'required',
             'date_end' => 'required',
-            'Trans_to_doctor' => 'required'
+            'Trans_to_doctor' => 'required',
+            'note' => 'required',
+
         ],$messages);
 
          //create new object of the model medical and make mapping to the data
@@ -246,6 +250,7 @@ function __construct()
          $MedicalStatues -> date_accept = $request->date_accept;
          $MedicalStatues -> date_end = $request->date_end;
          $MedicalStatues -> Trans_to_doctor = $request->Trans_to_doctor;
+         $MedicalStatues -> note = $request->note;
          //write to the data base
          $medicals ->save();
          $MedicalStatues ->save();
@@ -280,6 +285,8 @@ function __construct()
         'date_accept.required'  => 'لم يتم ادخال  تاريخ البدء    !!',
         'date_end.required'  => 'لم يتم ادخال  تاريخ الأنهاء    !!',
         'Trans_to_doctor.required'  => 'لم يتم ادخال  اسم طيب أخر ان وجد او أكتب لايوجد!!',
+        'note.required'  => 'لم يتم ادخال  ملاحظة!!',
+
 
 
     ];
@@ -300,7 +307,9 @@ function __construct()
             'treat_Duratio' => 'required',
             'date_accept' => 'required',
             'date_end' => 'required',
-            'Trans_to_doctor' => 'required'
+            'Trans_to_doctor' => 'required',
+            'note' => 'required',
+
         ],$messages);
 
          //create new object of the model medical and make mapping to the data
@@ -318,6 +327,7 @@ function __construct()
          $MedicalStatues -> date_accept = $request->date_accept;
          $MedicalStatues -> date_end = $request->date_end;
          $MedicalStatues -> Trans_to_doctor = $request->Trans_to_doctor;
+         $MedicalStatues -> note = $request->note;
          //write to the data base
          $MedicalStatues ->save();
          session()->flash('Edit',  'تم تعديل الحالة الطبية للطالب  '. $medical_name .' بنجاح ');

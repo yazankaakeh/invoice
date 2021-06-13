@@ -40,22 +40,23 @@ body{
 							<div class="card-body">
                                 <form action="{{ route('family.new') }}" method="post">
 								<div id="">
-									<h3> المعلومات الشخصية.</h3>
+									<h3> تسجيل العائلة.</h3>
 									<section>
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
 										<p class="mg-b-20">يرجى إدخال المعلومات الشخصية الخاصة بك !</p>
 										<div class="border shadow-none card card-body pd-20 pd-md-40">
+                                            <h3> المعلومات الشخصية.</h3>
                                              <div class="col-sm-12">
                                                  <label class="form-control-label"> اسم صاحب القيد: <span class="tx-danger">*</span></label>
-                                                 <input class="form-control" value="" id="family_constraint" name="family_Constraint" placeholder="أكتب اسم صاحب القيد" required="" type="text">
+                                                 <input class="form-control" value="" id="family_constraint" name="family_Constraint" placeholder="أكتب اسم صاحب القيد" required="" type="text"required>
                                                 <input class="form-control" value="register"  name="register" type="hidden">
                                              </div>
                                              <div class="col-sm-12"> {{-- it must be select options  --}}
                                                  <p class="form-control-label">  الجنس </p>
-                                                 <select class="form-control select2" name="gender" id="gender">
+                                                 <select class="form-control select2" name="gender" id="gender"required>
                                                     <option label="test">
-                                                    </option>
+                                                        حدد من فضلك  </option>
                                                  <option value="ذكر">
                                                      ذكر
                                                      </option>
@@ -65,10 +66,10 @@ body{
                                                  </select>
                                              </div>
                                             <div class="col-sm-12">
-                                            <label for="exampleInputEmail">من اي محافظة من سوريا؟ : <span class="tx-danger">*</span></label>
-                                            <select class="form-control" id="city" name="city" placeholder=" أكتب اسم المحافظة ">
+                                            <label class="exampleInputEmail">من اي محافظة من سوريا؟ : <span class="tx-danger">*</span></label>
+                                            <select class="form-control" id="city" name="city" placeholder=" أكتب اسم المحافظة "required>
                                             <option label="test">
-                                                    </option>
+                                                حدد من فضلك   </option>
                                                 <option value="	دمشق">
                                                     دمشق</option>
                                                 <option value="ريف دمشق">
@@ -100,29 +101,29 @@ body{
                                                 </select>
                                             </div>
                                             <div class="col-sm-12">
-                                                <label for="exampleInputEmail">من اي مدينة؟</label>
-                                                <input type="text" class="form-control" id="district" name="district" placeholder=" أكتب أسم المدينة ">
+                                                <label class="exampleInputEmail">من اي مدينةأو الحي؟</label>
+                                                <input type="text" class="form-control" id="district" name="district" placeholder=" أكتب أسم المدينة أو الحي أو القرية ">
                                             </div>
                                              <div  class="col-sm-12">
-                                                 <label class="form-control-label"> عدد أفراد العائلة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_number_member" name="family_number_member" placeholder="أكتب عدد أفراد العائلة " required="" type="text">
+                                                 <label class="form-control-label"> عدد أفراد العائلة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_number_member" name="family_number_member" placeholder="أكتب عدد أفراد العائلة " required="" type="text"required>
                                              </div>
                                              <div class="col-sm-12">
-                                                 <label class="form-control-label"> اسم المعيل الأول : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_breadwinner" name="family_breadwinner" placeholder="أكتب اسم المعيل الأول  " required="" type="text">
+                                                 <label class="form-control-label"> اسم المعيل الأول : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_breadwinner" name="family_breadwinner" placeholder="أكتب اسم المعيل الأول  " required="" type="text"required>
                                              </div>
                                              <div class="col-sm-12">
-                                                 <label class="form-control-label">  عمل المعيل الأول : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="work_breadwinner" name="work_breadwinner" placeholder="أكتب عمل المعيل الثاني" required="" type="text">
+                                                 <label class="form-control-label">  عمل المعيل الأول : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="work_breadwinner" name="work_breadwinner" placeholder="أكتب عمل المعيل الثاني" required="" type="text"required>
                                              </div>
                                              <div class="col-sm-12">
-                                                 <label class="form-control-label"> اسم المعيل الثاني : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_an_breadwinner" name="family_an_breadwinner" placeholder="أكتب اسم المعيل الثاني" required="" type="text">
+                                                 <label class="form-control-label"> اسم المعيل الثاني : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_an_breadwinner" name="family_an_breadwinner" placeholder="أكتب اسم المعيل الثاني" required="" type="text"required>
                                              </div>
                                              <div class="col-sm-12">
-                                                 <label class="form-control-label"> عمل المعيل الثاني : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="work_an_breadwinner" name="work_an_breadwinner" placeholder="أكتب عمل معيل الثاني " required="" type="text">
+                                                 <label class="form-control-label"> عمل المعيل الثاني : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="work_an_breadwinner" name="work_an_breadwinner" placeholder="أكتب عمل معيل الثاني " required="" type="text"required>
                                              </div>
                                              <div class="col-sm-12">
-                                                 <label class="form-control-label"> الدخل الشهري من العمل للأسرة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_monthly_salary" name="family_monthly_salary" placeholder="أكتب الدخل الشهري للأسرة باليرة التركية  " required="" type="text">
+                                                 <label class="form-control-label"> الدخل الشهري من العمل للأسرة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="family_monthly_salary" name="family_monthly_salary" placeholder="أكتب الدخل الشهري للأسرة باليرة التركية  " required="" type="text"required>
                                              </div>
                                              <div class="col-sm-12"> {{-- it must be select options  --}}
-                                                 <p class="form-control-label">   هل يوجد  مساعدات :<span class="tx-danger">*</span></p><select class="form-control select2" name="family_has_aid" id="family_aid">
+                                                 <p class="form-control-label">   هل يوجد  مساعدات :<span class="tx-danger">*</span></p><select class="form-control select2" name="family_has_aid" id="family_aid"required>
                                                  <option label="test">
                                                      حدد من فضلك
                                                      </option>
@@ -134,12 +135,12 @@ body{
                                                       </option>
                                                  </select>
                                              </div>
-                                            <div class="form-group" id="family_what_aid">
-                                            <label for="exampleInputEmail"> نوع المساعادات </label>
+                                            <div class="col-sm-12" id="family_what_aid">
+                                            <label class="exampleInputEmail"> نوع المساعادات </label>
                                             <select class="form-control" id="family_what_aid" name="family_what_aid"
                                             onchange = "showDivs(this)">
                                             <option label="test">
-                                                </option>
+                                                حدد من فضلك  </option>
                                             <option value="كرت هلال">
                                                 كرت هلال</option>
                                             <option value="كرت زراعات">
@@ -165,20 +166,20 @@ body{
                                     </script>
 
                                         <div class="form-group" style="display:none;" id="family_what_aid1" >
-                                        <label for="exampleInputEmail"> نوع مساعادت الأخرى</label>
+                                        <label class="exampleInputEmail"> نوع مساعادت الأخرى</label>
                                         <input type="text" class="form-control"  id="family_wha t_aid1" name="family_what_aid1" placeholder=" أكتب اسم أو نوع مساعدات الأخرى ">
                                         </div>
 
 
                                             <div class="col-sm-12">
-                                            <label for="exampleInputEmail"> ماهي قيمة المساعدات : <span class="tx-danger">*</span></label>
-                                            <input type="text" class="form-control" id="aid_value" name="aid_value"  placeholder=" أكنب أسم المدينة  ">
+                                            <label class="exampleInputEmail"> ماهي قيمة المساعدات : <span class="tx-danger">*</span></label>
+                                            <input type="text" class="form-control" id="aid_value" name="aid_value"  placeholder=" أكنب أسم المدينة  "required>
                                             </div>
                                             <div class="col-sm-12">
-                                            <label for="exampleInputEmail">المستوى التعليمي : <span class="tx-danger">*</span></label>
-                                            <select class="form-control" id="academicel" name="academicel" placeholder=" أكتب المستوى التعليمي  ">
+                                            <label class="exampleInputEmail">المستوى التعليمي : <span class="tx-danger">*</span></label>
+                                            <select class="form-control" id="academicel" name="academicel" placeholder=" أكتب المستوى التعليمي  "required>
                                             <option label="test">
-                                                    </option>
+                                                حدد من فضلك  </option>
                                             <option value=" الأمِّيِّ">
                                                 الأمِّيِّ </option>
                                             <option value="حضانة">
@@ -198,25 +199,25 @@ body{
                                             <option value="ماجستير">
                                                 مايجستير </option>
                                             <option value="دكتورا">
-                                                ديكتورا </option>
+                                                دوكتورا </option>
                                             </select>
                                             </div>
                                             <div class="col-sm-12">
-                                            <label for="exampleInputEmail">العمل الحالي: <span class="tx-danger">*</span></label>
-                                            <input type="text" class="form-control" id="now_work" name="now_work" placeholder=" أكتب العمل الحالي ">
+                                            <label class="exampleInputEmail">العمل الحالي: <span class="tx-danger">*</span></label>
+                                            <input type="text" class="form-control" id="now_work" name="now_work" placeholder=" أكتب العمل الحالي "required>
                                             </div>
                                             <div class="col-sm-12">
-                                            <label for="exampleInputEmail">العمل السابق : <span class="tx-danger">*</span> </label>
+                                            <label class="exampleInputEmail">العمل السابق : <span class="tx-danger">*</span> </label>
                                             <input type="text" class="form-control" id="work" name="work" placeholder=" أكتب العمل السابق  ">
                                             </div>
                                              <div class="col-sm-12">
-                                                 <label class="form-control-label"> رقم هاتف الأول: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="phone" name="phone" placeholder="أكتب رقم الهاتف بدءً من 05 " required="" type="text">
+                                                 <label class="form-control-label"> رقم هاتف الأول: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="phone" name="phone" placeholder="أكتب رقم الهاتف بدءً من 05 " required="" type="text"required>
                                              </div>
                                              <div class="col-sm-12">
-                                                 <label class="form-control-label">رقم هاتف ثاني: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="sec_phone" name="sec_phone" placeholder="أكتب  رقم الهاتف بدءً من 05 يجب أن لايكون مكرر  " required="" type="text">
+                                                 <label class="form-control-label">رقم هاتف ثاني: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="sec_phone" name="sec_phone" placeholder="أكتب  رقم الهاتف بدءً من 05 يجب أن لايكون مكرر  " required="" type="text"required>
                                              </div>
                                              <div class="col-sm-12">
-                                                 <label class="form-control-label">أي ملاحظات: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="يرجى كتابة أي ملاحظة " required="" type="text">
+                                                 <label class="form-control-label">يرجى كتابة أي ملاحظة في حال وجدة : * : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="يرجى كتابة أي ملاحظة " required="" type="text"required>
                                              </div>
                                             </form>
 
@@ -347,8 +348,8 @@ body{
                                                      جامعي </option>
                                                  <option value="مايجستير">
                                                      مايجستير </option>
-                                                  <option value="ديكتورا">
-                                                     ديكتورا </option>
+                                                  <option value="دوكتورا">
+                                                     دوكتورا </option>
                                                  </select>
                                                  </div>
                                                  <div class="col-sm-12">
@@ -472,8 +473,8 @@ body{
                                                                 جامعي </option>
                                                             <option value="مايجستير">
                                                                 مايجستير </option>
-                                                             <option value="ديكتورا">
-                                                                ديكتورا </option>
+                                                             <option value="دوكتورا">
+                                                                دوكتورا </option>
                                                             </select>
                                                             </div>
                                                             <div class="col-sm-12">
@@ -556,8 +557,8 @@ body{
                                                     جامعي </option>
                                                 <option value="مايجستير">
                                                     مايجستير </option>
-                                                 <option value="ديكتورا">
-                                                    ديكتورا </option>
+                                                 <option value="دوكتورا">
+                                                    دوكتورا </option>
                                                 </select>
                                                 </div>
                                         <div class="col-sm-12">

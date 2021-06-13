@@ -50,7 +50,7 @@
                                                     <th class="border-bottom-0">اسم المحافظة</th>
                                                     <th class="border-bottom-0">الحي</th>
                                                     <th class="border-bottom-0">الموقع كما في الفاتورة</th>
-                                                    <th class="border-bottom-0">الموقع السابق</th>
+                                                    <th class="border-bottom-0"> عنوان السكن السابق في سوريا</th>
                                                     <th class="border-bottom-0">تاريخ التعديل</th>
                                                     <th class="border-bottom-0">العمليات</th>
                                                 </tr>
@@ -197,8 +197,8 @@
                                 </div>
 
                                  <div class="form-group">
-                                <label for="exampleInputEmail">العنوان السابق</label>
-                                <input type="text" class="form-control" id="address_last" name="address_last" placeholder=" أكتب أسم المحافظة ">
+                                <label for="exampleInputEmail"> عنوان السكن السابق في سوريا</label>
+                                <input type="text" class="form-control" id="address_last" name="address_last" placeholder=" أكتب عنوان السكن السابق في سوريا ">
                                 </div>
 
                                 </div>

@@ -57,6 +57,7 @@
                                                     <th class="border-bottom-0"> تاريخ البدء</th>
                                                     <th class="border-bottom-0"> تاريخ الانتهاء </th>
                                                     <th class="border-bottom-0"> طبيب آخر </th>
+                                                    <th class="border-bottom-0"> ملاحظة </th>
                                                     <th class="border-bottom-0">تاريخ الإضافة</th>
                                                     <th class="border-bottom-0">عمليات</th>
                                                 </tr>
@@ -78,6 +79,7 @@
                                                     <td>{{$x->date_accept}}</td>
                                                     <td>{{$x->date_end}}</td>
                                                     <td>{{$x->Trans_to_doctor}}</td>
+                                                    <td>{{$x->note}}</td>
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                     @can(' تعديل قسم الحالة الصحية الطبي ')
@@ -91,6 +93,7 @@
                                                                 data-treat_cost="{{$x->treat_cost}}"
                                                                 data-medical_id="{{$x->medical_id}}"
                                                                 data-medical_rate="{{$x->medical_rate}}"
+                                                                data-note="{{$x->note}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
@@ -263,6 +266,10 @@
                                 <label for="exampleInputEmail">هل تم تحويلك لطبيب آخر؟ مع ذكر الأسم إن وجد</label>
                                 <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر أسم الطبيب ان وجد">
                                 </div>
+                                <div class="form-group">
+                                 <label for="exampleInputEmail">ملاحظة</label>
+                                  <Input type="text" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد"required>
+                                  </div>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">تاكيد</button>
@@ -319,6 +326,7 @@
         var dr_name = button.data('dr_name')
         var trans_to_doctor = button.data('trans_to_doctor')
         var date_end = button.data('date_end')
+        var note = button.data('note')
         var date_accept = button.data('date_accept')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
@@ -332,6 +340,7 @@
         modal.find('.modal-body #dr_name').val(dr_name);
         modal.find('.modal-body #trans_to_doctor').val(trans_to_doctor);
         modal.find('.modal-body #date_end').val(date_end);
+        modal.find('.modal-body #note').val(note);
         modal.find('.modal-body #date_accept').val(date_accept);
     })
 </script>

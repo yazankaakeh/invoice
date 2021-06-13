@@ -87,6 +87,7 @@
                                                     <th class="border-bottom-0">سنة الدخول</th>
                                                     <th class="border-bottom-0">نوع الإقامة</th>
                                                     <th class="border-bottom-0">الولاية</th>
+                                                    <th class="border-bottom-0">ملاحظة</th>
                                                     <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
                                                     <th class="border-bottom-0">اضافة دفعة تركي</th>
                                                     <th class="border-bottom-0">اضافة دفعة يورو</th>
@@ -132,6 +133,7 @@
                                                     <td>{{$x->entry_turkey}}</td>
                                                     <td>{{$x->Identity_type}}</td>
                                                     <td>{{$x->Id_stud_source}}</td>
+                                                    <td>{{$x->note}}</td>
 
                                                 <td>
                                                 @can(' إضافة دفعة بالدولار الطلاب ')
@@ -894,15 +896,15 @@
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الأسم بالكامل </label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder=" أكتب الأسم كامل">
+                                <input type="text" class="form-control" id="name" name="name" placeholder=" أكتب الأسم كامل"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمر</label>
-                                <input type="text" class="form-control" id="age" name="age" placeholder=" العمر">
+                                <input type="text" class="form-control" id="age" name="age" placeholder=" العمر"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الجنس </label>
-                                <select type="text" class="form-control" id="gender" name="gender" >
+                                <select type="text" class="form-control" id="gender" name="gender"required >
                                     <option label="test">
                                           </option>
                                     <option value="ذكر" >
@@ -915,7 +917,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المستوى الدراسي</label>
-                                <select class="form-control" id="academicel" name="academicel" placeholder="">
+                                <select class="form-control" id="academicel" name="academicel" placeholder=""required>
                                     <option label="test">
                                            </option>
                                     <option value=" الأمِّيِّ">
@@ -936,21 +938,21 @@
                                     جامعي </option>
                                 <option value="مايجستير">
                                     مايجستير </option>
-                                 <option value="ديكتورا">
-                                    ديكتورا </option>
+                                 <option value="دوكتورا">
+                                    دوكتورا </option>
                                 </select>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الأختصاص </label>
-                                <input type="text" class="form-control" id="special" name="special" placeholder=" أكتب أسم الأختصاص">
+                                <input type="text" class="form-control" id="special" name="special" placeholder=" أكتب أسم الأختصاص"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ما هو نوع العمل </label>
-                                <input type="text" class="form-control" id="work" name="work" placeholder=" أكتب أسم العمل">
+                                <input type="text" class="form-control" id="work" name="work" placeholder=" أكتب أسم العمل"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم الراتب </label>
-                                <input type="number" class="form-control" id="salary" name="salary" placeholder=" أكتب قيمة الراتب">
+                                <input type="number" class="form-control" id="salary" name="salary" placeholder=" أكتب قيمة الراتب"required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -986,11 +988,11 @@
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الجامعة </label>
-                                <input type="text" class="form-control" id="univer_name" name="univer_name" placeholder="   أكتب اسم الجامعة ">
+                                <input type="text" class="form-control" id="univer_name" name="univer_name" placeholder="   أكتب اسم الجامعة "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">مكان الجامعة</label>
-                                <select type="text" class="form-control" id="univer_location" name="univer_location" placeholder="   أكتب مكان الجامعة ">
+                                <select type="text" class="form-control" id="univer_location" name="univer_location" placeholder="   أكتب مكان الجامعة "required>
                                     <option label="test">
                                            </option>
                                     <option value="أضنة">
@@ -1159,15 +1161,15 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">أختصاص الجامعي</label>
-                                <input type="text" class="form-control" id="univer_special" name="univer_special" placeholder="   أكتب أسم أختصاص الجامعي ">
+                                <input type="text" class="form-control" id="univer_special" name="univer_special" placeholder="   أكتب أسم أختصاص الجامعي "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">عدد سنوات الدراسة </label>
-                                <input type="text" class="form-control" id="Number_years" name="Number_years" placeholder="   أكتب عدد سنوات الدراسة ">
+                                <input type="text" class="form-control" id="Number_years" name="Number_years" placeholder="   أكتب عدد سنوات الدراسة "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">السنة الدراسية الحالية </label>
-                                <select type="text" class="form-control" id="Schoo_year" name="Schoo_year" >
+                                <select type="text" class="form-control" id="Schoo_year" name="Schoo_year"required>
                                     <option label="test">
                                             </option>
                                     <option value="تحضيري" >
@@ -1186,15 +1188,15 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المعدل الحالي  </label>
-                                <input type="text" class="form-control" id="Current_rate" name="Current_rate" placeholder="   أكتب لمعدل الحالي ">
+                                <input type="text" class="form-control" id="Current_rate" name="Current_rate" placeholder="   أكتب لمعدل الحالي "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المعدل التراكمي </label>
-                                <input type="text" class="form-control" id="Cumulative_rate" name="Cumulative_rate" placeholder="   أكتب المعدل التراكمي ">
+                                <input type="text" class="form-control" id="Cumulative_rate" name="Cumulative_rate" placeholder="   أكتب المعدل التراكمي "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اللغة الدراسية </label>
-                                <select type="text" class="form-control" id="language_name" name="language_name">
+                                <select type="text" class="form-control" id="language_name" name="language_name"required>
                                     <option label="test">
                                             </option>
                                     <option value="العربية" >
@@ -1209,27 +1211,27 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail"> المستوى الحالي للغة </label>
-                                <input type="text" class="form-control" id="Current_level" name="Current_level" placeholder="   أكتب المستوى الحالي للغة ">
+                                <input type="text" class="form-control" id="Current_level" name="Current_level" placeholder="   أكتب المستوى الحالي للغة "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">معدل المستوى الحالي للغة </label>
-                                <input type="text" class="form-control" id="Curr_level_rate" name="Curr_level_rate" placeholder="   أكتب معدل المستوى الحالي للغة ">
+                                <input type="text" class="form-control" id="Curr_level_rate" name="Curr_level_rate" placeholder="   أكتب معدل المستوى الحالي للغة "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">معدل المستوى السابق للغة </label>
-                                <input type="text" class="form-control" id="Previ_level_rate" name="Previ_level_rate" placeholder="   أكتب معدل المستوى السابق للغة ">
+                                <input type="text" class="form-control" id="Previ_level_rate" name="Previ_level_rate" placeholder="   أكتب معدل المستوى السابق للغة "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">طريقة قبول الجامعي </label>
-                                <input type="text" class="form-control" id="Univer_Accept" name="Univer_Accept" placeholder="   أكتب طريقة قبول الجامعي ">
+                                <input type="text" class="form-control" id="Univer_Accept" name="Univer_Accept" placeholder="   أكتب طريقة قبول الجامعي "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">معدل القبول الجامعي </label>
-                                <input type="text" class="form-control" id="Accept_rate" name="Accept_rate" placeholder="   أكتب معدل القبول الجامعي ">
+                                <input type="text" class="form-control" id="Accept_rate" name="Accept_rate" placeholder="   أكتب معدل القبول الجامعي "required>
                                 </div>
                                 <div class="form-group">
                                     <p class="mg-b-10"> هل يوجد جامعة ثانية</p>
-                                    <select class="form-control select2" name="are_you_univer" id="are_you_univer" onchange="showDiv(this)">
+                                    <select class="form-control select2" name="are_you_univer" id="are_you_univer" onchange="showDiv(this)"required>
                                         <option label="test">
                                                   </option>
                                         <option value="يوجد" >
@@ -1243,23 +1245,23 @@
                                 <div  class="row row-sm"id="hidden3_div" style="display:none;"> {{-- display:flex  --}}
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الجامعة الثانية </label>
-                                <input type="text" class="form-control" id="Ano_univer_name" name="Ano_univer_name" placeholder="   أكتب اسم الجامعة الثانية ">
+                                <input type="text" class="form-control" id="Ano_univer_name" name="Ano_univer_name" placeholder="   أكتب اسم الجامعة الثانية "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الأختصاص الثاني </label>
-                                <input type="text" class="form-control" id="Ano_univer_special" name="Ano_univer_special" placeholder="   أكتب الأختصاص بالجامعة الثانية ">
+                                <input type="text" class="form-control" id="Ano_univer_special" name="Ano_univer_special" placeholder="   أكتب الأختصاص بالجامعة الثانية "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">طريقة القبول بالجامعة الثانية </label>
-                                <input type="text" class="form-control" id="Ano_univer_Accept" name="Ano_univer_Accept" placeholder="   أكتب طريقة القبول ">
+                                <input type="text" class="form-control" id="Ano_univer_Accept" name="Ano_univer_Accept" placeholder="   أكتب طريقة القبول "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">معدل القبول  للجامعة الثانية </label>
-                                <input type="text" class="form-control" id="Ano_accept_rate" name="Ano_accept_rate" placeholder="   أكتب معدل القبول ">
+                                <input type="text" class="form-control" id="Ano_accept_rate" name="Ano_accept_rate" placeholder="   أكتب معدل القبول "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">  السنة الدراسية بالجامعة الثانية   </label>
-                                <select type="text" class="form-control" id="Ano_Schoo_year" name="Ano_Schoo_year">
+                                <select type="text" class="form-control" id="Ano_Schoo_year" name="Ano_Schoo_year"required>
                                     <option>
                                          </option>
                                     <option value="تحضيري" >
@@ -1278,21 +1280,21 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المعدل بالجامعة الثانية </label>
-                                <input type="text" class="form-control" id="Ano_Current_rate" name="Ano_Current_rate" placeholder="   أكتب المعدل بالجامعة الثانية ">
+                                <input type="text" class="form-control" id="Ano_Current_rate" name="Ano_Current_rate" placeholder="   أكتب المعدل بالجامعة الثانية "required>
                                 </div>
                                 </div>
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الأفساط الجامعية </label>
-                                <input type="text" class="form-control" id="univer_Premiums" name="univer_Premiums" placeholder="  أكتب قيمة الأقساط الجامعية بالسنة ">
+                                <input type="text" class="form-control" id="univer_Premiums" name="univer_Premiums" placeholder="  أكتب قيمة الأقساط الجامعية بالسنة "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ماهي مصاريف الجامعية </label>
-                                <input type="textarea" class="form-control" id="univer_fees" name="univer_fees" placeholder="    أكتب ماهي مصاريف الجامعية ">
+                                <input type="textarea" class="form-control" id="univer_fees" name="univer_fees" placeholder="    أكتب ماهي مصاريف الجامعية "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم قيمة المصاريف الجامعية  </label>
-                                <input type="text" class="form-control" id="univer_fees_value" name="univer_fees_value" placeholder="   أكتب قيمة المصاريف الجامعية ">
+                                <input type="text" class="form-control" id="univer_fees_value" name="univer_fees_value" placeholder="   أكتب قيمة المصاريف الجامعية "required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1328,19 +1330,19 @@
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم المنحة </label>
-                                <input type="text" class="form-control" id="scholar_name" name="scholar_name" placeholder=" أكتب أسم المنحة">
+                                <input type="text" class="form-control" id="scholar_name" name="scholar_name" placeholder=" أكتب أسم المنحة"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">نوع المنحة</label>
-                                <input type="text" class="form-control" id="scholar_type" name="scholar_type" placeholder="   أكتب نوع المنحة">
+                                <input type="text" class="form-control" id="scholar_type" name="scholar_type" placeholder="   أكتب نوع المنحة"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">قيمة المنحة</label>
-                                <input type="text" class="form-control" id="scholar_value" name="scholar_value" placeholder="   كم قيمة المنحة المالية">
+                                <input type="text" class="form-control" id="scholar_value" name="scholar_value" placeholder="   كم قيمة المنحة المالية"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">مصدر المنحة أو الجهة المانحة </label>
-                                <input type="text" class="form-control" id="scholar_source" name="scholar_source" placeholder=" أكتب مصدر المنحة او أسم الجهة المانحة">
+                                <input type="text" class="form-control" id="scholar_source" name="scholar_source" placeholder=" أكتب مصدر المنحة او أسم الجهة المانحة"required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1387,19 +1389,19 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">ماهو عملك ؟ </label>
-                                <input type="text" class="form-control" id="job_type" name="job_type" placeholder="   أكتب ماهو العملك ">
+                                <input type="text" class="form-control" id="job_type" name="job_type" placeholder="   أكتب ماهو العملك "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">مكان العمل؟</label>
-                                <input type="text" class="form-control" id="job_place" name="job_place" placeholder="   أكتب ماهو العملك ">
+                                <input type="text" class="form-control" id="job_place" name="job_place" placeholder="   أكتب ماهو العملك "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري؟</label>
-                                <input type="number" class="form-control" id="job_monthly_salary" name="job_monthly_salary" placeholder="   أكتب ماهو العملك ">
+                                <input type="number" class="form-control" id="job_monthly_salary" name="job_monthly_salary" placeholder="   أكتب ماهو العملك "required>
                                 </div>
                                 <div class="form-group">
                                    <p class="mg-b-10">هل لديك عمل سابق؟</p>
-                                   <select class="form-control select2" name="job_last_have" id="job_last_have" >
+                                   <select class="form-control select2" name="job_last_have" id="job_last_have"required >
                                     <option label="test">
                                           </option>
                                     <option value="نعم" >
@@ -1412,11 +1414,11 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">نوع عملك السابق؟</label>
-                                <input type="text" class="form-control" id="job_last_type" name="job_last_type" placeholder="   أكتب ماهو العملك السابق ">
+                                <input type="text" class="form-control" id="job_last_type" name="job_last_type" placeholder="   أكتب ماهو العملك السابق "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم راتبك السابق بعملك السابق؟</label>
-                                <input type="number" class="form-control" id="job_last_salary" name="job_last_salary" placeholder="   كم ماهو الراتبك بالعمل السابق">
+                                <input type="number" class="form-control" id="job_last_salary" name="job_last_salary" placeholder="   كم ماهو الراتبك بالعمل السابق"required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1452,7 +1454,7 @@
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                     <div class="form-group">
                                     <p class="mg-b-10">هل تحفظ القرآن</p>
-                                    <select class="form-control select2" name="quran_memorize" id="quran_memorize">
+                                    <select class="form-control select2" name="quran_memorize" id="quran_memorize"required>
                                         <option label="test">
 											    </option>
                                         <option value="نعم" >
@@ -1465,15 +1467,15 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">عدد الأجزاء التي أتممت حفظها </label>
-                                <input type="text" class="form-control" id="quran_parts" name="quran_parts" placeholder="    أكتب عدد الأجزاء المحفوظة ">
+                                <input type="text" class="form-control" id="quran_parts" name="quran_parts" placeholder="    أكتب عدد الأجزاء المحفوظة "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">أسم الشيخ الذي درسك</label>
-                                <input type="text" class="form-control" id="quran_teacher" name="quran_teacher" placeholder="   أكتب أسم الشيخ ">
+                                <input type="text" class="form-control" id="quran_teacher" name="quran_teacher" placeholder="   أكتب أسم الشيخ "required>
                                 </div>
                                 <div class="form-group">
                                 <p class="mg-b-10">هل لديك شهادة حفظ قرآن</p>
-                                <select class="form-control select2" name="quran_have_certif" id="quran_have_certif">
+                                <select class="form-control select2" name="quran_have_certif" id="quran_have_certif"required>
                                     <option label="test">
                                            </option>
                                     <option value="نعم" >
@@ -1486,11 +1488,11 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">مصدر الشهادة</label>
-                                <input type="text" class="form-control" id="quran_Certif_essuer" name="quran_Certif_essuer" placeholder="   أكتب مصدر الشهادة ">
+                                <input type="text" class="form-control" id="quran_Certif_essuer" name="quran_Certif_essuer" placeholder="   أكتب مصدر الشهادة "required>
                                 </div>
                                 <div class="form-group">
                                 <p class="mg-b-10">هل الشهادة معك؟</p>
-                                <select class="form-control select2" name="quran_with_Certif" id="quran_with_Certif" >
+                                <select class="form-control select2" name="quran_with_Certif" id="quran_with_Certif" required>
                                     <option label="test">
                                           </option>
                                     <option value="نعم" >
@@ -1535,7 +1537,7 @@
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                  <div class="form-group">
                                     <p class="mg-b-10">نوع السكن</p>
-                                    <select class="form-control select2" name="stud_type_housing" id="stud_type_housing">
+                                    <select class="form-control select2" name="stud_type_housing" id="stud_type_housing"required>
                                         <option label="test">
 											     </option>
                                         <option value="يورت" >
@@ -1556,19 +1558,19 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم مبلغ الآجار</label>
-                                <input type="text" class="form-control" id="stud_rent_housing" name="stud_rent_housing" placeholder=" أكتب مبلغ أيجار المنزل">
+                                <input type="text" class="form-control" id="stud_rent_housing" name="stud_rent_housing" placeholder=" أكتب مبلغ أيجار المنزل"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الموقع</label>
-                                <input type="text" class="form-control" id="stud_Place_housing" name="stud_Place_housing" placeholder="  أكتب الموقع الحالي كما في الفاتورة ">
+                                <input type="text" class="form-control" id="stud_Place_housing" name="stud_Place_housing" placeholder="  أكتب الموقع الحالي كما في الفاتورة "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">مصاريف السكن الطلابي</label>
-                                <input type="text" class="form-control" id="stud_expen" name="stud_expen"  placeholder="  أكتب ماهي  السكن الطلابي ">
+                                <input type="text" class="form-control" id="stud_expen" name="stud_expen"  placeholder="  أكتب ماهي  السكن الطلابي "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">قيمت مصاريف السكن</label>
-                                <input type="text" class="form-control" id="stud_valu_expen" name="stud_valu_expen" placeholder="   أكتب قيمة مصاريف السكن  ">
+                                <input type="text" class="form-control" id="stud_valu_expen" name="stud_valu_expen" placeholder="   أكتب قيمة مصاريف السكن  "required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1605,7 +1607,7 @@
                                 </div>
                                  <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
-                                    <select class="form-control select2" name="disease_type" id="disease_type">
+                                    <select class="form-control select2" name="disease_type" id="disease_type" required>
                                         <option label="test">
 											   </option>
                                         <option value="لايوجد" >
@@ -1624,35 +1626,35 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم المرض</label>
-                                <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض">
+                                <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الدكتور</label>
-                                <input type="text" class="form-control" id="dr_name" name="dr_name" placeholder=" أكتب أسم الطبيب">
+                                <input type="text" class="form-control" id="dr_name" name="dr_name" placeholder=" أكتب أسم الطبيب"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">تكلفة العلاج</label>
-                                <input type="text" class="form-control" id="treat_cost" name="treat_cost" placeholder="أكتب تكلفة العلاج ">
+                                <input type="text" class="form-control" id="treat_cost" name="treat_cost" placeholder="أكتب تكلفة العلاج "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">نوع العلاج</label>
-                                <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج ">
+                                <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج "required>
                                 </div>
                                <div class="form-group">
                                 <label for="exampleInputEmail">مدة العلاج</label>
-                                <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج">
+                                <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ بدء العلاج</label>
-                                <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج">
+                                <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ الانتهاء من العلاج</label>
-                                <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج">
+                                <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">هل تم تحويلك لطبيب آخر؟ مع ذكر الأسم إن وجد</label>
-                                <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر أسم الطبيب ان وجد">
+                                <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر أسم الطبيب ان وجد"required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1688,17 +1690,17 @@
                                 <input type="HIDDEN" name="student_id" id="student_id"  readonly>
 
                                 <label for="exampleInputEmail">اسم الأم</label>
-                                <input type="text" class="form-control" id="mother_name" name="mother_name" placeholder=" أكتب أسم الأم  ">
+                                <input type="text" class="form-control" id="mother_name" name="mother_name" placeholder=" أكتب أسم الأم  "required>
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ ميلاد الأم</label>
-                                <input type="date" class="form-control" id="mother_birth" name="mother_birth" placeholder=" أكتب تاريخ الميلاد ">
+                                <input type="date" class="form-control" id="mother_birth" name="mother_birth" placeholder=" أكتب تاريخ الميلاد "required>
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <select class="form-control" id="mother_origin" name="mother_origin" placeholder=" أكتب أسم المحافظة ">
+                                <select class="form-control" id="mother_origin" name="mother_origin" placeholder=" أكتب أسم المحافظة "required>
                                     <option label="test">
                                             </option>
                                     <option value="	دمشق">
@@ -1734,11 +1736,11 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="mother_origin_city" name="mother_origin_city" placeholder=" أكتب أسم المدينة">
+                                    <input type="text" class="form-control" id="mother_origin_city" name="mother_origin_city" placeholder=" أكتب أسم المدينة"required>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للأم</label>
-                                <select class="form-control" id="mother_academicel" name="mother_academicel" placeholder=" أكتب المستوى النعليمي ">
+                                <select class="form-control" id="mother_academicel" name="mother_academicel" placeholder=" أكتب المستوى النعليمي "required>
                                   <option label="test">
 											  </option>
                                     <option value=" الأمِّيِّ">
@@ -1759,17 +1761,17 @@
                                     جامعي </option>
                                 <option value="مايجستير">
                                     مايجستير </option>
-                                 <option value="ديكتورا">
-                                    ديكتورا </option>
+                                 <option value="دوكتورا">
+                                    دوكتورا </option>
                                 </select>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اختصاص دراسة الأم</label>
-                                <input type="text" class="form-control" id="mother_special" name="mother_special" placeholder=" أكتب أسم الأختصاص">
+                                <input type="text" class="form-control" id="mother_special" name="mother_special" placeholder=" أكتب أسم الأختصاص"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">هل تعمل الأم</label>
-                                <select class="form-control select2" name="mother_is_work" id="mother_is_work" placeholder="هل الأم تعمل ام لا تعمل">
+                                <select class="form-control select2" name="mother_is_work" id="mother_is_work" placeholder="هل الأم تعمل ام لا تعمل"required>
                                     <option label="test">
                                             </option>
                                     <option value="تعمل" >
@@ -1782,26 +1784,26 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمل الحالي للأم</label>
-                                <input type="text" class="form-control" id="mother_now_work" name="mother_now_work" placeholder=" أكتب العمل الحالي للأم">
+                                <input type="text" class="form-control" id="mother_now_work" name="mother_now_work" placeholder=" أكتب العمل الحالي للأم"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأم</label>
-                                <input type="number" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم ">
+                                <input type="number" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم "required>
                                 </div>
 
                                 {{--  Father Part  --}}
                                 <hr>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الأب</label>
-                                <input type="text" class="form-control" id="father_name" name="father_name" placeholder=" أكتب أسم الأب ">
+                                <input type="text" class="form-control" id="father_name" name="father_name" placeholder=" أكتب أسم الأب "required>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ ميلاد الأب</label>
-                                <input type="date" class="form-control" id="father_birth" name="father_birth" placeholder=" أكتب تاريخ ميلاد الأب">
+                                <input type="date" class="form-control" id="father_birth" name="father_birth" placeholder=" أكتب تاريخ ميلاد الأب"required>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <select class="form-control" id="father_origin" name="father_origin" placeholder=" أكتب أسم المحافظة ">
+                                <select class="form-control" id="father_origin" name="father_origin" placeholder=" أكتب أسم المحافظة "required>
                                     <option label="test">
                                             </option>
                                     <option value="	دمشق">
@@ -1836,11 +1838,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="father_origin_city" name="father_origin_city" placeholder=" أكتب أسم المدينة">
+                                    <input type="text" class="form-control" id="father_origin_city" name="father_origin_city" placeholder=" أكتب أسم المدينة"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للأب</label>
-                                <select class="form-control" id="father_academicel" name="father_academicel" placeholder=" أكتب المستوى التعليمي ">
+                                <select class="form-control" id="father_academicel" name="father_academicel" placeholder=" أكتب المستوى التعليمي "required>
                                     <option label="test">
                                            </option>
                                     <option value=" الأمِّيِّ">
@@ -1861,19 +1863,19 @@
                                     جامعي </option>
                                 <option value="مايجستير">
                                     مايجستير </option>
-                                 <option value="ديكتورا">
-                                    ديكتورا </option>
+                                 <option value="دوكتورا">
+                                    دوكتورا </option>
                                 </select>
                                 </div>
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اختصاص دراسة الأب</label>
-                                <input type="text" class="form-control" id="father_special" name="father_special" placeholder=" أكتب أسم الأختصاص">
+                                <input type="text" class="form-control" id="father_special" name="father_special" placeholder=" أكتب أسم الأختصاص"required>
                                 </div>
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">هل يعمل للأب</label>
-                                <select class="form-control select2" name="father_is_work" id="father_is_work" placeholder=" هل الأب يعمل ام لا يعمل  ">
+                                <select class="form-control select2" name="father_is_work" id="father_is_work" placeholder=" هل الأب يعمل ام لا يعمل  "required>
                                     <option label="test">
                                             </option>
                                     <option value="يعمل" >
@@ -1886,12 +1888,12 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمل الحالي للأب</label>
-                                <input type="text" class="form-control" id="father_now_work" name="father_now_work" placeholder=" أكتب العمل الحالي للأب ">
+                                <input type="text" class="form-control" id="father_now_work" name="father_now_work" placeholder=" أكتب العمل الحالي للأب "required>
                                 </div>
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأب</label>
-                                <input type="number" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري ">
+                                <input type="number" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري "required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1926,15 +1928,15 @@
                                 <div class="form-group">
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 <label for="exampleInputEmail">اسم الطفل</label>
-                                <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب أسم الطفل ">
+                                <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب أسم الطفل "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمر</label>
-                                <input type="number" class="form-control" id="childre_age" name="childre_age" placeholder=" أكتب  العمر بالرقم ">
+                                <input type="number" class="form-control" id="childre_age" name="childre_age" placeholder=" أكتب  العمر بالرقم "required>
                                 </div>
                                 <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">الجنس</p>
-                                    <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" أكتب الجنس الطفل ">
+                                    <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" أكتب الجنس الطفل "required>
                                         <option label="test">
 											  </option>
                                         <option value="ذكر" >
@@ -1947,7 +1949,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المرحلة الدراسية</label>
-                                <select type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" placeholder=" أكتب المرحلة الدراسية ">
+                                <select type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" placeholder=" أكتب المرحلة الدراسية "required>
                                     <option label="test">
                                            </option>
                                     <option value=" الأمِّيِّ">
@@ -1968,17 +1970,32 @@
                                     جامعي </option>
                                 <option value="مايجستير">
                                     مايجستير </option>
-                                 <option value="ديكتورا">
-                                    ديكتورا </option>
+                                 <option value="دوكتورا">
+                                    دوكتورا </option>
                                 </select>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail"> رقم الصف الدراسي </label>
-                                <input type="text" class="form-control" id="childre_class_number" name="childre_class_number" placeholder="  أكتب رقم الصف الدراسي ">
+                                <input type="text" class="form-control" id="childre_class_number" name="childre_class_number" placeholder="  أكتب رقم الصف الدراسي "required>
                                 </div>
                                 <div class="form-group">{{-- it must be select options  --}}
+                                    <p class="mg-b-10">  نوع الهوية الشخصية</p>
+                                    <select class="form-control select2" name="identity" id="identity" placeholder="  "required>
+                                        <option label="test">
+											        </option>
+                                        <option value="لايوجد">
+                                            لايوجد</option>
+                                        <option value="	كملك">
+                                            كملك</option>
+                                        <option value="	اقامة سياحية ">
+                                            اقامة سياحية </option>
+                                            <option value="	 الجنسية التركي ">
+                                                 الجنسية التركية </option>
+                                            </select>
+                                            <div>
+                                <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">الهوية الشخصية من اي ولاية</p>
-                                    <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك ">
+                                    <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك "required>
                                         <option label="test">
 											    </option>
                                         <option value="لايوجد كملك" >
@@ -2149,7 +2166,7 @@
                                 </div>
                                  <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">هل يعيشون معكم</p>
-                                    <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم ">
+                                    <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم "required>
                                    <option label="test">
 											أختر نعم او لا  </option>
                                         <option value="لا" >
@@ -2190,7 +2207,7 @@
                                  <div class="modal-body">
                                   <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">تفعيل فورم التسجيل للطلاب؟</p>
-                                    <select class="form-control select2" name="enable" id="enable" placeholder=" أكتب الجنس الطفل ">
+                                    <select class="form-control select2" name="enable" id="enable" placeholder=" أكتب الجنس الطفل "required>
                                     <option value="1" >
                                         تغعيل
                                     </option>
@@ -2228,7 +2245,7 @@
                                 <div class="modal-body">
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الجنس </label>
-                                <select type="text" class="form-control" id="gender" name="gender" >
+                                <select type="text" class="form-control" id="gender" name="gender" required>
                                     <option label="test">
                                           </option>
                                     <option value="ذكر" >
@@ -2245,17 +2262,17 @@
                                 <div class="form-group">
                                 <input type="hidden" name="student_id" id="student_id"  readonly>
                                 <label for="exampleInputEmail">اسم الزوج/ة</label>
-                                <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم الزوج/ة ">
+                                <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم الزوج/ة "required>
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ ميلاد الزوج/ة</label>
-                                <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد">
+                                <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد"required>
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب أسم المحافظة ">
+                                <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب أسم المحافظة "required>
                                   <option label="test">
 											    </option>
                                     <option value="	دمشق">
@@ -2291,11 +2308,11 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة ">
+                                    <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة "required>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للزوج/ة</label>
-                                <select class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" ">
+                                <select class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" "required>
                                     <option label="test">
                                           </option>
                                     <option value=" الأمِّيِّ">
@@ -2316,18 +2333,18 @@
                                     جامعي </option>
                                 <option value="مايجستير">
                                     مايجستير </option>
-                                 <option value="ديكتورا">
-                                    ديكتورا </option>
+                                 <option value="دوكتورا">
+                                    دوكتورا </option>
                                 </select>
                                 </div>
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اختصاص دراسة الزوج/ة</label>
-                                <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder="أكتب أسم الأختصاص">
+                                <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder="أكتب أسم الأختصاص"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">هل تعمل الزوج/ة؟</label>
-                                <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder="  ">
+                                <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder="  "required>
                                <option label="test">
 											   </option>
                                     <option value="تعمل" >
@@ -2340,11 +2357,11 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمل الحالي للزوج/ة</label>
-                                <input type="text" class="form-control" id="wife_now_work" name="wife_now_work" placeholder=" أكتب العمل الحالي ">
+                                <input type="text" class="form-control" id="wife_now_work" name="wife_now_work" placeholder=" أكتب العمل الحالي "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمل السابق للزوج/ة</label>
-                                <input type="text" class="form-control" id="wife_Pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  ">
+                                <input type="text" class="form-control" id="wife_Pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  "required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -2374,15 +2391,15 @@
                                         <div class="form-group">
                                         <label for="exampleInputEmail">اسم الطالب</label>
                                         <input class="form-control" value="admin"  name="register" type="hidden">
-                                        <input type="text" class="form-control" id="student_name" name="student_name" placeholder="أكتب أسم الطالب ">
+                                        <input type="text" class="form-control" id="student_name" name="student_name" placeholder="أكتب أسم الطالب "required>
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">تاريخ الميلاد </label>
-                                        <input type="date" class="form-control" id="birthday" name="birthday" placeholder="أكتب تاريخ الميلاد ">
+                                        <input type="date" class="form-control" id="birthday" name="birthday" placeholder="أكتب تاريخ الميلاد "required>
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">الجنس </label>{{-- unCmoplete --}}
-                                        <select class="form-control select2" name="gender" id="gender" >
+                                        <select class="form-control select2" name="gender" id="gender" required>
                                             <option label="test">
                                                   </option>
                                             <option value="ذكر" >
@@ -2393,9 +2410,9 @@
                                         </option>
                                         </select>
                                         </div>
-                                        <div class="col-sm-12">{{-- it must be select options  --}}
-                                                <p class="mg-b-10"> الحالة الأجتماعي :    </p>
-                                                <select class="form-control select2" name="social_state" id="social_state" placeholder=" أكتب الحالة الأجتماعية ">
+                                        <div class="form-group">{{-- it must be select options  --}}
+                                                <p class="exampleInputEmail"> الحالة الأجتماعي : </p>
+                                                <select class="form-control select2" name="social_state" id="social_state" placeholder=" أكتب الحالة الأجتماعية "required>
                                                 <option label="test">
                                                            </option>
                                                 <option value="متزوج/ة" >
@@ -2414,19 +2431,19 @@
                                             </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">العمر</label>
-                                        <input type="number" class="form-control" id="age" name="age" placeholder="أكتب العمر بأرقام ">
+                                        <input type="number" class="form-control" id="age" name="age" placeholder="أكتب العمر بأرقام "required>
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">البريد الإلكتروني</label>
-                                        <input type="text" class="form-control" id="email" name="email" placeholder=" أكتب البريد الإلكتروني ">
+                                        <input type="text" class="form-control" id="email" name="email" placeholder=" أكتب البريد الإلكتروني "required>
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">رقم الهاتف</label>
-                                        <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكتب رقم الهاتف بداً من 05  ">
+                                        <input type="text" class="form-control" id="phone" name="phone"  placeholder=" أكتب رقم الهاتف بداً من 05  "required>
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">من اي محافظة</label>
-                                        <select class="form-control" id="county_are_from" name="county_are_from"  placeholder=" أكتب اسم المحافظة الأصل ">
+                                        <select class="form-control" id="county_are_from" name="county_are_from"  placeholder=" أكتب اسم المحافظة الأصل "required>
                                             <option label="test">
                                                     </option>
                                             <option value="	دمشق">
@@ -2461,11 +2478,11 @@
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">من اي مدينة</label>
-                                        <input type="text" class="form-control" id="city_name" name="city_name"  placeholder=" أكتب أسم المدينة  ">
+                                        <input type="text" class="form-control" id="city_name" name="city_name"  placeholder=" أكتب أسم المدينة  "required>
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">السكن الحال في اي الولاية </label>{{-- unCmoplete --}}
-                                        <select class="form-control select2" name="stu_Cur_housing" id="stu_Cur_housing" >
+                                        <select class="form-control select2" name="stu_Cur_housing" id="stu_Cur_housing"required >
                                           <option label="test">
 											 </option>
                                             <option value="أضنة">
@@ -2634,11 +2651,11 @@
                                         </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">تاريخ الدخول لتركيا</label>
-                                        <input type="date" class="form-control" id="entry_turkey" name="entry_turkey"  placeholder=" أكتب تاريخ الدخول الى تركيا ">
+                                        <input type="date" class="form-control" id="entry_turkey" name="entry_turkey"  placeholder=" أكتب تاريخ الدخول الى تركيا "required>
                                         </div>
                                         <div class="form-group">
                                         <p class="mg-b-10">هل يوجد لديك الهوية </p>
-                                        <select class="form-control select2" name="Identity_type" id="Identity_type">
+                                        <select class="form-control select2" name="Identity_type" id="Identity_type"required>
                                             <option label="test">
                                                  </option>
                                             <option value="كملك" >
@@ -2657,7 +2674,7 @@
                                     </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">اسم الولاية </label>{{-- unCmoplete --}}
-                                        <select class="form-control select2" name="Id_stud_source" id="Id_stud_source">
+                                        <select class="form-control select2" name="Id_stud_source" id="Id_stud_source"required>
                                            <option label="test">
 										 </option>
                                             <option value="أضنة">
@@ -2824,7 +2841,10 @@
                                                 دوزجه</option>
                                         </select>
                                         </div>
-
+                                         <div class="form-group">
+                                        <label for="exampleInputEmail">ملاحظات</label>
+                                        <input type="textarea" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد "required>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn ripple btn-primary" type="submit"> حفظ المعلومات</button>
@@ -2881,21 +2901,21 @@
                                     <div class="form-group">
                                     <input type="hidden" name="id" id="id"  readonly>
                                     <label for="exampleInputEmail">اسم الطالب</label>
-                                    <input type="text" class="form-control" id="student_name" name="student_name">
+                                    <input type="text" class="form-control" id="student_name" name="student_name"required>
                                     </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">تاريخ الميلاد</label>
-                                    <input type="date" class="form-control" id="birthday" name="birthday">
+                                    <input type="date" class="form-control" id="birthday" name="birthday"required>
                                     </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">العمر</label>
-                                    <input type="number" class="form-control" id="age" name="age">
+                                    <input type="number" class="form-control" id="age" name="age"required>
                                     </div>
-                                    <div class="col-sm-12">
-                                                <p class="mg-b-10"> الحالة الأجتماعي :    </p>
-                                                <select class="form-control select2" name="social_state" id="social_state" placeholder=" أكتب الحالة الأجتماعية ">
+                                    <div class="form-group">
+                                                <p class="exampleInputEmail"> الحالة الأجتماعي :  </p>
+                                                <select class="form-control select2" name="social_state" id="social_state" placeholder=" أكتب الحالة الأجتماعية "required>
                                                 <option label="test">
-                                                          حدد من فضلك الحالة الأجتماعية   </option>
+                                                       </option>
                                                 <option value="متزوج/ة" >
                                                 متزوج/ة
                                                 </option>
@@ -2915,15 +2935,15 @@
                                             </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">البريد الإلكتروني</label>
-                                    <input type="text" class="form-control" id="email" name="email">
+                                    <input type="text" class="form-control" id="email" name="email"required>
                                     </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">رقم الهاتف</label>
-                                    <input type="text" class="form-control" id="phone" name="phone">
+                                    <input type="text" class="form-control" id="phone" name="phone"required>
                                     </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">من اي محافظة</label>
-                                    <select class="form-control" id="county_are_from" name="county_are_from">
+                                    <select class="form-control" id="county_are_from" name="county_are_from"required>
                                     <option label="test">
 									    </option>
                                         <option value="	دمشق">
@@ -2958,11 +2978,11 @@
                                     </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة</label>
-                                    <input type="text" class="form-control" id="city_name" name="city_name">
+                                    <input type="text" class="form-control" id="city_name" name="city_name"required>
                                     </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">السكن الحالي أي ولاية</label>
-                                    <select class="form-control" id="stu_Cur_housing" name="stu_Cur_housing">
+                                    <select class="form-control" id="stu_Cur_housing" name="stu_Cur_housing"required>
                                     <option label="test">
 											 </option>
                                         <option value="أضنة">
@@ -3131,11 +3151,11 @@
                                     </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">تاريخ الدخول لتركيا</label>
-                                    <input type="date" class="form-control" id="entry_turkey" name="entry_turkey">
+                                    <input type="date" class="form-control" id="entry_turkey" name="entry_turkey"required>
                                     </div>
                                     <div class="form-group">
                                     <p class="mg-b-10">هل يوجد لديك هوية </p>
-                                    <select class="form-control select2" name="Identity_type" id="Identity_type">
+                                    <select class="form-control select2" name="Identity_type" id="Identity_type"required>
                                     <option label="test">
 											   </option>
                                         <option value="كملك" >
@@ -3154,7 +3174,7 @@
                                 </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">اسم الولاية </label>{{-- unCmoplete --}}
-                                    <select class="form-control select2" name="Id_stud_source" id="Id_stud_source">
+                                    <select class="form-control select2" name="Id_stud_source" id="Id_stud_source"required>
                                         <option label="test">
 											    </option>
                                         <option value="أضنة">
@@ -3321,9 +3341,14 @@
                                             دوزجه</option>
                                     </select>
                                     </div>
-                                <div class="modal-body">
-                                <p class="mg-b-10">حالة الطالب</p>
-                                    <select class="form-control select2" name="statu" id="statu" >
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail">ملاحظات</label>
+                                        <input type="textarea" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد "required>
+                                        </div>
+
+                                     <div class="form-group">
+                                    <p class="mg-b-10">حالة الطالب</p>
+                                    <select class="form-control select2" name="statu" id="statu"required >
                                     <option value="1" >
                                         مقبول
                                     </option>

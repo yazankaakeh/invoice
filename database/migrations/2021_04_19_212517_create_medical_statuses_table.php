@@ -35,6 +35,8 @@ class CreateMedicalStatusesTable extends Migration
             $table->date('date_accept')->nullable();// تاريخ القبول
             $table->date('date_end')->nullable();// تاريخ أنتهاء
             $table->string('Trans_to_doctor')->nullable();// التحويل الي طبيب أخر
+            $table->string('note')->nullable();// التحويل الي طبيب أخر
+
 ########################## medical_statuses info End ############################
 
             $table->timestamps();

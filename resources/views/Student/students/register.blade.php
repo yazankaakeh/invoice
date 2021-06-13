@@ -33,33 +33,33 @@ body{
 							<div class="card-body">
                                 <form action="{{ route('store.register') }}" method="post">
 								<div id="">
-									<h3> المعلومات الشخصية.</h3>
+									<h3> تسجيل الطلاب.</h3>
 									<section>
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
 										<p class="mg-b-20">يرجى إدخال المعلومات الشخصية الخاصة بك !</p>
 										<div class="border shadow-none card card-body pd-20 pd-md-40">
-
+                                            <h3> المعلومات الشخصية.</h3>
 											<div class="col-sm-12">
 												<label class="form-control-label">الاسم الطالب بالكامل:
                                                 <span class="tx-danger">*</span></label>
-                                                <input class="form-control" value="" id="student_name" name="student_name" placeholder="أكتب اسم الطالب" required="" type="text">
+                                                <input class="form-control" value="" id="student_name" name="student_name" placeholder="أكتب اسم الطالب" required="" type="text"required>
                                                 <input class="form-control" value="register"  name="register" type="hidden">
 											</div>
 
                                             <div class="col-sm-12">
                                                 <label class="form-control-label">تاريخ الميلاد : <span class="tx-danger">*</span> </label>
-                                                <input type="date" class="form-control" id="birthday" name="birthday" placeholder="">
+                                                <input type="date" class="form-control" id="birthday" name="birthday" placeholder=""required>
                                             </div>
 
 											<div class="col-sm-12">
-												<label class="form-control-label"> العمر : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="age" name="age" placeholder="أكتب العمر بأرقام" required="" type="text">
+												<label class="form-control-label"> العمر : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="age" name="age" placeholder="أكتب العمر بأرقام" required="" type="text"required>
 											</div>
 
                                             <div class="col-sm-12">
-                                                <p class="form-control-label">  الجنس : <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender">
+                                                <p class="form-control-label">  الجنس : <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender"required>
                                                 <option label="test">
-                                                    حدد من فضلك نوع الجنس </option>
+                                                    حدد من فضلك   </option>
                                                 <option value="ذكر" >
                                                 ذكر
                                             </option>
@@ -71,9 +71,9 @@ body{
 
                                             <div class="col-sm-12">{{-- it must be select options  --}}
                                                 <p class="form-control-label"> الحالة الأجتماعي :<span class="tx-danger">*</span>  </p>
-                                                <select class="form-control select2" name="social_state" id="social_state" placeholder=" أكتب الحالة الأجتماعية ">
+                                                <select class="form-control select2" name="social_state" id="social_state" placeholder=" أكتب الحالة الأجتماعية "required>
                                                 <option label="test">
-                                                          حدد من فضلك الحالة الأجتماعية   </option>
+                                                          حدد من فضلك   </option>
                                                 <option value="متزوج/ة" >
                                                 متزوج/ة
                                                 </option>
@@ -90,17 +90,17 @@ body{
                                             </div>
 
 											<div class="col-sm-12">
-												<label class="form-control-label"> البريد الإلكتروني : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="email" name="email" placeholder="أكتب البريد الألكتروني" required="" type="text">
+												<label class="form-control-label"> البريد الإلكتروني : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="email" name="email" placeholder="أكتب البريد الألكتروني" required="" type="text"required>
 											</div>
 
 											<div class="col-sm-12">
-												<label class="form-control-label"> رقم الهاتف  : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="phone" name="phone" placeholder="أكتب رقم الهاتف بدءً من 05" required="" type="text">
+												<label class="form-control-label"> رقم الهاتف  : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="phone" name="phone" placeholder="أكتب رقم الهاتف بدءً من 05" required="" type="text"required>
 											</div>
 
 											<div class="col-sm-12">
                                                 <p class="form-control-label"> من اي محافظة الأصل :<span class="tx-danger">*</span></p><select class="form-control select2" name="county_are_from" id="county_are_from">
                                                 <option label="test">
-                                                    حدد من فضلك اسم المحافظة </option>
+                                                    حدد من فضلك   </option>
                                                 <option value="	دمشق">
                                                     دمشق</option>
                                                 <option value="ريف دمشق">
@@ -136,9 +136,9 @@ body{
 											</div>
 
                                             <div class="col-sm-12">
-                                                <p class="form-control-label"> السكن الحال في اي الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="stu_Cur_housing" id="stu_Cur_housing">
+                                                <p class="form-control-label"> السكن الحال في اي الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="stu_Cur_housing" id="stu_Cur_housing" required>
                                                 <option label="test">
-                                                    حدد من فضلك اسم الولاية </option>
+                                                    حدد من فضلك   </option>
                                                     @foreach($cities as $c)
                                                     <option value="{{$c->name}}">
                                                       {{$c->name}}
@@ -149,9 +149,9 @@ body{
                                             </div>
 
                                             <div class="col-sm-12">
-                                                <p class="form-control-label">هل يوجد لديك كملك <span class="tx-danger">*</span></p><select class="form-control select2" name="Identity_type" id="Identity_type">
+                                                <p class="form-control-label">هل يوجد لديك كملك <span class="tx-danger">*</span></p><select class="form-control select2" name="Identity_type" id="Identity_type" required>
 											    <option label="test">
-                                                    حدد من فضلك نوع الهوية  </option>
+                                                    حدد من فضلك    </option>
                                                    <option value="كملك" >
                                                    كملك
                                                </option>
@@ -168,7 +168,7 @@ body{
                                             </div>
 
                                             <div class="col-sm-12">
-                                                <p class="form-control-label">اسم الولاية <span class="tx-danger">*</span></p><select class="form-control select2" name="Id_stud_source" id="Id_stud_source">
+                                                <p class="form-control-label">اسم الولاية <span class="tx-danger">*</span></p><select class="form-control select2" name="Id_stud_source" id="Id_stud_source"required>
                                                 <option label="test">
                                                     حدد من فضلك اسم الولاية </option>
                                                     <option value="أضنة">
@@ -339,20 +339,20 @@ body{
 
                                         <div class="col-sm-12">
                                         <label class="form-control-label">تاريخ الدخول لتركيا : <span class="tx-danger">*</span> </label>
-                                        <input type="date" class="form-control" id="entry_turkey" name="entry_turkey"  placeholder=" أكتب تاريخ الدخول الى تركيا ">
+                                        <input type="date" class="form-control" id="entry_turkey" name="entry_turkey"  placeholder=" أكتب تاريخ الدخول الى تركيا "required>
                                         </div>
 
                                         <div class="col-sm-12">
                                         <label class="form-control-label">اسم الجامعة: <span class="tx-danger">*</span>  </label>
-                                        <input type="text" class="form-control" id="univer_name" name="univer_name" placeholder="   أكنب اسم الجامعة ">
+                                        <input type="text" class="form-control" id="univer_name" name="univer_name" placeholder="   أكنب اسم الجامعة "required>
                                         </div>
                                         <div class="col-sm-12">
                                         <label class="form-control-label">مكان الجامعة : <span class="tx-danger">*</span> </label>
-                                        <input type="text" class="form-control" id="univer_location" name="univer_location" placeholder="   أكنب مكان الجامعة ">
+                                        <input type="text" class="form-control" id="univer_location" name="univer_location" placeholder="   أكنب مكان الجامعة "required>
                                         </div>
                                         <div class="col-sm-12">
                                         <label class="form-control-label">أختصاص الجامعي : <span class="tx-danger">*</span> </label>
-                                        <input type="text" class="form-control" id="univer_special" name="univer_special" placeholder="   أكنب أسم أختصاص الجامعي ">
+                                        <input type="text" class="form-control" id="univer_special" name="univer_special" placeholder="   أكنب أسم أختصاص الجامعي "required>
                                         </div>
 
                                         <div class="col-sm-12">
@@ -374,7 +374,7 @@ body{
                                         </div>
                                         <div class="col-sm-12">
                                         <label class="form-control-label">المعدل الحالي: <span class="tx-danger">*</span>  </label>
-                                        <input type="text" class="form-control" id="current_rate" name="current_rate" placeholder="   أكنب لمعدل الحالي ">
+                                        <input type="text" class="form-control" id="current_rate" name="current_rate" placeholder="   أكنب لمعدل الحالي "required>
                                         </div>
 
                                         {!! NoCaptcha::display() !!}

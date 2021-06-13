@@ -183,16 +183,16 @@
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">مهارات يجيدها الطفل  </label>
-                                <input type="text" class="form-control" id="skills" name="skills" placeholder="    أكتب المهارات التي يجيدها الطفل ">
+                                <input type="text" class="form-control" id="skills" name="skills" placeholder="    أكتب المهارات التي يجيدها الطفل "required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail"> لغات يجيدها الطفل</label>
-                                <input type="text" class="form-control" id="language" name="language" placeholder="   أكتب اللغات التي يتقنها الطفل ">
+                                <input type="text" class="form-control" id="language" name="language" placeholder="   أكتب اللغات التي يتقنها الطفل "required>
                                 </div>
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">مهارات ومواهب يفضلها الطفل</label>
-                                <input type="text" class="form-control" id="fav_active" name="fav_active" placeholder="   أكتب مهارات ومواهب يفضلها الطفل ">
+                                <input type="text" class="form-control" id="fav_active" name="fav_active" placeholder="   أكتب مهارات ومواهب يفضلها الطفل "required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">

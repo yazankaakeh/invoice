@@ -32,7 +32,9 @@ class CreateChildrensTable extends Migration
             $table->string('childre_id_extr')->nullable();// مدينة أصدار الهوية
             $table->string('childre_live_with')->nullable();//هل يعيشون معكم
             $table->string('medical_stat')->nullable();//هل يعيشون معكم
+            $table->string('identity')->nullable();//هل يعيشون معكم
             $table->string('status')->nullable();//هل يعيشون معكم
+            $table->string('note')->nullable();//هل يعيشون معكم
 
             $table->string('quran_statu')->nullable()->deafult(0);
             $table->string('hoobie_statu')->nullable()->deafult(0);

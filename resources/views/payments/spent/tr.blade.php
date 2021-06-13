@@ -15,11 +15,16 @@
 مدفوعات التركي
 @endsection
 @section('page-header')
-				<!-- breadcrumb -->
-				<div class="breadcrumb-header justify-content-between">
+                        <!-- breadcrumb -->
+                        <div class="breadcrumb-header justify-content-between">
+                            <div class="my-auto">
+                                <div class="d-flex">
+                                    <h4 class="my-auto mb-0 content-title"> المدفوعات </h4><span class="mt-1 mb-0 mr-2 text-muted tx-13">/ المدفوعات العامة بالتركي</span>
+                                </div>
+                            </div>
 
-				</div>
-				<!-- breadcrumb -->
+                        </div>
+                        <!-- breadcrumb -->
 @endsection
 @section('content')
 				<!-- row -->
@@ -150,22 +155,22 @@
                                     <div class="modal-body">
                                         <div class="modal-body">
                                         <label for="recipient-name" class="col-form-label">اسم المسؤول عن الدفعة:</label>
-                                        <input class="form-control" name="user_name"  value="{{ Auth::user()->name }}" id="user_name" type="text" readonly>
+                                        <input class="form-control" name="user_name"  value="{{ Auth::user()->name }}" id="user_name" type="text" placeholder="أكتب أسم المسؤول عن الدفع" readonly >
                                         </div>
 
                                         <div class="modal-body">
                                             <label for="recipient-name" class="col-form-label">المبلغ  بالتركي</label>
-                                            <input class="form-control" name="spent_value" id="spent_value" type="text" >
+                                            <input class="form-control" name="spent_value" id="spent_value" type="text"  placeholder=" أكتب قيمة المبلغ بالتركي">
                                         </div>
 
                                         <div class="modal-body">
                                         <label for="recipient-name" class="col-form-label">معلومات الدفع</label>
-                                        <input class="form-control" name="desc" id="desc" type="text">
+                                        <input class="form-control" name="desc" id="desc" type="text" placeholder="أكتب معلومات الدفع">
                                         </div>
 
                                         <div class="modal-body">
                                         <label for="recipient-name" class="col-form-label">الملاحظات</label>
-                                        <input class="form-control" name="note" id="note" type="text">
+                                        <input class="form-control" name="note" id="note" type="text" placeholder="أكتب ملاحظة">
                                         </div>
                                     </div>
                                     <div class="modal-footer">

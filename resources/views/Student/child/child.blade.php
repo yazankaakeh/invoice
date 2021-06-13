@@ -52,8 +52,9 @@
                                                     <th class="border-bottom-0">الجنس</th>
                                                     <th class="border-bottom-0">المرحلة الدراسية</th>
                                                     <th class="border-bottom-0">الصف الدراسي</th>
+                                                    <th class="border-bottom-0">نوع الهوية الشخصية</th>
                                                     <th class="border-bottom-0">مدينة أصدار الهوية</th>
-                                                    <th class="border-bottom-0">هل يعيشون معكم</th>
+                                                     <th class="border-bottom-0">هل يعيشون معكم</th>
                                                     <th class="border-bottom-0">تاريخ التعديل</th>
                                                     <th class="border-bottom-0">العمليات</th>
                                                     <th class="border-bottom-0">إضافة مدرسة</th>
@@ -71,6 +72,7 @@
                                                     <td>{{$x->childre_gender}}</td>
                                                     <td>{{$x->childre_educa_leve}}</td>
                                                     <td>{{$x->childre_class_number}}</td>
+                                                    <td>{{$x->identity}}</td>
                                                     <td>{{$x->childre_id_extr}}</td>
                                                     <td>{{$x->childre_live_with}}</td>
                                                     <td>{{$x->updated_at}}</td>
@@ -112,11 +114,11 @@
                                                             @can(' إضافة مدرسة لطفل الطلاب ')
 =======
                                                             @if($x->student_statu == 1)
-                                                            @can('  مدرسة لطفل الطلاب ')                                                            
+                                                            @can('  مدرسة لطفل الطلاب ')
                                                             <a class=" btn btn-sm btn-info" href="/school_student/show/school/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                             @endcan
                                                             @elseif($x->student_statu == 0)
-                                                            @can(' إضافة مدرسة لطفل الطلاب ')                                                            
+                                                            @can(' إضافة مدرسة لطفل الطلاب ')
 >>>>>>> Stashed changes
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
@@ -126,7 +128,7 @@
 <<<<<<< Updated upstream
                                                             </a>
 =======
-                                                            </a> 
+                                                            </a>
 >>>>>>> Stashed changes
                                                             @endcan
                                                             @endif
@@ -318,31 +320,191 @@
                                 <input type="text" class="form-control" id="childre_class_number" name="childre_class_number" placeholder="  أكتب رقم الصف الدراسي ">
                                 </div>
                                 <div class="form-group">{{-- it must be select options  --}}
+                                    <p class="mg-b-10">  نوع الهوية الشخصية</p>
+                                    <select class="form-control select2" name="identity" id="identity" placeholder="  "required>
+                                        <option label="test">
+											        </option>
+                                        <option value="لايوجد">
+                                            لايوجد</option>
+                                        <option value="	كملك">
+                                            كملك</option>
+                                        <option value="	اقامة سياحية ">
+                                            اقامة سياحية </option>
+                                            <option value="	 الجنسية التركي ">
+                                                 الجنسية التركية </option>
+                                            </select>
+                                            <div>
+                                <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">الهوية الشخصية من اي ولاية</p>
                                     <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك ">
-                                    <option value="لايوجد" >
-                                        لايوجد
-                                    </option>
-                                    <option value="استطبول" >
-                                        استطبول
-                                    </option>
-                                    <option value="بورصا" >
-                                        بورصا
-                                    </option>
-                                    <option value="عتناب" >
-                                        عتناب
-                                    </option>
-                                    <option value="اضنا" >
-                                        اضنا
-                                    </option>
-                                    <option value="ملاطيا" >
-                                        ملاطيا
-                                    </option>
-                                    <option value="انقرة" >
-                                        انقرة
-                                    </option>
-                                    </select>
-                                </div>
+                                        <option label="test">
+                                        </option>
+                             <option value="لايوجد">
+                                 لايوجد</option>
+                            <option value="أضنة">
+                                أضنة</option>
+                            <option value="	أدي‌يمن">
+                                أدي‌يمن</option>
+                            <option value="	أفيون ‌قرةحصار">
+                                أفيون ‌قرةحصار</option>
+                            <option value="	أغري">
+                                أغري</option>
+                            <option value="	أماسيا">
+                                أماسيا</option>
+                            <option value="	أنقرة">
+                                أنقرة</option>
+                            <option value="	أنطاليا">
+                                أنطاليا</option>
+                            <option value="	أرتڤين">
+                                أرتڤين</option>
+                            <option value="	أيدين">
+                                أيدين</option>
+                            <option value="	بالكسير">
+                                بالكسير</option>
+                            <option value="	بيلجيك">
+                                بيلجيك</option>
+                            <option value="	بينگول">
+                                بينگول</option>
+                            <option value="	بيطليس">
+                                بيطليس</option>
+                            <option value="بولو">
+                                بولو</option>
+                            <option value="	بوردور">
+                                بوردور</option>
+                            <option value="	بورصة">
+                                بورصة</option>
+                            <option value="	چنق‌قلعه">
+                                چنق‌قلعه</option>
+                            <option value="	شانكيري">
+                                شانكيري</option>
+                            <option value="	چوروم">
+                                چوروم</option>
+                            <option value="	دنيزلي">
+                                دنيزلي</option>
+                            <option value="	ديار بكر">
+                                ديار بكر</option>
+                            <option value="	إدرنه">
+                                إدرنه</option>
+                            <option value="	الازيغ">
+                                الازيغ</option>
+                            <option value="إرزنجان">
+                                إرزنجان</option>
+                            <option value="	أرض‌ روم">
+                                أرض‌ روم</option>
+                            <option value="	إسكي‌ شهر">
+                                إسكي‌ شهير</option>
+                            <option value="	غازي‌عنتاپ">
+                                غازي‌عنتاپ</option>
+                            <option value="	گره‌سون">
+                                گره‌سون</option>
+                            <option value="	گوموش‌خانه">
+                                گوموش‌خانه</option>
+                            <option value="حكاري">
+                                حكاري</option>
+                            <option value="	هاتاي">
+                                هاتاي</option>
+                            <option value="	إسبرطة">
+                                إسبرطة</option>
+                            <option value="	مرسين">
+                                مرسين</option>
+                            <option value="	إسطنبول">
+                                إسطنبول</option>
+                            <option value="	إزمير">
+                                إزمير</option>
+                            <option value="	قارص">
+                                قارص</option>
+                            <option value="	كاستامونو">
+                                كاستامونو</option>
+                            <option value="	قيصري">
+                                قيصري</option>
+                            <option value="	كريك‌قلعه">
+                                كريك‌قلعه</option>
+                            <option value="	كيرشهر">
+                                كيرشهر</option>
+                            <option value="	خوجةإلي">
+                                خوجةإلي</option>
+                            <option value="قونيا">
+                                قونيا</option>
+                            <option value="	كوتاهيا">
+                                كوتاهيا</option>
+                            <option value="	ملاطيا">
+                                ملاطيا</option>
+                            <option value="	مانيسا">
+                                مانيسا</option>
+                            <option value="	كهرمان‌مرعش">
+                                كهرمان‌مرعش</option>
+                            <option value="	ماردين">
+                                ماردين</option>
+                            <option value="	موغلا">
+                                موغلا</option>
+                            <option value="	موش">
+                                موش</option>
+                            <option value="	نڤشهر">
+                                نڤشهر</option>
+                            <option value="	نيغدة">
+                                نيغدة</option>
+                            <option value="	أردو">
+                                أردو</option>
+                            <option value="	ريزه">
+                                ريزه</option>
+                            <option value="	ساكاريا">
+                                ساكاريا</option>
+                            <option value="سامسون">
+                                سامسون</option>
+                            <option value="سيرت">
+                                سيرت</option>
+                            <option value="سينوپ">
+                                سينوپ</option>
+                            <option value="	سيڤاس">
+                                سيڤاس</option>
+                            <option value="	تكيرداغ">
+                                تكيرداغ</option>
+                            <option value="توقاد">
+                                توقاد</option>
+                            <option value="	طرابزون">
+                                طرابزون</option>
+                            <option value="تونج‌ايلي">
+                                تونج‌ايلي</option>
+                            <option value="شانلي‌اورفا">
+                                شانلي‌اورفا</option>
+                            <option value="	عشاق">
+                                عشاق</option>
+                            <option value="	ڤان">
+                                ڤان</option>
+                            <option value="	يوزگات">
+                                يوزگات</option>
+                            <option value="	زونگولداك">
+                                زونگولداك</option>
+                            <option value="	أكساراي">
+                                أكساراي</option>
+                            <option value="بايبورت">
+                                بايبورت</option>
+                            <option value="	قرةمان">
+                                قرةمان</option>
+                            <option value="	قريق‌قلعه">
+                                قريق‌قلعه</option>
+                            <option value="	بطمان">
+                                بطمان</option>
+                            <option value="	شرناق">
+                                شرناق</option>
+                            <option value="	بارتين">
+                                بارتين</option>
+                            <option value="	أرض‌خان">
+                                أرض‌خان</option>
+                            <option value="	إغدير">
+                                إغدير</option>
+                            <option value="	يالوڤا">
+                                يالوڤا</option>
+                            <option value="	قرةبوك">
+                                قرةبوك</option>
+                            <option value="	كلس">
+                                كلس</option>
+                            <option value="	عثمانية">
+                                عثمانية</option>
+                            <option value="	دوزجه">
+                                دوزجه</option>
+                        </select>
+                    </div>
                                  <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">هل يعيشون معكم</p>
                                     <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم ">
