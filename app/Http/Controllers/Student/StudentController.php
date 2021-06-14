@@ -58,7 +58,6 @@ $this->middleware('permission: عرض الطلاب الجدد', ['only' => ['new
             'univer_location.required'=>'لم يتم أدخال معلومات موقع الجامعة!!',
             'univer_special.required'=>'لم يتم أدخال معلومات اختصاص الجامعة!!',
             'current_rate.required'=>'لم يتم أدخال معلومات المعدل الحالي!!',
-            'note.required'=>'يرجى كتابة أي ملاحظة !!',
         ];
     }
     public function store_register(Request $request)
@@ -82,7 +81,6 @@ $this->middleware('permission: عرض الطلاب الجدد', ['only' => ['new
             'schoo_year' => 'required',
             'current_rate' => 'required',
             'Id_stud_source' => 'required',
-            'note' => 'required',
         ],$messages);
          //create new object of the model student and make mapping to the data
          $students = new Student;
@@ -99,7 +97,6 @@ $this->middleware('permission: عرض الطلاب الجدد', ['only' => ['new
          $students -> Identity_type = $request->Identity_type;
          $students -> Id_stud_source = $request->Id_stud_source;
          $students -> gender = $request->gender;
-         $students -> note = $request->note;
          $students ->save();
         // dd($students->id);
 
@@ -149,7 +146,6 @@ $this->middleware('permission: عرض الطلاب الجدد', ['only' => ['new
             'univer_location.required'=>'لم يتم أدخال معلومات موقع الجامعة!!',
             'univer_special.required'=>'لم يتم أدخال معلومات اختصاص الجامعة!!',
             'current_rate.required'=>'لم يتم أدخال معلومات المعدل الحالي!!',
-            'note.required'=>'يرجى كتابة أي ملاحظة !!',
 
         ];
     }
