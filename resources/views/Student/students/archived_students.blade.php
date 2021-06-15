@@ -106,7 +106,7 @@
                                                     <td>{{$x->student->student_name}}</td>
                                                     <td>
                                                         <span class="label text-warning d-flex">
-                                                        <div class="dot-label bg-warning ml-1"></div>مؤرشف
+                                                        <div class="ml-1 dot-label bg-warning"></div>مؤرشف
                                                         </span>
                                                     </td>
                                                     <td>{{$x->student->birthday}}</td>
@@ -342,6 +342,7 @@
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
+                                    <p>أسم الطالب</p>
                                 <input type="text" class="form-control select2" id="student_name" name="student_name"  readonly>
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 <div class="form-group">

@@ -200,6 +200,7 @@
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
+                                    <p>أسم الطالب</p>
                                 <input type="text" class="form-control select2" id="student_name" name="student_name"  readonly>
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 <div class="form-group">

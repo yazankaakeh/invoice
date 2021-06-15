@@ -104,7 +104,6 @@
                                                     </td>
                                                     <td>
                                                             {{-- Add_School --}}
-<<<<<<< Updated upstream
 
                                                             @if($x->student_statu == 1)
                                                             @can('  مدرسة لطفل الطلاب ')
@@ -112,24 +111,13 @@
                                                             @endcan
                                                             @elseif($x->student_statu == 0)
                                                             @can(' إضافة مدرسة لطفل الطلاب ')
-=======
-                                                            @if($x->student_statu == 1)
-                                                            @can('  مدرسة لطفل الطلاب ')
-                                                            <a class=" btn btn-sm btn-info" href="/school_student/show/school/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                            @endcan
-                                                            @elseif($x->student_statu == 0)
-                                                            @can(' إضافة مدرسة لطفل الطلاب ')
->>>>>>> Stashed changes
+
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                                 data-id="{{$x->id}}" data-childre_name="{{$x->childre_name}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal" title="إضافة مدرسة">
                                                                 <i class="las la-pen" style="font-size: 20px;"></i>
-<<<<<<< Updated upstream
                                                             </a>
-=======
-                                                            </a>
->>>>>>> Stashed changes
                                                             @endcan
                                                             @endif
                                                     </td>

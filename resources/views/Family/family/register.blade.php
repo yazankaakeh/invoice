@@ -53,7 +53,7 @@ body{
                                                 <input class="form-control" value="register"  name="register" type="hidden">
                                              </div>
                                              <div class="col-sm-12"> {{-- it must be select options  --}}
-                                                 <p class="form-control-label">  الجنس </p>
+                                                 <p class="form-control-label">  الجنس: <span class="tx-danger">*</span></p>
                                                  <select class="form-control select2" name="gender" id="gender"required>
                                                     <option label="test">
                                                         حدد من فضلك  </option>
@@ -65,6 +65,7 @@ body{
                                                       </option>
                                                  </select>
                                              </div>
+
                                             <div class="col-sm-12">
                                             <label class="exampleInputEmail">من اي محافظة من سوريا؟ : <span class="tx-danger">*</span></label>
                                             <select class="form-control" id="city" name="city" placeholder=" أكتب اسم المحافظة "required>
@@ -216,11 +217,7 @@ body{
                                              <div class="col-sm-12">
                                                  <label class="form-control-label">رقم هاتف ثاني: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="sec_phone" name="sec_phone" placeholder="أكتب  رقم الهاتف بدءً من 05 يجب أن لايكون مكرر  " required="" type="text"required>
                                              </div>
-                                             <div class="col-sm-12">
-                                                 <label class="form-control-label">يرجى كتابة أي ملاحظة في حال وجدة : * : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="يرجى كتابة أي ملاحظة " required="" type="text"required>
-                                             </div>
                                             </form>
-
                                             <div class="modal-footer">
                                             <button type="submit" class="btn btn-primary">تاكيد</button>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>

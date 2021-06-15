@@ -35,6 +35,9 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
             'medical_name' => 'required',
             'medical_age' => 'required',
             'gender' => 'required',
+            'status' => 'required',
+            'Governorate' => 'required',
+            'city' => 'required',
             'medical_have_id' => 'required',
             'medical_id_extr' => 'required',
             'medical_number' => 'required|numeric|unique:medicals',
@@ -54,6 +57,9 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
          $medicals -> medical_name = $request->medical_name;
          $medicals -> medical_age = $request->medical_age;
          $medicals -> gender = $request->gender;
+         $medicals -> status = $request->status;
+         $medicals -> Governorate = $request->Governorate;
+         $medicals -> city = $request->city;
          $medicals -> medical_have_id = $request->medical_have_id;
          $medicals -> medical_id_extr = $request->medical_id_extr;
          $medicals -> medical_number = $request->medical_number;
@@ -94,6 +100,9 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
             'medical_age.required' => 'لم يتم أدخال  معلومات العمر للمريض  المطلوبة !!',
             'medical_age.numeric' => 'يجب أدخال العمر حصراً بالأرقام!!',
             'gender.required' => '    لم يتم أدخال  معلومات جنس المريض المطلوبة!!',
+            'status.required' => '    لم يتم أدخال  معلومات جنس الأجتماعية المطلوبة!!',
+            'Governorate.required' => '    لم يتم أدخال  معلومات  من أي محافظة المطلوبة!!',
+            'city.required' => '    لم يتم أدخال  معلومات من أي من مدينة أو حي المطلوبة!!',
             'medical_have_id.required'=>'ادخل البريد اللإلكتروني هذه الخانة مطلوبة !!',
             'medical_id_extr.required'=>'لم يتم ادخال معلومات الهاتف هذه الخانة مطلوبة !!',
             'medical_number.required'=>'لم يتم أدخال معلومات الرقم الهاتف المطلوبة !!',
@@ -130,6 +139,9 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
             'medical_name' => 'required',
             'medical_age' => 'required',
             'gender' => 'required',
+            'status' => 'required',
+            'Governorate' => 'required',
+            'city' => 'required',
             'medical_have_id' => 'required',
             'medical_id_extr' => 'required',
             'medical_number' => 'required|numeric|unique:medicals',
@@ -140,6 +152,9 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
          $medicals -> medical_name = $request->medical_name;
          $medicals -> medical_age = $request->medical_age;
          $medicals -> gender = $request->gender;
+         $medicals -> status = $request->status;
+         $medicals -> Governorate = $request->Governorate;
+         $medicals -> city = $request->city;
          $medicals -> medical_have_id = $request->medical_have_id;
          $medicals -> medical_id_extr = $request->medical_id_extr;
          $medicals -> medical_number = $request->medical_number;
@@ -172,6 +187,9 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
             'medical_name' => 'required',
             'medical_age' => 'required',
             'gender' => 'required',
+            'status' => 'required',
+            'Governorate' => 'required',
+            'city' => 'required',
             'medical_have_id' => 'required',
             'medical_id_extr' => 'required',
             'medical_number' => 'required|numeric',
@@ -182,6 +200,9 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
          $medicals -> medical_name = $request->medical_name;
          $medicals -> medical_age = $request->medical_age;
          $medicals -> gender = $request->gender;
+         $medicals -> status = $request->status;
+         $medicals -> Governorate = $request->Governorate;
+         $medicals -> city = $request->city;
          $medicals -> medical_have_id = $request->medical_have_id;
          $medicals -> medical_id_extr = $request->medical_id_extr;
          $medicals -> medical_number = $request->medical_number;
@@ -285,8 +306,8 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
         {
         $medicals = medical::find($request->medical_id);
         $medicals->new_statu = $request->statu;
-        session()->flash('new', 'تم تعديل حالة الطالب '. $request->medical_name .' للجديد  ');
-        $students->save();
+        session()->flash('new', 'تم تعديل حالة المريض '. $request->medical_name .' للجديد  ');
+        $medicals->save();
         return back();
         }
     }

@@ -51,7 +51,7 @@
                                                     <th class="border-bottom-0">نوع المدرسة</th>
                                                     <th class="border-bottom-0">موقع المدرسة</th>
                                                     <th class="border-bottom-0">نكلفة المدرسة</th>
-                                                    <th class="border-bottom-0">تكاليف عامة</th>
+                                                    <th class="border-bottom-0">تكاليف عامة للطفل</th>
                                                     <th class="border-bottom-0">تاريخ التعديل</th>
                                                     <th class="border-bottom-0">العمليات</th>
                                                 </tr>
@@ -182,7 +182,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="exampleInputEmail">نكاليف عامة</label>
+                                    <label for="exampleInputEmail">نكاليف عامة للطفل</label>
                                     <input class="form-control" name="School_fees" id="school_fees" type="text">
                                     </div>
 

@@ -23,6 +23,9 @@ class CreateMedicalsTable extends Migration
             $table->string('medical_name')->nullable();// اسم المريض
             $table->string('medical_age')->nullable();// عمر المريض
             $table->string('gender')->nullable();
+            $table->string('status')->nullable();
+            $table->string('Governorate')->nullable();
+            $table->string('city')->nullable();
             $table->string('medical_have_id')->nullable();// هل يوجد هوية
             $table->string('medical_id_extr')->nullable();// مدينة أستخراج هوية
             $table->string('medical_number')->nullable();//رقم الهاتف

@@ -215,9 +215,11 @@
 						@can(' اضافة العمل الطلاب ')
 							<li><a class="slide-item" href="{{ route('job.show') }}"> قسم العمل</a></li>
 						@endcan
+                        <hr>
+						</ul>
+							<li><a class="slide-item" href="{{ route('delayed_scholar.show') }}"> قسم المنح المؤجلة</a></li>
 						</ul>
 					</li>
-					@endcan
 
 					@can(' قسم العائلات ')
 

@@ -76,7 +76,6 @@
                                                     <th class="border-bottom-0">قيمة المساعدات</th>
                                                     <th class="border-bottom-0">رقم هاتف</th>
                                                     <th class="border-bottom-0">رقم هاتف ثاني</th>
-                                                    <th class="border-bottom-0">ملاحظات</th>
                                                     <th class="border-bottom-0">تحديث الحالة</th>
 
                                                 </tr>
@@ -109,7 +108,6 @@
                                                     <td>{{$x->aid_value}}</td>
                                                     <td>{{$x->phone}}</td>
                                                     <td>{{$x->sec_phone}}</td>
-                                                    <td>{{$x->note}}</td>
 
                                                     <td>
                                                         @can(' عرض حالة العائلات ')
@@ -193,6 +191,7 @@
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
+                                    <p>أسم صاحب القيد</p>
                                 <input type="text" class="form-control select2" id="family_name" name="family_name"  readonly>
                                 <input type="hidden" name="family_id" id="family_id" readonly>
                                 <div class="form-group">

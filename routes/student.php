@@ -49,6 +49,14 @@ Route::prefix('children')->group(function () {
     Route::delete('/delete', "Publics\childrenController@destroy")->name('children.destroy')->middleware('auth');
 });
 
+Route::prefix('delayed_scholar')->group(function () {
+    Route::get('/show', "Family\DelayedScholarController@index")->name('delayed_scholar.show')->middleware('auth');
+    Route::post('/store', "Family\DelayedScholarController@store_student_children")->name('delayed_scholar.student.store')->middleware('auth');
+    Route::get('/show/{id}', "Family\DelayedScholarController@show")->middleware('auth');
+    Route::patch('/update', "Family\DelayedScholarController@update")->name('delayed_scholar.update')->middleware('auth');
+    Route::delete('/delete', "Family\DelayedScholarController@destroy")->name('delayed_scholar.destroy')->middleware('auth');
+});
+
 Route::prefix('father_and_mother')->group(function () {
     Route::get('/show', "Publics\FatherandMotherController@index")->name('FatherandMother.show')->middleware('auth');
     Route::post('/store', "Publics\FatherandMotherController@storestudent")->name('FatherandMother.student.store')->middleware('auth');

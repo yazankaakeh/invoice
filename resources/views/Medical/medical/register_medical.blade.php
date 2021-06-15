@@ -51,10 +51,10 @@ body{
                                                 <input class="form-control" value="register"  name="register" type="hidden">
 											</div>
                                             <div class="col-sm-12">
-												<label class="form-control-label">عمر المريض: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_age" name="medical_age" placeholder="أكتب عمر المريض بأرقام" required="" type="text"required>
+												<label class="exampleInputEmail">عمر المريض: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_age" name="medical_age" placeholder="أكتب عمر المريض بأرقام" required="" type="text"required>
 											</div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="form-control-label">  الجنس: <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender"required>
+                                                <p class="exampleInputEmail">  الجنس: <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender"required>
                                                 <option label="test">
                                                     حدد من فضلك </option>
                                                 <option value="ذكر" >
@@ -66,7 +66,66 @@ body{
                                             </select>
 											</div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="form-control-label">  هل يوجد كملك: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_have_id" id="medical_have_id"required>
+                                                <label class="exampleInputEmail">الحالة الأجتماعية<span class="tx-danger">*</span></p></label>
+                                                <select class="form-control" id="status" name="status"  placeholder=""required>
+                                                    <option label="test">
+                                                          </option>
+                                                    <option value="متزوج/ة">
+                                                        متزوج/ة</option>
+                                                    <option value="	مطلق/ة">
+                                                        مطلق/ة</option>
+                                                     <option value="أعزب/ة">
+                                                     أعزب/ة</option>
+                                                     option value="أرمل/ة">
+                                                     أرمل/ة</option>
+                                                     <option value=" مطلق و متزوج/ة">
+                                                        مطلق و متزوج/ة</option>
+                                                     <option value=" أرمل و متزوج/ة">
+                                                        أرمل و متزوج/ة</option>
+                                                    </select>
+                                                </div>
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                            <label for="exampleInputEmail">من اي محافظة من سوريا؟<span class="tx-danger">*</span></p></label>
+                                            <select class="form-control" id="Governorate" name="Governorate" placeholder=" أكتب اسم  محافظة "required>
+                                       <option label="test">
+                                            </option>
+                                       <option value="	دمشق">
+                                           دمشق</option>
+                                       <option value="ريف دمشق">
+                                           ريف دمشق</option>
+                                       <option value="	حلب ">
+                                           حلب</option>
+                                       <option value="حمص">
+                                           حمص</option>
+                                       <option value="حماه">
+                                           حماه</option>
+                                       <option value="	درعا">
+                                           درعا</option>
+                                       <option value="	ادلب">
+                                           ادلب</option>
+                                       <option value="	سويداء">
+                                           سويداء</option>
+                                       <option value="	ديرالزور">
+                                           دير الزور</option>
+                                       <option value="	الرقة">
+                                           الرقة</option>
+                                       <option value="الحسكة">
+                                           الحسكة</option>
+                                       <option value="	اللاذقية">
+                                           اللاذقية</option>
+                                       <option value="	طرطوس">
+                                           طرطوس</option>
+                                       <option value="	القنيطرة">
+                                           القنيطرة</option>
+                                       </select>
+                                   </div>
+
+                                   <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                       <label for="exampleInputEmail">من اي مدينة؟<span class="tx-danger">*</span></p></label>
+                                       <input type="text" class="form-control" id="city" name="city" placeholder=" أكتب اسم  المدينة أو الحي "required>
+                                   </div>
+                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                                <p class="exampleInputEmail">  هل يوجد كملك: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_have_id" id="medical_have_id"required>
                                                 <option label="test">
                                                     حدد من فضلك </option>
                                                 <option value="يوجد" >
@@ -78,7 +137,7 @@ body{
                                             </select>
 											</div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="form-control-label"> الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_id_extr" id="medical_id_extr"required>
+                                                <p class="exampleInputEmail"> الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_id_extr" id="medical_id_extr"required>
                                                     <option label="test">
                                                         حدد من فضلك
                                                       </option>
@@ -249,11 +308,11 @@ body{
                                                 </select>
                                             </div>
 											<div class="col-sm-12 mg-t-20 mg-md-t-0">
-												<label class="form-control-label"> رقم هاتف المريض : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف بدءً من 05  " required="" type="text">
+												<label class="exampleInputEmail"> رقم هاتف المريض : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف بدءً من 05  " required="" type="text">
 											</div>
                                             {{-- medical_Statu --}}
                                              <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="mg-b-10">نوع الرض</p>
+                                                <p class="exampleInputEmail">نوع المرض</p>
                                                 <select class="form-control select2" name="disease_type" id="disease_type">
                                                     <option label="test">
                                                         حدد من فضلك
@@ -261,11 +320,14 @@ body{
                                                     <option value="اصابة حرب" >
                                                     اصابة حرب
                                                 </option>
-                                                <option value="وباء" >
-                                                    وباء
+                                                <option value="اصابة حادة" >
+                                                    اصابة حادة
                                                 </option>
                                                 <option value="مرض مزمن" >
                                                     مرض مزمن
+                                                </option>
+                                                <option value=" أخرى" >
+                                                    أخرى
                                                 </option>
                                                 </select>
                                             </div>
@@ -274,7 +336,7 @@ body{
                                             <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض"required>
                                             </div>
                                              <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="mg-b-10">تقييم الحالة المرضية</p>
+                                                <p class="exampleInputEmail">تقييم الحالة المرضية</p>
                                                 <select class="form-control select2" name="medical_rate" id="medical_rate"required>
                                                   <option label="test">
                                                     حدد من فضلك
@@ -322,7 +384,7 @@ body{
                                             <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر أسم الطبيب ان وجد"required>
                                             </div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
-												<label class="form-control-label"> يرجى كتابة أي ملاحظة في حال وجدة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="إكتب الملاحظات إن وجد " required="" type="text"required>
+												<label class="exampleInputEmail"> يرجى كتابة أي ملاحظة في حال وجدة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="إكتب الملاحظات إن وجد " required="" type="text"required>
 											</div>
                                             @if (session()->has('Add'))
                                             <div class="alert alert-success alert-dismissible fade show" role="alert">

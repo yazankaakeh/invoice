@@ -66,7 +66,6 @@ function __construct()
             'aid_value' => 'required',
             'gender' => 'required',
             'district' => 'required',
-            'note' => 'required',
             'sec_phone' => 'required|unique:families',
             'phone' => 'required|unique:families',
             'work_an_breadwinner' => 'required',
@@ -101,7 +100,6 @@ function __construct()
          $families -> now_work = $request->now_work;
          $families -> city = $request->city;
          $families -> district = $request->district;
-         $families -> note = $request->note;
          //write to the data base
          $x=1;
          $families->husband_wife_statu = $x;

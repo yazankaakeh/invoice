@@ -69,14 +69,13 @@
                                                     <th class="border-bottom-0">عمل المعيل الثاني</th>
                                                     <th class="border-bottom-0"> الراتب الشهري</th>
                                                     <th class="border-bottom-0">المستوى النعليمي</th>
-                                                    <th class="border-bottom-0">العمل الحالي</th>
-                                                    <th class="border-bottom-0">العمل السابق</th>
-                                                    <th class="border-bottom-0">مساعدات</th>
-                                                    <th class="border-bottom-0">نوع المساعدات</th>
-                                                    <th class="border-bottom-0">قيمة المساعدات</th>
-                                                    <th class="border-bottom-0">رقم هاتف</th>
-                                                    <th class="border-bottom-0">رقم هاتف ثاني</th>
-                                                    <th class="border-bottom-0">ملاحظات</th>
+                                                    <th class="border-bottom-0"> العمل الحالي :</th>
+                                                    <th class="border-bottom-0">العمل السابق :</th>
+                                                    <th class="border-bottom-0">مساعدات :</th>
+                                                    <th class="border-bottom-0">نوع المساعدات :</th>
+                                                    <th class="border-bottom-0">قيمة المساعدات :</th>
+                                                    <th class="border-bottom-0">رقم هاتف :</th>
+                                                    <th class="border-bottom-0">رقم هاتف ثاني :</th>
                                                     <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
                                                     <th class="border-bottom-0">اضافة دفعة تركي</th>
                                                     <th class="border-bottom-0">اضافة دفعة يورو</th>
@@ -85,7 +84,7 @@
                                                     <th class="border-bottom-0">اضافة اطفال</th>
                                                     <th class="border-bottom-0">إضافة السكن</th>
                                                     <th class="border-bottom-0">إضافة طالب</th>
-                                                    <th class="border-bottom-0">إضافة مريض</th>
+                                                    <th class="border-bottom-0">إضافة مريض:</th>
                                                     <th class="border-bottom-0">تعديل الحالة</th>
 
                                                 </tr>
@@ -99,7 +98,7 @@
                                                     <td>{{$x->family_Constraint}}</td>
                                                     <td>
                                                         <span class="label text-warning d-flex">
-                                                        <div class="dot-label bg-warning ml-1"></div>مؤرشف
+                                                        <div class="ml-1 dot-label bg-warning"></div>مؤرشف
                                                         </span>
                                                     </td>
                                                     <td>{{$x->gender}}</td>
@@ -119,7 +118,6 @@
                                                     <td>{{$x->aid_value}}</td>
                                                     <td>{{$x->phone}}</td>
                                                     <td>{{$x->sec_phone}}</td>
-                                                    <td>{{$x->note}}</td>
 
                                                 <td>
                                                     @if($x->usd_statu != 0)
@@ -295,6 +293,7 @@
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
+                                 <p>أسم صاحب القيد</p>
                                 <input type="text" class="form-control select2" id="family_name" name="family_name"  readonly>
                                 <input type="hidden" name="family_id" id="family_id" readonly>
                                 <div class="form-group">

@@ -51,24 +51,26 @@
                                                     <th class="border-bottom-0">المواليد</th>
                                                     <th class="border-bottom-0">المدينة</th>
                                                     <th class="border-bottom-0">الحي</th>
+                                                    <th class="border-bottom-0">الحالة الأجتماعية للزوجة</th>
                                                     <th class="border-bottom-0">الحالة الصحية</th>
                                                     {{-- <th class="border-bottom-0">الحالة الإجتماعية</th> --}}
                                                     <th class="border-bottom-0">المستوى الدراسي</th>
                                                     <th class="border-bottom-0">الأختصاص</th>
-                                                    <th class="border-bottom-0">حالة العمل</th>
-                                                    <th class="border-bottom-0">العمل</th>
+                                                    <th class="border-bottom-0">حالة العمل </th>
+                                                    <th class="border-bottom-0">العمل الحالي </th>
                                                     <th class="border-bottom-0">العمل القديم</th>
                                                     <th class="border-bottom-0">اسم الزوج</th>
-                                                    <th class="border-bottom-0">المواليد</th>
-                                                    <th class="border-bottom-0">المدينة</th>
-                                                    <th class="border-bottom-0">الحي</th>
-                                                    <th class="border-bottom-0">الحالة الصحية</th>
+                                                    <th class="border-bottom-0">المواليد :</th>
+                                                    <th class="border-bottom-0">المحافظة :</th>
+                                                    <th class="border-bottom-0">الحي أو المدينة :</th>
+                                                    <th class="border-bottom-0">الحالة الأجتماعية للزوج :</th>
+                                                    <th class="border-bottom-0">الحالة الصحية :</th>
                                                     {{-- <th class="border-bottom-0">الحالة الإجتماعية</th> --}}
-                                                    <th class="border-bottom-0">المستوى الدراسي</th>
-                                                    <th class="border-bottom-0">الأختصاص</th>
-                                                    <th class="border-bottom-0">حالة العمل</th>
-                                                    <th class="border-bottom-0">العمل</th>
-                                                    <th class="border-bottom-0">العمل القديم</th>
+                                                    <th class="border-bottom-0">المستوى الدراسي :</th>
+                                                    <th class="border-bottom-0">الأختصاص :</th>
+                                                    <th class="border-bottom-0">حالة العمل:</th>
+                                                    <th class="border-bottom-0">العمل الحالي:</th>
+                                                    <th class="border-bottom-0">العمل القديم:</th>
                                                     <th class="border-bottom-0">تاريخ التعديل</th>
                                                     <th class="border-bottom-0">العمليات</th>
                                                 </tr>
@@ -85,6 +87,7 @@
                                                     <td>{{$x->wife_birth}}</td>
                                                     <td>{{$x->wife_city}}</td>
                                                     <td>{{$x->wife_district}}</td>
+                                                    <td>{{$x->wife_mar_stat}}</td>
                                                     <td>{{$x->medical_mom}}</td>
                                                     {{-- <td>{{$x->wife_mar_stat}}</td> --}}
                                                     <td>{{$x->wife_academicel}}</td>
@@ -96,6 +99,7 @@
                                                     <td>{{$x->husb_birth}}</td>
                                                     <td>{{$x->husb_Orig_city}}</td>
                                                     <td>{{$x->husb_district}}</td>
+                                                    <td>{{$x->husb_mar_stat}}</td>
                                                     <td>{{$x->medical_dad}}</td>
                                                     {{-- <td>{{$x->husb_mar_stat}}</td> --}}
                                                     <td>{{$x->husb_academicel}}</td>
@@ -285,20 +289,28 @@
                                 <div class="form-group">
                                     <p class="mg-b-10">الحالة الاجتماعية للزوجة</p>
                                     <select class="form-control select2" name="wife_mar_stat" id="wife_mar_stat" placeholder=" أكتب الحالة الأجتماعية ">
-                                    <option value="متزوجة" >
-                                        متزوجة
-                                    </option>
-                                    <option value="متوفية" >
-                                        متوفية
-                                    </option>
-                                    <option value="ارملة" >
-                                        ارملة
-                                    </option>
-                                    <option value="مطلقة" >
-                                        مطلقة
-                                    </option>
-                                    </select>
-                                </div>
+                                        <option label="test">
+                                        </option>
+                                            <option value="متزوجة مطلقة" >
+                                            متزوجة مطلقة
+                                        </option>
+                                        <option value="متزوجة أرملة" >
+                                            متزوجة أرملة
+                                        </option>
+                                        <option value="متزوجة" >
+                                            متزوجة
+                                        </option>
+                                        <option value="متوفية" >
+                                            متوفية
+                                        </option>
+                                        <option value="ارملة" >
+                                            ارملة
+                                        </option>
+                                        <option value="مطلقة" >
+                                            مطلقة
+                                        </option>
+                                        </select>
+                                    </div>
                                 <div class="form-group">
                                     <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
                                     <select class="form-control select2" name="medical_mom" id="medical_mom">

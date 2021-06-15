@@ -217,7 +217,8 @@ function __construct()
         'identity.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'medical_stat.required'  => 'لم يتم ادخال  الحالة الصحية  !!',
         'status.required'  => 'لم يتم ادخال  الحالة الأجتماعية  !!',
-        'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
+        'status.required'  => 'لم يتم ادخال  الحالة الأجتماعية  !!',
+        'note.required'  => 'لم يتم كتابة ملاحظة!!',
 
 
     ];
@@ -236,7 +237,8 @@ function __construct()
             'identity' => 'required',
             'status' => 'required',
             'childre_id_extr' => 'required',
-            'childre_live_with' => 'required'
+            'childre_live_with' => 'required',
+            'note' => 'required',
         ],$messages);
         //create new object of the model student and make mapping to the data
          $familys =  Family::find($request->family_id);
@@ -256,6 +258,7 @@ function __construct()
          $Childrens -> childre_id_extr = $request->childre_id_extr;
          $Childrens -> identity = $request->identity;
          $Childrens -> childre_live_with = $request->childre_live_with;
+         $Childrens -> note = $request->note;
          //write to the data base
          $familys->save();
          $Childrens ->save();
@@ -278,6 +281,8 @@ function __construct()
         'status.required'  => 'لم يتم ادخال  الحالة الأجتماعية  !!',
         'childre_id_extr.required'  => 'لم يتم ادخال  لهوية الشخصية  !!',
         'childre_live_with.required'  => 'لم يتم ادخال معلومات خانة  هل يعيشون معكم  !!',
+        'note.required'  => 'لم يتم كتابة ملاحظة!!',
+
 
 
     ];
@@ -297,7 +302,8 @@ function __construct()
             'identity' => 'required',
             'childre_class_number' => 'required',
             'childre_id_extr' => 'required',
-            'childre_live_with' => 'required'
+            'childre_live_with' => 'required',
+            'note' => 'required',
         ],$messages);
 
          //create new object of the model student and make mapping to the data
@@ -315,6 +321,7 @@ function __construct()
          $Childrens -> identity = $request->identity;
          $Childrens -> childre_id_extr = $request->childre_id_extr;
          $Childrens -> childre_live_with = $request->childre_live_with;
+         $Childrens -> note = $request->note;
          //write to the data base
          $Childrens ->save();
          session()->flash('Edit', 'تم تعديل بيانات الطفل '. $request->childre_name.' للعائلة  '. $family_Constraint .' بنجاح ');

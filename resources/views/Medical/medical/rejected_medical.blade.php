@@ -64,6 +64,9 @@
                                                     <th class="border-bottom-0">حالة القبول</th>
                                                     <th class="border-bottom-0">العمر</th>
                                                     <th class="border-bottom-0">الجنس</th>
+                                                    <th class="border-bottom-0">الحالة الأجتماعية</th>
+                                                    <th class="border-bottom-0">محافظة</th>
+                                                    <th class="border-bottom-0">من أي مدينة</th>
                                                     <th class="border-bottom-0">هل يوجد هوية</th>
                                                     <th class="border-bottom-0">الولاية</th>
                                                     <th class="border-bottom-0"> الهاتف</th>
@@ -92,11 +95,14 @@
                                                     <td>{{$x->medical->medical_name}}</td>
                                                     <td>
                                                         <span class="label text-danger d-flex">
-                                                        <div  class="dot-label bg-danger ml-1"></div>مرفوض
+                                                        <div  class="ml-1 dot-label bg-danger"></div>مرفوض
                                                         </span>
                                                     </td>
                                                     <td>{{$x->medical->medical_age}}</td>
                                                     <td>{{$x->medical->gender}}</td>
+                                                    <td>{{$x->medical->status}}</td>
+                                                    <td>{{$x->medical->Governorate}}</td>
+                                                    <td>{{$x->medical->city}}</td>
                                                     <td>{{$x->medical->medical_have_id}}</td>
                                                     <td>{{$x->medical->medical_id_extr}}</td>
                                                     <td>{{$x->medical->medical_number}}</td>
@@ -197,6 +203,7 @@
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
+                                    <p>أسم المريض</p>
                                 <input type="text" class="form-control select2" id="medical_name" name="medical_name"  readonly>
                                 <input type="hidden" name="medical_id" id="medical_id" readonly>
                                 <div class="form-group">

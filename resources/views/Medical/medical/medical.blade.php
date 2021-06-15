@@ -73,6 +73,9 @@
                                                     <th class="border-bottom-0">اسم المريض</th>
                                                     <th class="border-bottom-0">العمر</th>
                                                     <th class="border-bottom-0">الجنس</th>
+                                                    <th class="border-bottom-0">الحالة الأجتماعية</th>
+                                                    <th class="border-bottom-0">المحافظة</th>
+                                                    <th class="border-bottom-0">الحي أو المدينة</th>
                                                     <th class="border-bottom-0">هل يوجد هوية</th>
                                                     <th class="border-bottom-0">الولاية</th>
                                                     <th class="border-bottom-0"> الهاتف</th>
@@ -105,6 +108,9 @@
                                                     <td>{{$x->medical_name}}</td>
                                                     <td>{{$x->medical_age}}</td>
                                                     <td>{{$x->gender}}</td>
+                                                    <td>{{$x->status}}</td>
+                                                    <td>{{$x->Governorate}}</td>
+                                                    <td>{{$x->city}}</td>
                                                     <td>{{$x->medical_have_id}}</td>
                                                     <td>{{$x->medical_id_extr}}</td>
                                                     <td>{{$x->medical_number}}</td>
@@ -239,7 +245,11 @@
                                                             data-medical_name="{{$x->medical_name}}"
                                                             data-medical_age="{{$x->medical_age}}" data-medical_number="{{$x->medical_number}}"
                                                             data-medical_have_id="{{$x->medical_have_id}}" data-id="{{$x->id}}"
-                                                            data-medical_id_extr="{{$x->medical_id_extr}}" data-gender="{{$x->gender}}" data-note="{{$x->note}}"
+                                                            data-medical_id_extr="{{$x->medical_id_extr}}" data-gender="{{$x->gender}}"
+                                                            data-status="{{$x->status}}"
+                                                            data-Governorate="{{$x->Governorate}}"
+                                                            data-city="{{$x->city}}"
+                                                            data-note="{{$x->note}}"
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
                                                         </a>
@@ -500,6 +510,7 @@
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
+                                    <p>أسم المريض</p>
                                 <input type="text" class="form-control select2" id="medical_name" name="medical_name"  readonly>
                                 <input type="hidden" name="medical_id" id="medical_id" readonly>
                                 <div class="form-group">
@@ -819,23 +830,26 @@
                                     <select class="form-control select2" name="disease_type" id="disease_type"required>
                                         <option label="test">
 											  </option>
+                                     <option value="اصابة حرب" >
+                                            اصابة حرب
+                                        </option>
+                                        <option value="اصابة حادة" >
+                                            اصابة حادة
+                                        </option>
+                                        <option value="مرض مزمن" >
+                                            مرض مزمن
+                                        </option>
+                                        <option value=" أخرى" >
+                                            أخرى
+                                        </option>
                                         <option value="لايوجد" >
-                                        لايوجد
-                                    </option>
-                                    <option value="اصابة حرب" >
-                                        اصابة حرب
-                                    </option>
-                                    <option value="وباء" >
-                                        وباء
-                                    </option>
-                                    <option value="مرض مزمن" >
-                                        مرض مزمن
-                                    </option>
+                                            لايوجد
+                                         </option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم المرض</label>
-                                <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب اسم المرض"required>
+                                <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب اسم المرض أو أسم الشكايه"required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الدكتور</label>
@@ -862,7 +876,7 @@
                                 <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج"required>
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">هل تم تحويلك لطبيب آخر؟ مع ذكر الاسم إن وجد</label>
+                                <label for="exampleInputEmail">  تحويل لطبيب آخر؟ مع ذكر الاسم </label>
                                 <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر اسم الطبيب ان وجد"required>
                                 </div>
                                 <div class="form-group">
@@ -1658,11 +1672,14 @@
                                     <option value="اصابة حرب" >
                                         اصابة حرب
                                     </option>
-                                    <option value="وباء" >
-                                        وباء
+                                    <option value="اصابة حادة" >
+                                        اصابة حادة
                                     </option>
                                     <option value="مرض مزمن" >
                                         مرض مزمن
+                                    </option>
+                                    <option value=" أخرى" >
+                                        أخرى
                                     </option>
                                     </select>
                                 </div>
@@ -1716,11 +1733,12 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأم</label>
-                                <input type="number" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم "required>
+                                <input type="text" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم "required>
                                 </div>
 
                                 {{--  Father Part  --}}
                                 <hr>
+                                <h4> ادخل معلومات الأب: </h4>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الأب</label>
                                 <input type="text" class="form-control" id="father_name" name="father_name" placeholder=" أكتب اسم الأب "required>
@@ -1806,11 +1824,14 @@
                                     <option value="اصابة حرب" >
                                         اصابة حرب
                                     </option>
-                                    <option value="وباء" >
-                                        وباء
+                                    <option value="اصابة حادة" >
+                                        اصابة حادة
                                     </option>
                                     <option value="مرض مزمن" >
                                         مرض مزمن
+                                    </option>
+                                    <option value=" أخرى" >
+                                        أخرى
                                     </option>
                                     </select>
                                 </div>
@@ -1839,7 +1860,7 @@
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأب</label>
-                                <input type="number" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري "required>
+                                <input type="text" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري "required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1887,7 +1908,65 @@
                                                 انثى</option>
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">الحالة الأجتماعية</label>
+                                            <select class="form-control" id="status" name="status"  placeholder=""required>
+                                                <option label="test">
+                                                      </option>
+                                                <option value="متزوج/ة">
+                                                    متزوج/ة</option>
+                                                <option value="	مطلق/ة">
+                                                    مطلق/ة</option>
+                                                 <option value="أعزب/ة">
+                                                 أعزب/ة</option>
+                                                 option value="أرمل/ة">
+                                                 أرمل/ة</option>
+                                                 <option value=" مطلق و متزوج/ة">
+                                                    مطلق و متزوج/ة</option>
+                                                 <option value=" أرمل و متزوج/ة">
+                                                    أرمل و متزوج/ة</option>
+                                                </select>
+                                            </div>
+                                         <div class="form-group">
+                                        <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
+                                         <select class="form-control" id="Governorate" name="Governorate" placeholder=" أكتب اسم  محافظة "required>
+                                    <option label="test">
+                                         </option>
+                                    <option value="	دمشق">
+                                        دمشق</option>
+                                    <option value="ريف دمشق">
+                                        ريف دمشق</option>
+                                    <option value="	حلب ">
+                                        حلب</option>
+                                    <option value="حمص">
+                                        حمص</option>
+                                    <option value="حماه">
+                                        حماه</option>
+                                    <option value="	درعا">
+                                        درعا</option>
+                                    <option value="	ادلب">
+                                        ادلب</option>
+                                    <option value="	سويداء">
+                                        سويداء</option>
+                                    <option value="	ديرالزور">
+                                        دير الزور</option>
+                                    <option value="	الرقة">
+                                        الرقة</option>
+                                    <option value="الحسكة">
+                                        الحسكة</option>
+                                    <option value="	اللاذقية">
+                                        اللاذقية</option>
+                                    <option value="	طرطوس">
+                                        طرطوس</option>
+                                    <option value="	القنيطرة">
+                                        القنيطرة</option>
+                                    </select>
+                                </div>
 
+                                <div class="form-group">
+                                    <label for="exampleInputEmail">من اي مدينة؟</label>
+                                    <input type="text" class="form-control" id="city" name="city" placeholder=" أكتب اسم  المدينة أو الحي "required>
+                                </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هل يوجد كملك</label>
                                         <select class="form-control" id="medical_have_id" name="medical_have_id"  placeholder=" "required>
@@ -2153,7 +2232,63 @@
                                                 انثى</option>
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">الحالة الأجتماعية</label>
+                                            <select class="form-control" id="status" name="status"  placeholder=""required>
+                                                <option label="test">
+                                                      </option>
+                                                <option value="متزوج/ة">
+                                                    متزوج/ة</option>
+                                                <option value="	مطلق/ة">
+                                                    مطلق/ة</option>
+                                                 <option value="أعزب/ة">
+                                                 أعزب/ة</option>
+                                                 option value="أرمل/ة">
+                                                 أرمل/ة</option>
+                                                 <option value=" مطلق و متزوج/ة">
+                                                 أعزب/ة</option>
+                                                </select>
+                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
+                                            <select class="form-control" id="Governorate" name="Governorate" placeholder=" أكتب اسم  محافظة "required>
+                                                <option label="test">
+                                                     </option>
+                                                <option value="	دمشق">
+                                                    دمشق</option>
+                                                <option value="ريف دمشق">
+                                                    ريف دمشق</option>
+                                                <option value="	حلب ">
+                                                    حلب</option>
+                                                <option value="حمص">
+                                                    حمص</option>
+                                                <option value="حماه">
+                                                    حماه</option>
+                                                <option value="	درعا">
+                                                    درعا</option>
+                                                <option value="	ادلب">
+                                                    ادلب</option>
+                                                <option value="	سويداء">
+                                                    سويداء</option>
+                                                <option value="	ديرالزور">
+                                                    دير الزور</option>
+                                                <option value="	الرقة">
+                                                    الرقة</option>
+                                                <option value="الحسكة">
+                                                    الحسكة</option>
+                                                <option value="	اللاذقية">
+                                                    اللاذقية</option>
+                                                <option value="	طرطوس">
+                                                    طرطوس</option>
+                                                <option value="	القنيطرة">
+                                                    القنيطرة</option>
+                                                </select>
+                                            </div>
 
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail">من اي مدينة؟</label>
+                                                <input type="text" class="form-control" id="city" name="city" placeholder=" أكتب اسم  المدينة "required>
+                                            </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هل يوجد كملك</label>
                                         <select class="form-control" id="medical_have_id" name="medical_have_id"  placeholder=" أكنب اسم المحافظة الأصل "required>
@@ -2398,6 +2533,9 @@
         var medical_number = button.data('medical_number')
         var medical_have_id = button.data('medical_have_id')
         var gender = button.data('gender')
+        var status = button.data('status')
+        var Governorate = button.data('Governorate')
+        var city = button.data('city')
         var medical_id_extr = button.data('medical_id_extr')
         var note = button.data('note')
         var modal = $(this)
@@ -2407,8 +2545,11 @@
         modal.find('.modal-body #medical_number').val(medical_number);
         modal.find('.modal-body #medical_have_id').val(medical_have_id);
         modal.find('.modal-body #gender').val(gender);
+        modal.find('.modal-body #status').val(status);
+        modal.find('.modal-body #Governorate').val(Governorate);
+        modal.find('.modal-body #gender').val(gender);
         modal.find('.modal-body #note').val(note);
-        modal.find('.modal-body #medical_id_extr').val(medical_id_extr);
+        modal.find('.modal-body #city').val(city);
     })
 </script>
 

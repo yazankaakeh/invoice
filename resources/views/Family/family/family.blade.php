@@ -83,13 +83,13 @@
                                                     <th class="border-bottom-0"> الراتب الشهري</th>
                                                     <th class="border-bottom-0">المستوى النعليمي</th>
                                                     <th class="border-bottom-0">العمل الحالي</th>
-                                                    <th class="border-bottom-0">العمل السابق</th>
-                                                    <th class="border-bottom-0">مساعدات</th>
-                                                    <th class="border-bottom-0">نوع المساعدات</th>
-                                                    <th class="border-bottom-0">قيمة المساعدات</th>
-                                                    <th class="border-bottom-0">رقم هاتف</th>
-                                                    <th class="border-bottom-0">رقم هاتف ثاني</th>
-                                                    <th class="border-bottom-0">ملاحظات</th>
+                                                    <th class="border-bottom-0">العمل السابق :</th>
+                                                    <th class="border-bottom-0">مساعدات :</th>
+                                                    <th class="border-bottom-0">نوع المساعدات :</th>
+                                                    <th class="border-bottom-0">قيمة المساعدات :</th>
+                                                    <th class="border-bottom-0">رقم هاتف :</th>
+                                                    <th class="border-bottom-0">رقم هاتف ثاني :</th>
+                                                    <th class="border-bottom-0">ملاحظات :</th>
 
                                                     <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
                                                     <th class="border-bottom-0">اضافة دفعة تركي</th>
@@ -640,6 +640,7 @@
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
+                                    <p>أسم صاحب القيد</p>
                                 <input type="text" class="form-control select2" id="family_name" name="family_name"  readonly>
                                 <input type="hidden" name="family_id" id="family_id" readonly>
                                 <div class="form-group">
@@ -1279,6 +1280,8 @@
                                             كملك</option>
                                         <option value="	اقامة سياحية ">
                                             اقامة سياحية </option>
+                                            <option value="اقامة دراسية ">
+                                                اقامة دراسية </option>
                                             <option value="	 الجنسية التركي ">
                                                  الجنسية التركية </option>
                                             </select>
@@ -1600,7 +1603,7 @@
                                 </div>
 
                                  <div class="form-group">
-                                <label for="exampleInputEmail">تاريخ ميلاد الزوجة</label>
+                                <label class="exampleInputEmail">تاريخ ميلاد الزوجة</label>
                                 <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد"required>
                                 </div>
 
@@ -1643,18 +1646,21 @@
                                     <p class="mg-b-10">هل يوجد لديك اي أمراض</p>
                                     <select class="form-control select2" name="medical_mom" id="medical_mom"required>
                                         <option label="test">
-											  </option>
-                                        <option value="لايوجد" >
+                                        </option>
+                                  <option value="لايوجد" >
                                         لايوجد
                                     </option>
                                     <option value="اصابة حرب" >
                                         اصابة حرب
                                     </option>
-                                    <option value="وباء" >
-                                        وباء
+                                    <option value="اصابة حادة" >
+                                        اصابة حادة
                                     </option>
                                     <option value="مرض مزمن" >
                                         مرض مزمن
+                                    </option>
+                                    <option value=" أخرى" >
+                                        أخرى
                                     </option>
                                     </select>
                                 </div>
@@ -1723,8 +1729,8 @@
                                 <label for="exampleInputEmail">هل تعمل الزوجة؟</label>
                                 <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder=""required>
                                <option label="test">
-											      </option>
-                                    <option value="تعمل" >
+									 </option>
+                                 <option value="تعمل" >
                                     تعمل
                                 </option>
                                 <option value="لاتعمل" >
@@ -1741,9 +1747,11 @@
                                 <input type="text" class="form-control" id="wife_Pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  "required>
                                 </div>
                                </div>
-                                <hr>
-                                {{--  Husband Part  --}}
 
+                                {{--  Husband Part  --}}
+                                <hr>
+                                <h4> ادخل معلومات الزوج: </h4>
+                                <hr>
                                 <div  class="row row-sm"id="hidden1_div" style="display:flex;"> {{-- display:flex  --}}
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم  الزوج</label>
@@ -1757,7 +1765,7 @@
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
                                 <select class="form-control" id="husb_Orig_city" name="husb_Orig_city" placeholder=" أكتب اسم  محافظة "required>
                                     <option label="test">
-                                                </option>
+                                         </option>
                                     <option value="	دمشق">
                                         دمشق</option>
                                     <option value="ريف دمشق">
@@ -1849,11 +1857,14 @@
                                     <option value="اصابة حرب" >
                                         اصابة حرب
                                     </option>
-                                    <option value="وباء" >
-                                        وباء
+                                    <option value="اصابة حادة" >
+                                        اصابة حادة
                                     </option>
                                     <option value="مرض مزمن" >
                                         مرض مزمن
+                                    </option>
+                                    <option value=" أخرى" >
+                                        أخرى
                                     </option>
                                     </select>
                                 </div>

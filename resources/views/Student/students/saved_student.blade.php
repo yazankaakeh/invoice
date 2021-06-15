@@ -86,8 +86,8 @@
                                                     <th class="border-bottom-0">السكن الحالي</th>
                                                     <th class="border-bottom-0">سنة الدخول</th>
                                                     <th class="border-bottom-0">نوع الإقامة</th>
-                                                    <th class="border-bottom-0">الولاية</th>
-                                                    <th class="border-bottom-0">ملاحظة</th>
+                                                    <th class="border-bottom-0">الولاية :</th>
+                                                    <th class="border-bottom-0">ملاحظة  :</th>
                                                     <th class="border-bottom-0"> اضافة دفعة بالدولار</th>
                                                     <th class="border-bottom-0">اضافة دفعة تركي</th>
                                                     <th class="border-bottom-0">اضافة دفعة يورو</th>
@@ -103,6 +103,7 @@
                                                     <th class="border-bottom-0">العمل</th>
                                                     <th class="border-bottom-0">المنحة الدراسية</th>
                                                     <th class="border-bottom-0">الجامعة</th>
+                                                    <th class="border-bottom-0">المنحة المؤجلة</th>
                                                     <th class="border-bottom-0">الإخوة</th>
                                                     <th class="border-bottom-0">تحديث الحالة</th>
 
@@ -265,8 +266,9 @@
                                                             data-student_name="{{$x->student_name}}"
                                                             data-birthday="{{$x->birthday}}" data-email="{{$x->email}}" data-age="{{$x->age}}"
                                                             data-city_name="{{$x->city_name}}" data-stu_Cur_housing="{{$x->stu_Cur_housing}}" data-phone="{{$x->phone}}" data-county_are_from="{{$x->county_are_from}}"
-                                                                data-entry_turkey="{{$x->entry_turkey}}" data-Identity_type="{{$x->Identity_type}}"
+                                                             data-entry_turkey="{{$x->entry_turkey}}" data-Identity_type="{{$x->Identity_type}}"
                                                             data-Id_stud_source="{{$x->Id_stud_source}}" data-id="{{$x->id}}" data-social_state="{{$x->social_state}}"
+                                                            data-note="{{$x->note}}"
                                                             data-description="" data-toggle="modal"
                                                             href="#exampleModal2" title="تعديل">
                                                             <i class="las la-pen"  style="font-size: 20px;"></i>
@@ -404,6 +406,23 @@
                                                     @endcan
                                                     </td>
                                                     @endif
+
+                                                      {{-- delayed  --}}
+                                                      @if($x->delayed_scholar == 1)
+                                                      <td>
+                                                      <a class=" btn btn-sm btn-info" href="/delayed_scholar/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                      @
+                                                      </td>
+                                                      @elseif($x->delayed_scholar == 0)
+                                                      <td>
+                                                          <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                                          data-student_id="{{$x->id}}" data-student_name"{{$x->student_name}}"   data-description="" data-toggle="modal"
+                                                          href="#exampleModal77" title="إضافة معلومات المنحة مؤجلة">
+                                                          <i class="fas fa-book-open" style="font-size: 20px;"></i>
+                                                      </a>
+                                                  </td>
+                                                  @endif
+
 
                                                     {{-- Sister and Brother  --}}
 
@@ -585,6 +604,15 @@
                             </div>
                             @endif
 
+                            @if (session()->has('Add_delayed_scholar'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong style="right: 30px; position: relative;">{{ session()->get('Add_delayed_scholar') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+
                             @if (session()->has('Add_sister'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong style="right: 30px; position: relative;">{{ session()->get('Add_sister') }}</strong>
@@ -623,6 +651,7 @@
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                 <div class="modal-body">
+                                    <p>أسم الطالب</p>
                                 <input type="text" class="form-control select2" id="student_name" name="student_name"  readonly>
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 <div class="form-group">
@@ -952,7 +981,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">كم الراتب </label>
-                                <input type="number" class="form-control" id="salary" name="salary" placeholder=" أكتب قيمة الراتب"required>
+                                <input type="text" class="form-control" id="salary" name="salary" placeholder=" أكتب قيمة الراتب"required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1245,23 +1274,23 @@
                                 <div  class="row row-sm"id="hidden3_div" style="display:none;"> {{-- display:flex  --}}
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الجامعة الثانية </label>
-                                <input type="text" class="form-control" id="Ano_univer_name" name="Ano_univer_name" placeholder="   أكتب اسم الجامعة الثانية "required>
+                                <input type="text" class="form-control" id="Ano_univer_name" name="Ano_univer_name" placeholder="   أكتب اسم الجامعة الثانية ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الأختصاص الثاني </label>
-                                <input type="text" class="form-control" id="Ano_univer_special" name="Ano_univer_special" placeholder="   أكتب الأختصاص بالجامعة الثانية "required>
+                                <input type="text" class="form-control" id="Ano_univer_special" name="Ano_univer_special" placeholder="   أكتب الأختصاص بالجامعة الثانية ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">طريقة القبول بالجامعة الثانية </label>
-                                <input type="text" class="form-control" id="Ano_univer_Accept" name="Ano_univer_Accept" placeholder="   أكتب طريقة القبول "required>
+                                <input type="text" class="form-control" id="Ano_univer_Accept" name="Ano_univer_Accept" placeholder="   أكتب طريقة القبول ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">معدل القبول  للجامعة الثانية </label>
-                                <input type="text" class="form-control" id="Ano_accept_rate" name="Ano_accept_rate" placeholder="   أكتب معدل القبول "required>
+                                <input type="text" class="form-control" id="Ano_accept_rate" name="Ano_accept_rate" placeholder="   أكتب معدل القبول ">
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">  السنة الدراسية بالجامعة الثانية   </label>
-                                <select type="text" class="form-control" id="Ano_Schoo_year" name="Ano_Schoo_year"required>
+                                <select type="text" class="form-control" id="Ano_Schoo_year" name="Ano_Schoo_year">
                                     <option>
                                          </option>
                                     <option value="تحضيري" >
@@ -1280,7 +1309,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المعدل بالجامعة الثانية </label>
-                                <input type="text" class="form-control" id="Ano_Current_rate" name="Ano_Current_rate" placeholder="   أكتب المعدل بالجامعة الثانية "required>
+                                <input type="text" class="form-control" id="Ano_Current_rate" name="Ano_Current_rate" placeholder="   أكتب المعدل بالجامعة الثانية ">
                                 </div>
                                 </div>
 
@@ -1554,6 +1583,12 @@
                                     <option value="تخت واحد" >
                                         تخت واحد
                                     </option>
+                                    <option value="  السكن مع الأهل" >
+                                        السكن مع الأهل
+                                    </option>
+                                    <option value=" السكن في بيت خاص" >
+                                        السكن في بيت خاص
+                                    </option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -1565,12 +1600,12 @@
                                 <input type="text" class="form-control" id="stud_Place_housing" name="stud_Place_housing" placeholder="  أكتب الموقع الحالي كما في الفاتورة "required>
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">مصاريف السكن الطلابي</label>
-                                <input type="text" class="form-control" id="stud_expen" name="stud_expen"  placeholder="  أكتب ماهي  السكن الطلابي "required>
+                                <label for="exampleInputEmail">قيمة مصاريف السكن </label>
+                                <input type="text" class="form-control" id="stud_expen" name="stud_expen"  placeholder="  أكتب قيمة مصاريف السكن  "required>
                                 </div>
                                 <div class="form-group">
-                                <label for="exampleInputEmail">قيمت مصاريف السكن</label>
-                                <input type="text" class="form-control" id="stud_valu_expen" name="stud_valu_expen" placeholder="   أكتب قيمة مصاريف السكن  "required>
+                                <label for="exampleInputEmail">قيمت مصاريف الشخصية</label>
+                                <input type="text" class="form-control" id="stud_valu_expen" name="stud_valu_expen" placeholder="   أكتب قيمة مصاريف الشخصية   "required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -1694,8 +1729,8 @@
                                 </div>
 
                                  <div class="form-group">
-                                <label for="exampleInputEmail">تاريخ ميلاد الأم</label>
-                                <input type="date" class="form-control" id="mother_birth" name="mother_birth" placeholder=" أكتب تاريخ الميلاد "required>
+                                <label for="exampleInputEmail"> عمر الأم</label>
+                                <input type="text" class="form-control" id="mother_birth" name="mother_birth" placeholder=" أكتب عمر الأم بأرقام "required>
                                 </div>
 
                                  <div class="form-group">
@@ -1788,18 +1823,19 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأم</label>
-                                <input type="number" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم "required>
+                                <input type="text" class="form-control" id="mother_salary" name="mother_salary" placeholder="  أكتب الراتب الشهري للأم "required>
                                 </div>
 
                                 {{--  Father Part  --}}
                                 <hr>
+                                <h4> ادخل معلومات الأب: </h4>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الأب</label>
                                 <input type="text" class="form-control" id="father_name" name="father_name" placeholder=" أكتب أسم الأب "required>
                                 </div>
                                  <div class="form-group">
-                                <label for="exampleInputEmail">تاريخ ميلاد الأب</label>
-                                <input type="date" class="form-control" id="father_birth" name="father_birth" placeholder=" أكتب تاريخ ميلاد الأب"required>
+                                <label for="exampleInputEmail"> عمر الأب</label>
+                                <input type="text" class="form-control" id="father_birth" name="father_birth" placeholder="  أكتب عمر الأب بأرقام"required>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
@@ -1893,7 +1929,7 @@
 
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الراتب الشهري للأب</label>
-                                <input type="number" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري "required>
+                                <input type="text" class="form-control" id="father_salary" name="father_salary" placeholder=" أكتب الراتب الشهري "required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -2227,6 +2263,52 @@
                             </div>
                         </div>
 
+                         {{-- delayed_scholar --}}
+                         <div class="modal fade" id="exampleModal77" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">المنحة المؤجلة</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <form action="{{ route('Quran.student.store') }}" method="post">
+                                    {{ method_field('POST') }}
+                                    {{ csrf_field() }}
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail">اسم الطالب</label>
+                                        <input type="hidden" class="form-control" id="student_id" name="student_id" placeholder="  " readonly>
+                                        <input type="hidden" class="form-control" id="student_name" name="student_name" placeholder="  " readonly>
+                                        </div>
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail">قيمة المنحة المؤجلة</label>
+                                    <input type="text" class="form-control" id="value" name="value" placeholder="    أكتب قيمة المنحة المؤجلة "required>
+                                    </div>
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail">تاريخ المنحة المقدمة</label>
+                                    <input type="date" class="form-control" id="date" name="date" placeholder="   أكتب تاريخ تقديم منحة "required>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail"> ملاحظة</label>
+                                    <input type="text" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد "required>
+                                    </div>
+                                     </div>
+                                    <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">تاكيد</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                    </div>
+                                    </form>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+                             </div>
+                            </div>
+                            </div>
 
                         {{-- Husband and Wife --}}
                         <div class="modal fade" id="exampleModal111" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -3428,6 +3510,7 @@
         var entry_turkey = button.data('entry_turkey')
         var Identity_type = button.data('Identity_type')
         var Id_stud_source = button.data('Id_stud_source')
+        var note = button.data('note')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #social_state').val(social_state);
@@ -3442,6 +3525,7 @@
         modal.find('.modal-body #entry_turkey').val(entry_turkey);
         modal.find('.modal-body #Identity_type').val(Identity_type);
         modal.find('.modal-body #Id_stud_source').val(Id_stud_source);
+        modal.find('.modal-body #note').val(note);
     })
 </script>
 
@@ -3464,6 +3548,19 @@
         var student_id = button.data('student_id')
         var modal = $(this)
         modal.find('.modal-body #student_id').val(student_id);
+
+})
+</script>
+
+{{--  delayed_scholar  --}}
+<script>
+    $('#exampleModal77').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var student_id = button.data('student_id')
+        var student_name = button.data('student_name')
+        var modal = $(this)
+        modal.find('.modal-body #student_id').val(student_id);
+        modal.find('.modal-body #student_name').val(student_name);
 
 })
 </script>
