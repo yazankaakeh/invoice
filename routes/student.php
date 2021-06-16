@@ -50,11 +50,11 @@ Route::prefix('children')->group(function () {
 });
 
 Route::prefix('delayed_scholar')->group(function () {
-    Route::get('/show', "Family\DelayedScholarController@index")->name('delayed_scholar.show')->middleware('auth');
-    Route::post('/store', "Family\DelayedScholarController@store_student_children")->name('delayed_scholar.student.store')->middleware('auth');
-    Route::get('/show/{id}', "Family\DelayedScholarController@show")->middleware('auth');
-    Route::patch('/update', "Family\DelayedScholarController@update")->name('delayed_scholar.update')->middleware('auth');
-    Route::delete('/delete', "Family\DelayedScholarController@destroy")->name('delayed_scholar.destroy')->middleware('auth');
+    Route::get('/show', "Student\DelayedScholarController@index")->name('delayed_scholar.show')->middleware('auth');
+    Route::post('/store', "Student\DelayedScholarController@store")->name('delayed_scholar.store')->middleware('auth');
+    Route::get('/show/{id}', "Student\DelayedScholarController@show")->middleware('auth');
+    Route::patch('/update', "Student\DelayedScholarController@update")->name('delayed_scholar.update')->middleware('auth');
+    Route::delete('/delete', "Student\DelayedScholarController@destroy")->name('delayed_scholar.destroy')->middleware('auth');
 });
 
 Route::prefix('father_and_mother')->group(function () {

@@ -47,6 +47,7 @@ class CreateStudentsTable extends Migration
             $table->integer('sis_statu')->default('0')->nullable();
             $table->integer('tr_statu')->default('0')->nullable();
             $table->integer('new_statu')->default('0')->nullable();
+            $table->integer('old_statu')->default('0')->nullable();
             $table->text('note')->nullable();//
             $table->integer('enable')->default('0')->nullable();
             $table->string('gender');

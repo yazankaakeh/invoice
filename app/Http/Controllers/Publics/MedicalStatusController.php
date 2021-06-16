@@ -41,6 +41,7 @@ function __construct()
       $med = MedicalStatus::where('student_id', $id)->get();
       return view('Student.med_sta.med_sta',compact('med'));
     }
+
     public function messages_student()
     {
 
@@ -57,7 +58,7 @@ function __construct()
         'Trans_to_doctor.required'  => 'لم يتم ادخال  اسم طيب أخر ان وجد او أكتب لايوجد!!',
 
 
-    ];
+        ];
     }
     public function storestudent(Request $request)
     {
@@ -111,9 +112,10 @@ function __construct()
        ->get();
        return view('Student.med_sta.med_sta')->with($med);
     }
+
     public function messages_update()
     {
-    return $messages_update = [
+        return $messages_update = [
         'student_id.required' => '!!',
         'id.required' => '!!',
         'disease_type.required' => 'لم يتم ادخال نوع المرض !!',
@@ -125,9 +127,7 @@ function __construct()
         'date_accept.required'  => 'لم يتم ادخال  تاريخ البدء    !!',
         'date_end.required'  => 'لم يتم ادخال  تاريخ الأنهاء    !!',
         'Trans_to_doctor.required'  => 'لم يتم ادخال  اسم طيب أخر ان وجد او أكتب لايوجد!!',
-
-
-    ];
+        ];
     }
     public function update(Request $request, MedicalStatus $medicalStatus)
     {
@@ -197,7 +197,7 @@ function __construct()
     }
     public function messages_medical()
     {
-    return $messages_medical = [
+        return $messages_medical = [
         'medical_id.required' => '!!',
         'disease_type.required' => 'لم يتم ادخال نوع المرض !!',
         'disease_name.required' => 'لم يتم ادخال  اسم المريض  !!',
@@ -212,7 +212,7 @@ function __construct()
 
 
 
-    ];
+     ];
     }
     public function store_medical(Request $request)
     {
@@ -229,6 +229,7 @@ function __construct()
             'date_accept' => 'required',
             'date_end' => 'required',
             'Trans_to_doctor' => 'required',
+            'medical_rate' => 'required',
             'note' => 'required',
 
         ],$messages);
@@ -251,9 +252,10 @@ function __construct()
          $MedicalStatues -> date_end = $request->date_end;
          $MedicalStatues -> Trans_to_doctor = $request->Trans_to_doctor;
          $MedicalStatues -> note = $request->note;
+         $MedicalStatues -> medical_rate = $request->medical_rate;
          //write to the data base
-         $medicals ->save();
-         $MedicalStatues ->save();
+         $medicals->save();
+         $MedicalStatues->save();
          session()->flash('Add_MedicalStatues',  'تم اضافة الحالة الطبية للطالب  '. $medical_name .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Medical Successfully')
          return redirect(route('medical.show'));
@@ -264,7 +266,7 @@ function __construct()
     {
         $med['med'] = MedicalStatus::select('id','medical_id','updated_at','disease_type','disease_name',
        'dr_name','treat_type','treat_cost',
-       'treat_Duratio','date_accept','date_end','Trans_to_doctor'
+       'treat_Duratio','date_accept','date_end','Trans_to_doctor','note','medical_rate'
        )
        ->orderBy('id', 'DESC')
        ->get();
@@ -308,6 +310,7 @@ function __construct()
             'date_accept' => 'required',
             'date_end' => 'required',
             'Trans_to_doctor' => 'required',
+            'note' => 'medical_rate',
             'note' => 'required',
 
         ],$messages);
@@ -327,9 +330,11 @@ function __construct()
          $MedicalStatues -> date_accept = $request->date_accept;
          $MedicalStatues -> date_end = $request->date_end;
          $MedicalStatues -> Trans_to_doctor = $request->Trans_to_doctor;
+         $MedicalStatues -> medical_rate = $request->medical_rate;
          $MedicalStatues -> note = $request->note;
+
          //write to the data base
-         $MedicalStatues ->save();
+         $MedicalStatues->save();
          session()->flash('Edit',  'تم تعديل الحالة الطبية للطالب  '. $medical_name .' بنجاح ');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Medical Successfully')
          return redirect(route('Medical_Statu.show.medical'));

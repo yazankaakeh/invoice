@@ -373,33 +373,33 @@
                                 <select class="form-control" id="husb_Orig_city" name="husb_Orig_city" placeholder=" أكتب اسم  محافظة ">
                                     <option label="test">
                                         حدد من فضلك اسم  المحافظة </option>
-                                    <option value="	دمشق">
+                                    <option value="دمشق">
                                         دمشق</option>
                                     <option value="ريف دمشق">
                                         ريف دمشق</option>
-                                    <option value="	حلب ">
+                                    <option value="حلب ">
                                         حلب</option>
                                     <option value="حمص">
                                         حمص</option>
                                     <option value="حماه">
                                         حماه</option>
-                                    <option value="	درعا">
+                                    <option value="درعا">
                                         درعا</option>
-                                    <option value="	ادلب">
+                                    <option value="ادلب">
                                         ادلب</option>
-                                    <option value="	سويداء">
+                                    <option value="سويداء">
                                         سويداء</option>
-                                    <option value="	ديرالزور">
+                                    <option value="ديرالزور">
                                         دير الزور</option>
-                                    <option value="	الرقة">
+                                    <option value="الرقة">
                                         الرقة</option>
                                     <option value="الحسكة">
                                         الحسكة</option>
-                                    <option value="	اللاذقية">
+                                    <option value="اللاذقية">
                                         اللاذقية</option>
-                                    <option value="	طرطوس">
+                                    <option value="طرطوس">
                                         طرطوس</option>
-                                    <option value="	القنيطرة">
+                                    <option value="القنيطرة">
                                         القنيطرة</option>
                                     </select>
                                 </div>

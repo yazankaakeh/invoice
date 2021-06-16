@@ -87,6 +87,7 @@
                                                                 data-childre_educa_leve="{{$x->childre_educa_leve}}"
                                                                 data-childre_class_number="{{$x->childre_class_number }}" data-childre_id_extr="{{$x->childre_id_extr}}"
                                                                 data-childre_live_with="{{$x->childre_live_with}}"
+                                                                data-identity="{{$x->identity}}"
                                                                 data-student_name="{{$x->student->student_name}}"   data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
@@ -199,27 +200,27 @@
                                     <div class="form-group">
                                     <input type="hidden" name="id" id="id"  readonly>
                                     <label for="exampleInputEmail">اسم المدرسة </label>
-                                    <input class="form-control" name="School_name" id="School_name" type="text" placeholder="أكتب أسم المدرسة ">
+                                    <input class="form-control" name="School_name" id="School_name" type="text" placeholder="أكتب أسم المدرسة " required>
                                     </div>
 
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نوع المدرسة </label>
-                                    <input class="form-control" name="School_type" id="School_type" type="text" placeholder="أكتب نوع المدرسة ">
+                                    <input class="form-control" name="School_type" id="School_type" type="text" placeholder="أكتب نوع المدرسة " required>
                                     </div>
 
                                     <div class="form-group">
                                     <label for="exampleInputEmail">موقع المدرسة </label>
-                                    <input class="form-control" name="School_location" id="School_location" type="text" placeholder="أكتب موقع المدرسة ">
+                                    <input class="form-control" name="School_location" id="School_location" type="text" placeholder="أكتب موقع المدرسة " required>
                                     </div>
 
                                     <div class="form-group">
                                     <label for="exampleInputEmail">تكاليف مصروف الطفل</label>
-                                    <input class="form-control" name="School_cost" id="School_cost" type="text" placeholder="أكتب قيمة تكاليف مصروف الطفل ">
+                                    <input class="form-control" name="School_cost" id="School_cost" type="text" placeholder="أكتب قيمة تكاليف مصروف الطفل " required>
                                     </div>
 
                                     <div class="form-group">
                                     <label for="exampleInputEmail">نكاليف المدرسة أو الأقصاط</label>
-                                    <input class="form-control" name="School_fees" id="School_fees" type="text" placeholder="أكتب قيمة تكاليف المدرسة ">
+                                    <input class="form-control" name="School_fees" id="School_fees" type="text" placeholder="أكتب قيمة تكاليف المدرسة " required>
                                     </div>
 
                                     </div>
@@ -282,15 +283,15 @@
                                 <input type="hidden" name="id" id="id" readonly>
                                 <input type="hidden" name="student_id" id="student_id" readonly>
                                 <label for="exampleInputEmail">اسم الطفل</label>
-                                <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب أسم الطفل ">
+                                <input type="text" class="form-control" id="childre_name" name="childre_name" placeholder=" أكتب أسم الطفل" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمر</label>
-                                <input type="number" class="form-control" id="childre_age" name="childre_age" placeholder=" أكتب  العمر بالرقم ">
+                                <input type="number" class="form-control" id="childre_age" name="childre_age" placeholder=" أكتب  العمر بالرقم " required>
                                 </div>
                                 <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">الجنس</p>
-                                    <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" أكتب الجنس الطفل ">
+                                    <select class="form-control select2" name="childre_gender" id="childre_gender" placeholder=" أكتب الجنس الطفل " required>
                                     <option value="ذكر" >
                                         ذكر
                                     </option>
@@ -301,30 +302,30 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">المرحلة الدراسية</label>
-                                <input type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" placeholder=" أكتب المرحلة الدراسية ">
+                                <input type="text" class="form-control" id="childre_educa_leve" name="childre_educa_leve" placeholder=" أكتب المرحلة الدراسية "  required>
                                 </div>
                                  <div class="form-group">
                                 <label for="exampleInputEmail"> رقم الصف الدراسي </label>
-                                <input type="text" class="form-control" id="childre_class_number" name="childre_class_number" placeholder="  أكتب رقم الصف الدراسي ">
+                                <input type="text" class="form-control" id="childre_class_number" name="childre_class_number" placeholder="  أكتب رقم الصف الدراسي " required>
                                 </div>
                                 <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">  نوع الهوية الشخصية</p>
-                                    <select class="form-control select2" name="identity" id="identity" placeholder="  "required>
+                                    <select class="form-control select2" name="identity" id="identity" placeholder="  " required>
                                         <option label="test">
 											        </option>
                                         <option value="لايوجد">
                                             لايوجد</option>
-                                        <option value="	كملك">
+                                        <option value="كملك">
                                             كملك</option>
-                                        <option value="	اقامة سياحية ">
+                                        <option value="اقامة سياحية">
                                             اقامة سياحية </option>
-                                            <option value="	 الجنسية التركي ">
+                                            <option value="الجنسية التركي">
                                                  الجنسية التركية </option>
                                             </select>
                                             <div>
                                 <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">الهوية الشخصية من اي ولاية</p>
-                                    <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك ">
+                                    <select class="form-control select2" name="childre_id_extr" id="childre_id_extr" placeholder=" أختر من اسم الولاية الصادرة منها الكملك " required>
                                         <option label="test">
                                         </option>
                              <option value="لايوجد">
@@ -495,7 +496,7 @@
                     </div>
                                  <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">هل يعيشون معكم</p>
-                                    <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم ">
+                                    <select class="form-control select2" name="childre_live_with" id="childre_live_with" placeholder=" هل الأطفال يعيشون معكم " required>
                                     <option value="لا" >
                                         لا
                                     </option>
@@ -552,6 +553,7 @@
         var button = $(event.relatedTarget)
         var student_id = button.data('student_id')
         var id = button.data('id')
+        var identity = button.data('identity')
         var childre_age = button.data('childre_age')
         var childre_name = button.data('childre_name')
         var childre_gender = button.data('childre_gender')
@@ -561,6 +563,7 @@
         var childre_live_with = button.data('childre_live_with')
         var modal = $(this)
         modal.find('.modal-body #student_id').val(student_id);
+        modal.find('.modal-body #identity').val(identity);
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #childre_age').val(childre_age);
         modal.find('.modal-body #childre_name').val(childre_name);

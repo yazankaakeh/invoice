@@ -49,13 +49,14 @@ function __construct()
     }
 
     public function index()
-    {
-        $child['child'] = Children::select('id','student_id','updated_at','childre_name','childre_age',
-       'childre_gender','childre_educa_leve','childre_class_number','childre_id_extr',
-       'childre_live_with','student_statu','family_statu','medical_statu')
-       ->orderBy('id', 'DESC')
-       ->get();
-       return view('Student.child.child')->with($child);
+     {
+    //     $child['child'] = Children::select('id','student_id','updated_at','childre_name','childre_age',
+    //    'childre_gender','childre_educa_leve','childre_class_number','childre_id_extr',
+    //    'childre_live_with','student_statu','family_statu','medical_statu')
+    //    ->orderBy('id', 'DESC')
+    //    ->get();
+        $child = Children::all();
+       return view('Student.child.child',compact('child'));//->with($child);
        //use (with) for passing the data with select
     }
     public function messages_student_children()

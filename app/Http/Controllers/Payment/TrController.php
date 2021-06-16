@@ -17,210 +17,217 @@ use App\Http\Controllers\Controller;
 class TrController extends Controller
 {
 
-function __construct()
-{
+        function __construct()
+        {
 
-$this->middleware('permission: مدفوعات بالتركي العائلات ', ['only' => ['family_ind_tr']]);
-$this->middleware('permission: مدفوعات بالتركي العائلات ', ['only' => ['show_family_tr']]);
-$this->middleware('permission: إضافة دفعة بالتركي العائلات ', ['only' => ['store_family_tr']]);
-$this->middleware('permission: تعديل دفعة بالتركي العائلات ', ['only' => ['update_family_tr']]);
-$this->middleware('permission: حذف دفعة بالتركي العائلات ', ['only' => ['destroy_familys_tr']]);
+        $this->middleware('permission: مدفوعات بالتركي العائلات ', ['only' => ['family_ind_tr']]);
+        $this->middleware('permission: مدفوعات بالتركي العائلات ', ['only' => ['show_family_tr']]);
+        $this->middleware('permission: إضافة دفعة بالتركي العائلات ', ['only' => ['store_family_tr']]);
+        $this->middleware('permission: تعديل دفعة بالتركي العائلات ', ['only' => ['update_family_tr']]);
+        $this->middleware('permission: حذف دفعة بالتركي العائلات ', ['only' => ['destroy_familys_tr']]);
 
-$this->middleware('permission: مدفوعات بالتركي الطلاب ', ['only' => ['student_ind_tr']]);
-$this->middleware('permission: مدفوعات بالتركي الطلاب ', ['only' => ['show_student_tr']]);
-$this->middleware('permission: إضافة دفعة بالتركي الطلاب ', ['only' => ['store_student_tr']]);
-$this->middleware('permission: تعديل دفعة بالتركي الطلاب ', ['only' => ['update_student_tr']]);
-$this->middleware('permission: حذف دفعة بالتركي الطلاب ', ['only' => ['destroy_students_tr']]);
+        $this->middleware('permission: مدفوعات بالتركي الطلاب ', ['only' => ['student_ind_tr']]);
+        $this->middleware('permission: مدفوعات بالتركي الطلاب ', ['only' => ['show_student_tr']]);
+        $this->middleware('permission: إضافة دفعة بالتركي الطلاب ', ['only' => ['store_student_tr']]);
+        $this->middleware('permission: تعديل دفعة بالتركي الطلاب ', ['only' => ['update_student_tr']]);
+        $this->middleware('permission: حذف دفعة بالتركي الطلاب ', ['only' => ['destroy_students_tr']]);
 
-$this->middleware('permission: مدفوعات بالتركي الطبي ', ['only' => ['medical_ind_tr']]);
-$this->middleware('permission: مدفوعات بالتركي الطبي ', ['only' => ['show_medical_tr']]);
-$this->middleware('permission: إضافة دفعة بالتركي الطبي ', ['only' => ['store_medical_tr']]);
-$this->middleware('permission: تعديل دفعة بالتركي الطبي ', ['only' => ['update_medical_tr']]);
-$this->middleware('permission: حذف دفعة بالتركي الطبي ', ['only' => ['destroy_medicals_tr']]);
+        $this->middleware('permission: مدفوعات بالتركي الطبي ', ['only' => ['medical_ind_tr']]);
+        $this->middleware('permission: مدفوعات بالتركي الطبي ', ['only' => ['show_medical_tr']]);
+        $this->middleware('permission: إضافة دفعة بالتركي الطبي ', ['only' => ['store_medical_tr']]);
+        $this->middleware('permission: تعديل دفعة بالتركي الطبي ', ['only' => ['update_medical_tr']]);
+        $this->middleware('permission: حذف دفعة بالتركي الطبي ', ['only' => ['destroy_medicals_tr']]);
 
-}
+        $this->middleware('permission: مدفوعات بالتركي ', ['only' => ['spent_ind_tr']]);
+        $this->middleware('permission: مدفوعات بالتركي ', ['only' => ['show_spent_tr']]);
+        $this->middleware('permission: اضافة مدفوعات بالتركي ', ['only' => ['store_spent_tr']]);
+        $this->middleware('permission: تعديل مدفوعات بالتركي ', ['only' => ['update_spent_tr']]);
+        $this->middleware('permission: حذف مدفوعات بالتركي ', ['only' => ['destroy_spent_tr']]);
+
+        }
 
     ##################################################### Family start
-public function family_ind_tr()
-{
-    $payments_income = Income::select('value_tr')->distinct()->get();
-    $payments = Tr::with('family')->get();
-    return view('payments.family.family_tr',compact("payments",'payments_income'));//->with($payments)
-}
-public function messages_family_tr()
-{
-return $messages_family_tr = [
-    'family_id.required' => '!!',
-    'family_value_tr.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
-    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
-
-
-];
-}
-public function store_family_tr(Request $request)
-{
-    $messages = $this->messages_family_tr();
-    $this->validate($request,[
-        'family_id' => 'required',
-        'family_value_tr' => 'required',
-        'note'=> 'required',
-    ],$messages);
-    $s;
-    if ($check = DB::table('incomes')->where('value_tr','!=', null)->where('value_tr','!=', 0)->latest()->first() != null) {
-    $payments_cut = Income::where('value_tr','>', 0)
-    //->having('family_value_tr', '>', 0)
-    ->first();
-    $s= $payments_cut->value_tr;
-    $a=$request->family_value_tr;
-    //dd($a);
-    $m = $s - $a;
-    if ($m < 0) {
-    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة التركي يرجى الدفع على دفعتين القيمة المتبقية بالتركي  هي:  '.$payments_cut->value_tr.'');
-        //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    return redirect(route('family.show'));
-    }
-    else {
-        $sta = $payments_cut->incomes_statu;
-        ++$sta;
-        $payments_cut->incomes_statu = $sta;
-
-        $payments_cut->value_tr = $m;
-        $payments_cut ->save();
-    }
-
-    //create new object of the model student and make mapping to the data
-    $family =  Family::find($request->family_id);
-    $x = $family->tr_statu;
-    ++$x;
-    $family->tr_statu = $x;
-    $family_Constraint = $family->family_Constraint;
-    $payments = new Tr;
-    $payments -> family_id = $request -> family_id;
-    $payments -> note = $request->note;
-
-    $payments -> family_value = $request->family_value_tr;
-    //write to the data base
-    $payments ->save();
-    $family ->save();
-    session()->flash('Edit', 'تم إضافة المبلغ المالي للعائلة  '. $family_Constraint .' بنجاح ');
-    //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    return redirect(route('family.show'));
-    }
-    else {
-    session()->flash('Warning', 'لايوجد مبالغ مالية متوفرة ');
-    //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    return redirect(route('family.show'));
-    }
-}
-public function messages_update_family_tr()
-{
-    return $messages_update_family_tr = [
-    'family_id.required' => '!!',
-    'family_value_tr.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
-    'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
-
-
-];
-}
-public function update_family_tr(Request $request)
-{
-    $messages = $this->messages_update_family_tr();
-    $this->validate($request, [
-        'family_id' => 'required',
-        'id' => 'required',
-        'family_value_tr' => 'required',
-        'family_value_tr1' => 'required',
-        'note'=> 'required',
-    ],$messages);
-    if ($request->family_value_tr1 != $request->family_value_tr)
+    public function family_ind_tr()
     {
+        $payments_income = Income::select('value_tr')->distinct()->get();
+        $payments = Tr::with('family')->get();
+        return view('payments.family.family_tr',compact("payments",'payments_income'));//->with($payments)
+    }
 
-    $payments_cut = Income::where('value_tr','>=', 0)->first();
+    public function messages_family_tr()
+    {
+        return $messages_family_tr = [
+        'family_id.required' => '!!',
+        'family_value_tr.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
+        'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
+        ];
+    }
 
-    $s= $payments_cut->value_tr;
-    $a=$request->family_value_tr1;
-    $m = $s + $a;
-    $payments_cut->value_tr = $m;
-    $m =0;
+    public function store_family_tr(Request $request)
+    {
+        $messages = $this->messages_family_tr();
+        $this->validate($request,[
+            'family_id' => 'required',
+            'family_value_tr' => 'required',
+            'note'=> 'required',
+        ],$messages);
+        $s;
+        if ($check = DB::table('incomes')->where('value_tr','!=', null)->where('value_tr','!=', 0)->latest()->first() != null) {
+        $payments_cut = Income::where('value_tr','>', 0)
+        //->having('family_value_tr', '>', 0)
+        ->first();
+        $s= $payments_cut->value_tr;
+        $a=$request->family_value_tr;
+        //dd($a);
+        $m = $s - $a;
+        if ($m < 0) {
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة التركي يرجى الدفع على دفعتين القيمة المتبقية بالتركي  هي:  '.$payments_cut->value_tr.'');
+            //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+        return redirect(route('family.show'));
+        }
+        else {
+            $sta = $payments_cut->incomes_statu;
+            ++$sta;
+            $payments_cut->incomes_statu = $sta;
 
-    $s= $payments_cut->value_tr;
-    $a=$request->family_value_tr;
-    $m = $s - $a;
+            $payments_cut->value_tr = $m;
+            $payments_cut ->save();
+        }
 
-    if ($m < 0) {
-    session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة التركي يرجى الدفع على دفعتين القيمة المتبقية بالتركي  هي:  '.$payments_cut->value_tr.'');
+        //create new object of the model student and make mapping to the data
+        $family =  Family::find($request->family_id);
+        $x = $family->tr_statu;
+        ++$x;
+        $family->tr_statu = $x;
+        $family_Constraint = $family->family_Constraint;
+        $payments = new Tr;
+        $payments -> family_id = $request -> family_id;
+        $payments -> note = $request->note;
+
+        $payments -> family_value = $request->family_value_tr;
+        //write to the data base
+        $payments ->save();
+        $family ->save();
+        session()->flash('Edit', 'تم إضافة المبلغ المالي للعائلة  '. $family_Constraint .' بنجاح ');
+        //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+        return redirect(route('family.show'));
+        }
+        else {
+        session()->flash('Warning', 'لايوجد مبالغ مالية متوفرة ');
+        //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+        return redirect(route('family.show'));
+        }
+    }
+
+    public function messages_update_family_tr()
+    {
+        return $messages_update_family_tr = [
+        'family_id.required' => '!!',
+        'family_value_tr.required' => 'لم يتم ادخال قيمة  بالتركي  !!',
+        'note.required' => 'يجب عليك ادخال ملاحظة او كتابة كلمة لايوجد  !!',
+    ];
+    }
+
+    public function update_family_tr(Request $request)
+    {
+        $messages = $this->messages_update_family_tr();
+        $this->validate($request, [
+            'family_id' => 'required',
+            'id' => 'required',
+            'family_value_tr' => 'required',
+            'family_value_tr1' => 'required',
+            'note'=> 'required',
+        ],$messages);
+        if ($request->family_value_tr1 != $request->family_value_tr)
+        {
+
+        $payments_cut = Income::where('value_tr','>=', 0)->first();
+
+        $s= $payments_cut->value_tr;
+        $a=$request->family_value_tr1;
+        $m = $s + $a;
+        $payments_cut->value_tr = $m;
+        $m =0;
+
+        $s= $payments_cut->value_tr;
+        $a=$request->family_value_tr;
+        $m = $s - $a;
+
+        if ($m < 0) {
+        session()->flash('Warning','  المبلغ المضاف غير كافي بقيمة التركي يرجى الدفع على دفعتين القيمة المتبقية بالتركي  هي:  '.$payments_cut->value_tr.'');
+            //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+            return redirect(route('tr.family.pay'));
+        }
+        elseif ($m > 0) {
+        $payments_cut->value_tr =$m  ;
+
+        }
+        //create new object of the model student and make mapping to the data
+        $family =  Family::find($request->family_id);
+        $family_Constraint = $family->family_Constraint;
+        $payments = Tr::find($request->id);
+        $payments -> family_id = $request -> family_id;
+        $payments -> note = $request->note;
+        $payments -> family_value = $request->family_value_tr;
+        //write to the data base
+        $payments ->save();
+        $family ->save();
+        $payments_cut ->save();
+        session()->flash('Edit', 'تم تعديل المبلغ المالي للعائلة  '. $family_Constraint .' بنجاح ');
         //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
         return redirect(route('tr.family.pay'));
-    }
-    elseif ($m > 0) {
-    $payments_cut->value_tr =$m  ;
+        }
+        else {
+        $family =  Family::find($request->family_id);
+        $family_Constraint = $family->family_Constraint;
+        session()->flash('Edit', 'لم يتم تعديل المبلغ المالي للعائلة  '. $family_Constraint .' يرجى التأكد من إضافة قيم جديدة ');
+        //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
+        return redirect(route('tr.family.pay'));
+        }
 
-    }
-    //create new object of the model student and make mapping to the data
-    $family =  Family::find($request->family_id);
-    $family_Constraint = $family->family_Constraint;
-    $payments = Tr::find($request->id);
-    $payments -> family_id = $request -> family_id;
-    $payments -> note = $request->note;
-    $payments -> family_value = $request->family_value_tr;
-    //write to the data base
-    $payments ->save();
-    $family ->save();
-    $payments_cut ->save();
-    session()->flash('Edit', 'تم تعديل المبلغ المالي للعائلة  '. $family_Constraint .' بنجاح ');
-    //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    return redirect(route('tr.family.pay'));
-    }
-    else {
-    $family =  Family::find($request->family_id);
-    $family_Constraint = $family->family_Constraint;
-    session()->flash('Edit', 'لم يتم تعديل المبلغ المالي للعائلة  '. $family_Constraint .' يرجى التأكد من إضافة قيم جديدة ');
-    //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
-    return redirect(route('tr.family.pay'));
+
+
     }
 
+    public function show_family_tr($id)
+    {
+        $payments_income = Income::select('value_tr')->distinct()->get();
+        $payments = Tr::where('family_id', $id)->get();
+        // $child = DB::table('childrens')->where('student_id', $id)->get();
+        return view('payments.family.family_tr',compact('payments','payments_income'));
+    }
 
+    public function destroy_familys_tr(Request $request)
+    {
+        /* here we have sued the table students and searched about the id using the find and then delete the
+        id using the id note: we have passed the id from the show using the route */
+        $family =  Family::find($request->family_id);
+        $x = $family->tr_statu;
+        --$x;
+        $family->tr_statu = $x;
+        $family_Constraint = $family->family_Constraint;
 
-}
-public function show_family_tr($id)
-{
-    $payments_income = Income::select('value_tr')->distinct()->get();
-    $payments = Tr::where('family_id', $id)->get();
-    // $child = DB::table('childrens')->where('student_id', $id)->get();
-    return view('payments.family.family_tr',compact('payments','payments_income'));
-}
+        $s;
+        $payments_cut = Income::where('value_tr','>=', 0)->first();
+        $sta = $payments_cut->incomes_statu;
+        --$sta;
+        $payments_cut->incomes_statu = $sta;
 
-public function destroy_familys_tr(Request $request)
-{
-    /* here we have sued the table students and searched about the id using the find and then delete the
-    id using the id note: we have passed the id from the show using the route */
-    $family =  Family::find($request->family_id);
-    $x = $family->tr_statu;
-    --$x;
-    $family->tr_statu = $x;
-    $family_Constraint = $family->family_Constraint;
+        $s= $payments_cut->value_tr;
+        $a=$request->family_value_tr;
+        //dd($a);
+        $m = $s + $a;
+        //dd($m);
+        $payments_cut->value_tr = $m;
 
-    $s;
-    $payments_cut = Income::where('value_tr','>=', 0)->first();
-    $sta = $payments_cut->incomes_statu;
-    --$sta;
-    $payments_cut->incomes_statu = $sta;
+        Tr::find($request->id)->delete();
+        $payments_cut->save();
+        $family->save();
 
-    $s= $payments_cut->value_tr;
-    $a=$request->family_value_tr;
-    //dd($a);
-    $m = $s + $a;
-    //dd($m);
-    $payments_cut->value_tr = $m;
-
-    Tr::find($request->id)->delete();
-    $payments_cut->save();
-    $family->save();
-
-    /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
-    session()->flash('Delete','تم حذف المبلغ المالي للعائلة  '. $family_Constraint .' بنجاح ');
-    return redirect(route('tr.family.pay'));
-}
+        /*after delete the student by id we will redirect the to show and we will path deleting msg ->with('DeleteMsg', 'You Have Deleted the Student Successfully')*/
+        session()->flash('Delete','تم حذف المبلغ المالي للعائلة  '. $family_Constraint .' بنجاح ');
+        return redirect(route('tr.family.pay'));
+    }
 
 ##################################################### Family end
 #########################################

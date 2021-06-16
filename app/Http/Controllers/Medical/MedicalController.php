@@ -41,16 +41,12 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
             'medical_have_id' => 'required',
             'medical_id_extr' => 'required',
             'medical_number' => 'required|numeric|unique:medicals',
-            'note' => 'required',
             'disease_type' => 'required',
             'disease_name' => 'required',
             'dr_name' => 'required',
             'treat_cost' => 'required',
             'treat_type' => 'required',
             'treat_Duratio' => 'required',
-            'date_accept' => 'required',
-            'date_end' => 'required',
-            'Trans_to_doctor' => 'required'
          ],$messages);
          //create new object of the model student and make mapping to the data
          $medicals = new Medical;
@@ -63,7 +59,6 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
          $medicals -> medical_have_id = $request->medical_have_id;
          $medicals -> medical_id_extr = $request->medical_id_extr;
          $medicals -> medical_number = $request->medical_number;
-         $medicals -> note = $request->note;
 
          $medicals ->save();
 
@@ -76,9 +71,6 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
          $MedicalStatues -> treat_cost = $request->treat_cost;
          $MedicalStatues -> treat_type = $request->treat_type;
          $MedicalStatues -> treat_Duratio = $request->treat_Duratio;
-         $MedicalStatues -> date_accept = $request->date_accept;
-         $MedicalStatues -> date_end = $request->date_end;
-         $MedicalStatues -> Trans_to_doctor = $request->Trans_to_doctor;
          //write to the data base
          $MedicalStatues ->save();
 
@@ -87,7 +79,7 @@ $this->middleware('permission: فورم تسجيل الطبي ', ['only' => ['en
 
 
         $enable = From::find(1);
-        session()->flash('Add', 'تم اضافة المريض '. $request->student_name .' بنجاح ');
+        session()->flash('Add', 'تم اضافة المريض '. $request->medical_name .'  بنجاح  سيتم التواصل معكم قريبا');
         return back()->with('enable');
          //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
 

@@ -20,12 +20,13 @@ use App\Http\Controllers\Family\FamilyController;
 */
 
 Route::prefix('family/statu')->group(function () {
-    Route::get('/new', "family\FamilyController@new_family")->name('new.family')->middleware('auth');
-    Route::get('/archievd', "family\FamilyController@archievd_family")->name('family.archive')->middleware('auth');
-    Route::get('/rejected', "family\FamilyController@rejected_family")->name('family.reject')->middleware('auth');
-    Route::get('/delayed', "family\FamilyController@delayed_family")->name('family.delayed')->middleware('auth');
-    Route::get('/show', "family\FamilyController@index")->name('family.show')->middleware('auth');
-    Route::post('/statu', "family\FamilyController@family_statu")->name('family.statu')->middleware('auth');
+    Route::get('/new', "Family\FamilyController@new_family")->name('new.family')->middleware('auth');
+    Route::get('/archievd', "familyFamilyFamily\FamilyController@archievd_family")->name('family.archive')->middleware('auth');
+    Route::get('/rejected', "Family\FamilyController@rejected_family")->name('family.reject')->middleware('auth');
+    Route::get('/delayed', "Family\FamilyController@delayed_family")->name('family.delayed')->middleware('auth');
+    Route::get('/show', "Family\FamilyController@index")->name('family.show')->middleware('auth');
+    Route::post('/statu', "Family\FamilyController@family_statu")->name('family.statu')->middleware('auth');
+    Route::post('/done', "Family\FamilyController@done")->name('done.show');
 });
 
 Route::prefix('family')->group(function () {
@@ -43,6 +44,7 @@ Route::prefix('family')->group(function () {
     Route::delete('/destroy/student/', "Family\FamilyController@detroy_student")->name('student.family.destroy')->middleware('auth');
     Route::get('/add/medical', "Family\FamilyController@add_medical")->name('family.medical.add')->middleware('auth');
     Route::get('/show/medical/{id}/', "Family\FamilyController@show_medical")->name('family.medical.show')->middleware('auth');
+    Route::delete('/destroy/medical/', "Family\FamilyController@detroy_medical")->name('medical.family.destroy')->middleware('auth');
     Route::delete('/destroy/medical/', "Family\FamilyController@detroy_medical")->name('medical.family.destroy')->middleware('auth');
 });
 

@@ -14,6 +14,9 @@ class CreateDelayedScholarsTable extends Migration
     public function up()
     {
         Schema::create('delayed_scholars', function (Blueprint $table) {
+            $table->unsignedBigInteger('student_id')->nullable();
+            $table->foreign('student_id')->references('id')->on('students');
+            
             $table->id();
             $table->integer('value');
             $table->date('date');

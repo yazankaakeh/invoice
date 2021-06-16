@@ -33,7 +33,7 @@ class Student extends Model
         public function Tr(){
         return $this->hasMany('Tr');
         }
-        
+
         public function Euro(){
         return $this->hasMany('Euro');
         }
@@ -91,6 +91,12 @@ class Student extends Model
         {
         return $this->hasOne('App\models\Publics\FatherandMother');
         }
+
+        public function DelayedScholar()
+        {
+        return $this->hasOne('App\models\Student\DelayedScholar');
+        }
+
 
 //########################## One To One Relationships Ends #####################################
     public function Family()

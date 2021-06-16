@@ -14,21 +14,21 @@ use App\Http\Controllers\Controller;
 class QuranController extends Controller
 {
 
-function __construct()
-{
-$this->middleware('permission: قسم القرأن الطلاب ', ['only' => ['index']]);
-$this->middleware('permission: قسم القرأن الطلاب ', ['only' => ['show']]);
-$this->middleware('permission: اضافة القرأن الطلاب ', ['only' => ['storestudent']]);
-$this->middleware('permission: تعديل قسم القرأن الطلاب ', ['only' => ['update']]);
-$this->middleware('permission:حذف قسم القرأن الطلاب ', ['only' => ['destroy']]);
+    function __construct()
+    {
+    $this->middleware('permission: قسم القرأن الطلاب ', ['only' => ['index']]);
+    $this->middleware('permission: قسم القرأن الطلاب ', ['only' => ['show']]);
+    $this->middleware('permission: اضافة القرأن الطلاب ', ['only' => ['storestudent']]);
+    $this->middleware('permission: تعديل قسم القرأن الطلاب ', ['only' => ['update']]);
+    $this->middleware('permission:حذف قسم القرأن الطلاب ', ['only' => ['destroy']]);
 
-$this->middleware('permission:قرآن الطفل العائلة', ['only' => ['index_child']]);
-$this->middleware('permission:قرآن الطفل العائلة', ['only' => ['show_child']]);
-$this->middleware('permission:اضافة قرآن الطفل العائلة ', ['only' => ['store_child']]);
-$this->middleware('permission:تعديل قرآن الطفل العائلة', ['only' => ['update_child']]);
-$this->middleware('permission:حذف قرآن الطفل العائلة ', ['only' => ['destroy_child']]);
+    $this->middleware('permission:قرآن الطفل العائلة', ['only' => ['index_child']]);
+    $this->middleware('permission:قرآن الطفل العائلة', ['only' => ['show_child']]);
+    $this->middleware('permission:اضافة قرآن الطفل العائلة ', ['only' => ['store_child']]);
+    $this->middleware('permission:تعديل قرآن الطفل العائلة', ['only' => ['update_child']]);
+    $this->middleware('permission:حذف قرآن الطفل العائلة ', ['only' => ['destroy_child']]);
 
-}
+    }
     public function messages()
     {
         return $messages = [
@@ -79,17 +79,14 @@ $this->middleware('permission:حذف قرآن الطفل العائلة ', ['onl
 
     public function index()
     {
-        $qurans['qurans'] = Quran::select('id','student_id','updated_at','quran_memorize','quran_parts',
-       'quran_teacher','quran_have_certif','quran_Certif_essuer','quran_with_Certif')
-       ->orderBy('id', 'DESC')
-       ->get();
-       return view('Student.quran.quran')->with($qurans);
+       $qurans = Quran::all();
+       return view('Student.quran.quran_show', compact('qurans'));//->with($qurans);
     }
 
     public function show($id)
     {
-      $qurans = Quran::where('student_id', $id)->get();
-      return view('Student.quran.quran_show',compact('qurans'));
+      $qurans = Quran::all();
+      return view('Student.quran.quran_show' , compact('qurans'));
     }
 
     public function messages_update()

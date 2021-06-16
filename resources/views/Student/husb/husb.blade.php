@@ -192,13 +192,13 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                 <form action="{{ route('husband_Wife.update') }}" method="post">
+                                 <form action="{{ route('husband_Wife.update') }}" method="post" >
                                 {{ method_field('patch') }}
                                 {{ csrf_field() }}
                                <div class="modal-body">
                                 <div class="form-group">
                                 <label for="exampleInputEmail">الجنس </label>
-                                <select type="text" class="form-control" id="gender" name="gender" >
+                                <select type="text" class="form-control" id="gender" name="gender" required>
                                     <option label="test">
                                         اختر نوع الجنس </option>
                                     <option value="ذكر" >
@@ -210,38 +210,38 @@
 								</select>
                                 </div>
                                 <div class="form-group">
-                                <input type="hidden" name="student_id" id="student_id"  readonly>
+                                <input type="hidden" name="student_id" id="student_id"  readonly required>
                                 <input type="hidden" name="id" id="id"  readonly>
                                 <label for="exampleInputEmail">اسم الزوجة</label>
-                                <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم الزوجة ">
+                                <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم الزوجة " required>
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ ميلاد الزوجة</label>
-                                <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد">
+                                <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد" required>
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <input type="text" class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب أسم المحافظة ">
+                                <input type="text" class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب أسم المحافظة " required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة ">
+                                    <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب أسم المدينة " required>
                                 </div>
 
                                  <div class="form-group">
                                 <label for="exampleInputEmail">المستوى التعليمي للزوجة</label>
-                                <input type="text" class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى التعليمي  ">
+                                <input type="text" class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى التعليمي  " required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اختصاص دراسة الزوجة</label>
-                                <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder="أكتب أسم الأختصاص">
+                                <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder="أكتب أسم الأختصاص" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">هل تعمل الزوجة؟</label>
-                                <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder=" هل الزوجة تعمل ام لاتعمل ">
+                                <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder=" هل الزوجة تعمل ام لاتعمل " required>
                                 <option value="تعمل" >
                                     تعمل
                                 </option>
@@ -252,11 +252,11 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمل الحالي للزوجة</label>
-                                <input type="text" class="form-control" id="wife_now_work" name="wife_now_work" placeholder=" أكتب العمل الحالي ">
+                                <input type="text" class="form-control" id="wife_now_work" name="wife_now_work" placeholder=" أكتب العمل الحالي " required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">العمل السابق للزوجة</label>
-                                <input type="text" class="form-control" id="wife_pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  ">
+                                <input type="text" class="form-control" id="wife_pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق " required>
                                 </div>
                                 </div>
                                 <div class="modal-footer">

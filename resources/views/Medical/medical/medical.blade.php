@@ -189,23 +189,6 @@
                                                 @endcan
                                                 </td>
 
-                                                    {{-- wife and husband  --}}
-                                                    {{--  @if($x->husband_wife_statu == 1)
-                                                    <td>
-                                                        <a class="btn btn-sm btn-info" href="/husband_Wife_medical_medical/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    </td>
-                                                    @elseif($x->husband_wife_statu == 0)
-                                                    <td>
-                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                            data-medical_id="{{$x->id}}"
-                                                            data-toggle="modal"
-                                                            href="#exampleModal111" title="إضافة زوج و زوجة">
-                                                            <i class="mdi mdi-account-multiple-plus" style="font-size: 18px;"></i>
-                                                        </a>
-                                                    </td>
-                                                    @endif  --}}
-
-
                                                     {{-- father and mother  --}}
                                                     @if($x->father_mother_statu == 1)
                                                     <td>
@@ -241,13 +224,24 @@
                                                     <td>
                                                     {{-- edit medical  --}}
                                                 @can(' تعديل الطبي ')
+{{--
+                                                    <td>{{$x->medical_name}}</td>
+                                                    <td>{{$x->medical_age}}</td>
+                                                    <td>{{$x->gender}}</td>
+                                                    <td>{{$x->status}}</td>
+                                                    <td>{{$x->Governorate}}</td>
+                                                    <td>{{$x->city}}</td>
+                                                    <td>{{$x->medical_have_id}}</td>
+                                                    <td>{{$x->medical_id_extr}}</td>
+                                                    <td>{{$x->medical_number}}</td>
+                                                    <td>{{$x->note}}</td> --}}
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                             data-medical_name="{{$x->medical_name}}"
                                                             data-medical_age="{{$x->medical_age}}" data-medical_number="{{$x->medical_number}}"
-                                                            data-medical_have_id="{{$x->medical_have_id}}" data-id="{{$x->id}}"
+                                                            data-medicalid="{{$x->medical_have_id}}" data-id="{{$x->id}}"
                                                             data-medical_id_extr="{{$x->medical_id_extr}}" data-gender="{{$x->gender}}"
                                                             data-status="{{$x->status}}"
-                                                            data-Governorate="{{$x->Governorate}}"
+                                                            data-governorate="{{$x->Governorate}}"
                                                             data-city="{{$x->city}}"
                                                             data-note="{{$x->note}}"
                                                             data-description="" data-toggle="modal" href="#exampleModal2" title="تعديل">
@@ -255,21 +249,6 @@
                                                         </a>
                                                 @endcan
                                                     </td>
-
-
-                                                    {{-- add children  --}}
-                                                    {{--  <td>
-                                                    @if($x->child_statu != 0)
-                                                        <a class=" btn btn-sm btn-info" href="/children_medical/show/child/medical/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                    <hr style="padding:0px; margin:5px 0px 5px 0px!important; margin-top:5px; margin-bottom:5px;">
-                                                    @endif
-                                                        <a class="modal-effect btn btnsm btn-info" data-effect="effect-scale"
-                                                            data-medical_id="{{$x->id}}"  data-description="" data-toggle="modal"
-                                                            href="#exampleModal4" title="إضافة طفل">
-                                                            <i class="las la-child"  style="font-size: 20px;"></i>
-                                                        </a>
-                                                    </td>  --}}
-
 
                                                     @if($x->residance_statu == 1)
                                                     <td>
@@ -863,6 +842,26 @@
                                 <label for="exampleInputEmail">نوع العلاج</label>
                                 <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج "required>
                                 </div>
+                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
+                                                <p class="exampleInputEmail">تقييم الحالة المرضية</p>
+                                                <select class="form-control select2" name="medical_rate" id="medical_rate"required>
+                                                  <option label="test">
+                                                    حدد من فضلك
+                                                  </option>
+                                                 <option value="خطرة جدا" >
+                                                خطرة جدا
+                                                </option>
+                                                <option value="خطرة" >
+                                                خطرة
+                                                </option>
+                                                <option value="متوسطة" >
+                                                متوسطة
+                                                </option>
+                                                <option value="عادية">
+                                                عادية
+                                                </option>
+                                                </select>
+                                            </div>
                                <div class="form-group">
                                 <label for="exampleInputEmail">مدة العلاج</label>
                                 <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج"required>
@@ -1084,7 +1083,7 @@
                                 <option value="	دوزجه">
                                     دوزجه</option>
                             </select>
-                        </div>
+                                </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم منطقة</label>
                                 <input type="text" class="form-control" id="address_city" name="address_city" placeholder=" أكتب اسم منطقة "required>
@@ -1415,184 +1414,6 @@
                             </div>
                             </div>
                         </div>
-
-                        {{--  Add Student Id
-                        <div class="modal" id="exampleModa20">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content modal-content-demo">
-                                    <div class="modal-header">
-                                        <h6 class="modal-title">اضافة قسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-                                    </div>
-
-                                <form action="{{ route('medical.student.add') }}" method="GET">
-                                {{ method_field('GET') }}
-                                {{ csrf_field() }}
-                                 <div class="modal-body">
-                                <div class="form-group">
-                                <input type="hidden" name="medical_id" id="medical_id"  readonly>
-                                <label for="exampleInputEmail">رقم المريض</label>
-                                <input type="text" class="form-control" id="medical_id" name="medical_id" placeholder=" أكتب رقم ">
-                                </div>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">تاكيد</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                </div>
-                                </form>
-                            </div>
-                            </div>
-                        </div>  --}}
-
-                        {{-- Husband and Wife --}}
-                        {{--  <div class="modal fade" id="exampleModal111" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">اضافة زوج أو زوجة</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                <form action="{{ route('husband_Wife.medical.store') }}" method="post">
-                                {{ method_field('POST') }}
-                                {{ csrf_field() }}
-                                <div class="modal-body">
-                                <div class="form-group">
-                                <input type="hidden" name="medical_id" id="medical_id" readonly>
-                                <label for="exampleInputEmail">الجنس </label>
-                                <select type="text" class="form-control" id="gender" name="gender" >
-                                    <option label="test">
-                                           نوع الجنس </option>
-                                    <option value="ذكر" >
-                                   ذكر
-                                </option>
-                                <option value="انثى" >
-                                    انثى
-                                </option>
-								</select>
-                                </div>
-                                <hr>
-                                <div  class="row row-sm"id="hidden_div" style="display:flex;">
-
-                                <div class="form-group">
-                                <input type="hidden" name="medical_id" id="medical_id"  readonly>
-                                <label for="exampleInputEmail">اسم الزوجة</label>
-                                <input type="text" class="form-control" id="wife_name" name="wife_name" placeholder=" أكتب اسم الزوجة ">
-                                </div>
-
-                                 <div class="form-group">
-                                <label for="exampleInputEmail">تاريخ ميلاد الزوجة</label>
-                                <input type="date" class="form-control" id="wife_birth" name="wife_birth" placeholder=" أكتب تاريخ الميلاد">
-                                </div>
-
-                                 <div class="form-group">
-                                <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                <select class="form-control" id="wife_city" name="wife_city" placeholder=" أكتب اسم المحافظة ">
-                                  <option label="test">
-											   اسم المحافظة </option>
-                                    <option value="	دمشق">
-                                        دمشق</option>
-                                    <option value="ريف دمشق">
-                                        ريف دمشق</option>
-                                    <option value="	حلب ">
-                                        حلب</option>
-                                    <option value="حمص">
-                                        حمص</option>
-                                    <option value="حماه">
-                                        حماه</option>
-                                    <option value="	درعا">
-                                        درعا</option>
-                                    <option value="	ادالب">
-                                        ادلب</option>
-                                    <option value="	سويداء">
-                                        سويداء</option>
-                                    <option value="	ديرالزور">
-                                        دير الزور</option>
-                                    <option value="	الرقة">
-                                        الرقة</option>
-                                    <option value="الحسكة">
-                                        الحسكة</option>
-                                    <option value="	اللاذقية">
-                                        اللاذقية</option>
-                                    <option value="	طرطوس">
-                                        طرطوس</option>
-                                    <option value="	القنيطرة">
-                                        القنيطرة</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleInputEmail">من اي مدينة؟</label>
-                                    <input type="text" class="form-control" id="wife_district" name="wife_district" placeholder=" أكتب اسم المدينة ">
-                                </div>
-                                 <div class="form-group">
-                                <label for="exampleInputEmail">المستوى التعليمي للزوجة</label>
-                                <select class="form-control" id="wife_academicel" name="wife_academicel" placeholder=" أكتب المستوى التعليمي  ">
-                                    <option label="test">
-                                           المستوى التعليمي </option>
-                                    <option value=" الأمِّيِّ">
-                                        الأمِّيِّ </option>
-                                 <option value="حضانة">
-                                    حضانة </option>
-                                 <option value="روضة">
-                                    روضة </option>
-                                 <option value="ابتدائي">
-                                    ابتدائي </option>
-                                <option value="اعدادي">
-                                    اعدادي </option>
-                                <option value="ثانوي">
-                                    ثانوي </option>
-                                 <option value="دبلوم عالي ">
-                                    دبلوم عالي </option>
-                                 <option value="جامعي">
-                                    جامعي </option>
-                                <option value="مايجستير">
-                                    مايجستير </option>
-                                 <option value="دوكتورا">
-                                    دوكتورا </option>
-                                </select>
-                                </div>
-
-                                <div class="form-group">
-                                <label for="exampleInputEmail">اختصاص دراسة الزوجة</label>
-                                <input type="text" class="form-control" id="wife_special" name="wife_special" placeholder="أكتب اسم الأختصاص">
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">هل تعمل الزوجة؟</label>
-                                <select class="form-control select2" name="wife_is_work" id="wife_is_work" placeholder=" هل الزوجة تعمل ام لاتعمل ">
-                               <option label="test">
-											   تعمل او لاتعمل </option>
-                                    <option value="تعمل" >
-                                    تعمل
-                                </option>
-                                <option value="لاتعمل" >
-                                    لاتعمل
-                                </option>
-								</select>
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">العمل الحالي للزوجة</label>
-                                <input type="text" class="form-control" id="wife_now_work" name="wife_now_work" placeholder=" أكتب العمل الحالي ">
-                                </div>
-                                <div class="form-group">
-                                <label for="exampleInputEmail">العمل السابق للزوجة</label>
-                                <input type="text" class="form-control" id="wife_Pre_work" name="wife_Pre_work" placeholder=" أكتب العمل السابق  ">
-                                </div>
-                                </div>
-                                <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">تاكيد</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                </div>
-                                </form>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-				        </div>
-                        </div>  --}}
 
                         {{-- Father and Mother --}}
                         <div class="modal fade" id="exampleModal0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1929,7 +1750,7 @@
                                             </div>
                                          <div class="form-group">
                                         <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                         <select class="form-control" id="Governorate" name="Governorate" placeholder=" أكتب اسم  محافظة "required>
+                                         <select class="form-control" id="governorate" name="Governorate" placeholder=" أكتب اسم  محافظة "required>
                                     <option label="test">
                                          </option>
                                     <option value="	دمشق">
@@ -2232,6 +2053,7 @@
                                                 انثى</option>
                                             </select>
                                         </div>
+
                                         <div class="form-group">
                                             <label for="exampleInputEmail">الحالة الأجتماعية</label>
                                             <select class="form-control" id="status" name="status"  placeholder=""required>
@@ -2249,41 +2071,42 @@
                                                  أعزب/ة</option>
                                                 </select>
                                             </div>
+
                                         <div class="form-group">
-                                            <label for="exampleInputEmail">من اي محافظة من سوريا؟</label>
-                                            <select class="form-control" id="Governorate" name="Governorate" placeholder=" أكتب اسم  محافظة "required>
-                                                <option label="test">
-                                                     </option>
-                                                <option value="	دمشق">
-                                                    دمشق</option>
-                                                <option value="ريف دمشق">
-                                                    ريف دمشق</option>
-                                                <option value="	حلب ">
-                                                    حلب</option>
-                                                <option value="حمص">
-                                                    حمص</option>
-                                                <option value="حماه">
-                                                    حماه</option>
-                                                <option value="	درعا">
-                                                    درعا</option>
-                                                <option value="	ادلب">
-                                                    ادلب</option>
-                                                <option value="	سويداء">
-                                                    سويداء</option>
-                                                <option value="	ديرالزور">
-                                                    دير الزور</option>
-                                                <option value="	الرقة">
-                                                    الرقة</option>
-                                                <option value="الحسكة">
-                                                    الحسكة</option>
-                                                <option value="	اللاذقية">
-                                                    اللاذقية</option>
-                                                <option value="	طرطوس">
-                                                    طرطوس</option>
-                                                <option value="	القنيطرة">
-                                                    القنيطرة</option>
-                                                </select>
-                                            </div>
+                                            <p class="exampleInputEmail">من اي محافظة من سوريا؟ </p>
+                                            <select class="form-control select2" id="governorate" name="Governorate"  placeholder=" أكتب اسم  محافظة "required>
+                                            <option label="test">
+                                                </option>
+                                            <option value="دمشق">
+                                                دمشق</option>
+                                            <option value="ريف دمشق">
+                                                ريف دمشق</option>
+                                            <opt\ion value="حلب ">
+                                                حلب</option>
+                                            <option value="حمص">
+                                                حمص</option>
+                                            <option value="حماه">
+                                                حماه</option>
+                                            <option value="درعا">
+                                                درعا</option>
+                                            <option value="ادلب">
+                                                ادلب</option>
+                                            <option value="سويداء">
+                                                سويداء</option>
+                                            <option value="ديرالزور">
+                                                دير الزور</option>
+                                            <option value="الرقة">
+                                                الرقة</option>
+                                            <option value="الحسكة">
+                                                الحسكة</option>
+                                            <option value="اللاذقية">
+                                                اللاذقية</option>
+                                            <option value="طرطوس">
+                                                طرطوس</option>
+                                            <option value="القنيطرة">
+                                                القنيطرة</option>
+                                            </select>
+                                        </div>
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail">من اي مدينة؟</label>
@@ -2291,12 +2114,12 @@
                                             </div>
                                         <div class="form-group">
                                         <label for="exampleInputEmail">هل يوجد كملك</label>
-                                        <select class="form-control" id="medical_have_id" name="medical_have_id"  placeholder=" أكنب اسم المحافظة الأصل "required>
+                                        <select class="form-control" id="medicalid" name="medicalid"  placeholder=" أكنب اسم المحافظة الأصل "required>
                                             <option label="test">
                                                   </option>
-                                            <option value="	يوجد">
+                                            <option value="يوجد">
                                                 يوجد</option>
-                                            <option value="	لا يوجد">
+                                            <option value="لا يوجد">
                                                 لا يوجد</option>
                                             </select>
                                         </div>
@@ -2310,111 +2133,111 @@
                                                     لايوجد كملك
                                                 <option value="أضنة">
                                                     أضنة</option>
-                                                <option value="	أدي‌يمن">
+                                                <option value="أدي‌يمن">
                                                     أدي‌يمن</option>
-                                                <option value="	أفيون ‌قرةحصار">
+                                                <option value="أفيون ‌قرةحصار">
                                                     أفيون ‌قرةحصار</option>
-                                                <option value="	أغري">
+                                                <option value="أغري">
                                                     أغري</option>
-                                                <option value="	أماسيا">
+                                                <option value="أماسيا">
                                                     أماسيا</option>
-                                                <option value="	أنقرة">
+                                                <option value="أنقرة">
                                                     أنقرة</option>
-                                                <option value="	أنطاليا">
+                                                <option value="أنطاليا">
                                                     أنطاليا</option>
-                                                <option value="	أرتڤين">
+                                                <option value="أرتڤين">
                                                     أرتڤين</option>
-                                                <option value="	أيدين">
+                                                <option value="أيدين">
                                                     أيدين</option>
-                                                <option value="	بالكسير">
+                                                <option value="بالكسير">
                                                     بالكسير</option>
-                                                <option value="	بيلجيك">
+                                                <option value="بيلجيك">
                                                     بيلجيك</option>
-                                                <option value="	بينگول">
+                                                <option value="بينگول">
                                                     بينگول</option>
-                                                <option value="	بيطليس">
+                                                <option value="بيطليس">
                                                     بيطليس</option>
                                                 <option value="بولو">
                                                     بولو</option>
-                                                <option value="	بوردور">
+                                                <option value="بوردور">
                                                     بوردور</option>
-                                                <option value="	بورصة">
+                                                <option value="بورصة">
                                                     بورصة</option>
-                                                <option value="	چنق‌قلعه">
+                                                <option value="چنق‌قلعه">
                                                     چنق‌قلعه</option>
-                                                <option value="	شانكيري">
+                                                <option value="شانكيري">
                                                     شانكيري</option>
-                                                <option value="	چوروم">
+                                                <option value="چوروم">
                                                     چوروم</option>
-                                                <option value="	دنيزلي">
+                                                <option value="دنيزلي">
                                                     دنيزلي</option>
-                                                <option value="	ديار بكر">
+                                                <option value="ديار بكر">
                                                     ديار بكر</option>
-                                                <option value="	إدرنه">
+                                                <option value="إدرنه">
                                                     إدرنه</option>
-                                                <option value="	الازيغ">
+                                                <option value="الازيغ">
                                                     الازيغ</option>
                                                 <option value="إرزنجان">
                                                     إرزنجان</option>
-                                                <option value="	أرض‌ روم">
+                                                <option value="أرض‌ روم">
                                                     أرض‌ روم</option>
-                                                <option value="	إسكي‌ شهر">
+                                                <option value="إسكي‌ شهر">
                                                     إسكي‌ شهير</option>
-                                                <option value="	غازي‌عنتاپ">
+                                                <option value="غازي‌عنتاپ">
                                                     غازي‌عنتاپ</option>
-                                                <option value="	گره‌سون">
+                                                <option value="گره‌سون">
                                                     گره‌سون</option>
-                                                <option value="	گوموش‌خانه">
+                                                <option value="گوموش‌خانه">
                                                     گوموش‌خانه</option>
                                                 <option value="حكاري">
                                                     حكاري</option>
-                                                <option value="	هاتاي">
+                                                <option value="هاتاي">
                                                     هاتاي</option>
-                                                <option value="	إسبرطة">
+                                                <option value="إسبرطة">
                                                     إسبرطة</option>
-                                                <option value="	مرسين">
+                                                <option value="مرسين">
                                                     مرسين</option>
-                                                <option value="	إسطنبول">
+                                                <option value="إسطنبول">
                                                     إسطنبول</option>
-                                                <option value="	إزمير">
+                                                <option value="إزمير">
                                                     إزمير</option>
-                                                <option value="	قارص">
+                                                <option value="قارص">
                                                     قارص</option>
-                                                <option value="	كاستامونو">
+                                                <option value="كاستامونو">
                                                     كاستامونو</option>
-                                                <option value="	قيصري">
+                                                <option value="قيصري">
                                                     قيصري</option>
-                                                <option value="	كريك‌قلعه">
+                                                <option value="كريك‌قلعه">
                                                     كريك‌قلعه</option>
-                                                <option value="	كيرشهر">
+                                                <option value="كيرشهر">
                                                     كيرشهر</option>
-                                                <option value="	خوجةإلي">
+                                                <option value="خوجةإلي">
                                                     خوجةإلي</option>
                                                 <option value="قونيا">
                                                     قونيا</option>
-                                                <option value="	كوتاهيا">
+                                                <option value="كوتاهيا">
                                                     كوتاهيا</option>
-                                                <option value="	ملاطيا">
+                                                <option value="ملاطيا">
                                                     ملاطيا</option>
-                                                <option value="	مانيسا">
+                                                <option value="مانيسا">
                                                     مانيسا</option>
-                                                <option value="	كهرمان‌مرعش">
+                                                <option value="كهرمان‌مرعش">
                                                     كهرمان‌مرعش</option>
-                                                <option value="	ماردين">
+                                                <option value="ماردين">
                                                     ماردين</option>
-                                                <option value="	موغلا">
+                                                <option value="موغلا">
                                                     موغلا</option>
-                                                <option value="	موش">
+                                                <option value="موش">
                                                     موش</option>
-                                                <option value="	نڤشهر">
+                                                <option value="نڤشهر">
                                                     نڤشهر</option>
-                                                <option value="	نيغدة">
+                                                <option value="نيغدة">
                                                     نيغدة</option>
-                                                <option value="	أردو">
+                                                <option value="أردو">
                                                     أردو</option>
-                                                <option value="	ريزه">
+                                                <option value="ريزه">
                                                     ريزه</option>
-                                                <option value="	ساكاريا">
+                                                <option value="ساكاريا">
                                                     ساكاريا</option>
                                                 <option value="سامسون">
                                                     سامسون</option>
@@ -2422,53 +2245,53 @@
                                                     سيرت</option>
                                                 <option value="سينوپ">
                                                     سينوپ</option>
-                                                <option value="	سيڤاس">
+                                                <option value="سيڤاس">
                                                     سيڤاس</option>
-                                                <option value="	تكيرداغ">
+                                                <option value="تكيرداغ">
                                                     تكيرداغ</option>
                                                 <option value="توقاد">
                                                     توقاد</option>
-                                                <option value="	طرابزون">
+                                                <option value="طرابزون">
                                                     طرابزون</option>
                                                 <option value="تونج‌ايلي">
                                                     تونج‌ايلي</option>
                                                 <option value="شانلي‌اورفا">
                                                     شانلي‌اورفا</option>
-                                                <option value="	عشاق">
+                                                <option value="عشاق">
                                                     عشاق</option>
-                                                <option value="	ڤان">
+                                                <option value="ڤان">
                                                     ڤان</option>
-                                                <option value="	يوزگات">
+                                                <option value="يوزگات">
                                                     يوزگات</option>
-                                                <option value="	زونگولداك">
+                                                <option value="زونگولداك">
                                                     زونگولداك</option>
-                                                <option value="	أكساراي">
+                                                <option value="أكساراي">
                                                     أكساراي</option>
                                                 <option value="بايبورت">
                                                     بايبورت</option>
-                                                <option value="	قرةمان">
+                                                <option value="قرةمان">
                                                     قرةمان</option>
-                                                <option value="	قريق‌قلعه">
+                                                <option value="قريق‌قلعه">
                                                     قريق‌قلعه</option>
-                                                <option value="	بطمان">
+                                                <option value="بطمان">
                                                     بطمان</option>
-                                                <option value="	شرناق">
+                                                <option value="شرناق">
                                                     شرناق</option>
-                                                <option value="	بارتين">
+                                                <option value="بارتين">
                                                     بارتين</option>
-                                                <option value="	أرض‌خان">
+                                                <option value="أرض‌خان">
                                                     أرض‌خان</option>
-                                                <option value="	إغدير">
+                                                <option value="إغدير">
                                                     إغدير</option>
-                                                <option value="	يالوڤا">
+                                                <option value="يالوڤا">
                                                     يالوڤا</option>
-                                                <option value="	قرةبوك">
+                                                <option value="قرةبوك">
                                                     قرةبوك</option>
-                                                <option value="	كلس">
+                                                <option value="كلس">
                                                     كلس</option>
-                                                <option value="	عثمانية">
+                                                <option value="عثمانية">
                                                     عثمانية</option>
-                                                <option value="	دوزجه">
+                                                <option value="دوزجه">
                                                     دوزجه</option>
                                             </select>
                                         </div>
@@ -2531,22 +2354,23 @@
         var medical_name = button.data('medical_name')
         var medical_age = button.data('medical_age')
         var medical_number = button.data('medical_number')
-        var medical_have_id = button.data('medical_have_id')
-        var gender = button.data('gender')
+        var medicalid = button.data('medicalid')
         var status = button.data('status')
-        var Governorate = button.data('Governorate')
-        var city = button.data('city')
         var medical_id_extr = button.data('medical_id_extr')
+        var governorate = button.data('governorate')
+        var gender = button.data('gender')
         var note = button.data('note')
+        var city = button.data('city')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #medical_name').val(medical_name);
         modal.find('.modal-body #medical_age').val(medical_age);
         modal.find('.modal-body #medical_number').val(medical_number);
-        modal.find('.modal-body #medical_have_id').val(medical_have_id);
+        modal.find('.modal-body #medicalid').val(medicalid);
         modal.find('.modal-body #gender').val(gender);
         modal.find('.modal-body #status').val(status);
-        modal.find('.modal-body #Governorate').val(Governorate);
+        modal.find('.modal-body #medical_id_extr').val(medical_id_extr);
+        modal.find('.modal-body #governorate').val(governorate);
         modal.find('.modal-body #gender').val(gender);
         modal.find('.modal-body #note').val(note);
         modal.find('.modal-body #city').val(city);

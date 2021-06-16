@@ -14,46 +14,47 @@ class UniversityController extends Controller
 {
 
 
-function __construct()
-{
-$this->middleware('permission: قسم الجامعة الطلاب ', ['only' => ['index']]);
-$this->middleware('permission: قسم الجامعة الطلاب ', ['only' => ['show']]);
-$this->middleware('permission: اضافة الجامعة الطلاب ', ['only' => ['storestudent']]);
-$this->middleware('permission: تعديل قسم الجامعة الطلاب ', ['only' => ['update']]);
-$this->middleware('permission:حذف قسم الجامعة الطلاب ', ['only' => ['destroy']]);
+    function __construct()
+    {
+    $this->middleware('permission: قسم الجامعة الطلاب ', ['only' => ['index']]);
+    $this->middleware('permission: قسم الجامعة الطلاب ', ['only' => ['show']]);
+    $this->middleware('permission: اضافة الجامعة الطلاب ', ['only' => ['storestudent']]);
+    $this->middleware('permission: تعديل قسم الجامعة الطلاب ', ['only' => ['update']]);
+    $this->middleware('permission:حذف قسم الجامعة الطلاب ', ['only' => ['destroy']]);
 
 
-}
+    }
 
 
-    public function show($id){
+    public function show($id)
+    {
       $univ = University::where('student_id', $id)->get();
       return view('Student.university.university',compact('univ'));
     }
 
     public function messages_storestudent()
-{
-    return $messages_storestudent = [
-        'student_id.required' => '',
-        'univer_name.required' => 'لم يتم أدخال معلومات اسم الجامعة المطلوبة  !!',
-        'univer_location.required' => 'لم يتم أدخال معلومات تاريخ موقع الجامعة المطلوبة!!',
-        'univer_special.required' => 'لم يتم أدخال معلومات أختصاص المطلوبة!!',
-        'Number_years.numeric'=>'لم يتم أجخال معلومات عدد السنوات يجب    أن تكون حصراً أرقام !!',
-        'Schoo_year.numeric'=>'لم يتم أدخال معلومات السنه الدراسية المطلوبة!!',
-        'Current_rate.required'=>'لم يتم ادخال معلومات المعدل الحالي المطلوبة !!',
-        'Cumulative_rate.required'=>'لم يتم أدخال معلومات المعدل التراكمي المطلوبة !!',
-        'language_name.required'=>' لم يتم أدخال نوع اللغة الدراسية المطلوبة !!',
-        'Current_level.required'=>'لم يتم أدخال معدل المستوى الحالي للغة المطلوبة!!',
-        'Curr_level_rate.required'=>'لم يتم أدخال معدل المستوى السابق المطلوبة !!',
-        'Previ_level_rate.required'=>'لم يتم أدخال معلومات المطلوبة !!',
-        'Univer_Accept.required'=>'لم يتم أدخال معلومات طريقة القبول بالجامعة المطلوبة!!',
-        'Accept_rate.required'=>'لم يتم أدخال معلومات معدل القبول المطلوبة!!',
-        'are_you_univer.required'=>'لم يتم أدخال معلومات هل انت يجامعة أخرى المطلوبة  !!',
-        'univer_Premiums.required'=>'لم يتم أدخال معلومات  اقساط جامعية  المطلوية!!',
-        'univer_fees.required'=>'لم يتم أدخال معلومات مصاريف جامعية الجامعة!!',
-        'univer_fees_value.required'=>'لم يتم أدخال معلومات كم مصاريف الجامعة!!',
-    ];
-}
+    {
+        return $messages_storestudent = [
+            'student_id.required' => '',
+            'univer_name.required' => 'لم يتم أدخال معلومات اسم الجامعة المطلوبة  !!',
+            'univer_location.required' => 'لم يتم أدخال معلومات تاريخ موقع الجامعة المطلوبة!!',
+            'univer_special.required' => 'لم يتم أدخال معلومات أختصاص المطلوبة!!',
+            'Number_years.numeric'=>'لم يتم أجخال معلومات عدد السنوات يجب    أن تكون حصراً أرقام !!',
+            'Schoo_year.numeric'=>'لم يتم أدخال معلومات السنه الدراسية المطلوبة!!',
+            'Current_rate.required'=>'لم يتم ادخال معلومات المعدل الحالي المطلوبة !!',
+            'Cumulative_rate.required'=>'لم يتم أدخال معلومات المعدل التراكمي المطلوبة !!',
+            'language_name.required'=>' لم يتم أدخال نوع اللغة الدراسية المطلوبة !!',
+            'Current_level.required'=>'لم يتم أدخال معدل المستوى الحالي للغة المطلوبة!!',
+            'Curr_level_rate.required'=>'لم يتم أدخال معدل المستوى السابق المطلوبة !!',
+            'Previ_level_rate.required'=>'لم يتم أدخال معلومات المطلوبة !!',
+            'Univer_Accept.required'=>'لم يتم أدخال معلومات طريقة القبول بالجامعة المطلوبة!!',
+            'Accept_rate.required'=>'لم يتم أدخال معلومات معدل القبول المطلوبة!!',
+            'are_you_univer.required'=>'لم يتم أدخال معلومات هل انت يجامعة أخرى المطلوبة  !!',
+            'univer_Premiums.required'=>'لم يتم أدخال معلومات  اقساط جامعية  المطلوية!!',
+            'univer_fees.required'=>'لم يتم أدخال معلومات مصاريف جامعية الجامعة!!',
+            'univer_fees_value.required'=>'لم يتم أدخال معلومات كم مصاريف الجامعة!!',
+        ];
+    }
     public function storestudent(Request $request)
     {
         $messages = $this->messages_storestudent();
@@ -138,29 +139,29 @@ $this->middleware('permission:حذف قسم الجامعة الطلاب ', ['onl
     }
 
     public function messages_storestudent_update()
-{
-    return $messages_storestudent_update = [
-        'student_id.required' => '',
-        'univer_name.required' => 'لم يتم أدخال معلومات اسم الجامعة المطلوبة  !!',
-        'univer_location.required' => 'لم يتم أدخال معلومات تاريخ موقع الجامعة المطلوبة!!',
-        'univer_special.required' => 'لم يتم أدخال معلومات أختصاص المطلوبة!!',
-        'Number_years.numeric'=>'لم يتم أجخال معلومات عدد السنوات يجب    أن تكون حصراً أرقام !!',
-        'Schoo_year.numeric'=>'لم يتم أدخال معلومات السنه الدراسية المطلوبة!!',
-        'Current_rate.required'=>'لم يتم ادخال معلومات المعدل الحالي المطلوبة !!',
-        'Cumulative_rate.required'=>'لم يتم أدخال معلومات المعدل التراكمي المطلوبة !!',
-        'language_name.required'=>' لم يتم أدخال نوع اللغة الدراسية المطلوبة !!',
-        'Current_level.required'=>'لم يتم أدخال معدل المستوى الحالي للغة المطلوبة!!',
-        'Curr_level_rate.required'=>'لم يتم أدخال معدل المستوى السابق المطلوبة !!',
-        'Previ_level_rate.required'=>'لم يتم أدخال معلومات المطلوبة !!',
-        'Univer_Accept.required'=>'لم يتم أدخال معلومات طريقة القبول بالجامعة المطلوبة!!',
-        'Accept_rate.required'=>'لم يتم أدخال معلومات معدل القبول المطلوبة!!',
-        'are_you_univer.required'=>'لم يتم أدخال معلومات هل انت يجامعة أخرى المطلوبة  !!',
-        'univer_Premiums.required'=>'لم يتم أدخال معلومات  اقساط جامعية  المطلوية!!',
-        'univer_fees.required'=>'لم يتم أدخال معلومات مصاريف جامعية الجامعة!!',
-        'univer_fees_value.required'=>'لم يتم أدخال معلومات كم مصاريف الجامعة!!',
+    {
+        return $messages_storestudent_update = [
+            'student_id.required' => '',
+            'univer_name.required' => 'لم يتم أدخال معلومات اسم الجامعة المطلوبة  !!',
+            'univer_location.required' => 'لم يتم أدخال معلومات تاريخ موقع الجامعة المطلوبة!!',
+            'univer_special.required' => 'لم يتم أدخال معلومات أختصاص المطلوبة!!',
+            'Number_years.numeric'=>'لم يتم أجخال معلومات عدد السنوات يجب    أن تكون حصراً أرقام !!',
+            'Schoo_year.numeric'=>'لم يتم أدخال معلومات السنه الدراسية المطلوبة!!',
+            'Current_rate.required'=>'لم يتم ادخال معلومات المعدل الحالي المطلوبة !!',
+            'Cumulative_rate.required'=>'لم يتم أدخال معلومات المعدل التراكمي المطلوبة !!',
+            'language_name.required'=>' لم يتم أدخال نوع اللغة الدراسية المطلوبة !!',
+            'Current_level.required'=>'لم يتم أدخال معدل المستوى الحالي للغة المطلوبة!!',
+            'Curr_level_rate.required'=>'لم يتم أدخال معدل المستوى السابق المطلوبة !!',
+            'Previ_level_rate.required'=>'لم يتم أدخال معلومات المطلوبة !!',
+            'Univer_Accept.required'=>'لم يتم أدخال معلومات طريقة القبول بالجامعة المطلوبة!!',
+            'Accept_rate.required'=>'لم يتم أدخال معلومات معدل القبول المطلوبة!!',
+            'are_you_univer.required'=>'لم يتم أدخال معلومات هل انت يجامعة أخرى المطلوبة  !!',
+            'univer_Premiums.required'=>'لم يتم أدخال معلومات  اقساط جامعية  المطلوية!!',
+            'univer_fees.required'=>'لم يتم أدخال معلومات مصاريف جامعية الجامعة!!',
+            'univer_fees_value.required'=>'لم يتم أدخال معلومات كم مصاريف الجامعة!!',
 
-    ];
-}
+        ];
+    }
     public function update(Request $request)
     {
         $messages = $this->messages_storestudent_update();
@@ -228,7 +229,6 @@ $this->middleware('permission:حذف قسم الجامعة الطلاب ', ['onl
             //redirect after adding and saving the data with success msg ->with('SuccessMsg', 'You Have added Student Successfully')
             return redirect(route('University.show'));
     }
-
 
     public function destroy(Request $request)
     {

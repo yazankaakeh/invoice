@@ -132,7 +132,7 @@
                                                 <td>
                                                 @can(' مدفوعات بالدولار الطلاب ')
                                                     @if($x->student->usd_statu != 0)
-                                                    <a class=" btn btn-sm btn-info" href="/Student_usd/show/student/usd/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    <a class=" btn btn-sm btn-info" href="/Student_usd/show/student/usd/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
                                                     @endif
                                                 @endcan
                                                 </td>
@@ -140,7 +140,7 @@
                                                 <td>
                                                 @can(' مدفوعات بالتركي الطلاب ')
                                                     @if($x->student->tr_statu != 0)
-                                                    <a class=" btn btn-sm btn-info" href="/Student_tr/show/student/tr/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    <a class=" btn btn-sm btn-info" href="/Student_tr/show/student/tr/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
                                                     @endif
                                                 @endcan
                                                 </td>
@@ -149,7 +149,7 @@
                                                 <td>
                                                 @can(' مدفوعات باليورو الطلاب ')
                                                     @if($x->student->euro_statu != 0)
-                                                    <a class=" btn btn-sm btn-info" href="/Student_euro/show/student/euro/{{$x->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    <a class=" btn btn-sm btn-info" href="/Student_euro/show/student/euro/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
                                                     @endif
                                                 @endcan
                                                 </td>
@@ -157,7 +157,7 @@
                                                 <td>
                                                 @can(' مدفوعات بالكرت البيم الطلاب ')
                                                     @if($x->student->bim_statu != 0)
-                                                    <a class=" btn btn-sm btn-info" href="/Student_bim/show/student/bim/{{$x->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
+                                                    <a class=" btn btn-sm btn-info" href="/Student_bim/show/student/bim/{{$x->student->id}}/"><i class="far fa-eye"  style="font-size: 17px;"></i> </a>
                                                     @endif
                                                 @endcan
                                                 </td>
@@ -166,7 +166,7 @@
                                                     <td>
                                                     @if($x->student->husband_wife_statu == 1)
                                                     @can(' قسم الزوج والزوجة الطلاب ')
-                                                        <a class="btn btn-sm btn-info" href="/husband_Wife/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class="btn btn-sm btn-info" href="/husband_Wife/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endcan
                                                     @endif
                                                     </td>
@@ -175,7 +175,7 @@
                                                     <td>
                                                     @if($x->student->father_mother_statu == 1)
                                                     @can(' قسم الأب والأم الطلاب ')
-                                                        <a class="btn btn-sm btn-info" href="/father_and_mother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class="btn btn-sm btn-info" href="/father_and_mother/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endcan
                                                     @endif
                                                     </td>
@@ -185,7 +185,7 @@
                                                     {{-- add children  --}}
                                                     @if($x->student->child_statu != 0)
                                                     @can(' قسم الأطفال الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/children/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/children/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endcan
                                                     @endif
                                                     </td>
@@ -194,7 +194,7 @@
                                                     <td>
                                                     @if($x->student->medical_statu == 1)
                                                     @can(' اضافة الحالة الصحية الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/Medical_Statu/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/Medical_Statu/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endcan
                                                     @endif
                                                     </td>
@@ -202,7 +202,7 @@
                                                     <td>
                                                     @if($x->student->residance_statu == 1)
                                                     @can(' قسم سكن الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/Student_Residance/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/Student_Residance/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endcan
                                                     @endif
                                                     </td>
@@ -211,7 +211,7 @@
                                                     <td>
                                                     @if($x->student->quran_statu == 1)
                                                     @can(' قسم القرأن الطلاب ')
-                                                    <a class=" btn btn-sm btn-info" href="/Quran/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    <a class=" btn btn-sm btn-info" href="/Quran/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endcan
                                                     @endif
                                                     </td>
@@ -220,7 +220,7 @@
                                                     <td>
                                                     @if($x->student->job_statu == 1)
                                                     @can(' قسم العمل الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/job/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/job/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endcan
                                                     @endif
                                                     </td>
@@ -229,7 +229,7 @@
                                                     <td>
                                                     @if($x->student->scholarship_statu == 1)
                                                     @can(' قسم المنح الدراسية الطلاب ')
-                                                        <a class=" btn btn-sm btn-info" href="/Scholarship/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                        <a class=" btn btn-sm btn-info" href="/Scholarship/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endcan
                                                     @endif
                                                     </td>
@@ -238,7 +238,7 @@
                                                     <td>
                                                     @if($x->student->university_statu == 1)
                                                     @can(' قسم الجامعة الطلاب ')
-                                                    <a class=" btn btn-sm btn-info" href="/University/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    <a class=" btn btn-sm btn-info" href="/University/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endcan
                                                     @endif
                                                     </td>
@@ -248,21 +248,29 @@
                                                     <td>
                                                     @can(' قسم الأخوة الطلاب ')
                                                     @if($x->student->sis_statu != 0)
-                                                    <a class="btn btn-sm btn-info" href="/Sister_and_Brother/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    <a class="btn btn-sm btn-info" href="/Sister_and_Brother/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
                                                     @endif
                                                     @endcan
                                                     </td>
 
-                                                      <td>
-                                                        @can(' عرض حالةالطلاب ')
+                                                    <td>
+                                                    @can(' قسم المنح المؤجلة ')
+                                                    @if($x->student->old_statu != 0)
+                                                    <a class="btn btn-sm btn-info" href="/delayed_scholar/show/{{$x->student->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
+                                                    @endif
+                                                    @endcan
+                                                    </td>
+
+                                                    <td>
+                                                    @can(' عرض حالةالطلاب ')
                                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                        data-student_name="{{$x->student_name}}"  data-student_id="{{$x->id}}"
+                                                        data-student_name="{{$x->student->student_name}}"  data-student_id="{{$x->student->id}}"
                                                         data-description="" data-toggle="modal"
                                                         href="#exampleModal160" title="تعديل الحالة">
                                                         <i class="si si-user-follow"  style="font-size: 20px;"></i>
-                                                    </a>
+                                                        </a>
                                                     @endcan
-                                                </td>
+                                                    </td>
 
                                                 @endif
                                                 @endforeach

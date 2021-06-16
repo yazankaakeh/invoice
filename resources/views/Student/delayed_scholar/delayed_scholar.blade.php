@@ -55,7 +55,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($delayed_scholars as $x)
+                                                @foreach($delayed as $x)
                                                 <tr>
                                                     <td>{{$x->student_id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
@@ -66,21 +66,24 @@
                                                     <td>{{$x->updated_at}}</td>
                                                     <td>
                                                             {{-- Edite --}}
+                                                            @can(' تعديل قسم المنح المؤجلة ')
                                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                                data-id="{{$x->id}}" data-delayed_scholar_parts="{{$x->value}}"
-                                                                data-name="{{$x->date }}" data-delayed_scholar_memorize="{{$x->note}}"
+                                                                data-id="{{$x->id}}" data-value="{{$x->value}}"
+                                                                data-date="{{$x->date }}" data-note="{{$x->note}}"
                                                                 data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
                                                                 <i class="las la-pen"></i>
                                                             </a>
-
+                                                            @endcan
+                                                            @can('حذف قسم المنح المؤجلة')
                                                             {{-- Delete --}}
                                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                                data-id="{{ $x->id }}"  data-name="{{$x->name }}" data-student_id="{{$x->student_id}}"
+                                                                data-id="{{ $x->id }}"  data-name="{{$x->student->student_name }}" data-student_id="{{$x->student_id}}"
                                                                 data-toggle="modal" href="#modaldemo9" title="حذف">
                                                                 <i class="las la-trash"> </i>
                                                             </a>
+                                                            @endcan
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -183,7 +186,7 @@
                                     </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail"> ملاحظة</label>
-                                    <input type="text" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد "required>
+                                    <input  type="text" class="form-control" id="note" name="note" placeholder=" أكتب ملاحظة ان وجد "required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -240,6 +243,7 @@
         modal.find('.modal-body #value').val(value);
         modal.find('.modal-body #student_id').val(student_id);
         modal.find('.modal-body #note').val(note);
+        modal.find('.modal-body #date').val(date);
 
     })
 </script>

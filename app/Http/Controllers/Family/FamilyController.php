@@ -124,15 +124,22 @@ function __construct()
         }
          $husbandandWife->save();
 
-
+         $name = $request->family_Constraint;
          $enable = From::find(1);
-         session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح ');
+         session()->flash('Add', 'تم اضافة العائلة '. $request->family_Constraint .' بنجاح سيتم التواصل معكم قريبا ');
          $request=0;
-         return back()->with('enable');
+         $request==null;
+         $s=1;
+        //  return route('done.show');//,compact('name'));
+         return back()->with('enable','s');
         //  return view('Family.family.register',compact('enable'));
 
 }
 
+    public function done()
+    {
+        return view('Family.family.done');
+    }
 
     public function messages()
     {

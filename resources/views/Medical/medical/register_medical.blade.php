@@ -40,6 +40,27 @@ body{
 								<div id="">
 									<h3> تسجيل الطبي.</h3>
 									<section>
+                                            @if (session()->has('Add'))
+                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            @endif
+
+                                            @if ($errors->any())
+                                            <div class="alert alert-danger mg-b-0" role="alert">
+                                                <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <ul>
+                                                @foreach ($errors->all() as $error)
+                                                <strong>ملاحظة!</strong> {{ $error }}
+                                                @endforeach
+                                                </ul>
+                                            </div>
+                                            @endif
                                 {{ method_field('POST') }}
                                 {{ csrf_field() }}
                                 <p class="mg-b-20">يرجى إدخال المعلومات الشخصية الخاصة بك !</p>
@@ -47,14 +68,14 @@ body{
                                             <h3> المعلومات الشخصية.</h3>
 											<div class="col-sm-12">
 												<label class="form-control-label">اسم المريض: <span class="tx-danger">*</span></label>
-                                                <input class="form-control" value="" id="medical_name" name="medical_name" placeholder="أكتب أسم المريض بالكامل" required="" type="text"required>
+                                                <input class="form-control" value="" id="medical_name" name="medical_name" placeholder="أكتب أسم المريض بالكامل"    type="text"   required>
                                                 <input class="form-control" value="register"  name="register" type="hidden">
 											</div>
                                             <div class="col-sm-12">
-												<label class="exampleInputEmail">عمر المريض: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_age" name="medical_age" placeholder="أكتب عمر المريض بأرقام" required="" type="text"required>
+												<label class="exampleInputEmail">عمر المريض: <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_age" name="medical_age" placeholder="أكتب عمر المريض بأرقام"    type="text"  required>
 											</div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="exampleInputEmail">  الجنس: <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender"required>
+                                                <p class="exampleInputEmail">  الجنس: <span class="tx-danger">*</span></p><select class="form-control select2" name="gender" id="gender"  required>
                                                 <option label="test">
                                                     حدد من فضلك </option>
                                                 <option value="ذكر" >
@@ -67,7 +88,7 @@ body{
 											</div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
                                                 <label class="exampleInputEmail">الحالة الأجتماعية<span class="tx-danger">*</span></p></label>
-                                                <select class="form-control" id="status" name="status"  placeholder=""required>
+                                                <select class="form-control" id="status" name="status"  placeholder=""  required>
                                                     <option label="test">
                                                           </option>
                                                     <option value="متزوج/ة">
@@ -86,7 +107,7 @@ body{
                                                 </div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
                                             <label for="exampleInputEmail">من اي محافظة من سوريا؟<span class="tx-danger">*</span></p></label>
-                                            <select class="form-control" id="Governorate" name="Governorate" placeholder=" أكتب اسم  محافظة "required>
+                                            <select class="form-control" id="Governorate" name="Governorate" placeholder=" أكتب اسم  محافظة "  required>
                                        <option label="test">
                                             </option>
                                        <option value="	دمشق">
@@ -122,10 +143,10 @@ body{
 
                                    <div class="col-sm-12 mg-t-20 mg-md-t-0">
                                        <label for="exampleInputEmail">من اي مدينة؟<span class="tx-danger">*</span></p></label>
-                                       <input type="text" class="form-control" id="city" name="city" placeholder=" أكتب اسم  المدينة أو الحي "required>
-                                   </div>
+                                       <input type="text" class="form-control" id="city" name="city" placeholder=" أكتب اسم  المدينة أو الحي "  required>
+                                    </div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="exampleInputEmail">  هل يوجد كملك: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_have_id" id="medical_have_id"required>
+                                                <p class="exampleInputEmail">  هل يوجد كملك: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_have_id" id="medical_have_id"  required>
                                                 <option label="test">
                                                     حدد من فضلك </option>
                                                 <option value="يوجد" >
@@ -137,7 +158,7 @@ body{
                                             </select>
 											</div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                                <p class="exampleInputEmail"> الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_id_extr" id="medical_id_extr"required>
+                                                <p class="exampleInputEmail"> الولاية: <span class="tx-danger">*</span></p><select class="form-control select2" name="medical_id_extr" id="medical_id_extr"  required>
                                                     <option label="test">
                                                         حدد من فضلك
                                                       </option>
@@ -308,7 +329,7 @@ body{
                                                 </select>
                                             </div>
 											<div class="col-sm-12 mg-t-20 mg-md-t-0">
-												<label class="exampleInputEmail"> رقم هاتف المريض : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف بدءً من 05  " required="" type="text">
+												<label class="exampleInputEmail"> رقم هاتف المريض : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="medical_number" name="medical_number" placeholder="أكنب رقم الهاتف بدءً من 05  "    type="number">
 											</div>
                                             {{-- medical_Statu --}}
                                              <div class="col-sm-12 mg-t-20 mg-md-t-0">
@@ -333,11 +354,11 @@ body{
                                             </div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
                                             <label for="exampleInputEmail">اسم المرض</label>
-                                            <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض"required>
+                                            <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض"  required>
                                             </div>
                                              <div class="col-sm-12 mg-t-20 mg-md-t-0">
                                                 <p class="exampleInputEmail">تقييم الحالة المرضية</p>
-                                                <select class="form-control select2" name="medical_rate" id="medical_rate"required>
+                                                <select class="form-control select2" name="medical_rate" id="medical_rate"  required>
                                                   <option label="test">
                                                     حدد من فضلك
                                                   </option>
@@ -365,48 +386,13 @@ body{
                                             </div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
                                             <label class="exampleInputEmail">نوع العلاج</label>
-                                            <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج "required>
+                                            <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج "  required>
                                             </div>
                                             <div class="col-sm-12 mg-t-20 mg-md-t-0">
                                             <label class="exampleInputEmail">مدة العلاج</label>
-                                            <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج"required>
+                                            <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج"  required>
                                             </div>
-                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                            <label class="exampleInputEmail">تاريخ بدء العلاج</label>
-                                            <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج"required>
-                                            </div>
-                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                            <label class="exampleInputEmail">تاريخ الانتهاء من العلاج</label>
-                                            <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج"required>
-                                            </div>
-                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
-                                            <label class="exampleInputEmail">هل تم تحويلك لطبيب آخر؟ مع ذكر الأسم إن وجد</label>
-                                            <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر أسم الطبيب ان وجد"required>
-                                            </div>
-                                            <div class="col-sm-12 mg-t-20 mg-md-t-0">
-												<label class="exampleInputEmail"> يرجى كتابة أي ملاحظة في حال وجدة : <span class="tx-danger">*</span></label> <input class="form-control" value="" id="note" name="note" placeholder="إكتب الملاحظات إن وجد " required="" type="text"required>
-											</div>
-                                            @if (session()->has('Add'))
-                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                <strong style="right: 30px; position: relative;">{{ session()->get('Add') }}</strong>
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            @endif
 
-                                            @if ($errors->any())
-                                            <div class="alert alert-danger mg-b-0" role="alert">
-                                                <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                <ul>
-                                                @foreach ($errors->all() as $error)
-                                                <strong>ملاحظة!</strong> {{ $error }}
-                                                @endforeach
-                                                </ul>
-                                            </div>
-                                            @endif
 							</div>
                                 <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">تاكيد</button>

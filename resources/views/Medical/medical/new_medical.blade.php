@@ -70,7 +70,6 @@
                                                     <th class="border-bottom-0">هل يوجد هوية</th>
                                                     <th class="border-bottom-0">الولاية</th>
                                                     <th class="border-bottom-0"> الهاتف</th>
-                                                    <th class="border-bottom-0">ملاحظات</th>
                                                     <th class="border-bottom-0"> نوع المرض</th>
                                                     <th class="border-bottom-0"> اسم المرض</th>
                                                     <th class="border-bottom-0"> تقييم الحالة الصحية</th>
@@ -78,9 +77,6 @@
                                                     <th class="border-bottom-0"> تكلفة العلاج</th>
                                                     <th class="border-bottom-0"> نوع العلاج</th>
                                                     <th class="border-bottom-0"> مدة العلاج</th>
-                                                    <th class="border-bottom-0"> تاريخ البدء</th>
-                                                    <th class="border-bottom-0"> تاريخ الانتهاء </th>
-                                                    <th class="border-bottom-0"> طبيب آخر </th>
                                                     <th class="border-bottom-0"> تاريخ التسجيل</th>
                                                     <th class="border-bottom-0"> تعديل الحالة</th>
 
@@ -106,7 +102,6 @@
                                                     <td>{{$x->medical->medical_have_id}}</td>
                                                     <td>{{$x->medical->medical_id_extr}}</td>
                                                     <td>{{$x->medical->medical_number}}</td>
-                                                    <td>{{$x->medical->note}}</td>
                                                     <td>{{$x->disease_type}}</td>
                                                     <td>{{$x->disease_name}}</td>
                                                     <td>{{$x->medical_rate}}</td>
@@ -114,9 +109,6 @@
                                                     <td>{{$x->treat_cost}}</td>
                                                     <td>{{$x->treat_type}}</td>
                                                     <td>{{$x->treat_Duratio}}</td>
-                                                    <td>{{$x->date_accept}}</td>
-                                                    <td>{{$x->date_end}}</td>
-                                                    <td>{{$x->Trans_to_doctor}}</td>
                                                     <td>{{$x->created_at}}</td>
 
                                                     <td>

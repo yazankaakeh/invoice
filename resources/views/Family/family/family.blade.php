@@ -260,6 +260,7 @@
                                                             data-gender="{{$x->gender}}"
                                                             data-district="{{$x->district}}"
                                                             data-city="{{$x->city}}"
+                                                            data-aid_value="{{$x->aid_value}}"
                                                             data-sec_phone="{{$x->sec_phone}}"
                                                             data-work_an_breadwinner="{{$x->work_an_breadwinner}}"
                                                             data-work_breadwinner="{{$x->work_breadwinner}}"
@@ -2065,7 +2066,7 @@
                                         </div>
                                             <div class="form-group">
                                             <label for="exampleInputEmail">المستوى التعليمي </label>
-                                            <select class="form-control" id="" name="academicel" placeholder=" أكتب المستوى التعليمي  "required>
+                                            <select class="form-control" id="academicel" name="academicel" placeholder=" أكتب المستوى التعليمي  "required>
                                             <option label="test">
                                                     </option>
                                             <option value=" الأمِّيِّ">
@@ -2182,33 +2183,33 @@
                                             <select class="form-control" id="city" name="city" placeholder=" أكتب اسم المحافظة "required>
                                             <option label="test">
                                                     </option>
-                                                <option value="	دمشق">
+                                                <option value="دمشق">
                                                     دمشق</option>
                                                 <option value="ريف دمشق">
                                                     ريف دمشق</option>
-                                                <option value="	حلب ">
+                                                <option value="حلب ">
                                                     حلب</option>
                                                 <option value="حمص">
                                                     حمص</option>
                                                 <option value="حماه">
                                                     حماه</option>
-                                                <option value="	درعا">
+                                                <option value="درعا">
                                                     درعا</option>
-                                                <option value="	ادلب">
+                                                <option value="ادلب">
                                                     ادلب</option>
-                                                <option value="	سويداء">
+                                                <option value="سويداء">
                                                     سويداء</option>
-                                                <option value="	ديرالزور">
+                                                <option value="ديرالزور">
                                                     دير الزور</option>
-                                                <option value="	الرقة">
+                                                <option value="الرقة">
                                                     الرقة</option>
                                                 <option value="الحسكة">
                                                     الحسكة</option>
-                                                <option value="	اللاذقية">
+                                                <option value="اللاذقية">
                                                     اللاذقية</option>
-                                                <option value="	طرطوس">
+                                                <option value="طرطوس">
                                                     طرطوس</option>
-                                                <option value="	القنيطرة">
+                                                <option value="القنيطرة">
                                                     القنيطرة</option>
                                                 </select>
                                             </div>
@@ -2246,7 +2247,7 @@
                                         <select class="form-control" id="family_aid" name="family_has_aid"  placeholder="  "required>
                                             <option label="test">
                                                        </option>
-                                            <option value="	يوجد">
+                                            <option value="يوجد">
                                                 يوجد</option>
                                             <option value="لا يوجد">
                                                 لا يوجد</option>
@@ -2270,12 +2271,13 @@
                                         <label for="exampleInputEmail">هاتف ثاني</label>
                                         <input type="text" class="form-control" id="sec_phone" name="sec_phone"  placeholder=" أكتب رقم هاتف ثاني  "required>
                                         </div>
+
                                             <div class="form-group">
                                             <label for="exampleInputEmail">المستوى التعليمي </label>
-                                            <select class="form-control" id="" name="academicel" placeholder=" أكتب المستوى التعليمي  "required>
+                                            <select class="form-control" id="academicel" name="academicel" placeholder=" أكتب المستوى التعليمي  "required>
                                             <option label="test">
                                                     </option>
-                                            <option value=" الأمِّيِّ">
+                                            <option value="الأمِّيِّ">
                                                 الأمِّيِّ </option>
                                             <option value="حضانة">
                                                 حضانة </option>
@@ -2287,7 +2289,7 @@
                                                 اعدادي </option>
                                             <option value="ثانوي">
                                                 ثانوي </option>
-                                            <option value="دبلوم عالي ">
+                                            <option value="دبلوم عالي">
                                                 دبلوم عالي </option>
                                             <option value="جامعي">
                                                 جامعي </option>
@@ -2297,6 +2299,7 @@
                                                 دوكتورا </option>
                                             </select>
                                             </div>
+
                                             <div class="form-group">
                                             <label for="exampleInputEmail">العمل الحالي </label>
                                             <input type="text" class="form-control" id="now_work" name="now_work" placeholder=" أكتب العمل الحالي "required>
@@ -2361,6 +2364,7 @@
         var academicel = button.data('academicel')
         var gender = button.data('gender')
         var city = button.data('city')
+        var aid_value = button.data('aid_value')
         var family_constraint = button.data('family_constraint')
         var family_number_member = button.data('family_number_member')
         var family_breadwinner = button.data('family_breadwinner')
@@ -2373,10 +2377,13 @@
         var aid_value = button.data('aid_value')
         var phone = button.data('phone')
         var sec_phone = button.data('sec_phone')
+        var district = button.data('district')
         var note = button.data('note')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #aid_value').val(aid_value);
         modal.find('.modal-body #now_work').val(now_work);
+        modal.find('.modal-body #district').val(district);
         modal.find('.modal-body #work').val(work);
         modal.find('.modal-body #academicel').val(academicel);
         modal.find('.modal-body #gender').val(gender);

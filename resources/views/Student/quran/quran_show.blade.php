@@ -59,7 +59,9 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($qurans as $x)
+                                                @if ($x->student_id != null)
                                                 <tr>
+
                                                     <td>{{$x->student_id}}</td>
                                                     <td>{{$x->student->student_name}}</td>
                                                     <td>{{$x->id}}</td>
@@ -91,6 +93,7 @@
                                                             </a>
                                                     </td>
                                                 </tr>
+                                                @endif
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -274,7 +277,7 @@
         var button = $(event.relatedTarget)
         var id = button.data('id')
         var quran_memorize = button.data('quran_memorize')
-        var quran_teacher = button.data('academicquran_teacherel')
+        var quran_teacher = button.data('quran_teacher')
         var quran_parts = button.data('quran_parts')
         var student_id = button.data('student_id')
         var quran_have_certif = button.data('quran_have_certif')

@@ -408,18 +408,23 @@
                                                     @endif
 
                                                       {{-- delayed  --}}
-                                                      @if($x->delayed_scholar == 1)
+                                                      @if($x->old_statu == 1)
                                                       <td>
+                                                    @can(' قسم  المنح المؤجلة ')
                                                       <a class=" btn btn-sm btn-info" href="/delayed_scholar/show/{{$x->id}}"><i class="far fa-eye"  style="font-size: 20px;"></i> </a>
-                                                      @
+                                                    @endcan
                                                       </td>
-                                                      @elseif($x->delayed_scholar == 0)
+                                                      @elseif($x->old_statu == 0)
                                                       <td>
+                                                    @can(' اضافة  المنح المؤجلة ')
                                                           <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                          data-student_id="{{$x->id}}" data-student_name"{{$x->student_name}}"   data-description="" data-toggle="modal"
+                                                          data-student_id="{{$x->id}}"
+                                                          data-student_name="{{$x->student_name}}"
+                                                          data-toggle="modal"
                                                           href="#exampleModal77" title="إضافة معلومات المنحة مؤجلة">
                                                           <i class="fas fa-book-open" style="font-size: 20px;"></i>
                                                       </a>
+                                                    @endcan
                                                   </td>
                                                   @endif
 
@@ -2274,13 +2279,13 @@
                                     </button>
                                     </div>
                                     <div class="modal-body">
-                                    <form action="{{ route('Quran.student.store') }}" method="post">
+                                    <form action="{{ route('delayed_scholar.store') }}" method="post">
                                     {{ method_field('POST') }}
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="exampleInputEmail">اسم الطالب</label>
                                         <input type="hidden" class="form-control" id="student_id" name="student_id" placeholder="  " readonly>
-                                        <input type="hidden" class="form-control" id="student_name" name="student_name" placeholder="  " readonly>
+                                        <input type="text" class="form-control" id="student_name" name="student_name" placeholder="  " readonly>
                                         </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail">قيمة المنحة المؤجلة</label>

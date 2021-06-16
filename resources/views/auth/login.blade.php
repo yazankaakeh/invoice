@@ -5,7 +5,7 @@
 - للادارة البيانات
 @stop
 @section('recaptha')
-{!! RecaptchaV3::initJs() !!}
+{{-- {!! RecaptchaV3::initJs() !!} --}}
 @endsection
 
 @section('css')
@@ -51,7 +51,7 @@
 												  @enderror
                                                   <div class="form-group row">
                                                       <div class="col-md-6 offset-md-4">
-                                                   {!! RecaptchaV3::field('login') !!}
+                                                   {{-- {!! RecaptchaV3::field('login') !!} --}}
 
                                                            <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

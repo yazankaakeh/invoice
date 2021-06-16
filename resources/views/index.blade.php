@@ -452,7 +452,7 @@
 					@endcan
 
 					{{-- Bim Percent %  --}}
-					@can(' مدفوعات باكرت البيم الطلاب ')
+					@can(' مدفوعات بالكرت البيم الطلاب ')
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-warning-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -482,7 +482,7 @@
 					</div>
 					@endcan
 
-					@can(' مدفوعات باكرت البيم العائلات ')
+					@can(' مدفوعات بالكرت البيم العائلات ')
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-warning-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -512,7 +512,7 @@
 					</div>
 					@endcan
 
-					@can(' مدفوعات باكرت البيم الطبي ')
+					@can(' مدفوعات بالكرت البيم الطبي ')
 					<div class="col-xl-4 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-warning-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
@@ -544,6 +544,8 @@
 						</div>
 					</div>
 					@endcan
+
+
 					@can(' قسم الدخل المالي ')
 					<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 						<div class="card overflow-hidden sales-card bg-primary-gradient">

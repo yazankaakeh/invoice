@@ -97,6 +97,7 @@
                                                                 data-status="{{$x->status}}"
                                                                 data-childre_live_with="{{$x->childre_live_with}}"
                                                                 data-family_Constraint="{{$x->family->family_Constraint}}"   data-family_id="{{$x->family_id}}"
+                                                                data-identity="{{$x->identity}}"
                                                                 data-note="{{$x->note}}"
                                                                 data-toggle="modal"
                                                                 href="#exampleModal2" title="تعديل">
@@ -787,6 +788,7 @@
         var family_id = button.data('family_id')
         var id = button.data('id')
         var childre_age = button.data('childre_age')
+        var identity = button.data('identity')
         var childre_name = button.data('childre_name')
         var childre_gender = button.data('childre_gender')
         var status = button.data('status')
@@ -798,6 +800,7 @@
         var note = button.data('note')
         var modal = $(this)
         modal.find('.modal-body #family_id').val(family_id);
+        modal.find('.modal-body #identity').val(identity);
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #childre_age').val(childre_age);
         modal.find('.modal-body #childre_name').val(childre_name);

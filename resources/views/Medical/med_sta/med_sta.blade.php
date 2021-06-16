@@ -200,12 +200,12 @@
                                 {{ csrf_field() }}
                               <div class="modal-body">
                                 <div class="form-group">
-                                <input type="hidden" name="id" id="id"  readonly>
-                                <input type="hidden" name="medical_id" id="medical_id" readonly>
+                                <input type="hidden" name="id" id="id"  readonly required>
+                                <input type="hidden" name="medical_id" id="medical_id" readonly required>
                                 </div>
                                  <div class="form-group">{{-- it must be select options  --}}
                                     <p class="mg-b-10">نوع الرض</p>
-                                    <select class="form-control select2" name="disease_type" id="disease_type">
+                                    <select class="form-control select2" name="disease_type" id="disease_type" required>
                                     <option value="اصابة حرب" >
                                         اصابة حرب
                                     </option>
@@ -219,7 +219,7 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم المرض</label>
-                                <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض">
+                                <input type="text" class="form-control" id="disease_name" name="disease_name" placeholder=" أكتب أسم المرض" required>
                                 </div>
                                 <div class="form-group">
                                     <p class="mg-b-10">تقييم الحالة المرضية</p>
@@ -240,31 +240,31 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">اسم الدكتور</label>
-                                <input type="text" class="form-control" id="dr_name" name="dr_name" placeholder=" أكتب أسم الطبيب">
+                                <input type="text" class="form-control" id="dr_name" name="dr_name" placeholder=" أكتب أسم الطبيب" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">تكلفة العلاج</label>
-                                <input type="text" class="form-control" id="treat_cost" name="treat_cost" placeholder="أكتب تكلفة العلاج ">
+                                <input type="text" class="form-control" id="treat_cost" name="treat_cost" placeholder="أكتب تكلفة العلاج " required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">نوع العلاج</label>
-                                <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج ">
+                                <input type="text" class="form-control" id="treat_type" name="treat_type" placeholder=" أكتب نوع العلاج " required>
                                 </div>
                                <div class="form-group">
                                 <label for="exampleInputEmail">مدة العلاج</label>
-                                <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج">
+                                <input type="text" class="form-control" id="treat_Duratio" name="treat_Duratio" placeholder=" أكتب مدة العلاج" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ بدء العلاج</label>
-                                <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج">
+                                <input type="date" class="form-control" id="date_accept" name="date_accept" placeholder=" أكتب تاريخ بدء العلاج" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">تاريخ الانتهاء من العلاج</label>
-                                <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج">
+                                <input type="date" class="form-control" id="date_end" name="date_end" placeholder=" أكتب تاريخ الأنتهاء العلاج" required>
                                 </div>
                                 <div class="form-group">
                                 <label for="exampleInputEmail">هل تم تحويلك لطبيب آخر؟ مع ذكر الأسم إن وجد</label>
-                                <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر أسم الطبيب ان وجد">
+                                <input type="text" class="form-control" id="Trans_to_doctor" name="Trans_to_doctor" placeholder=" أذكر أسم الطبيب ان وجد" required>
                                 </div>
                                 <div class="form-group">
                                  <label for="exampleInputEmail">ملاحظة</label>
